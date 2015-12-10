@@ -1,0 +1,1021 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSFormatter - NSHipster</title>
+    <meta name="description" content="Conversion is the tireless errand of software development. Most programming tasks boil down to some variation of transforming data into something more useful."/>
+    <link rel="canonical" href="http://nshipster.com/nsformatter/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="NSFormatter"/>
+    <meta name="twitter:description" content="Conversion is the tireless errand of software development. Most programming tasks boil down to some variation of transforming data into something more useful."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NSFormatter"/>
+    <meta property="og:url" content="http://nshipster.com/nsformatter/"/>
+    <meta property="og:description" content="Conversion is the tireless errand of software development. Most programming tasks boil down to some variation of transforming data into something more useful."/>
+    <meta property="article:published_time" content="2013-11-11T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NSFormatter"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/nsformatter/">NSFormatter</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-11-11T00:00:00-08:00" itemprop="datePublished">November 11<sup>th</sup>, 2013</time>
+    
+    (<a href="#revisions">revised</a>)
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Conversion is the tireless errand of software development. Most programming tasks boil down to some variation of transforming data into something more useful.</p>
+
+<p>In the case of user-facing software, converting data into human-readable form is an essential task, and a complex one at that. A user&rsquo;s preferred language, locale, calendar, or currency can all factor into how information should be displayed, as can other constraints, such as a label&rsquo;s dimensions.</p>
+
+<p>All of this is to say that sending <code>-description</code> to an object just isn&rsquo;t going to cut it in most circumstances. Even <code>+stringWithFormat:</code> is going to ultimately disappoint. No, the real tool for this job is <code>NSFormatter</code>.</p>
+
+<hr>
+
+<p><code>NSFormatter</code> is an abstract class for transforming data into a textual representation. It can also interpret valid textual representations back into data.</p>
+
+<p>Its origins trace back to <code>NSCell</code>, which is used to display information and accept user input in tables, form fields, and other views in AppKit. Much of the API design of <code>NSFormatter</code> reflects this.</p>
+
+<p>Foundation provides a number of concrete subclasses for <code>NSFormatter</code> (in addition to a single <code>NSFormatter</code> subclass provided in the MapKit framework):</p>
+
+<table><thead>
+<tr>
+<th>Class</th>
+<th>Availability</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>NSNumberFormatter</code></td>
+<td>iOS 2.0 / OS X Cheetah</td>
+</tr>
+<tr>
+<td><code>NSDateFormatter</code></td>
+<td>iOS 2.0 / OS X Cheetah</td>
+</tr>
+<tr>
+<td><code>NSByteCountFormatter</code></td>
+<td>iOS 6.0 / OS X Mountain Lion</td>
+</tr>
+<tr>
+<td><code>NSDateComponentsFormatter</code></td>
+<td>iOS 8.0 / OS X Yosemite</td>
+</tr>
+<tr>
+<td><code>NSDateIntervalFormatter</code></td>
+<td>iOS 8.0 / OS X Yosemite</td>
+</tr>
+<tr>
+<td><code>NSEnergyFormatter</code></td>
+<td>iOS 8.0 / OS X Yosemite</td>
+</tr>
+<tr>
+<td><code>NSMassFormatter</code></td>
+<td>iOS 8.0 / OS X Yosemite</td>
+</tr>
+<tr>
+<td><code>NSLengthFormatter</code></td>
+<td>iOS 8.0 / OS X Yosemite</td>
+</tr>
+<tr>
+<td><code>MKDistanceFormatter</code></td>
+<td>iOS 7.0 / OS X Mavericks</td>
+</tr>
+</tbody></table>
+
+<p>As some of the oldest members of the Foundation framework, <code>NSNumberFormatter</code> and <code>NSDateFormatter</code> are astonishingly well-suited to their respective domains, in that way only decade-old software can. This tradition of excellence is carried by the most recent incarnations as well.</p>
+
+<blockquote>
+<p>iOS 8 &amp; OS X Yosemite more than <em>doubled</em> the number of system-provided formatter classes, which is pretty remarkable.</p>
+</blockquote>
+
+<h2 id="nsnumberformatter">NSNumberFormatter</h2>
+
+<p><code>NSNumberFormatter</code> handles every aspect of number formatting imaginable, from mathematical and scientific notation, to currencies and percentages. Nearly everything about the formatter can be customized, whether it&rsquo;s the currency symbol, grouping separator, number of significant digits, rounding behavior, fractions, character for infinity, string representation for <code>0</code>, or maximum / minimum values. It can even write out numbers in several languages!</p>
+
+<h3 id="number-styles">Number Styles</h3>
+
+<p>When using an <code>NSNumberFormatter</code>, the first order of business is to determine what kind of information you&rsquo;re displaying. Is it a price? Is this a whole number, or should decimal values be shown?</p>
+
+<p><code>NSNumberFormatter</code> can be configured for any one of the following formats, with the <code>numberStyle</code> property.</p>
+
+<p>To illustrate the differences between each style, here is how the number <code>12345.6789</code> would be displayed for each:</p>
+
+<h4 id="nsnumberformatterstyle"><code>NSNumberFormatterStyle</code></h4>
+
+<table><thead>
+<tr>
+<th>Formatter Style</th>
+<th>Output</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>NoStyle</code></td>
+<td>12346</td>
+</tr>
+<tr>
+<td><code>DecimalStyle</code></td>
+<td>12345.6789</td>
+</tr>
+<tr>
+<td><code>CurrencyStyle</code></td>
+<td>$12345.68</td>
+</tr>
+<tr>
+<td><code>PercentStyle</code></td>
+<td>1234567%</td>
+</tr>
+<tr>
+<td><code>ScientificStyle</code></td>
+<td>1.23456789E4</td>
+</tr>
+<tr>
+<td><code>SpellOutStyle</code></td>
+<td>twelve thousand three hundred forty-five point six seven eight nine</td>
+</tr>
+</tbody></table>
+
+<h3 id="locale-awareness">Locale Awareness</h3>
+
+<p>By default, <code>NSNumberFormatter</code> will format according to the current locale settings, which determines things like currency symbol ($, £, €, etc.) and whether to use &ldquo;,&rdquo; or &ldquo;.&rdquo; as the decimal separator.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="bp">NSNumberFormatter</span><span class="p">()</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">numberStyle</span> <span class="o">=</span> <span class="n">NSNumberFormatterStyle</span><span class="p">.</span><span class="n">CurrencyStyle</span>
+
+<span class="k">for</span> <span class="n">identifier</span> <span class="k">in</span> <span class="p">[</span><span class="s">&quot;en_US&quot;</span><span class="p">,</span> <span class="s">&quot;fr_FR&quot;</span><span class="p">,</span> <span class="s">&quot;ja_JP&quot;</span><span class="p">]</span> <span class="p">{</span>
+    <span class="n">formatter</span><span class="p">.</span><span class="n">locale</span> <span class="o">=</span> <span class="bp">NSLocale</span><span class="p">(</span><span class="nl">localeIdentifier</span><span class="p">:</span> <span class="n">identifier</span><span class="p">)</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;\(identifier) \(formatter.stringFromNumber(1234.5678))&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSNumberFormatter</span> <span class="o">*</span><span class="n">numberFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSNumberFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="p">[</span><span class="n">numberFormatter</span> <span class="nl">setNumberStyle</span><span class="p">:</span><span class="n">NSNumberFormatterCurrencyStyle</span><span class="p">];</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="n">identifier</span> <span class="k">in</span> <span class="l">@[</span><span class="s">@&quot;en_US&quot;</span><span class="p">,</span> <span class="s">@&quot;fr_FR&quot;</span><span class="p">,</span> <span class="s">@&quot;ja_JP&quot;</span><span class="l">]</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">numberFormatter</span><span class="p">.</span><span class="n">locale</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSLocale</span> <span class="nl">localeWithLocaleIdentifier</span><span class="p">:</span><span class="n">identifier</span><span class="p">];</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@: %@&quot;</span><span class="p">,</span> <span class="n">identifier</span><span class="p">,</span> <span class="p">[</span><span class="n">numberFormatter</span> <span class="nl">stringFromNumber</span><span class="p">:</span><span class="l">@(</span><span class="mf">1234.5678</span><span class="l">)</span><span class="p">]);</span>
+<span class="p">}</span>
+</code></pre></div>
+<table><thead>
+<tr>
+<th>Locale</th>
+<th>Formatted Number</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>en_US</code></td>
+<td>$1,234.57</td>
+</tr>
+<tr>
+<td><code>fr_FR</code></td>
+<td>1 234,57 €</td>
+</tr>
+<tr>
+<td><code>ja_JP</code></td>
+<td>￥1,235</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>All of those settings can be overridden on an individual basis, but for most apps, the best strategy would be deferring to the locale&rsquo;s default settings.</p>
+</blockquote>
+
+<h3 id="rounding-&amp;-significant-digits">Rounding &amp; Significant Digits</h3>
+
+<p>In order to prevent numbers from getting annoyingly pedantic (<em>&ldquo;thirty-two point three three, repeating, of course&hellip;&rdquo;</em>), make sure to get a handle on <code>NSNumberFormatter</code>&rsquo;s rounding behavior.</p>
+
+<p>The easiest way to do this, would be to set the <code>usesSignificantDigits</code> property to <code>false</code>, and then set minimum and maximum number of significant digits appropriately. For example, a number formatter used for approximate distances in directions, would do well with significant digits to the tenths place for miles or kilometers, but only the ones place for feet or meters.</p>
+
+<blockquote>
+<p>For anything more advanced, an <code>NSDecimalNumberHandler</code> object can be passed as the <code>roundingBehavior</code> property of a number formatter.</p>
+</blockquote>
+
+<h2 id="nsdateformatter">NSDateFormatter</h2>
+
+<p><code>NSDateFormatter</code> is the be all and end all of getting textual representations of both dates and times.</p>
+
+<h3 id="date-&amp;-time-styles">Date &amp; Time Styles</h3>
+
+<p>The most important properties for an <code>NSDateFormatter</code> object are its <code>dateStyle</code> and <code>timeStyle</code>. Like <code>NSNumberFormatter numberStyle</code>, these styles provide common preset configurations for common formats. In this case, the various formats are distinguished by their specificity (more specific = longer).</p>
+
+<p>Both properties share a single set of <code>enum</code> values:</p>
+
+<h4 id="nsdateformatterstyle"><code>NSDateFormatterStyle</code></h4>
+
+<table>
+    <thead>
+        <tr>
+            <th>Style</th>
+            <th>Description</th>
+            <th colspan="2">Examples</th>
+        </tr>
+        <tr>
+            <th colspan="2"></th>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><tt>NoStyle</tt></td>
+            <td>Specifies no style.</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><tt>ShortStyle</tt></td>
+            <td>Specifies a short style, typically numeric only.</td>
+            <td>11/23/37</td>
+            <td>3:30pm</td>
+        </tr>
+        <tr>
+            <td><tt>MediumStyle</tt></td>
+            <td>Specifies a medium style, typically with abbreviated text.</td>
+            <td>Nov 23, 1937</td>
+            <td>3:30:32pm</td>
+        </tr>
+        <tr>
+            <td><tt>LongStyle</tt></td>
+            <td>Specifies a long style, typically with full text.</td>
+            <td>November 23, 1937</td>
+            <td>3:30:32pm</td>
+        </tr>
+        <tr>
+            <td><tt>FullStyle</tt></td>
+            <td>Specifies a full style with complete details.</td>
+            <td>Tuesday, April 12, 1952 AD</td>
+            <td>3:30:42pm PST</td>
+        </tr>
+    </tbody>
+</table>
+
+<p><code>dateStyle</code> and <code>timeStyle</code> are set independently. For example, to display just the time, an <code>NSDateFormatter</code> would be configured with a <code>dateStyle</code> of <code>NoStyle</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="bp">NSDateFormatter</span><span class="p">()</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">dateStyle</span> <span class="o">=</span> <span class="p">.</span><span class="n">NoStyle</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">timeStyle</span> <span class="o">=</span> <span class="p">.</span><span class="n">MediumStyle</span>
+
+<span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">.</span><span class="n">stringFromDate</span><span class="p">(</span><span class="bp">NSDate</span><span class="p">())</span>
+<span class="c1">// 10:42:21am</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSDateFormatter</span> <span class="o">*</span><span class="n">formatter</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSDateFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="p">[</span><span class="n">formatter</span> <span class="nl">setDateStyle</span><span class="p">:</span><span class="n">NSDateFormatterNoStyle</span><span class="p">];</span>
+<span class="p">[</span><span class="n">formatter</span> <span class="nl">setTimeStyle</span><span class="p">:</span><span class="n">NSDateFormatterMediumStyle</span><span class="p">];</span>
+
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">formatter</span> <span class="nl">stringFromDate</span><span class="p">:[</span><span class="bp">NSDate</span> <span class="n">date</span><span class="p">]]);</span>
+<span class="c1">// 12:11:19pm</span>
+</code></pre></div>
+<p>Whereas setting both to <code>LongStyle</code> yields the following:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="bp">NSDateFormatter</span><span class="p">()</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">dateStyle</span> <span class="o">=</span> <span class="p">.</span><span class="n">LongStyle</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">timeStyle</span> <span class="o">=</span> <span class="p">.</span><span class="n">LongStyle</span>
+
+<span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">.</span><span class="n">stringFromDate</span><span class="p">(</span><span class="bp">NSDate</span><span class="p">())</span>
+<span class="c1">// Monday June 30, 2014 10:42:21am PST</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSDateFormatter</span> <span class="o">*</span><span class="n">formatter</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSDateFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="p">[</span><span class="n">formatter</span> <span class="nl">setDateStyle</span><span class="p">:</span><span class="n">NSDateFormatterLongStyle</span><span class="p">];</span>
+<span class="p">[</span><span class="n">formatter</span> <span class="nl">setTimeStyle</span><span class="p">:</span><span class="n">NSDateFormatterLongStyle</span><span class="p">];</span>
+
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">formatter</span> <span class="nl">stringFromDate</span><span class="p">:[</span><span class="bp">NSDate</span> <span class="n">date</span><span class="p">]]);</span>
+<span class="c1">// Monday, November 11, 2013 12:11:19pm PST</span>
+</code></pre></div>
+<p>As you might expect, each aspect of the date format can alternatively be configured individually, a la carte. For any aspiring time wizards <code>NSDateFormatter</code> has a bevy of different knobs and switches to play with.</p>
+
+<h3 id="relative-formatting">Relative Formatting</h3>
+
+<p>As of iOS 4 / OS X Snow Leopard, <code>NSDateFormatter</code> supports relative date formatting for certain locales with the <code>doesRelativeDateFormatting</code> property. Setting this to <code>true</code> would format the date of <code>NSDate()</code> to &ldquo;Today&rdquo;.</p>
+
+<h2 id="nsbytecounterformatter">NSByteCounterFormatter</h2>
+
+<p>For apps that work with files, data in memory, or information downloaded from a network, <code>NSByteCounterFormatter</code> is a must-have. All of the great information unit formatting behavior seen in Finder and other OS X apps is available with <code>NSByteCounterFormatter</code>, without any additional configuration.</p>
+
+<p><code>NSByteCounterFormatter</code> takes a raw number of bytes and formats it into more meaningful units. For example, rather than bombarding a user with a ridiculous quantity, like &ldquo;8475891734 bytes&rdquo;, a formatter can make a more useful approximation of &ldquo;8.48 GB&rdquo;:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="bp">NSByteCountFormatter</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">byteCount</span> <span class="o">=</span> <span class="mi">8475891734</span>
+<span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">.</span><span class="n">stringFromByteCount</span><span class="p">(</span><span class="n">Int64</span><span class="p">(</span><span class="n">byteCount</span><span class="p">))</span>
+<span class="c1">// 8.48 GB</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSByteCountFormatter</span> <span class="o">*</span><span class="n">formatter</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSByteCountFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="kt">long</span> <span class="kt">long</span> <span class="n">byteCount</span> <span class="o">=</span> <span class="mi">8475891734</span><span class="p">;</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">formatter</span> <span class="nl">stringFromByteCount</span><span class="p">:</span><span class="n">byteCount</span><span class="p">]);</span>
+<span class="c1">// 8.48 GB</span>
+</code></pre></div>
+<p>By default, specifying a <code>0</code> byte count will yield a localized string like &ldquo;Zero KB&rdquo;. For a more consistent format, set <code>allowsNonnumericFormatting</code> to <code>false</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="bp">NSByteCountFormatter</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">byteCount</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">formatter</span><span class="p">.</span><span class="n">stringFromByteCount</span><span class="p">(</span><span class="n">Int64</span><span class="p">(</span><span class="n">byteCount</span><span class="p">))</span>
+<span class="c1">// Zero KB</span>
+
+<span class="n">formatter</span><span class="p">.</span><span class="n">allowsNonnumericFormatting</span> <span class="o">=</span> <span class="nb">false</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">stringFromByteCount</span><span class="p">(</span><span class="n">Int64</span><span class="p">(</span><span class="n">byteCount</span><span class="p">))</span>
+<span class="c1">// 0 bytes</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSByteCountFormatter</span> <span class="o">*</span><span class="n">formatter</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSByteCountFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="kt">long</span> <span class="kt">long</span> <span class="n">byteCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">formatter</span> <span class="nl">stringFromByteCount</span><span class="p">:</span><span class="n">byteCount</span><span class="p">]);</span>
+<span class="c1">// Zero KB</span>
+
+<span class="n">formatter</span><span class="p">.</span><span class="n">allowsNonnumericFormatting</span> <span class="o">=</span> <span class="nb">NO</span><span class="p">;</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">formatter</span> <span class="nl">stringFromByteCount</span><span class="p">:</span><span class="n">byteCount</span><span class="p">]);</span>
+<span class="c1">// 0 bytes</span>
+</code></pre></div>
+<h3 id="count-style">Count Style</h3>
+
+<p>One might think that dealing with bytes in code (which is, you know, <em>a medium of bytes</em>) would be a piece of cake, but in reality, even determining how many bytes are in a kilobyte remains a contentious and confusing matter. (<a href="http://xkcd.com/394/">Obligatory XKCD link</a>)</p>
+
+<p>In <a href="http://en.wikipedia.org/wiki/International_System_of_Units">SI</a>, the &ldquo;kilo&rdquo; prefix multiplies the base quantity by 1000 (i.e. 1km == 1000 m). However, being based on a binary number system, a more convenient convention has been to make a kilobyte equal to 2<sup>10</sup> bytes instead (i.e. 1KB == 1024 bytes). While the 2% difference is negligible at lower quantities, this confusion has significant implications when, for example, determining how much space is available on a 1TB drive (either 1000GB or 1024 GB).</p>
+
+<p>To complicate matters further, this binary prefix was codified into the <a href="http://en.wikipedia.org/wiki/Kibibyte">Kibibyte</a> standard by the <a href="http://en.wikipedia.org/wiki/International_Electrotechnical_Commission">IEC</a> in 1998&hellip; which is summarily ignored by the <a href="http://en.wikipedia.org/wiki/JEDEC_memory_standards#Unit_prefixes_for_semiconductor_storage_capacity">JEDEC</a>, the trade and engineering standardization organization representing the actual manufacturers of storage media. The result is that one can represent information as either <code>1kB</code>, <code>1KB</code>, or <code>1KiB</code>. (<a href="http://xkcd.com/927/">Another obligatory XKCD link</a>)</p>
+
+<p>Rather than get caught up in all of this, simply use the most appropriate count style for your particular use case:</p>
+
+<h4 id="nsbytecountformattercountstyle">NSByteCountFormatterCountStyle</h4>
+
+<p>| <code>File</code>    | Specifies display of file byte counts. The actual behavior for this is platform-specific; on OS X Mountain Lion, this uses the binary style, but that may change over time. |
+| <code>Memory</code>  | Specifies display of memory byte counts. The actual behavior for this is platform-specific; on OS X Mountain Lion, this uses the binary style, but that may change over time. |</p>
+
+<p>In most cases, it is better to use <code>File</code> or <code>Memory</code>, however decimal or binary byte counts can be explicitly specified with either of the following values:</p>
+
+<p>| <code>Decimal</code> | Causes 1000 bytes to be shown as 1 KB. |
+| <code>Binary</code>  | Causes 1024 bytes to be shown as 1 KB. |</p>
+
+<h2 id="date-&amp;-time-interval-formatters">Date &amp; Time Interval Formatters</h2>
+
+<p><code>NSDateFormatter</code> is great for points in time, but when it comes to dealing with date or time ranges, Foundation was without any particularly great options. That is, until the introduction of <code>NSDateComponentsFormatter</code> &amp; <code>NSDateIntervalFormatter</code>.</p>
+
+<h2 id="nsdatecomponentsformatter">NSDateComponentsFormatter</h2>
+
+<p>As the name implies, <code>NSDateComponentsFormatter</code> works with <code>NSDateComponents</code>, which was covered in <a href="http://nshipster.com/nsdatecomponents/">a previous NSHipster article</a>. An <code>NSDateComponents</code> object is a container for representing a combination of discrete calendar quantities, such as &ldquo;1 day and 2 hours&rdquo;. <code>NSDateComponentsFormatter</code> provides localized representations of <code>NSDateComponents</code> objects in several different formats:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="n">NSDateComponentsFormatter</span><span class="p">()</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">unitsStyle</span> <span class="o">=</span> <span class="p">.</span><span class="n">Full</span>
+
+<span class="k">let</span> <span class="n">components</span> <span class="o">=</span> <span class="bp">NSDateComponents</span><span class="p">()</span>
+<span class="n">components</span><span class="p">.</span><span class="n">day</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">components</span><span class="p">.</span><span class="n">hour</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">.</span><span class="n">stringFromDateComponents</span><span class="p">(</span><span class="n">components</span><span class="p">)</span>
+<span class="c1">// 1 day, 2 hours</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">NSDateComponentsFormatter</span> <span class="o">*</span><span class="n">formatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSDateComponentsFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">unitsStyle</span> <span class="o">=</span> <span class="n">NSDateComponentsFormatterUnitsStyleFull</span><span class="p">;</span>
+
+<span class="bp">NSDateComponents</span> <span class="o">*</span><span class="n">components</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSDateComponents</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="n">components</span><span class="p">.</span><span class="n">day</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="n">components</span><span class="p">.</span><span class="n">hour</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">formatter</span> <span class="nl">stringFromDateComponents</span><span class="p">:</span><span class="n">components</span><span class="p">]);</span>
+<span class="c1">// 1 day, 2 hours</span>
+</code></pre></div>
+<h4 id="nsdatecomponentsformatterunitsstyle"><code>NSDateComponentsFormatterUnitsStyle</code></h4>
+
+<table><thead>
+<tr>
+<th>Unit Style</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Positional</code></td>
+<td>&ldquo;1:10&rdquo;</td>
+</tr>
+<tr>
+<td><code>Abbreviated</code></td>
+<td>&ldquo;1h 10m&rdquo;</td>
+</tr>
+<tr>
+<td><code>Short</code></td>
+<td>&ldquo;1hr 10min&rdquo;</td>
+</tr>
+<tr>
+<td><code>Full</code></td>
+<td>&ldquo;1 hour, 10 minutes&rdquo;</td>
+</tr>
+<tr>
+<td><code>SpellOut</code></td>
+<td>&ldquo;One hour, ten minutes&rdquo;</td>
+</tr>
+</tbody></table>
+
+<h3 id="nsdateintervalformatter">NSDateIntervalFormatter</h3>
+
+<p>Like <code>NSDateComponentsFormatter</code>, <code>NSDateIntervalFormatter</code> deals with ranges of time, but specifically for time intervals between a start and end date:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="n">NSDateIntervalFormatter</span><span class="p">()</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">dateStyle</span> <span class="o">=</span> <span class="p">.</span><span class="n">NoStyle</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">timeStyle</span> <span class="o">=</span> <span class="p">.</span><span class="n">ShortStyle</span>
+
+<span class="k">let</span> <span class="n">fromDate</span> <span class="o">=</span> <span class="bp">NSDate</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">toDate</span> <span class="o">=</span> <span class="n">fromDate</span><span class="p">.</span><span class="n">dateByAddingTimeInterval</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">.</span><span class="n">stringFromDate</span><span class="p">(</span><span class="n">fromDate</span><span class="p">,</span> <span class="nl">toDate</span><span class="p">:</span> <span class="n">toDate</span><span class="p">)</span>
+<span class="c1">// 5:49 - 8:36 PM</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">NSDateIntervalFormatter</span> <span class="o">*</span><span class="n">formatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSDateIntervalFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">dateStyle</span> <span class="o">=</span> <span class="n">NSDateIntervalFormatterNoStyle</span><span class="p">;</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">timeStyle</span> <span class="o">=</span> <span class="n">NSDateIntervalFormatterShortStyle</span><span class="p">;</span>
+
+<span class="bp">NSDate</span> <span class="o">*</span><span class="n">fromDate</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSDate</span> <span class="n">date</span><span class="p">];</span>
+<span class="bp">NSDate</span> <span class="o">*</span><span class="n">toDate</span> <span class="o">=</span> <span class="p">[</span><span class="n">fromDate</span> <span class="nl">dateByAddingTimeInterval</span><span class="p">:</span><span class="mi">10000</span><span class="p">];</span>
+
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">formatter</span> <span class="nl">stringFromDate</span><span class="p">:</span><span class="n">fromDate</span> <span class="nl">toDate</span><span class="p">:</span><span class="n">toDate</span><span class="p">]);</span>
+<span class="c1">// 5:49 - 8:36 PM</span>
+</code></pre></div>
+<h4 id="nsdateintervalformatterstyle"><code>NSDateIntervalFormatterStyle</code></h4>
+
+<table><thead>
+<tr>
+<th>Formatter Style</th>
+<th>Time Output</th>
+<th>Date Output</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>NoStyle</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>ShortStyle</code></td>
+<td>5:51 AM - 7:37 PM</td>
+<td>6/30/14 - 7/11/14</td>
+</tr>
+<tr>
+<td><code>MediumStyle</code></td>
+<td>5:51:49 AM - 7:38:29 PM</td>
+<td>Jun 30, 2014 - Jul 11, 2014</td>
+</tr>
+<tr>
+<td><code>LongStyle</code></td>
+<td>6:02:54 AM GMT-8 - 7:49:34 PM GMT-8</td>
+<td>June 30, 2014 - July 11, 2014</td>
+</tr>
+<tr>
+<td><code>FullStyle</code></td>
+<td>6:03:28 PM Pacific Standard Time - 7:50:08 PM Pacific Standard Time</td>
+<td>Monday, June 30, 2014 - Friday, July 11, 2014</td>
+</tr>
+</tbody></table>
+
+<p><code>NSDateIntervalFormatter</code> and <code>NSDateComponentsFormatter</code> are useful for displaying regular and pre-defined ranges of times such as the such as the opening hours of a business, or frequency or duration of calendar events.</p>
+
+<blockquote>
+<p>In the case of displaying business hours, such as &ldquo;Mon – Fri: 8:00 AM – 10:00 PM&rdquo;, use the <code>weekdaySymbols</code> of an <code>NSDateFormatter</code> to get the localized names of the days of the week.</p>
+</blockquote>
+
+<h2 id="mass,-length,-&amp;-energy-formatters">Mass, Length, &amp; Energy Formatters</h2>
+
+<p>Prior to iOS 8 / OS X Yosemite, working with physical quantities was left as an exercise to the developer. However, with the introduction of HealthKit, this functionality is now provided in the standard library.</p>
+
+<h3 id="nsmassformatter">NSMassFormatter</h3>
+
+<p>Although the fundamental unit of physical existence, mass is pretty much relegated to tracking the weight of users in HealthKit.</p>
+
+<blockquote>
+<p>Yes, mass and weight are different, but this is programming, not science class, so stop being pedantic.</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">massFormatter</span> <span class="o">=</span> <span class="n">NSMassFormatter</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">kilograms</span> <span class="o">=</span> <span class="mf">60.0</span>
+<span class="n">print</span><span class="p">(</span><span class="n">massFormatter</span><span class="p">.</span><span class="n">stringFromKilograms</span><span class="p">(</span><span class="n">kilograms</span><span class="p">))</span> <span class="c1">// &quot;132 lb&quot;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">NSMassFormatter</span> <span class="o">*</span><span class="n">massFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMassFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="kt">double</span> <span class="n">kilograms</span> <span class="o">=</span> <span class="mi">60</span><span class="p">;</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">massFormatter</span> <span class="nl">stringFromKilograms</span><span class="p">:</span><span class="n">kilograms</span><span class="p">]);</span> <span class="c1">// &quot;132 lb&quot;</span>
+</code></pre></div>
+<h3 id="nslengthformatter">NSLengthFormatter</h3>
+
+<p><code>NSLengthFormatter</code> can be thought of as a more useful version of <code>MKDistanceFormatter</code>, with more unit options and formatting options.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">lengthFormatter</span> <span class="o">=</span> <span class="n">NSLengthFormatter</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">meters</span> <span class="o">=</span> <span class="mi">5</span><span class="n">_000</span><span class="mf">.0</span>
+<span class="n">print</span><span class="p">(</span><span class="n">lengthFormatter</span><span class="p">.</span><span class="n">stringFromMeters</span><span class="p">(</span><span class="n">meters</span><span class="p">))</span> <span class="c1">// &quot;3.107 mi&quot;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">NSLengthFormatter</span> <span class="o">*</span><span class="n">lengthFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSLengthFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="kt">double</span> <span class="n">meters</span> <span class="o">=</span> <span class="mi">5000</span><span class="p">;</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">lengthFormatter</span> <span class="nl">stringFromMeters</span><span class="p">:</span><span class="n">meters</span><span class="p">]);</span> <span class="c1">// &quot;3.107 mi&quot;</span>
+</code></pre></div>
+<h3 id="nsenergyformatter">NSEnergyFormatter</h3>
+
+<p>Rounding out the new <code>NSFormatter</code> subclasses added for HealthKit is <code>NSEnergyFormatter</code>, which formats energy in Joules, the raw unit of work for exercises, and Calories, which is used when working with nutrition information.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">energyFormatter</span> <span class="o">=</span> <span class="n">NSEnergyFormatter</span><span class="p">()</span>
+<span class="n">energyFormatter</span><span class="p">.</span><span class="n">forFoodEnergyUse</span> <span class="o">=</span> <span class="nb">true</span>
+
+<span class="k">let</span> <span class="n">joules</span> <span class="o">=</span> <span class="mi">10</span><span class="n">_000</span><span class="mf">.0</span>
+<span class="n">print</span><span class="p">(</span><span class="n">energyFormatter</span><span class="p">.</span><span class="n">stringFromJoules</span><span class="p">(</span><span class="n">joules</span><span class="p">))</span> <span class="c1">// &quot;2.39 Cal&quot;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">NSEnergyFormatter</span> <span class="o">*</span><span class="n">energyFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSEnergyFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="n">energyFormatter</span><span class="p">.</span><span class="n">forFoodEnergyUse</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+
+<span class="kt">double</span> <span class="n">joules</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">;</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">energyFormatter</span> <span class="nl">stringFromJoules</span><span class="p">:</span><span class="n">joules</span><span class="p">]);</span> <span class="c1">// &quot;2.39 Cal&quot;</span>
+</code></pre></div>
+<hr>
+
+<h2 id="re-using-formatter-instances">Re-Using Formatter Instances</h2>
+
+<p>Perhaps the most critical detail to keep in mind when using formatters is that they are <em>extremely</em> expensive to create. Even just an <code>alloc init</code> of an <code>NSNumberFormatter</code> in a tight loop is enough to bring an app to its knees.</p>
+
+<p>Therefore, it&rsquo;s strongly recommended that formatters be created once, and re-used as much as possible.</p>
+
+<p>If it&rsquo;s just a single method using a particular formatter, a static instance is a good strategy:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// a nested struct can have a static property, </span>
+<span class="c1">// created only the first time it&#39;s encountered.</span>
+<span class="k">func</span> <span class="nf">fooWithNumber</span><span class="p">(</span><span class="nl">number</span><span class="p">:</span> <span class="bp">NSNumber</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">NumberFormatter</span> <span class="p">{</span>
+        <span class="k">static</span> <span class="k">let</span> <span class="nl">formatter</span><span class="p">:</span> <span class="bp">NSNumberFormatter</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="bp">NSNumberFormatter</span><span class="p">()</span>
+            <span class="n">formatter</span><span class="p">.</span><span class="n">numberStyle</span> <span class="o">=</span> <span class="p">.</span><span class="n">DecimalStyle</span>
+            <span class="k">return</span> <span class="n">formatter</span>
+        <span class="p">}()</span>
+    <span class="p">}</span>
+
+    <span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">NumberFormatter</span><span class="p">.</span><span class="n">formatter</span><span class="p">.</span><span class="n">stringFromNumber</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="c1">// dispatch_once guarantees that the specified block is called </span>
+<span class="c1">// only the first time it&#39;s encountered.</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">fooWithNumber:</span><span class="p">(</span><span class="bp">NSNumber</span> <span class="o">*</span><span class="p">)</span><span class="nv">number</span> <span class="p">{</span>
+    <span class="k">static</span> <span class="bp">NSNumberFormatter</span> <span class="o">*</span><span class="n">_numberFormatter</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="k">static</span> <span class="kt">dispatch_once_t</span> <span class="n">onceToken</span><span class="p">;</span>
+    <span class="n">dispatch_once</span><span class="p">(</span><span class="o">&amp;</span><span class="n">onceToken</span><span class="p">,</span> <span class="o">^</span><span class="p">{</span>
+        <span class="n">_numberFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSNumberFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">_numberFormatter</span> <span class="nl">setNumberStyle</span><span class="p">:</span><span class="n">NSNumberFormatterDecimalStyle</span><span class="p">];</span>
+    <span class="p">});</span>
+
+    <span class="bp">NSString</span> <span class="o">*</span><span class="n">string</span> <span class="o">=</span> <span class="p">[</span><span class="n">_numberFormatter</span> <span class="nl">stringFromNumber</span><span class="p">:</span><span class="n">number</span><span class="p">];</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If the formatter is used across several methods in the same class, that static instance can be refactored into a singleton method in Objective-C or a static type property in Swift:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">static</span> <span class="k">let</span> <span class="nl">numberFormatter</span><span class="p">:</span> <span class="bp">NSNumberFormatter</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="bp">NSNumberFormatter</span><span class="p">()</span>
+    <span class="n">formatter</span><span class="p">.</span><span class="n">numberStyle</span> <span class="o">=</span> <span class="p">.</span><span class="n">DecimalStyle</span>
+    <span class="k">return</span> <span class="n">formatter</span>
+<span class="p">}()</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">+</span> <span class="p">(</span><span class="bp">NSNumberFormatter</span> <span class="o">*</span><span class="p">)</span><span class="nf">numberFormatter</span> <span class="p">{</span>
+    <span class="k">static</span> <span class="bp">NSNumberFormatter</span> <span class="o">*</span><span class="n">_numberFormatter</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="k">static</span> <span class="kt">dispatch_once_t</span> <span class="n">onceToken</span><span class="p">;</span>
+    <span class="n">dispatch_once</span><span class="p">(</span><span class="o">&amp;</span><span class="n">onceToken</span><span class="p">,</span> <span class="o">^</span><span class="p">{</span>
+        <span class="n">_numberFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSNumberFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+        <span class="p">[</span><span class="n">_numberFormatter</span> <span class="nl">setNumberStyle</span><span class="p">:</span><span class="n">NSNumberFormatterDecimalStyle</span><span class="p">];</span>
+    <span class="p">});</span>
+
+    <span class="k">return</span> <span class="n">_numberFormatter</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If the same formatter is privately implemented across several classes, one could either expose it publicly in one of the classes, or implement the static singleton method in a category on <code>NSNumberFormatter</code>.</p>
+
+<blockquote>
+<p>Prior to iOS 7 and OS X Mavericks, <code>NSDateFormatter</code> &amp; <code>NSNumberFormatter</code> were not thread safe. Under these circumstances, the safest way to reuse formatter instances was with a thread dictionary:</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSMutableDictionary</span> <span class="o">*</span><span class="n">threadDictionary</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSThread</span> <span class="n">currentThread</span><span class="p">]</span> <span class="n">threadDictionary</span><span class="p">];</span>
+<span class="bp">NSDateFormatter</span> <span class="o">*</span><span class="n">dateFormatter</span> <span class="o">=</span> <span class="n">threadDictionary</span><span class="p">[</span><span class="s">@&quot;dateFormatter&quot;</span><span class="p">];</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">dateFormatter</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">dateFormatter</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSDateFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+    <span class="n">dateFormatter</span><span class="p">.</span><span class="n">locale</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSLocale</span> <span class="n">currentLocale</span><span class="p">];</span>
+    <span class="n">dateFormatter</span><span class="p">.</span><span class="n">dateStyle</span> <span class="o">=</span> <span class="n">NSDateFormatterLongStyle</span><span class="p">;</span>
+    <span class="n">dateFormatter</span><span class="p">.</span><span class="n">timeStyle</span> <span class="o">=</span> <span class="n">NSDateFormatterShortStyle</span><span class="p">;</span>
+    <span class="n">threadDictionary</span><span class="p">[</span><span class="s">@&quot;dateFormatter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dateFormatter</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">return</span> <span class="n">dateFormatter</span><span class="p">;</span>
+</code></pre></div>
+<h2 id="formatter-context">Formatter Context</h2>
+
+<p>Another addition to formatters in iOS 8 &amp; OS X Yosemite is the idea of formatter <em>contexts</em>. This allows the formatted output to be correctly integrated into the localized string. The most salient application of this is the letter casing of formatted output at different parts of a sentence in western locales, such as English. For example, when appearing at the beginning of a sentence or by itself, the first letter of formatted output would be capitalized, whereas it would be lowercase in the middle of a sentence.</p>
+
+<p>A <code>context</code> property is available for <code>NSDateFormatter</code>, <code>NSNumberFormatter</code>, <code>NSDateComponentsFormatter</code>, and <code>NSByteCountFormatter</code>, with the following values:</p>
+
+<table><thead>
+<tr>
+<th>Formatting Context</th>
+<th>Output</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>Standalone</code></td>
+<td>&ldquo;About 2 hours&rdquo;</td>
+</tr>
+<tr>
+<td><code>ListItem</code></td>
+<td>&ldquo;About 2 hours&rdquo;</td>
+</tr>
+<tr>
+<td><code>BeginningOfSentence</code></td>
+<td>&ldquo;About 2 hours&rdquo;</td>
+</tr>
+<tr>
+<td><code>MiddleOfSentence</code></td>
+<td>&ldquo;about 2 hours&rdquo;</td>
+</tr>
+<tr>
+<td><code>Dynamic</code></td>
+<td><em>(Depends)</em></td>
+</tr>
+</tbody></table>
+
+<p>In cases where localizations may change the position of formatted information within a string, the <code>Dynamic</code> value will automatically change depending on where it appears in the text.</p>
+
+<hr>
+
+<h2 id="third-party-formatters">Third Party Formatters</h2>
+
+<p>An article on <code>NSFormatter</code> would be remiss without mention of some of the third party subclasses that have made themselves mainstays of everyday app development: <a href="http://boredzo.org/iso8601dateformatter/">ISO8601DateFormatter</a> &amp; <a href="https://github.com/mattt/FormatterKit">FormatterKit</a></p>
+
+<h3 id="iso8601dateformatter">ISO8601DateFormatter</h3>
+
+<p>Created by <a href="https://twitter.com/boredzo">Peter Hosey</a>, <a href="https://github.com/boredzo/iso-8601-date-formatter">ISO8601DateFormatter</a> has become the de facto way of dealing with <a href="http://en.wikipedia.org/wiki/ISO_8601">ISO 8601 timestamps</a>, used as the interchange format for dates by webservices (<a href="http://xkcd.com/1179/">Yet another obligatory XKCD link</a>).</p>
+
+<p>Although Apple provides <a href="https://developer.apple.com/library/ios/qa/qa1480/_index.html">official recommendations on parsing internet dates</a>, the reality of formatting quirks across makes the suggested <code>NSDateFormatter</code>-with-<code>en_US_POSIX</code>-locale approach untenable for real-world usage. <code>ISO8601DateFormatter</code> offers a simple, robust interface for dealing with timestamps:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="n">ISO8601DateFormatter</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">timestamp</span> <span class="o">=</span> <span class="s">&quot;2014-06-30T08:21:56+08:00&quot;</span>
+<span class="k">let</span> <span class="n">date</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">.</span><span class="n">dateFromString</span><span class="p">(</span><span class="n">timestamp</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>Although not an <code>NSFormatter</code> subclass, <a href="https://github.com/mattt/TransformerKit">TransformerKit</a> offers an extremely performant alternative for parsing and formatting both ISO 8601 and RFC 2822 timestamps.</p>
+</blockquote>
+
+<h3 id="formatterkit">FormatterKit</h3>
+
+<p><a href="https://github.com/mattt/FormatterKit">FormatterKit</a> has great examples of <code>NSFormatter</code> subclasses for use cases not currently covered by built-in classes, such as localized addresses, arrays, colors, locations, and ordinal numbers, and URL requests. It also boasts localization in 23 different languages, making it well-suited to apps serving every major market.</p>
+
+<h4 id="tttaddressformatter">TTTAddressFormatter</h4>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="n">TTTAddressFormatter</span><span class="p">()</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">locale</span> <span class="o">=</span> <span class="bp">NSLocale</span><span class="p">(</span><span class="nl">localeIdentifier</span><span class="p">:</span> <span class="s">&quot;en_GB&quot;</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="n">street</span> <span class="o">=</span> <span class="s">&quot;221b Baker St&quot;</span>
+<span class="k">let</span> <span class="n">locality</span> <span class="o">=</span> <span class="s">&quot;Paddington&quot;</span>
+<span class="k">let</span> <span class="n">region</span> <span class="o">=</span> <span class="s">&quot;Greater London&quot;</span>
+<span class="k">let</span> <span class="n">postalCode</span> <span class="o">=</span> <span class="s">&quot;NW1 6XE&quot;</span>
+<span class="k">let</span> <span class="n">country</span> <span class="o">=</span> <span class="s">&quot;United Kingdom&quot;</span>
+
+<span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">.</span><span class="n">stringFromAddressWithStreet</span><span class="p">(</span><span class="nl">street</span><span class="p">:</span> <span class="n">street</span><span class="p">,</span> <span class="nl">locality</span><span class="p">:</span> <span class="n">locality</span><span class="p">,</span> <span class="nl">region</span><span class="p">:</span> <span class="n">region</span><span class="p">,</span> <span class="nl">postalCode</span><span class="p">:</span> <span class="n">postalCode</span><span class="p">,</span> <span class="nl">country</span><span class="p">:</span> <span class="n">country</span><span class="p">)</span>
+<span class="c1">// 221b Baker St / Paddington / Greater London / NW1 6XE / United Kingdom</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">TTTAddressFormatter</span> <span class="o">*</span><span class="n">formatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">TTTAddressFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="p">[</span><span class="n">formatter</span> <span class="nl">setLocale</span><span class="p">:[</span><span class="bp">NSLocale</span> <span class="nl">localeWithLocaleIdentifier</span><span class="p">:</span><span class="s">@&quot;en_GB&quot;</span><span class="p">]];</span>
+
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">street</span> <span class="o">=</span> <span class="s">@&quot;221b Baker St&quot;</span><span class="p">;</span>
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">locality</span> <span class="o">=</span> <span class="s">@&quot;Paddington&quot;</span><span class="p">;</span>
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">region</span> <span class="o">=</span> <span class="s">@&quot;Greater London&quot;</span><span class="p">;</span>
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">postalCode</span> <span class="o">=</span> <span class="s">@&quot;NW1 6XE&quot;</span><span class="p">;</span>
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">country</span> <span class="o">=</span> <span class="s">@&quot;United Kingdom&quot;</span><span class="p">;</span>
+
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">formatter</span> <span class="nl">stringFromAddressWithStreet</span><span class="p">:</span><span class="n">street</span> <span class="nl">locality</span><span class="p">:</span><span class="n">locality</span> <span class="nl">region</span><span class="p">:</span><span class="n">region</span> <span class="nl">postalCode</span><span class="p">:</span><span class="n">postalCode</span> <span class="nl">country</span><span class="p">:</span><span class="n">country</span><span class="p">]);</span>
+<span class="c1">// 221b Baker St / Paddington / Greater London / NW1 6XE / United Kingdom</span>
+</code></pre></div>
+<h4 id="tttarrayformatter">TTTArrayFormatter</h4>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="n">TTTArrayFormatter</span><span class="p">()</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">usesAbbreviatedConjunction</span> <span class="o">=</span> <span class="nb">true</span> <span class="c1">// Use &#39;&amp;&#39; instead of &#39;and&#39;</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">usesSerialDelimiter</span> <span class="o">=</span> <span class="nb">true</span> <span class="c1">// Omit Oxford Comma</span>
+
+<span class="k">let</span> <span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;Russel&quot;</span><span class="p">,</span> <span class="s">&quot;Spinoza&quot;</span><span class="p">,</span> <span class="s">&quot;Rawls&quot;</span><span class="p">]</span>
+<span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">.</span><span class="n">stringFromArray</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+<span class="c1">// &quot;Russell, Spinoza &amp; Rawls&quot;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">TTTArrayFormatter</span> <span class="o">*</span><span class="n">formatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">TTTArrayFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">usesAbbreviatedConjunction</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span> <span class="c1">// Use &#39;&amp;&#39; instead of &#39;and&#39;</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">usesSerialDelimiter</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span> <span class="c1">// Omit Oxford Comma</span>
+
+<span class="bp">NSArray</span> <span class="o">*</span><span class="n">array</span> <span class="o">=</span> <span class="l">@[</span><span class="s">@&quot;Russel&quot;</span><span class="p">,</span> <span class="s">@&quot;Spinoza&quot;</span><span class="p">,</span> <span class="s">@&quot;Rawls&quot;</span><span class="l">]</span><span class="p">;</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">formatter</span> <span class="nl">stringFromArray</span><span class="p">:</span><span class="n">array</span><span class="p">]);</span>
+<span class="c1">// &quot;Russell, Spinoza &amp; Rawls&quot;</span>
+</code></pre></div>
+<h4 id="tttcolorformatter">TTTColorFormatter</h4>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="n">TTTColorFormatter</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">color</span> <span class="o">=</span> <span class="bp">UIColor</span><span class="p">.</span><span class="n">orangeColor</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">hex</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">.</span><span class="n">hexadecimalStringFromColor</span><span class="p">(</span><span class="n">color</span><span class="p">);</span>
+<span class="c1">// #ffa500</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">TTTColorFormatter</span> <span class="o">*</span><span class="n">formatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">TTTColorFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="bp">UIColor</span> <span class="o">*</span><span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="n">orangeColor</span><span class="p">];</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">formatter</span> <span class="nl">hexadecimalStringFromColor</span><span class="p">:</span><span class="n">color</span><span class="p">]);</span>
+<span class="c1">// #ffa500</span>
+</code></pre></div>
+<h4 id="tttlocationformatter">TTTLocationFormatter</h4>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="n">TTTLocationFormatter</span><span class="p">()</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">numberFormatter</span><span class="p">.</span><span class="n">maximumSignificantDigits</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">bearingStyle</span> <span class="o">=</span> <span class="n">TTTBearingAbbreviationWordStyle</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">unitSystem</span> <span class="o">=</span> <span class="n">TTTImperialSystem</span>
+
+<span class="k">let</span> <span class="n">pittsburgh</span> <span class="o">=</span> <span class="bp">CLLocation</span><span class="p">(</span><span class="nl">latitude</span><span class="p">:</span> <span class="mf">40.4405556</span><span class="p">,</span> <span class="nl">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mf">79.9961111</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">austin</span> <span class="o">=</span> <span class="bp">CLLocation</span><span class="p">(</span><span class="nl">latitude</span><span class="p">:</span> <span class="mf">30.2669444</span><span class="p">,</span> <span class="nl">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mf">97.7427778</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">.</span><span class="n">stringFromDistanceAndBearingFromLocation</span><span class="p">(</span><span class="n">pittsburgh</span><span class="p">,</span> <span class="nl">toLocation</span><span class="p">:</span> <span class="n">austin</span><span class="p">)</span>
+<span class="c1">// &quot;1,218 miles SW&quot;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">TTTLocationFormatter</span> <span class="o">*</span><span class="n">formatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">TTTLocationFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">numberFormatter</span><span class="p">.</span><span class="n">maximumSignificantDigits</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">bearingStyle</span> <span class="o">=</span> <span class="n">TTTBearingAbbreviationWordStyle</span><span class="p">;</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">unitSystem</span> <span class="o">=</span> <span class="n">TTTImperialSystem</span><span class="p">;</span>
+
+<span class="bp">CLLocation</span> <span class="o">*</span><span class="n">pittsburgh</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">CLLocation</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithLatitude</span><span class="p">:</span><span class="mf">40.4405556</span> <span class="nl">longitude</span><span class="p">:</span><span class="o">-</span><span class="mf">79.9961111</span><span class="p">];</span>
+<span class="bp">CLLocation</span> <span class="o">*</span><span class="n">austin</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">CLLocation</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithLatitude</span><span class="p">:</span><span class="mf">30.2669444</span> <span class="nl">longitude</span><span class="p">:</span><span class="o">-</span><span class="mf">97.7427778</span><span class="p">];</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">formatter</span> <span class="nl">stringFromDistanceAndBearingFromLocation</span><span class="p">:</span><span class="n">pittsburgh</span> <span class="nl">toLocation</span><span class="p">:</span><span class="n">austin</span><span class="p">]);</span>
+<span class="c1">// &quot;1,218 miles SW&quot;</span>
+</code></pre></div>
+<h4 id="tttordinalnumberformatter">TTTOrdinalNumberFormatter</h4>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="n">TTTOrdinalNumberFormatter</span><span class="p">()</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">locale</span> <span class="o">=</span> <span class="bp">NSLocale</span><span class="p">(</span><span class="nl">localeIdentifier</span><span class="p">:</span> <span class="s">&quot;fr_FR&quot;</span><span class="p">)</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">grammaticalGender</span> <span class="o">=</span> <span class="n">TTTOrdinalNumberFormatterMaleGender</span>
+<span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="bp">NSString</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;You came in %@ place&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">),</span> <span class="n">formatter</span><span class="p">.</span><span class="n">stringFromNumber</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="c1">// &quot;Vous êtes arrivé à la 2e place!&quot;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">TTTOrdinalNumberFormatter</span> <span class="o">*</span><span class="n">formatter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">TTTOrdinalNumberFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="p">[</span><span class="n">formatter</span> <span class="nl">setLocale</span><span class="p">:[</span><span class="bp">NSLocale</span> <span class="nl">localeWithLocaleIdentifier</span><span class="p">:</span><span class="s">@&quot;fr_FR&quot;</span><span class="p">]];</span>
+<span class="p">[</span><span class="n">formatter</span> <span class="nl">setGrammaticalGender</span><span class="p">:</span><span class="n">TTTOrdinalNumberFormatterMaleGender</span><span class="p">];</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="bp">NSString</span> <span class="nl">stringWithFormat</span><span class="p">:</span><span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">@&quot;You came in %@ place!&quot;</span><span class="p">,</span> <span class="nb">nil</span><span class="p">),</span> <span class="p">[</span><span class="n">formatter</span> <span class="nl">stringFromNumber</span><span class="p">:</span><span class="mi">@2</span><span class="p">]]);</span>
+<span class="c1">// &quot;Vous êtes arrivé à la 2e place!&quot;</span>
+</code></pre></div>
+<h4 id="ttturlrequestformatter">TTTURLRequestFormatter</h4>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">request</span> <span class="o">=</span> <span class="bp">NSMutableURLRequest</span><span class="p">(</span><span class="nl">URL</span><span class="p">:</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;http://nshipster.com&quot;</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
+<span class="n">request</span><span class="p">.</span><span class="n">HTTPMethod</span> <span class="o">=</span> <span class="s">&quot;GET&quot;</span>
+<span class="n">request</span><span class="p">.</span><span class="n">addValue</span><span class="p">(</span><span class="s">&quot;text/html&quot;</span><span class="p">,</span> <span class="nl">forHTTPHeaderField</span><span class="p">:</span> <span class="s">&quot;Accept&quot;</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="n">command</span> <span class="o">=</span> <span class="n">TTTURLRequestFormatter</span><span class="p">.</span><span class="n">cURLCommandFromURLRequest</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<span class="c1">// curl -X GET &quot;https://nshipster.com/&quot; -H &quot;Accept: text/html&quot;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSMutableURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSMutableURLRequest</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithURL</span><span class="p">:[</span><span class="bp">NSURL</span> <span class="nl">URLWithString</span><span class="p">:</span><span class="s">@&quot;http://www.example.com/&quot;</span><span class="p">]];</span>
+<span class="p">[</span><span class="n">request</span> <span class="nl">setHTTPMethod</span><span class="p">:</span><span class="s">@&quot;GET&quot;</span><span class="p">];</span>
+<span class="p">[</span><span class="n">request</span> <span class="nl">addValue</span><span class="p">:</span><span class="s">@&quot;text/html&quot;</span> <span class="nl">forHTTPHeaderField</span><span class="p">:</span><span class="s">@&quot;Accept&quot;</span><span class="p">];</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">TTTURLRequestFormatter</span> <span class="nl">cURLCommandFromURLRequest</span><span class="p">:</span><span class="n">request</span><span class="p">]);</span>
+<span class="c1">// curl -X GET &quot;https://nshipster.com/&quot; -H &quot;Accept: text/html&quot;</span>
+</code></pre></div>
+<hr>
+
+<p>If your app deals in numbers or dates (or time intervals or bytes or distance or length or energy or mass), <code>NSFormatter</code> is indispensable. Actually, if your app doesn&#39;t… then what <em>does</em> it do, exactly?</p>
+
+<p>Presenting useful information to users is as much about content as presentation. Invest in learning all of the secrets of <code>NSNumberFormatter</code>, <code>NSDateFormatter</code>, and the rest of the Foundation formatter crew to get everything exactly how you want them.</p>
+
+<p>And if you find yourself with formatting logic scattered across your app, consider creating your own <code>NSFormatter</code> subclass to consolidate all of that business logic in one place.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-11-11-nsformatter.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on September 8, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+        <dt>June 30<sup>th</sup>, 2014</dt>
+        <dd><p>Converted examples to Swift; added iOS 8 &amp; OS X Yosemite formatter classes.</p>
+</dd>
+      
+        <dt>February 17<sup>th</sup>, 2015</dt>
+        <dd><p>Converted remaining examples to Swift; reintroduced Objective-C examples; added Objective-C examples for new formatter classes.</p>
+</dd>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nsfilemanager/" title="NSFileManager" rel="next">NSFile​Manager</a>
+            </h1>
+
+            <p>File systems are a complex topic, with decades of history, vestigial complexities, and idiosyncrasies, and is well outside the scope of a single article. And since most applications don&rsquo;t often interact with the file system much beyond simple file operations, one can get away with only knowing the basics.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nserror/" title="NSError">NSError</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsincrementalstore/" title="NSIncrementalStore">NSIncrementalStore</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/uiprintinteractioncontroller/" title="UIPrintInteractionController">UIPrintInteractionController</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/ns_enum-ns_options/" title="NS_ENUM & NS_OPTIONS">NS_ENUM & NS_OPTIONS</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

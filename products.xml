@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:g="http://base.google.com/ns/1.0">
+  <channel>
+    <atom:link href="http://nshipster.com/products.xml" rel="self" type="application/rss+xml"/>
+    <title>NSHipster</title>
+    <description>NSHipster is a journal of the overlooked bits in Objective-C, Swift, and Cocoa. Updated weekly.</description>
+    <link>http://nshipster.com</link>
+    <language>en-US</language>
+    <lastBuildDate>Wed, 09 Dec 2015 21:06:40 -0800</lastBuildDate>
+    <pubDate>Wed, 09 Dec 2015 21:06:40 -0800</pubDate>
+    
+      <item>
+        <title>NSHipster: Obscure Topics in Cocoa &amp; Swift</title>
+        <link>https://gum.co/nshipster-swift/</link>
+        <description>Revised and extended to focus on using Swift in iOS and OS X development, NSHipster: Obscure Topics in Cocoa &amp; Swift is an essential updated guide.</description>
+        <g:product_type>Media &gt; Books &gt; Non-Fiction &gt; Technology Books</g:product_type>
+        <g:google_product_category>Media &gt; Books &gt; Non-Fiction &gt; Technology Books</g:google_product_category>
+        <g:id>nshipster-swift</g:id>
+        <g:condition>new</g:condition>
+        <g:price>29 USD</g:price>
+        <g:availability>in stock</g:availability>
+        <g:image_link>//cdn.nshipster.com/images/nshipster-swift-cover@2x.png</g:image_link>
+        <g:brand>NSHipster</g:brand>
+        <g:gtin>978-0-9912182-6-4</g:gtin>
+        <g:shipping>
+           <g:country>US</g:country>
+           <g:region>*</g:region>
+           <g:service>Ground</g:service>
+           <g:price>0.00 USD</g:price>
+        </g:shipping>
+      </item>
+    
+      <item>
+        <title>CFHipsterRef: Low-Level Programming on iOS &amp; OS X</title>
+        <link>https://gum.co/cfhipsterref</link>
+        <description>Perfect for intermediate and expert developers wanting to take a deeper dive into advanced topics, _CFHipsterRef: Low-Level Programming on iOS &amp; OS X_ covers the core technologies powering Cocoa, Objective-C, and the operating system itself, including Grand Central Dispatch, Accelerate, and the Objective-C runtime.</description>
+        <g:product_type>Media &gt; Books &gt; Non-Fiction &gt; Technology Books</g:product_type>
+        <g:google_product_category>Media &gt; Books &gt; Non-Fiction &gt; Technology Books</g:google_product_category>
+        <g:id>cfhipsterref</g:id>
+        <g:condition>new</g:condition>
+        <g:price>29.99 USD</g:price>
+        <g:availability>in stock</g:availability>
+        <g:image_link>//cdn.nshipster.com/images/cfhipsterref-cover@2x.png</g:image_link>
+        <g:brand>NSHipster</g:brand>
+        <g:gtin>978-0-9912182-4-0</g:gtin>
+        <g:shipping>
+           <g:country>US</g:country>
+           <g:region>*</g:region>
+           <g:service>Ground</g:service>
+           <g:price>0.00 USD</g:price>
+        </g:shipping>
+      </item>
+    
+      <item>
+        <title>The NSHipster Fake Book (Objective-C)</title>
+        <link>https://gum.co/the-nshipster-fake-book</link>
+        <description>Over 200 code samples, ranging from the beginner and basic to the expert and obscure, across a variety of genres and use cases. Without any needless explanation.</description>
+        <g:product_type>Media &gt; Books &gt; Non-Fiction &gt; Technology Books</g:product_type>
+        <g:google_product_category>Media &gt; Books &gt; Non-Fiction &gt; Technology Books</g:google_product_category>
+        <g:id>nshipster-fake-book-objective-c</g:id>
+        <g:condition>new</g:condition>
+        <g:price>19.99 USD</g:price>
+        <g:availability>in stock</g:availability>
+        <g:image_link>//cdn.nshipster.com/images/the-nshipster-fake-book-cover@2x.png</g:image_link>
+        <g:brand>NSHipster</g:brand>
+        <g:gtin>978-0-9912182-1-9</g:gtin>
+        <g:shipping>
+           <g:country>US</g:country>
+           <g:region>*</g:region>
+           <g:service>Ground</g:service>
+           <g:price>0.00 USD</g:price>
+        </g:shipping>
+      </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>UILocalizedIndexedCollation - NSHipster</title>
+    <meta name="description" content="UITableView starts to become unwieldy once it gets to a few hundred rows. If users are reduced to frantically scratching at the screen like a cat playing Fruit Ninja in order to get at what they want... you may want to rethink your UI approach."/>
+    <link rel="canonical" href="http://nshipster.com/uilocalizedindexedcollation/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="UILocalizedIndexedCollation"/>
+    <meta name="twitter:description" content="UITableView starts to become unwieldy once it gets to a few hundred rows. If users are reduced to frantically scratching at the screen like a cat playing Fruit Ninja in order to get at what they want... you may want to rethink your UI approach."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="UILocalizedIndexedCollation"/>
+    <meta property="og:url" content="http://nshipster.com/uilocalizedindexedcollation/"/>
+    <meta property="og:description" content="UITableView starts to become unwieldy once it gets to a few hundred rows. If users are reduced to frantically scratching at the screen like a cat playing Fruit Ninja in order to get at what they want... you may want to rethink your UI approach."/>
+    <meta property="article:published_time" content="2012-10-29T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="UILocalizedIndexedCollation"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/uilocalizedindexedcollation/">UILocalized​Indexed​Collation</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2012-10-29T00:00:00-07:00" itemprop="datePublished">October 29<sup>th</sup>, 2012</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>UITableView starts to become unwieldy once it gets to a few hundred rows. If users are reduced to frantically scratching at the screen like a <a href="http://www.youtube.com/watch?v=CdEBgZ5Y46U">cat playing Fruit Ninja</a> in order to get at what they want&hellip; you may want to rethink your UI approach.</p>
+
+<p>So, what are your options?</p>
+
+<p>Well, you could organize your data into a hierarchy, which could dramatically reduce the number of rows displayed on each screen in fashion, based on its <a href="http://en.wikipedia.org/wiki/Branching_factor">branching factor</a>.</p>
+
+<p>You could also add a <code>UISearchBar</code> to the top of your table view, allowing the user to filter on keywords to get exactly what they&rsquo;re looking for (or&ndash;perhaps more importantly&ndash;determine that what they seek doesn&rsquo;t exist in the first place).</p>
+
+<p>There is also a third approach, which is generally under-utilized in iOS applications: <strong>section index titles</strong>. These are the vertically flowing letters found along the right side of table views in your Address Book contacts list or Music library:</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/uilocalizedindexedcollation-example.png" alt="Section Index Titles Example"></p>
+
+<p>As the user scrolls their finger down the list, the table view jumps to the corresponding section. Even the most tiresome table view is rendered significantly more usable as a result.</p>
+
+<p>Section index titles can be enabled by implementing the following <code>UITableViewDataSource</code> delegate methods:</p>
+
+<ul>
+<li><p><code>-sectionIndexTitlesForTableView:</code> - Returns an array of the section index titles to be displayed along the right hand side of the table view, such as the alphabetical list &ldquo;A&hellip;Z&rdquo; + &ldquo;#&rdquo;. Section index titles are short&ndash;generally limited to 2 Unicode characters.</p></li>
+<li><p><code>-tableView:sectionForSectionIndexTitle:atIndex:</code> - Returns the section index that the table view should jump to when the user touches a particular section index title.</p></li>
+</ul>
+
+<p>As longtime readers of NSHipster doubtless have already guessed, the process of generating that alphabetical list is not something you would want to have to generate yourself. What it means to something to be alphabetically sorted, or even what is meant by an &ldquo;alphabet&rdquo; varies wildly across different locales.</p>
+
+<p>Coming to our rescue is <code>UILocalizedIndexedCollation</code>.</p>
+
+<hr>
+
+<p><code>UILocalizedIndexedCollation</code> is a class that helps to organize data in table views with section index titles in a locale-aware manner. Rather than creating the object directly, a shared instance corresponding to the current locale supported by your application is accessed, with <code>UILocalizedIndexedCollation +currentCollation</code></p>
+
+<p>The first task for <code>UILocalizedIndexedCollation</code> is to determine what section index titles to display for the current locale, which are can be read from the <code>sectionIndexTitles</code> property.</p>
+
+<p>To give you a better idea of how section index titles vary between locales:</p>
+
+<blockquote>
+<p>In order to see these for yourself, you&rsquo;ll need to explicitly add the desired locales to your Project Localizations list.</p>
+</blockquote>
+
+<table><thead>
+<tr>
+<th>Locale</th>
+<th>Section Index Titles</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>en_US</td>
+<td><code>A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, #</code></td>
+</tr>
+<tr>
+<td>ja_JP</td>
+<td><code>A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, あ, か, さ, た, な, は, ま, や, ら, わ, #</code></td>
+</tr>
+<tr>
+<td>sv_SE</td>
+<td><code>A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, Å, Ä, Ö, #</code></td>
+</tr>
+<tr>
+<td>ko_KO</td>
+<td><code>A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ㄱ, ㄴ, ㄷ, ㄹ, ㅁ, ㅂ, ㅅ, ㅇ, ㅈ, ㅊ, ㅋ, ㅌ, ㅍ, ㅎ, #</code></td>
+</tr>
+<tr>
+<td>AR_sa</td>
+<td>A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, آ, ب, ت, ث, ج, ح, خ, د, ذ, ر, ز, س, ش, ص, ض, ط, ظ, ع, غ, ف, ق, ك, ل, م, ن, ه, و, ي, #</td>
+</tr>
+</tbody></table>
+
+<p>Aren&rsquo;t you glad you don&rsquo;t have to do this yourself?</p>
+
+<p>So with the list of section titles laid out before you, the next step is to determine what section each object should be assigned to. This is accomplished with <code>-sectionForObject:collationStringSelector:</code>. This method returns the <code>NSInteger</code> index corresponding to the string value of the object when performing the specified selector. This selector might be something like <code>localizedName</code>, <code>title</code>, or even just <code>description</code>.</p>
+
+<p>So, as it stands, your table view data source has a NSArray property corresponding to the number of sections in the table view, with each element of the array containing an array representing each row in the section. Since collation was handled by <code>UILocalizedIndexedCollation</code>, it makes sense for it to sort the rows in each section as well. <code>– sortedArrayFromArray:collationStringSelector:</code> does this in similar fashion to <code>-sectionForObject:collationStringSelector:</code>, by sorting the objects in the section by their respective localized title.</p>
+
+<p>Finally, the table view should implement <code>-tableView:sectionForSectionIndexTitle:atIndex:</code>, so that touching a section index title jumps to the corresponding section in the table view. <code>UILocalizedIndexedCollation -sectionForSectionIndexTitleAtIndex:</code> does the trick.</p>
+
+<p>All told, here&rsquo;s what a typical table view data source implementation looks like:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="nl">ObjectTableViewController</span><span class="p">:</span> <span class="bp">UITableViewController</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">collation</span> <span class="o">=</span> <span class="bp">UILocalizedIndexedCollation</span><span class="p">.</span><span class="n">currentCollation</span><span class="p">()</span>
+    <span class="k">var</span> <span class="nl">sections</span><span class="p">:</span> <span class="p">[[</span><span class="n">AnyObject</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">var</span> <span class="nl">objects</span><span class="p">:</span> <span class="p">[</span><span class="n">AnyObject</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span> <span class="p">{</span>
+        <span class="kr">didSet</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="nl">selector</span><span class="p">:</span> <span class="n">Selector</span> <span class="o">=</span> <span class="s">&quot;localizedTitle&quot;</span>
+            <span class="n">sections</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="nl">count</span><span class="p">:</span> <span class="n">collation</span><span class="p">.</span><span class="n">sectionTitles</span><span class="p">.</span><span class="n">count</span><span class="p">,</span> <span class="nl">repeatedValue</span><span class="p">:</span> <span class="p">[])</span>
+
+            <span class="k">let</span> <span class="n">sortedObjects</span> <span class="o">=</span> <span class="n">collation</span><span class="p">.</span><span class="n">sortedArrayFromArray</span><span class="p">(</span><span class="n">objects</span><span class="p">,</span> <span class="nl">collationStringSelector</span><span class="p">:</span> <span class="n">selector</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">object</span> <span class="k">in</span> <span class="n">sortedObjects</span> <span class="p">{</span>
+                <span class="k">let</span> <span class="n">sectionNumber</span> <span class="o">=</span> <span class="n">collation</span><span class="p">.</span><span class="n">sectionForObject</span><span class="p">(</span><span class="n">object</span><span class="p">,</span> <span class="nl">collationStringSelector</span><span class="p">:</span> <span class="n">selector</span><span class="p">)</span>
+                <span class="n">sections</span><span class="p">[</span><span class="n">sectionNumber</span><span class="p">].</span><span class="n">append</span><span class="p">(</span><span class="n">object</span><span class="p">)</span>
+            <span class="p">}</span>
+
+            <span class="nb">self</span><span class="p">.</span><span class="n">tableView</span><span class="p">.</span><span class="n">reloadData</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// MARK: UITableViewDelegate</span>
+
+    <span class="kr">override</span> <span class="k">func</span> <span class="n">tableView</span><span class="p">(</span><span class="nl">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">,</span> <span class="n">titleForHeaderInSection</span> <span class="nl">section</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">collation</span><span class="p">.</span><span class="n">sectionTitles</span><span class="p">[</span><span class="n">section</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="kr">override</span> <span class="k">func</span> <span class="n">sectionIndexTitlesForTableView</span><span class="p">(</span><span class="nl">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">String</span><span class="p">]</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">collation</span><span class="p">.</span><span class="n">sectionIndexTitles</span>
+    <span class="p">}</span>
+
+    <span class="kr">override</span> <span class="k">func</span> <span class="n">tableView</span><span class="p">(</span><span class="nl">tableView</span><span class="p">:</span> <span class="bp">UITableView</span><span class="p">,</span> <span class="n">sectionForSectionIndexTitle</span> <span class="nl">title</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="n">atIndex</span> <span class="nl">index</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">collation</span><span class="p">.</span><span class="n">sectionForSectionIndexTitleAtIndex</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setObjects:</span><span class="p">(</span><span class="bp">NSArray</span> <span class="o">*</span><span class="p">)</span><span class="nv">objects</span> <span class="p">{</span>
+    <span class="kt">SEL</span> <span class="n">selector</span> <span class="o">=</span> <span class="k">@selector</span><span class="p">(</span><span class="n">localizedTitle</span><span class="p">);</span>
+    <span class="bp">NSInteger</span> <span class="n">index</span><span class="p">,</span> <span class="n">sectionTitlesCount</span> <span class="o">=</span> <span class="p">[[[</span><span class="bp">UILocalizedIndexedCollation</span> <span class="n">currentCollation</span><span class="p">]</span> <span class="n">sectionTitles</span><span class="p">]</span> <span class="n">count</span><span class="p">];</span>
+
+    <span class="bp">NSMutableArray</span> <span class="o">*</span><span class="n">mutableSections</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSMutableArray</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithCapacity</span><span class="p">:</span><span class="n">sectionTitlesCount</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="bp">NSUInteger</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">sectionTitlesCount</span><span class="p">;</span> <span class="n">idx</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">[</span><span class="n">mutableSections</span> <span class="nl">addObject</span><span class="p">:[</span><span class="bp">NSMutableArray</span> <span class="n">array</span><span class="p">]];</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">id</span> <span class="n">object</span> <span class="k">in</span> <span class="n">objects</span><span class="p">)</span> <span class="p">{</span>
+      <span class="bp">NSInteger</span> <span class="n">sectionNumber</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UILocalizedIndexedCollation</span> <span class="n">currentCollation</span><span class="p">]</span> <span class="nl">sectionForObject</span><span class="p">:</span><span class="n">object</span> <span class="nl">collationStringSelector</span><span class="p">:</span><span class="n">selector</span><span class="p">];</span>
+      <span class="p">[[</span><span class="n">mutableSections</span> <span class="nl">objectAtIndex</span><span class="p">:</span><span class="n">sectionNumber</span><span class="p">]</span> <span class="nl">addObject</span><span class="p">:</span><span class="n">object</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="bp">NSUInteger</span> <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="n">sectionTitlesCount</span><span class="p">;</span> <span class="n">idx</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="bp">NSArray</span> <span class="o">*</span><span class="n">objectsForSection</span> <span class="o">=</span> <span class="p">[</span><span class="n">mutableSections</span> <span class="nl">objectAtIndex</span><span class="p">:</span><span class="n">idx</span><span class="p">];</span>
+      <span class="p">[</span><span class="n">mutableSections</span> <span class="nl">replaceObjectAtIndex</span><span class="p">:</span><span class="n">idx</span> <span class="nl">withObject</span><span class="p">:[[</span><span class="bp">UILocalizedIndexedCollation</span> <span class="n">currentCollation</span><span class="p">]</span> <span class="nl">sortedArrayFromArray</span><span class="p">:</span><span class="n">objectsForSection</span> <span class="nl">collationStringSelector</span><span class="p">:</span><span class="n">selector</span><span class="p">]];</span>
+    <span class="p">}</span>
+
+    <span class="nb">self</span><span class="p">.</span><span class="n">sections</span> <span class="o">=</span> <span class="n">mutableSections</span><span class="p">;</span>
+
+    <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">tableView</span> <span class="n">reloadData</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="bp">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span>
+<span class="nf">titleForHeaderInSection:</span><span class="p">(</span><span class="bp">NSInteger</span><span class="p">)</span><span class="nv">section</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="p">[[[</span><span class="bp">UILocalizedIndexedCollation</span> <span class="n">currentCollation</span><span class="p">]</span> <span class="n">sectionTitles</span><span class="p">]</span> <span class="nl">objectAtIndex</span><span class="p">:</span><span class="n">section</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="bp">NSArray</span> <span class="o">*</span><span class="p">)</span><span class="nf">sectionIndexTitlesForTableView:</span><span class="p">(</span><span class="bp">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[[</span><span class="bp">UILocalizedIndexedCollation</span> <span class="n">currentCollation</span><span class="p">]</span> <span class="n">sectionIndexTitles</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="bp">NSInteger</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="bp">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span>
+<span class="nf">sectionForSectionIndexTitle:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">title</span>
+               <span class="nf">atIndex:</span><span class="p">(</span><span class="bp">NSInteger</span><span class="p">)</span><span class="nv">index</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="p">[[</span><span class="bp">UILocalizedIndexedCollation</span> <span class="n">currentCollation</span><span class="p">]</span> <span class="nl">sectionForSectionIndexTitleAtIndex</span><span class="p">:</span><span class="n">index</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="uitableviewindexsearch">UITableViewIndexSearch</h2>
+
+<p>There is one special section index title worth mentioning, and that&rsquo;s <code>UITableViewIndexSearch</code>. It&rsquo;s a common pattern to have both a search bar and section indexes. In equal parts convenience and visual consistency, a search icon is often included as the first section index title, which can be touched to bring up the <code>UISearchBar</code> in the header of the table view.</p>
+
+<p>To include the search icon in your table view, you would simply prepend the <code>NSString</code> constant <code>UITableViewIndexSearch</code> to the return value of <code>-sectionIndexTitlesForTableView:</code>, and adjust <code>-tableView:sectionForSectionIndexTitle:atIndex:</code> to account for the single element shift.</p>
+
+<hr>
+
+<p>So remember, NSHipsters one and all: if you see an excessively long table view, kill it with fire!</p>
+
+<p>&hellip;which is to say, refactor your content with some combination of hierarchies, a search bar, and section indexes. And when implementing section index titles, take advantage of <code>UILocalizedIndexedCollation</code>.</p>
+
+<p>Together, we can put an end to scroll view-induced repetitive stress injuries, and spend more time enjoying the finer things in life, like watching videos of pets playing with iPads.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2012-10-29-uilocalizedindexedcollation.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on September 8, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nsurlprotocol/" title="NSURLProtocol" rel="next">NSURLProtocol</a>
+            </h1>
+
+            <p>Foundation’s URL Loading System is something that every iOS developer would do well to buddy up with. And of all of networking classes and protocols of Foundation, NSURLProtocol is perhaps the most obscure and powerful.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nsformatter/" title="NSFormatter">NSFormatter</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsrange/" title="NSRange">NSRange</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/uisplitviewcontroller/" title="UISplitViewController">UISplitViewController</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nserror/" title="NSError">NSError</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

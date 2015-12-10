@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>GPUImage - NSHipster</title>
+    <meta name="description" content="GPUImage is a BSD-licensed iOS library  that lets you apply GPU-accelerated filters and other effects to images, live camera video, and movies. If you're not careful, you may well end up creating a camera app by the end of the article."/>
+    <link rel="canonical" href="http://nshipster.com/gpuimage/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="GPUImage"/>
+    <meta name="twitter:description" content="GPUImage is a BSD-licensed iOS library  that lets you apply GPU-accelerated filters and other effects to images, live camera video, and movies. If you&#39;re not careful, you may well end up creating a camera app by the end of the article."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="GPUImage"/>
+    <meta property="og:url" content="http://nshipster.com/gpuimage/"/>
+    <meta property="og:description" content="GPUImage is a BSD-licensed iOS library  that lets you apply GPU-accelerated filters and other effects to images, live camera video, and movies. If you&#39;re not careful, you may well end up creating a camera app by the end of the article."/>
+    <meta property="article:published_time" content="2013-05-06T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="open source"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="GPUImage"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/gpuimage/">GPUImage</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-05-06T00:00:00-07:00" itemprop="datePublished">May 6<sup>th</sup>, 2013</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Here at NSHipster, we&rsquo;re all about diving into the darker corners of Objective-C to learn something new about the systems we interact with every day. Often, this means sifting through Apple frameworks or language features (it is, after all, a lot of what it means to work in Objective-C). However, <a href="http://nshipster.com/reactivecocoa/">on occasion</a>, it&rsquo;s nice to take a look to the burgeoning landscape of third-party libraries and frameworks (and there are some truly remarkable ones) for a glimpse of what&rsquo;s new and great outside of Cupertino.</p>
+
+<p>This week, we&rsquo;ll be taking a look at one of the most impressive open source projects you&rsquo;ll find: <a href="https://github.com/BradLarson/GPUImage">GPUImage</a>. Buckle up, NSHipsters—if you&rsquo;re not careful, you may well end up creating a camera app by the end of the article.</p>
+
+<hr>
+
+<p>GPUImage is a BSD-licensed iOS library written by <a href="https://github.com/BradLarson/">Brad Larson</a> that lets you apply GPU-accelerated filters and other effects to images, live camera video, and movies.</p>
+
+<h2 id="gpu-vs.-cpu">GPU vs. CPU</h2>
+
+<p>Every iPhone ships with two processors: a <a href="http://en.wikipedia.org/wiki/Central_processing_unit">CPU</a>, or Central Processing Unit and a <a href="http://en.wikipedia.org/wiki/Graphics_processing_unit">GPU</a>, or Graphics Processing Unit. Each processor has its own strengths, and modern chip architecture (like in the iPhone&rsquo;s <a href="http://en.wikipedia.org/wiki/Apple_A4">A4</a>) integrate the CPU and GPU onto the same physical die.</p>
+
+<p>When you write C or Objective-C code in Xcode, you&rsquo;re generating instructions that will be handled almost exclusively by the CPU. The GPU, by contrast, is a specialized chip that is especially well-suited for computation that can be split out into many small, independent operations, such as graphics rendering. The kinds of instructions understood by the GPU are quite different from that of the CPU, and as such, we write this code in a different language: <a href="http://en.wikipedia.org/wiki/Opengl">OpenGL</a> (or specifically, <a href="http://en.wikipedia.org/wiki/OpenGL_ES">OpenGL ES</a> on the iPhone &amp; iPad).</p>
+
+<blockquote>
+<p>Check out <a href="http://iphonedevelopment.blogspot.com/2010/11/opengl-es-20-for-ios-chapter-4.html">Jeff LaMarche&rsquo;s GLProgram OpenGL ES 2.0 book</a> for a great introduction to OpenGL ES and the rendering pipeline.</p>
+</blockquote>
+
+<p>Comparing the performance of GPU-based rendering to CPU rendering for something like video, the differences are staggering:</p>
+
+<table id="gpuimage-benchmarks">
+  <caption>CPU vs. GPU Frame-Rate (Larger FPS is Better)</caption>
+  <thead>
+    <tr>
+      <th>Calculation</th>
+      <th>GPU FPS</th>
+      <th>CPU FPS</th>
+      <th>Δ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Thresholding ⨉ 1</td>
+      <td>60.00</td>
+      <td>4.21</td>
+      <td>14.3⨉</td>
+    </tr>
+    <tr>
+      <td>Thresholding ⨉ 2</td>
+      <td>33.63</td>
+      <td>2.36</td>
+      <td>14.3⨉</td>
+    </tr>
+    <tr>
+      <td>Thresholding ⨉ 100</td>
+      <td>1.45</td>
+      <td>0.05</td>
+      <td>28.7⨉</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="oh,-so-it&#39;s-like-instagram?"><em>Oh, so it&rsquo;s like Instagram?</em></h3>
+
+<p>Let me put it this way:</p>
+
+<blockquote>
+<p>Instagram : GPUImage :: Disposable Camera : NASA Space Optics Manufacturing Center</p>
+</blockquote>
+
+<p>To put it another way, within GPUImage&rsquo;s APIs lay <em>thousands</em> of camera apps, just waiting for the right combination of filters and a little spark of imagination.</p>
+
+<p>Here&rsquo;s a table of the 125 (!) filters that come with GPUImage:</p>
+
+<table id="gpuimage-filters">
+  <thead>
+    <tr>
+      <th>Color Adjustments</th>
+      <th>Image Processing</th>
+      <th>Blending Modes</th>
+      <th>Visual Effects</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <ul>
+          <li>Brightness Filter</li>
+          <li>Exposure Filter</li>
+          <li>Contrast Filter</li>
+          <li>Saturation Filter</li>
+          <li>Gamma Filter</li>
+          <li>Levels Filter</li>
+          <li>Color Matrix Filter</li>
+          <li>RGB Filter</li>
+          <li>Hue Filter</li>
+          <li>Tone Curve Filter</li>
+          <li>Highlight Shadow Filter</li>
+          <li>Lookup Filter</li>
+          <li>Amatorka Filter</li>
+          <li>Miss Etikate Filter</li>
+          <li>Soft Elegance Filter</li>
+          <li>Color Invert Filter</li>
+          <li>Grayscale Filter</li>
+          <li>Monochrome Filter</li>
+          <li>False Color Filter</li>
+          <li>Haze Filter</li>
+          <li>Sepia Filter</li>
+          <li>Opacity Filter</li>
+          <li>Solid Color Generator</li>
+          <li>Luminance Threshold Filter</li>
+          <li>Adaptive Threshold Filter</li>
+          <li>Average Luminance Threshold Filter</li>
+          <li>Histogram Filter</li>
+          <li>Histogram Generator</li>
+          <li>Average Color</li>
+          <li>Luminosity</li>
+          <li>Chroma Key Filter</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Transform Filter</li>
+          <li>Crop Filter</li>
+          <li>Lanczos Resampling Filter</li>
+          <li>Sharpen Filter</li>
+          <li>Unsharp Mask Filter</li>
+          <li>Fast Blur Filter</li>
+          <li>Single Component Fast Blur Filter</li>
+          <li>Gaussian Blur Filter</li>
+          <li>Single Component Gaussian Blur Filter</li>
+          <li>Gaussian Selective Blur Filter</li>
+          <li>Gaussian Blur Position Filter</li>
+          <li>Median Filter</li>
+          <li>Bilateral Filter</li>
+          <li>Tilt Shift Filter</li>
+          <li>Box Blur Filter</li>
+          <li>3x3 Convolution Filter</li>
+          <li>Sobel Edge Detection Filter</li>
+          <li>Threshold Edge Detection Filter</li>
+          <li>Canny Edge Detection Filter</li>
+          <li>Harris Corner Detection Filter</li>
+          <li>Noble Corner Detection Filter</li>
+          <li>Shi-Tomasi Corner Detection Filter</li>
+          <li>Non Maximum Suppression Filter</li>
+          <li>X/Y Derivative Filter</li>
+          <li>Crosshair Generator</li>
+          <li>Dilation Filter</li>
+          <li>RGB Dilation Filter</li>
+          <li>Erosion Filter</li>
+          <li>RGB Erosion Filter</li>
+          <li>Opening Filter</li>
+          <li>RGB Opening Filter</li>
+          <li>Closing Filter</li>
+          <li>RGB Closing Filter</li>
+          <li>Local Binary Pattern Filter</li>
+          <li>Low Pass Filter</li>
+          <li>High Pass Filter</li>
+          <li>Motion Detector</li>
+          <li>Hough Transform Line Detector</li>
+          <li>Line Generator</li>
+          <li>Motion Blur Filter</li>
+          <li>Zoom Blur Filter</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Chroma Key Blend Filter</li>
+          <li>Dissolve Blend Filter</li>
+          <li>Multiply Blend Filter</li>
+          <li>Add Blend Filter</li>
+          <li>Subtract Blend Filter</li>
+          <li>Divide Blend Filter</li>
+          <li>Overlay Blend Filter</li>
+          <li>Darken Blend Filter</li>
+          <li>Lighten Blend Filter</li>
+          <li>Color Burn Blend Filter</li>
+          <li>Color Dodge Blend Filter</li>
+          <li>Screen Blend Filter</li>
+          <li>Exclusion Blend Filter</li>
+          <li>Difference Blend Filter</li>
+          <li>Hard Light Blend Filter</li>
+          <li>Soft Light Blend Filter</li>
+          <li>Alpha Blend Filter</li>
+          <li>Source Over Blend Filter</li>
+          <li>Color Burn Blend Filter</li>
+          <li>Color Dodge Blend Filter</li>
+          <li>Normal Blend Filter</li>
+          <li>Color Blend Filter</li>
+          <li>Hue Blend Filter</li>
+          <li>Saturation Blend Filter</li>
+          <li>Luminosity Blend Filter</li>
+          <li>Linear Burn Blend Filter</li>
+          <li>Poisson Blend Filter</li>
+          <li>Mask Filter</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Pixellate Filter</li>
+          <li>Polar Pixellate Filter</li>
+          <li>Polka Dot Filter</li>
+          <li>Halftone Filter</li>
+          <li>Crosshatch Filter</li>
+          <li>Sketch Filter</li>
+          <li>Threshold Sketch Filter</li>
+          <li>Toon Filter</li>
+          <li>Smooth Toon Filter</li>
+          <li>Emboss Filter</li>
+          <li>Posterize Filter</li>
+          <li>Swirl Filter</li>
+          <li>Bulge Distortion Filter</li>
+          <li>Pinch Distortion Filter</li>
+          <li>Stretch Distortion Filter</li>
+          <li>Sphere Refraction Filter</li>
+          <li>Glass Sphere Filter</li>
+          <li>Vignette Filter</li>
+          <li>Kuwahara Filter</li>
+          <li>Kuwahara Radius 3 Filter</li>
+          <li>Perlin Noise Filter</li>
+          <li>CGAColorspace Filter</li>
+          <li>Mosaic Filter</li>
+          <li>JFAVoronoi Filter</li>
+          <li>Voronoi Consumer Filter</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Seriously, the <a href="https://github.com/BradLarson/GPUImage/tree/master/examples/iOS/FilterShowcase">Filter Showcase Example App</a> that comes bundled in the repository could easily retail on the AppStore for $3.99, as-is. Add Twitter integration and a few sound effects, and you could bump that up to a respectable $6.99.</p>
+
+<h2 id="rendering-pipeline">Rendering Pipeline</h2>
+
+<p><img src="http://nshipster.s3.amazonaws.com/gpuimage-pipeline.svg" /></p>
+
+<p>GPUImage is, at its core, an Objective-C abstraction around a rendering pipeline. Source images from the camera, network, or disk are loaded and manipulated according to a chain of filters, and finally outputted either a view, graphics context, or data stream.</p>
+
+<p>For example, images from the video camera  could have a Color Levels filter applied to simulate different types of <a href="http://en.wikipedia.org/wiki/Color_blindness">color blindness</a> and displayed in a live view.</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">GPUImageVideoCamera</span> <span class="o">*</span><span class="n">videoCamera</span> <span class="o">=</span> <span class="p">[[</span><span class="n">GPUImageVideoCamera</span> <span class="n">alloc</span><span class="p">]</span>
+    <span class="nl">initWithSessionPreset</span><span class="p">:</span><span class="n">AVCaptureSessionPreset640x480</span>
+           <span class="nl">cameraPosition</span><span class="p">:</span><span class="n">AVCaptureDevicePositionBack</span><span class="p">];</span>
+<span class="n">videoCamera</span><span class="p">.</span><span class="n">outputImageOrientation</span> <span class="o">=</span> <span class="n">UIInterfaceOrientationPortrait</span><span class="p">;</span>
+
+<span class="n">GPUImageFilter</span> <span class="o">*</span><span class="n">filter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">GPUImageLevelsFilter</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFragmentShaderFromFile</span><span class="p">:</span><span class="s">@&quot;CustomShader&quot;</span><span class="p">];</span>
+<span class="p">[</span><span class="n">filter</span> <span class="nl">setRedMin</span><span class="p">:</span><span class="mf">0.299</span> <span class="nl">gamma</span><span class="p">:</span><span class="mf">1.0</span> <span class="nl">max</span><span class="p">:</span><span class="mf">1.0</span> <span class="nl">minOut</span><span class="p">:</span><span class="mf">0.0</span> <span class="nl">maxOut</span><span class="p">:</span><span class="mf">1.0</span><span class="p">];</span>
+<span class="p">[</span><span class="n">filter</span> <span class="nl">setGreenMin</span><span class="p">:</span><span class="mf">0.587</span> <span class="nl">gamma</span><span class="p">:</span><span class="mf">1.0</span> <span class="nl">max</span><span class="p">:</span><span class="mf">1.0</span> <span class="nl">minOut</span><span class="p">:</span><span class="mf">0.0</span> <span class="nl">maxOut</span><span class="p">:</span><span class="mf">1.0</span><span class="p">];</span>
+<span class="p">[</span><span class="n">filter</span> <span class="nl">setBlueMin</span><span class="p">:</span><span class="mf">0.114</span> <span class="nl">gamma</span><span class="p">:</span><span class="mf">1.0</span> <span class="nl">max</span><span class="p">:</span><span class="mf">1.0</span> <span class="nl">minOut</span><span class="p">:</span><span class="mf">0.0</span> <span class="nl">maxOut</span><span class="p">:</span><span class="mf">1.0</span><span class="p">];</span>
+<span class="p">[</span><span class="n">videoCamera</span> <span class="nl">addTarget</span><span class="p">:</span><span class="n">filter</span><span class="p">];</span>
+
+<span class="n">GPUImageView</span> <span class="o">*</span><span class="n">filteredVideoView</span> <span class="o">=</span> <span class="p">[[</span><span class="n">GPUImageView</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithFrame</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">bounds</span><span class="p">];</span>
+<span class="p">[</span><span class="n">filter</span> <span class="nl">addTarget</span><span class="p">:</span><span class="n">filteredVideoView</span><span class="p">];</span>
+<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">view</span> <span class="nl">addSubview</span><span class="p">:</span><span class="n">filteredVideoView</span><span class="p">];</span>
+
+<span class="p">[</span><span class="n">videoCamera</span> <span class="n">startCameraCapture</span><span class="p">];</span>
+</code></pre></div>
+<p>Or, combining various color blending modes, image effects, and adjustments, you could transform still images into something worthy of sharing with your hipster friends (example taken from <a href="https://github.com/eklipse2k8/FilterKit/blob/master/FilterKit/FilterKit/Filters/FKBlueValentine.m">FilterKit</a>, which is built on GPUImage):</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">GPUImageFilterGroup</span> <span class="o">*</span><span class="n">filter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">GPUImageFilterGroup</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+
+<span class="n">GPUImageSaturationFilter</span> <span class="o">*</span><span class="n">saturationFilter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">GPUImageSaturationFilter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="p">[</span><span class="n">saturationFilter</span> <span class="nl">setSaturation</span><span class="p">:</span><span class="mf">0.5</span><span class="p">];</span>
+
+<span class="n">GPUImageMonochromeFilter</span> <span class="o">*</span><span class="n">monochromeFilter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">GPUImageMonochromeFilter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="p">[</span><span class="n">monochromeFilter</span> <span class="nl">setColor</span><span class="p">:(</span><span class="n">GPUVector4</span><span class="p">){</span><span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">,</span> <span class="mf">1.0f</span><span class="p">}];</span>
+<span class="p">[</span><span class="n">monochromeFilter</span> <span class="nl">setIntensity</span><span class="p">:</span><span class="mf">0.2</span><span class="p">];</span>
+
+<span class="n">GPUImageVignetteFilter</span> <span class="o">*</span><span class="n">vignetteFilter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">GPUImageVignetteFilter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="p">[</span><span class="n">vignetteFilter</span> <span class="nl">setVignetteEnd</span><span class="p">:</span><span class="mf">0.7</span><span class="p">];</span>
+
+<span class="n">GPUImageExposureFilter</span> <span class="o">*</span><span class="n">exposureFilter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">GPUImageExposureFilter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="p">[</span><span class="n">exposureFilter</span> <span class="nl">setExposure</span><span class="p">:</span><span class="mf">0.3</span><span class="p">];</span>
+
+<span class="p">[</span><span class="n">filter</span> <span class="nl">addGPUFilter</span><span class="p">:</span><span class="n">exposureFilter</span><span class="p">];</span>
+<span class="p">[</span><span class="n">filter</span> <span class="nl">addGPUFilter</span><span class="p">:</span><span class="n">monochromeFilter</span><span class="p">];</span>
+<span class="p">[</span><span class="n">filter</span> <span class="nl">addGPUFilter</span><span class="p">:</span><span class="n">saturationFilter</span><span class="p">];</span>
+<span class="p">[</span><span class="n">filter</span> <span class="nl">addGPUFilter</span><span class="p">:</span><span class="n">vignetteFilter</span><span class="p">];</span>
+</code></pre></div>
+<hr>
+
+<p>Looking through all of what GPUImage can do, one can&rsquo;t help but get <em>excited</em>. Easy enough to get started immediately (without needing to know anything about OpenGL) yet performant enough to power whatever you dream up. And not just that, but it also comes with a dizzying number of building blocks—all of the color adjustments, blending modes, and visual effects you could ever want (or never knew you needed).</p>
+
+<p>GPUImage is a rare treat for the open source community, and we as Mac &amp; iOS developers are lucky to have it at our disposal. Use it to make something great, and show others the world in a whole new way.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-05-06-gpuimage.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+            
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nscoding/" title="NSCoding / NSKeyedArchiver" rel="next">NSCoding / NSKeyed​Archiver</a>
+            </h1>
+
+            <p>Among the most important architectural decisions made when building an app is how to persist data between launches. The question of how, exactly, to re-create the state of the app from the time it was last opened; of how to describe the object graph in such a way that it can be flawlessly reconstructed next time.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/cocoapods/" title="CocoaPods">CocoaPods</a>
+            </li>
+            
+          
+          
+          
+          
+            <li>
+              <a href="/core-data-libraries-and-utilities/" title="Core Data Libraries & Utilities">Core Data Libraries & Utilities</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/afnetworking-2/" title="AFNetworking 2.0">AFNetworking 2.0</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

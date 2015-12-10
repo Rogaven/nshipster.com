@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSURL / NSURLComponents - NSHipster</title>
+    <meta name="description" content="Of all the one-dimensional data types out there, URIs reign supreme. Here, in a single, human-parsable string, is every conceivable piece of information necessary to encode the location of any piece of information that has, does, and will ever exist on a computer."/>
+    <link rel="canonical" href="http://nshipster.com/nsurl/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="NSURL /<br/>NSURLComponents"/>
+    <meta name="twitter:description" content="Of all the one-dimensional data types out there, URIs reign supreme. Here, in a single, human-parsable string, is every conceivable piece of information necessary to encode the location of any piece of information that has, does, and will ever exist on a computer."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NSURL /<br/>NSURLComponents"/>
+    <meta property="og:url" content="http://nshipster.com/nsurl/"/>
+    <meta property="og:description" content="Of all the one-dimensional data types out there, URIs reign supreme. Here, in a single, human-parsable string, is every conceivable piece of information necessary to encode the location of any piece of information that has, does, and will ever exist on a computer."/>
+    <meta property="article:published_time" content="2014-03-24T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NSURL /<br/>NSURLComponents"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/nsurl/">NSURL /<br/>NSURLComponents</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2014-03-24T00:00:00-07:00" itemprop="datePublished">March 24<sup>th</sup>, 2014</time>
+    
+    (<a href="#revisions">revised</a>)
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>There is a simple beauty to—let&rsquo;s call them &ldquo;one-dimensional data types&rdquo;: numbers or strings formatted to contain multiple values, retrievable through a mathematical operator or parsing routine. Like how the hexadecimal color <tt style="color: #EE8262;">#EE8262</tt> can have <a href="http://en.wikipedia.org/wiki/Web_colors">red, green, and blue components</a> extracted by masking and shifting its bits, or how <a href="http://en.wikipedia.org/wiki/Regular_expression">regular expressions</a> can match and capture complex patterns in just a few characters.</p>
+
+<p>Of all the one-dimensional data types out there, <a href="http://en.wikipedia.org/wiki/URI_scheme">URIs</a> reign supreme. Here, in a single, human-parsable string, is every conceivable piece of information necessary to encode the location of any piece of information that has, does, and will ever exist on a computer.</p>
+
+<p>In its most basic form, a URI is comprised of a scheme name and a hierarchical part, with an optional query and fragment:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;scheme name&gt; : &lt;hierarchical part&gt; [ ? &lt;query&gt; ] [ # &lt;fragment&gt; ]
+</code></pre></div>
+<p>Many protocols, including HTTP, specify a regular structure for information like the username, password, port, and path in the hierarchical part:</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/nsurl.png" alt="URL Structure"></p>
+
+<p>A solid grasp of network programming is rooted in an unshakeable familiarity with URL components. As a software developer, this means having a command over the URI functionality in your programming language&rsquo;s standard library.</p>
+
+<blockquote>
+<p>If a programming language does not have a URI module in its standard library, run, don&rsquo;t walk, to a real language that does.</p>
+</blockquote>
+
+<hr>
+
+<p>In Foundation, URLs are represented by <code>NSURL</code>.</p>
+
+<p><code>NSURL</code> instances are created using the <code>NSURL(string:)</code> initializer:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">url</span> <span class="o">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;http://example.com/&quot;</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSURL</span> <span class="o">*</span><span class="n">url</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSURL</span> <span class="nl">URLWithString</span><span class="p">:</span><span class="s">@&quot;http://example.com&quot;</span><span class="p">];</span>
+</code></pre></div>
+<p>If the passed string is not a valid URL, this initializer will return <code>nil</code>.</p>
+
+<p><code>NSString</code> also has some vestigial functionality for path manipulation, <a href="http://nshipster.com/nstemporarydirectory/">as described a few weeks back</a>, but that&rsquo;s being slowly migrated over to <code>NSURL</code>. While the extra conversion from <code>NSString</code> to <code>NSURL</code> is not the most convenient step, it&rsquo;s always worthwhile. If a value is a URL, it should be stored and passed as an <code>NSURL</code>; conflating the two types is reckless and lazy API design.</p>
+
+<p><code>NSURL</code> also has the initializer <code>NSURL(string:relativeToURL:)</code>, which can be used to construct a URL from a string relative to a base URL. The behavior of this method can be a source of confusion, because of how it treats leading <code>/</code>&rsquo;s in relative paths.</p>
+
+<p>For reference, here are representative examples of how this method works:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">baseURL</span> <span class="o">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;http://example.com/v1/&quot;</span><span class="p">)</span>
+
+<span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;foo&quot;</span><span class="p">,</span> <span class="nl">relativeToURL</span><span class="p">:</span> <span class="n">baseURL</span><span class="p">)</span>
+<span class="c1">// http://example.com/v1/foo</span>
+
+<span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span><span class="s">&quot;foo?bar=baz&quot;</span><span class="p">,</span> <span class="nl">relativeToURL</span><span class="p">:</span> <span class="n">baseURL</span><span class="p">)</span>
+<span class="c1">// http://example.com/v1/foo?bar=baz</span>
+
+<span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span><span class="s">&quot;/foo&quot;</span><span class="p">,</span> <span class="nl">relativeToURL</span><span class="p">:</span> <span class="n">baseURL</span><span class="p">)</span>
+<span class="c1">// http://example.com/foo</span>
+
+<span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span><span class="s">&quot;foo/&quot;</span><span class="p">,</span> <span class="nl">relativeToURL</span><span class="p">:</span> <span class="n">baseURL</span><span class="p">)</span>
+<span class="c1">// http://example.com/v1/foo/</span>
+
+<span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span><span class="s">&quot;/foo/&quot;</span><span class="p">,</span> <span class="nl">relativeToURL</span><span class="p">:</span> <span class="n">baseURL</span><span class="p">)</span>
+<span class="c1">// http://example.com/foo/</span>
+
+<span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span><span class="s">&quot;http://example2.com/&quot;</span><span class="p">,</span> <span class="nl">relativeToURL</span><span class="p">:</span> <span class="n">baseURL</span><span class="p">)</span>
+<span class="c1">// http://example2.com/</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSURL</span> <span class="o">*</span><span class="n">baseURL</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSURL</span> <span class="nl">URLWithString</span><span class="p">:</span><span class="s">@&quot;http://example.com/v1/&quot;</span><span class="p">];</span>
+
+<span class="p">[</span><span class="bp">NSURL</span> <span class="nl">URLWithString</span><span class="p">:</span><span class="s">@&quot;foo&quot;</span> <span class="nl">relativeToURL</span><span class="p">:</span><span class="n">baseURL</span><span class="p">];</span>
+<span class="c1">// http://example.com/v1/foo</span>
+
+<span class="p">[</span><span class="bp">NSURL</span> <span class="nl">URLWithString</span><span class="p">:</span><span class="s">@&quot;foo?bar=baz&quot;</span> <span class="nl">relativeToURL</span><span class="p">:</span><span class="n">baseURL</span><span class="p">];</span>
+<span class="c1">// http://example.com/v1/foo?bar=baz</span>
+
+<span class="p">[</span><span class="bp">NSURL</span> <span class="nl">URLWithString</span><span class="p">:</span><span class="s">@&quot;/foo&quot;</span> <span class="nl">relativeToURL</span><span class="p">:</span><span class="n">baseURL</span><span class="p">];</span>
+<span class="c1">// http://example.com/foo</span>
+
+<span class="p">[</span><span class="bp">NSURL</span> <span class="nl">URLWithString</span><span class="p">:</span><span class="s">@&quot;foo/&quot;</span> <span class="nl">relativeToURL</span><span class="p">:</span><span class="n">baseURL</span><span class="p">];</span>
+<span class="c1">// http://example.com/v1/foo/</span>
+
+<span class="p">[</span><span class="bp">NSURL</span> <span class="nl">URLWithString</span><span class="p">:</span><span class="s">@&quot;/foo/&quot;</span> <span class="nl">relativeToURL</span><span class="p">:</span><span class="n">baseURL</span><span class="p">];</span>
+<span class="c1">// http://example.com/foo/</span>
+
+<span class="p">[</span><span class="bp">NSURL</span> <span class="nl">URLWithString</span><span class="p">:</span><span class="s">@&quot;http://example2.com/&quot;</span> <span class="nl">relativeToURL</span><span class="p">:</span><span class="n">baseURL</span><span class="p">];</span>
+<span class="c1">// http://example2.com/</span>
+</code></pre></div>
+<h2 id="url-components">URL Components</h2>
+
+<p><code>NSURL</code> provides accessor methods for each of the URL components as defined by <a href="http://www.ietf.org/rfc/rfc2396.txt">RFC 2396</a>:</p>
+
+<ul>
+<li><code>absoluteString</code></li>
+<li><code>absoluteURL</code></li>
+<li><code>baseURL</code></li>
+<li><code>fileSystemRepresentation</code></li>
+<li><code>fragment</code></li>
+<li><code>host</code></li>
+<li><code>lastPathComponent</code></li>
+<li><code>parameterString</code></li>
+<li><code>password</code></li>
+<li><code>path</code></li>
+<li><code>pathComponents</code></li>
+<li><code>pathExtension</code></li>
+<li><code>port</code></li>
+<li><code>query</code></li>
+<li><code>relativePath</code></li>
+<li><code>relativeString</code></li>
+<li><code>resourceSpecifier</code></li>
+<li><code>scheme</code></li>
+<li><code>standardizedURL</code></li>
+<li><code>user</code></li>
+</ul>
+
+<p>The documentation and examples found in <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSURL_Class/Reference/Reference.html"><code>NSURL</code>&rsquo;s documentation</a> are a great way to familiarize yourself with all of the different components.</p>
+
+<blockquote>
+<p>Although username &amp; password <em>can</em> be stored in a URL, consider using <code>NSURLCredential</code> when representing user credentials, or persisting them to the keychain.</p>
+</blockquote>
+
+<h2 id="nsurlcomponents">NSURLComponents</h2>
+
+<p>Quietly added in iOS 7 and OS X Mavericks was <code>NSURLComponents</code>, which can best be described by what it could have been named instead: <code>NSMutableURL</code>.</p>
+
+<p><code>NSURLComponents</code> instances are constructed much in the same way as <code>NSURL</code>, with a provided <code>NSString</code> and optional base URL to resolve against (<code>NSURLComponents(string:)</code> &amp; <code>NSURLComponents(URL:resolvingAgainstBaseURL:)</code>). It can also be initialized without any arguments to create an empty storage container, similar to <a href="http://nshipster.com/nsdatecomponents/"><code>NSDateComponents</code></a>.</p>
+
+<p>The difference here, between <code>NSURL</code> and <code>NSURLComponents</code>, is that component properties are read-write. This provides a safe and direct way to modify individual components of a URL:</p>
+
+<ul>
+<li><code>scheme</code></li>
+<li><code>user</code></li>
+<li><code>password</code></li>
+<li><code>host</code></li>
+<li><code>port</code></li>
+<li><code>path</code></li>
+<li><code>query</code></li>
+<li><code>fragment</code></li>
+</ul>
+
+<blockquote>
+<p>Attempting to set an invalid scheme string or negative port number will throw an exception.</p>
+</blockquote>
+
+<p>In addition, <code>NSURLComponents</code> also has read-write properties for <a href="http://en.wikipedia.org/wiki/Percent-encoding">percent-encoded</a> versions of each component.</p>
+
+<ul>
+<li><code>percentEncodedUser</code></li>
+<li><code>percentEncodedPassword</code></li>
+<li><code>percentEncodedHost</code></li>
+<li><code>percentEncodedPath</code></li>
+<li><code>percentEncodedQuery</code></li>
+<li><code>percentEncodedFragment</code></li>
+</ul>
+
+<blockquote>
+<p>Getting these properties retains any percent encoding these components may have. Setting these properties assumes the component string is already correctly percent encoded. Attempting to set an incorrectly percent encoded string will cause an exception. Although &lsquo;;&rsquo; is a legal path character, it is recommended that it be percent-encoded for best compatibility with NSURL (<code>String</code>&rsquo;s <code>stringByAddingPercentEncodingWithAllowedCharacters(_:)</code> will percent-encode any &lsquo;;&rsquo; characters if you pass the <code>URLPathAllowedCharacterSet</code>).</p>
+</blockquote>
+
+<p>More recently, <code>NSURLComponents</code> gained a <code>queryItems</code> array, giving easy access to any key-value pairs encoded in a URL&rsquo;s query string as an array of <code>NSURLQueryItem</code>.</p>
+
+<h2 id="percent-encoding">Percent-Encoding</h2>
+
+<p>Speaking of percent-encoding&hellip;</p>
+
+<p>OS X 10.9 and iOS 7 brought new <code>String</code>/<code>NSString</code> APIs for handling percent-encoding that improve upon (and deprecate) the old encoding-based <code>NSString</code> methods and the <code>CFURL</code>-related C APIs. To percent-encode a string, use the <code>stringByAddingPercentEncodingWithAllowedCharacters(_:)</code> with the relevant <code>NSCharacterSet</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">title</span> <span class="o">=</span> <span class="s">&quot;NSURL / NSURLComponents&quot;</span>
+<span class="k">if</span> <span class="k">let</span> <span class="n">escapedTitle</span> <span class="o">=</span> <span class="n">title</span><span class="p">.</span><span class="n">stringByAddingPercentEncodingWithAllowedCharacters</span><span class="p">(</span><span class="bp">NSCharacterSet</span><span class="p">.</span><span class="n">URLQueryAllowedCharacterSet</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">components</span><span class="p">.</span><span class="n">query</span> <span class="o">=</span> <span class="s">&quot;title=\(escapedTitle)&quot;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSString</span> <span class="o">*</span><span class="n">title</span> <span class="o">=</span> <span class="s">@&quot;NSURL / NSURLComponents&quot;</span><span class="p">;</span>
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">escapedTitle</span> <span class="o">=</span> <span class="p">[</span><span class="n">title</span> <span class="nl">stringByAddingPercentEncodingWithAllowedCharacters</span><span class="p">:[</span><span class="bp">NSCharacterSet</span> <span class="n">URLQueryAllowedCharacterSet</span><span class="p">]];</span>
+<span class="n">components</span><span class="p">.</span><span class="n">query</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSString</span> <span class="nl">stringWithFormat</span><span class="p">:</span><span class="s">@&quot;title=%@&quot;</span><span class="p">,</span> <span class="n">escapedTitle</span><span class="p">];</span>
+</code></pre></div>
+<p>Reversing the encoding is even easier, accomplished on an encoded string with <code>stringByRemovingPercentEncoding</code>. New character sets have been added for each of the six URL components that might require percent-encoding:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// Predefined character sets for the six URL components and subcomponents which allow percent encoding. These character sets are passed to -stringByAddingPercentEncodingWithAllowedCharacters:.</span>
+<span class="k">extension</span> <span class="bp">NSCharacterSet</span> <span class="p">{</span>
+    <span class="kr">public</span> <span class="k">class</span> <span class="k">func</span> <span class="n">URLUserAllowedCharacterSet</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="bp">NSCharacterSet</span>
+    <span class="kr">public</span> <span class="k">class</span> <span class="k">func</span> <span class="n">URLPasswordAllowedCharacterSet</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="bp">NSCharacterSet</span>
+    <span class="kr">public</span> <span class="k">class</span> <span class="k">func</span> <span class="n">URLHostAllowedCharacterSet</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="bp">NSCharacterSet</span>
+    <span class="kr">public</span> <span class="k">class</span> <span class="k">func</span> <span class="n">URLPathAllowedCharacterSet</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="bp">NSCharacterSet</span>
+    <span class="kr">public</span> <span class="k">class</span> <span class="k">func</span> <span class="n">URLQueryAllowedCharacterSet</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="bp">NSCharacterSet</span>
+    <span class="kr">public</span> <span class="k">class</span> <span class="k">func</span> <span class="n">URLFragmentAllowedCharacterSet</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="bp">NSCharacterSet</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="c1">// Predefined character sets for the six URL components and subcomponents which allow percent encoding. These character sets are passed to -stringByAddingPercentEncodingWithAllowedCharacters:.</span>
+<span class="k">@interface</span> <span class="bp">NSCharacterSet</span> <span class="nl">(NSURLUtilities)</span>
+<span class="p">+</span> <span class="p">(</span><span class="bp">NSCharacterSet</span> <span class="o">*</span><span class="p">)</span><span class="nf">URLUserAllowedCharacterSet</span><span class="p">;</span>
+<span class="p">+</span> <span class="p">(</span><span class="bp">NSCharacterSet</span> <span class="o">*</span><span class="p">)</span><span class="nf">URLPasswordAllowedCharacterSet</span><span class="p">;</span>
+<span class="p">+</span> <span class="p">(</span><span class="bp">NSCharacterSet</span> <span class="o">*</span><span class="p">)</span><span class="nf">URLHostAllowedCharacterSet</span><span class="p">;</span>
+<span class="p">+</span> <span class="p">(</span><span class="bp">NSCharacterSet</span> <span class="o">*</span><span class="p">)</span><span class="nf">URLPathAllowedCharacterSet</span><span class="p">;</span>
+<span class="p">+</span> <span class="p">(</span><span class="bp">NSCharacterSet</span> <span class="o">*</span><span class="p">)</span><span class="nf">URLQueryAllowedCharacterSet</span><span class="p">;</span>
+<span class="p">+</span> <span class="p">(</span><span class="bp">NSCharacterSet</span> <span class="o">*</span><span class="p">)</span><span class="nf">URLFragmentAllowedCharacterSet</span><span class="p">;</span>
+<span class="k">@end</span>
+</code></pre></div>
+<h2 id="bookmark-urls">Bookmark URLs</h2>
+
+<p>One final topic worth mentioning are bookmark URLs, which can be used to safely reference files between application launches. Think of them as a persistent <a href="http://en.wikipedia.org/wiki/File_descriptor">file descriptor</a>.</p>
+
+<blockquote>
+<p>A bookmark is an opaque data structure, enclosed in an <code>NSData</code> object, that describes the location of a file. Whereas path- and file reference URLs are potentially fragile between launches of your app, a bookmark can usually be used to re-create a URL to a file even in cases where the file was moved or renamed.</p>
+</blockquote>
+
+<p>You can read more about bookmark URLs in <a href="https://developer.apple.com/library/ios/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/AccessingFilesandDirectories/AccessingFilesandDirectories.html">&ldquo;Locating Files Using Bookmarks&rdquo; from Apple&rsquo;s File System Programming Guide</a></p>
+
+<hr>
+
+<p>Forget jet packs and flying cars—my idea of an exciting future is one where everything has a URL, is encoded in Markdown, and stored in Git. If your mind isn&rsquo;t blown by the implications of a <em>universal</em> resource locator, then I would invite you to reconsider.</p>
+
+<p>Like <a href="http://en.wikipedia.org/wiki/Hypertext">hypertext</a>, universal identification is a philosophical concept that both pre-dates and transcends computers. Together, they form the fabric of our information age: a framework for encoding our collective understanding of the universe as a network of individual facts, in a fashion that is hauntingly similar to how the neurons in our brains do much the same.</p>
+
+<p>We are just now crossing the precipice of a <a href="http://en.wikipedia.org/wiki/Cambrian_explosion">Cambrian Explosion</a> in physical computing. In an internet of things, where <a href="http://en.wikipedia.org/wiki/IPv6#Larger_address_space">every object of our lives has a URL</a> and embeds an electronic soul, a digital consciousness will emerge. Not to say, necessarily, that <a href="http://en.wikipedia.org/wiki/The_Singularity_Is_Near">the singularity is near</a>, but we&rsquo;re on the verge of something incredible.</p>
+
+<p>Quite lofty implications for a technology used most often to exchange pictures of cats.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-03-24-nsurl.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on September 9, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+        <dt>March 24<sup>th</sup>, 2014</dt>
+        <dd><p>Original publication.</p>
+</dd>
+      
+        <dt>September 8<sup>th</sup>, 2015</dt>
+        <dd><p>Added Swift translation &amp; section on <code>stringByAddingPercentEncodingWithAllowedCharacters</code>.</p>
+</dd>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/avspeechsynthesizer/" title="AVSpeechSynthesizer" rel="next">AVSpeech​Synthesizer</a>
+            </h1>
+
+            <p>Though we&rsquo;re a long way off from Hal or Her, we should never forget about the billions of other people out there for us to talk to.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/uiaccessibility/" title="UIAccessibility">UIAccessibility</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/uikeycommand/" title="UIKeyCommand">UIKeyCommand</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsdatecomponents/" title="NSDateComponents">NSDateComponents</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/key-value-observing/" title="Key-Value Observing">Key-Value Observing</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSExpression - NSHipster</title>
+    <meta name="description" content="Cocoa is the envy of other standard libraries when it comes to querying and arranging information. With NSPredicate, NSSortDescriptor, and an occasional NSFetchRequest, even the most complex data tasks can be reduced into just a few, extremely-understandable lines of code."/>
+    <link rel="canonical" href="http://nshipster.com/nsexpression/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="NSExpression"/>
+    <meta name="twitter:description" content="Cocoa is the envy of other standard libraries when it comes to querying and arranging information. With NSPredicate, NSSortDescriptor, and an occasional NSFetchRequest, even the most complex data tasks can be reduced into just a few, extremely-understandable lines of code."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NSExpression"/>
+    <meta property="og:url" content="http://nshipster.com/nsexpression/"/>
+    <meta property="og:description" content="Cocoa is the envy of other standard libraries when it comes to querying and arranging information. With NSPredicate, NSSortDescriptor, and an occasional NSFetchRequest, even the most complex data tasks can be reduced into just a few, extremely-understandable lines of code."/>
+    <meta property="article:published_time" content="2013-07-08T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NSExpression"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/nsexpression/">NSExpression</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-07-08T00:00:00-07:00" itemprop="datePublished">July 8<sup>th</sup>, 2013</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Cocoa is the envy of other standard libraries when it comes to querying and arranging information. With <code>NSPredicate</code>, <a href="http://nshipster.com/nssortdescriptor/"><code>NSSortDescriptor</code></a>, and an occasional <code>NSFetchRequest</code>, even the most complex data tasks can be reduced into just a few, <em>extremely-understandable</em> lines of code.</p>
+
+<p>Now, NSHipsters are no doubt already familiar with <code>NSPredicate</code> (and if you aren&rsquo;t, be sure to tune in next week!), but if we take a closer look at <code>NSPredicate</code>, we see that <code>NSPredicate</code> is actually made up of smaller, atomic parts: two <code>NSExpression</code>s (a left-hand value &amp; a right-hand value), compared with an operator (e.g. <code>&lt;</code>, <code>IN</code>, <code>LIKE</code>, etc.).</p>
+
+<p>Because most developers only use <code>NSPredicate</code> by means of <code>+predicateWithFormat:</code>, <code>NSExpression</code> is a relatively obscure class. Which is a shame, because <code>NSExpression</code> is quite an incredible piece of functionality in its own right.</p>
+
+<p>So allow me, dear readers, to express my respect and fascination with <code>NSExpression</code>:</p>
+
+<h2 id="evaluating-math">Evaluating Math</h2>
+
+<p>The first thing you should know about <code>NSExpression</code> is that it lives to reduce terms. If you think about the process of evaluating an <code>NSPredicate</code>, there are two terms and a comparator, so those two terms need to simplify into something that the operator can handle—very much like the process of compiling a line of code.</p>
+
+<p>Which leads us to <code>NSExpression</code>&rsquo;s first trick: <strong>doing math</strong>.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">mathExpression</span> <span class="o">=</span> <span class="bp">NSExpression</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="s">&quot;4 + 5 - 2**3&quot;</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">mathValue</span> <span class="o">=</span> <span class="n">mathExpression</span><span class="p">.</span><span class="n">expressionValueWithObject</span><span class="p">(</span><span class="nb">nil</span><span class="p">,</span> <span class="nl">context</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="n">Int</span> 
+<span class="c1">// 1</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSExpression</span> <span class="o">*</span><span class="n">expression</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSExpression</span> <span class="nl">expressionWithFormat</span><span class="p">:</span><span class="s">@&quot;4 + 5 - 2**3&quot;</span><span class="p">];</span>
+<span class="kt">id</span> <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">expression</span> <span class="nl">expressionValueWithObject</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">context</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span> <span class="c1">// =&gt; 1</span>
+</code></pre></div>
+<p>It&rsquo;s no <a href="http://www.wolframalpha.com/input/?i=finn+the+human+like+curve">Wolfram Alpha</a>, but if your app does anything where evaluating mathematical expressions would be useful, well&hellip; there you go.</p>
+
+<h2 id="functions">Functions</h2>
+
+<p>But we&rsquo;ve only just scratched the surface with <code>NSExpression</code>. Not impressed by a computer doing primary-school maths? How about high school statistics, then?</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+<span class="k">let</span> <span class="n">statsExpression</span> <span class="o">=</span> <span class="bp">NSExpression</span><span class="p">(</span><span class="nl">forFunction</span><span class="p">:</span><span class="s">&quot;stddev:&quot;</span><span class="p">,</span> <span class="nl">arguments</span><span class="p">:[</span><span class="bp">NSExpression</span><span class="p">(</span><span class="nl">forConstantValue</span><span class="p">:</span> <span class="n">numbers</span><span class="p">)])</span>
+<span class="k">let</span> <span class="n">statsValue</span> <span class="o">=</span> <span class="n">statsExpression</span><span class="p">.</span><span class="n">expressionValueWithObject</span><span class="p">(</span><span class="nb">nil</span><span class="p">,</span> <span class="nl">context</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="n">Double</span>
+<span class="c1">// 3.21859...</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSArray</span> <span class="o">*</span><span class="n">numbers</span> <span class="o">=</span> <span class="l">@[</span><span class="mi">@1</span><span class="p">,</span> <span class="mi">@2</span><span class="p">,</span> <span class="mi">@3</span><span class="p">,</span> <span class="mi">@4</span><span class="p">,</span> <span class="mi">@4</span><span class="p">,</span> <span class="mi">@5</span><span class="p">,</span> <span class="mi">@9</span><span class="p">,</span> <span class="mi">@11</span><span class="l">]</span><span class="p">;</span>
+<span class="bp">NSExpression</span> <span class="o">*</span><span class="n">expression</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSExpression</span> <span class="nl">expressionForFunction</span><span class="p">:</span><span class="s">@&quot;stddev:&quot;</span> <span class="nl">arguments</span><span class="p">:</span><span class="l">@[</span><span class="p">[</span><span class="bp">NSExpression</span> <span class="nl">expressionForConstantValue</span><span class="p">:</span><span class="n">numbers</span><span class="p">]</span><span class="l">]</span><span class="p">];</span>
+<span class="kt">id</span> <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">expression</span> <span class="nl">expressionValueWithObject</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">context</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span> <span class="c1">// =&gt; 3.21859...</span>
+</code></pre></div>
+<blockquote>
+<p><code>NSExpression</code> functions take a given number of sub-expression arguments. For instance, in the above example, to get the standard deviation of the collection, the array of numbers had to be wrapped with <code>+expressionForConstantValue:</code>. A minor inconvenience (which ultimately allows <code>NSExpression</code> to be incredibly flexible), but enough to trip up anyone trying things out for the first time.</p>
+</blockquote>
+
+<p>If you found the <a href="http://nshipster.com/kvc-collection-operators/">Key-Value Coding Simple Collection Operators</a> (<code>@avg</code>, <code>@sum</code>, et al.) lacking, perhaps <code>NSExpression</code>&rsquo;s built-in statistical, arithmetic, and bitwise functions will pique your interest.</p>
+
+<blockquote>
+<p><strong>A word of caution</strong>: <a href="http://developer.apple.com/library/ios/#documentation/cocoa/reference/foundation/Classes/NSExpression_Class/Reference/NSExpression.html">according to this table in Apple&rsquo;s documentation for <code>NSExpression</code></a>, there is apparently no overlap between the availability of functions between OS X &amp; iOS. It would appear that recent versions of iOS do, indeed, support functions like <code>stddev:</code>, but this is not reflected in headers or documentation. Any details <a href="https://github.com/NSHipster/articles/pulls">in the form of a pull request</a> would be greatly appreciated.</p>
+</blockquote>
+
+<h3 id="statistics">Statistics</h3>
+
+<ul>
+<li><code>average:</code></li>
+<li><code>sum:</code></li>
+<li><code>count:</code></li>
+<li><code>min:</code></li>
+<li><code>max:</code></li>
+<li><code>median:</code></li>
+<li><code>mode:</code></li>
+<li><code>stddev:</code></li>
+</ul>
+
+<h3 id="basic-arithmetic">Basic Arithmetic</h3>
+
+<p>These functions take two <code>NSExpression</code> objects representing numbers.</p>
+
+<ul>
+<li><code>add:to:</code></li>
+<li><code>from:subtract:</code></li>
+<li><code>multiply:by:</code></li>
+<li><code>divide:by:</code></li>
+<li><code>modulus:by:</code></li>
+<li><code>abs:</code></li>
+</ul>
+
+<h3 id="advanced-arithmetic">Advanced Arithmetic</h3>
+
+<ul>
+<li><code>sqrt:</code></li>
+<li><code>log:</code></li>
+<li><code>ln:</code></li>
+<li><code>raise:toPower:</code></li>
+<li><code>exp:</code></li>
+</ul>
+
+<h3 id="bounding-functions">Bounding Functions</h3>
+
+<ul>
+<li><code>ceiling:</code> - <em>(the smallest integral value not less than the value in the array)</em></li>
+<li><code>trunc:</code> - <em>(the integral value nearest to but no greater than the value in the array)</em></li>
+</ul>
+
+<h3 id="functions-shadowing-math.h-functions">Functions Shadowing <code>math.h</code> Functions</h3>
+
+<p>So mentioned, because <code>ceiling</code> is easily confused with <code>ceil(3)</code>. Whereas <code>ceiling</code> acts on an array of numbers, while <code>ceil(3)</code> takes a <code>double</code> (and doesn&rsquo;t have a corresponding built-in <code>NSExpression</code> function). <code>floor:</code> here acts the same as <code>floor(3)</code>.</p>
+
+<ul>
+<li><code>floor:</code></li>
+</ul>
+
+<h3 id="random-functions">Random Functions</h3>
+
+<p>Two variations—one with and one without an argument. Taking no argument, <code>random</code> returns an equivalent of <code>rand(3)</code>, while <code>random:</code> takes a random element from the <code>NSExpression</code> of an array of numbers.</p>
+
+<ul>
+<li><code>random</code></li>
+<li><code>random:</code></li>
+</ul>
+
+<h3 id="binary-arithmetic">Binary Arithmetic</h3>
+
+<ul>
+<li><code>bitwiseAnd:with:</code></li>
+<li><code>bitwiseOr:with:</code></li>
+<li><code>bitwiseXor:with:</code></li>
+<li><code>leftshift:by:</code></li>
+<li><code>rightshift:by:</code></li>
+<li><code>onesComplement:</code></li>
+</ul>
+
+<h3 id="date-functions">Date Functions</h3>
+
+<ul>
+<li><code>now</code></li>
+</ul>
+
+<h3 id="string-functions">String Functions</h3>
+
+<ul>
+<li><code>lowercase:</code></li>
+<li><code>uppercase:</code></li>
+</ul>
+
+<h3 id="no-op">No-op</h3>
+
+<ul>
+<li><code>noindex:</code></li>
+</ul>
+
+<h2 id="custom-functions">Custom Functions</h2>
+
+<p>In addition to these built-in functions, it&rsquo;s possible to invoke custom functions in an <code>NSExpression</code>. <a href="http://funwithobjc.tumblr.com/post/2922267976/using-custom-functions-with-nsexpression">This article by Dave DeLong</a> describes the process.</p>
+
+<p>First, define the corresponding method in a category:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">extension</span> <span class="bp">NSNumber</span> <span class="p">{</span>
+    <span class="k">func</span> <span class="n">factorial</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="bp">NSNumber</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">tgamma</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">doubleValue</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">@interface</span> <span class="bp">NSNumber</span> <span class="nl">(Factorial)</span>
+<span class="p">-</span> <span class="p">(</span><span class="bp">NSNumber</span> <span class="o">*</span><span class="p">)</span><span class="nf">factorial</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="bp">NSNumber</span> <span class="nl">(Factorial)</span>
+<span class="p">-</span> <span class="p">(</span><span class="bp">NSNumber</span> <span class="o">*</span><span class="p">)</span><span class="nf">factorial</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="l">@(</span><span class="n">tgamma</span><span class="p">([</span><span class="nb">self</span> <span class="n">doubleValue</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="l">)</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+</code></pre></div>
+<p>Then, use the function thusly (the <code>FUNCTION()</code> macro in <code>+expressionWithFormat:</code> is shorthand for the process of building out with <code>-expressionForFunction:</code>, et al.):</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">functionExpression</span> <span class="o">=</span> <span class="bp">NSExpression</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span><span class="s">&quot;FUNCTION(4.2, &#39;factorial&#39;)&quot;</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">functionValue</span> <span class="o">=</span> <span class="n">functionExpression</span><span class="p">.</span><span class="n">expressionValueWithObject</span><span class="p">(</span><span class="nb">nil</span><span class="p">,</span> <span class="nl">context</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="n">Double</span>
+<span class="c1">// 32.578...</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSExpression</span> <span class="o">*</span><span class="n">expression</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSExpression</span> <span class="nl">expressionWithFormat</span><span class="p">:</span><span class="s">@&quot;FUNCTION(4.2, &#39;factorial&#39;)&quot;</span><span class="p">];</span>
+<span class="kt">id</span> <span class="n">value</span> <span class="o">=</span> <span class="p">[</span><span class="n">expression</span> <span class="nl">expressionValueWithObject</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">context</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span> <span class="c1">// 32.578...</span>
+</code></pre></div>
+<p>The advantage here, over calling <code>-factorial</code> directly is the ability to invoke the function in an <code>NSPredicate</code> query. For example, a <code>location:withinRadius:</code> method might be defined to easily query managed objects nearby a user&rsquo;s current location.</p>
+
+<p>As Dave mentions in his article, the use cases are rather marginal, but it&rsquo;s certainly an interesting trick to have in your repertoire.</p>
+
+<hr>
+
+<p>Next week, we&rsquo;ll build on what we just learned about <code>NSExpression</code> to further explore <code>NSPredicate</code>, and everything it has hidden up its sleeves. Stay tuned!</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-07-08-nsexpression.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on September 8, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nspredicate/" title="NSPredicate" rel="next">NSPredicate</a>
+            </h1>
+
+            <p>NSPredicate is a Foundation class that specifies how data should be fetched or filtered. Its query language, which is like a cross between a SQL WHERE clause and a regular expression, provides an expressive, natural language interface to define logical conditions on which a collection is searched.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nscharacterset/" title="NSCharacterSet">NSCharacterSet</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsfilemanager/" title="NSFileManager">NSFileManager</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nshashtable-and-nsmaptable/" title="NSHashTable & NSMapTable">NSHashTable & NSMapTable</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nssortdescriptor/" title="NSSortDescriptor">NSSortDescriptor</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

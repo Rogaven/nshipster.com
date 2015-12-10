@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>Core Data Libraries & Utilities - NSHipster</title>
+    <meta name="description" content="We were a bit hard on Core Data last week, so for this issue of NSHipster, we bring you a guided tour of the best open source libraries for working with Core Data. Read on to see how you might make the most from your Core Data experience."/>
+    <link rel="canonical" href="http://nshipster.com/core-data-libraries-and-utilities/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="Core Data Libraries & Utilities"/>
+    <meta name="twitter:description" content="We were a bit hard on Core Data last week, so for this issue of NSHipster, we bring you a guided tour of the best open source libraries for working with Core Data. Read on to see how you might make the most from your Core Data experience."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Core Data Libraries & Utilities"/>
+    <meta property="og:url" content="http://nshipster.com/core-data-libraries-and-utilities/"/>
+    <meta property="og:description" content="We were a bit hard on Core Data last week, so for this issue of NSHipster, we bring you a guided tour of the best open source libraries for working with Core Data. Read on to see how you might make the most from your Core Data experience."/>
+    <meta property="article:published_time" content="2013-05-20T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="open source"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="Core Data Libraries & Utilities"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/core-data-libraries-and-utilities/">Core Data Libraries & Utilities</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-05-20T00:00:00-07:00" itemprop="datePublished">May 20<sup>th</sup>, 2013</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>So let&rsquo;s say that, having determined your particular needs and compared all of the alternatives, you&rsquo;ve chosen <a href="http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html">Core Data</a> for your next app.</p>
+
+<p>Nothing wrong with that! Core Data is a great choice for apps that model, persist, and query large object graphs.</p>
+
+<p>Sure it&rsquo;s complicated, cumbersome, and yes, at times, a real <a href="http://nshipster.com/nscoding#figure-2">pain in the ass</a>—but gosh darn it, some of the best and most popular apps ever built use Core Data. And if it&rsquo;s good enough for them, it&rsquo;s probably good enough for you, too.</p>
+
+<p>&hellip;but that&rsquo;s not to say that Core Data can&rsquo;t be improved.</p>
+
+<p>And while there have been many libraries attempting to replace Core Data, there are many more that attempt to make it better. These libraries range from the much-needed dose of syntactic sugar to comprehensive, full-stack frameworks.</p>
+
+<p>This week on NSHipster: a guided tour of the best open source libraries for working with Core Data. Read on to see how you might make the most from your Core Data experience.</p>
+
+<hr>
+
+<blockquote>
+<p>For your convenience, the following table is provided. Contained within are the most significant open source libraries and utilities for working with Core Data. This list is by no means comprehensive, so if you think something is missing or out of place, please tweet <a href="https://twitter.com/NSHipster">@NSHipster</a>—or better yet, <a href="https://github.com/NSHipster/articles">submit a pull request</a>.</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3">Wrappers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/magicalpanda/MagicalRecord">Magical Record</a></td>
+      <td><a href="https://github.com/casademora">Saul Mora</a></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=magicalpanda&repo=MagicalRecord&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/supermarin/ObjectiveRecord">Objective-Record</a></td>
+      <td><a href="https://github.com/supermarin">Marin Usalj</a></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=supermarin&repo=ObjectiveRecord&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/soffes/SSDataKit">SSDataKit</a></td>
+      <td><a href="https://github.com/soffes">Sam Soffes</a></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=soffes&repo=SSDataKit&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/martydill/ios-queryable">ios-queryable</a></td>
+      <td><a href="https://github.com/martydill">Marty Dill</a></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=martydill&repo=ios-queryable&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/apparentsoft/ReactiveCoreData">ReactiveCoreData</a></td>
+      <td><a href="https://github.com/apparentsoft">Jacob Gorban</a></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=apparentsoft&repo=ReactiveCoreData&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+    </tr>
+  </tbody>
+
+  <thead>
+    <tr>
+      <th colspan="3">Adapters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/RestKit/RestKit">RestKit</a></td>
+      <td><a href="https://github.com/blakewatters">Blake Watters</a></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=RestKit&repo=RestKit&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/AFNetworking/AFIncrementalStore">AFIncrementalStore</a></td>
+      <td><a href="https://github.com/mattt">Mattt Thompson</a></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=AFNetworking&repo=AFIncrementalStore&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/mutualmobile/MMRecord">MMRecord</a></td>
+      <td><a href="https://github.com/cnstoll">Conrad Stoll</a></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=mutualmobile&repo=MMRecord&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/OliverLetterer/SLRESTfulCoreData">SLRESTfulCoreData</a></td>
+      <td><a href="https://github.com/OliverLetterer">Oliver Letterer</a></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=OliverLetterer&repo=SLRESTfulCoreData&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/gonzalezreal/Overcoat">Overcoat</a></td>
+      <td><a href="https://github.com/gonzalezreal">Guillermo Gonzalez</a></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=gonzalezreal&repo=Overcoat&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/Mantle/Mantle">Mantle</a></td>
+      <td><a href="https://github.com/Mantle">Mantle</a></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=Mantle&repo=Mantle&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+    </tr>
+  </tbody>
+
+  <thead>
+    <tr>
+      <th colspan="3">Synchronizers</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/nothirst/TICoreDataSync">TICoreDataSync</a></td>
+      <td><a href="https://github.com/timisted">Tim Isted</a>, <a href="https://github.com/MrRooni">Michael Fey</a>, <a href="https://github.com/kevinhoctor">Kevin Hoctor</a>, <a href="https://github.com/chbeer">Christian Beer</a>, <a href="https://github.com/tonyarnold">Tony Arnold</a>, and <a href="https://github.com/dannygreg">Danny Greg</a></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=nothirst&repo=TICoreDataSync&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+    </tr>
+    <tr>
+      <td><a href="https://github.com/lhunath/UbiquityStoreManager">UbiquityStoreManager</a></td>
+      <td><a href="https://github.com/lhunath">Maarten Billemont</a></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=lhunath&repo=UbiquityStoreManager&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+    </tr>
+  </tbody>
+
+
+  <thead>
+    <tr>
+      <th colspan="3">Utilities</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://github.com/rentzsch/mogenerator">mogenerator</a></td>
+      <td><a href="https://github.com/rentzsch">Jonathan &lsquo;Wolf&rsquo; Rentzsch</a></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=rentzsch&repo=mogenerator&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="wrappers">Wrappers</h2>
+
+<p>Wrapper libraries provide some much needed syntactic sugar and convenience methods to Core Data&rsquo;s verbose and complicated APIs.</p>
+
+<p>For example, to insert a new managed object into a managed object context, it&rsquo;s a class method on, not <code>NSManagedObject</code> or <code>NSManagedObjectContext</code> as one might reasonably expect, but <code>NSEntityDescription</code>. <code>NSEntityDescription +insertNewObjectForEntityForName:inManagedObjectContext:</code>. What?</p>
+
+<p>There are a number of open source libraries that collectively identify and correct for the roughest patches of the Core Data APIs. Managing a main and private context outside of <code>AppDelegate</code>, convenience method for manipulating and querying managed objects, and so on.</p>
+
+<h4 id="ssdatakit"><a href="https://github.com/soffes/SSDataKit">SSDataKit</a></h4>
+
+<blockquote>
+<p>There is a lot of boilerplate code required to write a Core Data application. This is annoying. In pretty much everything I&rsquo;ve written since Core Data came to iOS, I have used the following class.</p>
+</blockquote>
+
+<h3 id="inspired-by-active-record">Inspired by <a href="http://api.rubyonrails.org/classes/ActiveRecord/Base.html">Active Record</a></h3>
+
+<p>It should be no surprise that programmers, having learned how to do things a certain way, will bring those ideas and conventions to other technologies. For the large influx of Ruby developers coming over to iOS, that familiar paradigm was <a href="http://api.rubyonrails.org/classes/ActiveRecord/Base.html">Active Record</a>.</p>
+
+<p>Contrary to popular belief, Core Data is <em>not</em> an <a href="http://en.wikipedia.org/wiki/Object-relational_mapping">Object-Relational Mapper</a>, but rather an object graph and persistence framework, capable of much more than the <a href="http://en.wikipedia.org/wiki/Active_record_pattern">Active Record pattern</a> alone is capable of. Using Core Data as an ORM necessarily limits the capabilities of Core Data and muddies its conceptual purity. But for many developers longing for the familiarity of an ORM, this trade-off is a deal at twice the price!</p>
+
+<h4 id="magical-record"><a href="https://github.com/magicalpanda/MagicalRecord">Magical Record</a></h4>
+
+<blockquote>
+<p>MagicalRecord was inspired by the ease of Ruby on Rails&#39; Active Record fetching. The goals of this code are to clean up Core Data related code, allow for clear, simple, one-line fetches, and still allow the modification of the <code>NSFetchRequest</code> when request optimizations are needed.</p>
+</blockquote>
+
+<h4 id="objectiverecord"><a href="https://github.com/supermarin/ObjectiveRecord">ObjectiveRecord</a></h4>
+
+<blockquote>
+<p>This is a lightweight ActiveRecord way of managing Core Data objects.
+The syntax is borrowed from Ruby on Rails.
+And yeah, no AppDelegate code.
+It&rsquo;s fully tested with <a href="https://github.com/kiwi-bdd/Kiwi">Kiwi</a>.</p>
+</blockquote>
+
+<h3 id="inspired-by-linq">Inspired by <a href="http://en.wikipedia.org/wiki/Language_Integrated_Query">LINQ</a></h3>
+
+<p>Here&rsquo;s a fun game: the next time you meet a developer coming over from the .NET world, set a timer to see how long it takes them to start raving about <a href="http://en.wikipedia.org/wiki/Language_Integrated_Query">LINQ</a>. Seriously, people <em>love</em> LINQ.</p>
+
+<p>For the uninitiated, LINQ is like <a href="http://en.wikipedia.org/wiki/SQL">SQL</a>, but integrated as a language feature. Think <code>NSPredicate</code>, <a href="http://nshipster.com/nssortdescriptor/"><code>NSSortDescriptor</code></a>, and <a href="http://nshipster.com/kvc-collection-operators/"><code>Key-Value Coding</code></a> with a much nicer syntax:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">from c in SomeCollection
+  where c.SomeProperty &lt; 10
+  select new {c.SomeProperty, c.OtherProperty};
+</code></pre></div>
+<h4 id="ios-queryable"><a href="https://github.com/martydill/ios-queryable">ios-queryable</a></h4>
+
+<blockquote>
+<p>ios-queryable supports LINQ-style query composition and deferred execution, and implements a subset of IEnumerable&rsquo;s methods, including <code>where</code>, <code>take</code>, <code>skip</code>, <code>orderBy</code>, <code>first/firstOrDefault</code>, <code>single/singleOrDefault</code>, <code>count</code>, <code>any</code>, and <code>all</code>.</p>
+</blockquote>
+
+<h3 id="inspired-by-reactivecocoa">Inspired by <a href="https://github.com/ReactiveCocoa">ReactiveCocoa</a></h3>
+
+<p>ReactiveCocoa, which itself <a href="http://nshipster.com/reactivecocoa/">brings the functional reactive paradigm to Objective-C</a>, is now being used to bring some functional sanity and order to Core Data. This is still uncharted territory, but the initial results are indeed promising.</p>
+
+<h4 id="reactivecoredata"><a href="https://github.com/apparentsoft/ReactiveCoreData">ReactiveCoreData</a></h4>
+
+<blockquote>
+<p>ReactiveCoreData (RCD) is an attempt to bring Core Data into the ReactiveCocoa (RAC) world.</p>
+</blockquote>
+
+<h2 id="adapters">Adapters</h2>
+
+<p>Most iOS apps communicate with a webservice in some capacity. For apps using Core Data, it&rsquo;s common for records to be fetched, updated, and deleted from a REST or RPC-style webservice. Maintaining consistency between a local cache and the server is a deceptively tricky enterprise.</p>
+
+<p>Keeping objects up-to-date, removing duplicate records, mapping entities to API endpoints, reconciling conflicts, managing network reachability&hellip; these are just some of the challenges a developer faces when creating a robust client-server application.</p>
+
+<p>Fortunately, there are a wealth of open-source libraries that can help alleviate some of this pain.</p>
+
+<h4 id="restkit"><a href="https://github.com/RestKit/RestKit">RestKit</a></h4>
+
+<blockquote>
+<p>RestKit is a modern Objective-C framework for implementing RESTful web services clients on iOS and OS X. It provides a powerful <a href="https://github.com/RestKit/RestKit/wiki/Object-mapping">object mapping</a> engine that seamlessly integrates with <a href="http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html">Core Data</a> and a simple set of networking primitives for mapping HTTP requests and responses built on top of <a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a>. It has an elegant, carefully designed set of APIs that make accessing and modeling RESTful resources feel almost magical.</p>
+</blockquote>
+
+<h4 id="afincrementalstore"><a href="https://github.com/AFNetworking/AFIncrementalStore">AFIncrementalStore</a></h4>
+
+<blockquote>
+<p>AFIncrementalStore is an NSIncrementalStore subclass that uses AFNetworking to automatically request resources as properties and relationships are needed.</p>
+</blockquote>
+
+<h4 id="mmrecord"><a href="https://github.com/mutualmobile/MMRecord">MMRecord</a></h4>
+
+<blockquote>
+<p>MMRecord is a block-based seamless web service integration library for iOS and OS X. It leverages the Core Data model configuration to automatically create and populate a complete object graph from an API response. It works with any networking library, is simple to setup, and includes many popular features that make working with web services even easier.</p>
+</blockquote>
+
+<h4 id="slrestfulcoredata"><a href="https://github.com/OliverLetterer/SLRESTfulCoreData">SLRESTfulCoreData</a></h4>
+
+<blockquote>
+<p><code>SLRESTfulCoreData</code> builds on top of <a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a> and <a href="https://github.com/OliverLetterer/SLCoreDataStack">SLCoreDataStack</a> and let&rsquo;s you map your JSON REST API to your CoreData model in minutes.</p>
+</blockquote>
+
+<h4 id="overcoat"><a href="https://github.com/gonzalezreal/Overcoat">Overcoat</a></h4>
+
+<blockquote>
+<p>Overcoat is an <a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a> extension that makes it super simple for developers to use Mantle model objects with a REST client.</p>
+</blockquote>
+
+<h4 id="mantle"><a href="https://github.com/github/Mantle">Mantle</a></h4>
+
+<blockquote>
+<p>Mantle makes it easy to write a simple model layer for your Cocoa or Cocoa Touch application.</p>
+</blockquote>
+
+<h2 id="synchronizers">Synchronizers</h2>
+
+<p>Whereas adapters synchronize information through an existing, general purpose interface such as REST, synchronizers use a more direct protocol, offering better integration and performance at the expense of portability and generality.</p>
+
+<h3 id="ticoredatasync"><a href="https://github.com/nothirst/TICoreDataSync">TICoreDataSync</a></h3>
+
+<blockquote>
+<p>Automatic synchronization for Core Data Apps, between any combination of OS X and iOS: Mac to iPhone to iPad to iPod touch and back again</p>
+</blockquote>
+
+<h4 id="ubiquitystoremanager"><a href="https://github.com/lhunath/UbiquityStoreManager">UbiquityStoreManager</a></h4>
+
+<blockquote>
+<p>UbiquityStoreManager is a controller that implements iCloud integration with Core Data for you.</p>
+</blockquote>
+
+<h2 id="utilities">Utilities</h2>
+
+<p>We would be remiss to survey the open source Core Data ecosystem without mentioning Mogenerator. Among one of the surviving projects from the pre-iPhone era, Mogenerator has become indispensable to developers over the years. Although much has changed about Core Data over the years, the one constant has been Apple&rsquo;s characteristic lack of comprehensive tooling. Fortunately, Mr. Wolf Rentzsch has us covered.</p>
+
+<h4 id="mogenerator"><a href="https://github.com/rentzsch/mogenerator">Mogenerator</a></h4>
+
+<blockquote>
+<p><code>mogenerator</code> is a command-line tool that, given an <code>.xcdatamodel</code> file, will generate <em>two classes per entity</em>. The first class, <code>_MyEntity</code>, is intended solely for machine consumption and will be continuously overwritten to stay in sync with your data model. The second class, <code>MyEntity</code>, subclasses <code>_MyEntity</code>, won&rsquo;t ever be overwritten and is a great place to put your custom logic.</p>
+</blockquote>
+
+<hr>
+
+<p>Remember: there is no silver bullet. There is no one-size-fits-all solution. Just as Core Data may only be advisable in particular circumstances, so too are the aforementioned Core Data libraries.</p>
+
+<p>Dividing the ecosystem up into broad categories is informative if only to help identify the relative strengths and trade-offs of each library. Only you can determine (yes, sometimes through trial and error) which solution is the best for you.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-05-20-core-data-libraries-and-utilities.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+            <em>This article was last reviewed on August 12, 2015.</em>
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/unit-testing/" title="Unit Testing" rel="next">Unit Testing</a>
+            </h1>
+
+            <p>Unit Testing is an emotional topic for developers. It inspires a sense of superiority to its most zealous adherents, and evokes a feeling of inadequacy to non-practitioners. Cargo Cults like TDD stake their reputation on unit testing to the point of co-opting and conflating utility with morality.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/reactivecocoa/" title="ReactiveCocoa">ReactiveCocoa</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/afnetworking-2/" title="AFNetworking 2.0">AFNetworking 2.0</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/gpuimage/" title="GPUImage">GPUImage</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/alamofire/" title="Alamofire">Alamofire</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>UIAccessibility - NSHipster</title>
+    <meta name="description" content="Accessibility, like internationalization, is one of those topics that's difficult to get developers excited about. But as you know, NSHipster is all about getting developers excited about this kind of stuff."/>
+    <link rel="canonical" href="http://nshipster.com/uiaccessibility/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="UIAccessibility"/>
+    <meta name="twitter:description" content="Accessibility, like internationalization, is one of those topics that&#39;s difficult to get developers excited about. But as you know, NSHipster is all about getting developers excited about this kind of stuff."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="UIAccessibility"/>
+    <meta property="og:url" content="http://nshipster.com/uiaccessibility/"/>
+    <meta property="og:description" content="Accessibility, like internationalization, is one of those topics that&#39;s difficult to get developers excited about. But as you know, NSHipster is all about getting developers excited about this kind of stuff."/>
+    <meta property="article:published_time" content="2012-09-10T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="UIAccessibility"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/uiaccessibility/">UIAccessibility</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2012-09-10T00:00:00-07:00" itemprop="datePublished">September 10<sup>th</sup>, 2012</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <blockquote>
+<p>We all want to help one another, human beings are like that.
+- <a href="http://en.wikiquote.org/wiki/Charlie_Chaplin">Charlie Chaplin</a></p>
+</blockquote>
+
+<p>You know what I wish everyone would copy from Apple? Their assistive technologies.</p>
+
+<p>iPhones and iPads&ndash;magical as they are&ndash;become downright <em>life-changing</em> for individuals with disabilities and their families because of Apple&rsquo;s commitment to accessibility. Look no further than the <a href="http://www.youtube.com/watch?v=MbP_pxR5cMk">WWDC 2012 Introduction Video</a>, which opens with Per Busch, a blind man who walks the woods of Kassel, Germany with the aid of <a href="http://www.ariadnegps.eu">Ariadne GPS</a>. It&rsquo;s a lovely reminder of the kind of impact our work can have on others.</p>
+
+<p>Accessibility, like <a href="http://nshipster.com/nslocale/">internationalization</a>, is one of those topics that&rsquo;s difficult to get developers excited about. But as you know, NSHipster is <em>all about</em> getting developers excited about this kind of stuff. Let&rsquo;s get started:</p>
+
+<hr>
+
+<p><code>UIAccessibility</code> is an informal protocol in <code>UIKit</code> that provides accessibility information about user interface elements. This information is used by VoiceOver and other assistive technologies to help users with disabilities interact with your application.</p>
+
+<p>All of the standard views and controls in UIKit implement <code>UIAccessibility</code>, so applications are accessible by default. As a result, the task of improving the accessibility of your application is one of minor adjustments rather than wholesale re-implementation.</p>
+
+<p>Here&rsquo;s a list of all of the properties in <code>UIAccessibility</code>:</p>
+
+<ul>
+<li><code>accessibilityLabel</code></li>
+<li><code>accessibilityHint</code></li>
+<li><code>accessibilityValue</code></li>
+<li><code>accessibilityLanguage</code></li>
+<li><code>accessibilityTraits</code></li>
+<li><code>accessibilityFrame</code></li>
+<li><code>accessibilityActivationPoint</code></li>
+<li><code>accessibilityElementsHidden</code></li>
+<li><code>accessibilityViewIsModal</code></li>
+</ul>
+
+<h2 id="enabling-accessibility">Enabling Accessibility</h2>
+
+<p>Before we go any further, take a couple minutes to play with VoiceOver, and understand how accessibility information is conveyed to the user. Open the Settings app, tap General, scroll to the bottom and tap Accessibility. In Accessibility, you&rsquo;ll see settings for assistive technologies grouped by category: Vision, Hearing, Learning, and Physical &amp; Motor.</p>
+
+<p>Tap VoiceOver, and then tap the VoiceOver switch to turn it on. An alert will pop up telling you that enabling VoiceOver changes the way you control your device. Dismiss the alert, and now VoiceOver is now enabled on your device.</p>
+
+<p>Don&rsquo;t Panic&ndash;unlike setting your device to another language, there&rsquo;s no real risk of not being able to figure out how to turn VoiceOver off.</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/uiaccessibility-voiceover.png" alt="VoiceOver Settings"></p>
+
+<p>Using the device in VoiceOver mode is a bit different than you&rsquo;re used to:</p>
+
+<ul>
+<li>Tap once to select an item</li>
+<li>Double-Tap to activate the selected item</li>
+<li>Swipe with three fingers to scroll</li>
+</ul>
+
+<p>Press the Home button and start exploring!</p>
+
+<p>You&rsquo;ll notice that all of the stock Apple apps&ndash;Messages, Calendar, Weather&ndash;each is fully-usable in VoiceOver mode. Heck, <em>even Camera is usable</em>, with <a href="http://svan.ca/blog/2012/blind/">VoiceOver telling you where faces are in your camera&rsquo;s viewport</a>!</p>
+
+<p>By contrast (perhaps), try some of the apps you&rsquo;ve downloaded from the App Store. You may be surprised that some (but certainly not all) of the most visually-stunning apps, with all of their custom controls and interactions are completely unusable in this mode.</p>
+
+<p>So now that you have an idea of what you&rsquo;re working with, let&rsquo;s talk about implementation:</p>
+
+<h2 id="label-&amp;-hint">Label &amp; Hint</h2>
+
+<p>If there was just one thing you could do to improve the accessibility of your app, paying attention to accessibility labels and hints of UI elements would be it.</p>
+
+<p>Accessibility labels and hints tell VoiceOver what to say when selecting user interface elements. This information should be helpful, but concise.</p>
+
+<ul>
+<li><strong><code>accessibilityLabel</code></strong> identifies a user interface element. Every accessible view and control <em>must</em> supply a label.</li>
+<li><strong><code>accessibilityHint</code></strong> describes the results of interacting with a user interface element. A hint should be supplied <em>only</em> if the result of an interaction is not obvious from the element&rsquo;s label.</li>
+</ul>
+
+<p>The <a href="http://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/iPhoneAccessibility/Making_Application_Accessible/Making_Application_Accessible.html">Accessibility Programming Guide</a> provides the following guidelines for labels and hints:</p>
+
+<blockquote>
+<h3 id="guidelines-for-creating-labels">Guidelines for Creating Labels</h3>
+
+<p>If you provide a custom control or view, or if you display a custom icon in a standard control or view, you need to provide a label that:</p>
+
+<ul>
+<li><strong>Very briefly describes the element.</strong> Ideally, the label consists of a single word, such as Add, Play, Delete, Search, Favorites, or Volume.</li>
+<li><strong>Does not include the type of the control or view.</strong> The type information is contained in the traits attribute of the element and should never be repeated in the label.</li>
+<li><strong>Begins with a capitalized word.</strong> This helps VoiceOver read the label with the appropriate inflection.</li>
+<li><strong>Does not end with a period.</strong> The label is not a sentence and therefore should not end with a period.</li>
+<li><strong>Is localized.</strong> Be sure to make your application available to as wide an audience as possible by localizing all strings, including accessibility attribute strings. In general, VoiceOver speaks in the language that the user specifies in International settings.</li>
+</ul>
+
+<h3 id="guidelines-for-creating-hints">Guidelines for Creating Hints</h3>
+
+<p>The hint attribute describes the results of performing an action on a control or view. You should provide a hint only when the results of an action are not obvious from the element’s label.</p>
+
+<ul>
+<li><strong>Very briefly describes the results.</strong> Even though few controls and views need hints, strive to make the hints you do need to provide as brief as possible. Doing so decreases the amount of time users must spend listening before they can use the element.</li>
+<li><strong>Begins with a verb and omits the subject.</strong> Be sure to use the third-person singular declarative form of a verb, such as “Plays,” and not the imperative, such as “Play.” You want to avoid using the imperative, because using it can make the hint sound like a command.</li>
+<li><strong>Begins with a capitalized word and ends with a period.</strong> Even though a hint is a phrase, not a sentence, ending the hint with a period helps VoiceOver speak it with the appropriate inflection.</li>
+<li><strong>Does not include the name of the action or gesture.</strong> A hint does not tell users how to perform the action, it tells users what will happen when that action occurs.</li>
+<li><strong>Does not include the name of the control or view.</strong> The user gets this information from the label attribute, so you should not repeat it in the hint.</li>
+<li><strong>Is localized</strong>. As with accessibility labels, hints should be available in the user’s preferred language.</li>
+</ul>
+</blockquote>
+
+<h2 id="traits">Traits</h2>
+
+<p>If you are using custom controls, or have taken liberties with non-standard use of a standard control, you should make sure to specify the correct accessibility traits.</p>
+
+<p>Accessibility traits describe a set of traits that characterize how a control behaves or should be treated. Examples include distinctions like:</p>
+
+<ul>
+<li>Button</li>
+<li>Link</li>
+<li>Search Field</li>
+<li>Keyboard Key</li>
+<li>Static Text</li>
+<li>Image</li>
+<li>Plays Sound</li>
+<li>Selected</li>
+<li>Summary Element</li>
+<li>Updates Frequently</li>
+<li>Causes Page Turn</li>
+<li>Not Enabled</li>
+<li>None</li>
+</ul>
+
+<p>The <code>accessibilityTraits</code> property takes a bitmask of <code>UIAccessibilityTraits</code> values, which can be combined in ways specified in the documentation.</p>
+
+<p>For example, if a custom button control displays an image and plays a sound when tapped, you should define the traits for &ldquo;Button&rdquo;, &ldquo;Image&rdquo;, and &ldquo;Plays Sound&rdquo;. Or, if you were to use a <code>UISlider</code> for purely decorative purposes, you should set the &ldquo;Not Enabled&rdquo; trait.</p>
+
+<h2 id="frame-&amp;-activation-point">Frame &amp; Activation Point</h2>
+
+<p>As a general rule, the cleverness of a custom UI element is directly proportional to how gnarly its implementation is. Overlapping &amp; invisible views, table view hacks, first responder shenanigans: sometimes it&rsquo;s better not to ask how something works.</p>
+
+<p>However, when it comes to accessibility, it&rsquo;s important to set the record straight.</p>
+
+<p><code>accessibilityFrame</code> and <code>accessibilityActivationPoint</code> are used to define the accessible portions and locations of UI elements, without changing their outward appearance.</p>
+
+<p>As you try out your app in VoiceOver mode, try interacting with all of the elements on each screen. If the selection target is not what you expected, you can use <code>accessibilityFrame</code> and <code>accessibilityActivationPoint</code> to adjust accordingly.</p>
+
+<h2 id="value">Value</h2>
+
+<p>Accessibility value corresponds to the content of a user interface element. For a label, the value is its text. For a <code>UISlider</code>, it&rsquo;s the current numeric value represented by the control.</p>
+
+<p>Want to know a quick way to improve the accessibility of your table views? Try setting the <code>accessibilityValue</code> property for cells to be a localized summary of the cell&rsquo;s content. For example, if you had a table view that showed status updates, you might set the <code>accessibilityLabel</code> to &ldquo;Update from #{User Name}&rdquo;, and the <code>accessibilityValue</code> to the content of that status update.</p>
+
+<hr>
+
+<p>Apple has done a great service to humanity in making accessibility a first-class citizen in its hardware and software. You&rsquo;re missing out on some of the best engineering, design, and technical writing that Apple has ever done if you ignore <code>UIAccessibility</code>.</p>
+
+<p>Do yourself a favor and read the <em>excellent</em> <a href="http://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/iPhoneAccessibility/Introduction/Introduction.html">Accessibility Programming Guide for iOS</a>. It only takes an hour or two to get the hang of everything.</p>
+
+<p>Who knows? You may end up changing someone&rsquo;s life because of it.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2012-09-10-uiaccessibility.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+            
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nscharacterset/" title="NSCharacterSet" rel="next">NSCharacter​Set</a>
+            </h1>
+
+            <p>Foundation boasts one of the best, most complete implementations of strings around. But a string implementation is only as good as the programmer who wields it. So this week, we&rsquo;re going to explore some common uses&ndash;and misuses&ndash;of an important part of the Foundation string ecosystem: NSCharacterSet.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/cloudkit/" title="CloudKit">CloudKit</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/uicollectionview/" title="UICollectionView">UICollectionView</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nssortdescriptor/" title="NSSortDescriptor">NSSortDescriptor</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsorderedset/" title="NSOrderedSet">NSOrderedSet</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

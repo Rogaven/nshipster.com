@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>Swift Documentation - NSHipster</title>
+    <meta name="description" content="Code structure and organization is a matter of pride for developers. Clear and consistent code signifies clear and consistent thought. Read on to learn about the recent changes to documentation with Xcode 7 & Swift 2.0."/>
+    <link rel="canonical" href="http://nshipster.com/swift-documentation/"/>
+  
+  
+  
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  
+    <meta name="twitter:title" content="Swift Documentation"/>
+    <meta name="twitter:description" content="Code structure and organization is a matter of pride for developers. Clear and consistent code signifies clear and consistent thought. Read on to learn about the recent changes to documentation with Xcode 7 &amp; Swift 2.0."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Swift Documentation"/>
+    <meta property="og:url" content="http://nshipster.com/swift-documentation/"/>
+    <meta property="og:description" content="Code structure and organization is a matter of pride for developers. Clear and consistent code signifies clear and consistent thought. Read on to learn about the recent changes to documentation with Xcode 7 &amp; Swift 2.0."/>
+    <meta property="article:published_time" content="2015-05-05T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="swift"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="Swift Documentation"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/swift-documentation/">Swift Documentation</a>
+    </h1>
+
+    <h2>
+    
+      Written by 
+      
+          
+          
+          <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a>
+      
+          &
+          
+          <a class="author" href="/authors/nate-cook/">Nate Cook</a>
+      
+      —
+    
+    <time datetime="2015-05-05T00:00:00-07:00" itemprop="datePublished">May 5<sup>th</sup>, 2015</time>
+    
+    (<a href="#revisions">revised</a>)
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Code structure and organization is a matter of pride for developers. Clear and consistent code signifies clear and consistent thought. Even though the compiler lacks a discerning palate when it comes to naming, whitespace, or documentation, it makes all of the difference for human collaborators.</p>
+
+<p>Readers of NSHipster will no doubt remember the <a href="http://nshipster.com/documentation/">article about documentation published last year</a>, but a lot has changed with Xcode 6 (fortunately, for the better, in most cases). So this week, we&rsquo;ll be documenting the here and now of documentation for aspiring Swift developers.</p>
+
+<p>Let&rsquo;s dive in.</p>
+
+<hr>
+
+<p>Since the early 00&rsquo;s, <a href="https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/HeaderDoc/intro/intro.html#//apple_ref/doc/uid/TP40001215-CH345-SW1">Headerdoc</a> has been the documentation standard preferred by Apple. Starting off as little more than a Perl script parsing trumped-up <a href="http://en.wikipedia.org/wiki/Javadoc">Javadoc</a> comments, Headerdoc would eventually be the engine behind Apple&rsquo;s developer documentation online and in Xcode.</p>
+
+<p>With the announcements of WWDC 2014, the developer documentation was overhauled with a sleek new design that could accommodate switching between Swift &amp; Objective-C. (If you&rsquo;ve <a href="https://developer.apple.com/library/prerelease/ios/documentation/HomeKit/Reference/HomeKit_Framework/index.html#//apple_ref/doc/uid/TP40014519">checked out any of the new iOS 8 APIs online</a>, you&rsquo;ve seen this in action)</p>
+
+<p><strong>What really comes as a surprise is that the <em>format of documentation</em> appears to have changed as well.</strong></p>
+
+<p>In the midst of Swift code, Headerdoc comments are not parsed correctly when invoking Quick Documentation (<code>⌥ʘ</code>):</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="cm">/**</span>
+<span class="cm">    Lorem ipsum dolor sit amet.</span>
+
+<span class="cm">    @param bar Consectetur adipisicing elit.</span>
+
+<span class="cm">    @return Sed do eiusmod tempor.</span>
+<span class="cm">*/</span>
+<span class="k">func</span> <span class="n">foo</span><span class="p">(</span><span class="nl">bar</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnyObject</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</code></pre></div>
+<p><img src="http://nshipster.s3.amazonaws.com/swift-documentation-headerdoc.png" alt="Unrecognized Headerdoc"></p>
+
+<p>What <em>is</em> parsed, however, is something markedly different:</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/swift-documentation-new-format.png" alt="New Recognized Format"></p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="cm">/**</span>
+<span class="cm">    Lorem ipsum dolor sit amet.</span>
+
+<span class="cm">    - parameter bar: Consectetur adipisicing elit.</span>
+
+<span class="cm">    - returns: Sed do eiusmod tempor.</span>
+<span class="cm">*/</span>
+<span class="k">func</span> <span class="n">foo</span><span class="p">(</span><span class="nl">bar</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnyObject</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</code></pre></div>
+<p>So what is this not-so-strange new documentation format? After a yearlong sojourn in the lands of <a href="http://docutils.sourceforge.net/docs/user/rst/quickref.html">reStructuredText</a>, Xcode 7 has settled on a Swift-flavored version of <a href="https://daringfireball.net/projects/markdown/">Markdown</a>.</p>
+
+<h4 id="basic-markup">Basic Markup</h4>
+
+<p>Documentation comments are distinguished by using <code>/** ... */</code> for multi-line comments or <code>///</code> for single-line comments. Inside comment blocks, the conventions you&rsquo;ve gotten used to when writing Markdown everywhere else apply: </p>
+
+<ul>
+<li>Paragraphs are separated by blank lines</li>
+<li>Unordered lists can use a variety of bullet characters: <code>-</code>, <code>+</code>, <code>*</code>, <code>•</code></li>
+<li>Ordered lists use Arabic numerals (1, 2, 3, &hellip;) followed by a period <code>1.</code> or right parenthesis <code>1)</code>:</li>
+<li>Headers can be marked with preceding <code>#</code> signs or by underlining with <code>=</code> or <code>-</code>.</li>
+<li>Even <a href="https://daringfireball.net/projects/markdown/syntax#link">links</a> and <a href="https://daringfireball.net/projects/markdown/syntax#img">images</a> work, with web-based images pulled down and displayed directly in Xcode.</li>
+</ul>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="cm">/**</span>
+<span class="cm">    # Lists</span>
+
+<span class="cm">    You can apply *italic*, **bold**, or `code` inline styles.</span>
+
+<span class="cm">    ## Unordered Lists</span>
+
+<span class="cm">    - Lists are great,</span>
+<span class="cm">    - but perhaps don&#39;t nest</span>
+<span class="cm">    - Sub-list formatting</span>
+
+<span class="cm">      - isn&#39;t the best.</span>
+
+<span class="cm">    ## Ordered Lists</span>
+
+<span class="cm">    1. Ordered lists, too</span>
+<span class="cm">    2. for things that are sorted;</span>
+<span class="cm">    3. Arabic numerals</span>
+<span class="cm">    4. are the only kind supported.</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<h4 id="parameters-&amp;-return-values">Parameters &amp; Return Values</h4>
+
+<p>Xcode 7 recognizes and makes separate from a symbol&rsquo;s description a few special fields. The parameters, return value, and a new &ldquo;throws&rdquo; section (to go with Swift 2.0&rsquo;s new <code>throws</code> keyword) are broken out in the Quick Help popover and inspector when styled as a bulleted item followed by a colon (<code>:</code>).</p>
+
+<ul>
+<li><strong>Parameters:</strong> Start the line with <code>Parameter &lt;param name&gt;:</code> and the description of the parameter.</li>
+<li><strong>Return values:</strong> Start the line with <code>Returns:</code> and information about the return value.</li>
+<li><strong>Thrown errors:</strong> Start the line with <code>Throws:</code> and a description of the errors that can be thrown. Since Swift doesn&rsquo;t type-check thrown errors beyond <code>ErrorType</code> conformance, it&rsquo;s especially important to document errors properly.</li>
+</ul>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="cm">/**</span>
+<span class="cm">    Repeats a string `times` times.</span>
+
+<span class="cm">    - Parameter str:   The string to repeat.</span>
+<span class="cm">    - Parameter times: The number of times to repeat `str`.</span>
+
+<span class="cm">    - Throws: `MyError.InvalidTimes` if the `times` parameter </span>
+<span class="cm">        is less than zero.</span>
+
+<span class="cm">    - Returns: A new string with `str` repeated `times` times.</span>
+<span class="cm">*/</span>
+<span class="k">func</span> <span class="n">repeatString</span><span class="p">(</span><span class="nl">str</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">times</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="kr">throws</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+    <span class="kr">guard</span> <span class="n">times</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">{</span> <span class="kr">throw</span> <span class="n">MyError</span><span class="p">.</span><span class="n">InvalidTimes</span> <span class="p">}</span>
+    <span class="k">return</span> <span class="n">Repeat</span><span class="p">(</span><span class="nl">count</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="nl">repeatedValue</span><span class="p">:</span> <span class="s">&quot;Hello&quot;</span><span class="p">).</span><span class="n">joinWithSeparator</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>A longer list of parameters can be broken out into a sublist by using the <code>Parameters:</code> prefix. Simply indent each parameter in a bulleted list below.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">/// Returns the magnitude of a vector in three dimensions</span>
+<span class="c1">/// from the given components.</span>
+<span class="c1">///</span>
+<span class="c1">/// - Parameters:</span>
+<span class="c1">///     - x: The *x* component of the vector.</span>
+<span class="c1">///     - y: The *y* component of the vector.</span>
+<span class="c1">///     - z: The *z* component of the vector.</span>
+<span class="k">func</span> <span class="n">magnitude3D</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="nl">z</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Double</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">pow</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">pow</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="description-fields">Description Fields</h4>
+
+<p>Swift-flavored Markdown includes another set of field headers to break out particular sections of a type or method&rsquo;s description, formatted just as <code>Returns</code> and <code>Throws</code> above. Loosely organized, the recognized headers are:</p>
+
+<ul>
+<li><em>Algorithm/Safety Information:</em> <code>Precondition</code>, <code>Postcondition</code>, <code>Requires</code>, <code>Invariant</code>, <code>Complexity</code>, <code>Important</code>, <code>Warning</code></li>
+<li><em>Metadata</em>: <code>Author</code>, <code>Authors</code>, <code>Copyright</code>, <code>Date</code>, <code>SeeAlso</code>, <code>Since</code>, <code>Version</code></li>
+<li><em>General Notes &amp; Exhortations:</em> <code>Attention</code>, <code>Bug</code>, <code>Experiment</code>, <code>Note</code>, <code>Remark</code>, <code>ToDo</code></li>
+</ul>
+
+<p>No matter which you choose, all fields are rendered as a bold header followed by a block of text:</p>
+
+<blockquote>
+<p><strong>Field Header:</strong><br>
+The text of the subfield is displayed starting on the next line.</p>
+</blockquote>
+
+<h4 id="code-blocks">Code blocks</h4>
+
+<p>Code blocks can be embedded in documentation comments as well, which can be useful for demonstrating proper usage or implementation details. Inset the code block by at least four spaces:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="cm">/**</span>
+<span class="cm">    The area of the `Shape` instance.</span>
+
+<span class="cm">    Computation depends on the shape of the instance. </span>
+<span class="cm">    For a triangle, `area` will be equivalent to:</span>
+
+<span class="cm">        let height = triangle.calculateHeight()</span>
+<span class="cm">        let area = triangle.base * height / 2</span>
+<span class="cm">*/</span>
+<span class="k">var</span> <span class="nl">area</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+</code></pre></div>
+<p>Fenced code blocks are also recognized, with three backticks (<code>\</code><code>) or tildes (</code>~`) marking the beginning and end of a block:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="cm">/**</span>
+<span class="cm">    The perimeter of the `Shape` instance.</span>
+
+<span class="cm">    Computation depends on the shape of the instance, and is</span>
+<span class="cm">    equivalent to: </span>
+
+<span class="cm">    ```</span>
+<span class="cm">    // Circles:</span>
+<span class="cm">    let perimeter = circle.radius * 2 * CGFloat(M_PI)</span>
+
+<span class="cm">    // Other shapes:</span>
+<span class="cm">    let perimeter = shape.sides.map { $0.length }</span>
+<span class="cm">                               .reduce(0, combine: +)</span>
+<span class="cm">    ```</span>
+<span class="cm">*/</span>
+<span class="k">var</span> <span class="nl">perimeter</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+</code></pre></div>
+<h2 id="documentation-is-my-new-bicycle">Documentation Is My New Bicycle</h2>
+
+<p>How does this look when applied to an entire class? Quite nice, actually:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">Foundation</span>
+
+<span class="c1">/// 🚲 A two-wheeled, human-powered mode of transportation.</span>
+<span class="k">class</span> <span class="n">Bicycle</span> <span class="p">{</span>
+    <span class="cm">/**</span>
+<span class="cm">        Frame and construction style.</span>
+
+<span class="cm">        - Road: For streets or trails.</span>
+<span class="cm">        - Touring: For long journeys.</span>
+<span class="cm">        - Cruiser: For casual trips around town.</span>
+<span class="cm">        - Hybrid: For general-purpose transportation.</span>
+<span class="cm">    */</span>
+    <span class="k">enum</span> <span class="n">Style</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="n">Road</span><span class="p">,</span> <span class="n">Touring</span><span class="p">,</span> <span class="n">Cruiser</span><span class="p">,</span> <span class="n">Hybrid</span>
+    <span class="p">}</span>
+
+    <span class="cm">/**</span>
+<span class="cm">        Mechanism for converting pedal power into motion.</span>
+
+<span class="cm">        - Fixed: A single, fixed gear.</span>
+<span class="cm">        - Freewheel: A variable-speed, disengageable gear.</span>
+<span class="cm">    */</span>
+    <span class="k">enum</span> <span class="n">Gearing</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="n">Fixed</span>
+        <span class="k">case</span> <span class="n">Freewheel</span><span class="p">(</span><span class="nl">speeds</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="cm">/**</span>
+<span class="cm">        Hardware used for steering.</span>
+
+<span class="cm">        - Riser: A casual handlebar.</span>
+<span class="cm">        - Café: An upright handlebar.</span>
+<span class="cm">        - Drop: A classic handlebar.</span>
+<span class="cm">        - Bullhorn: A powerful handlebar.</span>
+<span class="cm">    */</span>
+    <span class="k">enum</span> <span class="n">Handlebar</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="n">Riser</span><span class="p">,</span> <span class="n">Caf</span><span class="err">é</span><span class="p">,</span> <span class="n">Drop</span><span class="p">,</span> <span class="n">Bullhorn</span>
+    <span class="p">}</span>
+
+    <span class="c1">/// The style of the bicycle.</span>
+    <span class="k">let</span> <span class="nl">style</span><span class="p">:</span> <span class="n">Style</span>
+
+    <span class="c1">/// The gearing of the bicycle.</span>
+    <span class="k">let</span> <span class="nl">gearing</span><span class="p">:</span> <span class="n">Gearing</span>
+
+    <span class="c1">/// The handlebar of the bicycle.</span>
+    <span class="k">let</span> <span class="nl">handlebar</span><span class="p">:</span> <span class="n">Handlebar</span>
+
+    <span class="c1">/// The size of the frame, in centimeters.</span>
+    <span class="k">let</span> <span class="nl">frameSize</span><span class="p">:</span> <span class="n">Int</span>
+
+    <span class="c1">/// The number of trips travelled by the bicycle.</span>
+    <span class="kr">private</span><span class="p">(</span><span class="kr">set</span><span class="p">)</span> <span class="k">var</span> <span class="nl">numberOfTrips</span><span class="p">:</span> <span class="n">Int</span>
+
+    <span class="c1">/// The total distance travelled by the bicycle, in meters.</span>
+    <span class="kr">private</span><span class="p">(</span><span class="kr">set</span><span class="p">)</span> <span class="k">var</span> <span class="nl">distanceTravelled</span><span class="p">:</span> <span class="n">Double</span>
+
+    <span class="cm">/**</span>
+<span class="cm">        Initializes a new bicycle with the provided parts and specifications.</span>
+
+<span class="cm">        - Parameters:</span>
+<span class="cm">            - style: The style of the bicycle</span>
+<span class="cm">            - gearing: The gearing of the bicycle</span>
+<span class="cm">            - handlebar: The handlebar of the bicycle</span>
+<span class="cm">            - frameSize: The frame size of the bicycle, in centimeters</span>
+
+<span class="cm">        - Returns: A beautiful, brand-new bicycle, custom built</span>
+<span class="cm">          just for you.</span>
+<span class="cm">    */</span>
+    <span class="k">init</span><span class="p">(</span><span class="nl">style</span><span class="p">:</span> <span class="n">Style</span><span class="p">,</span> <span class="nl">gearing</span><span class="p">:</span> <span class="n">Gearing</span><span class="p">,</span> <span class="nl">handlebar</span><span class="p">:</span> <span class="n">Handlebar</span><span class="p">,</span> <span class="n">frameSize</span> <span class="nl">centimeters</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">style</span> <span class="o">=</span> <span class="n">style</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">gearing</span> <span class="o">=</span> <span class="n">gearing</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">handlebar</span> <span class="o">=</span> <span class="n">handlebar</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">frameSize</span> <span class="o">=</span> <span class="n">centimeters</span>
+
+        <span class="nb">self</span><span class="p">.</span><span class="n">numberOfTrips</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">distanceTravelled</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="p">}</span>
+
+    <span class="cm">/**</span>
+<span class="cm">        Take a bike out for a spin.</span>
+
+<span class="cm">        - Parameter meters: The distance to travel in meters.</span>
+<span class="cm">    */</span>
+    <span class="k">func</span> <span class="n">travel</span><span class="p">(</span><span class="n">distance</span> <span class="nl">meters</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">meters</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">{</span>
+            <span class="n">distanceTravelled</span> <span class="o">+=</span> <span class="n">meters</span>
+            <span class="o">++</span><span class="n">numberOfTrips</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Option-click on the <code>Style</code> <code>enum</code> declaration, and the description renders beautifully with a bulleted list:</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/swift-documentation-enum-declaration.png" alt="Swift enum Declaration Documentation"></p>
+
+<p>Open Quick Documentation for the method <code>travel</code>, and the parameter is parsed out into a separate field, as expected:</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/swift-documentation-method-declaration.png" alt="Swift func Declaration Documentation"></p>
+
+<h2 id="mark-/-todo-/-fixme">MARK / TODO / FIXME</h2>
+
+<p>In Objective-C, <a href="http://nshipster.com/pragma/">the pre-processor directive <code>#pragma mark</code></a> is used to divide functionality into meaningful, easy-to-navigate sections. In Swift, there are no pre-processor directives (closest are the similarly-octothorp&rsquo;d <a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/InteractingWithCAPIs.html#//apple_ref/doc/uid/TP40014216-CH8-XID_25">build configurations</a>), but the same can be accomplished with the comment <code>// MARK:</code>.</p>
+
+<p>As of Xcode 6β4, the following comments will be surfaced in the Xcode source navigator:</p>
+
+<ul>
+<li><code>// MARK:</code> <em>(As with <code>#pragma</code>, marks followed by a single dash (<code>-</code>) will be preceded with a horizontal divider)</em></li>
+<li><code>// TODO:</code></li>
+<li><code>// FIXME:</code></li>
+</ul>
+
+<blockquote>
+<p>Other conventional comment tags, such as <code>NOTE</code> and <code>XXX</code> are not recognized by Xcode.</p>
+</blockquote>
+
+<p>To show these new tags in action, here&rsquo;s how the <code>Bicycle</code> class could be extended to adopt the <code>Printable</code> protocol, and implement <code>description</code>.</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/swift-documentation-xcode-source-navigator.png" alt="Xcode 6 Documentation Source Navigator MARK / TODO / FIXME"></p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// MARK: CustomStringConvertible</span>
+
+<span class="k">extension</span> <span class="nl">Bicycle</span><span class="p">:</span> <span class="n">CustomStringConvertible</span> <span class="p">{</span>
+    <span class="kr">public</span> <span class="k">var</span> <span class="nl">description</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="nl">descriptors</span><span class="p">:</span> <span class="p">[</span><span class="n">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">switch</span> <span class="nb">self</span><span class="p">.</span><span class="n">style</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="p">.</span><span class="nl">Road</span><span class="p">:</span>
+            <span class="n">descriptors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;A road bike for streets or trails&quot;</span><span class="p">)</span>
+        <span class="k">case</span> <span class="p">.</span><span class="nl">Touring</span><span class="p">:</span>
+            <span class="n">descriptors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;A touring bike for long journeys&quot;</span><span class="p">)</span>
+        <span class="k">case</span> <span class="p">.</span><span class="nl">Cruiser</span><span class="p">:</span>
+            <span class="n">descriptors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;A cruiser bike for casual trips around town&quot;</span><span class="p">)</span>
+        <span class="k">case</span> <span class="p">.</span><span class="nl">Hybrid</span><span class="p">:</span>
+            <span class="n">descriptors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;A hybrid bike for general-purpose transportation&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="k">switch</span> <span class="nb">self</span><span class="p">.</span><span class="n">gearing</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="p">.</span><span class="nl">Fixed</span><span class="p">:</span>
+            <span class="n">descriptors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;with a single, fixed gear&quot;</span><span class="p">)</span>
+        <span class="k">case</span> <span class="p">.</span><span class="n">Freewheel</span><span class="p">(</span><span class="k">let</span> <span class="n">n</span><span class="p">)</span><span class="o">:</span>
+            <span class="n">descriptors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;with a \(n)-speed freewheel gear&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="k">switch</span> <span class="nb">self</span><span class="p">.</span><span class="n">handlebar</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="p">.</span><span class="nl">Riser</span><span class="p">:</span>
+            <span class="n">descriptors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;and casual, riser handlebars&quot;</span><span class="p">)</span>
+        <span class="k">case</span> <span class="p">.</span><span class="n">Caf</span><span class="err">é</span><span class="o">:</span>
+            <span class="n">descriptors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;and upright, café handlebars&quot;</span><span class="p">)</span>
+        <span class="k">case</span> <span class="p">.</span><span class="nl">Drop</span><span class="p">:</span>
+            <span class="n">descriptors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;and classic, drop handlebars&quot;</span><span class="p">)</span>
+        <span class="k">case</span> <span class="p">.</span><span class="nl">Bullhorn</span><span class="p">:</span>
+            <span class="n">descriptors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;and powerful bullhorn handlebars&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="n">descriptors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;on a \(frameSize)</span><span class="se">\&quot;</span><span class="s"> frame&quot;</span><span class="p">)</span>
+
+        <span class="c1">// FIXME: Use a distance formatter</span>
+        <span class="n">descriptors</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;with a total of \(distanceTravelled) meters traveled over \(numberOfTrips) trips.&quot;</span><span class="p">)</span>
+
+        <span class="c1">// TODO: Allow bikes to be named?</span>
+
+        <span class="k">return</span> <span class="n">descriptors</span><span class="p">.</span><span class="n">joinWithSeparator</span><span class="p">(</span><span class="s">&quot;, &quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Bringing everything together in code:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">bike</span> <span class="o">=</span> <span class="n">Bicycle</span><span class="p">(</span><span class="nl">style</span><span class="p">:</span> <span class="p">.</span><span class="n">Road</span><span class="p">,</span> <span class="nl">gearing</span><span class="p">:</span> <span class="p">.</span><span class="n">Freewheel</span><span class="p">(</span><span class="nl">speeds</span><span class="p">:</span> <span class="mi">8</span><span class="p">),</span> <span class="nl">handlebar</span><span class="p">:</span> <span class="p">.</span><span class="n">Drop</span><span class="p">,</span> <span class="nl">frameSize</span><span class="p">:</span> <span class="mi">53</span><span class="p">)</span>
+
+<span class="n">bike</span><span class="p">.</span><span class="n">travel</span><span class="p">(</span><span class="nl">distance</span><span class="p">:</span> <span class="mi">1</span><span class="n">_500</span><span class="p">)</span> <span class="c1">// Trip around the town</span>
+<span class="n">bike</span><span class="p">.</span><span class="n">travel</span><span class="p">(</span><span class="nl">distance</span><span class="p">:</span> <span class="mi">200</span><span class="p">)</span> <span class="c1">// Trip to the store</span>
+
+<span class="n">print</span><span class="p">(</span><span class="n">bike</span><span class="p">)</span>
+<span class="c1">// &quot;A road bike for streets or trails, with a 8-speed freewheel gear, and classic, drop handlebars, on a 53&quot; frame, with a total of 1700.0 meters traveled over 2 trips.&quot;</span>
+</code></pre></div>
+<h2 id="jazzy">Jazzy</h2>
+
+<p><a href="https://github.com/realm/jazzy">Jazzy</a> is a terrific open-source command-line utility that transforms your project&rsquo;s documentation comments into a set of Apple-like HTML documentation. Jazzy uses Xcode&rsquo;s SourceKitService to read your beautifully written type and method descriptions. Install Jazzy as a gem, then simply run from the root of your project folder.</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ [sudo] gem install jazzy
+$ jazzy
+Running xcodebuild
+Parsing ...
+building site
+jam out ♪♫ to your fresh new docs in `docs`
+</code></pre></div>
+<p><a href="/swift-documentation-example/Classes/Bicycle.html">Take a peek</a> at a Jazzy-generated docset for the <code>Bicycle</code> class.</p>
+
+<hr>
+
+<p>Although the tooling and documentation around Swift is still rapidly evolving, one would be wise to adopt good habits early, by using the new Markdown capabilities for documentation, as well as <code>MARK:</code> comments in Swift code going forward.</p>
+
+<p>Go ahead and add it to your <code>TODO:</code> list.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2015-05-05-swift-documentation.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on September 30, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+        <dt>July 28<sup>th</sup>, 2014</dt>
+        <dd><p>Original publication.</p>
+</dd>
+      
+        <dt>May 5<sup>th</sup>, 2015</dt>
+        <dd><p>Extended detail on supported markup; revised examples.</p>
+</dd>
+      
+        <dt>September 30<sup>th</sup>, 2015</dt>
+        <dd><p>Revised for Xcode 7 &amp; Swift 2.0.</p>
+</dd>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Nate Cook" itemprop="image" src="http://nshipster.s3.amazonaws.com/nate-cook.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/nate-cook/">Nate Cook</a></span>
+
+      <p><a href="http://natecook.com">Nate Cook</a> (<a href="https://twitter.com/nnnnnnnn">@nnnnnnnn</a>) is an independent web and application developer who <a href="http://natecook.com/blog/">writes frequently about topics in Swift</a>, and the creator of <a href="http://swiftdoc.org">SwiftDoc.org</a>.</p>
+
+
+      
+        <a href="https://plus.google.com/?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+        
+
+  <section id="promotion">
+    
+    <small>Recommended Reading</small>
+    
+    
+    
+
+<div id="" class="book" itemscope itemtype="http://schema.org/Product">
+  <div itemscope itemtype="http://schema.org/Book">
+    <link itemprop="bookFormat" href="http://schema.org/EBook"/>
+    <a href="https://gum.co/nshipster-swift/" title="NSHipster: Obscure Topics in Cocoa & Swift" target="_blank">
+      <img src="//cdn.nshipster.com/images/nshipster-swift-cover@2x.png" class="cover" alt="NSHipster: Obscure Topics in Cocoa & Swift" itemprop="image"/>
+    </a>
+    <span itemprop="name" style="display:none;" hidden>NSHipster: Obscure Topics in Cocoa & Swift</span>
+    <span itemprop="author" style="display:none;" hidden>Mattt Thompson & Nate Cook</span>
+    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display:none;">
+      <link itemprop="availability" href="http://schema.org/InStock"/>
+      <meta itemprop="priceCurrency" content="USD"/>
+      <span itemprop="price">29</span>
+    </div>
+  </div>
+</div>
+
+    <h3>NSHipster, Second Edition</h3>
+    <h4>Obscure Topics in Cocoa & Swift</h4>
+    <p>Revised and extended to focus on using Swift in iOS and OS X development, NSHipster: Obscure Topics in Cocoa &amp; Swift is an essential updated guide.</p>
+
+    
+    <a class="buy" href="https://gum.co/nshipster-swift/" target="_blank">Buy Now on Gumroad</a>
+    
+  </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/xcplayground/" title="XCPlayground" rel="next">XCPlayground</a>
+            </h1>
+
+            <p>Playgrounds aren&rsquo;t a feature of the Swift language <em>per se</em>—instead, they are a terrific showcase for all that Swift has to offer, from its efficiency and power to its opacity and depth. Take a look past the surface of Playgrounds, at tools that make them a powerful part of the development process: sources and resources, captured values and extended execution, and integrated rich formatting that can transform a Playground into an interactive teaching tool.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/swift-operators/" title="Swift Operators">Swift Operators</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nscalendarunityear/" title="NSCalendarUnitYear">NSCalendarUnitYear</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/swift-collection-protocols/" title="Swift Collection Protocols">Swift Collection Protocols</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/mirrortype/" title="MirrorType">MirrorType</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

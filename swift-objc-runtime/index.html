@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>Swift & the Objective-C Runtime - NSHipster</title>
+    <meta name="description" content="Even when written without a single line of Objective-C code, every Swift app executes inside the Objective-C runtime, opening up a world of dynamic dispatch and associated runtime manipulation. To be sure, this may not always be the case—Swift-only frameworks, whenever they come, may lead to a Swift-only runtime. But as long as the Objective-C runtime is with us, let's use it to its fullest potential."/>
+    <link rel="canonical" href="http://nshipster.com/swift-objc-runtime/"/>
+  
+  
+  
+  
+  <meta name="author" content="Nate Cook"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@nnnnnnnn"/>
+  
+  
+    <meta name="twitter:title" content="Swift & the Objective-C Runtime"/>
+    <meta name="twitter:description" content="Even when written without a single line of Objective-C code, every Swift app executes inside the Objective-C runtime, opening up a world of dynamic dispatch and associated runtime manipulation. To be sure, this may not always be the case—Swift-only frameworks, whenever they come, may lead to a Swift-only runtime. But as long as the Objective-C runtime is with us, let&#39;s use it to its fullest potential."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Swift & the Objective-C Runtime"/>
+    <meta property="og:url" content="http://nshipster.com/swift-objc-runtime/"/>
+    <meta property="og:description" content="Even when written without a single line of Objective-C code, every Swift app executes inside the Objective-C runtime, opening up a world of dynamic dispatch and associated runtime manipulation. To be sure, this may not always be the case—Swift-only frameworks, whenever they come, may lead to a Swift-only runtime. But as long as the Objective-C runtime is with us, let&#39;s use it to its fullest potential."/>
+    <meta property="article:published_time" content="2015-01-26T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="swift"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="Swift & the Objective-C Runtime"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/swift-objc-runtime/">Swift & the Objective-C Runtime</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/nate-cook/">Nate Cook</a> —
+    
+    <time datetime="2015-01-26T00:00:00-08:00" itemprop="datePublished">January 26<sup>th</sup>, 2015</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Even when written without a single line of Objective-C code, every Swift app executes inside the Objective-C runtime, opening up a world of dynamic dispatch and associated runtime manipulation. To be sure, this may not always be the case—Swift-only frameworks, whenever they come, may lead to a Swift-only runtime. But as long as the Objective-C runtime is with us, let&rsquo;s use it to its fullest potential.</p>
+
+<p>This week we take a new, Swift-focused look at two runtime techniques covered on NSHipster back when Objective-C was the only game in town: <a href="/associated-objects/">associated objects</a> and <a href="/method-swizzling/">method swizzling</a>.</p>
+
+<blockquote>
+<p><em>Note:</em> This post primarily covers the use of these techniques in Swift—for the full run-down, please refer to the original articles.</p>
+</blockquote>
+
+<h2 id="associated-objects">Associated Objects</h2>
+
+<p>Swift extensions allow for great flexibility in adding to the functionality of existing Cocoa classes, but they&rsquo;re limited in the same way as their Objective-C brethren, categories. Namely, you can&rsquo;t add a property to an existing class via an extension.</p>
+
+<p>Happily, Objective-C <em>associated objects</em> come to the rescue. For example, to add a <code>descriptiveName</code> property to all the view controllers in a project, we simply add a computed property using <code>objc_get/setAssociatedObject()</code> in the backing <code>get</code> and <code>set</code> blocks:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">extension</span> <span class="bp">UIViewController</span> <span class="p">{</span>
+    <span class="kr">private</span> <span class="k">struct</span> <span class="n">AssociatedKeys</span> <span class="p">{</span>
+        <span class="k">static</span> <span class="k">var</span> <span class="n">DescriptiveName</span> <span class="o">=</span> <span class="s">&quot;nsh_DescriptiveName&quot;</span>
+    <span class="p">}</span>
+
+    <span class="k">var</span> <span class="nl">descriptiveName</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span> <span class="p">{</span>
+        <span class="kr">get</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="n">objc_getAssociatedObject</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">AssociatedKeys</span><span class="p">.</span><span class="n">DescriptiveName</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="n">String</span>
+        <span class="p">}</span>
+
+        <span class="kr">set</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="k">let</span> <span class="n">newValue</span> <span class="o">=</span> <span class="n">newValue</span> <span class="p">{</span>
+                <span class="n">objc_setAssociatedObject</span><span class="p">(</span>
+                    <span class="nb">self</span><span class="p">,</span>
+                    <span class="o">&amp;</span><span class="n">AssociatedKeys</span><span class="p">.</span><span class="n">DescriptiveName</span><span class="p">,</span>
+                    <span class="n">newValue</span> <span class="kt">as</span> <span class="bp">NSString</span><span class="o">?</span><span class="p">,</span>
+                    <span class="p">.</span><span class="n">OBJC_ASSOCIATION_RETAIN_NONATOMIC</span>
+                <span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Note the use of <code>static var</code> in a private nested <code>struct</code>—this pattern creates the static associated object key we need but doesn&rsquo;t muck up the global namespace.</p>
+</blockquote>
+
+<h2 id="method-swizzling">Method Swizzling</h2>
+
+<p>Sometimes for convenience, sometimes to work around a bug in a framework, or sometimes because there&rsquo;s just no other way, you need to modify the behavior of an existing class&rsquo;s methods. Method swizzling lets you swap the implementations of two methods, essentially overriding an existing method with your own while keeping the original around.</p>
+
+<p>In this example, we swizzle <code>UIViewController</code>&rsquo;s <code>viewWillAppear</code> method to print a message any time a view is about to appear on screen. The swizzling happens in the special class method <code>initialize</code> (see note below); the replacement implementation is in the <code>nsh_viewWillAppear</code> method:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">extension</span> <span class="bp">UIViewController</span> <span class="p">{</span>
+    <span class="kr">public</span> <span class="kr">override</span> <span class="k">class</span> <span class="k">func</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">struct</span> <span class="n">Static</span> <span class="p">{</span>
+            <span class="k">static</span> <span class="k">var</span> <span class="nl">token</span><span class="p">:</span> <span class="kt">dispatch_once_t</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="p">}</span>
+
+        <span class="c1">// make sure this isn&#39;t a subclass</span>
+        <span class="k">if</span> <span class="nb">self</span> <span class="o">!==</span> <span class="bp">UIViewController</span><span class="p">.</span><span class="nb">self</span> <span class="p">{</span>
+            <span class="k">return</span>
+        <span class="p">}</span>
+
+        <span class="n">dispatch_once</span><span class="p">(</span><span class="o">&amp;</span><span class="n">Static</span><span class="p">.</span><span class="n">token</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="n">originalSelector</span> <span class="o">=</span> <span class="n">Selector</span><span class="p">(</span><span class="s">&quot;viewWillAppear:&quot;</span><span class="p">)</span>
+            <span class="k">let</span> <span class="n">swizzledSelector</span> <span class="o">=</span> <span class="n">Selector</span><span class="p">(</span><span class="s">&quot;nsh_viewWillAppear:&quot;</span><span class="p">)</span>
+
+            <span class="k">let</span> <span class="n">originalMethod</span> <span class="o">=</span> <span class="n">class_getInstanceMethod</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="n">originalSelector</span><span class="p">)</span>
+            <span class="k">let</span> <span class="n">swizzledMethod</span> <span class="o">=</span> <span class="n">class_getInstanceMethod</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="n">swizzledSelector</span><span class="p">)</span>
+
+            <span class="k">let</span> <span class="n">didAddMethod</span> <span class="o">=</span> <span class="n">class_addMethod</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="n">originalSelector</span><span class="p">,</span> <span class="n">method_getImplementation</span><span class="p">(</span><span class="n">swizzledMethod</span><span class="p">),</span> <span class="n">method_getTypeEncoding</span><span class="p">(</span><span class="n">swizzledMethod</span><span class="p">))</span>
+
+            <span class="k">if</span> <span class="n">didAddMethod</span> <span class="p">{</span>
+                <span class="n">class_replaceMethod</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="n">swizzledSelector</span><span class="p">,</span> <span class="n">method_getImplementation</span><span class="p">(</span><span class="n">originalMethod</span><span class="p">),</span> <span class="n">method_getTypeEncoding</span><span class="p">(</span><span class="n">originalMethod</span><span class="p">))</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">method_exchangeImplementations</span><span class="p">(</span><span class="n">originalMethod</span><span class="p">,</span> <span class="n">swizzledMethod</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// MARK: - Method Swizzling</span>
+
+    <span class="k">func</span> <span class="n">nsh_viewWillAppear</span><span class="p">(</span><span class="nl">animated</span><span class="p">:</span> <span class="n">Bool</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">nsh_viewWillAppear</span><span class="p">(</span><span class="n">animated</span><span class="p">)</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="n">name</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">descriptiveName</span> <span class="p">{</span>
+            <span class="n">print</span><span class="p">(</span><span class="s">&quot;viewWillAppear: \(name)&quot;</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">print</span><span class="p">(</span><span class="s">&quot;viewWillAppear: \(self)&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="load-vs.-initialize-(swift-edition)">load vs. initialize (Swift Edition)</h3>
+
+<p>The Objective-C runtime typically calls two class methods automatically when loading and initializing classes in your app&rsquo;s process: <code>load</code> and <code>initialize</code>. In the full article on <a href="/method-swizzling/">method swizzling</a>, Mattt writes that swizzling should <em>always</em> be done in <code>load()</code>, for safety and consistency. <code>load</code> is called only once per class and is called on each class that is loaded. On the other hand, a single <code>initialize</code> method can be called on a class and all its subclasses, which are likely to exist for <code>UIViewController</code>, or not called at all if that particular class isn&rsquo;t ever messaged.</p>
+
+<p>Unfortunately, a <code>load</code> class method implemented in Swift is <em>never</em> called by the runtime, rendering that recommendation an impossibility. Instead, we&rsquo;re left to pick among second-choice options:</p>
+
+<ul>
+<li><p><strong>Implement method swizzling in <code>initialize</code></strong><br>
+This can be done safely, so long as you check the type at execution time and wrap the swizzling in <code>dispatch_once</code> (which you should be doing anyway).</p></li>
+<li><p><strong>Implement method swizzling in the app delegate</strong><br>
+Instead of adding method swizzling via a class extension, simply add a method to the app delegate to be executed when <code>application(_:didFinishLaunchingWithOptions:)</code> is called. Depending on the classes you&rsquo;re modifying, this may be sufficient and should guarantee your code is executed every time.</p></li>
+</ul>
+
+<hr>
+
+<p>In closing, remember that tinkering with the Objective-C runtime should be much more of a last resort than a place to start. Modifying the frameworks that your code is based upon, as well as any third-party code you run, is a quick way to destabilize the whole stack. Tread softly!</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2015-01-26-swift-objc-runtime.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on September 19, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Nate Cook" itemprop="image" src="http://nshipster.s3.amazonaws.com/nate-cook.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/nate-cook/">Nate Cook</a></span>
+
+      <p><a href="http://natecook.com">Nate Cook</a> (<a href="https://twitter.com/nnnnnnnn">@nnnnnnnn</a>) is an independent web and application developer who <a href="http://natecook.com/blog/">writes frequently about topics in Swift</a>, and the creator of <a href="http://swiftdoc.org">SwiftDoc.org</a>.</p>
+
+
+      
+        <a href="https://plus.google.com/?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+        
+
+  <section id="promotion">
+    
+    <small>Recommended Reading</small>
+    
+    
+    
+
+<div id="" class="book" itemscope itemtype="http://schema.org/Product">
+  <div itemscope itemtype="http://schema.org/Book">
+    <link itemprop="bookFormat" href="http://schema.org/EBook"/>
+    <a href="https://gum.co/nshipster-swift/" title="NSHipster: Obscure Topics in Cocoa & Swift" target="_blank">
+      <img src="//cdn.nshipster.com/images/nshipster-swift-cover@2x.png" class="cover" alt="NSHipster: Obscure Topics in Cocoa & Swift" itemprop="image"/>
+    </a>
+    <span itemprop="name" style="display:none;" hidden>NSHipster: Obscure Topics in Cocoa & Swift</span>
+    <span itemprop="author" style="display:none;" hidden>Mattt Thompson & Nate Cook</span>
+    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display:none;">
+      <link itemprop="availability" href="http://schema.org/InStock"/>
+      <meta itemprop="priceCurrency" content="USD"/>
+      <span itemprop="price">29</span>
+    </div>
+  </div>
+</div>
+
+    <h3>NSHipster, Second Edition</h3>
+    <h4>Obscure Topics in Cocoa & Swift</h4>
+    <p>Revised and extended to focus on using Swift in iOS and OS X development, NSHipster: Obscure Topics in Cocoa &amp; Swift is an essential updated guide.</p>
+
+    
+    <a class="buy" href="https://gum.co/nshipster-swift/" target="_blank">Buy Now on Gumroad</a>
+    
+  </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/ibinspectable-ibdesignable/" title="IBInspectable&nbsp;/ IBDesignable" rel="next">IBInspectable&nbsp;/ IBDesignable</a>
+            </h1>
+
+            <p>Replacing an interface that requires us to memorize and type with one we can see and manipulate can be a enormous improvement. With <code>IBInspectable</code> and <code>IBDesignable</code>, Xcode 6 makes just such a substitution, building new interactions on top of old technologies.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/swift-documentation/" title="Swift Documentation">Swift Documentation</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/swift-system-version-checking/" title="Swift System Version Checking">Swift System Version Checking</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/unmanaged/" title="Unmanaged">Unmanaged</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/swift-collection-protocols/" title="Swift Collection Protocols">Swift Collection Protocols</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

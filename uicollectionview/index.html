@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>UICollectionView - NSHipster</title>
+    <meta name="description" content="UICollectionView single-handedly changes the way we will design and develop iOS apps from here on out. This is not to say that collection views are in any way unknown or obscure. But being an NSHipster isn't just about knowing obscure gems in the rough. Sometimes, it's about knowing about up-and-comers before they become popular and sell out."/>
+    <link rel="canonical" href="http://nshipster.com/uicollectionview/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="UICollectionView"/>
+    <meta name="twitter:description" content="UICollectionView single-handedly changes the way we will design and develop iOS apps from here on out. This is not to say that collection views are in any way unknown or obscure. But being an NSHipster isn&#39;t just about knowing obscure gems in the rough. Sometimes, it&#39;s about knowing about up-and-comers before they become popular and sell out."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="UICollectionView"/>
+    <meta property="og:url" content="http://nshipster.com/uicollectionview/"/>
+    <meta property="og:description" content="UICollectionView single-handedly changes the way we will design and develop iOS apps from here on out. This is not to say that collection views are in any way unknown or obscure. But being an NSHipster isn&#39;t just about knowing obscure gems in the rough. Sometimes, it&#39;s about knowing about up-and-comers before they become popular and sell out."/>
+    <meta property="article:published_time" content="2012-09-24T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="UICollectionView"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/uicollectionview/">UICollection​View</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2012-09-24T00:00:00-07:00" itemprop="datePublished">September 24<sup>th</sup>, 2012</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p><code>UICollectionView</code> is the new <code>UITableView</code>. It&rsquo;s that important.</p>
+
+<p>This is not to say that collection views are in any way unknown or obscure&ndash;anyone who went to any of the WWDC sessions about it, or got to play with in the iOS 6 beta already know what&rsquo;s up.</p>
+
+<p>Remember, being an NSHipster isn&rsquo;t just about knowing obscure gems in the rough. Sometimes, it&rsquo;s about knowing about up-and-comers before they become popular and sell out. So before everybody else finds out for themselves, here&rsquo;s the skinny on the next big thing:</p>
+
+<hr>
+
+<p><code>UICollectionView</code> takes the familiar patterns of <code>UITableView</code> and generalizes them to make any layout possible (and, in many cases, trivial).</p>
+
+<p>Like <code>UITableView</code>, <code>UICollectionView</code> is a <code>UIScrollView</code> subclass that manages a collection of ordered items. Items are managed by a <em>data source</em>, which provides a representative cell view at a particular index path.</p>
+
+<p>Unlike <code>UITableView</code>, however, <code>UICollectionView</code> is not constrained to a vertical, single-column layout. Instead, a collection view has a <em>layout</em> object, which determines the position of each subview, similar to a data source in some respects. More on that later.</p>
+
+<h3 id="cell-views">Cell Views</h3>
+
+<p>In another departure from the old-school table view way of doing things, the process of recycling views has been significantly improved.</p>
+
+<p>In <code>-tableView:cellForRowAtIndexPath:</code>, a developer had to invoke the familiar incantation:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">identifier</span> <span class="o">=</span> <span class="s">&quot;Cell&quot;</span>
+<span class="k">var</span> <span class="n">cell</span> <span class="o">=</span> <span class="n">tableView</span><span class="p">.</span><span class="n">dequeueReusableCellWithIdentifier</span><span class="p">(</span><span class="n">identifier</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">cell</span> <span class="o">==</span> <span class="nb">nil</span> <span class="p">{</span>
+    <span class="n">cell</span> <span class="o">=</span> <span class="bp">UITableViewCell</span><span class="p">(...)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">UITableViewCell</span> <span class="o">*</span><span class="n">cell</span> <span class="o">=</span> <span class="p">[</span><span class="n">tableView</span> <span class="nl">dequeueReusableCellWithIdentifier</span><span class="p">:...];</span>
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">cell</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">cell</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UITableViewCell</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithStyle</span><span class="p">:...</span> <span class="nl">reuseIdentifier</span><span class="p">:...];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>UICollectionView</code> thankfully does away with this. <code>-dequeueReusableCellWithReuseIdentifier:forIndexPath:</code> is guaranteed to return a valid object, by creating a new cell if there are no cells to reuse. Simply register a <code>UICollectionReusableView</code> subclass for a particular reuse identifier, and everything will work automatically.</p>
+
+<blockquote>
+<p>Thankfully, this behavior has been backported to <code>UITableView</code> as well with iOS 6.</p>
+</blockquote>
+
+<h3 id="supplementary-views">Supplementary Views</h3>
+
+<p>Because collection views aren&rsquo;t relegated to any particular structure, the convention of &ldquo;header&rdquo; and &ldquo;footer&rdquo; views isn&rsquo;t really applicable. So in its place, collection views have <em>supplementary views</em>, which can be associated with each cell.</p>
+
+<p>Each cell can have multiple supplementary views associated with it&ndash;one for each named &ldquo;kind&rdquo;. As such, headers and footers are just the beginning of what can be done with supplementary views.</p>
+
+<p>The whole point is that with supplementary views, even the most complex layout can be accomplished without compromising the semantic integrity of cells. <code>UITableView</code> hacks are to <a href="http://en.wikipedia.org/wiki/Spacer_GIF"><code>spacer.gif</code></a> as <code>UICollectionView</code> cells are to <a href="http://en.wikipedia.org/wiki/Semantic_HTML">semantic HTML</a>.</p>
+
+<h3 id="decoration-views">Decoration Views</h3>
+
+<p>In addition to cell views and supplementary views, collections also have <em>decoration views</em>. A decoration view, as the name implies, is something that without a functional purpose&hellip; other than to perhaps <a href="http://skeu.it">spurn the hatred of anti-skeuomorphic zealots</a> across the interwebs. But really, if you&rsquo;re resigned to imbue your virtual book collection app with immaculately-textured wood-grained shelves, it might as well be easy to do, <em>right</em>?</p>
+
+<p>One thing to remember about decoration views is that they are entirely managed by the layout, unlike cell or supplementary views, which are under the jurisdiction of the collection view data source.</p>
+
+<h2 id="layouts-and-layout-attributes">Layouts and Layout Attributes</h2>
+
+<p>Layouts are at the heart of what makes <code>UICollectionView</code> so magical. Think of them as the CSS to your semantic HTML of collection cells from before.</p>
+
+<p><code>UICollectionViewLayout</code> is an abstract base class for positioning cell views and their supplementary and decoration views. But rather than subclass this directly, most applications will opt to use or subclass <code>UICollectionViewFlowLayout</code>. Flow layouts cover the broad class of layouts with some notion of linearity, whether that&rsquo;s a single row or column or a grid.</p>
+
+<p>Until you&rsquo;re comfortable enough to understand the limitations of flow layouts, it&rsquo;s generally a safe bet to just start with that.</p>
+
+<p>Each cell view, supplemental view, and decoration view have layout attributes. To get an idea of how flexible layouts are, look no further than the properties of an <code>UICollectionViewLayoutAttributes</code> object:</p>
+
+<ul>
+<li><code>frame</code></li>
+<li><code>center</code></li>
+<li><code>size</code></li>
+<li><code>transform3D</code></li>
+<li><code>alpha</code></li>
+<li><code>zIndex</code></li>
+<li><code>hidden</code></li>
+</ul>
+
+<p>Attributes are specified by the kind of delegate methods you might expect:</p>
+
+<ul>
+<li><code>-layoutAttributesForItemAtIndexPath:</code></li>
+<li><code>-layoutAttributesForSupplementaryViewOfKind:atIndexPath:</code></li>
+<li><code>-layoutAttributesForDecorationViewOfKind:atIndexPath:</code></li>
+</ul>
+
+<p>What&rsquo;s <em>extremely</em> cool is this method here:</p>
+
+<ul>
+<li><code>-layoutAttributesForElementsInRect:</code></li>
+</ul>
+
+<p>Using this, you could, for example, fade out items as they approach the edge of the screen. Or, since all of the layout attribute properties are automatically animated, you could create a poor-man&rsquo;s <a href="http://en.wikipedia.org/wiki/Cover_Flow">cover flow</a> layout in just a couple lines of code with the right set of 3D transforms.</p>
+
+<p>In fact, collection views can even swap out layouts wholesale, allowing views to transition seamlessly between different modes&ndash;all without changing the underlying data.</p>
+
+<hr>
+
+<p>Since the introduction of the iPad, there has been a subtle, yet lingering tension between the original UI paradigms of the iPhone, and the demands of this newer, larger form factor. With the iPhone 5 here, and a rumored &ldquo;iPad mini&rdquo; on the way, this tension could have threatened to fracture the entire platform, had it not been for <code>UICollectionView</code> (as well as Auto-Layout).</p>
+
+<p>There are a million ways Apple could (or could not) have provided this kind of functionality, but they really knocked it out of the park with how they designed everything.</p>
+
+<p>The clean, logical separation between data source and layout; the clear division between cell, supplementary, and decoration views; the extensive set of layout attributes that are automatically animated&hellip; a lot of care and wisdom has been put together with these APIs.</p>
+
+<p>As a result, the entire landscape of iOS apps will be forever changed. With collection views, the aesthetic shift that was kicked off with the iPad will explode into an entire re-definition of how we expect apps to look and behave.</p>
+
+<p>Everyone may not be hip to collection views quite yet, but now you&rsquo;ll be able to say that you knew about them before they were cool.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2012-09-24-uicollectionview.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on September 9, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/pragma/" title="#pragma" rel="next">#pragma</a>
+            </h1>
+
+            <p><code>#pragma</code> declarations are a mark of craftsmanship in Objective-C. Although originally purposed for compiling source code across many different compilers, the modern Xcode-savvy programmer uses #pragma declarations to very different ends.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nslocalizedstring/" title="NSLocalizedString">NSLocalizedString</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/mkgeodesicpolyline/" title="MKGeodesicPolyline">MKGeodesicPolyline</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsnotification-and-nsnotificationcenter/" title="NSNotification &<br/>NSNotificationCenter">NSNotification &<br/>NSNotificationCenter</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nserror/" title="NSError">NSError</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

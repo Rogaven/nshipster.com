@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSCalendar Additions - NSHipster</title>
+    <meta name="description" content="`NSCalendar` has been quietly building a powerful set of methods for accessing and manipulating dates. From new ways of accessing individual date components and flexibly comparing dates to powerful date interpolation and enumeration methods, there's far too much to ignore. Make some room in your calendar and read on for more."/>
+    <link rel="canonical" href="http://nshipster.com/nscalendar-additions/"/>
+  
+  
+  
+  
+  <meta name="author" content="Nate Cook"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@nnnnnnnn"/>
+  
+  
+    <meta name="twitter:title" content="NSCalendar Additions"/>
+    <meta name="twitter:description" content="`NSCalendar` has been quietly building a powerful set of methods for accessing and manipulating dates. From new ways of accessing individual date components and flexibly comparing dates to powerful date interpolation and enumeration methods, there&#39;s far too much to ignore. Make some room in your calendar and read on for more."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NSCalendar Additions"/>
+    <meta property="og:url" content="http://nshipster.com/nscalendar-additions/"/>
+    <meta property="og:description" content="`NSCalendar` has been quietly building a powerful set of methods for accessing and manipulating dates. From new ways of accessing individual date components and flexibly comparing dates to powerful date interpolation and enumeration methods, there&#39;s far too much to ignore. Make some room in your calendar and read on for more."/>
+    <meta property="article:published_time" content="2015-03-16T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NSCalendar Additions"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/nscalendar-additions/">NSCalendar Additions</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/nate-cook/">Nate Cook</a> —
+    
+    <time datetime="2015-03-16T00:00:00-07:00" itemprop="datePublished">March 16<sup>th</sup>, 2015</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p><em>Dates.</em> More than any other data type, the gulf between the initial banality of dates and their true, multifaceted complexity looms terrifyingly large. Combining sub-second precision, overlapping units, geopolitical time zone boundaries, localization differences in both language and grammar, and Daylight Saving shifts and leap year adjustments that literally add and remove whole chunks of time from measured existence, there&rsquo;s a lot to process.</p>
+
+<p>To embark on any date-heavy task, then, requires a solid understanding of the tools already at your fingertips. Better to use a <code>Foundation</code> method than to write the <em>n</em>-thousandth version of <code>dateIsTomorrow</code>. Are you using <code>NSDateComponents</code>? Did you specify all the right calendar units? Will your code still work correctly on February 28, 2100?</p>
+
+<p>But here&rsquo;s the thing: the APIs you&rsquo;re already using have been holding out on you. Unless you&rsquo;re digging through release notes and API diffs, you wouldn&rsquo;t know that over the last few releases of OS X, <code>NSCalendar</code> has quietly built a powerful set of methods for accessing and manipulating dates, and that the latest release brought them all to iOS.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">calendar</span> <span class="o">=</span> <span class="bp">NSCalendar</span><span class="p">.</span><span class="n">currentCalendar</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSCalendar</span> <span class="o">*</span><span class="n">calendar</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSCalendar</span> <span class="n">currentCalendar</span><span class="p">];</span>
+</code></pre></div>
+<p>From new ways of accessing individual date components and flexibly comparing dates to powerful date interpolation and enumeration methods, there&rsquo;s far too much to ignore. Make some room in your calendar and read on for more.</p>
+
+<h2 id="convenient-component-access">Convenient Component Access</h2>
+
+<p>Oh, <code>NSDateComponents</code>. So practical and flexible, yet so cumbersome when I just. Want to know. What the hour is. <code>NSCalendar</code> to the rescue!</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">hour</span> <span class="o">=</span> <span class="n">calendar</span><span class="p">.</span><span class="n">component</span><span class="p">(.</span><span class="n">CalendarUnitHour</span><span class="p">,</span> <span class="nl">fromDate</span><span class="p">:</span> <span class="bp">NSDate</span><span class="p">())</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSInteger</span> <span class="n">hour</span> <span class="o">=</span> <span class="p">[</span><span class="n">calendar</span> <span class="nl">component</span><span class="p">:</span><span class="n">NSCalendarUnitHour</span> <span class="nl">fromDate</span><span class="p">:[</span><span class="bp">NSDate</span> <span class="n">date</span><span class="p">]];</span>
+</code></pre></div>
+<p>That&rsquo;s much better. <code>NSCalendar</code>, what else can you do?</p>
+
+<blockquote>
+<ul>
+<li><code>getEra(_:year:month:day:fromDate:)</code>: Returns the era, year, month, and day of the given date by reference. Pass <code>nil</code>/<code>NULL</code> for any parameters you don&rsquo;t need.</li>
+<li><code>getEra(_:yearForWeekOfYear:weekOfYear:weekday:fromDate:)</code>: Returns the era, year (for week of year), week of year, and weekday of the given date by reference. Pass <code>nil</code>/<code>NULL</code> for any parameters you don&rsquo;t need.</li>
+<li><code>getHour(_:minute:second:nanosecond:fromDate:)</code>: Returns time information for the given date by reference. <code>nil</code>/<code>NULL</code>, you get the idea.</li>
+</ul>
+</blockquote>
+
+<p>And just kidding, <code>NSDateComponents</code>, I take it all back. There are a couple methods for you, too:</p>
+
+<blockquote>
+<ul>
+<li><code>componentsInTimeZone(_:fromDate:)</code>: Returns an <code>NSDateComponents</code> instance with components of the given date shifted to the given time zone.</li>
+<li><code>components(_:fromDateComponents:toDateComponents:options:)</code>: Returns the difference between two <code>NSDateComponents</code> instances. The method will use base values for any components that are not set, so provide at the least the year for each parameter. The options parameter is unused; pass <code>nil</code>/<code>0</code>.</li>
+</ul>
+</blockquote>
+
+<h2 id="date-comparison">Date Comparison</h2>
+
+<p>While direct <code>NSDate</code> comparison has always been a simple matter, more meaningful comparisons can get surprisingly complex. Do two <code>NSDate</code> instances fall on the same day? In the same hour? In the same week? </p>
+
+<p>Fret no more, <code>NSCalendar</code> has you covered with an extensive set of comparison methods:</p>
+
+<blockquote>
+<ul>
+<li><code>isDateInToday(_:)</code>: Returns <code>true</code> if the given date is today.</li>
+<li><code>isDateInTomorrow(_:)</code>: Returns <code>true</code> if the given date is tomorrow.</li>
+<li><code>isDateInYesterday(_:)</code>: Returns <code>true</code> if the given date is a part of yesterday.</li>
+<li><code>isDateInWeekend(_:)</code>: Returns <code>true</code> if the given date is part of a weekend, as defined by the calendar.</li>
+<li><code>isDate(_:inSameDayAsDate:)</code>: Returns <code>true</code> if the two <code>NSDate</code> instances are on the same day—delving into date components is unnecessary.</li>
+<li><code>isDate(_:equalToDate:toUnitGranularity:)</code>: Returns <code>true</code> if the dates are identical down to the given unit of granularity. That is, two date instances in the same week would return true if used with <code>calendar.isDate(tuesday, equalToDate: thursday, toUnitGranularity: .CalendarUnitWeekOfYear)</code>, even if they fall in different months.</li>
+<li><code>compareDate(_:toDate:toUnitGranularity:)</code>: Returns an <code>NSComparisonResult</code>, treating as equal any dates that are identical down to the given unit of granularity.</li>
+<li><code>date(_:matchesComponents:)</code>: Returns <code>true</code> if a date matches the specific components given.</li>
+</ul>
+</blockquote>
+
+<h2 id="date-interpolation">Date Interpolation</h2>
+
+<p>Next up is a set of methods that allows you to find the next date(s) based on a starting point. You can find the next (or previous) date based on an <code>NSDateComponents</code> instance, an individual date component, or a specific hour, minute, and second. Each of these methods takes an <code>NSCalendarOptions</code> bitmask parameter that provides fine-grained control over how the next date is selected, particularly in cases where an exact match isn&rsquo;t found at first.</p>
+
+<h3 id="nscalendaroptions"><code>NSCalendarOptions</code></h3>
+
+<p>The easiest option of <code>NSCalendarOptions</code> is <code>.SearchBackwards</code>, which reverses the direction of each search, for all methods. Backward searches are constructed to return dates similar to forward searches. For example, searching backwards for the previous date with an <code>hour</code> of 11 would give you 11:00, not 11:59, even though 11:59 would technically come &ldquo;before&rdquo; 11:00 in a backwards search. Indeed, backward searching is intuitive until you think about it and then unintuitive until you think about it a lot more. That <code>.SearchBackwards</code> is the easy part should give you some idea of what&rsquo;s ahead.</p>
+
+<p>The remainder of the options in <code>NSCalendarOptions</code> help deal with &ldquo;missing&rdquo; time instances. Time can be missing most obviously if one searches in the short window when time leaps an hour forward during a Daylight Saving adjustment, but this behavior can also come into play when searching for dates that don&rsquo;t quite add up, such as the 31st of February or April.</p>
+
+<p>When encountering missing time, if <code>NSCalendarOptions.MatchStrictly</code> is provided, the methods will continue searching to find an <code>exact</code> match for all components given, even if that means skipping past higher order components. Without strict matching invoked, one of <code>.MatchNextTime</code>, <code>.MatchNextTimePreservingSmallerUnits</code>, and <code>.MatchPreviousTimePreservingSmallerUnits</code> must be provided. These options determine how a missing instance of time will be adjusted to compensate for the components in your request. </p>
+
+<p>In this case, an example will be worth a thousand words:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// begin with Valentine&#39;s Day, 2015 at 9:00am</span>
+<span class="k">let</span> <span class="n">valentines</span> <span class="o">=</span> <span class="n">cal</span><span class="p">.</span><span class="n">dateWithEra</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nl">year</span><span class="p">:</span> <span class="mi">2015</span><span class="p">,</span> <span class="nl">month</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nl">day</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span> <span class="nl">hour</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="nl">minute</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">second</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">nanosecond</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span><span class="o">!</span>
+
+<span class="c1">// to find the last day of the month, we&#39;ll set up a date components instance with </span>
+<span class="c1">// `day` set to 31:</span>
+<span class="k">let</span> <span class="n">components</span> <span class="o">=</span> <span class="bp">NSDateComponents</span><span class="p">()</span>
+<span class="n">components</span><span class="p">.</span><span class="n">day</span> <span class="o">=</span> <span class="mi">31</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSDate</span> <span class="o">*</span><span class="n">valentines</span> <span class="o">=</span> <span class="p">[</span><span class="n">calendar</span> <span class="nl">dateWithEra</span><span class="p">:</span><span class="mi">1</span> <span class="nl">year</span><span class="p">:</span><span class="mi">2015</span> <span class="nl">month</span><span class="p">:</span><span class="mi">2</span> <span class="nl">day</span><span class="p">:</span><span class="mi">14</span> <span class="nl">hour</span><span class="p">:</span><span class="mi">9</span> <span class="nl">minute</span><span class="p">:</span><span class="mi">0</span> <span class="nl">second</span><span class="p">:</span><span class="mi">0</span> <span class="nl">nanosecond</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
+
+<span class="bp">NSDateComponents</span> <span class="o">*</span><span class="n">components</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSDateComponents</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="n">components</span><span class="p">.</span><span class="n">day</span> <span class="o">=</span> <span class="mi">31</span><span class="p">;</span>
+</code></pre></div>
+<p>Using strict matching will find the next day that matches <code>31</code>, skipping into March to do so:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">calendar</span><span class="p">.</span><span class="n">nextDateAfterDate</span><span class="p">(</span><span class="n">valentines</span><span class="p">,</span> <span class="nl">matchingComponents</span><span class="p">:</span> <span class="n">components</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">.</span><span class="n">MatchStrictly</span><span class="p">)</span>
+<span class="c1">// Mar 31, 2015, 12:00 AM</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSDate</span> <span class="o">*</span><span class="n">date</span> <span class="o">=</span> <span class="p">[</span><span class="n">calendar</span> <span class="nl">nextDateAfterDate</span><span class="p">:</span><span class="n">valentines</span> <span class="nl">matchingComponents</span><span class="p">:</span><span class="n">components</span> <span class="nl">options</span><span class="p">:</span><span class="n">NSCalendarMatchStrictly</span><span class="p">];</span>
+<span class="c1">// Mar 31, 2015, 12:00 AM</span>
+</code></pre></div>
+<p>Without strict matching, <code>nextDateAfterDate</code> will stop when it hits the end of February before finding a match—recall that the highest unit specified was the day, so the search will only continue <em>within</em> the next highest unit, the month. At that point, the option you&rsquo;ve provided will determine the returned date. For example, using <code>.MatchNextTime</code> will pick the next possible day:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">calendar</span><span class="p">.</span><span class="n">nextDateAfterDate</span><span class="p">(</span><span class="n">valentines</span><span class="p">,</span> <span class="nl">matchingComponents</span><span class="p">:</span> <span class="n">components</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">.</span><span class="n">MatchNextTime</span><span class="p">)</span>
+<span class="c1">// Mar 1, 2015, 12:00 AM</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">date</span> <span class="o">=</span> <span class="p">[</span><span class="n">calendar</span> <span class="nl">nextDateAfterDate</span><span class="p">:</span><span class="n">valentines</span> <span class="nl">matchingComponents</span><span class="p">:</span><span class="n">components</span> <span class="nl">options</span><span class="p">:</span><span class="n">NSCalendarMatchNextTime</span><span class="p">];</span>
+<span class="c1">// Mar 1, 2015, 12:00 AM</span>
+</code></pre></div>
+<p>Similarly, using <code>.MatchNextTimePreservingSmallerUnits</code> will pick the next day, but will also preserve all the units smaller than the given <code>NSCalendarUnitDay</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">calendar</span><span class="p">.</span><span class="n">nextDateAfterDate</span><span class="p">(</span><span class="n">valentines</span><span class="p">,</span> <span class="nl">matchingComponents</span><span class="p">:</span> <span class="n">components</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">.</span><span class="n">MatchNextTimePreservingSmallerUnits</span><span class="p">)</span>
+<span class="c1">// Mar 1, 2015, 9:00 AM</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">date</span> <span class="o">=</span> <span class="p">[</span><span class="n">calendar</span> <span class="nl">nextDateAfterDate</span><span class="p">:</span><span class="n">valentines</span> <span class="nl">matchingComponents</span><span class="p">:</span><span class="n">components</span> <span class="nl">options</span><span class="p">:</span><span class="n">NSCalendarMatchNextTimePreservingSmallerUnits</span><span class="p">];</span>
+<span class="c1">// Mar 1, 2015, 9:00 AM</span>
+</code></pre></div>
+<p>And finally, using <code>.MatchPreviousTimePreservingSmallerUnits</code> will resolve the missing date by going the <em>other</em> direction, choosing the first possible previous day, again preserving the smaller units:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">calendar</span><span class="p">.</span><span class="n">nextDateAfterDate</span><span class="p">(</span><span class="n">valentines</span><span class="p">,</span> <span class="nl">matchingComponents</span><span class="p">:</span> <span class="n">components</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">.</span><span class="n">MatchPreviousTimePreservingSmallerUnits</span><span class="p">)</span>
+<span class="c1">// Feb 28, 2015, 9:00 AM</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">date</span> <span class="o">=</span> <span class="p">[</span><span class="n">calendar</span> <span class="nl">nextDateAfterDate</span><span class="p">:</span><span class="n">valentines</span> <span class="nl">matchingComponents</span><span class="p">:</span><span class="n">components</span> <span class="nl">options</span><span class="p">:</span><span class="n">NSCalendarMatchPreviousTimePreservingSmallerUnits</span><span class="p">];</span>
+<span class="c1">// Feb 28, 2015, 9:00 AM</span>
+</code></pre></div>
+<p>Besides the <code>NDateComponents</code> version shown here, it&rsquo;s worth noting that <code>nextDateAfterDate</code> has two other variations:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// matching a particular calendar unit</span>
+<span class="n">cal</span><span class="p">.</span><span class="n">nextDateAfterDate</span><span class="p">(</span><span class="n">valentines</span><span class="p">,</span> <span class="nl">matchingUnit</span><span class="p">:</span> <span class="p">.</span><span class="n">CalendarUnitDay</span><span class="p">,</span> <span class="nl">value</span><span class="p">:</span> <span class="mi">31</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">.</span><span class="n">MatchStrictly</span><span class="p">)</span>
+<span class="c1">// March 31, 2015, 12:00 AM</span>
+
+<span class="c1">// matching an hour, minute, and second</span>
+<span class="n">cal</span><span class="p">.</span><span class="n">nextDateAfterDate</span><span class="p">(</span><span class="n">valentines</span><span class="p">,</span> <span class="nl">matchingHour</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="nl">minute</span><span class="p">:</span> <span class="mi">30</span><span class="p">,</span> <span class="nl">second</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">.</span><span class="n">MatchNextTime</span><span class="p">)</span>
+<span class="c1">// Feb 14, 2015, 3:30 PM</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="c1">// matching a particular calendar unit</span>
+<span class="n">date</span> <span class="o">=</span> <span class="p">[</span><span class="n">calendar</span> <span class="nl">nextDateAfterDate</span><span class="p">:</span><span class="n">valentines</span> <span class="nl">matchingUnit</span><span class="p">:</span><span class="n">NSCalendarUnitDay</span> <span class="nl">value</span><span class="p">:</span><span class="mi">31</span> <span class="nl">options</span><span class="p">:</span><span class="n">NSCalendarMatchStrictly</span><span class="p">];</span>
+<span class="c1">// March 31, 2015, 12:00 AM</span>
+
+<span class="c1">// matching an hour, minute, and second</span>
+<span class="n">date</span> <span class="o">=</span> <span class="p">[</span><span class="n">calendar</span> <span class="nl">nextDateAfterDate</span><span class="p">:</span><span class="n">valentines</span> <span class="nl">matchingHour</span><span class="p">:</span><span class="mi">15</span> <span class="nl">minute</span><span class="p">:</span><span class="mi">30</span> <span class="nl">second</span><span class="p">:</span><span class="mi">0</span> <span class="nl">options</span><span class="p">:</span><span class="n">NSCalendarMatchNextTime</span><span class="p">];</span>
+<span class="c1">// Feb 14, 2015, 3:30 PM</span>
+</code></pre></div>
+<h3 id="enumerating-interpolated-dates">Enumerating Interpolated Dates</h3>
+
+<p>Rather than using <code>nextDateAfterDate</code> iteratively, <code>NSCalendar</code> provides an API for enumerating dates with the same semantics. <code>enumerateDatesStartingAfterDate(_:matchingComponents:options:usingBlock:)</code> computes the dates that match the given set of components and options, calling the provided closure with each date in turn. The closure can set the <code>stop</code> parameter to <code>true</code>, thereby stopping the enumeration. </p>
+
+<p>Putting this new <code>NSCalendarOptions</code> knowledge to use, here&rsquo;s one way to list the last fifty leap days:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">leapYearComponents</span> <span class="o">=</span> <span class="bp">NSDateComponents</span><span class="p">()</span>
+<span class="n">leapYearComponents</span><span class="p">.</span><span class="n">month</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">leapYearComponents</span><span class="p">.</span><span class="n">day</span> <span class="o">=</span> <span class="mi">29</span>
+
+<span class="k">var</span> <span class="n">dateCount</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">cal</span><span class="p">.</span><span class="n">enumerateDatesStartingAfterDate</span><span class="p">(</span><span class="bp">NSDate</span><span class="p">(),</span> <span class="nl">matchingComponents</span><span class="p">:</span> <span class="n">leapYearComponents</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">.</span><span class="n">MatchStrictly</span> <span class="o">|</span> <span class="p">.</span><span class="n">SearchBackwards</span><span class="p">)</span> 
+<span class="p">{</span> <span class="p">(</span><span class="nl">date</span><span class="p">:</span> <span class="bp">NSDate</span><span class="o">!</span><span class="p">,</span> <span class="nl">exactMatch</span><span class="p">:</span> <span class="n">Bool</span><span class="p">,</span> <span class="nl">stop</span><span class="p">:</span> <span class="n">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="n">ObjCBool</span><span class="o">&gt;</span><span class="p">)</span> <span class="k">in</span>
+    <span class="n">println</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="o">++</span><span class="n">dateCount</span> <span class="o">==</span> <span class="mi">50</span> <span class="p">{</span>
+        <span class="c1">// .memory gets at the value of an UnsafeMutablePointer</span>
+        <span class="n">stop</span><span class="p">.</span><span class="n">memory</span> <span class="o">=</span> <span class="nb">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// 2012-02-29 05:00:00 +0000</span>
+<span class="c1">// 2008-02-29 05:00:00 +0000</span>
+<span class="c1">// 2004-02-29 05:00:00 +0000</span>
+<span class="c1">// 2000-02-29 05:00:00 +0000</span>
+<span class="c1">// ...</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSDateComponents</span> <span class="o">*</span><span class="n">leapYearComponents</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSDateComponents</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="n">leapYearComponents</span><span class="p">.</span><span class="n">month</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">leapYearComponents</span><span class="p">.</span><span class="n">day</span> <span class="o">=</span> <span class="mi">29</span><span class="p">;</span>
+
+<span class="k">__block</span> <span class="kt">int</span> <span class="n">dateCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">[</span><span class="n">calendar</span> <span class="nl">enumerateDatesStartingAfterDate</span><span class="p">:[</span><span class="bp">NSDate</span> <span class="n">date</span><span class="p">]</span>
+                      <span class="nl">matchingComponents</span><span class="p">:</span><span class="n">leapYearComponents</span>
+                                 <span class="nl">options</span><span class="p">:</span><span class="n">NSCalendarMatchStrictly</span> <span class="o">|</span> <span class="n">NSCalendarSearchBackwards</span>
+                              <span class="nl">usingBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSDate</span> <span class="o">*</span><span class="n">date</span><span class="p">,</span> <span class="kt">BOOL</span> <span class="n">exactMatch</span><span class="p">,</span> <span class="kt">BOOL</span> <span class="o">*</span><span class="n">stop</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">date</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">++</span><span class="n">dateCount</span> <span class="o">==</span> <span class="mi">50</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">*</span><span class="n">stop</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}];</span>
+<span class="c1">// 2012-02-29 05:00:00 +0000</span>
+<span class="c1">// 2008-02-29 05:00:00 +0000</span>
+<span class="c1">// 2004-02-29 05:00:00 +0000</span>
+<span class="c1">// 2000-02-29 05:00:00 +0000</span>
+<span class="c1">// ...</span>
+</code></pre></div>
+<h3 id="working-for-the-weekend">Working for the Weekend</h3>
+
+<p>If you&rsquo;re always looking forward to the weekend, look no further than our final two <code>NSCalendar</code> methods:</p>
+
+<blockquote>
+<ul>
+<li><code>nextWeekendStartDate(_:interval:options:afterDate)</code>: Returns the starting date and length of the next weekend by reference via the first two parameters. This method will return false if the current calendar or locale doesn&rsquo;t support weekends. The only relevant option here is <code>.SearchBackwards</code>. (See below for an example.)</li>
+<li><code>rangeOfWeekendStartDate(_:interval:containingDate)</code>: Returns the starting date and length of the weekend <em>containing</em> the given date by reference via the first two parameters. This method returns false if the given date is not in fact on a weekend or if the current calendar or locale doesn&rsquo;t support weekends.</li>
+</ul>
+</blockquote>
+
+<h2 id="localized-calendar-symbols">Localized Calendar Symbols</h2>
+
+<p>As if all that new functionality wasn&rsquo;t enough, <code>NSCalendar</code> also provides access to a full set of properly localized calendar symbols, making possible quick access to the names of months, days of the week, and more. Each group of symbols is further enumerated along two axes: (1) the length of the symbol and (2) its use as a standalone noun or as part of a date. </p>
+
+<p>Understanding this second attribute is extremely important for localization, since some languages, Slavic languages in particular, use different noun cases for different contexts. For example, a calendar would need to use one of the <code>standaloneMonthSymbols</code> variants for its headers, not the <code>monthSymbols</code> that are used for formatting specific dates.</p>
+
+<p>For your perusal, here&rsquo;s a table of all the symbols that are available in <code>NSCalendar</code>—note the different values for standalone symbols in the Russian column:</p>
+
+<table><thead>
+<tr>
+<th>&nbsp;</th>
+<th>en_US</th>
+<th>ru_RU</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>monthSymbols</code></td>
+<td>January, February, March…</td>
+<td>января, февраля, марта…</td>
+</tr>
+<tr>
+<td><code>shortMonthSymbols</code></td>
+<td>Jan, Feb, Mar…</td>
+<td>янв., февр., марта…</td>
+</tr>
+<tr>
+<td><code>veryShortMonthSymbols</code></td>
+<td>J, F, M, A…</td>
+<td>Я, Ф, М, А…</td>
+</tr>
+<tr>
+<td><code>standaloneMonthSymbols</code></td>
+<td>January, February, March…</td>
+<td>Январь, Февраль, Март…</td>
+</tr>
+<tr>
+<td><code>shortStandaloneMonthSymbols</code></td>
+<td>Jan, Feb, Mar…</td>
+<td>Янв., Февр., Март…</td>
+</tr>
+<tr>
+<td><code>veryShortStandaloneMonthSymbols</code></td>
+<td>J, F, M, A…</td>
+<td>Я, Ф, М, А…</td>
+</tr>
+<tr>
+<td><code>weekdaySymbols</code></td>
+<td>Sunday, Monday, Tuesday, Wednesday…</td>
+<td>воскресенье, понедельник, вторник, среда…</td>
+</tr>
+<tr>
+<td><code>shortWeekdaySymbols</code></td>
+<td>Sun, Mon, Tue, Wed…</td>
+<td>вс, пн, вт, ср…</td>
+</tr>
+<tr>
+<td><code>veryShortWeekdaySymbols</code></td>
+<td>S, M, T, W…</td>
+<td>вс, пн, вт, ср…</td>
+</tr>
+<tr>
+<td><code>standaloneWeekdaySymbols</code></td>
+<td>Sunday, Monday, Tuesday, Wednesday…</td>
+<td>Воскресенье, Понедельник, Вторник, Среда…</td>
+</tr>
+<tr>
+<td><code>shortStandaloneWeekdaySymbols</code></td>
+<td>Sun, Mon, Tue, Wed…</td>
+<td>Вс, Пн, Вт, Ср…</td>
+</tr>
+<tr>
+<td><code>veryShortStandaloneWeekdaySymbols</code></td>
+<td>S, M, T, W…</td>
+<td>В, П, В, С…</td>
+</tr>
+<tr>
+<td><code>AMSymbol</code></td>
+<td>AM</td>
+<td>AM</td>
+</tr>
+<tr>
+<td><code>PMSymbol</code></td>
+<td>PM</td>
+<td>PM</td>
+</tr>
+<tr>
+<td><code>quarterSymbols</code></td>
+<td>1st quarter, 2nd quarter, 3rd quarter, 4th quarter</td>
+<td>1-й квартал, 2-й квартал, 3-й квартал, 4-й квартал</td>
+</tr>
+<tr>
+<td><code>shortQuarterSymbols</code></td>
+<td>Q1, Q2, Q3, Q4</td>
+<td>1-й кв., 2-й кв., 3-й кв., 4-й кв.</td>
+</tr>
+<tr>
+<td><code>standaloneQuarterSymbols</code></td>
+<td>1st quarter, 2nd quarter, 3rd quarter, 4th quarter</td>
+<td>1-й квартал, 2-й квартал, 3-й квартал, 4-й квартал</td>
+</tr>
+<tr>
+<td><code>shortStandaloneQuarterSymbols</code></td>
+<td>Q1, Q2, Q3, Q4</td>
+<td>1-й кв., 2-й кв., 3-й кв., 4-й кв.</td>
+</tr>
+<tr>
+<td><code>eraSymbols</code></td>
+<td>BC, AD</td>
+<td>до н. э., н. э.</td>
+</tr>
+<tr>
+<td><code>longEraSymbols</code></td>
+<td>Before Christ, Anno Domini</td>
+<td>до н.э., н.э.</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p><em>Note:</em> These same collections are also available via <code>NSDateFormatter</code>.</p>
+</blockquote>
+
+<h2 id="your-weekly-swiftification">Your Weekly Swiftification</h2>
+
+<p>It&rsquo;s becoming something of a feature here at NSHipster to close with a slightly Swift-ified version of the discussed API. Even in this brand-new set of <code>NSCalendar</code> APIs, there are some sharp edges to be rounded off, replacing <code>UnsafeMutablePointer</code> parameters with more idiomatic tuple return values. </p>
+
+<p>With a useful set of <code>NSCalendar</code> extensions (<a href="https://gist.github.com/natecook1000/43976a66fa04e3fdb3c7">gist here</a>), the component accessing and weekend finding methods can be used without in-out variables. For example, getting individual date components from a date is much simpler:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// built-in</span>
+<span class="k">var</span> <span class="n">hour</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">var</span> <span class="n">minute</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">calendar</span><span class="p">.</span><span class="n">getHour</span><span class="p">(</span><span class="o">&amp;</span><span class="n">hour</span><span class="p">,</span> <span class="nl">minute</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">minute</span><span class="p">,</span> <span class="nl">second</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">nanosecond</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">fromDate</span><span class="p">:</span> <span class="bp">NSDate</span><span class="p">())</span>
+
+<span class="c1">// swiftified</span>
+<span class="k">let</span> <span class="p">(</span><span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="o">=</span> <span class="n">calendar</span><span class="p">.</span><span class="n">getTimeFromDate</span><span class="p">(</span><span class="bp">NSDate</span><span class="p">())</span>
+</code></pre></div>
+<p>As is fetching the range of the next weekend:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// built-in</span>
+<span class="k">var</span> <span class="nl">startDate</span><span class="p">:</span> <span class="bp">NSDate</span><span class="o">?</span>
+<span class="k">var</span> <span class="nl">interval</span><span class="p">:</span> <span class="n">NSTimeInterval</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">let</span> <span class="n">success</span> <span class="o">=</span> <span class="n">cal</span><span class="p">.</span><span class="n">nextWeekendStartDate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">startDate</span><span class="p">,</span> <span class="nl">interval</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">interval</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">afterDate</span><span class="p">:</span> <span class="bp">NSDate</span><span class="p">())</span>
+<span class="k">if</span> <span class="n">success</span><span class="p">,</span> <span class="k">let</span> <span class="n">startDate</span> <span class="o">=</span> <span class="n">startDate</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">&quot;start: \(startDate), interval: \(interval)&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// swiftified</span>
+<span class="k">if</span> <span class="k">let</span> <span class="n">nextWeekend</span> <span class="o">=</span> <span class="n">cal</span><span class="p">.</span><span class="n">nextWeekendAfterDate</span><span class="p">(</span><span class="bp">NSDate</span><span class="p">())</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">&quot;start: \(nextWeekend.startDate), interval: \(nextWeekend.interval)&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<p>So take <em>that</em>, complicated calendrical math. With these new additions to <code>NSCalendar</code>, you&rsquo;ll have your problems sorted out in no time.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2015-03-16-nscalendar-additions.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 1.2.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Nate Cook" itemprop="image" src="http://nshipster.s3.amazonaws.com/nate-cook.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/nate-cook/">Nate Cook</a></span>
+
+      <p><a href="http://natecook.com">Nate Cook</a> (<a href="https://twitter.com/nnnnnnnn">@nnnnnnnn</a>) is an independent web and application developer who <a href="http://natecook.com/blog/">writes frequently about topics in Swift</a>, and the creator of <a href="http://swiftdoc.org">SwiftDoc.org</a>.</p>
+
+
+      
+        <a href="https://plus.google.com/?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/quick-look-debugging/" title="Quick Look Debugging" rel="next">Quick Look Debugging</a>
+            </h1>
+
+            <p>Debugging can be an exercise in irony. We create programs that tell our pint-sized supercomputers to complete infinitely varied and incalculable tasks on our behalf, yet when trying to understand those same programs, we tell the computers to wait for <em>us.</em></p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/uikeycommand/" title="UIKeyCommand">UIKeyCommand</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/search-kit/" title="Search Kit">Search Kit</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsincrementalstore/" title="NSIncrementalStore">NSIncrementalStore</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/uiprintinteractioncontroller/" title="UIPrintInteractionController">UIPrintInteractionController</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSIncrementalStore - NSHipster</title>
+    <meta name="description" content="Even for a blog dedicated to obscure APIs, `NSIncrementalStore` sets a new standard. It was introduced in iOS 5, with no more fanfare than the requisite entry in the SDK changelog. Ironically, it is arguably the most important thing to come out of iOS 5, which will completely change the way we build apps from here on out."/>
+    <link rel="canonical" href="http://nshipster.com/nsincrementalstore/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="NSIncrementalStore"/>
+    <meta name="twitter:description" content="Even for a blog dedicated to obscure APIs, `NSIncrementalStore` sets a new standard. It was introduced in iOS 5, with no more fanfare than the requisite entry in the SDK changelog. Ironically, it is arguably the most important thing to come out of iOS 5, which will completely change the way we build apps from here on out."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NSIncrementalStore"/>
+    <meta property="og:url" content="http://nshipster.com/nsincrementalstore/"/>
+    <meta property="og:description" content="Even for a blog dedicated to obscure APIs, `NSIncrementalStore` sets a new standard. It was introduced in iOS 5, with no more fanfare than the requisite entry in the SDK changelog. Ironically, it is arguably the most important thing to come out of iOS 5, which will completely change the way we build apps from here on out."/>
+    <meta property="article:published_time" content="2012-08-13T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NSIncrementalStore"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/nsincrementalstore/">NSIncremental​Store</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2012-08-13T00:00:00-07:00" itemprop="datePublished">August 13<sup>th</sup>, 2012</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Even for a blog dedicated to obscure APIs, <code>NSIncrementalStore</code> brings a new meaning to the word &ldquo;obscure&rdquo;.</p>
+
+<p>It was introduced in iOS 5, with no more fanfare than the requisite entry in the SDK changelog.</p>
+
+<p>Its <a href="https://developer.apple.com/library/mac/#documentation/DataManagement/Conceptual/IncrementalStorePG/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010706">programming guide</a> weighs in at a paltry 82 words, making it the shortest by an order of magnitude.</p>
+
+<p>If it weren&rsquo;t for an offhand remark during <a href="https://deimos.apple.com/WebObjects/Core.woa/BrowsePrivately/adc.apple.com.8266478284.08266478290.8365294535?i=2068798830">WWDC 2011 Session 303</a>, it may have gone completely unnoticed.</p>
+
+<p>And yet, <code>NSIncrementalStore</code> is arguably the most important thing to come out of iOS 5.</p>
+
+<h2 id="at-last,-a-foothold-into-core-data">At Last, A Foothold Into Core Data</h2>
+
+<p><code>NSIncrementalStore</code> is an abstract subclass of <code>NSPersistentStore</code> designed to &ldquo;create persistent stores which load and save data incrementally, allowing for the management of large and/or shared datasets&rdquo;. And while that may not sound like much, consider that nearly all of the database adapters we rely on load incrementally from large, shared data stores. What we have here is a goddamned miracle.</p>
+
+<p>For those of you not as well-versed in Core Data, here&rsquo;s some background:</p>
+
+<p><a href="http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html">Core Data</a> is Apple&rsquo;s framework for object relational mapping. It&rsquo;s used in at least half of all of the first-party apps on Mac and iOS, as well as thousands of other third-party apps. Core Data is complex, but that&rsquo;s because it solves complex problems, covering a decades-worth of one-offs and edge cases.</p>
+
+<p>This is all to say that Core Data is something you should probably use in your application.</p>
+
+<p>Persistent stores in Core Data are comparable to database adapters in other ORMs, such as <a href="http://ar.rubyonrails.org">Active Record</a>. They respond to changes within <a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/CoreDataFramework/Classes/NSManagedObjectContext_Class/NSManagedObjectContext.html">managed object contexts</a> and handle <a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/CoreDataFramework/Classes/NSFetchRequest_Class/NSFetchRequest.html">fetch requests</a> by reading and writing data to some persistence layer. For most applications, that persistent layer has been a local SQLite database.</p>
+
+<p>With <code>NSIncrementalStore</code>, developers now have a sanctioned, reasonable means to create a store that connects to whatever underlying backend you like&ndash;and rather simply, too. All it takes is to implement a few required methods:</p>
+
+<h2 id="implementing-an-nsincrementalstore-subclass">Implementing an NSIncrementalStore Subclass</h2>
+
+<h3 id="+type-and-+initialize"><code>+type</code> and <code>+initialize</code></h3>
+
+<p><code>NSPersistentStore</code> instances are not created directly. Instead, they follow a factory pattern similar to <code>NSURLProtocol</code> or <code>NSValueTransformer</code>, in that they register their classes with the <code>NSPersistentStoreCoordinator</code>, which then constructs persistent store instances as necessary when <code>-addPersistentStoreWithType:configuration:URL:options:error:</code> is called. The registered persistent store classes are identified by a unique &ldquo;store type&rdquo; string (<code>NSStringFromClass</code> is sufficient, but you could be pedantic by specifying a string that follows the convention of ending in <code>-Type</code>, like <code>NSSQLiteStoreType</code>).</p>
+
+<p><code>+initialize</code> is automatically called the first time a class is loaded, so this is a good place to register with <code>NSPersistentStoreCoordinator</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="nl">CustomIncrementalStore</span><span class="p">:</span> <span class="bp">NSIncrementalStore</span> <span class="p">{</span>
+    <span class="kr">override</span> <span class="k">class</span> <span class="k">func</span> <span class="n">initialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="bp">NSPersistentStoreCoordinator</span><span class="p">.</span><span class="n">registerStoreClass</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="nl">forStoreType</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">type</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">class</span> <span class="k">var</span> <span class="nl">type</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">NSStringFromClass</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">initialize</span> <span class="p">{</span>
+  <span class="p">[</span><span class="bp">NSPersistentStoreCoordinator</span> <span class="nl">registerStoreClass</span><span class="p">:</span><span class="nb">self</span> <span class="nl">forStoreType</span><span class="p">:[</span><span class="nb">self</span> <span class="n">type</span><span class="p">]];</span>
+<span class="p">}</span>
+
+<span class="p">+</span> <span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">type</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="n">NSStringFromClass</span><span class="p">(</span><span class="nb">self</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="-loadmetadata:"><code>-loadMetadata:</code></h3>
+
+<p><code>loadMetadata:</code> is where the incremental store has a chance to configure itself. There is, however, a bit of Kabuki theater boilerplate that&rsquo;s necessary to get everything set up. Specifically, you need to set a UUID for the store, as well as the store type. Here&rsquo;s what that looks like:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kr">override</span> <span class="k">func</span> <span class="n">loadMetadata</span><span class="p">(</span><span class="nl">error</span><span class="p">:</span> <span class="n">NSErrorPointer</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="nl">NSStoreUUIDKey</span><span class="p">:</span> <span class="bp">NSProcessInfo</span><span class="p">().</span><span class="n">globallyUniqueString</span><span class="p">,</span>
+        <span class="nl">NSStoreTypeKey</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="kt">dynamicType</span><span class="p">.</span><span class="n">type</span>
+    <span class="p">]</span>
+
+    <span class="k">return</span> <span class="nb">true</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSMutableDictionary</span> <span class="o">*</span><span class="n">mutableMetadata</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSMutableDictionary</span> <span class="n">dictionary</span><span class="p">];</span>
+<span class="p">[</span><span class="n">mutableMetadata</span> <span class="nl">setValue</span><span class="p">:[[</span><span class="bp">NSProcessInfo</span> <span class="n">processInfo</span><span class="p">]</span> <span class="n">globallyUniqueString</span><span class="p">]</span> <span class="nl">forKey</span><span class="p">:</span><span class="n">NSStoreUUIDKey</span><span class="p">];</span>
+<span class="p">[</span><span class="n">mutableMetadata</span> <span class="nl">setValue</span><span class="p">:[[</span><span class="nb">self</span> <span class="k">class</span><span class="p">]</span> <span class="n">type</span><span class="p">]</span> <span class="nl">forKey</span><span class="p">:</span><span class="n">NSStoreTypeKey</span><span class="p">];</span>
+<span class="p">[</span><span class="nb">self</span> <span class="nl">setMetadata</span><span class="p">:</span><span class="n">mutableMetadata</span><span class="p">];</span>
+</code></pre></div>
+<h3 id="-executerequest:withcontext:error:"><code>-executeRequest:withContext:error:</code></h3>
+
+<p>Here&rsquo;s where things get interesting, from an implementation standpoint. (And where it all goes to hell, from an API design standpoint)</p>
+
+<p><code>executeRequest:withContext:error:</code> passes an <code>NSPersistentStoreRequest</code>, an <code>NSManagedObjectContext</code> and an <code>NSError</code> pointer.</p>
+
+<p><code>NSPersistentStoreRequest</code>&rsquo;s role here is as a sort of abstract subclass. The request parameter will either be of type <code>NSFetchRequestType</code> or an <code>NSSaveRequestType</code>. If it has a <em>fetch</em> request type, the request parameter will actually be an instance of <code>NSFetchRequest</code>, which is a subclass of <code>NSPersistentStoreRequest</code>. Likewise, if it has a <em>save</em> request type, it will be an instance of <code>NSSaveChangesRequest</code> (this article was originally mistaken by stating that there was no such a class).</p>
+
+<p>This method requires very specific and very different return values depending on the request parameter (and the <code>resultType</code>, if it&rsquo;s an <code>NSFetchRequest</code>). The only way to explain it is to run through all of the possibilities:</p>
+
+<h4 id="request-type:-nsfetchrequesttype">Request Type: <code>NSFetchRequestType</code></h4>
+
+<ul>
+<li>Result Type: <code>NSManagedObjectResultType</code>, <code>NSManagedObjectIDResultType</code>, or <code>NSDictionaryResultType</code></li>
+</ul>
+
+<blockquote>
+<p><strong>Return</strong>: <code>NSArray</code> of objects matching request</p>
+</blockquote>
+
+<ul>
+<li>Result Type: <code>NSCountResultType</code></li>
+</ul>
+
+<blockquote>
+<p><strong>Return</strong>: <del><tt>NSNumber</tt></del><ins><tt>NSArray</tt> containing one <tt>NSNumber</tt> of count of objects matching request</ins></p>
+</blockquote>
+
+<h4 id="request-type:-nssaverequesttype">Request Type: <code>NSSaveRequestType</code></h4>
+
+<blockquote>
+<p><strong>Return</strong>: Empty <code>NSArray</code></p>
+</blockquote>
+
+<p>So, one method to do all read <em>and</em> write operations with a persistence backend. At least all of the heavy lifting goes to the same place, right?</p>
+
+<h3 id="-newvaluesforobjectwithid:withcontext:error:"><code>-newValuesForObjectWithID:withContext:error:</code></h3>
+
+<p>This method is called when an object faults, or has its values refreshed by the managed object context.</p>
+
+<p>It returns an <code>NSIncrementalStoreNode</code>, which is a container for the ID and current values for a particular managed object. The node should include all of the attributes, as well as the managed object IDs of any to-one relationships. There is also a <code>version</code> property of the node that can be used to determine the current state of an object, but this may not be applicable to all storage implementations.</p>
+
+<p>If an object with the specified <code>objectID</code> cannot be found, this method should return <code>nil</code>.</p>
+
+<h3 id="-newvalueforrelationship:forobjectwithid:-withcontext:error:"><code>-newValueForRelationship:forObjectWithID: withContext:error:</code></h3>
+
+<p>This one is called when a relationship needs to be refreshed, either from a fault or by the managed object context.</p>
+
+<p>Unlike the previous method, the return value will be just the current value for a single relationship. The expected return type depends on the nature of the relationship:</p>
+
+<ul>
+<li><strong>to-one</strong>: <code>NSManagedObjectID</code></li>
+<li><strong>to-many</strong>: <code>NSSet</code> or <code>NSOrderedSet</code></li>
+<li><strong>non-existent</strong>: <code>nil</code></li>
+</ul>
+
+<h3 id="-obtainpermanentidsforobjects:error:"><code>-obtainPermanentIDsForObjects:error:</code></h3>
+
+<p>Finally, this method is called before <code>executeRequest:withContext:error:</code> with a save request, where permanent IDs should be assigned to newly-inserted objects. As you might expect, the array of permanent IDs should match up with the array of objects passed into this method.</p>
+
+<p>This usually corresponds with a write to the persistence layer, such as an <code>INSERT</code> statement in SQL. If, for example, the row corresponding to the object had an auto-incrementing <code>id</code> column, you could generate an objectID with:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="nb">self</span><span class="p">.</span><span class="n">newObjectIDForEntity</span><span class="p">(</span><span class="n">entity</span><span class="p">,</span> <span class="nl">referenceObject</span><span class="p">:</span> <span class="n">rowID</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[</span><span class="nb">self</span> <span class="nl">newObjectIDForEntity</span><span class="p">:</span><span class="n">entity</span> <span class="nl">referenceObject</span><span class="p">:[</span><span class="bp">NSNumber</span> <span class="nl">numberWithUnsignedInteger</span><span class="p">:</span><span class="n">rowID</span><span class="p">]];</span>
+</code></pre></div>
+<h2 id="roll-your-own-core-data-backend">Roll Your Own Core Data Backend</h2>
+
+<p>Going through all of the necessary methods to override in an <code>NSIncrementalStore</code> subclass, you may have found your mind racing with ideas about how you might implement a SQL or NoSQL store, or maybe something new altogether.</p>
+
+<p>What makes <code>NSIncrementalStore</code> so exciting is that you <em>can</em> build a store on your favorite technology, and drop that into any existing Core Data stack with little to no additional configuration.</p>
+
+<p>So imagine if, instead SQL or NoSQL, we wrote a Core Data store that connected to a webservice. Allow me to introduce <a href="https://github.com/AFNetworking/AFIncrementalStore">AFIncrementalStore</a>.</p>
+
+<h2 id="afincrementalstore">AFIncrementalStore</h2>
+
+<p><a href="https://github.com/AFNetworking/AFIncrementalStore"><code>AFIncrementalStore</code></a> is an NSIncrementalStore subclass that uses <a href="https://github.com/afnetworking/afnetworking">AFNetworking</a> to automatically request resources as properties and relationships are needed.</p>
+
+<p>What this means is that you can now write apps that communicate with a webservice <em>without exposing any of the details about the underlying API</em>. Any time a fetch request is made or an attribute or relationship faults, an asynchronous network request will fetch that information from the webservice.</p>
+
+<p>Since the store abstracts all of the implementation details of the API away, you can write expressive fetch requests and object relationships from the start. No matter how bad or incomplete an API may be, you can change all of that mapping independently of the business logic of the client.</p>
+
+<hr>
+
+<p>Even though <code>NSIncrementalStore</code> has been around since iOS 5, we&rsquo;re still a long way from even beginning to realize its full potential. The future is insanely bright, so you best don your aviators, grab an iced latte and start coding something amazing.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2012-08-13-nsincrementalstore.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 1.1 and was last reviewed on September 8, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/cfbag/" title="CFBag" rel="next">CFBag</a>
+            </h1>
+
+            <p>In the pantheon of collection data types in computer science, bag doesn&rsquo;t really have the same clout as lists, sets, associative arrays, trees, graphs, or priority queues. In fact, it&rsquo;s pretty obscure. You&rsquo;ve probably never heard of it.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/cmdevicemotion/" title="CMDeviceMotion">CMDeviceMotion</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nspredicate/" title="NSPredicate">NSPredicate</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/uiprintinteractioncontroller/" title="UIPrintInteractionController">UIPrintInteractionController</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/kvc-collection-operators/" title="KVC Collection Operators">KVC Collection Operators</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

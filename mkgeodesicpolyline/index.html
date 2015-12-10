@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>MKGeodesicPolyline - NSHipster</title>
+    <meta name="description" content="We knew that the Earth was not flat long before 1492. Early navigators observed the way ships would dip out of view over the horizon many centuries before the Age of Discovery. For many iOS developers, though, a flat MKMapView was a necessary conceit until recently."/>
+    <link rel="canonical" href="http://nshipster.com/mkgeodesicpolyline/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="MKGeodesicPolyline"/>
+    <meta name="twitter:description" content="We knew that the Earth was not flat long before 1492. Early navigators observed the way ships would dip out of view over the horizon many centuries before the Age of Discovery. For many iOS developers, though, a flat MKMapView was a necessary conceit until recently."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="MKGeodesicPolyline"/>
+    <meta property="og:url" content="http://nshipster.com/mkgeodesicpolyline/"/>
+    <meta property="og:description" content="We knew that the Earth was not flat long before 1492. Early navigators observed the way ships would dip out of view over the horizon many centuries before the Age of Discovery. For many iOS developers, though, a flat MKMapView was a necessary conceit until recently."/>
+    <meta property="article:published_time" content="2014-04-28T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="MKGeodesicPolyline"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/mkgeodesicpolyline/">MKGeodesic​Polyline</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2014-04-28T00:00:00-07:00" itemprop="datePublished">April 28<sup>th</sup>, 2014</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>We knew that the Earth was not flat long before 1492. Early navigators observed the way ships would dip out of view over the horizon many centuries before the Age of Discovery.</p>
+
+<p>For many iOS developers, though, a flat <code>MKMapView</code> was a necessary conceit until recently.</p>
+
+<p>What changed? The discovery of <code>MKGeodesicPolyline</code>, which is the subject of this week&rsquo;s article.</p>
+
+<hr>
+
+<p><a href="https://developer.apple.com/library/ios/documentation/MapKit/Reference/MKGeodesicPolyline_class/Reference/Reference.html"><code>MKGeodesicPolyline</code></a> was introduced to the Map Kit framework in iOS 7. As its name implies, it creates a <a href="http://en.wikipedia.org/wiki/Geodesic">geodesic</a>—essentially a straight line over a curved surface.</p>
+
+<p>On the surface of a <del><a href="http://en.wikipedia.org/wiki/Sphere">sphere</a></del> <del><ins><a href="http://en.wikipedia.org/wiki/Oblate_spheroid">oblate spheroid</a></ins></del> <ins><a href="http://en.wikipedia.org/wiki/Geoid">geoid</a></ins>, the shortest distance between two points appears as an arc on a flat projection. Over large distances, this takes a <a href="http://en.wikipedia.org/wiki/Great-circle_distance">pronounced, circular shape</a>.</p>
+
+<p>An <code>MKGeodesicPolyline</code> is created with an array of 2 <code>MKMapPoint</code>s or <code>CLLocationCoordinate2D</code>s:</p>
+
+<h3 id="creating-an-mkgeodesicpolyline">Creating an <code>MKGeodesicPolyline</code></h3>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">LAX</span> <span class="o">=</span> <span class="bp">CLLocation</span><span class="p">(</span><span class="nl">latitude</span><span class="p">:</span> <span class="mf">33.9424955</span><span class="p">,</span> <span class="nl">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mf">118.4080684</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">JFK</span> <span class="o">=</span> <span class="bp">CLLocation</span><span class="p">(</span><span class="nl">latitude</span><span class="p">:</span> <span class="mf">40.6397511</span><span class="p">,</span> <span class="nl">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mf">73.7789256</span><span class="p">)</span>
+
+<span class="k">var</span> <span class="n">coordinates</span> <span class="o">=</span> <span class="p">[</span><span class="n">LAX</span><span class="p">.</span><span class="n">coordinate</span><span class="p">,</span> <span class="n">JFK</span><span class="p">.</span><span class="n">coordinate</span><span class="p">]</span>
+<span class="k">let</span> <span class="n">geodesicPolyline</span> <span class="o">=</span> <span class="bp">MKGeodesicPolyline</span><span class="p">(</span><span class="nl">coordinates</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">coordinates</span><span class="p">,</span> <span class="nl">count</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">mapView</span><span class="p">.</span><span class="n">addOverlay</span><span class="p">(</span><span class="n">geodesicPolyline</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">CLLocation</span> <span class="o">*</span><span class="n">LAX</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">CLLocation</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithLatitude</span><span class="p">:</span><span class="mf">33.9424955</span>
+                                             <span class="nl">longitude</span><span class="p">:</span><span class="o">-</span><span class="mf">118.4080684</span><span class="p">];</span>
+<span class="bp">CLLocation</span> <span class="o">*</span><span class="n">JFK</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">CLLocation</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithLatitude</span><span class="p">:</span><span class="mf">40.6397511</span>
+                                             <span class="nl">longitude</span><span class="p">:</span><span class="o">-</span><span class="mf">73.7789256</span><span class="p">];</span>
+
+<span class="n">CLLocationCoordinate2D</span> <span class="n">coordinates</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span>
+    <span class="p">{</span><span class="n">LAX</span><span class="p">.</span><span class="n">coordinate</span><span class="p">,</span> <span class="n">JFK</span><span class="p">.</span><span class="n">coordinate</span><span class="p">};</span>
+
+<span class="bp">MKGeodesicPolyline</span> <span class="o">*</span><span class="n">geodesicPolyline</span> <span class="o">=</span>
+    <span class="p">[</span><span class="bp">MKGeodesicPolyline</span> <span class="nl">polylineWithCoordinates</span><span class="p">:</span><span class="n">coordinates</span>
+                                          <span class="nl">count</span><span class="p">:</span><span class="mi">2</span><span class="p">];</span>
+
+<span class="p">[</span><span class="n">mapView</span> <span class="nl">addOverlay</span><span class="p">:</span><span class="n">geodesicPolyline</span><span class="p">];</span>
+</code></pre></div>
+<p>Although the overlay looks like a smooth curve, it is actually comprised of thousands of tiny line segments (true to its <code>MKPolyline</code> lineage):</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">print</span><span class="p">(</span><span class="n">geodesicPolyline</span><span class="p">.</span><span class="n">pointCount</span><span class="p">)</span> <span class="c1">// 3984</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%d&quot;</span><span class="p">,</span> <span class="n">geodesicPolyline</span><span class="p">.</span><span class="n">pointCount</span><span class="p">)</span> <span class="c1">// 3984</span>
+</code></pre></div>
+<p>Like any object conforming to the <code>MKOverlay</code> protocol, an <code>MKGeodesicPolyline</code> instance is displayed by adding it to an <code>MKMapView</code> with <code>addOverlay()</code> and implementing <code>mapView(_:rendererForOverlay:)</code>:</p>
+
+<h3 id="rendering-mkgeodesicpolyline-on-an-mkmapview">Rendering <code>MKGeodesicPolyline</code> on an <code>MKMapView</code></h3>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// MARK: MKMapViewDelegate</span>
+
+<span class="k">func</span> <span class="n">mapView</span><span class="p">(</span><span class="nl">mapView</span><span class="p">:</span> <span class="bp">MKMapView</span><span class="p">,</span> <span class="n">rendererForOverlay</span> <span class="nl">overlay</span><span class="p">:</span> <span class="bp">MKOverlay</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">MKOverlayRenderer</span> <span class="p">{</span>
+    <span class="kr">guard</span> <span class="k">let</span> <span class="n">polyline</span> <span class="o">=</span> <span class="n">overlay</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">MKPolyline</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="bp">MKOverlayRenderer</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">let</span> <span class="n">renderer</span> <span class="o">=</span> <span class="bp">MKPolylineRenderer</span><span class="p">(</span><span class="nl">polyline</span><span class="p">:</span> <span class="n">polyline</span><span class="p">)</span>
+    <span class="n">renderer</span><span class="p">.</span><span class="n">lineWidth</span> <span class="o">=</span> <span class="mf">3.0</span>
+    <span class="n">renderer</span><span class="p">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+    <span class="n">renderer</span><span class="p">.</span><span class="n">strokeColor</span> <span class="o">=</span> <span class="bp">UIColor</span><span class="p">.</span><span class="n">blueColor</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">renderer</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="cp">#pragma mark - MKMapViewDelegate</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="bp">MKOverlayRenderer</span> <span class="o">*</span><span class="p">)</span><span class="nf">mapView:</span><span class="p">(</span><span class="bp">MKMapView</span> <span class="o">*</span><span class="p">)</span><span class="nv">mapView</span>
+            <span class="nf">rendererForOverlay:</span><span class="p">(</span><span class="kt">id</span> <span class="o">&lt;</span><span class="bp">MKOverlay</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">overlay</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">[</span><span class="n">overlay</span> <span class="nl">isKindOfClass</span><span class="p">:[</span><span class="bp">MKPolyline</span> <span class="k">class</span><span class="p">]])</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="bp">MKPolylineRenderer</span> <span class="o">*</span><span class="n">renderer</span> <span class="o">=</span>
+        <span class="p">[[</span><span class="bp">MKPolylineRenderer</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithPolyline</span><span class="p">:(</span><span class="bp">MKPolyline</span> <span class="o">*</span><span class="p">)</span><span class="n">overlay</span><span class="p">];</span>
+    <span class="n">renderer</span><span class="p">.</span><span class="n">lineWidth</span> <span class="o">=</span> <span class="mf">3.0f</span><span class="p">;</span>
+    <span class="n">renderer</span><span class="p">.</span><span class="n">strokeColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="n">blueColor</span><span class="p">];</span>
+    <span class="n">renderer</span><span class="p">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">renderer</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img src="http://nshipster.s3.amazonaws.com/mkgeodesicpolyline.jpg" alt="MKGeodesicPolyline on an MKMapView"></p>
+
+<blockquote>
+<p>For comparison, here&rsquo;s the same geodesic overlaid with a route created from <a href="http://nshipster.com/mktileoverlay-mkmapsnapshotter-mkdirections/"><code>MKDirections</code></a>:</p>
+</blockquote>
+
+<p><img src="http://nshipster.s3.amazonaws.com/mkgeodesicpolyline-with-directions.jpg" alt="MKGeodesicPolyline on an MKMapView compared to MKDirections Polyline"></p>
+
+<p><a href="http://en.wikipedia.org/wiki/As_the_crow_flies">As the crow flies</a>, it&rsquo;s 3,983 km.<br/>
+As the wolf runs, it&rsquo;s 4,559 km—nearly 15% longer.<br/>
+…and that&rsquo;s just distance; taking into account average travel speed, the total time is ~5 hours by air and 40+ hours by land.</p>
+
+<h3 id="animating-an-mkannotationview-on-a-mkgeodesicpolyline">Animating an <code>MKAnnotationView</code> on a <code>MKGeodesicPolyline</code></h3>
+
+<p>Since geodesics make reasonable approximations for flight paths, a common use case would be to animate the trajectory of a flight over time.</p>
+
+<p>To do this, we&rsquo;ll make properties for our map view and geodesic polyline between LAX and JFK, and add new properties for the <code>planeAnnotation</code> and <code>planeAnnotationPosition</code> (the index of the current map point for the polyline):</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// MARK: Flight Path Properties</span>
+<span class="k">var</span> <span class="nl">mapView</span><span class="p">:</span> <span class="bp">MKMapView</span><span class="o">!</span>
+<span class="k">var</span> <span class="nl">flightpathPolyline</span><span class="p">:</span> <span class="bp">MKGeodesicPolyline</span><span class="o">!</span>
+<span class="k">var</span> <span class="nl">planeAnnotation</span><span class="p">:</span> <span class="bp">MKPointAnnotation</span><span class="o">!</span>
+<span class="k">var</span> <span class="n">planeAnnotationPosition</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">@interface</span> <span class="nc">MapViewController</span> <span class="p">()</span> <span class="o">&lt;</span><span class="bp">MKMapViewDelegate</span><span class="o">&gt;</span>
+<span class="k">@property</span> <span class="bp">MKMapView</span> <span class="o">*</span><span class="n">mapView</span><span class="p">;</span>
+<span class="k">@property</span> <span class="bp">MKGeodesicPolyline</span> <span class="o">*</span><span class="n">flightpathPolyline</span><span class="p">;</span>
+<span class="k">@property</span> <span class="bp">MKPointAnnotation</span> <span class="o">*</span><span class="n">planeAnnotation</span><span class="p">;</span>
+<span class="k">@property</span> <span class="bp">NSUInteger</span> <span class="n">planeAnnotationPosition</span><span class="p">;</span>
+<span class="k">@end</span>
+</code></pre></div>
+<p>Next, right below the initialization of our map view and polyline, we create an <code>MKPointAnnotation</code> for our plane:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">annotation</span> <span class="o">=</span> <span class="bp">MKPointAnnotation</span><span class="p">()</span>
+<span class="n">annotation</span><span class="p">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">&quot;Plane&quot;</span><span class="p">,</span> <span class="nl">comment</span><span class="p">:</span> <span class="s">&quot;Plane marker&quot;</span><span class="p">)</span>
+<span class="n">mapView</span><span class="p">.</span><span class="n">addAnnotation</span><span class="p">(</span><span class="n">annotation</span><span class="p">)</span>
+
+<span class="nb">self</span><span class="p">.</span><span class="n">planeAnnotation</span> <span class="o">=</span> <span class="n">annotation</span>
+<span class="nb">self</span><span class="p">.</span><span class="n">updatePlanePosition</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="nb">self</span><span class="p">.</span><span class="n">planeAnnotation</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">MKPointAnnotation</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="nb">self</span><span class="p">.</span><span class="n">planeAnnotation</span><span class="p">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">@&quot;Plane&quot;</span><span class="p">,</span> <span class="nb">nil</span><span class="p">);</span>
+<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">mapView</span> <span class="nl">addAnnotation</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">planeAnnotation</span><span class="p">];</span>
+
+<span class="p">[</span><span class="nb">self</span> <span class="n">updatePlanePosition</span><span class="p">];</span>
+</code></pre></div>
+<p>That call to <code>updatePlanePosition</code> in the last line ticks the animation and updates the position of the plane:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="nf">updatePlanePosition</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="kr">guard</span> <span class="n">planeAnnotationPosition</span> <span class="o">+</span> <span class="n">step</span> <span class="o">&lt;</span> <span class="n">flightpathPolyline</span><span class="p">.</span><span class="n">pointCount</span>
+        <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+
+    <span class="k">let</span> <span class="n">points</span> <span class="o">=</span> <span class="n">flightpathPolyline</span><span class="p">.</span><span class="n">points</span><span class="p">()</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">planeAnnotationPosition</span> <span class="o">+=</span> <span class="n">step</span>
+    <span class="k">let</span> <span class="n">nextMapPoint</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="n">planeAnnotationPosition</span><span class="p">]</span>
+
+    <span class="nb">self</span><span class="p">.</span><span class="n">planeAnnotation</span><span class="p">.</span><span class="n">coordinate</span> <span class="o">=</span> <span class="n">MKCoordinateForMapPoint</span><span class="p">(</span><span class="n">nextMapPoint</span><span class="p">)</span>
+
+    <span class="n">performSelector</span><span class="p">(</span><span class="s">&quot;updatePlanePosition&quot;</span><span class="p">,</span> <span class="nl">withObject</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">afterDelay</span><span class="p">:</span> <span class="mf">0.03</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">updatePlanePosition</span> <span class="p">{</span>
+    <span class="k">static</span> <span class="bp">NSUInteger</span> <span class="k">const</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">planeAnnotationPosition</span> <span class="o">+</span> <span class="n">step</span> <span class="o">&gt;=</span> <span class="nb">self</span><span class="p">.</span><span class="n">flightpathPolyline</span><span class="p">.</span><span class="n">pointCount</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nb">self</span><span class="p">.</span><span class="n">planeAnnotationPosition</span> <span class="o">+=</span> <span class="n">step</span><span class="p">;</span>
+    <span class="n">MKMapPoint</span> <span class="n">nextMapPoint</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">flightpathPolyline</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">planeAnnotationPosition</span><span class="p">];</span>
+
+    <span class="nb">self</span><span class="p">.</span><span class="n">planeAnnotation</span><span class="p">.</span><span class="n">coordinate</span> <span class="o">=</span> <span class="n">MKCoordinateForMapPoint</span><span class="p">(</span><span class="n">nextMapPoint</span><span class="p">);</span>
+
+    <span class="p">[</span><span class="nb">self</span> <span class="nl">performSelector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">updatePlanePosition</span><span class="p">)</span> <span class="nl">withObject</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">afterDelay</span><span class="p">:</span><span class="mf">0.03</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>We&rsquo;ll perform this method roughly 30 times a second, until the plane has arrived at its final destination.</p>
+
+<p>Finally, we implement <code>mapView(_:viewForAnnotation:)</code> to have the annotation render on the map view:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="n">mapView</span><span class="p">(</span><span class="nl">mapView</span><span class="p">:</span> <span class="bp">MKMapView</span><span class="p">,</span> <span class="n">viewForAnnotation</span> <span class="nl">annotation</span><span class="p">:</span> <span class="bp">MKAnnotation</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">MKAnnotationView</span><span class="o">?</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">planeIdentifier</span> <span class="o">=</span> <span class="s">&quot;Plane&quot;</span>
+
+    <span class="k">let</span> <span class="n">annotationView</span> <span class="o">=</span> <span class="n">mapView</span><span class="p">.</span><span class="n">dequeueReusableAnnotationViewWithIdentifier</span><span class="p">(</span><span class="n">planeIdentifier</span><span class="p">)</span>
+            <span class="o">??</span> <span class="bp">MKAnnotationView</span><span class="p">(</span><span class="nl">annotation</span><span class="p">:</span> <span class="n">annotation</span><span class="p">,</span> <span class="nl">reuseIdentifier</span><span class="p">:</span> <span class="n">planeIdentifier</span><span class="p">)</span>
+
+    <span class="n">annotationView</span><span class="p">.</span><span class="n">image</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">named</span><span class="p">:</span> <span class="s">&quot;airplane&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">annotationView</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">-</span> <span class="p">(</span><span class="bp">MKAnnotationView</span> <span class="o">*</span><span class="p">)</span><span class="nf">mapView:</span><span class="p">(</span><span class="bp">MKMapView</span> <span class="o">*</span><span class="p">)</span><span class="nv">mapView</span>
+            <span class="nf">viewForAnnotation:</span><span class="p">(</span><span class="kt">id</span> <span class="o">&lt;</span><span class="bp">MKAnnotation</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">annotation</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="bp">NSString</span> <span class="o">*</span> <span class="n">PinIdentifier</span> <span class="o">=</span> <span class="s">@&quot;Pin&quot;</span><span class="p">;</span>
+
+    <span class="bp">MKAnnotationView</span> <span class="o">*</span><span class="n">annotationView</span> <span class="o">=</span> <span class="p">[</span><span class="n">mapView</span> <span class="nl">dequeueReusableAnnotationViewWithIdentifier</span><span class="p">:</span><span class="n">PinIdentifier</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">annotationView</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">annotationView</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">MKAnnotationView</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithAnnotation</span><span class="p">:</span><span class="n">annotation</span> <span class="nl">reuseIdentifier</span><span class="p">:</span><span class="n">PinIdentifier</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="n">annotationView</span><span class="p">.</span><span class="n">image</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIImage</span> <span class="nl">imageNamed</span><span class="p">:</span><span class="s">@&quot;plane&quot;</span><span class="p">];</span>
+
+    <span class="k">return</span> <span class="n">annotationView</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img src="http://nshipster.s3.amazonaws.com/mkgeodesicpolyline-airplane-animate.gif" alt="MKAnnotationView without Rotation"></p>
+
+<p>Hmm… close but no <a href="http://www.skymall.com/personalized-cigar-case-flask/GC900.html">SkyMall Personalized Cigar Case Flask</a>.</p>
+
+<p>Let&rsquo;s update the rotation of the plane as it moves across its flightpath.</p>
+
+<h3 id="rotating-an-mkannotationview-along-a-path">Rotating an <code>MKAnnotationView</code> along a Path</h3>
+
+<p>To calculate the plane&rsquo;s direction, we&rsquo;ll take the slope from the previous and next points:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">previousMapPoint</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="n">planeAnnotationPosition</span><span class="p">]</span>
+<span class="n">planeAnnotationPosition</span> <span class="o">+=</span> <span class="n">step</span>
+<span class="k">let</span> <span class="n">nextMapPoint</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="n">planeAnnotationPosition</span><span class="p">]</span>
+
+<span class="nb">self</span><span class="p">.</span><span class="n">planeDirection</span> <span class="o">=</span> <span class="n">directionBetweenPoints</span><span class="p">(</span><span class="n">previousMapPoint</span><span class="p">,</span> <span class="n">nextMapPoint</span><span class="p">)</span>
+<span class="nb">self</span><span class="p">.</span><span class="n">planeAnnotation</span><span class="p">.</span><span class="n">coordinate</span> <span class="o">=</span> <span class="n">MKCoordinateForMapPoint</span><span class="p">(</span><span class="n">nextMapPoint</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">MKMapPoint</span> <span class="n">previousMapPoint</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">flightpathPolyline</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">planeAnnotationPosition</span><span class="p">];</span>
+<span class="nb">self</span><span class="p">.</span><span class="n">planeAnnotationPosition</span> <span class="o">+=</span> <span class="n">step</span><span class="p">;</span>
+<span class="n">MKMapPoint</span> <span class="n">nextMapPoint</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">flightpathPolyline</span><span class="p">.</span><span class="n">points</span><span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">planeAnnotationPosition</span><span class="p">];</span>
+
+<span class="nb">self</span><span class="p">.</span><span class="n">planeDirection</span> <span class="o">=</span> <span class="n">XXDirectionBetweenPoints</span><span class="p">(</span><span class="n">previousMapPoint</span><span class="p">,</span> <span class="n">nextMapPoint</span><span class="p">);</span>
+<span class="nb">self</span><span class="p">.</span><span class="n">planeAnnotation</span><span class="p">.</span><span class="n">coordinate</span> <span class="o">=</span> <span class="n">MKCoordinateForMapPoint</span><span class="p">(</span><span class="n">nextMapPoint</span><span class="p">);</span>
+</code></pre></div>
+<p><code>directionBetweenPoints</code> is a function that returns a <code>CLLocationDirection</code> (0 – 360 degrees, where North = 0) given two <code>MKMapPoint</code>s.</p>
+
+<blockquote>
+<p>We calculate from <code>MKMapPoint</code>s rather than converted coordinates, because we&rsquo;re interested in the slope of the line on the flat projection.</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kr">private</span> <span class="k">func</span> <span class="n">directionBetweenPoints</span><span class="p">(</span><span class="nl">sourcePoint</span><span class="p">:</span> <span class="n">MKMapPoint</span><span class="p">,</span> <span class="n">_</span> <span class="nl">destinationPoint</span><span class="p">:</span> <span class="n">MKMapPoint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CLLocationDirection</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="n">destinationPoint</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">sourcePoint</span><span class="p">.</span><span class="n">x</span>
+    <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">destinationPoint</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">sourcePoint</span><span class="p">.</span><span class="n">y</span>
+
+    <span class="k">return</span> <span class="n">radiansToDegrees</span><span class="p">(</span><span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span> <span class="o">%</span> <span class="mi">360</span> <span class="o">+</span> <span class="mi">90</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">static</span> <span class="n">CLLocationDirection</span> <span class="nf">XXDirectionBetweenPoints</span><span class="p">(</span><span class="n">MKMapPoint</span> <span class="n">sourcePoint</span><span class="p">,</span> <span class="n">MKMapPoint</span> <span class="n">destinationPoint</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">destinationPoint</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">sourcePoint</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+    <span class="kt">double</span> <span class="n">y</span> <span class="o">=</span> <span class="n">destinationPoint</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">sourcePoint</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">fmod</span><span class="p">(</span><span class="n">XXRadiansToDegrees</span><span class="p">(</span><span class="n">atan2</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)),</span> <span class="mf">360.0f</span><span class="p">)</span> <span class="o">+</span> <span class="mf">90.0f</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>That convenience function <code>radiansToDegrees</code> (and its partner, <code>degreesToRadians</code>) are simply:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kr">private</span> <span class="k">func</span> <span class="n">radiansToDegrees</span><span class="p">(</span><span class="nl">radians</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Double</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">radians</span> <span class="o">*</span> <span class="mi">180</span> <span class="o">/</span> <span class="n">M_PI</span>
+<span class="p">}</span>
+
+<span class="kr">private</span> <span class="k">func</span> <span class="n">degreesToRadians</span><span class="p">(</span><span class="nl">degrees</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Double</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">degrees</span> <span class="o">*</span> <span class="n">M_PI</span> <span class="o">/</span> <span class="mi">180</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">static</span> <span class="kr">inline</span> <span class="kt">double</span> <span class="nf">XXRadiansToDegrees</span><span class="p">(</span><span class="kt">double</span> <span class="n">radians</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">radians</span> <span class="o">*</span> <span class="mf">180.0f</span> <span class="o">/</span> <span class="n">M_PI</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kr">inline</span> <span class="kt">double</span> <span class="nf">XXDegreesToRadians</span><span class="p">(</span><span class="kt">double</span> <span class="n">degrees</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">degrees</span> <span class="o">*</span> <span class="n">M_PI</span> <span class="o">/</span> <span class="mf">180.0f</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>That direction is stored in a new property, <code>var planeDirection: CLLocationDirection</code>, calculated from <code>self.planeDirection = directionBetweenPoints(currentMapPoint, nextMapPoint)</code> in <code>updatePlanePosition</code> (ideally renamed to <code>updatePlanePositionAndDirection</code> with this addition). To make the annotation rotate, we apply a <code>transform</code> on <code>annotationView</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">annotationView</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">CGAffineTransformRotate</span><span class="p">(</span><span class="n">mapView</span><span class="p">.</span><span class="n">transform</span><span class="p">,</span> 
+        <span class="n">degreesToRadians</span><span class="p">(</span><span class="n">planeDirection</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="nb">self</span><span class="p">.</span><span class="n">annotationView</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span>
+    <span class="n">CGAffineTransformRotate</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">mapView</span><span class="p">.</span><span class="n">transform</span><span class="p">,</span>
+                            <span class="n">XXDegreesToRadians</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">planeDirection</span><span class="p">));</span>
+</code></pre></div>
+<p><img src="http://nshipster.s3.amazonaws.com/mkgeodesicpolyline-airplane-animate-rotate.gif" alt="MKAnnotationView with Rotation"></p>
+
+<p>Ah much better! At last, we have mastered the skies with a fancy visualization, worthy of any travel-related app.</p>
+
+<hr>
+
+<p>Perhaps more than any other system framework, MapKit has managed to get incrementally better, little by little with every iOS release <a href="http://nshipster.com/mktileoverlay-mkmapsnapshotter-mkdirections/">[1]</a> <a href="http://nshipster.com/mklocalsearch/">[2]</a>. For anyone with a touch-and-go relationship to the framework, returning after a few releases is a delightful experience of discovery and rediscovery.</p>
+
+<p>I look forward to seeing what lies on the horizon with iOS 8 and beyond.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-04-28-mkgeodesicpolyline.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on November 12, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/ibaction-iboutlet-iboutletcollection/" title="IBAction / IBOutlet / IBOutletCollection" rel="next">IBAction / IBOutlet / IBOutlet​Collection</a>
+            </h1>
+
+            <p>In programming, what often begins as a necessary instruction eventually becomes a vestigial cue for humans. For developers just starting with Cocoa &amp; Cocoa Touch, the IBAction, IBOutlet, and IBOutletCollection macros are particularly bewildering examples of this phenomenon</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nslocalizedstring/" title="NSLocalizedString">NSLocalizedString</a>
+            </li>
+            
+          
+          
+          
+          
+            <li>
+              <a href="/uuid-udid-unique-identifier/" title="NSUUID /<br/>CFUUIDRef /<br/>UIDevice -uniqueIdentifier /<br/>-identifierForVendor">NSUUID /<br/>CFUUIDRef /<br/>UIDevice -uniqueIdentifier /<br/>-identifierForVendor</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/wkwebkit/" title="WKWebView">WKWebView</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

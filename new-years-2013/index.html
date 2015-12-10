@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>Reader Submissions -  New Year's 2013 - NSHipster</title>
+    <meta name="description" content="In celebration of the forthcoming `year++`, I thought it'd be fun to compile a list of some of your favorite tips and tricks of the trade. Readers were asked to submit their favorite piece of Objective-C trivia, framework arcana, hidden Xcode feature, or anything else they thought is cool."/>
+    <link rel="canonical" href="http://nshipster.com/new-years-2013/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="Reader Submissions -<br/> New Year's 2013"/>
+    <meta name="twitter:description" content="In celebration of the forthcoming `year++`, I thought it&#39;d be fun to compile a list of some of your favorite tips and tricks of the trade. Readers were asked to submit their favorite piece of Objective-C trivia, framework arcana, hidden Xcode feature, or anything else they thought is cool."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Reader Submissions -<br/> New Year's 2013"/>
+    <meta property="og:url" content="http://nshipster.com/new-years-2013/"/>
+    <meta property="og:description" content="In celebration of the forthcoming `year++`, I thought it&#39;d be fun to compile a list of some of your favorite tips and tricks of the trade. Readers were asked to submit their favorite piece of Objective-C trivia, framework arcana, hidden Xcode feature, or anything else they thought is cool."/>
+    <meta property="article:published_time" content="2013-01-01T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="reader submissions"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="Reader Submissions -<br/> New Year's 2013"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/new-years-2013/">Reader Submissions -<br/> New Year's 2013</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-01-01T00:00:00-08:00" itemprop="datePublished">January 1<sup>st</sup>, 2013</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>In celebration of the forthcoming <code>year++</code>, I thought it&rsquo;d be fun to compile a list of some of <em>your</em> favorite tips and tricks of the trade&ndash;to give y&#39;all a chance to show off some of your NSHipster cred.</p>
+
+<p>Thanks to <a href="https://github.com/0xced">Cédric Luthi</a>, <a href="https://github.com/jaykz52">Jason Kozemczak</a>, <a href="https://github.com/SlaunchaMan">Jeff Kelley</a>, <a href="https://github.com/joelparsons">Joel Parsons</a>, <a href="https://github.com/MaxGabriel">Maximilian Tagher</a>, <a href="https://github.com/mayoff">Rob Mayoff</a>, <a href="https://github.com/shpakovski">Vadim Shpakovski</a>, &amp; <a href="https://github.com/alextud">@alextud</a> for <a href="https://gist.github.com/4148342">answering the call</a> with <em>excellent</em> submissions.</p>
+
+<h2 id="associated-objects-in-categories">Associated Objects in Categories</h2>
+
+<p>This first tip is so nice it was mentioned twice, both by <a href="https://github.com/jaykz52">Jason Kozemczak</a> &amp; <a href="https://github.com/SlaunchaMan">Jeff Kelley</a>.</p>
+
+<p>Categories are a well-known feature of Objective-C, allowing new methods to be added to existing classes. Much less well known is that with some <code>objc</code> runtime hacking, you can add new <em>properties</em> as well. Observe!</p>
+
+<h3 id="nsobject+indiebandname.h">NSObject+IndieBandName.h</h3>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">@interface</span> <span class="bp">NSObject</span> <span class="nl">(IndieBandName)</span>
+<span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">strong</span><span class="p">)</span> <span class="bp">NSString</span> <span class="o">*</span><span class="n">indieBandName</span><span class="p">;</span>
+<span class="k">@end</span>
+</code></pre></div>
+<h3 id="nsobject+indiebandname.m">NSObject+IndieBandName.m</h3>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="cp">#import &quot;NSObject+Extension.h&quot;</span>
+<span class="cp">#import &lt;objc/runtime.h&gt;</span>
+
+<span class="k">static</span> <span class="k">const</span> <span class="kt">void</span> <span class="o">*</span><span class="n">IndieBandNameKey</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">IndieBandNameKey</span><span class="p">;</span>
+
+<span class="k">@implementation</span> <span class="bp">NSObject</span> <span class="nl">(IndieBandName)</span>
+<span class="k">@dynamic</span> <span class="n">indieBandName</span><span class="p">;</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">indieBandName</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">objc_getAssociatedObject</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="n">IndieBandNameKey</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setIndieBandName:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">indieBandName</span> <span class="p">{</span>
+    <span class="n">objc_setAssociatedObject</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="n">IndieBandNameKey</span><span class="p">,</span> <span class="n">indieBandName</span><span class="p">,</span> <span class="n">OBJC_ASSOCIATION_RETAIN_NONATOMIC</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre></div>
+<p>This way, all of your objects can store and retrieve the name of their band, which&ndash;by the way&ndash;is performing this Wednesday night, and you should totally come.</p>
+
+<p>While this is a cool trick and all, it should only be used as a method of last resort. Before you go this route, ask yourself if a particular property can&rsquo;t either be derived from existing values, or should be managed by another class.</p>
+
+<p>A good example of an associated object is how <a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a> adds a property for an image request operation in its <a href="https://github.com/AFNetworking/AFNetworking/blob/master/AFNetworking/UIImageView%2BAFNetworking.m#L39"><code>UIImageView</code> category</a>.</p>
+
+<h2 id="lldb-view-hierarchy-dump">LLDB View Hierarchy Dump</h2>
+
+<p><a href="https://github.com/mayoff">Rob Mayoff</a> responded with an obscure and powerful incantation to make debugging views a delight. Create <code>.lldbinit</code> in your home directory, if it doesn&rsquo;t already exist, and add the following:</p>
+
+<h3 id="~/.lldbinit">~/.lldbinit</h3>
+
+<p>command regex rd &rsquo;s/<sup>[[:space:]]*$/po</sup> [[[UIApplication sharedApplication] keyWindow] recursiveDescription]/&lsquo; &rsquo;s/<sup>.+</sup>$/po [%1 recursiveDescription]/&rsquo;</p>
+
+<p>Now you can get a recursive hierarchy of any view in your iOS application with the LLDB debugger. You can try this for yourself by setting a breakpoint in a view controller, and type <code>rd self.view</code>. You may be surprised by what&rsquo;s under the hood with some of the built-in UI controls!</p>
+
+<h2 id="lldb-print-contents-of-a-cgpathref">LLDB Print Contents of a <code>CGPathRef</code></h2>
+
+<p>While we&rsquo;re on the subject of LLDB, <a href="https://github.com/mayoff">Rob Mayoff</a> sent in a useful incantation for printing out the contents of a <code>CGPathRef</code> from the debugger:</p>
+
+<p>p (void)CGPathPrint(pathRef, 0)</p>
+
+<p>If you&rsquo;re doing any kind of complex Core Graphics drawing, be sure to keep this one handy.</p>
+
+<h2 id="use-+initialize,-not-+load">Use <code>+initialize</code>, Not <code>+load</code></h2>
+
+<p><a href="https://github.com/shpakovski">Vadim Shpakovski</a> wrote in with some advice about class loading and initialization. There are two magical class methods in Objective-C: <code>+load</code> and <code>+initialize</code>, which are automatically called by virtue of the class being used. The difference between the two methods, however, has significant performance implications for your application.</p>
+
+<p><a href="http://www.mikeash.com/">Mike Ash</a> has a <a href="http://www.mikeash.com/pyblog/friday-qa-2009-05-22-objective-c-class-loading-and-initialization.html">great explanation of this</a>:</p>
+
+<blockquote>
+<p><code>+load</code> is invoked as the class is actually loaded, if it implements the method. This happens very early on. If you implement <code>+load</code> in an application or in a framework that an application links to, <code>+load</code> will run before <code>main()</code>. If you implement <code>+load</code> in a loadable bundle, then it runs during the bundle loading process.</p>
+
+<p>The <code>+initialize</code> method is invoked in a more sane environment and is usually a better place to put code than <code>+load</code>. <code>+initialize</code> is interesting because it&rsquo;s invoked lazily and may not be invoked at all. When a class first loads, <code>+initialize</code> is not called. When a message is sent to a class, the runtime first checks to see if <code>+initialize</code> has been called yet. If not, it calls it before proceeding with the message send.</p>
+</blockquote>
+
+<p><strong>tl;dr: Implement <code>+initialize</code>, not <code>+load</code>, if you need this automatic behavior.</strong></p>
+
+<h2 id="xcode-snippets">Xcode Snippets</h2>
+
+<p><a href="https://github.com/MaxGabriel">Maximilian Tagher</a> gave a shout-out to the benefits of Xcode Snippets.</p>
+
+<p>Great developers take pride in knowing their tools, and being able to use them to maximum effect. <a href="https://twitter.com/javisoto/status/285531250373046272">For better</a> or <a href="http://www.textfromxcode.com">for worse</a>, this means knowing Xcode like the back of our hand. Verbose as Objective-C is, &ldquo;do more by typing less&rdquo; rings especially true as a productivity mantra, and <a href="http://developer.apple.com/library/mac/#recipes/xcode_help-source_editor/CreatingaCustomCodeSnippet/CreatingaCustomCodeSnippet.html#//apple_ref/doc/uid/TP40009975-CH14-SW1">Xcode Snippets</a> are one of the best ways to do this.</p>
+
+<p>If you&rsquo;re looking for a place to start, try downloading and forking <a href="https://github.com/mattt/Xcode-Snippets">these Xcode Snippets</a>.</p>
+
+<h2 id="macro-for-measuring-execution-time">Macro for Measuring Execution Time</h2>
+
+<p>Here&rsquo;s a helpful macro for easily measuring the elapsed time for executing a particular block of code, sent in from <a href="https://github.com/alextud">@alextud</a>:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">NS_INLINE</span> <span class="kt">void</span> <span class="nf">MVComputeTimeWithNameAndBlock</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">caller</span><span class="p">,</span> <span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="n">block</span><span class="p">)())</span> <span class="p">{</span>
+    <span class="n">CFTimeInterval</span> <span class="n">startTimeInterval</span> <span class="o">=</span> <span class="n">CACurrentMediaTime</span><span class="p">();</span>
+    <span class="n">block</span><span class="p">();</span>
+    <span class="n">CFTimeInterval</span> <span class="n">nowTimeInterval</span> <span class="o">=</span> <span class="n">CACurrentMediaTime</span><span class="p">();</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%s - Time Running is: %f&quot;</span><span class="p">,</span> <span class="n">caller</span><span class="p">,</span> <span class="n">nowTimeInterval</span> <span class="o">-</span> <span class="n">startTimeInterval</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cp">#define MVComputeTime(...) MVComputeTimeWithNameAndBlock(__PRETTY_FUNCTION__, (__VA_ARGS__))</span>
+</code></pre></div>
+<h2 id="block-enumeration-methods">Block Enumeration Methods</h2>
+
+<p><a href="https://github.com/joelparsons">Joel Parsons</a> submitted a great tip about using <code>-enumerateObjectsWithOptions:usingBlock:</code> in <code>NSArray</code> and other collection classes. By passing the <code>NSEnumerationConcurrent</code> option, you can get significant performance benefits over <code>NSFastEnumeration</code>&rsquo;s <code>for...in</code>-style enumeration by executing the block concurrently.</p>
+
+<p>However, be warned! Not all enumerations lend themselves to concurrent execution, so don&rsquo;t go around replacing all of your <code>for...in</code> blocks with <code>NSEnumerationConcurrent</code> willy-nilly, unless random crashing is something you like in an app.</p>
+
+<h2 id="reverse-engineered-implementation-of-nsstring-equality-methods">Reverse-Engineered Implementation of <code>NSString</code> Equality Methods</h2>
+
+<p>Displaying his characteristic brilliance and familiarity of Cocoa internals <a href="https://github.com/0xced">Cédric Luthi</a> submitted <a href="https://gist.github.com/2275014">a reverse-engineered implementation of the <code>NString</code> equality methods</a>. Fascinating!</p>
+
+<h2 id="animate-nslayoutconstraint.constant">Animate <code>NSLayoutConstraint.constant</code></h2>
+
+<p>This one goes out to all you fans of <a href="https://developer.apple.com/library/mac/#documentation/UserExperience/Conceptual/AutolayoutPG/Articles/Introduction.html#//apple_ref/doc/uid/TP40010853">Cocoa Auto Layout</a>, from <a href="https://github.com/shpakovski">Vadim Shpakovski</a>:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">viewConstraint</span><span class="p">.</span><span class="n">constant</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">Constant</span> <span class="n">Value</span> <span class="n">From</span><span class="err">#</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">[</span><span class="n">view</span> <span class="n">layoutIfNeeded</span><span class="p">];</span>
+
+<span class="n">viewConstraint</span><span class="p">.</span><span class="n">constant</span> <span class="o">=</span> <span class="o">&lt;</span><span class="err">#</span><span class="n">Constant</span> <span class="n">Value</span> <span class="n">To</span><span class="err">#</span><span class="o">&gt;</span><span class="p">;</span>
+<span class="p">[</span><span class="n">view</span> <span class="n">setNeedsUpdateConstraints</span><span class="p">];</span>
+
+<span class="p">[</span><span class="bp">UIView</span> <span class="nl">animateWithDuration</span><span class="p">:</span><span class="n">ConstantAnimationDuration</span> <span class="nl">animations</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+     <span class="p">[</span><span class="n">view</span> <span class="n">layoutIfNeeded</span><span class="p">];</span>
+<span class="p">}];</span>
+</code></pre></div>
+<p>Attentive readers may have already noted this, but the code above would make an <em>excellent</em> Xcode Snippet, by the way.</p>
+
+<h2 id="printing-nscache-usage">Printing <code>NSCache</code> Usage</h2>
+
+<p>Finishing up this batch of tips and tricks is <a href="https://github.com/0xced">Cédric Luthi</a> again, this time unearthing the private method <code>cache_print</code> as a way to get some visibility into <a href="http://nshipster.com/nscache/"><code>NSCache</code></a>:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">extern</span> <span class="kt">void</span> <span class="nf">cache_print</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">cache</span><span class="p">);</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">printCache:</span><span class="p">(</span><span class="bp">NSCache</span> <span class="o">*</span><span class="p">)</span><span class="nv">cache</span> <span class="p">{</span>
+    <span class="n">cache_print</span><span class="p">(</span><span class="o">*</span><span class="p">((</span><span class="kt">void</span> <span class="o">**</span><span class="p">)(</span><span class="k">__bridge</span> <span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">cache</span> <span class="o">+</span> <span class="mi">3</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This code sample has only been tested on iOS, and should only be used for debugging (i.e. take this out before submitting to Apple!).</p>
+
+<hr>
+
+<p>Thanks again to everyone for their submissions this time around. We&rsquo;ll definitely be doing this again, so feel free to send your favorite piece of Objective-C trivia, framework arcana, hidden Xcode feature, or anything else you think is cool to <a href="https://twitter.com/nshipster">@NSHipster</a>!</p>
+
+<p>And thank you, dear reader, for your support of NSHipster over these last wonderful months. We have a lot of insanely great things planned for NSHipster in 2013, and we look forward to being able to share it all with all of you.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-01-01-new-years-2013.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+            
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nil/" title="nil / Nil / NULL / NSNull" rel="next">nil / Nil / NULL / NSNull</a>
+            </h1>
+
+            <p>Understanding the concept of nothingness is as much a philosophical issue as it is a pragmatic one. We are inhabitants of a universe of somethings, yet reason in a logical universe of existential uncertainties. As a physical manifestation of a logical system, computers are faced with the intractable problem of how to represent nothing with something.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/new-years-2015/" title="Reader Submissions -<br/> New Year's 2015">Reader Submissions -<br/> New Year's 2015</a>
+            </li>
+            
+          
+          
+          
+          
+            <li>
+              <a href="/new-years-2014/" title="Reader Submissions -<br/> New Year's 2014">Reader Submissions -<br/> New Year's 2014</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

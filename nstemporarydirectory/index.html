@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSTemporaryDirectory / NSItemReplacementDirectory / mktemp(3) - NSHipster</title>
+    <meta name="description" content="Volumes have been written about persisting data, but when it comes to short-lived, temporary files, there is very little to go on for Objective-C. (Or if there has, perhaps it was poetically ephemeral itself)."/>
+    <link rel="canonical" href="http://nshipster.com/nstemporarydirectory/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="NSTemporaryDirectory /<br/>NSItemReplacementDirectory /<br/>mktemp(3)"/>
+    <meta name="twitter:description" content="Volumes have been written about persisting data, but when it comes to short-lived, temporary files, there is very little to go on for Objective-C. (Or if there has, perhaps it was poetically ephemeral itself)."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NSTemporaryDirectory /<br/>NSItemReplacementDirectory /<br/>mktemp(3)"/>
+    <meta property="og:url" content="http://nshipster.com/nstemporarydirectory/"/>
+    <meta property="og:description" content="Volumes have been written about persisting data, but when it comes to short-lived, temporary files, there is very little to go on for Objective-C. (Or if there has, perhaps it was poetically ephemeral itself)."/>
+    <meta property="article:published_time" content="2014-03-03T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NSTemporaryDirectory /<br/>NSItemReplacementDirectory /<br/>mktemp(3)"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/nstemporarydirectory/">NSTemporary​Directory /<br/>NSItem​Replacement​Directory /<br/>mktemp(3)</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2014-03-03T00:00:00-08:00" itemprop="datePublished">March 3<sup>rd</sup>, 2014</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Volumes have been written about persisting data, but when it comes to short-lived, temporary files, there is very little to go on for Objective-C. (Or if there has, perhaps it was poetically ephemeral itself).</p>
+
+<hr>
+
+<p>Temporary files are used to write a buffer to disk, to either be atomically moved to a permanent location, or processed in some manner and then discarded. Creating a temporary file involves finding the appropriate part of the filesystem, generating a unique name, and moving or deleting the file after you&rsquo;re finished using it.</p>
+
+<h2 id="finding-an-enclosing-directory">Finding an Enclosing Directory</h2>
+
+<p>The first step to creating temporary files or directories is to find a reasonable, out-of-the-way place to write to—somewhere that won&rsquo;t be backed up by Time Machine or synced to iCloud or the like.</p>
+
+<p>On Unix systems, the <code>/tmp</code> directory was the de facto scratch space, but with the sandboxed containers of iOS and OS X apps today, a hard-coded path just won&rsquo;t cut it.</p>
+
+<p><code>NSTemporaryDirectory</code> is a Foundation function that returns the directory designated for writing short-lived files on the targeted platform.</p>
+
+<h3 id="a-wild-goose-chase">A Wild Goose Chase</h3>
+
+<p>In recent years, Apple has pushed to extricate filesystem path operations from <code>NSString</code> APIs, recommending that users switch to using <code>NSURL</code> and <code>NSURL</code>-based APIs for classes like <code>NSFileManager</code>. Unfortunately, the migration has not been entirely smooth.</p>
+
+<p>Consider the documentation for <code>NSTemporaryDirectory</code>:</p>
+
+<blockquote>
+<p>See the <code>NSFileManager</code> method <code>URLForDirectory:inDomain:appropriateForURL:create:error:</code> for the preferred means of finding the correct temporary directory.</p>
+</blockquote>
+
+<p>Alright, fair enough. Let&rsquo;s see what&rsquo;s going on with <code>NSFileManager -URLForDirectory:inDomain:appropriateForURL:create:error:</code>:</p>
+
+<blockquote>
+<p>You can also use this method to create a new temporary directory for storing things like autosave files; to do so, specify <code>NSItemReplacementDirectory</code> for the directory parameter, <code>NSUserDomainMask</code> for the <code>domain</code> parameter, and a valid parent directory for the <code>url</code> parameter. After locating (or creating) the desired directory, this method returns the URL for that directory.</p>
+</blockquote>
+
+<p>Huh? Even after reading through that a few times, it&rsquo;s still unclear how to use this, or what the expected behavior. A quick search through the mailing lists <a href="http://lists.apple.com/archives/cocoa-dev/2012/Apr/msg00117.html">reaffirms</a> this <a href="http://lists.apple.com/archives/cocoa-dev/2012/Feb/msg00186.html">confusion</a>.</p>
+
+<p><em>Actually</em>, this method appears to be intended for moving <em>existing</em> temporary files to a permanent location on disk with <code>-replaceItemAtURL:withItemAtURL:backupItemName:options:resultingItemURL:error:</code>. Not exactly what we&rsquo;re looking for.</p>
+
+<p>So much for the <code>NSString</code> filesystem API migration. Let&rsquo;s stick to something that works:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[</span><span class="bp">NSURL</span> <span class="nl">fileURLWithPath</span><span class="p">:</span><span class="n">NSTemporaryDirectory</span><span class="p">()</span> <span class="nl">isDirectory</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+</code></pre></div>
+<h2 id="generating-a-unique-directory-or-file-name">Generating a Unique Directory or File Name</h2>
+
+<p>With a place to call home (temporarily), the next step is to figure out what to name our temporary file. We don&rsquo;t really care what temporary files are named—the only real concern is that they&rsquo;re unique, so as to not interfere with, or be interfered by, any other temporary files.</p>
+
+<p>The best way to generate a unique identifier is to use the <code>globallyUniqueString</code> method on <code>NSProcessInfo</code></p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSString</span> <span class="o">*</span><span class="n">identifier</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSProcessInfo</span> <span class="n">processInfo</span><span class="p">]</span> <span class="n">globallyUniqueString</span><span class="p">];</span>
+</code></pre></div>
+<p>This will return a string in the format: <code>5BD255F4-CA55-4B82-A555-0F4BC5CA2AD6-479-0000018E14D059CC</code></p>
+
+<blockquote>
+<p>Other sources advise the direct invocation of the <code>mktemp(3)</code> system command in order to mitigate potential conflicts. However,  using <code>NSProcessInfo -globallyUniqueString</code> to generate unique names is extremely unlikely to result in a collision.</p>
+</blockquote>
+
+<p>Alternatively, <code>NSUUID</code> (<a href="http://nshipster.com/uuid-udid-unique-identifier">discussed previously</a>) also produces workable results, assuming that you&rsquo;re not doing anything <em>too</em> crazy.</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[[</span><span class="bp">NSUUID</span> <span class="n">UUID</span><span class="p">]</span> <span class="n">UUIDString</span><span class="p">]</span>
+</code></pre></div>
+<p>This produces a string in the format: <code>22361D15-E17B-4C48-AEA6-C73BBEA17011</code></p>
+
+<h2 id="creating-a-temporary-file-path">Creating a Temporary File Path</h2>
+
+<p>Using the aforementioned technique for generating unique identifiers, we can create unique temporary file paths:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSString</span> <span class="o">*</span><span class="n">fileName</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSString</span> <span class="nl">stringWithFormat</span><span class="p">:</span><span class="s">@&quot;%@_%@&quot;</span><span class="p">,</span> <span class="p">[[</span><span class="bp">NSProcessInfo</span> <span class="n">processInfo</span><span class="p">]</span> <span class="n">globallyUniqueString</span><span class="p">],</span> <span class="s">@&quot;file.txt&quot;</span><span class="p">];</span>
+<span class="bp">NSURL</span> <span class="o">*</span><span class="n">fileURL</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSURL</span> <span class="nl">fileURLWithPath</span><span class="p">:[</span><span class="n">NSTemporaryDirectory</span><span class="p">()</span> <span class="nl">stringByAppendingPathComponent</span><span class="p">:</span><span class="n">fileName</span><span class="p">]];</span>
+</code></pre></div>
+<h2 id="creating-a-temporary-directory">Creating a Temporary Directory</h2>
+
+<p>In situations where many temporary files might be created by a process, it may be a good idea to create a temporary sub-directory, which could then be removed for easy cleanup.</p>
+
+<p>Creating a temporary directory is no different than any other invocation of <code>NSFileManager -createDirectoryAtURL:withIntermediateDirectories:attributes:error:</code>:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSURL</span> <span class="o">*</span><span class="n">directoryURL</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSURL</span> <span class="nl">fileURLWithPath</span><span class="p">:[</span><span class="n">NSTemporaryDirectory</span><span class="p">()</span> <span class="nl">stringByAppendingPathComponent</span><span class="p">:[[</span><span class="bp">NSProcessInfo</span> <span class="n">processInfo</span><span class="p">]</span> <span class="n">globallyUniqueString</span><span class="p">]]</span> <span class="nl">isDirectory</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+<span class="p">[[</span><span class="bp">NSFileManager</span> <span class="n">defaultManager</span><span class="p">]</span> <span class="nl">createDirectoryAtURL</span><span class="p">:</span><span class="n">directoryURL</span> <span class="nl">withIntermediateDirectories</span><span class="p">:</span><span class="nb">YES</span> <span class="nl">attributes</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">error</span><span class="p">:</span><span class="o">&amp;</span><span class="n">error</span><span class="p">];</span>
+</code></pre></div>
+<p>And, of course, temporary file paths relative to this directory can be created with <code>URLByAppendingPathComponent:</code>:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSURL</span> <span class="o">*</span><span class="n">fileURL</span> <span class="o">=</span> <span class="p">[</span><span class="n">directoryURL</span> <span class="nl">URLByAppendingPathComponent</span><span class="p">:</span><span class="n">fileName</span><span class="p">];</span>
+</code></pre></div>
+<h2 id="writing-to-a-temporary-file">Writing to a Temporary File</h2>
+
+<p>Files don&rsquo;t exist on the file system until a particular file path is either touched or written to.</p>
+
+<h3 id="nsdata--writetourl:options:error">NSData -writeToURL:options:error</h3>
+
+<p>There are several ways in which data is written to disk in Foundation. The most straightforward of which is <code>NSData -writeToURL:options:error</code>:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSData</span> <span class="o">*</span><span class="n">data</span> <span class="o">=</span> <span class="p">...;</span>
+<span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+<span class="p">[</span><span class="n">data</span> <span class="nl">writeToURL</span><span class="p">:</span><span class="n">fileURL</span> <span class="nl">options</span><span class="p">:</span><span class="n">NSDataWritingAtomic</span> <span class="nl">error</span><span class="p">:</span><span class="o">&amp;</span><span class="n">error</span><span class="p">];</span>
+</code></pre></div>
+<h3 id="nsoutputstream">NSOutputStream</h3>
+
+<p>For more advanced APIs, it is not uncommon to pass an <code>NSOutputStream</code> instance to direct the flow of data. Again, creating an output stream to a temporary file path is no different than any other kind of file path:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSOutputStream</span> <span class="o">*</span><span class="n">outputStream</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSOutputStream</span> <span class="nl">outputStreamToFileAtPath</span><span class="p">:[</span><span class="n">fileURL</span> <span class="n">absoluteString</span><span class="p">]</span> <span class="nl">append</span><span class="p">:</span><span class="nb">NO</span><span class="p">];</span>
+</code></pre></div>
+<h3 id="cleaning-up">Cleaning Up</h3>
+
+<p>The final step is what makes a temporary file <em>actually temporary</em>: clean up.</p>
+
+<p>Although files in a system-designated temporary directory make no guarantees about how long they&rsquo;ll exist before being deleted automatically by the operating system (up to a few days, according to scattered reports), it&rsquo;s still good practice to take care of it yourself once you&rsquo;re finished.</p>
+
+<p>Do that with <code>NSFileManager -removeItemAtURL:</code>, which works for both a temporary file and a temporary directory:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+<span class="p">[[</span><span class="bp">NSFileManager</span> <span class="n">defaultManager</span><span class="p">]</span> <span class="nl">removeItemAtURL</span><span class="p">:</span><span class="n">fileURL</span> <span class="nl">error</span><span class="p">:</span><span class="o">&amp;</span><span class="n">error</span><span class="p">];</span>
+</code></pre></div>
+<hr>
+
+<p>&ldquo;This too shall pass&rdquo; is a mantra that acknowledges that all things are indeed temporary. Within the context of the application lifecycle, some things are more temporary than others, and it is in that knowledge that we act appropriately, seeking to find the right place, make a unique impact, and leave without a trace.</p>
+
+<p>Perhaps we can learn something from this cycle in our own, brief and glorious lifecycle.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-03-03-nstemporarydirectory.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+            
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/dictionary-services/" title="UIReferenceLibraryViewController /<br/>DCSDictionaryRef/<br/>/usr/share/dict/words" rel="next">UIReference​Library​View​Controller /<br/>DCSDictionary​Ref/<br/>/usr/share/dict/words</a>
+            </h1>
+
+            <p>Though widely usurped of their &lsquo;go-to reference&rsquo; status by the Internet, dictionaries and word lists serve an important role behind the scenes of functionality ranging from spell check, grammar check, and auto-correct to auto-summarization and semantic analysis.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/uiprintinteractioncontroller/" title="UIPrintInteractionController">UIPrintInteractionController</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/ibaction-iboutlet-iboutletcollection/" title="IBAction / IBOutlet / IBOutletCollection">IBAction / IBOutlet / IBOutletCollection</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsoperation/" title="NSOperation">NSOperation</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/multipeer-connectivity/" title="Multipeer Connectivity">Multipeer Connectivity</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSHipster Quiz #2 - NSHipster</title>
+    <meta name="description" content="Go up against some of the brightest minds in all things Apple at this special WWDC edition of NSHipster Quiz. Sure, you conform to the NSHipster protocol, but do you have what it takes to implement all of the @optional methods? Take the quiz and see for yourself!"/>
+    <link rel="canonical" href="http://nshipster.com/nshipster-quiz-2/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="NSHipster Quiz #2"/>
+    <meta name="twitter:description" content="Go up against some of the brightest minds in all things Apple at this special WWDC edition of NSHipster Quiz. Sure, you conform to the NSHipster protocol, but do you have what it takes to implement all of the @optional methods? Take the quiz and see for yourself!"/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NSHipster Quiz #2"/>
+    <meta property="og:url" content="http://nshipster.com/nshipster-quiz-2/"/>
+    <meta property="og:description" content="Go up against some of the brightest minds in all things Apple at this special WWDC edition of NSHipster Quiz. Sure, you conform to the NSHipster protocol, but do you have what it takes to implement all of the @optional methods? Take the quiz and see for yourself!"/>
+    <meta property="article:published_time" content="2013-06-12T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="trivia"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NSHipster Quiz #2"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/nshipster-quiz-2/">NSHipster Quiz #2</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-06-12T00:00:00-07:00" itemprop="datePublished">June 12<sup>th</sup>, 2013</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>On June 11th, we organized an NSHipster Pub Quiz for WWDC attendees. Like <a href="http://nshipster.com/nshipster-quiz-1/">our first quiz</a>, questions ranged from random Apple trivia to obscure framework questions. The event was hosted by <a href="http://newrelic.com">New Relic</a>, and sponsored by <a href="https://heroku.com">Heroku</a> &amp; <a href="http://www.mutualmobile.com">Mutual Mobile</a>. About 100 developers attended the event, with the team &ldquo;UIResponders&rdquo; taking top prize.</p>
+
+<p>For everyone that couldn&rsquo;t make it to the event, here&rsquo;s an opportunity to play along at home. Here are some ground rules:</p>
+
+<ul>
+<li>There are 4 Rounds, with 10 questions each</li>
+<li>Record answers on a separate sheet of paper</li>
+<li>Each correct answer to a question gets you 1 point (unless otherwise specified)</li>
+<li>Play with up to 5 friends for maximum enjoyment</li>
+<li>Don&rsquo;t be lame and look things up on the Internet or in Xcode</li>
+</ul>
+
+<hr>
+
+<h2 id="round-1:-general-knowledge">Round 1: General Knowledge</h2>
+
+<ol>
+<li>Mac OS 10.9 Mavericks is named after a surf spot in Northern California. What was the surf spot named after?</li>
+<li>What is the Objective-C Type Encoding of <code>NSError **</code>?</li>
+<li>What is the name of the command line utility that generates a <code>.strings</code> file from Objective-C source code with <code>NSLocalizedString</code>?</li>
+<li>What <code>NSArray</code> method was available since 10.6, but only made public as of 10.9?</li>
+<li>What is the name of the open source project whose C/C++ libraries power <code>NSRegularExpression</code>, <code>CFStringTransform</code>, and other Unicode features in Cocoa?</li>
+<li>On May 19, 2001 Apple opened its first 2 retail stores. Where were they? (1 point for each exact location, or ½‎ for each state)</li>
+<li>What is the name of the private Apple TV framework responsible for appliance UI?</li>
+<li>Which Apple VP said &ldquo;Can&rsquo;t innovate anymore, my ass!&rdquo;?</li>
+<li>List all of the rooms in Moscone West named after San Francisco neighborhoods, starting at Level 2 (1 point for each room)</li>
+<li>Complete the following verse:</li>
+</ol>
+
+<blockquote>
+<p>We&rsquo;ve come too far
+To give up who we are</p>
+
+<hr>
+
+<hr>
+
+<p>She&rsquo;s up all night to the sun&hellip;</p>
+</blockquote>
+
+<h2 id="round-2:-before-&amp;-after">Round 2: Before &amp; After</h2>
+
+<p>What are the following better known as today?</p>
+
+<ol>
+<li>Yellow Box</li>
+<li>AppleSearch</li>
+<li>Jaguar (i.e. &ldquo;Mac OS X 10.__&rdquo;?)</li>
+<li>Rendezvous</li>
+<li>SoundJam</li>
+<li>Six Pack</li>
+<li>Universal Access</li>
+<li>Graphics Group (semi-related to Apple)</li>
+<li>20525 Mariani Ave.</li>
+<li>Yerba Buena (has to do with California, not Apple)</li>
+</ol>
+
+<h2 id="round-3:-picture-round">Round 3: Picture Round</h2>
+
+<ul>
+<li>1. Which WWDC keynote was this from?</li>
+</ul>
+
+<p><img src="http://nshipster-quiz-2.s3.amazonaws.com/question-1.jpg" alt="Question 1"></p>
+
+<ul>
+<li>2. Which WWDC keynote was this from?</li>
+</ul>
+
+<p><img src="http://nshipster-quiz-2.s3.amazonaws.com/question-2.jpg" alt="Question 2"></p>
+
+<ul>
+<li>3. Which WWDC keynote was this from?</li>
+</ul>
+
+<p><img src="http://nshipster-quiz-2.s3.amazonaws.com/question-3.jpg" alt="Question 3"></p>
+
+<ul>
+<li>4. Which WWDC keynote was this from?</li>
+</ul>
+
+<p><img src="http://nshipster-quiz-2.s3.amazonaws.com/question-4.jpg" alt="Question 4"></p>
+
+<ul>
+<li>5. WTF is this?</li>
+</ul>
+
+<p><img src="http://nshipster-quiz-2.s3.amazonaws.com/question-5.jpg" alt="Question 5"></p>
+
+<ul>
+<li>6. What is this?</li>
+</ul>
+
+<p><img src="http://nshipster-quiz-2.s3.amazonaws.com/question-6.jpg" alt="Question 6"></p>
+
+<ul>
+<li>7. What is this?</li>
+</ul>
+
+<p><img src="http://nshipster-quiz-2.s3.amazonaws.com/question-7.jpg" alt="Question 7"></p>
+
+<ul>
+<li>8. What is this? (and which generation?)</li>
+</ul>
+
+<p><img src="http://nshipster-quiz-2.s3.amazonaws.com/question-8.jpg" alt="Question 8"></p>
+
+<ul>
+<li>9. Which &ldquo;Core&rdquo; framework is represented by this logo?</li>
+</ul>
+
+<p><img src="http://nshipster-quiz-2.s3.amazonaws.com/question-9.jpg" alt="Question 9"></p>
+
+<ul>
+<li>10. Everybody loves Craig <em>/fɛdɹ̩igi/</em> (Pictured). How do you spell his last name?</li>
+</ul>
+
+<p><img src="http://nshipster-quiz-2.s3.amazonaws.com/question-10.jpg" alt="Question 10"></p>
+
+<h2 id="round-4:-name-that-framework!">Round 4: Name That Framework!</h2>
+
+<p>For each question, a list of three classes from the same framework have been listed without their two-letter namespace prefix. Name the framework that they all belong to!</p>
+
+<ol>
+<li>Call, CallCenter, Carrier</li>
+<li>Attitude, LogItem, Magnetometer Data</li>
+<li>IdentifierManager</li>
+<li>Request, ComposeViewController, ServiceTypes.h</li>
+<li>Metadata, FileWrapper, FileManager</li>
+<li>Alarm, RecurrenceEnd, Source</li>
+<li>NotificationBanner, Player, SessionError</li>
+<li>Null, Zone, Coder</li>
+<li>Attribute Description, Relationship Description, Property Mapping</li>
+<li>Map Table, Hash Table, Pointer Array</li>
+</ol>
+
+<hr>
+
+<h1 id="answers">Answers</h1>
+
+<h2 id="round-1:-general-knowledge">Round 1: General Knowledge</h2>
+
+<ol>
+<li><a href="http://en.wikipedia.org/wiki/Mavericks_(location)#History">A white-haired German Shepherd named Maverick</a> (anything about a dog gets the point)</li>
+<li><a href="http://nshipster.com/type-encodings/"><code>^@</code></a></li>
+<li><a href="https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/genstrings.1.html"><code>genstrings</code></a></li>
+<li><code>NSArray -firstObject</code></li>
+<li><a href="http://site.icu-project.org">ICU (International Components for Unicode)</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Apple_Store#History"> Tysons Corner, Virginia &amp; Glendale, California</a></li>
+<li><a href="http://nshipster.com/backrow/">BackRow</a></li>
+<li><a href="http://www.theverge.com/2013/6/13/4423844/cant-innovate-anymore-my-ass-apple">Phil Schiller</a></li>
+<li>Pacific Heights, Mission, Nob Hill, Russian Hill, Marina, Presidio</li>
+<li><a href="http://rock.rapgenius.com/Daft-punk-get-lucky-lyrics">&ldquo;So let&rsquo;s raise the bar / And our cups to the stars&rdquo;</a></li>
+</ol>
+
+<h2 id="round-2:-before-&amp;-after">Round 2: Before &amp; After</h2>
+
+<ol>
+<li><a href="http://en.wikipedia.org/wiki/Cocoa_%28API%29">Cocoa</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Sherlock_%28Software%29">Sherlock</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Mac_OS_X_v10.2">Mac OS X 10.2</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Bonjour_%28Software%29">Bonjour</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Itunes#History">iTunes</a></li>
+<li><a href="http://en.wikipedia.org/wiki/System_6">System 6 / Mac OS 6</a></li>
+<li><a href="http://www.apple.com/accessibility/">Accessibility</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Pixar">Pixar</a></li>
+<li><a href="https://en.wikipedia.org/wiki/1_infinite_loop">1 Infinite Loop</a></li>
+<li><a href="http://www.sfmuseum.org/hist/name.html">San Francisco</a></li>
+</ol>
+
+<h2 id="round-3:-picture-round">Round 3: Picture Round</h2>
+
+<ol>
+<li>2011</li>
+<li>2009</li>
+<li>2012</li>
+<li>2008</li>
+<li><a href="http://en.wikipedia.org/wiki/EMate_300">eMate 300</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Xserve_RAID">Xserve RAID</a></li>
+<li><a href="http://en.wikipedia.org/wiki/ISight">iSight</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Ipod_shuffle#Third_generation">3rd gen. iPod Shuffle</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Core_Audio">Core Audio</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Craig_Federighi">&ldquo;Federighi&rdquo;</a></li>
+</ol>
+
+<h2 id="round-4:-name-that-framework!">Round 4: Name That Framework!</h2>
+
+<ol>
+<li><a href="http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Reference/CoreTelephonyFrameworkReference/_index.html">Core Telephony</a></li>
+<li><a href="http://developer.apple.com/library/ios/#documentation/CoreMotion/Reference/CoreMotion_Reference/_index.html">Core Motion</a></li>
+<li><a href="http://developer.apple.com/library/ios/#documentation/DeviceInformation/Reference/AdSupport_Framework/_index.html">Ad Support</a></li>
+<li><a href="http://developer.apple.com/library/ios/#documentation/Social/Reference/Social_Framework/_index.html%23//apple_ref/doc/uid/TP40012233">Social</a></li>
+<li><a href="https://developer.apple.com/library/mac/#documentation/cocoa/reference/foundation/ObjC_classic/_index.html">Foundation</a></li>
+<li><a href="http://developer.apple.com/library/ios/#documentation/EventKit/Reference/EventKitFrameworkRef/_index.html">EventKit</a></li>
+<li><a href="http://developer.apple.com/library/ios/#documentation/GameKit/Reference/GameKit_Collection/_index.html">Game Kit</a></li>
+<li><a href="https://developer.apple.com/library/mac/#documentation/cocoa/reference/foundation/ObjC_classic/_index.html">Foundation</a></li>
+<li><a href="http://developer.apple.com/library/ios/#documentation/Cocoa/Reference/CoreData_ObjC/_index.html">Core Data</a></li>
+<li><a href="https://developer.apple.com/library/mac/#documentation/cocoa/reference/foundation/ObjC_classic/_index.html">Foundation</a> or <a href="https://developer.apple.com/library/mac/#documentation/CoreFoundation/Reference/CoreFoundation_Collection/_index.html">Core Foundation</a> (2 points if you got both)</li>
+</ol>
+
+<hr>
+
+<p>So how did you fare? Tweet out your score to see how you stack up to your peers!</p>
+
+<p>We&rsquo;ll be announcing another pub quiz soon, so be sure to <a href="http://eepurl.com/ys5K1">sign up here</a> to be the first to know about it!</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-06-12-nshipster-quiz-2.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+            
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/object-subscripting/" title="Object Subscripting" rel="next">Object Subscripting</a>
+            </h1>
+
+            <p>Xcode 4.4 quietly introduced a syntactic revolution to Objective-C. Like all revolutions, however, its origins and agitators require some effort to trace.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+          
+          
+            <li>
+              <a href="/nshipster-quiz-7/" title="NSHipster Quiz #7">NSHipster Quiz #7</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nshipster-quiz-5/" title="NSHipster Quiz #5">NSHipster Quiz #5</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nshipster-quiz-1/" title="NSHipster Quiz #1">NSHipster Quiz #1</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

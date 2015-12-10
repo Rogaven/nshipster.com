@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>UIAppearance - NSHipster</title>
+    <meta name="description" content="UIAppearance allows the appearance of views and controls to be consistently defined across the entire application."/>
+    <link rel="canonical" href="http://nshipster.com/uiappearance/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="UIAppearance"/>
+    <meta name="twitter:description" content="UIAppearance allows the appearance of views and controls to be consistently defined across the entire application."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="UIAppearance"/>
+    <meta property="og:url" content="http://nshipster.com/uiappearance/"/>
+    <meta property="og:description" content="UIAppearance allows the appearance of views and controls to be consistently defined across the entire application."/>
+    <meta property="article:published_time" content="2013-03-11T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="UIAppearance"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/uiappearance/">UIAppearance</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-03-11T00:00:00-07:00" itemprop="datePublished">March 11<sup>th</sup>, 2013</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Style vs. Substance.
+Message vs. Medium.
+Rhetoric vs. Dialectic.</p>
+
+<p>Is beauty merely skin deep, or is it somehow informed by deeper truths?
+What does it mean for something to possess good design?
+Are aesthetic judgments relative, or absolute?</p>
+
+<p>These are deep questions that have been pondered by philosophers, artists, and makers alike for millennia.</p>
+
+<p>And while we all continue our search for beauty and understanding in the universe, the app marketplace has been rather clear on this subject:</p>
+
+<p><strong>Users will pay a premium for good-looking software.</strong></p>
+
+<p>When someone purchases an iPhone, they are buying into Apple&rsquo;s philosophy that things that work well should look good, too. The same goes for when we choose to develop for iOS—a sloppy UI reflects poorly on the underlying code.</p>
+
+<p>It used to be that even trivial UI customization on iOS required AppStore-approval-process-taunting ju-ju like method swizzling. Fortunately, with iOS 5, developers were given an easier way: <code>UIAppearance</code>.</p>
+
+<hr>
+
+<p><code>UIAppearance</code> allows the appearance of views and controls to be consistently defined across the entire application.</p>
+
+<p>In order to have this work within the existing structure of UIKit, Apple devised a rather clever solution: <code>UIAppearance</code> is a protocol that returns a proxy that will forward any configuration to instances of a particular class. Why a proxy instead of a property or method on <code>UIView</code> directly? Because there are non-<code>UIView</code> objects like <code>UIBarButtonItem</code> that render their own composite views.
+Appearance can be customized for all instances, or scoped to particular view hierarchies:</p>
+
+<blockquote>
+<ul>
+<li><code>+appearance</code>: Returns the appearance proxy for the receiver.</li>
+<li><code>+appearanceWhenContainedIn:(Class &lt;UIAppearanceContainer&gt;)ContainerClass,...</code>: Returns the appearance proxy for the receiver in a given containment hierarchy.</li>
+</ul>
+
+<p>To customize the appearance of all instances of a class, you use <code>appearance()</code> to get the appearance proxy for the class. For example, to modify the tint color for all instances of UINavigationBar:</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="bp">UINavigationBar</span><span class="p">.</span><span class="n">appearance</span><span class="p">().</span><span class="n">tintColor</span> <span class="o">=</span> <span class="n">myColor</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[[</span><span class="bp">UINavigationBar</span> <span class="n">appearance</span><span class="p">]</span> <span class="nl">setTintColor</span><span class="p">:</span><span class="n">myColor</span><span class="p">];</span>
+</code></pre></div>
+<blockquote>
+<p>To customize the appearances for instances of a class when contained within an instance of a container class, or instances in a hierarchy, you use <code>appearanceWhenContainedInInstancesOfClasses(_:)</code> to get the appearance proxy for the class (the older, variadic <code>appearanceWhenContainedIn</code> method has been deprecated):</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="bp">UIBarButtonItem</span><span class="p">.</span><span class="n">appearanceWhenContainedInInstancesOfClasses</span><span class="p">([</span><span class="bp">UINavigationBar</span><span class="p">.</span><span class="nb">self</span><span class="p">])</span>
+                <span class="p">.</span><span class="n">tintColor</span> <span class="o">=</span> <span class="n">myNavBarColor</span>
+<span class="bp">UIBarButtonItem</span><span class="p">.</span><span class="n">appearanceWhenContainedInInstancesOfClasses</span><span class="p">([</span><span class="bp">UINavigationBar</span><span class="p">.</span><span class="nb">self</span><span class="p">,</span> <span class="bp">UIPopoverController</span><span class="p">.</span><span class="nb">self</span><span class="p">])</span>
+                <span class="p">.</span><span class="n">tintColor</span> <span class="o">=</span> <span class="n">myNavBarColor</span>
+<span class="bp">UIBarButtonItem</span><span class="p">.</span><span class="n">appearanceWhenContainedInInstancesOfClasses</span><span class="p">([</span><span class="bp">UIToolbar</span><span class="p">.</span><span class="nb">self</span><span class="p">])</span>
+                <span class="p">.</span><span class="n">tintColor</span> <span class="o">=</span> <span class="n">myNavBarColor</span>
+<span class="bp">UIBarButtonItem</span><span class="p">.</span><span class="n">appearanceWhenContainedInInstancesOfClasses</span><span class="p">([</span><span class="bp">UIToolbar</span><span class="p">.</span><span class="nb">self</span><span class="p">,</span> <span class="bp">UIPopoverController</span><span class="p">.</span><span class="nb">self</span><span class="p">])</span>
+                <span class="p">.</span><span class="n">tintColor</span> <span class="o">=</span> <span class="n">myNavBarColor</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[[</span><span class="bp">UIBarButtonItem</span> <span class="nl">appearanceWhenContainedInInstancesOfClasses</span><span class="p">:</span><span class="l">@[</span><span class="p">[</span><span class="bp">UINavigationBar</span> <span class="k">class</span><span class="p">]</span><span class="l">]</span><span class="p">]</span>
+       <span class="nl">setTintColor</span><span class="p">:</span><span class="n">myNavBarColor</span><span class="p">];</span>
+<span class="p">[[</span><span class="bp">UIBarButtonItem</span> <span class="nl">appearanceWhenContainedInInstancesOfClasses</span><span class="p">:</span><span class="l">@[</span><span class="p">[</span><span class="bp">UINavigationBar</span> <span class="k">class</span><span class="p">],</span> <span class="p">[</span><span class="bp">UIPopoverController</span> <span class="k">class</span><span class="p">]</span><span class="l">]</span><span class="p">]</span>
+        <span class="nl">setTintColor</span><span class="p">:</span><span class="n">myPopoverNavBarColor</span><span class="p">];</span>
+<span class="p">[[</span><span class="bp">UIBarButtonItem</span> <span class="nl">appearanceWhenContainedInInstancesOfClasses</span><span class="p">:</span><span class="l">@[</span><span class="p">[</span><span class="bp">UIToolbar</span> <span class="k">class</span><span class="p">]</span><span class="l">]</span><span class="p">]</span>
+        <span class="nl">setTintColor</span><span class="p">:</span><span class="n">myToolbarColor</span><span class="p">];</span>
+<span class="p">[[</span><span class="bp">UIBarButtonItem</span> <span class="nl">appearanceWhenContainedInInstancesOfClasses</span><span class="p">:</span><span class="l">@[</span><span class="p">[</span><span class="bp">UIToolbar</span> <span class="k">class</span><span class="p">],</span> <span class="p">[</span><span class="bp">UIPopoverController</span> <span class="k">class</span><span class="p">]</span><span class="l">]</span><span class="p">]</span>
+        <span class="nl">setTintColor</span><span class="p">:</span><span class="n">myPopoverToolbarColor</span><span class="p">];</span>
+</code></pre></div>
+<h2 id="determining-which-properties-work-with-uiappearance">Determining Which Properties Work With <code>UIAppearance</code></h2>
+
+<p>One major downside to <code>UIAppearance</code>&rsquo;s proxy approach is that it&rsquo;s difficult to know which selectors are compatible.</p>
+
+<del>Because <tt>+appearance</tt> returns an <tt>id</tt>, Xcode can&rsquo;t provide any code-completion information. This is a major source of confusion and frustration with this feature.</del>
+
+<ins>As of iOS 7, UIAppearance now returns <a href="http://nshipster.com/instancetype/"><tt>instancetype</tt></a>, which allows for code completion to work as expected. Huzzah!</ins>
+
+<p>In order to find out what methods work with <code>UIAppearance</code>, you have to <a href="http://stackoverflow.com/questions/9424112/what-properties-can-i-set-via-an-uiappearance-proxy">look at the headers</a>:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">$ cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/
+  Developer/SDKs/iPhoneOS*.sdk/System/Library/Frameworks/UIKit.framework/Headers
+$ grep -H UI_APPEARANCE_SELECTOR ./* | sed &#39;s/ __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_5_0) UI_APPEARANCE_SELECTOR;//&#39;
+</code></pre></div>
+<p><code>UIAppearance</code> looks for the <code>UI_APPEARANCE_SELECTOR</code> macro in method signatures. Any method with this annotation can be used with the <code>appearance</code> proxy.</p>
+
+<p>For your convenience, <a href="https://gist.github.com/mattt/5135521">here is the list of properties as of iOS 7.0</a>.</p>
+
+<h2 id="implementing-&lt;uiappearance&gt;-in-custom-uiview-subclasses">Implementing <code>&lt;UIAppearance&gt;</code> in Custom UIView Subclasses</h2>
+
+<p>Much like how <a href="http://nshipster.com/nslocalizedstring/"><code>NSLocalizedString</code></a> and <a href="http://nshipster.com/pragma/"><code>#pragma</code></a> are marks of quality in Objective-C code, having custom UI classes conform to <code>UIAppearance</code> is not only a best-practice, but it demonstrates a certain level of care being put into its implementation.</p>
+
+<p><a href="https://twitter.com/steipete">Peter Steinberger</a> has <a href="http://petersteinberger.com/blog/2013/uiappearance-for-custom-views/">this great article</a>, which describes some of the caveats about implementing <code>UIAppearance</code> in custom views. It&rsquo;s a must-read for anyone who aspires to greatness in their open source UI components.</p>
+
+<h2 id="alternatives">Alternatives</h2>
+
+<p>Another major shortcoming of <code>UIAppearance</code> is that style rules are <em>imperative</em>, rather than <em>declarative</em>. That is, styling is applied at runtime in code, rather than being interpreted from a list of style rules.</p>
+
+<p>Yes, if there&rsquo;s one idea to steal from web development, it&rsquo;s the separation of content and presentation. Say what you will about CSS, but stylesheets are <em>amazing</em>.</p>
+
+<p>Stylesheet enthusiasts on iOS now have some options. <a href="http://www.pixate.com">Pixate</a> is a commercial framework that uses CSS to style applications. <a href="https://github.com/tombenner/nui">NUI</a>, an open-source project by <a href="https://github.com/tombenner">Tom Benner</a>, does much the same with a CSS/SCSS-like language. Another open source project along the same lines is <a href="https://github.com/robertwijas/UISS">UISS</a> by <a href="https://github.com/robertwijas">Robert Wijas</a>, which allows <code>UIAppearance</code> rules to be read from JSON.</p>
+
+<hr>
+
+<p>Cocoa developers have a long history of obsessing about visual aesthetics, and have often gone to extreme ends to achieve their desired effects. Recall the <a href="http://en.wikipedia.org/wiki/Delicious_Generation">Delicious Generation</a> of Mac developers, and applications like <a href="http://discoapp.com">Disco</a>, which went so far as to <a href="http://www.youtube.com/watch?v=8Dwi47XOqwI">emit virtual smoke when burning a disc</a>.</p>
+
+<p>This spirit of dedication to making things look good is alive and well in iOS. As a community and as an ecosystem, we have relentlessly pushed the envelope in terms of what users should expect from their apps. And though this makes our jobs more challenging, it makes the experience of developing for iOS all the more enjoyable.</p>
+
+<p>Settle for nothing less than the whole package.
+Make your apps beautiful from interface to implementation.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-03-11-uiappearance.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on September 8, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/c-storage-classes/" title="C Storage Classes" rel="next">C Storage Classes</a>
+            </h1>
+
+            <p>In C, the scope and lifetime of a variable or function within a program is determined by its storage class. Understanding these storage classes allows us to decipher common incantations found throughout Objective-C</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/cmdevicemotion/" title="CMDeviceMotion">CMDeviceMotion</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/ns_enum-ns_options/" title="NS_ENUM & NS_OPTIONS">NS_ENUM & NS_OPTIONS</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nslinguistictagger/" title="NSLinguisticTagger">NSLinguisticTagger</a>
+            </li>
+            
+          
+          
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

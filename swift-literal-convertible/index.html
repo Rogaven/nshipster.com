@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>Swift Literal Convertibles - NSHipster</title>
+    <meta name="description" content="Last week, we wrote about overloading and creating custom operators in Swift, a language feature that is as powerful as it is controversial. By all accounts, this week's issue threatens to be equally polarizing, as it covers a feature of Swift that is pervasive, yet invisible: literal convertibles."/>
+    <link rel="canonical" href="http://nshipster.com/swift-literal-convertible/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="Swift Literal Convertibles"/>
+    <meta name="twitter:description" content="Last week, we wrote about overloading and creating custom operators in Swift, a language feature that is as powerful as it is controversial. By all accounts, this week&#39;s issue threatens to be equally polarizing, as it covers a feature of Swift that is pervasive, yet invisible: literal convertibles."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Swift Literal Convertibles"/>
+    <meta property="og:url" content="http://nshipster.com/swift-literal-convertible/"/>
+    <meta property="og:description" content="Last week, we wrote about overloading and creating custom operators in Swift, a language feature that is as powerful as it is controversial. By all accounts, this week&#39;s issue threatens to be equally polarizing, as it covers a feature of Swift that is pervasive, yet invisible: literal convertibles."/>
+    <meta property="article:published_time" content="2014-08-18T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="swift"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="Swift Literal Convertibles"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/swift-literal-convertible/">Swift Literal Convertibles</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2014-08-18T00:00:00-07:00" itemprop="datePublished">August 18<sup>th</sup>, 2014</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Last week, we wrote about <a href="http://nshipster.com/swift-operators/">overloading and creating custom operators</a> in Swift, a language feature that is as powerful as it is controversial.</p>
+
+<p>By all accounts, this week&rsquo;s issue threatens to be equally polarizing, as it covers a feature of Swift that is pervasive, yet invisible: literal convertibles.</p>
+
+<hr>
+
+<p>In code, a <em>literal</em> is notation representing a fixed value. Most languages define literals for logical values, numbers, strings, and often arrays and dictionaries.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">57</span>
+<span class="k">let</span> <span class="kt">float</span> <span class="o">=</span> <span class="mf">6.02</span>
+<span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="s">&quot;Hello&quot;</span>
+</code></pre></div>
+<p>Literals are so ingrained in a developer&rsquo;s mental model of programming that most of us don&rsquo;t actively consider what the compiler is actually doing (thereby remaining blissfully unaware of neat tricks like <a href="http://en.wikipedia.org/wiki/String_interning">string interning</a>).</p>
+
+<p>Having a shorthand for these essential building blocks makes code easier to both read and write.</p>
+
+<p>In Swift, developers are provided a hook into how values are constructed from literals, called <em>literal convertible protocols</em>.</p>
+
+<p>The standard library defines 10 such protocols:</p>
+
+<ul>
+<li><code>ArrayLiteralConvertible</code></li>
+<li><code>BooleanLiteralConvertible</code></li>
+<li><code>DictionaryLiteralConvertible</code></li>
+<li><code>ExtendedGraphemeClusterLiteralConvertible</code></li>
+<li><code>FloatLiteralConvertible</code></li>
+<li><code>NilLiteralConvertible</code></li>
+<li><code>IntegerLiteralConvertible</code></li>
+<li><code>StringLiteralConvertible</code></li>
+<li><code>StringInterpolationConvertible</code></li>
+<li><code>UnicodeScalarLiteralConvertible</code></li>
+</ul>
+
+<p>Any <code>class</code> or <code>struct</code> conforming to one of these protocols will be eligible to have an instance of itself statically initialized from the corresponding literal.</p>
+
+<p>It&rsquo;s what allows literal values to &ldquo;just work&rdquo; across the language.</p>
+
+<p>Take optionals, for example.</p>
+
+<h2 id="nilliteralconvertible-and-optionals">NilLiteralConvertible and Optionals</h2>
+
+<p>One of the best parts of optionals in Swift is that the underlying mechanism is actually defined in the language itself:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">enum</span> <span class="n">Optional</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="o">:</span> <span class="n">Reflectable</span><span class="p">,</span> <span class="n">NilLiteralConvertible</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">None</span>
+    <span class="k">case</span> <span class="n">Some</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="k">init</span><span class="p">()</span>
+    <span class="k">init</span><span class="p">(</span><span class="n">_</span> <span class="nl">some</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span>
+    <span class="k">init</span><span class="p">(</span><span class="nl">nilLiteral</span><span class="p">:</span> <span class="p">())</span>
+
+    <span class="k">func</span> <span class="n">map</span><span class="o">&lt;</span><span class="n">U</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">f</span><span class="p">:</span> <span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">U</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">U</span><span class="o">?</span>
+    <span class="k">func</span> <span class="n">getMirror</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">MirrorType</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Notice that <code>Optional</code> conforms to the <code>NilLiteralConvertible</code> protocol:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">protocol</span> <span class="n">NilLiteralConvertible</span> <span class="p">{</span>
+    <span class="k">init</span><span class="p">(</span><span class="nl">nilLiteral</span><span class="p">:</span> <span class="p">())</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Now consider the two statements:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="nl">a</span><span class="p">:</span> <span class="n">AnyObject</span> <span class="o">=</span> <span class="nb">nil</span> <span class="c1">// !</span>
+<span class="k">var</span> <span class="nl">b</span><span class="p">:</span> <span class="n">AnyObject</span><span class="o">?</span> <span class="o">=</span> <span class="nb">nil</span>
+</code></pre></div>
+<p>The declaration of <code>var a</code> generates the compiler warning <code>Type &#39;AnyObject&#39; does not conform to the protocol &#39;NilLiteralConvertible</code>, while the declaration <code>var b</code> works as expected.</p>
+
+<p>Under the hood, when a literal value is assigned, the Swift compiler consults the corresponding <code>protocol</code> (in this case <code>NilLiteralConvertible</code>), and calls the associated initializer (<code>init(nilLiteral: ())</code>).</p>
+
+<p>Although the implementation of <code>init(nilLiteral: ())</code> is private, the end result is that an <code>Optional</code> set to <code>nil</code> becomes <code>.None</code>.</p>
+
+<h2 id="stringliteralconvertible-and-regular-expressions">StringLiteralConvertible and Regular Expressions</h2>
+
+<p>Swift literal convertibles can be used to provide convenient shorthand initializers for custom objects.</p>
+
+<p>Recall our <a href="http://nshipster.com/swift-operators/"><code>Regex</code></a> example from last week:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">struct</span> <span class="n">Regex</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nl">pattern</span><span class="p">:</span> <span class="n">String</span>
+    <span class="k">let</span> <span class="nl">options</span><span class="p">:</span> <span class="n">NSRegularExpressionOptions</span><span class="o">!</span>
+
+    <span class="kr">private</span> <span class="k">var</span> <span class="nl">matcher</span><span class="p">:</span> <span class="bp">NSRegularExpression</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="bp">NSRegularExpression</span><span class="p">(</span><span class="nl">pattern</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">pattern</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">options</span><span class="p">,</span> <span class="nl">error</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">init</span><span class="p">(</span><span class="nl">pattern</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="n">NSRegularExpressionOptions</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="n">pattern</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span>
+    <span class="p">}</span>
+
+    <span class="k">func</span> <span class="n">match</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="n">NSMatchingOptions</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">self</span><span class="p">.</span><span class="n">matcher</span><span class="p">.</span><span class="n">numberOfMatchesInString</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="n">options</span><span class="p">,</span> <span class="nl">range</span><span class="p">:</span> <span class="n">NSMakeRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">string</span><span class="p">.</span><span class="n">utf16Count</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Developers coming from a Ruby or Perl background may be disappointed by Swift&rsquo;s lack of support for regular expression literals, but this can be retcon&rsquo;d in using the <code>StringLiteralConvertible</code> protocol:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">extension</span> <span class="nl">Regex</span><span class="p">:</span> <span class="n">StringLiteralConvertible</span> <span class="p">{</span>
+    <span class="k">typealias</span> <span class="n">ExtendedGraphemeClusterLiteralType</span> <span class="o">=</span> <span class="n">StringLiteralType</span>
+
+    <span class="k">init</span><span class="p">(</span><span class="n">unicodeScalarLiteral</span> <span class="nl">value</span><span class="p">:</span> <span class="n">UnicodeScalarLiteralType</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="s">&quot;\(value)&quot;</span>
+    <span class="p">}</span>
+
+    <span class="k">init</span><span class="p">(</span><span class="n">extendedGraphemeClusterLiteral</span> <span class="nl">value</span><span class="p">:</span> <span class="n">ExtendedGraphemeClusterLiteralType</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="p">}</span>
+
+    <span class="k">init</span><span class="p">(</span><span class="n">stringLiteral</span> <span class="nl">value</span><span class="p">:</span> <span class="n">StringLiteralType</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p><code>StringLiteralConvertible</code> itself inherits from the <code>ExtendedGraphemeClusterLiteralConvertible</code> protocol, which in turn inherits from <code>UnicodeScalarLiteralConvertible</code>. <code>ExtendedGraphemeClusterLiteralType</code> is an internal type representing a <code>String</code> of length 1, while <code>UnicodeScalarLiteralType</code> is an internal type representing a <code>Character</code>. In order to implement the required <code>init</code>s, <code>ExtendedGraphemeClusterLiteralType</code> and <code>UnicodeScalarLiteralType</code> can be <code>typealias</code>&rsquo;d to <code>StringLiteralType</code> and <code>Character</code>, respectively.</p>
+</blockquote>
+
+<p>Now, we can do this:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nl">string</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">&quot;foo bar baz&quot;</span>
+<span class="k">let</span> <span class="nl">regex</span><span class="p">:</span> <span class="n">Regex</span> <span class="o">=</span> <span class="s">&quot;foo&quot;</span>
+
+<span class="n">regex</span><span class="p">.</span><span class="n">match</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="c1">// true</span>
+</code></pre></div>
+<p>&hellip;or more simply:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="s">&quot;foo&quot;</span><span class="p">.</span><span class="n">match</span><span class="p">(</span><span class="n">string</span><span class="p">)</span> <span class="c1">// true</span>
+</code></pre></div>
+<p>Combined with the <a href="http://nshipster.com/swift-operators">custom operator <code>=~</code></a>, this can be made even more idiomatic:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="s">&quot;foo bar baz&quot;</span> <span class="o">=~</span> <span class="s">&quot;foo&quot;</span> <span class="c1">// true</span>
+</code></pre></div>
+<hr>
+
+<p>Some might bemoan this as the end of comprehensibility, while others will see this merely as filling in one of the missing parts of this new language.</p>
+
+<p>It&rsquo;s all just a matter of what you&rsquo;re used to, and whether you think a developer is entitled to add features to a language in order for it to better suit their purposes.</p>
+
+<blockquote>
+<p>Either way, I hope we can all agree that this language feature is <em>interesting</em>, and worthy of further investigation. So in that spirit, let&rsquo;s venture forth and illustrate a few more use cases.</p>
+</blockquote>
+
+<hr>
+
+<h2 id="arrayliteralconvertible-and-sets">ArrayLiteralConvertible and Sets</h2>
+
+<p>For a language with such a deep regard for immutability and safety, it&rsquo;s somewhat odd that there is no built-in support for sets in the standard library.</p>
+
+<p>Arrays are nice and all, but the <code>O(1)</code> lookup and idempotence of sets&hellip; <em>*whistful sigh*</em></p>
+
+<p>So here&rsquo;s a simple example of how <code>Set</code> might be implemented in Swift, using the built-in <code>Dictionary</code> type:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">struct</span> <span class="n">Set</span><span class="o">&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="n">Hashable</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="k">typealias</span> <span class="n">Index</span> <span class="o">=</span> <span class="n">T</span>
+    <span class="kr">private</span> <span class="k">var</span> <span class="nl">dictionary</span><span class="p">:</span> <span class="p">[</span><span class="nl">T</span><span class="p">:</span> <span class="n">Bool</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="o">:</span><span class="p">]</span>
+
+    <span class="k">var</span> <span class="nl">count</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">self</span><span class="p">.</span><span class="n">dictionary</span><span class="p">.</span><span class="n">count</span>
+    <span class="p">}</span>
+
+    <span class="k">var</span> <span class="nl">isEmpty</span><span class="p">:</span> <span class="n">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">self</span><span class="p">.</span><span class="n">dictionary</span><span class="p">.</span><span class="n">isEmpty</span>
+    <span class="p">}</span>
+
+    <span class="k">func</span> <span class="n">contains</span><span class="p">(</span><span class="nl">element</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">self</span><span class="p">.</span><span class="n">dictionary</span><span class="p">[</span><span class="n">element</span><span class="p">]</span> <span class="o">??</span> <span class="nb">false</span>
+    <span class="p">}</span>
+
+    <span class="kr">mutating</span> <span class="k">func</span> <span class="n">put</span><span class="p">(</span><span class="nl">element</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">dictionary</span><span class="p">[</span><span class="n">element</span><span class="p">]</span> <span class="o">=</span> <span class="nb">true</span>
+    <span class="p">}</span>
+
+    <span class="kr">mutating</span> <span class="k">func</span> <span class="n">remove</span><span class="p">(</span><span class="nl">element</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nb">self</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">element</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">self</span><span class="p">.</span><span class="n">dictionary</span><span class="p">.</span><span class="n">removeValueForKey</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+            <span class="k">return</span> <span class="nb">true</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">false</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>A real, standard library-calibre implementation of <code>Set</code> would involve a <em>lot</em> more Swift-isms, like generators, sequences, and all manner of miscellaneous protocols. It&rsquo;s enough to write an entirely separate article about.</p>
+</blockquote>
+
+<p>Of course, a standard collection class is only as useful as it is convenient to use. <code>NSSet</code> wasn&rsquo;t so lucky to receive the first-class treatment when array and dictionary literal syntax was introduced with the <a href="http://clang.llvm.org/docs/ObjectiveCLiterals.html">Apple LLVM Compiler 4.0</a>, but we can right the wrongs of the past with the <code>ArrayLiteralConvertible</code> protocol:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">protocol</span> <span class="n">ArrayLiteralConvertible</span> <span class="p">{</span>
+    <span class="k">typealias</span> <span class="n">Element</span>
+    <span class="k">init</span><span class="p">(</span><span class="n">arrayLiteral</span> <span class="nl">elements</span><span class="p">:</span> <span class="n">Element</span><span class="p">...)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Extending <code>Set</code> to adopt this protocol is relatively straightforward:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">extension</span> <span class="nl">Set</span><span class="p">:</span> <span class="n">ArrayLiteralConvertible</span> <span class="p">{</span>
+    <span class="kr">public</span> <span class="k">init</span><span class="p">(</span><span class="n">arrayLiteral</span> <span class="nl">elements</span><span class="p">:</span> <span class="n">T</span><span class="p">...)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="n">element</span> <span class="k">in</span> <span class="n">elements</span> <span class="p">{</span>
+            <span class="n">put</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>But that&rsquo;s all it takes to achieve our desired results:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nl">set</span><span class="p">:</span> <span class="n">Set</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="kr">set</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1">// true</span>
+<span class="kr">set</span><span class="p">.</span><span class="n">count</span> <span class="c1">// 3</span>
+</code></pre></div>
+<blockquote>
+<p>This example does, however, highlight a legitimate concern for literal convertibles: <strong>type inference ambiguity</strong>. Because of the significant API overlap between collection classes like <code>Array</code> and <code>Set</code>, one could ostensibly write code that would behave differently depending on how the type was resolved (e.g. set addition is idempotent, whereas arrays accumulate, so the count after adding two equivalent elements would differ)</p>
+</blockquote>
+
+<h2 id="stringliteralconvertible-and-urls">StringLiteralConvertible and URLs</h2>
+
+<p>Alright, one last example creative use of literal convertibles: URL literals.</p>
+
+<p><code>NSURL</code> is the fiat currency of the URL Loading System, with the nice feature of introspection of its component parts according to <a href="https://www.ietf.org/rfc/rfc2396.txt">RFC 2396</a>. Unfortunately, it&rsquo;s so inconvenient to instantiate, that third-party framework authors often decide to ditch them in favor of worse-but-more-convenient strings for method parameters.</p>
+
+<p>With a simple extension on <code>NSURL</code>, one can get the best of both worlds:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">extension</span> <span class="nl">NSURL</span><span class="p">:</span> <span class="n">StringLiteralConvertible</span> <span class="p">{</span>
+    <span class="kr">public</span> <span class="k">class</span> <span class="k">func</span> <span class="n">convertFromExtendedGraphemeClusterLiteral</span><span class="p">(</span><span class="nl">value</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Self</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">self</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">value</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="kr">public</span> <span class="k">class</span> <span class="k">func</span> <span class="n">convertFromStringLiteral</span><span class="p">(</span><span class="nl">value</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Self</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">self</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">value</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>One neat feature of literal convertibles is that the type inference works even without a variable declaration:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="s">&quot;http://nshipster.com/&quot;</span><span class="p">.</span><span class="n">host</span> <span class="c1">// nshipster.com</span>
+</code></pre></div>
+<hr>
+
+<p>As a community, it&rsquo;s up to us to decide what capabilities of Swift are features and what are bugs. We&rsquo;ll be the ones to distinguish pattern from anti-pattern; convention from red flag.</p>
+
+<p>So it&rsquo;s unclear, at the present moment, how things like literal convertibles, custom operators, and all of the other capabilities of Swift will be reconciled. This publication has, at times, been more or less prescriptive on how things should be, but in this case, that&rsquo;s not the case here.</p>
+
+<p>All there is to be done is to experiment and learn.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-08-18-swift-literal-convertible.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 1.2.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+        
+
+  <section id="promotion">
+    
+    <small>Recommended Reading</small>
+    
+    
+    
+
+<div id="" class="book" itemscope itemtype="http://schema.org/Product">
+  <div itemscope itemtype="http://schema.org/Book">
+    <link itemprop="bookFormat" href="http://schema.org/EBook"/>
+    <a href="https://gum.co/nshipster-swift/" title="NSHipster: Obscure Topics in Cocoa & Swift" target="_blank">
+      <img src="//cdn.nshipster.com/images/nshipster-swift-cover@2x.png" class="cover" alt="NSHipster: Obscure Topics in Cocoa & Swift" itemprop="image"/>
+    </a>
+    <span itemprop="name" style="display:none;" hidden>NSHipster: Obscure Topics in Cocoa & Swift</span>
+    <span itemprop="author" style="display:none;" hidden>Mattt Thompson & Nate Cook</span>
+    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display:none;">
+      <link itemprop="availability" href="http://schema.org/InStock"/>
+      <meta itemprop="priceCurrency" content="USD"/>
+      <span itemprop="price">29</span>
+    </div>
+  </div>
+</div>
+
+    <h3>NSHipster, Second Edition</h3>
+    <h4>Obscure Topics in Cocoa & Swift</h4>
+    <p>Revised and extended to focus on using Swift in iOS and OS X development, NSHipster: Obscure Topics in Cocoa &amp; Swift is an essential updated guide.</p>
+
+    
+    <a class="buy" href="https://gum.co/nshipster-swift/" target="_blank">Buy Now on Gumroad</a>
+    
+  </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/wkwebkit/" title="WKWebView" rel="next">WKWeb​View</a>
+            </h1>
+
+            <p>iOS has a complicated relationship with the web. And it goes back to the very inception of the platform nearly a decade ago.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/swift-default-protocol-implementations/" title="Swift Default Protocol Implementations">Swift Default Protocol Implementations</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/swift-1.2/" title="Swift 1.2">Swift 1.2</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/swift-system-version-checking/" title="Swift System Version Checking">Swift System Version Checking</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nscalendarunityear/" title="NSCalendarUnitYear">NSCalendarUnitYear</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

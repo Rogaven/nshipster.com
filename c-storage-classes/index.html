@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>C Storage Classes - NSHipster</title>
+    <meta name="description" content="In C, the scope and lifetime of a variable or function within a program is determined by its storage class. Understanding these storage classes allows us to decipher common incantations found throughout Objective-C"/>
+    <link rel="canonical" href="http://nshipster.com/c-storage-classes/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="C Storage Classes"/>
+    <meta name="twitter:description" content="In C, the scope and lifetime of a variable or function within a program is determined by its storage class. Understanding these storage classes allows us to decipher common incantations found throughout Objective-C"/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="C Storage Classes"/>
+    <meta property="og:url" content="http://nshipster.com/c-storage-classes/"/>
+    <meta property="og:description" content="In C, the scope and lifetime of a variable or function within a program is determined by its storage class. Understanding these storage classes allows us to decipher common incantations found throughout Objective-C"/>
+    <meta property="article:published_time" content="2013-03-18T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="objective-c"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="C Storage Classes"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/c-storage-classes/">C Storage Classes</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-03-18T00:00:00-07:00" itemprop="datePublished">March 18<sup>th</sup>, 2013</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>It&rsquo;s time, once again, to take a few steps back from the world of Objective-C, and look at some underlying C language features. Hold onto your fedoras, ladies &amp; gents, as we dive into C storage classes in this week&rsquo;s edition of NSHipster.</p>
+
+<hr>
+
+<p>In C, the <em>scope</em> and <em>lifetime</em> of a variable or function within a program is determined by its <em>storage class</em>. Each variable has a <em>lifetime</em>, or the context in which they store their value. Functions, along with variables, also exist within a particular <em>scope</em>, or visibility, which dictates which parts of a program know about and can access them.</p>
+
+<p>There are 4 storage classes in C:</p>
+
+<ul>
+<li><code>auto</code></li>
+<li><code>register</code></li>
+<li><code>static</code></li>
+<li><code>extern</code></li>
+</ul>
+
+<p>At least a few of these will look familiar to anyone who has done a cursory amount of Objective-C programming. Let&rsquo;s go into more detail with each one:</p>
+
+<h2 id="auto"><code>auto</code></h2>
+
+<p>There&rsquo;s a good chance you&rsquo;ve never seen this keyword in the wild. That&rsquo;s because <code>auto</code> is the default storage class, and therefore doesn&rsquo;t need to be explicitly used often.</p>
+
+<p>Automatic variables have memory automatically allocated when a program enters a block, and released when the program leaves that block. Access to automatic variables is limited to only the block in which they are declared, as well as any nested blocks.</p>
+
+<h2 id="register"><code>register</code></h2>
+
+<p>Most Objective-C programmers probably aren&rsquo;t familiar with <code>register</code> either, as it&rsquo;s just not widely used in the <code>NS</code> world.</p>
+
+<p><code>register</code> behaves just like <code>auto</code>, except that instead of being allocated onto the stack, they are stored in a <a href="http://en.wikipedia.org/wiki/Processor_register">register</a>.</p>
+
+<p>Registers offer faster access than RAM, but because of the complexities of memory management, putting variables in registers does not guarantee a faster program—in fact, it may very well end up slowing down execution by taking up space on the register unnecessarily. As it were, using <code>register</code> is actually just a <em>suggestion</em> to the compiler to store the variable in the register; implementations may choose whether or not to honor this.</p>
+
+<p><code>register</code>&rsquo;s lack of popularity in Objective-C is instructive: it&rsquo;s probably best not to bother with it, as it&rsquo;s much more likely to cause a headache than speed up your app in any noticeable way.</p>
+
+<h2 id="static"><code>static</code></h2>
+
+<p>Finally, one that everyone&rsquo;s sure to recognize: <code>static</code>.</p>
+
+<p>As a keyword, <code>static</code> gets used in a lot of different, incompatible ways, so it can be confusing to figure out exactly what it means in every instance. When it comes to storage classes, <code>static</code> means one of two things.</p>
+
+<ol>
+<li>A <code>static</code> variable inside a method or function retains its value between invocations.</li>
+<li>A <code>static</code> variable declared globally can be called by any function or method, so long as those functions appear in the same file as the <code>static</code> variable. The same goes for <code>static</code> functions.</li>
+</ol>
+
+<h3 id="static-singletons">Static Singletons</h3>
+
+<p>A common pattern in Objective-C is the <code>static</code> singleton, wherein a statically-declared variable is initialized and returned in either a function or class method. <code>dispatch once</code> is used to guarantee that the variable is initialized <em>exactly</em> once in a thread-safe manner:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">+</span> <span class="p">(</span><span class="kt">instancetype</span><span class="p">)</span><span class="nf">sharedInstance</span> <span class="p">{</span>
+  <span class="k">static</span> <span class="kt">id</span> <span class="n">_sharedInstance</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+  <span class="k">static</span> <span class="kt">dispatch_once_t</span> <span class="n">onceToken</span><span class="p">;</span>
+  <span class="n">dispatch_once</span><span class="p">(</span><span class="o">&amp;</span><span class="n">onceToken</span><span class="p">,</span> <span class="o">^</span><span class="p">{</span>
+      <span class="n">_sharedInstance</span> <span class="o">=</span> <span class="p">[[</span><span class="nb">self</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+  <span class="p">});</span>
+
+  <span class="k">return</span> <span class="n">_sharedInstance</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The singleton pattern is useful for creating objects that are shared across the entire application, such as an HTTP client or a notification manager, or objects that may be expensive to create, such as formatters.</p>
+
+<h2 id="extern"><code>extern</code></h2>
+
+<p>Whereas <code>static</code> makes functions and variables globally visible within a particular file, <code>extern</code> makes them visible globally to <em>all files</em>.</p>
+
+<p>Global variables are not a great idea, generally speaking. Having no constraints on how or when state can be mutated is just asking for impossible-to-debug bugs. That said, there are two common and practical uses for <code>extern</code> in Objective-C.</p>
+
+<h3 id="global-string-constants">Global String Constants</h3>
+
+<p>Any time your application uses a string constant with a non-linguistic value in a public interface, it should declare it as an external string constant. This is especially true of keys in <code>userInfo</code> dictionaries, <code>NSNotification</code> names, and <code>NSError</code> domains.</p>
+
+<p>The pattern is to declare an <code>extern</code> <code>NSString * const</code> in a public header, and define that <code>NSString * const</code> in the implementation:</p>
+
+<h4 id="appdelegate.h">AppDelegate.h</h4>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">extern</span> <span class="bp">NSString</span> <span class="o">*</span> <span class="k">const</span> <span class="n">kAppErrorDomain</span><span class="p">;</span>
+</code></pre></div>
+<h4 id="appdelegate.m">AppDelegate.m</h4>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSString</span> <span class="o">*</span> <span class="k">const</span> <span class="n">kAppErrorDomain</span> <span class="o">=</span> <span class="s">@&quot;com.example.yourapp.error&quot;</span><span class="p">;</span>
+</code></pre></div>
+<p>It doesn&rsquo;t particularly matter what the value of the string is, so long as it&rsquo;s unique. Using a string constant establishes a strict contract, that the constant variable is used instead of the string&rsquo;s literal value itself.</p>
+
+<h3 id="public-functions">Public Functions</h3>
+
+<p>Some APIs may wish to expose helper functions publicly. For auxiliary concerns and state-agnostic procedures, functions are a great way to encapsulate these behaviors—and if they&rsquo;re particularly useful, it may be worth making them available globally.</p>
+
+<p>The pattern follows the same as in the previous example:</p>
+
+<h4 id="transactionstatemachine.h">TransactionStateMachine.h</h4>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">typedef</span> <span class="nf">NS_ENUM</span><span class="p">(</span><span class="bp">NSUInteger</span><span class="p">,</span> <span class="n">TransactionState</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">TransactionOpened</span><span class="p">,</span>
+    <span class="n">TransactionPending</span><span class="p">,</span>
+    <span class="n">TransactionClosed</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">extern</span> <span class="bp">NSString</span> <span class="o">*</span> <span class="nf">NSStringFromTransactionState</span><span class="p">(</span><span class="n">TransactionState</span> <span class="n">state</span><span class="p">);</span>
+</code></pre></div>
+<h4 id="transactionstatemachine.m">TransactionStateMachine.m</h4>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSString</span> <span class="o">*</span> <span class="nf">NSStringFromTransactionState</span><span class="p">(</span><span class="n">TransactionState</span> <span class="n">state</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="n">state</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="nl">TransactionOpened</span><span class="p">:</span>
+      <span class="k">return</span> <span class="s">@&quot;Opened&quot;</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nl">TransactionPending</span><span class="p">:</span>
+      <span class="k">return</span> <span class="s">@&quot;Pending&quot;</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nl">TransactionClosed</span><span class="p">:</span>
+      <span class="k">return</span> <span class="s">@&quot;Closed&quot;</span><span class="p">;</span>
+    <span class="k">default</span><span class="o">:</span>
+      <span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<p>To understand anything is to make sense of its context. What we may see as obvious and self-evident, is all but unknown to someone without our frame of reference. Our inability to truly understand or appreciate the differences in perspective and information between ourselves and others is perhaps our most basic shortcoming.</p>
+
+<p>That is why, in our constructed logical universe of 0&rsquo;s and 1&rsquo;s, we take such care to separate contexts, and structure our assumptions based on these explicit rules. C storage classes are essential to understanding how a program operates. Without them, we are left to develop as one might walk on egg shells. So take heed of these simple rules of engagement and go forth to code with confidence.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-03-18-c-storage-classes.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+            
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/search-kit/" title="Search Kit" rel="next">Search Kit</a>
+            </h1>
+
+            <p>Search Kit is a C framework for searching and indexing content in human languages. It supports matching on phrase or partial word, including logical &amp; wildcard operators, and can rank results by relevance. Search Kit also provides document summarization, which is useful for generating representative excerpts. And best of all: it&rsquo;s thread-safe.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/associated-objects/" title="Associated Objects">Associated Objects</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/instancetype/" title="instancetype">instancetype</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/clang-diagnostics/" title="Clang Diagnostics">Clang Diagnostics</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/extended-file-attributes/" title="Extended File Attributes">Extended File Attributes</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

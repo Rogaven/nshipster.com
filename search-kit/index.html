@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>Search Kit - NSHipster</title>
+    <meta name="description" content="Search Kit is a C framework for searching and indexing content in human languages. It supports matching on phrase or partial word, including logical & wildcard operators, and can rank results by relevance. Search Kit also provides document summarization, which is useful for generating representative excerpts. And best of all: it's thread-safe."/>
+    <link rel="canonical" href="http://nshipster.com/search-kit/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="Search Kit"/>
+    <meta name="twitter:description" content="Search Kit is a C framework for searching and indexing content in human languages. It supports matching on phrase or partial word, including logical &amp; wildcard operators, and can rank results by relevance. Search Kit also provides document summarization, which is useful for generating representative excerpts. And best of all: it&#39;s thread-safe."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Search Kit"/>
+    <meta property="og:url" content="http://nshipster.com/search-kit/"/>
+    <meta property="og:description" content="Search Kit is a C framework for searching and indexing content in human languages. It supports matching on phrase or partial word, including logical &amp; wildcard operators, and can rank results by relevance. Search Kit also provides document summarization, which is useful for generating representative excerpts. And best of all: it&#39;s thread-safe."/>
+    <meta property="article:published_time" content="2013-03-25T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="Search Kit"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/search-kit/">Search Kit</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-03-25T00:00:00-07:00" itemprop="datePublished">March 25<sup>th</sup>, 2013</time>
+    
+    (<a href="#revisions">revised</a>)
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>NSHipsters love irony, right? How about this for irony:</p>
+
+<p>There&rsquo;s this framework called <a href="https://developer.apple.com/library/mac/#documentation/UserExperience/Reference/SearchKit/Reference/reference.html">Search Kit</a>, which despite being insanely powerful and useful for finding information, is something that almost no one has ever heard of.</p>
+
+<p>It&rsquo;s true! I&rsquo;d reckon there&rsquo;s a better chance that more of you have implemented your own search functionality from scratch than have ever even heard of Search Kit. (Heck, most people haven&rsquo;t even heard of <a href="https://developer.apple.com/library/prerelease/mac/documentation/Carbon/Reference/CoreServicesReferenceCollection/index.html">Core Services</a>, its parent framework)</p>
+
+<p>If only everyone knew that they could harness the same killer search functionality that Apple uses for their own applications&hellip;</p>
+
+<hr>
+
+<p>Search Kit is a C framework for searching and indexing content in human languages. It supports matching on phrase or partial word, including logical (<code>AND</code>, <code>OR</code>) and wildcard (<code>*</code>) operators, and can rank results by relevance. Search Kit also provides document summarization, which is useful for generating representative excerpts. And best of all: it&rsquo;s thread-safe.</p>
+
+<p>All of the whiz-bang search-as-you-type features in OS X—from Mail.app and Xcode to System Preferences and Spotlight—use Search Kit under the hood.</p>
+
+<p>But to understand how Search Kit does its magic, it&rsquo;s important to explain some of the basics of Information Retrieval and Natural Language Processing.</p>
+
+<blockquote>
+<p>Be sure to check out <a href="https://developer.apple.com/library/mac/#documentation/UserExperience/Conceptual/SearchKitConcepts/searchKit_intro/searchKit_intro.html">Apple&rsquo;s Search Kit Programming Guide</a> for an authoritative explanation of the what&rsquo;s, why&rsquo;s, and how&rsquo;s of this great framework.</p>
+</blockquote>
+
+<h2 id="search-101">Search 101</h2>
+
+<p>Quoth Apple:</p>
+
+<blockquote>
+<p>You have an information need. But before you can ask a question, you need someone or something to ask. That is, you need to establish who or what you will accept as an authority for an answer. So before you ask a question you need to define the target of your question.</p>
+</blockquote>
+
+<p>Finding the answer in a reasonable amount of time requires effort from the start. This is what that process looks like in general terms:</p>
+
+<h3 id="extract">Extract</h3>
+
+<p>First, content must be extracted from a <a href="http://en.wikipedia.org/wiki/Text_corpus">corpus</a>. For a text document, this could involve removing any styling, formatting, or other meta-information. For a data record, such as an <code>NSManagedObject</code>, this means taking all of the salient fields and combining it into a representation.</p>
+
+<p>Once extracted, the content is <a href="http://en.wikipedia.org/wiki/Tokenization">tokenized</a> for further processing.</p>
+
+<h3 id="filter">Filter</h3>
+
+<p>In order to get the most relevant matches, it&rsquo;s important to filter out common, or &ldquo;stop&rdquo; words like articles, pronouns, and helping verbs, that don&rsquo;t really contribute to overall meaning.</p>
+
+<h3 id="reduce">Reduce</h3>
+
+<p>Along the same lines, words that mean basically the same thing should be reduced down into a common form. Morpheme clusters, such as grammatical conjugations like &ldquo;computer&rdquo;, &ldquo;computers&rdquo;, &ldquo;computed&rdquo;, and &ldquo;computing&rdquo;, for example, can all be simplified to be just &ldquo;compute&rdquo;, using a <a href="http://en.wikipedia.org/wiki/Stemming">stemmer</a>. Synonyms, likewise, can be lumped into a common entry using a thesaurus lookup.</p>
+
+<h3 id="index">Index</h3>
+
+<p>The end result of extracting, filtering, and reducing content into an array of normalized tokens is to form an <a href="http://en.wikipedia.org/wiki/Inverted_index">inverted index</a>, such that each token points to its origin in the index.</p>
+
+<p>After repeating this process for each document or record in the corpus until, each token can point to many different articles. In the process of searching, a query is mapped onto one or many of these tokens, retrieving the union of the articles associated with each token.</p>
+
+<h2 id="using-search-kit">Using Search Kit</h2>
+
+<h3 id="creating-an-index">Creating an Index</h3>
+
+<p><code>SKIndexRef</code> is the central data type in Search Kit, containing all of the information needed to process and fulfill searches, and add information from new documents. Indexes can be persistent / file-based or ephemeral / in-memory. Indexes can either be created from scratch, or loaded from an existing file or data object—and once 
+an index is finished being used, like many other C APIs, the index is closed.</p>
+
+<p>When starting a new in-memory index, use an empty <code>NSMutableData</code> instance as the data store:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">mutableData</span> <span class="o">=</span> <span class="bp">NSMutableData</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">index</span> <span class="o">=</span> <span class="n">SKIndexCreateWithMutableData</span><span class="p">(</span><span class="n">mutableData</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="n">SKIndexType</span><span class="p">(</span><span class="n">kSKIndexInverted</span><span class="p">.</span><span class="n">rawValue</span><span class="p">),</span> <span class="nb">nil</span><span class="p">).</span><span class="n">takeRetainedValue</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSMutableData</span> <span class="o">*</span><span class="n">mutableData</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSMutableData</span> <span class="n">data</span><span class="p">];</span>
+<span class="n">SKIndexRef</span> <span class="n">index</span> <span class="o">=</span> <span class="n">SKIndexCreateWithMutableData</span><span class="p">((</span><span class="k">__bridge</span> <span class="n">CFMutableDataRef</span><span class="p">)</span><span class="n">mutableData</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">kSKIndexInverted</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</code></pre></div>
+<h3 id="adding-documents-to-an-index">Adding Documents to an Index</h3>
+
+<p><code>SKDocumentRef</code> is the data type associated with entries in the index. When a search is performed, documents (along with their context and relevance) are the results.</p>
+
+<p>Each <code>SKDocumentRef</code> is associated with a URI.</p>
+
+<p>For documents on the file system, the URI is simply the location of the file on disk:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">fileURL</span> <span class="o">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">fileURLWithPath</span><span class="p">:</span> <span class="s">&quot;/path/to/document&quot;</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">document</span> <span class="o">=</span> <span class="n">SKDocumentCreateWithURL</span><span class="p">(</span><span class="n">fileURL</span><span class="p">).</span><span class="n">takeRetainedValue</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSURL</span> <span class="o">*</span><span class="n">fileURL</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSURL</span> <span class="nl">fileURLWithPath</span><span class="p">:</span><span class="s">@&quot;/path/to/document&quot;</span><span class="p">];</span>
+<span class="n">SKDocumentRef</span> <span class="n">document</span> <span class="o">=</span> <span class="n">SKDocumentCreateWithURL</span><span class="p">((</span><span class="k">__bridge</span> <span class="n">CFURLRef</span><span class="p">)</span><span class="n">fileURL</span><span class="p">);</span>
+</code></pre></div>
+<p>For Core Data managed objects, the <code>NSManagedObjectID -URIRepresentation</code> can be used:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">objectURL</span> <span class="o">=</span> <span class="n">objectID</span><span class="p">.</span><span class="n">URIRepresentation</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">document</span> <span class="o">=</span> <span class="n">SKDocumentCreateWithURL</span><span class="p">(</span><span class="n">objectURL</span><span class="p">).</span><span class="n">takeRetainedValue</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSURL</span> <span class="o">*</span><span class="n">objectURL</span> <span class="o">=</span> <span class="p">[</span><span class="n">objectID</span> <span class="n">URIRepresentation</span><span class="p">];</span>
+<span class="n">SKDocumentRef</span> <span class="n">document</span> <span class="o">=</span> <span class="n">SKDocumentCreateWithURL</span><span class="p">((</span><span class="k">__bridge</span> <span class="n">CFURLRef</span><span class="p">)</span><span class="n">objectURL</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>For any other kinds of data, it would be up to the developer to define a URI representation.</p>
+</blockquote>
+
+<p>When adding the contents of a <code>SKDocumentRef</code> to an <code>SKIndexRef</code>, the text can either be specified manually:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="s">&quot;Lorem ipsum dolar sit amet&quot;</span>
+<span class="n">SKIndexAddDocumentWithText</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSString</span> <span class="o">*</span><span class="n">string</span> <span class="o">=</span> <span class="s">@&quot;Lorem ipsum dolar sit amet&quot;</span><span class="p">;</span>
+<span class="n">SKIndexAddDocumentWithText</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="p">(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">string</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+</code></pre></div>
+<p>&hellip;or collected automatically from a file:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">mimeTypeHint</span> <span class="o">=</span> <span class="s">&quot;text/rtf&quot;</span>
+<span class="n">SKIndexAddDocument</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="n">mimeTypeHint</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSString</span> <span class="o">*</span><span class="n">mimeTypeHint</span> <span class="o">=</span> <span class="s">@&quot;text/rtf&quot;</span><span class="p">;</span>
+<span class="n">SKIndexAddDocument</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">document</span><span class="p">,</span> <span class="p">(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">mimeTypeHint</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+</code></pre></div>
+<p>To change the way a file-based document&rsquo;s contents are processed, properties can be defined when creating the index:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nl">stopwords</span><span class="p">:</span> <span class="n">Set</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;all&quot;</span><span class="p">,</span> <span class="s">&quot;and&quot;</span><span class="p">,</span> <span class="s">&quot;its&quot;</span><span class="p">,</span> <span class="s">&quot;it&#39;s&quot;</span><span class="p">,</span> <span class="s">&quot;the&quot;</span><span class="p">]</span>
+
+<span class="k">let</span> <span class="nl">properties</span><span class="p">:</span> <span class="p">[</span><span class="nl">NSObject</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&quot;kSKStartTermChars&quot;</span><span class="o">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="c1">// additional starting-characters for terms</span>
+    <span class="s">&quot;kSKTermChars&quot;</span><span class="o">:</span> <span class="s">&quot;-_@.&#39;&quot;</span><span class="p">,</span> <span class="c1">// additional characters within terms</span>
+    <span class="s">&quot;kSKEndTermChars&quot;</span><span class="o">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>   <span class="c1">// additional ending-characters for terms</span>
+    <span class="s">&quot;kSKMinTermLength&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="s">&quot;kSKStopWords&quot;</span><span class="o">:</span> <span class="n">stopwords</span>
+<span class="p">]</span>
+
+<span class="k">let</span> <span class="n">index</span> <span class="o">=</span> <span class="n">SKIndexCreateWithURL</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="n">SKIndexType</span><span class="p">(</span><span class="n">kSKIndexInverted</span><span class="p">.</span><span class="n">rawValue</span><span class="p">),</span> <span class="n">properties</span><span class="p">).</span><span class="n">takeRetainedValue</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSSet</span> <span class="o">*</span><span class="n">stopwords</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSSet</span> <span class="nl">setWithObjects</span><span class="p">:</span><span class="s">@&quot;all&quot;</span><span class="p">,</span> <span class="s">@&quot;and&quot;</span><span class="p">,</span> <span class="s">@&quot;its&quot;</span><span class="p">,</span> <span class="s">@&quot;it&#39;s&quot;</span><span class="p">,</span> <span class="s">@&quot;the&quot;</span><span class="p">,</span> <span class="nb">nil</span><span class="p">];</span>
+
+<span class="bp">NSDictionary</span> <span class="o">*</span><span class="n">properties</span> <span class="o">=</span> <span class="l">@{</span>
+  <span class="s">@&quot;kSKStartTermChars&quot;</span><span class="o">:</span> <span class="s">@&quot;&quot;</span><span class="p">,</span> <span class="c1">// additional starting-characters for terms</span>
+  <span class="s">@&quot;kSKTermChars&quot;</span><span class="o">:</span> <span class="s">@&quot;-_@.&#39;&quot;</span><span class="p">,</span> <span class="c1">// additional characters within terms</span>
+  <span class="s">@&quot;kSKEndTermChars&quot;</span><span class="o">:</span> <span class="s">@&quot;&quot;</span><span class="p">,</span>   <span class="c1">// additional ending-characters for terms</span>
+  <span class="s">@&quot;kSKMinTermLength&quot;</span><span class="o">:</span> <span class="l">@(</span><span class="mi">3</span><span class="l">)</span><span class="p">,</span>
+  <span class="s">@&quot;kSKStopWords&quot;</span><span class="o">:</span><span class="n">stopwords</span>
+<span class="l">}</span><span class="p">;</span>
+
+<span class="n">SKIndexRef</span> <span class="n">index</span> <span class="o">=</span> <span class="n">SKIndexCreateWithURL</span><span class="p">((</span><span class="n">CFURLRef</span><span class="p">)</span><span class="n">url</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">kSKIndexInverted</span><span class="p">,</span> <span class="p">(</span><span class="n">CFDictionaryRef</span><span class="p">)</span><span class="n">properties</span><span class="p">);</span>
+</code></pre></div>
+<p>After adding to or modifying an index&rsquo;s documents, you&rsquo;ll need to commit the changes to the backing store via <code>SKIndexFlush()</code> to make your changes available to a search.</p>
+
+<h3 id="searching">Searching</h3>
+
+<p><code>SKSearchRef</code> is the data type constructed to perform a search on an <code>SKIndexRef</code>. It contains a reference to the index, a query string, and a set of options:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">query</span> <span class="o">=</span> <span class="s">&quot;kind of blue&quot;</span>
+<span class="k">let</span> <span class="n">options</span> <span class="o">=</span> <span class="n">SKSearchOptions</span><span class="p">(</span><span class="n">kSKSearchOptionDefault</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">search</span> <span class="o">=</span> <span class="n">SKSearchCreate</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">options</span><span class="p">).</span><span class="n">takeRetainedValue</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSString</span> <span class="o">*</span><span class="n">query</span> <span class="o">=</span> <span class="s">@&quot;kind of blue&quot;</span><span class="p">;</span>
+<span class="n">SKSearchOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="n">kSKSearchOptionDefault</span><span class="p">;</span>
+<span class="n">SKSearchRef</span> <span class="n">search</span> <span class="o">=</span> <span class="n">SKSearchCreate</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="p">(</span><span class="n">CFStringRef</span><span class="p">)</span><span class="n">query</span><span class="p">,</span> <span class="n">options</span><span class="p">);</span>
+</code></pre></div>
+<p><code>SKSearchOptions</code> is a bitmask with the following possible values:</p>
+
+<blockquote>
+<ul>
+<li><code>kSKSearchOptionDefault</code>: Default search options include:
+
+<ul>
+<li>Relevance scores will be computed</li>
+<li>Spaces in a query are interpreted as Boolean AND operators.</li>
+<li>Do not use similarity searching.</li>
+</ul></li>
+</ul>
+</blockquote>
+
+<p>These options can be specified individually as well:</p>
+
+<blockquote>
+<ul>
+<li><code>kSKSearchOptionNoRelevanceScores</code>: This option saves time during a search by suppressing the computation of relevance scores.</li>
+<li><code>kSKSearchOptionSpaceMeansOR</code>: This option alters query behavior so that spaces are interpreted as Boolean OR operators.</li>
+<li><code>kSKSearchOptionFindSimilar</code>: This option alters query behavior so that Search Kit returns references to documents that are similar to an example text string. When this option is specified, Search Kit ignores all query operators.</li>
+</ul>
+</blockquote>
+
+<p>Just creating an <code>SKSearchRef</code> kicks off the asynchronous search; results can be accessed with one or more calls to <code>SKSearchFindMatches</code>, which returns a batch of results at a time until you&rsquo;ve seen all the matching documents. Iterating through the range of found matches provides access to the document URL and relevance score (if calculated):</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">limit</span> <span class="o">=</span> <span class="p">...</span>                <span class="c1">// Maximum number of results</span>
+<span class="k">let</span> <span class="nl">time</span><span class="p">:</span> <span class="n">NSTimeInterval</span> <span class="o">=</span> <span class="p">...</span> <span class="c1">// Maximum time to get results, in seconds</span>
+
+<span class="k">var</span> <span class="nl">documentIDs</span><span class="p">:</span> <span class="p">[</span><span class="n">SKDocumentID</span><span class="p">]</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="nl">count</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span> <span class="nl">repeatedValue</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">var</span> <span class="nl">urls</span><span class="p">:</span> <span class="p">[</span><span class="n">Unmanaged</span><span class="o">&lt;</span><span class="n">CFURL</span><span class="o">&gt;?</span><span class="p">]</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="nl">count</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span> <span class="nl">repeatedValue</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+<span class="k">var</span> <span class="nl">scores</span><span class="p">:</span> <span class="p">[</span><span class="n">Float</span><span class="p">]</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="nl">count</span><span class="p">:</span> <span class="n">limit</span><span class="p">,</span> <span class="nl">repeatedValue</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>    
+<span class="k">var</span> <span class="n">foundCount</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">let</span> <span class="n">hasMoreResults</span> <span class="o">=</span> <span class="n">SKSearchFindMatches</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">documentIDs</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">scores</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">count</span><span class="p">)</span>
+
+<span class="n">SKIndexCopyDocumentURLsForDocumentIDs</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">foundCount</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">documentIDs</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">urls</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="nl">results</span><span class="p">:</span> <span class="p">[</span><span class="bp">NSURL</span><span class="p">]</span> <span class="o">=</span> <span class="n">zip</span><span class="p">(</span><span class="n">urls</span><span class="p">[</span><span class="mi">0</span> <span class="p">..</span><span class="o">&lt;</span> <span class="n">foundCount</span><span class="p">],</span> <span class="n">scores</span><span class="p">).</span><span class="n">flatMap</span><span class="p">({</span>
+    <span class="p">(</span><span class="n">cfurl</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">NSURL</span><span class="o">?</span> <span class="k">in</span>
+    <span class="kr">guard</span> <span class="k">let</span> <span class="n">url</span> <span class="o">=</span> <span class="n">cfurl</span><span class="o">?</span><span class="p">.</span><span class="n">takeRetainedValue</span><span class="p">()</span> <span class="kt">as</span> <span class="bp">NSURL</span><span class="o">?</span>
+        <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">nil</span> <span class="p">}</span>
+
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;- \(url): \(score)&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">url</span>
+<span class="p">})</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSUInteger</span> <span class="n">limit</span> <span class="o">=</span> <span class="p">...;</span> <span class="c1">// Maximum number of results</span>
+<span class="n">NSTimeInterval</span> <span class="n">time</span> <span class="o">=</span> <span class="p">...;</span> <span class="c1">// Maximum time to get results, in seconds</span>
+<span class="n">SKDocumentID</span> <span class="n">documentIDs</span><span class="p">[</span><span class="n">limit</span><span class="p">];</span>
+<span class="n">CFURLRef</span> <span class="n">urls</span><span class="p">[</span><span class="n">limit</span><span class="p">];</span>
+<span class="kt">float</span> <span class="n">scores</span><span class="p">[</span><span class="n">limit</span><span class="p">];</span>
+<span class="n">CFIndex</span> <span class="n">foundCount</span><span class="p">;</span>
+<span class="kt">Boolean</span> <span class="n">hasMoreResults</span> <span class="o">=</span> <span class="n">SKSearchFindMatches</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="n">limit</span><span class="p">,</span> <span class="n">documentIDs</span><span class="p">,</span> <span class="n">scores</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">foundCount</span><span class="p">);</span>
+
+<span class="n">SKIndexCopyDocumentURLsForDocumentIDs</span><span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">foundCount</span><span class="p">,</span> <span class="n">documentIDs</span><span class="p">,</span> <span class="n">urls</span><span class="p">);</span>
+
+<span class="bp">NSMutableArray</span> <span class="o">*</span><span class="n">mutableResults</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSMutableArray</span> <span class="n">array</span><span class="p">];</span>
+<span class="p">[[</span><span class="bp">NSIndexSet</span> <span class="nl">indexSetWithIndexesInRange</span><span class="p">:</span><span class="n">NSMakeRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">count</span><span class="p">)]</span> <span class="nl">enumerateIndexesUsingBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSUInteger</span> <span class="n">idx</span><span class="p">,</span> <span class="kt">BOOL</span> <span class="o">*</span><span class="n">stop</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">CFURLRef</span> <span class="n">url</span> <span class="o">=</span> <span class="n">urls</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+    <span class="kt">float</span> <span class="n">relevance</span> <span class="o">=</span> <span class="n">scores</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;- %@: %f&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">relevance</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">objectID</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">[</span><span class="n">mutableResults</span> <span class="nl">addObject</span><span class="p">:(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">url</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="n">CFRelease</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
+<span class="p">}];</span>
+</code></pre></div>
+<blockquote>
+<p>For more examples of Search Kit in action, be sure to check out <a href="https://github.com/indragiek">Indragie Karunaratne&rsquo;s</a> project, <a href="https://github.com/indragiek/SNRSearchIndex">SNRSearchIndex</a>.</p>
+</blockquote>
+
+<hr>
+
+<p>And so this article becomes yet another document in the corpus we call the Internet. By pointing to Search Kit, and explaining even the briefest of its features, this—the strings of tokens you read at this very moment—are (perhaps) making it easier for others to find Search Kit.</p>
+
+<p>&hellip;and it&rsquo;s a good thing, too, because Search Kit is a wonderful and all-too-obscure framework, which anyone building a content-based system would do well to investigate.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-03-25-search-kit.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on November 24, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+        <dt>March 25<sup>th</sup>, 2013</dt>
+        <dd><p>Original publication.</p>
+</dd>
+      
+        <dt>November 24<sup>th</sup>, 2015</dt>
+        <dd><p>Revised for Swift 2.0.</p>
+</dd>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/icloud/" title="iCloud" rel="next">i​Cloud</a>
+            </h1>
+
+            <p>Perhaps what Apple is most renowned for is its consistent track record for creating great webservices. From consumer products like MobileMe and Ping to developer tools including the Provisioning Portal and iTunes Connect, Apple has continued to set new standards for convenience, robustness, and extensibility.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/uimenucontroller/" title="UIMenuController">UIMenuController</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nssortdescriptor/" title="NSSortDescriptor">NSSortDescriptor</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/mklocalsearch/" title="MKLocalSearch">MKLocalSearch</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsurl/" title="NSURL /<br/>NSURLComponents">NSURL /<br/>NSURLComponents</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

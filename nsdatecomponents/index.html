@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSDateComponents - NSHipster</title>
+    <meta name="description" content="NSDateComponents serves an important role in Foundation's date and time APIs. By itself, it's nothing impressive—just a container for information about a date (its month, year, day of month, week of year, or whether that month is a leap month). However, combined with NSCalendar, NSDateComponents becomes a remarkably convenient interchange format for calendar calculations."/>
+    <link rel="canonical" href="http://nshipster.com/nsdatecomponents/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="NSDateComponents"/>
+    <meta name="twitter:description" content="NSDateComponents serves an important role in Foundation&#39;s date and time APIs. By itself, it&#39;s nothing impressive—just a container for information about a date (its month, year, day of month, week of year, or whether that month is a leap month). However, combined with NSCalendar, NSDateComponents becomes a remarkably convenient interchange format for calendar calculations."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NSDateComponents"/>
+    <meta property="og:url" content="http://nshipster.com/nsdatecomponents/"/>
+    <meta property="og:description" content="NSDateComponents serves an important role in Foundation&#39;s date and time APIs. By itself, it&#39;s nothing impressive—just a container for information about a date (its month, year, day of month, week of year, or whether that month is a leap month). However, combined with NSCalendar, NSDateComponents becomes a remarkably convenient interchange format for calendar calculations."/>
+    <meta property="article:published_time" content="2012-07-31T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NSDateComponents"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/nsdatecomponents/">NSDate​Components</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2012-07-31T00:00:00-07:00" itemprop="datePublished">July 31<sup>st</sup>, 2012</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p><code>NSDateComponents</code> serves an important role in Foundation&rsquo;s date and time APIs. By itself, it&rsquo;s nothing impressive—just a container for information about a date (its month, year, day of month, week of year, or whether that month is a leap month). However, combined with <code>NSCalendar</code>, <code>NSDateComponents</code> becomes a remarkably convenient interchange format for calendar calculations.</p>
+
+<p>Whereas dates represent a particular moment in time, date components depend on which calendar system is being used to represent them. Very often, this will differ wildly from what many of us may be used to with the <a href="http://en.wikipedia.org/wiki/Gregorian_calendar">Gregorian Calendar</a>. For example, the <a href="http://en.wikipedia.org/wiki/Islamic_calendar">Islamic Calendar</a> has 354 or 355 days in a year, whereas the <a href="http://en.wikipedia.org/wiki/Buddhist_calendar">Buddhist calendar</a> may have 354, 355, 384, or 385 days, depending on the year.</p>
+
+<h2 id="extracting-components-from-dates">Extracting Components From Dates</h2>
+
+<p><code>NSDateComponents</code> can be initialized and manipulated manually, but most often, they&rsquo;re extracted from a specified date, using <code>NSCalendar -components:fromDate:</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">calendar</span> <span class="o">=</span> <span class="bp">NSCalendar</span><span class="p">.</span><span class="n">currentCalendar</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">date</span> <span class="o">=</span> <span class="bp">NSDate</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">components</span> <span class="o">=</span> <span class="n">calendar</span><span class="p">.</span><span class="n">components</span><span class="p">([.</span><span class="n">Month</span><span class="p">,</span> <span class="p">.</span><span class="n">Day</span><span class="p">],</span> <span class="nl">fromDate</span><span class="p">:</span> <span class="n">date</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSCalendar</span> <span class="o">*</span><span class="n">calendar</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSCalendar</span> <span class="n">currentCalendar</span><span class="p">];</span>
+<span class="bp">NSDate</span> <span class="o">*</span><span class="n">date</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSDate</span> <span class="n">date</span><span class="p">];</span>
+<span class="p">[</span><span class="n">calendar</span> <span class="nl">components</span><span class="p">:(</span><span class="n">NSCalendarUnitDay</span> <span class="o">|</span> <span class="n">NSCalendarUnitMonth</span><span class="p">)</span> <span class="nl">fromDate</span><span class="p">:</span><span class="n">date</span><span class="p">];</span>
+</code></pre></div>
+<p>The <code>components</code> parameter is a <a href="http://en.wikipedia.org/wiki/Bitmask">bitmask</a> of the date component values to retrieve, with many to choose from:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">NSCalendarUnit</span><span class="p">.</span><span class="n">Era</span>
+<span class="n">NSCalendarUnit</span><span class="p">.</span><span class="n">Year</span>
+<span class="n">NSCalendarUnit</span><span class="p">.</span><span class="n">Month</span>
+<span class="n">NSCalendarUnit</span><span class="p">.</span><span class="n">Day</span>
+<span class="n">NSCalendarUnit</span><span class="p">.</span><span class="n">Hour</span>
+<span class="n">NSCalendarUnit</span><span class="p">.</span><span class="n">Minute</span>
+<span class="n">NSCalendarUnit</span><span class="p">.</span><span class="n">Second</span>
+<span class="n">NSCalendarUnit</span><span class="p">.</span><span class="n">Weekday</span>
+<span class="n">NSCalendarUnit</span><span class="p">.</span><span class="n">WeekdayOrdinal</span>
+<span class="n">NSCalendarUnit</span><span class="p">.</span><span class="n">Quarter</span>
+<span class="n">NSCalendarUnit</span><span class="p">.</span><span class="n">WeekOfMonth</span>
+<span class="n">NSCalendarUnit</span><span class="p">.</span><span class="n">WeekOfYear</span>
+<span class="n">NSCalendarUnit</span><span class="p">.</span><span class="n">YearForWeekOfYear</span>
+<span class="n">NSCalendarUnit</span><span class="p">.</span><span class="n">Calendar</span>
+<span class="n">NSCalendarUnit</span><span class="p">.</span><span class="n">TimeZone</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">NSCalendarUnitEra</span>
+<span class="n">NSCalendarUnitYear</span>
+<span class="n">NSCalendarUnitMonth</span>
+<span class="n">NSCalendarUnitDay</span>
+<span class="n">NSCalendarUnitHour</span>
+<span class="n">NSCalendarUnitMinute</span>
+<span class="n">NSCalendarUnitSecond</span>
+<span class="n">NSCalendarUnitWeekday</span>
+<span class="n">NSCalendarUnitWeekdayOrdinal</span>
+<span class="n">NSCalendarUnitQuarter</span>
+<span class="n">NSCalendarUnitWeekOfMonth</span>
+<span class="n">NSCalendarUnitWeekOfYear</span>
+<span class="n">NSCalendarUnitYearForWeekOfYear</span>
+<span class="n">NSCalendarUnitCalendar</span>
+<span class="n">NSCalendarUnitTimeZone</span>
+</code></pre></div>
+<blockquote>
+<p>Since it would be expensive to compute all of the possible values, specify only the components that will be used in subsequent calculations (joining with <code>|</code>, the bitwise <code>OR</code> operator).</p>
+</blockquote>
+
+<h2 id="relative-date-calculations">Relative Date Calculations</h2>
+
+<p><code>NSDateComponents</code> objects can be used to do relative date calculations. To determining the date yesterday, next week, or 5 hours and 30 minutes from now, use <code>NSCalendar -dateByAddingComponents:toDate:options:</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">calendar</span> <span class="o">=</span> <span class="bp">NSCalendar</span><span class="p">.</span><span class="n">currentCalendar</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">date</span> <span class="o">=</span> <span class="bp">NSDate</span><span class="p">()</span>
+
+<span class="k">let</span> <span class="n">components</span> <span class="o">=</span> <span class="bp">NSDateComponents</span><span class="p">()</span>
+<span class="n">components</span><span class="p">.</span><span class="n">weekOfYear</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">components</span><span class="p">.</span><span class="n">hour</span> <span class="o">=</span> <span class="mi">12</span>
+
+<span class="n">print</span><span class="p">(</span><span class="s">&quot;1 week and 12 hours from now: \(calendar.dateByAddingComponents(components, toDate: date, options: []))&quot;</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSCalendar</span> <span class="o">*</span><span class="n">calendar</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSCalendar</span> <span class="n">currentCalendar</span><span class="p">];</span>
+<span class="bp">NSDate</span> <span class="o">*</span><span class="n">date</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSDate</span> <span class="n">date</span><span class="p">];</span>
+
+<span class="bp">NSDateComponents</span> <span class="o">*</span><span class="n">components</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSDateComponents</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="p">[</span><span class="n">components</span> <span class="nl">setWeekOfYear</span><span class="p">:</span><span class="mi">1</span><span class="p">];</span>
+<span class="p">[</span><span class="n">components</span> <span class="nl">setHour</span><span class="p">:</span><span class="mi">12</span><span class="p">];</span>
+
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;1 week and twelve hours from now: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">calendar</span> <span class="nl">dateByAddingComponents</span><span class="p">:</span><span class="n">components</span> <span class="nl">toDate</span><span class="p">:</span><span class="n">date</span> <span class="nl">options</span><span class="p">:</span><span class="mi">0</span><span class="p">]);</span>
+</code></pre></div>
+<h2 id="creating-dates-from-components">Creating Dates from Components</h2>
+
+<p>Perhaps the most powerful feature of <code>NSDateComponents</code>, however, is the ability to go the opposite direction—creating an <code>NSDate</code> object from components. <code>NSCalendar -dateFromComponents:</code> is the method used for this purpose:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">calendar</span> <span class="o">=</span> <span class="bp">NSCalendar</span><span class="p">(</span><span class="nl">identifier</span><span class="p">:</span> <span class="n">NSCalendarIdentifierGregorian</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="n">components</span> <span class="o">=</span> <span class="bp">NSDateComponents</span><span class="p">()</span>
+<span class="n">components</span><span class="p">.</span><span class="n">year</span> <span class="o">=</span> <span class="mi">1987</span>
+<span class="n">components</span><span class="p">.</span><span class="n">month</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">components</span><span class="p">.</span><span class="n">day</span> <span class="o">=</span> <span class="mi">17</span>
+<span class="n">components</span><span class="p">.</span><span class="n">hour</span> <span class="o">=</span> <span class="mi">14</span>
+<span class="n">components</span><span class="p">.</span><span class="n">minute</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">components</span><span class="p">.</span><span class="n">second</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">let</span> <span class="n">date</span> <span class="o">=</span> <span class="n">calendar</span><span class="o">?</span><span class="p">.</span><span class="n">dateFromComponents</span><span class="p">(</span><span class="n">components</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSCalendar</span> <span class="o">*</span><span class="n">calendar</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSCalendar</span> <span class="n">currentCalendar</span><span class="p">];</span>
+
+<span class="bp">NSDateComponents</span> <span class="o">*</span><span class="n">components</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSDateComponents</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="p">[</span><span class="n">components</span> <span class="nl">setYear</span><span class="p">:</span><span class="mi">1987</span><span class="p">];</span>
+<span class="p">[</span><span class="n">components</span> <span class="nl">setMonth</span><span class="p">:</span><span class="mi">3</span><span class="p">];</span>
+<span class="p">[</span><span class="n">components</span> <span class="nl">setDay</span><span class="p">:</span><span class="mi">17</span><span class="p">];</span>
+<span class="p">[</span><span class="n">components</span> <span class="nl">setHour</span><span class="p">:</span><span class="mi">14</span><span class="p">];</span>
+<span class="p">[</span><span class="n">components</span> <span class="nl">setMinute</span><span class="p">:</span><span class="mi">20</span><span class="p">];</span>
+<span class="p">[</span><span class="n">components</span> <span class="nl">setSecond</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
+
+<span class="bp">NSDate</span> <span class="o">*</span><span class="n">date</span> <span class="o">=</span> <span class="p">[</span><span class="n">calendar</span> <span class="nl">dateFromComponents</span><span class="p">:</span><span class="n">components</span><span class="p">];</span>
+</code></pre></div>
+<p>What&rsquo;s particularly interesting about this approach is that a date can be determined by information other than the normal month/day/year approach. So long as a date can be uniquely determined from the provided information, you&rsquo;ll get a result. For example, specifying the year 2013, and the 316th day of the year would return an <code>NSDate</code> for 11/12/2013 at midnight (because no time was specified, all time components default to 0).</p>
+
+<blockquote>
+<p>Note that passing inconsistent components will either result in some information being discarded, or <code>nil</code> being returned.</p>
+</blockquote>
+
+<hr>
+
+<p><code>NSDateComponents</code> and its relationship to <code>NSCalendar</code> highlight the distinct advantage having a pedantically-engineered framework like Foundation at your disposal. You may not be doing calendar calculations every day, but when the time comes, knowing how to use <code>NSDateComponents</code> will save you eons of frustration.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2012-07-31-nsdatecomponents.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on September 19, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/cfstringtransform/" title="CFStringTransform" rel="next">CFString​Transform</a>
+            </h1>
+
+            <p>NSString is the crown jewel of Foundation. But as powerful as it is, one would be remiss not to mention its toll-free bridged cousin, CFMutableString—or more specifically, CFStringTransform.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nscharacterset/" title="NSCharacterSet">NSCharacterSet</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/mktileoverlay-mkmapsnapshotter-mkdirections/" title="MKTileOverlay,<br/>MKMapSnapshotter &<br/>MKDirections">MKTileOverlay,<br/>MKMapSnapshotter &<br/>MKDirections</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nslocale/" title="NSLocale">NSLocale</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsrange/" title="NSRange">NSRange</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

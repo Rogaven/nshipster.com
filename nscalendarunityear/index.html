@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSCalendarUnitYear - NSHipster</title>
+    <meta name="description" content="NSHipster.com was launched 2 years ago to the day. Each week since has featured a new article on some obscure topic in Objective-C or Cocoa (with only a couple gaps). Let's celebrate with some cake."/>
+    <link rel="canonical" href="http://nshipster.com/nscalendarunityear/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="NSCalendarUnitYear"/>
+    <meta name="twitter:description" content="NSHipster.com was launched 2 years ago to the day. Each week since has featured a new article on some obscure topic in Objective-C or Cocoa (with only a couple gaps). Let&#39;s celebrate with some cake."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NSCalendarUnitYear"/>
+    <meta property="og:url" content="http://nshipster.com/nscalendarunityear/"/>
+    <meta property="og:description" content="NSHipster.com was launched 2 years ago to the day. Each week since has featured a new article on some obscure topic in Objective-C or Cocoa (with only a couple gaps). Let&#39;s celebrate with some cake."/>
+    <meta property="article:published_time" content="2014-07-07T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="swift"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NSCalendarUnitYear"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/nscalendarunityear/">NSCalendar​Unit​Year</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2014-07-07T00:00:00-07:00" itemprop="datePublished">July 7<sup>th</sup>, 2014</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>NSHipster.com was launched 2 years ago to the day, with <a href="http://nshipster.com/nsindexset/">a little article about NSIndexSet</a>. Each week since has featured a new article on some obscure topic in Objective-C or Cocoa (with only a couple gaps), which have been read by millions of visitors in over 180 different countries.</p>
+
+<blockquote>
+<p>This is actually the 101st article, which means that <a href="http://en.wikipedia.org/wiki/100_episodes">by television industry standards</a>, this site is now suitable for broadcast syndication. (Coming soon to TBS!)</p>
+</blockquote>
+
+<p>Let&rsquo;s celebrate with some cake:</p>
+
+<p><svg version="1.1" id="birthday-cake" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" style="width:300px; height: 300px; margin: 1em auto;">
+    <path d="M27.5,32.5c0,0-24.6,13.8-25,33.6c0,0.1,0,0.2,0,0.4V95c0,1.1,0.9,2,2,1.9L88,93.1c1.1-0.1,2.1-0.1,2.2-0.1
+        c0.1,0,0.2-0.9,0.2-2c0,0,0-25.5,0-26.5c0-2-2-3-2-3 M88.5,89.4c0,1-0.9,1.9-2,2L6.5,94.9c-1.1,0-2-0.8-2-1.8c0,0,0-4.7,0-10.1
+        l84-3.9C88.5,84.5,88.5,89.4,88.5,89.4z M88.5,76L4.5,80c0-5.8,0-11.3,0-11.8c0-0.9,1-1.1,1-1.1l82-3.6c0,0,1,0,1,0.9
+        C88.5,64.9,88.5,70.3,88.5,76z"/>
+    <path d="M41.8,8.4c0,4.1-1.8,5.6-4.1,5.6c-2.3,0-4.1-1.5-4.1-5.6S37.8,1,37.8,1S41.8,4.3,41.8,8.4z"/>
+    <path fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M42,47.5c0,2.5-2,4.5-4.5,4.5l0,0c-2.5,0-4.5-2-4.5-4.5V19.8
+        c0-2.5,2-4.5,4.5-4.5l0,0c2.5,0,4.5,2,4.5,4.5V47.5z"/>
+</svg></p>
+
+<p>Cute, right? Let&rsquo;s see what this looks like in code:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="n">cakePath</span> <span class="o">=</span> <span class="bp">UIBezierPath</span><span class="p">()</span>
+<span class="n">cakePath</span><span class="p">.</span><span class="n">moveToPoint</span><span class="p">(</span><span class="n">CGPointMake</span><span class="p">(</span><span class="mf">31.5</span><span class="p">,</span> <span class="mf">32.5</span><span class="p">))</span>
+<span class="n">cakePath</span><span class="p">.</span><span class="n">addCurveToPoint</span><span class="p">(</span><span class="n">CGPointMake</span><span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">66.1</span><span class="p">),</span> <span class="nl">controlPoint1</span><span class="p">:</span> <span class="n">CGPointMake</span><span class="p">(</span><span class="mf">31.5</span><span class="p">,</span> <span class="mf">32.5</span><span class="p">),</span> <span class="nl">controlPoint2</span><span class="p">:</span> <span class="n">CGPointMake</span><span class="p">(</span><span class="mf">6.9</span><span class="p">,</span> <span class="mf">46.3</span><span class="p">))</span>
+<span class="n">cakePath</span><span class="p">.</span><span class="n">addCurveToPoint</span><span class="p">(</span><span class="n">CGPointMake</span><span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">66.5</span><span class="p">),</span> <span class="nl">controlPoint1</span><span class="p">:</span> <span class="n">CGPointMake</span><span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">66.2</span><span class="p">),</span> <span class="nl">controlPoint2</span><span class="p">:</span> <span class="n">CGPointMake</span><span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">66.3</span><span class="p">))</span>
+<span class="n">cakePath</span><span class="p">.</span><span class="n">addLineToPoint</span><span class="p">(</span><span class="n">CGPointMake</span><span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mi">95</span><span class="p">))</span>
+
+<span class="p">...</span>
+</code></pre></div>
+<p>Wait, hold up. What is this, Objective-C? Manipulating <code>UIBezierPath</code>s isn&rsquo;t exactly ground-breaking stuff, but with a few dozen more lines to go, we can make this a bit easier for ourselves.</p>
+
+<p>How about we put some syntactic icing on this cake with some <a href="https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-XID_28">custom operators</a>?</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kr">infix</span> <span class="kr">operator</span> <span class="o">---&gt;</span> <span class="p">{</span> <span class="kr">associativity</span> <span class="kr">left</span> <span class="p">}</span>
+<span class="k">func</span> <span class="o">---&gt;</span> <span class="p">(</span><span class="nl">left</span><span class="p">:</span> <span class="bp">UIBezierPath</span><span class="p">,</span> <span class="nl">right</span><span class="p">:</span> <span class="p">(</span><span class="n">CGFloat</span><span class="p">,</span> <span class="n">CGFloat</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="bp">UIBezierPath</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="kr">right</span>
+    <span class="kr">left</span><span class="p">.</span><span class="n">moveToPoint</span><span class="p">(</span><span class="n">CGPointMake</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="kr">left</span>
+<span class="p">}</span>
+
+<span class="kr">infix</span> <span class="kr">operator</span> <span class="o">+-</span> <span class="p">{</span> <span class="kr">associativity</span> <span class="kr">left</span> <span class="p">}</span>
+<span class="k">func</span> <span class="o">+-</span> <span class="p">(</span><span class="nl">left</span><span class="p">:</span> <span class="bp">UIBezierPath</span><span class="p">,</span> <span class="nl">right</span><span class="p">:</span> <span class="p">(</span><span class="n">CGFloat</span><span class="p">,</span> <span class="n">CGFloat</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="bp">UIBezierPath</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="kr">right</span>
+    <span class="kr">left</span><span class="p">.</span><span class="n">addLineToPoint</span><span class="p">(</span><span class="n">CGPointMake</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="kr">left</span>
+<span class="p">}</span>
+
+<span class="kr">infix</span> <span class="kr">operator</span> <span class="o">+~</span> <span class="p">{</span> <span class="kr">associativity</span> <span class="kr">left</span> <span class="p">}</span>
+<span class="k">func</span> <span class="o">+~</span> <span class="p">(</span><span class="nl">left</span><span class="p">:</span> <span class="bp">UIBezierPath</span><span class="p">,</span> <span class="nl">right</span><span class="p">:</span> <span class="p">((</span><span class="n">CGFloat</span><span class="p">,</span> <span class="n">CGFloat</span><span class="p">),</span> <span class="p">(</span><span class="n">CGFloat</span><span class="p">,</span> <span class="n">CGFloat</span><span class="p">),</span> <span class="p">(</span><span class="n">CGFloat</span><span class="p">,</span> <span class="n">CGFloat</span><span class="p">)))</span> <span class="o">-&gt;</span> <span class="bp">UIBezierPath</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="p">((</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">y3</span><span class="p">))</span> <span class="o">=</span> <span class="kr">right</span>
+    <span class="kr">left</span><span class="p">.</span><span class="n">addCurveToPoint</span><span class="p">(</span><span class="n">CGPointMake</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">),</span> <span class="nl">controlPoint1</span><span class="p">:</span> <span class="n">CGPointMake</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">),</span> <span class="nl">controlPoint2</span><span class="p">:</span> <span class="n">CGPointMake</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">y3</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="kr">left</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Get it? <code>---&gt;</code> replaces <code>moveToPoint</code>, while <code>+-</code> replaces <code>addLineToPoint</code>, and <code>+~</code> replaces <code>addCurveToPoint</code>. This declaration also does away with all of the redundant calls to <code>CGPointMake</code>, opting instead for simple coordinate tuples.</p>
+</blockquote>
+
+<p>Swift offers a great deal of flexibility in how a programmer structures their code. One feature that exemplifies this mantra of minimal constraints is the ability to add custom prefix, infix, and postfix operators. Swift&rsquo;s syntax limits custom operators to be one or more of any of the following characters (provided an operator does not conflict with a reserved symbols, such as the <code>?</code> or <code>!</code> used for optional values):</p>
+
+<p><code>/ = - + * % &lt; &gt; ! &amp; | ^ . ~.</code></p>
+
+<p>Custom operators offer a powerful tool for cutting through cruft, redundancy, unnecessary repetition, and so on and so forth, et cetera. Combine them with other language features like patterns or chaining to craft DSLs perfectly suited to the task at hand.</p>
+
+<p>Just&hellip; you know, don&rsquo;t let this power go to your head.</p>
+
+<p>After full Emoji support (<code>let 🐶🐮</code>), custom operators are perhaps the shiniest new feature for anyone coming from Objective-C. And like any shiny new feature, it is destined to provide the most snark fodder for the &ldquo;get off my lawn&rdquo; set.</p>
+
+<h3 id="a-dramatization-of-the-perils-of-shiny-swift-features">A Dramatization of the Perils of Shiny Swift Features</h3>
+
+<blockquote>
+<p><code>SCENE: SAN FRANCISCO, THE YEAR IS 2017</code></p>
+
+<p><code>GREYBEARD:</code> So I inherited an old Swift codebase today, and I found this line of code—I swear to <code>$DEITY</code>—it just reads <code>😾 |--~~&gt; 💩</code>.</p>
+
+<p><code>BROGRAMMER</code>: <em>shakes head</em></p>
+
+<p><code>GREYBEARD</code>: What the hell am I supposed to make of that? Is, like, the piece of poo throwing a <abbr title="↓↘︎→P">Hadouken</abbr>, or is it about to get the business end of a corkscrew?</p>
+
+<p><code>BROGRAMMER</code>: Truly, a philosophical quandary if ever there was one.</p>
+
+<p><code>GREYBEARD</code>: Anyway, turns out, that statement just reloads nearby restaurants.</p>
+
+<p><code>BROGRAMMER:</code> Dude, AFNetworking got weird with its 4.0 release.</p>
+
+<p><code>GREYBEARD:</code> Indeed.</p>
+</blockquote>
+
+<p>The moral of that cautionary tale: <strong>use custom operators and emoji sparingly</strong>.</p>
+
+<p>(Or whatever, the very next code sample totally ignores that advice)</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// Happy 2nd Birthday, NSHipster</span>
+<span class="c1">// 😗💨🎂✨2️⃣</span>
+
+<span class="k">var</span> <span class="err">🍰</span> <span class="o">=</span> <span class="bp">UIBezierPath</span><span class="p">()</span>
+<span class="err">🍰</span> <span class="o">---&gt;</span> <span class="p">((</span><span class="mf">31.5</span><span class="p">,</span> <span class="mf">32.5</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">66.1</span><span class="p">),</span> <span class="p">(</span><span class="mf">31.5</span><span class="p">,</span> <span class="mf">32.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">6.9</span><span class="p">,</span> <span class="mf">46.3</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">66.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">66.2</span><span class="p">),</span> <span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">66.3</span><span class="p">))</span>
+     <span class="o">+-</span> <span class="p">((</span><span class="mf">6.5</span><span class="p">,</span> <span class="mi">95</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">8.5</span><span class="p">,</span> <span class="mf">96.9</span><span class="p">),</span> <span class="p">(</span><span class="mf">6.5</span><span class="p">,</span> <span class="mf">96.1</span><span class="p">),</span> <span class="p">(</span><span class="mf">7.4</span><span class="p">,</span> <span class="mi">97</span><span class="p">))</span>
+     <span class="o">+-</span> <span class="p">((</span><span class="mi">92</span><span class="p">,</span> <span class="mf">93.1</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">94.2</span><span class="p">,</span> <span class="mi">93</span><span class="p">),</span> <span class="p">(</span><span class="mf">93.1</span><span class="p">,</span> <span class="mi">93</span><span class="p">),</span> <span class="p">(</span><span class="mf">94.1</span><span class="p">,</span> <span class="mi">93</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">94.4</span><span class="p">,</span> <span class="mi">91</span><span class="p">),</span> <span class="p">(</span><span class="mf">94.3</span><span class="p">,</span> <span class="mi">93</span><span class="p">),</span> <span class="p">(</span><span class="mf">94.4</span><span class="p">,</span> <span class="mf">92.1</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">94.4</span><span class="p">,</span> <span class="mf">64.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">94.4</span><span class="p">,</span> <span class="mi">91</span><span class="p">),</span> <span class="p">(</span><span class="mf">94.4</span><span class="p">,</span> <span class="mf">65.5</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">92.4</span><span class="p">,</span> <span class="mf">61.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">94.4</span><span class="p">,</span> <span class="mf">62.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">92.4</span><span class="p">,</span> <span class="mf">61.5</span><span class="p">))</span>
+   <span class="o">---&gt;</span> <span class="p">((</span><span class="mf">92.5</span><span class="p">,</span> <span class="mf">89.4</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">90.5</span><span class="p">,</span> <span class="mf">91.4</span><span class="p">),</span> <span class="p">(</span><span class="mf">92.5</span><span class="p">,</span> <span class="mf">90.4</span><span class="p">),</span> <span class="p">(</span><span class="mf">91.6</span><span class="p">,</span> <span class="mf">91.3</span><span class="p">))</span>
+     <span class="o">+-</span> <span class="p">((</span><span class="mf">10.5</span><span class="p">,</span> <span class="mf">94.9</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">8.5</span><span class="p">,</span> <span class="mf">93.1</span><span class="p">),</span> <span class="p">(</span><span class="mf">9.4</span><span class="p">,</span> <span class="mf">94.9</span><span class="p">),</span> <span class="p">(</span><span class="mf">8.5</span><span class="p">,</span> <span class="mf">94.1</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">8.5</span><span class="p">,</span> <span class="mi">83</span><span class="p">),</span> <span class="p">(</span><span class="mf">8.5</span><span class="p">,</span> <span class="mf">93.1</span><span class="p">),</span> <span class="p">(</span><span class="mf">8.5</span><span class="p">,</span> <span class="mf">88.4</span><span class="p">))</span>
+     <span class="o">+-</span> <span class="p">((</span><span class="mf">92.5</span><span class="p">,</span> <span class="mf">79.1</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">92.5</span><span class="p">,</span> <span class="mf">89.4</span><span class="p">),</span> <span class="p">(</span><span class="mf">92.5</span><span class="p">,</span> <span class="mf">84.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">92.5</span><span class="p">,</span> <span class="mf">89.4</span><span class="p">))</span>
+<span class="err">🍰</span><span class="p">.</span><span class="n">closePath</span><span class="p">()</span>
+
+<span class="err">🍰</span> <span class="o">---&gt;</span> <span class="p">((</span><span class="mf">92.5</span><span class="p">,</span> <span class="mi">76</span><span class="p">))</span>
+     <span class="o">+-</span> <span class="p">((</span><span class="mf">8.5</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">8.5</span><span class="p">,</span> <span class="mf">68.2</span><span class="p">),</span> <span class="p">(</span><span class="mf">8.5</span><span class="p">,</span> <span class="mf">74.2</span><span class="p">),</span> <span class="p">(</span><span class="mf">8.5</span><span class="p">,</span> <span class="mf">68.7</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">9.5</span><span class="p">,</span> <span class="mf">67.1</span><span class="p">),</span> <span class="p">(</span><span class="mf">8.5</span><span class="p">,</span> <span class="mf">67.3</span><span class="p">),</span> <span class="p">(</span><span class="mf">9.5</span><span class="p">,</span> <span class="mf">67.1</span><span class="p">))</span>
+     <span class="o">+-</span> <span class="p">((</span><span class="mf">91.5</span><span class="p">,</span> <span class="mf">63.5</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">92.5</span><span class="p">,</span> <span class="mf">64.4</span><span class="p">),</span> <span class="p">(</span><span class="mf">91.5</span><span class="p">,</span> <span class="mf">63.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">92.5</span><span class="p">,</span> <span class="mf">63.5</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">92.5</span><span class="p">,</span> <span class="mi">76</span><span class="p">),</span> <span class="p">(</span><span class="mf">92.5</span><span class="p">,</span> <span class="mf">64.9</span><span class="p">),</span> <span class="p">(</span><span class="mf">92.5</span><span class="p">,</span> <span class="mf">70.3</span><span class="p">))</span>
+<span class="err">🍰</span><span class="p">.</span><span class="n">closePath</span><span class="p">()</span>
+
+
+<span class="k">var</span> <span class="err">📍</span> <span class="o">=</span> <span class="bp">UIBezierPath</span><span class="p">()</span>
+<span class="err">📍</span> <span class="o">---&gt;</span> <span class="p">((</span><span class="mi">46</span><span class="p">,</span> <span class="mf">47.5</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">41.5</span><span class="p">,</span> <span class="mi">52</span><span class="p">),</span> <span class="p">(</span><span class="mi">46</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">44</span><span class="p">,</span> <span class="mi">52</span><span class="p">))</span>
+     <span class="o">+-</span> <span class="p">((</span><span class="mf">41.5</span><span class="p">,</span> <span class="mi">52</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mi">37</span><span class="p">,</span> <span class="mf">47.5</span><span class="p">),</span> <span class="p">(</span><span class="mi">39</span><span class="p">,</span> <span class="mi">52</span><span class="p">),</span> <span class="p">(</span><span class="mi">37</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+     <span class="o">+-</span> <span class="p">((</span><span class="mi">37</span><span class="p">,</span> <span class="mf">19.8</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">41.5</span><span class="p">,</span> <span class="mf">15.3</span><span class="p">),</span> <span class="p">(</span><span class="mi">37</span><span class="p">,</span> <span class="mf">17.3</span><span class="p">),</span> <span class="p">(</span><span class="mi">39</span><span class="p">,</span> <span class="mf">15.3</span><span class="p">))</span>
+     <span class="o">+-</span> <span class="p">((</span><span class="mf">41.5</span><span class="p">,</span> <span class="mf">15.3</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mi">46</span><span class="p">,</span> <span class="mf">19.8</span><span class="p">),</span> <span class="p">(</span><span class="mi">44</span><span class="p">,</span> <span class="mf">15.3</span><span class="p">),</span> <span class="p">(</span><span class="mi">46</span><span class="p">,</span> <span class="mf">17.3</span><span class="p">))</span>
+     <span class="o">+-</span> <span class="p">((</span><span class="mi">46</span><span class="p">,</span> <span class="mf">47.5</span><span class="p">))</span>
+<span class="err">📍</span><span class="p">.</span><span class="n">closePath</span><span class="p">()</span>
+
+
+<span class="k">var</span> <span class="err">🔥</span> <span class="o">=</span> <span class="bp">UIBezierPath</span><span class="p">()</span>
+<span class="err">🔥</span><span class="p">.</span><span class="n">miterLimit</span> <span class="o">=</span> <span class="mi">4</span>
+
+<span class="err">🔥</span> <span class="o">---&gt;</span> <span class="p">((</span><span class="mf">45.8</span><span class="p">,</span> <span class="mf">8.4</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">41.7</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span> <span class="p">(</span><span class="mf">45.8</span><span class="p">,</span> <span class="mf">12.5</span><span class="p">),</span> <span class="p">(</span><span class="mi">44</span><span class="p">,</span> <span class="mi">14</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">37.6</span><span class="p">,</span> <span class="mf">8.4</span><span class="p">),</span> <span class="p">(</span><span class="mf">39.4</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span> <span class="p">(</span><span class="mf">37.6</span><span class="p">,</span> <span class="mf">12.5</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">41.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mf">37.6</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">),</span> <span class="p">(</span><span class="mf">41.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+     <span class="o">+~</span> <span class="p">((</span><span class="mf">45.8</span><span class="p">,</span> <span class="mf">8.4</span><span class="p">),</span> <span class="p">(</span><span class="mf">41.8</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mf">45.8</span><span class="p">,</span> <span class="mf">4.3</span><span class="p">))</span>
+<span class="err">🔥</span><span class="p">.</span><span class="n">closePath</span><span class="p">()</span>
+
+
+<span class="bp">UIColor</span><span class="p">.</span><span class="n">blackColor</span><span class="p">().</span><span class="n">setFill</span><span class="p">()</span>
+<span class="err">🍰</span><span class="p">.</span><span class="n">fill</span><span class="p">()</span>
+<span class="err">🔥</span><span class="p">.</span><span class="n">fill</span><span class="p">()</span>
+
+<span class="bp">UIColor</span><span class="p">.</span><span class="n">whiteColor</span><span class="p">().</span><span class="n">setFill</span><span class="p">()</span>
+<span class="bp">UIColor</span><span class="p">.</span><span class="n">blackColor</span><span class="p">().</span><span class="n">setStroke</span><span class="p">()</span>
+<span class="err">📍</span><span class="p">.</span><span class="n">fill</span><span class="p">()</span>
+<span class="err">📍</span><span class="p">.</span><span class="n">stroke</span><span class="p">()</span>
+</code></pre></div>
+<p>I&rsquo;m as amazed as anyone that this actually compiles.</p>
+
+<p>Everything is terrible.</p>
+
+<hr>
+
+<p>Anyway, Happy 2nd Birthday, NSHipster!</p>
+
+<p>Thank you for helping to make these last couple years the insanely great experience it&rsquo;s been. I&rsquo;ll do my part to keep things up for years to come.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-07-07-nscalendarunityear.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on September 9, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nsoperation/" title="NSOperation" rel="next">NSOperation</a>
+            </h1>
+
+            <p>In life, there&rsquo;s always work to be done. Every day brings with it a steady stream of tasks and chores to fill the working hours of our existence. Productivity is, as in life as it is in programming, a matter of scheduling and prioritizing and multi-tasking work in order to keep up appearances.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/guard-and-defer/" title="guard & defer">guard & defer</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/swift-default-protocol-implementations/" title="Swift Default Protocol Implementations">Swift Default Protocol Implementations</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/swift-system-version-checking/" title="Swift System Version Checking">Swift System Version Checking</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/swift-1.2/" title="Swift 1.2">Swift 1.2</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

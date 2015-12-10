@@ -1,0 +1,1266 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>Mattt Thompson</title>
+    <meta name="description" content="NSHipster is a journal of the overlooked bits in Objective-C, Swift, and Cocoa. Updated weekly."/>
+    <link rel="canonical" href="http://nshipster.com"/>
+    <link rel="alternate" hreflang="en-us" href="http://nshipster.com/"/>
+    <link rel="alternate" hreflang="zh-Hans" href="http://nshipster.cn/"/>
+    <link rel="alternate" hreflang="x-default" href="http://nshipster.com/"/>
+  
+  
+  
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  
+    <meta name="twitter:title" content="NSHipster"/>
+    <meta name="twitter:description" content="NSHipster is a journal of the overlooked bits in Objective-C, Swift, and Cocoa. Updated weekly."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:title" content="NSHipster"/>
+    <meta property="og:url" content="http://nshipster.com"/>
+    <meta property="og:description" content="NSHipster is a journal of the overlooked bits in Objective-C, Swift, and Cocoa. Updated weekly." />
+  
+
+  
+    <meta property="st:type" content="home"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article class="author" itemscope itemtype="http://schema.org/Person">
+  <header role="heading">
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <h1 itemprop="name">Mattt Thompson</h1>
+
+    <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+  </header>
+
+
+  <section class="archive">
+    <h1>Articles</h1>
+
+    <ol>
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="/swift-documentation/" title="Swift Documentation" class="title">Swift Documentation</a>
+          <time datetime="2015-05-05T00:00:00-07:00" itemprop="datePublished">May 5<sup>th</sup>, 2015</time>
+          <p>Code structure and organization is a matter of pride for developers. Clear and consistent code signifies clear and consistent thought. Read on to learn about the recent changes to documentation with Xcode 7 &amp; Swift 2.0.</p>
+
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="/changing-of-the-guard/" title="Changing of the Guard" class="title">Changing of the Guard</a>
+          <time datetime="2015-01-05T00:00:00-08:00" itemprop="datePublished">January 5<sup>th</sup>, 2015</time>
+          <p>An important site announcement.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/new-years-2015/" title="Reader Submissions -<br/> New Year's 2015" class="title">Reader Submissions -<br/> New Year's 2015</a>
+          <time datetime="2015-01-01T00:00:00-08:00" itemprop="datePublished">January 1<sup>st</sup>, 2015</time>
+          <p>2014 was an incredible year professionally for Apple developers. With a deluge of new developments—both from Cupertino and the community at large—there were no shortage of interesting tidbits for readers to share.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/the-death-of-cocoa/" title="The Death of Cocoa" class="title">The Death of Cocoa</a>
+          <time datetime="2014-12-29T00:00:00-08:00" itemprop="datePublished">December 29<sup>th</sup>, 2014</time>
+          <p>For many of us, the simplicity, elegance, and performance of Apple&rsquo;s hardware and software working together are the reason why we build on their platforms. And yet, after just a few months of working with Swift, Cocoa has begun to lose its luster.</p>
+
+        </li>
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="/watchkit/" title="WatchKit" class="title">WatchKit</a>
+          <time datetime="2014-12-01T00:00:00-08:00" itemprop="datePublished">December 1<sup>st</sup>, 2014</time>
+          <p>After taking a look at WatchKit, there were a few things that jumped out coming from UIKit. They&rsquo;re the kind of subjective, opinionated things that don&rsquo;t make for good documentation, but might be interesting or useful to anyone else as they&rsquo;re getting started.</p>
+
+        </li>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <li>
+          <a href="/inter-process-communication/" title="Inter-Process Communication" class="title">Inter-Process Communication</a>
+          <time datetime="2014-10-17T00:00:00-07:00" itemprop="datePublished">October 17<sup>th</sup>, 2014</time>
+          <p>In many ways, the story of Apple has been about fusing together technologies through happy accidents of history to create something better than before: OS X as a hybrid of MacOS &amp; NeXTSTEP. Objective-C as the combination of Smalltalk&rsquo;s OOP paradigm and C. iCloud as the byproduct of MobileMe and actual clouds (presumably).</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/swift-system-version-checking/" title="Swift System Version Checking" class="title">Swift System Version Checking</a>
+          <time datetime="2014-10-06T00:00:00-07:00" itemprop="datePublished">October 6<sup>th</sup>, 2014</time>
+          <p>C uses preprocessor directives capable of unspeakable evil. Swift has a safe subset of preprocessor directives. So how do we check system version for API compatibility?</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/uialertcontroller/" title="UIAlertController" class="title">UIAlertController</a>
+          <time datetime="2014-09-30T00:00:00-07:00" itemprop="datePublished">September 30<sup>th</sup>, 2014</time>
+          <p>Did you know that <code>UIAlertView</code> and <code>UIActionSheet</code> (as well as their respective delegate protocols) are deprecated in iOS 8? It&rsquo;s true.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/swift-comparison-protocols/" title="Swift Comparison Protocols" class="title">Swift Comparison Protocols</a>
+          <time datetime="2014-09-22T00:00:00-07:00" itemprop="datePublished">September 22<sup>nd</sup>, 2014</time>
+          <p>Objective-C required us to wax philosophic about the nature of equality and identity. To the relief of any developer less inclined towards handwavy treatises, this is not as much the case for Swift.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/phimagemanager/" title="PHImageManager" class="title">PHImageManager</a>
+          <time datetime="2014-09-16T00:00:00-07:00" itemprop="datePublished">September 16<sup>th</sup>, 2014</time>
+          <p>Yesterday&rsquo;s article described various techniques for resizing images using APIs from the UIKit, Core Graphics, Core Image, and Image I/O frameworks. However, that article failed to mention some rather extraordinary functionality baked into the new Photos framework which takes care of all of this for you.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/image-resizing/" title="Image Resizing Techniques" class="title">Image Resizing Techniques</a>
+          <time datetime="2014-09-15T00:00:00-07:00" itemprop="datePublished">September 15<sup>th</sup>, 2014</time>
+          <p>Since time immemorial, iOS developers have been perplexed by a singular question: &lsquo;How do you resize an image?&rsquo;. This article endeavors to provide a clear answer to this eternal question.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/rawoptionsettype/" title="RawOptionSetType" class="title">RawOptionSetType</a>
+          <time datetime="2014-09-08T00:00:00-07:00" itemprop="datePublished">September 8<sup>th</sup>, 2014</time>
+          <p>Swift enumerations are a marked improvement over the <code>NS_ENUM</code> macro in Objective-C. Unfortunately, <code>NS_OPTIONS</code> does not compare as favorably.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/swift-default-protocol-implementations/" title="Swift Default Protocol Implementations" class="title">Swift Default Protocol Implementations</a>
+          <time datetime="2014-09-02T00:00:00-07:00" itemprop="datePublished">September 2<sup>nd</sup>, 2014</time>
+          <p>Protocols are the foundation of generics in Swift, but suffer from the lack of a built-in way to provide default implementations for methods. However, there is an interesting workaround in Swift that you probably haven&rsquo;t noticed.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/wkwebkit/" title="WKWebView" class="title">WKWebView</a>
+          <time datetime="2014-08-24T00:00:00-07:00" itemprop="datePublished">August 24<sup>th</sup>, 2014</time>
+          <p>iOS has a complicated relationship with the web. And it goes back to the very inception of the platform nearly a decade ago.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/swift-literal-convertible/" title="Swift Literal Convertibles" class="title">Swift Literal Convertibles</a>
+          <time datetime="2014-08-18T00:00:00-07:00" itemprop="datePublished">August 18<sup>th</sup>, 2014</time>
+          <p>Last week, we wrote about overloading and creating custom operators in Swift, a language feature that is as powerful as it is controversial. By all accounts, this week&rsquo;s issue threatens to be equally polarizing, as it covers a feature of Swift that is pervasive, yet invisible: literal convertibles.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/swift-operators/" title="Swift Operators" class="title">Swift Operators</a>
+          <time datetime="2014-08-11T00:00:00-07:00" itemprop="datePublished">August 11<sup>th</sup>, 2014</time>
+          <p>Operators in Swift are among the most interesting and indeed controversial features of this new language.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/alamofire/" title="Alamofire" class="title">Alamofire</a>
+          <time datetime="2014-08-04T00:00:00-07:00" itemprop="datePublished">August 4<sup>th</sup>, 2014</time>
+          <p>Although we still have a few months to wait before we can ship apps in Swift, there is already a proliferation of open source projects built with this new language. One such project is Alamofire.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/xctestcase/" title="XCTestCase /<br/>XCTestExpectation /<br/> measureBlock()" class="title">XCTestCase /<br/>XCTestExpectation /<br/> measureBlock()</a>
+          <time datetime="2014-07-21T00:00:00-07:00" itemprop="datePublished">July 21<sup>st</sup>, 2014</time>
+          <p>This week, we&rsquo;ll take a look at <code>XCTest</code>, the testing framework built into Xcode, as well as the exciting new additions in Xcode 6: <code>XCTestExpectation</code> and performance tests.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nsoperation/" title="NSOperation" class="title">NSOperation</a>
+          <time datetime="2014-07-14T00:00:00-07:00" itemprop="datePublished">July 14<sup>th</sup>, 2014</time>
+          <p>In life, there&rsquo;s always work to be done. Every day brings with it a steady stream of tasks and chores to fill the working hours of our existence. Productivity is, as in life as it is in programming, a matter of scheduling and prioritizing and multi-tasking work in order to keep up appearances.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nscalendarunityear/" title="NSCalendarUnitYear" class="title">NSCalendarUnitYear</a>
+          <time datetime="2014-07-07T00:00:00-07:00" itemprop="datePublished">July 7<sup>th</sup>, 2014</time>
+          <p>NSHipster.com was launched 2 years ago to the day. Each week since has featured a new article on some obscure topic in Objective-C or Cocoa (with only a couple gaps). Let&rsquo;s celebrate with some cake.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/clang-diagnostics/" title="Clang Diagnostics" class="title">Clang Diagnostics</a>
+          <time datetime="2014-06-16T00:00:00-07:00" itemprop="datePublished">June 16<sup>th</sup>, 2014</time>
+          <p>Diagnostics combine logic with analytics to arrive at a conclusion. It&rsquo;s science and engineering at their purest. It&rsquo;s human reasoning at its most potent. For us developers, our medium of code informs the production of subsequent code, creating a positive feedback loop that has catapulted the development of technology exponentially over the last half century. For us Objective-C developers specifically, the most effective diagnostics come from Clang.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/ios8/" title="iOS 8" class="title">iOS 8</a>
+          <time datetime="2014-06-09T00:00:00-07:00" itemprop="datePublished">June 9<sup>th</sup>, 2014</time>
+          <p>Ask anyone, and they&rsquo;ll tell you: WWDC 2014 was the one of the most exciting in recent memory. This week, we&rsquo;ll take a look beneath the headline features, and share some of the more obscure APIs that everyone should know about.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nshipster-quiz-6/" title="NSHipster Quiz #6" class="title">NSHipster Quiz #6</a>
+          <time datetime="2014-06-03T00:00:00-07:00" itemprop="datePublished">June 3<sup>rd</sup>, 2014</time>
+          <p>Our second annual WWDC Pub Quiz! With dozens of teams, comprised of developers from all around the world, the competition was fierce. How will you stack up?</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/cocoapods/" title="CocoaPods" class="title">CocoaPods</a>
+          <time datetime="2014-05-26T00:00:00-07:00" itemprop="datePublished">May 26<sup>th</sup>, 2014</time>
+          <p>When well thought-out and implemented, infrastructure is a multiplying force that drives growth and development. In the case of Objective-C, CocoaPods has provided a much-needed tool for channeling and organizing open source participation.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/benchmarking/" title="Benchmarking" class="title">Benchmarking</a>
+          <time datetime="2014-05-19T00:00:00-07:00" itemprop="datePublished">May 19<sup>th</sup>, 2014</time>
+          <p>Abstractions are necessary for doing meaningful work, but they come at a cost. By benchmarking, a programmer can uncover the hidden performance characteristics of their code, and use this information to optimize accordingly.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nshipster-quiz-5/" title="NSHipster Quiz #5" class="title">NSHipster Quiz #5</a>
+          <time datetime="2014-05-12T00:00:00-07:00" itemprop="datePublished">May 12<sup>th</sup>, 2014</time>
+          <p>This fifth incarnation of the NSHipster Quiz took on a distinct North-of-the-Border flavor, as part of the NSNorth conference in Ottawa, Ontario. Think you&rsquo;re up to the challenge, eh?</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/ibaction-iboutlet-iboutletcollection/" title="IBAction / IBOutlet / IBOutletCollection" class="title">IBAction / IBOutlet / IBOutletCollection</a>
+          <time datetime="2014-05-05T00:00:00-07:00" itemprop="datePublished">May 5<sup>th</sup>, 2014</time>
+          <p>In programming, what often begins as a necessary instruction eventually becomes a vestigial cue for humans. For developers just starting with Cocoa &amp; Cocoa Touch, the IBAction, IBOutlet, and IBOutletCollection macros are particularly bewildering examples of this phenomenon</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/mkgeodesicpolyline/" title="MKGeodesicPolyline" class="title">MKGeodesicPolyline</a>
+          <time datetime="2014-04-28T00:00:00-07:00" itemprop="datePublished">April 28<sup>th</sup>, 2014</time>
+          <p>We knew that the Earth was not flat long before 1492. Early navigators observed the way ships would dip out of view over the horizon many centuries before the Age of Discovery. For many iOS developers, though, a flat MKMapView was a necessary conceit until recently.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/uiactivityviewcontroller/" title="UIActivityViewController" class="title">UIActivityViewController</a>
+          <time datetime="2014-04-21T00:00:00-07:00" itemprop="datePublished">April 21<sup>st</sup>, 2014</time>
+          <p>The relationship between code and data has long been a curious one.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/xcode-plugins/" title="Xcode Plugins" class="title">Xcode Plugins</a>
+          <time datetime="2014-04-14T00:00:00-07:00" itemprop="datePublished">April 14<sup>th</sup>, 2014</time>
+          <p>This week on NSHipster: a roundup of some of the most useful and exciting plugins for Xcode—ready for you to try out yourself today!</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/configuration-profiles/" title="Configuration Profiles" class="title">Configuration Profiles</a>
+          <time datetime="2014-04-07T00:00:00-07:00" itemprop="datePublished">April 7<sup>th</sup>, 2014</time>
+          <p>One of the major criticisms of iOS as a platform is how locked down it is. iOS Configuration Profiles offer an interesting mechanism to work around these restrictions.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/avspeechsynthesizer/" title="AVSpeechSynthesizer" class="title">AVSpeechSynthesizer</a>
+          <time datetime="2014-03-31T00:00:00-07:00" itemprop="datePublished">March 31<sup>st</sup>, 2014</time>
+          <p>Though we&rsquo;re a long way off from Hal or Her, we should never forget about the billions of other people out there for us to talk to.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nsurl/" title="NSURL /<br/>NSURLComponents" class="title">NSURL /<br/>NSURLComponents</a>
+          <time datetime="2014-03-24T00:00:00-07:00" itemprop="datePublished">March 24<sup>th</sup>, 2014</time>
+          <p>Of all the one-dimensional data types out there, URIs reign supreme. Here, in a single, human-parsable string, is every conceivable piece of information necessary to encode the location of any piece of information that has, does, and will ever exist on a computer.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/empathy/" title="Empathy" class="title">Empathy</a>
+          <time datetime="2014-03-17T00:00:00-07:00" itemprop="datePublished">March 17<sup>th</sup>, 2014</time>
+          <p>We naturally want to help one another, to explain ideas, to be generous and patient. However, on the Internet, human nature seems to drop a few packets.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/dictionary-services/" title="UIReferenceLibraryViewController /<br/>DCSDictionaryRef/<br/>/usr/share/dict/words" class="title">UIReferenceLibraryViewController /<br/>DCSDictionaryRef/<br/>/usr/share/dict/words</a>
+          <time datetime="2014-03-10T00:00:00-07:00" itemprop="datePublished">March 10<sup>th</sup>, 2014</time>
+          <p>Though widely usurped of their &lsquo;go-to reference&rsquo; status by the Internet, dictionaries and word lists serve an important role behind the scenes of functionality ranging from spell check, grammar check, and auto-correct to auto-summarization and semantic analysis.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nstemporarydirectory/" title="NSTemporaryDirectory /<br/>NSItemReplacementDirectory /<br/>mktemp(3)" class="title">NSTemporaryDirectory /<br/>NSItemReplacementDirectory /<br/>mktemp(3)</a>
+          <time datetime="2014-03-03T00:00:00-08:00" itemprop="datePublished">March 3<sup>rd</sup>, 2014</time>
+          <p>Volumes have been written about persisting data, but when it comes to short-lived, temporary files, there is very little to go on for Objective-C. (Or if there has, perhaps it was poetically ephemeral itself).</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/namespacing/" title="Namespacing" class="title">Namespacing</a>
+          <time datetime="2014-02-24T00:00:00-08:00" itemprop="datePublished">February 24<sup>th</sup>, 2014</time>
+          <p>Namespacing is the preeminent bugbear of Objective-C. A cosmetic quirk with global implications, the language&rsquo;s lack of identifier containers remains a source of prodigious quantities of caremad for armchair language critics.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/method-swizzling/" title="Method Swizzling" class="title">Method Swizzling</a>
+          <time datetime="2014-02-17T00:00:00-08:00" itemprop="datePublished">February 17<sup>th</sup>, 2014</time>
+          <p>Method swizzling is the process of changing the implementation of an existing selector. It&rsquo;s a technique made possible by the fact that method invocations in Objective-C can be changed at runtime, by changing how selectors are mapped to underlying functions in a class&rsquo;s dispatch table.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/associated-objects/" title="Associated Objects" class="title">Associated Objects</a>
+          <time datetime="2014-02-10T00:00:00-08:00" itemprop="datePublished">February 10<sup>th</sup>, 2014</time>
+          <p>Associated Objects is a feature of the Objective-C 2.0 runtime, which allows objects to associate arbitrary values for keys at runtime. It&rsquo;s dark juju, to be handled with as much caution as any other function from objc/runtime.h</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/mktileoverlay-mkmapsnapshotter-mkdirections/" title="MKTileOverlay,<br/>MKMapSnapshotter &<br/>MKDirections" class="title">MKTileOverlay,<br/>MKMapSnapshotter &<br/>MKDirections</a>
+          <time datetime="2014-02-03T00:00:00-08:00" itemprop="datePublished">February 3<sup>rd</sup>, 2014</time>
+          <p>Unless you work with MKMapView. on a regular basis, the last you may have heard about the current state of cartography on iOS may not have been under the cheeriest of circumstances. Therefore, it may come as a surprise maps on iOS have gotten quite a bit better in the intervening releases. Quite good, in fact.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/stewardship/" title="Stewardship" class="title">Stewardship</a>
+          <time datetime="2014-01-27T00:00:00-08:00" itemprop="datePublished">January 27<sup>th</sup>, 2014</time>
+          <p>Stewardship is an old word. It evokes the ethic of public service and duty. To be a steward is to embody the responsibilities that come with ownership. It is an act that justifies authority through continued accountability; both the greatest challenge and reward of creating and maintaining a project.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/extended-file-attributes/" title="Extended File Attributes" class="title">Extended File Attributes</a>
+          <time datetime="2014-01-20T00:00:00-08:00" itemprop="datePublished">January 20<sup>th</sup>, 2014</time>
+          <p>Amidst revelations of widespread spying by the NSA, the concept of metadata has taken an unexpected role in the national conversation about government surveillance. What is it? And how much does it reveal about us and our daily habits? These are questions that the American people are asking, and they deserve an answer.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nsrange/" title="NSRange" class="title">NSRange</a>
+          <time datetime="2014-01-13T00:00:00-08:00" itemprop="datePublished">January 13<sup>th</sup>, 2014</time>
+          <p>NSRange is one of the essential types of Foundation. Passed around and returned in methods throughout the framework, being well-versed in this struct has a range of benefits.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/new-years-2014/" title="Reader Submissions -<br/> New Year's 2014" class="title">Reader Submissions -<br/> New Year's 2014</a>
+          <time datetime="2014-01-01T00:00:00-08:00" itemprop="datePublished">January 1<sup>st</sup>, 2014</time>
+          <p>As we prepare to increment our NSDateComponents -year by 1, it&rsquo;s time once again for NSHipster end-of-the-year Reader Submissions!</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/launch-options/" title="UIApplicationDelegate launchOptions" class="title">UIApplicationDelegate launchOptions</a>
+          <time datetime="2013-12-16T00:00:00-08:00" itemprop="datePublished">December 16<sup>th</sup>, 2013</time>
+          <p>AppDelegate is the dumping ground for functionality in iOS.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/multipeer-connectivity/" title="Multipeer Connectivity" class="title">Multipeer Connectivity</a>
+          <time datetime="2013-12-09T00:00:00-08:00" itemprop="datePublished">December 9<sup>th</sup>, 2013</time>
+          <p>As consumer web technologies and enterprises race towards cloud infrastructure, there is a curious and significant counter-movement towards connected devices. The Multipeer Connectivity APIs, introduced in iOS 7, therefore may well be the most significant for the platform.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nsnotification-and-nsnotificationcenter/" title="NSNotification &<br/>NSNotificationCenter" class="title">NSNotification &<br/>NSNotificationCenter</a>
+          <time datetime="2013-12-02T00:00:00-08:00" itemprop="datePublished">December 2<sup>nd</sup>, 2013</time>
+          <p>Any idea is inextricably linked to how its communicated. A medium defines the form and scale of significance in such a way to shape the very meaning of an idea. Very truly, the medium is the message.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nsfilemanager/" title="NSFileManager" class="title">NSFileManager</a>
+          <time datetime="2013-11-18T00:00:00-08:00" itemprop="datePublished">November 18<sup>th</sup>, 2013</time>
+          <p>File systems are a complex topic, with decades of history, vestigial complexities, and idiosyncrasies, and is well outside the scope of a single article. And since most applications don&rsquo;t often interact with the file system much beyond simple file operations, one can get away with only knowing the basics.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nsformatter/" title="NSFormatter" class="title">NSFormatter</a>
+          <time datetime="2013-11-11T00:00:00-08:00" itemprop="datePublished">November 11<sup>th</sup>, 2013</time>
+          <p>Conversion is the tireless errand of software development. Most programming tasks boil down to some variation of transforming data into something more useful.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/xctool/" title="xctool" class="title">xctool</a>
+          <time datetime="2013-11-04T00:00:00-08:00" itemprop="datePublished">November 4<sup>th</sup>, 2013</time>
+          <p>Control the build system, and you control the destiny of the language, its ecosystem, and community.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nshipster-quiz-4/" title="NSHipster Quiz #4" class="title">NSHipster Quiz #4</a>
+          <time datetime="2013-10-28T00:00:00-07:00" itemprop="datePublished">October 28<sup>th</sup>, 2013</time>
+          <p>The fourth and final quiz of the year. Do you have what it takes to be the <code>NSArray -firstObject</code> among your peers?</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/launch-arguments-and-environment-variables/" title="Launch Arguments &<br/>Environment Variables" class="title">Launch Arguments &<br/>Environment Variables</a>
+          <time datetime="2013-10-21T00:00:00-07:00" itemprop="datePublished">October 21<sup>st</sup>, 2013</time>
+          <p>There are a number of options that can be passed into a target&rsquo;s scheme to enable useful debugging behavior, but like a fast food secret menu, they&rsquo;re obscure and widely unknown.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nserror/" title="NSError" class="title">NSError</a>
+          <time datetime="2013-10-14T00:00:00-07:00" itemprop="datePublished">October 14<sup>th</sup>, 2013</time>
+          <p>NSError is the unsung hero of the Foundation framework. Passed gallantly in and out of perilous method calls, it is the messenger by which we are able to contextualize our failures.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/key-value-observing/" title="Key-Value Observing" class="title">Key-Value Observing</a>
+          <time datetime="2013-10-07T00:00:00-07:00" itemprop="datePublished">October 7<sup>th</sup>, 2013</time>
+          <p>Ask anyone who&rsquo;s been around the NSBlock a few times: Key-Value Observing has the <em>worst</em> API in all of Cocoa. It&rsquo;s awkward, verbose, and confusing. And worst of all, its terrible API belies one of the most compelling features of the framework.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/xcode-key-bindings-and-gestures/" title="Xcode Key Bindings & Gestures" class="title">Xcode Key Bindings & Gestures</a>
+          <time datetime="2013-09-30T00:00:00-07:00" itemprop="datePublished">September 30<sup>th</sup>, 2013</time>
+          <p>Xcode key bindings and gestures not only shave off seconds of precious work, but make you look more confident, competent, and cromulent in the process.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/ios7/" title="iOS 7" class="title">iOS 7</a>
+          <time datetime="2013-09-23T00:00:00-07:00" itemprop="datePublished">September 23<sup>rd</sup>, 2013</time>
+          <p>With the NDA finally lifted, we can finally talk about all of the amazing new APIs in iOS 7.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/afnetworking-2/" title="AFNetworking 2.0" class="title">AFNetworking 2.0</a>
+          <time datetime="2013-09-16T00:00:00-07:00" itemprop="datePublished">September 16<sup>th</sup>, 2013</time>
+          <p>AFNetworking is one of the most widely used open source projects for iOS and OS X development. It&rsquo;s about as mainstream as it gets. But have you heard about the sequel?</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/network-link-conditioner/" title="Network Link Conditioner" class="title">Network Link Conditioner</a>
+          <time datetime="2013-09-09T00:00:00-07:00" itemprop="datePublished">September 9<sup>th</sup>, 2013</time>
+          <p>Product design is about empathy. Knowing what a user wants, what they like, what they dislike, what causes them frustration, and learning to understand and embody those motivations in design decisions—this is what it takes to make something insanely great.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/xcode-snippets/" title="Xcode Snippets" class="title">Xcode Snippets</a>
+          <time datetime="2013-09-02T00:00:00-07:00" itemprop="datePublished">September 2<sup>nd</sup>, 2013</time>
+          <p>iOS development all but requires the use of Xcode. And if we&rsquo;re resigned to use an IDE in our development workflow, we might as well make the most of it, right? So this week on NSHipster, we&rsquo;re going to talk about one of the more powerful yet underused features of Xcode: Code Snippets</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/equality/" title="Equality" class="title">Equality</a>
+          <time datetime="2013-08-26T00:00:00-07:00" itemprop="datePublished">August 26<sup>th</sup>, 2013</time>
+          <p>The concept of equality is a central point of debate and inquiry in philosophy and mathematics, with far-reaching implications for matters of ethics, justice, and public policy. It is the task of programmers to reconcile our logical and physical understanding of equality with the semantic domains we model.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nshashtable-and-nsmaptable/" title="NSHashTable & NSMapTable" class="title">NSHashTable & NSMapTable</a>
+          <time datetime="2013-08-19T00:00:00-07:00" itemprop="datePublished">August 19<sup>th</sup>, 2013</time>
+          <p>NSSet and NSDictionary, along with NSArray are the workhorse collection classes of Foundation. Unlike other standard libraries, implementation details are hidden from developers, allowing them to write simple code and trust that it will be (reasonably) performant.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/random/" title="rand(3) / random(3) / arc4random(3) / et al." class="title">rand(3) / random(3) / arc4random(3) / et al.</a>
+          <time datetime="2013-08-12T00:00:00-07:00" itemprop="datePublished">August 12<sup>th</sup>, 2013</time>
+          <p>What passes for randomness is merely a hidden chain of causality. Of course, app developers could care less about philosophy—what they want is code. Thus, our goal this week: to clear up all of the lingering questions and misunderstandings about doing random things in Objective-C</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/documentation/" title="Documentation" class="title">Documentation</a>
+          <time datetime="2013-08-05T00:00:00-07:00" itemprop="datePublished">August 5<sup>th</sup>, 2013</time>
+          <p>There&rsquo;s an adage among Cocoa developers that Objective-C&rsquo;s verbosity lends its code to being effectively self-documenting. Between longMethodNamesWithNamedParameters: and the explicit typing of those parameters, Objective-C methods don&rsquo;t leave much to the imagination.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nshipster-quiz-3/" title="NSHipster Quiz #3" class="title">NSHipster Quiz #3</a>
+          <time datetime="2013-07-31T00:00:00-07:00" itemprop="datePublished">July 31<sup>st</sup>, 2013</time>
+          <p>Test your mettle as NSHipster Pub Quiz goes on the road, to New York City!</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/uimenucontroller/" title="UIMenuController" class="title">UIMenuController</a>
+          <time datetime="2013-07-22T00:00:00-07:00" itemprop="datePublished">July 22<sup>nd</sup>, 2013</time>
+          <p>Mobile usability today is truly quite remarkable—especially considering how far it&rsquo;s come in just the last decade. What was once a clumsy technology relegated to the tech elite has now become the primary mode of computation for a significant portion of the general population.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nspredicate/" title="NSPredicate" class="title">NSPredicate</a>
+          <time datetime="2013-07-15T00:00:00-07:00" itemprop="datePublished">July 15<sup>th</sup>, 2013</time>
+          <p>NSPredicate is a Foundation class that specifies how data should be fetched or filtered. Its query language, which is like a cross between a SQL WHERE clause and a regular expression, provides an expressive, natural language interface to define logical conditions on which a collection is searched.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nsexpression/" title="NSExpression" class="title">NSExpression</a>
+          <time datetime="2013-07-08T00:00:00-07:00" itemprop="datePublished">July 8<sup>th</sup>, 2013</time>
+          <p>Cocoa is the envy of other standard libraries when it comes to querying and arranging information. With NSPredicate, NSSortDescriptor, and an occasional NSFetchRequest, even the most complex data tasks can be reduced into just a few, extremely-understandable lines of code.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/enumerators/" title="NSFastEnumeration / NSEnumerator" class="title">NSFastEnumeration / NSEnumerator</a>
+          <time datetime="2013-07-01T00:00:00-07:00" itemprop="datePublished">July 1<sup>st</sup>, 2013</time>
+          <p>Enumeration is where computation gets interesting. It&rsquo;s one thing to encode logic that&rsquo;s executed once, but applying it across a collection—that&rsquo;s what makes programming so powerful.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/uuid-udid-unique-identifier/" title="NSUUID /<br/>CFUUIDRef /<br/>UIDevice -uniqueIdentifier /<br/>-identifierForVendor" class="title">NSUUID /<br/>CFUUIDRef /<br/>UIDevice -uniqueIdentifier /<br/>-identifierForVendor</a>
+          <time datetime="2013-06-24T00:00:00-07:00" itemprop="datePublished">June 24<sup>th</sup>, 2013</time>
+          <p>Until recently, it was trivial to uniquely identify devices between application launches, and even across applications: a simple call to UIDevice -uniqueIdentifier, and you were all set.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/object-subscripting/" title="Object Subscripting" class="title">Object Subscripting</a>
+          <time datetime="2013-06-17T00:00:00-07:00" itemprop="datePublished">June 17<sup>th</sup>, 2013</time>
+          <p>Xcode 4.4 quietly introduced a syntactic revolution to Objective-C. Like all revolutions, however, its origins and agitators require some effort to trace.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nshipster-quiz-2/" title="NSHipster Quiz #2" class="title">NSHipster Quiz #2</a>
+          <time datetime="2013-06-12T00:00:00-07:00" itemprop="datePublished">June 12<sup>th</sup>, 2013</time>
+          <p>Go up against some of the brightest minds in all things Apple at this special WWDC edition of NSHipster Quiz. Sure, you conform to the NSHipster protocol, but do you have what it takes to implement all of the @optional methods? Take the quiz and see for yourself!</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nsdatadetector/" title="NSDataDetector" class="title">NSDataDetector</a>
+          <time datetime="2013-06-02T00:00:00-07:00" itemprop="datePublished">June 2<sup>nd</sup>, 2013</time>
+          <p>Until humanity embraces RDF for all of their daily interactions, a large chunk of artificial intelligence is going to go into figuring out what the heck we&rsquo;re all talking about. Fortunately for Cocoa developers, there&rsquo;s NSDataDetector.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/unit-testing/" title="Unit Testing" class="title">Unit Testing</a>
+          <time datetime="2013-05-27T00:00:00-07:00" itemprop="datePublished">May 27<sup>th</sup>, 2013</time>
+          <p>Unit Testing is an emotional topic for developers. It inspires a sense of superiority to its most zealous adherents, and evokes a feeling of inadequacy to non-practitioners. Cargo Cults like TDD stake their reputation on unit testing to the point of co-opting and conflating utility with morality.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/core-data-libraries-and-utilities/" title="Core Data Libraries & Utilities" class="title">Core Data Libraries & Utilities</a>
+          <time datetime="2013-05-20T00:00:00-07:00" itemprop="datePublished">May 20<sup>th</sup>, 2013</time>
+          <p>We were a bit hard on Core Data last week, so for this issue of NSHipster, we bring you a guided tour of the best open source libraries for working with Core Data. Read on to see how you might make the most from your Core Data experience.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nscoding/" title="NSCoding / NSKeyedArchiver" class="title">NSCoding / NSKeyedArchiver</a>
+          <time datetime="2013-05-13T00:00:00-07:00" itemprop="datePublished">May 13<sup>th</sup>, 2013</time>
+          <p>Among the most important architectural decisions made when building an app is how to persist data between launches. The question of how, exactly, to re-create the state of the app from the time it was last opened; of how to describe the object graph in such a way that it can be flawlessly reconstructed next time.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/gpuimage/" title="GPUImage" class="title">GPUImage</a>
+          <time datetime="2013-05-06T00:00:00-07:00" itemprop="datePublished">May 6<sup>th</sup>, 2013</time>
+          <p>GPUImage is a BSD-licensed iOS library  that lets you apply GPU-accelerated filters and other effects to images, live camera video, and movies. If you&rsquo;re not careful, you may well end up creating a camera app by the end of the article.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/mklocalsearch/" title="MKLocalSearch" class="title">MKLocalSearch</a>
+          <time datetime="2013-04-29T00:00:00-07:00" itemprop="datePublished">April 29<sup>th</sup>, 2013</time>
+          <p>In all of the hubbub of torch burning and pitchfork raising, you may have completely missed a slew of additions to MapKit in iOS 6.1.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nshipster-quiz-1/" title="NSHipster Quiz #1" class="title">NSHipster Quiz #1</a>
+          <time datetime="2013-04-22T00:00:00-07:00" itemprop="datePublished">April 22<sup>nd</sup>, 2013</time>
+          <p>Test your knowledge of general programming knowledge, Cocoa APIs, and Apple trivia in this first-ever NSHipster Quiz. How NSHip are you?</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nssecurecoding/" title="NSSecureCoding" class="title">NSSecureCoding</a>
+          <time datetime="2013-04-15T00:00:00-07:00" itemprop="datePublished">April 15<sup>th</sup>, 2013</time>
+          <p>A short post for this week: everything you need to know about NSSecureCoding.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/bool/" title="BOOL / bool / Boolean / NSCFBoolean" class="title">BOOL / bool / Boolean / NSCFBoolean</a>
+          <time datetime="2013-04-08T00:00:00-07:00" itemprop="datePublished">April 8<sup>th</sup>, 2013</time>
+          <p>Once again, encoding our logical universe into the cold, calculating bytecode of computers forces us to deal with these questions one way or another. And as you&rsquo;ll see from our discussion of boolean types in Objective-C and its kin, truth is indeed stranger than fiction.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/icloud/" title="iCloud" class="title">iCloud</a>
+          <time datetime="2013-04-01T00:00:00-07:00" itemprop="datePublished">April 1<sup>st</sup>, 2013</time>
+          <p>Perhaps what Apple is most renowned for is its consistent track record for creating great webservices. From consumer products like MobileMe and Ping to developer tools including the Provisioning Portal and iTunes Connect, Apple has continued to set new standards for convenience, robustness, and extensibility.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/search-kit/" title="Search Kit" class="title">Search Kit</a>
+          <time datetime="2013-03-25T00:00:00-07:00" itemprop="datePublished">March 25<sup>th</sup>, 2013</time>
+          <p>Search Kit is a C framework for searching and indexing content in human languages. It supports matching on phrase or partial word, including logical &amp; wildcard operators, and can rank results by relevance. Search Kit also provides document summarization, which is useful for generating representative excerpts. And best of all: it&rsquo;s thread-safe.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/c-storage-classes/" title="C Storage Classes" class="title">C Storage Classes</a>
+          <time datetime="2013-03-18T00:00:00-07:00" itemprop="datePublished">March 18<sup>th</sup>, 2013</time>
+          <p>In C, the scope and lifetime of a variable or function within a program is determined by its storage class. Understanding these storage classes allows us to decipher common incantations found throughout Objective-C</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/uiappearance/" title="UIAppearance" class="title">UIAppearance</a>
+          <time datetime="2013-03-11T00:00:00-07:00" itemprop="datePublished">March 11<sup>th</sup>, 2013</time>
+          <p>UIAppearance allows the appearance of views and controls to be consistently defined across the entire application.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/backrow/" title="Back Row" class="title">Back Row</a>
+          <time datetime="2013-03-04T00:00:00-08:00" itemprop="datePublished">March 4<sup>th</sup>, 2013</time>
+          <p>Back Row is a private framework used in the Apple TV user experience. Rather than waiting for Apple to open up the Apple TV SDK, one can take matters into their own hands.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nsassertionhandler/" title="NSAssertionHandler" class="title">NSAssertionHandler</a>
+          <time datetime="2013-02-25T00:00:00-08:00" itemprop="datePublished">February 25<sup>th</sup>, 2013</time>
+          <p>Programming incorporates numerous disciplines of human reasoning, from high-level discourse and semantics—the story we tell each other to explain how a system works—to the mathematical and philosophical machinery that underpins everything.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/reactivecocoa/" title="ReactiveCocoa" class="title">ReactiveCocoa</a>
+          <time datetime="2013-02-18T00:00:00-08:00" itemprop="datePublished">February 18<sup>th</sup>, 2013</time>
+          <p>Breaking from a tradition of covering Apple APIs exclusively, this edition of NSHipster will look at an open source project that exemplifies a brave new era of open source contribution to Objective-C: ReactiveCocoa.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nsurlcache/" title="NSURLCache" class="title">NSURLCache</a>
+          <time datetime="2013-02-11T00:00:00-08:00" itemprop="datePublished">February 11<sup>th</sup>, 2013</time>
+          <p>NSURLCache provides a composite in-memory and on-disk caching mechanism for URL requests to your application. As part of Foundation&rsquo;s URL Loading System, any request loaded through NSURLConnection will be handled by NSURLCache.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/type-encodings/" title="Type Encodings" class="title">Type Encodings</a>
+          <time datetime="2013-02-04T00:00:00-08:00" itemprop="datePublished">February 4<sup>th</sup>, 2013</time>
+          <p>From number stations and numerology to hieroglyphics and hobo codes, there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it&rsquo;s the thrill of the hunt that piques our deepest curiosities.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nsvalue/" title="NSValue" class="title">NSValue</a>
+          <time datetime="2013-01-28T00:00:00-08:00" itemprop="datePublished">January 28<sup>th</sup>, 2013</time>
+          <p>Boxing is the process of encapsulating scalars and value types with an object container, and is primarily used to store those values in collection objects—namely arrays and dictionaries. In Foundation, the reigning featherweight champion of boxing is NSValue.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nslocalizedstring/" title="NSLocalizedString" class="title">NSLocalizedString</a>
+          <time datetime="2013-01-21T00:00:00-08:00" itemprop="datePublished">January 21<sup>st</sup>, 2013</time>
+          <p>Strings are perhaps the most versatile data type in computing. They&rsquo;re passed around as symbols, used to encode numeric values, associate values to keys, represent resource paths, store linguistic content, and format information. Having a strong handle on user-facing strings is essential to making a great user experience.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/__attribute__/" title="__attribute__" class="title">__attribute__</a>
+          <time datetime="2013-01-14T00:00:00-08:00" itemprop="datePublished">January 14<sup>th</sup>, 2013</time>
+          <p>A recurring theme of this publication has been the importance of a healthy relationship with the compiler. Like any craft, one&rsquo;s effectiveness as a practitioner is contingent on how they treat their tools. Take good care of them, and they&rsquo;ll take good care of you.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nil/" title="nil / Nil / NULL / NSNull" class="title">nil / Nil / NULL / NSNull</a>
+          <time datetime="2013-01-07T00:00:00-08:00" itemprop="datePublished">January 7<sup>th</sup>, 2013</time>
+          <p>Understanding the concept of nothingness is as much a philosophical issue as it is a pragmatic one. We are inhabitants of a universe of somethings, yet reason in a logical universe of existential uncertainties. As a physical manifestation of a logical system, computers are faced with the intractable problem of how to represent nothing with something.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/new-years-2013/" title="Reader Submissions -<br/> New Year's 2013" class="title">Reader Submissions -<br/> New Year's 2013</a>
+          <time datetime="2013-01-01T00:00:00-08:00" itemprop="datePublished">January 1<sup>st</sup>, 2013</time>
+          <p>In celebration of the forthcoming <code>year++</code>, I thought it&rsquo;d be fun to compile a list of some of your favorite tips and tricks of the trade. Readers were asked to submit their favorite piece of Objective-C trivia, framework arcana, hidden Xcode feature, or anything else they thought is cool.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/cggeometry/" title="CGGeometry" class="title">CGGeometry</a>
+          <time datetime="2012-12-17T00:00:00-08:00" itemprop="datePublished">December 17<sup>th</sup>, 2012</time>
+          <p>Unless you were a Math Geek or an Ancient Greek, Geometry was probably not your favorite subject in high school. No, chances are that you were that kid in class who dutifully programmed all of the necessary formulae into your TI-8X calculator. Keeping in the tradition of doing the least amount of math possible, here are some semi-obscure CoreGraphics functions to make your job easier.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/instancetype/" title="instancetype" class="title">instancetype</a>
+          <time datetime="2012-12-10T00:00:00-08:00" itemprop="datePublished">December 10<sup>th</sup>, 2012</time>
+          <p>Objective-C is a rapidly evolving language, in a way that you just don&rsquo;t see in established programming languages. Developments range from the mundane to paradigm-changing, but telling the difference takes practice. Because we&rsquo;re talking about low-level language features, it&rsquo;s difficult to understand what implications they may have higher up with API design.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/kvc-collection-operators/" title="KVC Collection Operators" class="title">KVC Collection Operators</a>
+          <time datetime="2012-12-03T00:00:00-08:00" itemprop="datePublished">December 3<sup>rd</sup>, 2012</time>
+          <p>Rubyists laugh at Objective-C’s bloated syntax. Although we lost a few pounds over the summer with our sleek new object literals, those Red-headed bullies still taunt us with their map one-liners and their fancy Symbol#to_proc. Fortunately, Key-Value Coding has an ace up its sleeves.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nsorderedset/" title="NSOrderedSet" class="title">NSOrderedSet</a>
+          <time datetime="2012-11-26T00:00:00-08:00" itemprop="datePublished">November 26<sup>th</sup>, 2012</time>
+          <p>Why isn&rsquo;t NSOrderedSet a subclass of NSSet? The answer may surprise you.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/ns_enum-ns_options/" title="NS_ENUM & NS_OPTIONS" class="title">NS_ENUM & NS_OPTIONS</a>
+          <time datetime="2012-11-19T00:00:00-08:00" itemprop="datePublished">November 19<sup>th</sup>, 2012</time>
+          <p>A skilled Objective-C developer is able to gracefully switch between Objective and Procedural paradigms, and use each to their own advantage.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nsvaluetransformer/" title="NSValueTransformer" class="title">NSValueTransformer</a>
+          <time datetime="2012-11-12T00:00:00-08:00" itemprop="datePublished">November 12<sup>th</sup>, 2012</time>
+          <p>Of all the Foundation classes, NSValueTransformer is perhaps the one that fared the worst in the shift from OS X to iOS. But you know what? It&rsquo;s ripe for a comeback. With a little bit of re-tooling and some recontextualization, this blast from the past could be the next big thing in your application.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nsurlprotocol/" title="NSURLProtocol" class="title">NSURLProtocol</a>
+          <time datetime="2012-11-05T00:00:00-08:00" itemprop="datePublished">November 5<sup>th</sup>, 2012</time>
+          <p>Foundation’s URL Loading System is something that every iOS developer would do well to buddy up with. And of all of networking classes and protocols of Foundation, NSURLProtocol is perhaps the most obscure and powerful.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/uilocalizedindexedcollation/" title="UILocalizedIndexedCollation" class="title">UILocalizedIndexedCollation</a>
+          <time datetime="2012-10-29T00:00:00-07:00" itemprop="datePublished">October 29<sup>th</sup>, 2012</time>
+          <p>UITableView starts to become unwieldy once it gets to a few hundred rows. If users are reduced to frantically scratching at the screen like a cat playing Fruit Ninja in order to get at what they want&hellip; you may want to rethink your UI approach.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nslinguistictagger/" title="NSLinguisticTagger" class="title">NSLinguisticTagger</a>
+          <time datetime="2012-10-22T00:00:00-07:00" itemprop="datePublished">October 22<sup>nd</sup>, 2012</time>
+          <p>NSLinguisticTagger is a veritable Swiss Army Knife of linguistic functionality, with the ability to tokenize natural language strings into words, determine their part-of-speech &amp; stem, extract names of people, places, &amp; organizations, and tell you the languages &amp; respective writing system used in the string.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/addressbookui/" title="AddressBookUI" class="title">AddressBookUI</a>
+          <time datetime="2012-10-15T00:00:00-07:00" itemprop="datePublished">October 15<sup>th</sup>, 2012</time>
+          <p>Address Book UI is an iOS framework for displaying, selecting, editing, and creating contacts in a user&rsquo;s Address Book. Similar to the Message UI framework, Address Book UI contains a number of controllers that can be presented modally, to provide common system functionality in a uniform interface.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/at-compiler-directives/" title="@" class="title">@</a>
+          <time datetime="2012-10-08T00:00:00-07:00" itemprop="datePublished">October 8<sup>th</sup>, 2012</time>
+          <p>If we were to go code-watching for Objective-C, what would we look for? Square brackets, ridiculously-long method names, and <code>@</code>&rsquo;s. &ldquo;at&rdquo; sign compiler directives are as central to understanding Objective-C&rsquo;s gestalt as its ancestry and underlying mechanisms. It&rsquo;s the sugary glue that allows Objective-C to be such a powerful, expressive language, and yet still compile all the way down to C.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/pragma/" title="#pragma" class="title">#pragma</a>
+          <time datetime="2012-10-01T00:00:00-07:00" itemprop="datePublished">October 1<sup>st</sup>, 2012</time>
+          <p><code>#pragma</code> declarations are a mark of craftsmanship in Objective-C. Although originally purposed for compiling source code across many different compilers, the modern Xcode-savvy programmer uses #pragma declarations to very different ends.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/uicollectionview/" title="UICollectionView" class="title">UICollectionView</a>
+          <time datetime="2012-09-24T00:00:00-07:00" itemprop="datePublished">September 24<sup>th</sup>, 2012</time>
+          <p>UICollectionView single-handedly changes the way we will design and develop iOS apps from here on out. This is not to say that collection views are in any way unknown or obscure. But being an NSHipster isn&rsquo;t just about knowing obscure gems in the rough. Sometimes, it&rsquo;s about knowing about up-and-comers before they become popular and sell out.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nscharacterset/" title="NSCharacterSet" class="title">NSCharacterSet</a>
+          <time datetime="2012-09-17T00:00:00-07:00" itemprop="datePublished">September 17<sup>th</sup>, 2012</time>
+          <p>Foundation boasts one of the best, most complete implementations of strings around. But a string implementation is only as good as the programmer who wields it. So this week, we&rsquo;re going to explore some common uses&ndash;and misuses&ndash;of an important part of the Foundation string ecosystem: NSCharacterSet.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/uiaccessibility/" title="UIAccessibility" class="title">UIAccessibility</a>
+          <time datetime="2012-09-10T00:00:00-07:00" itemprop="datePublished">September 10<sup>th</sup>, 2012</time>
+          <p>Accessibility, like internationalization, is one of those topics that&rsquo;s difficult to get developers excited about. But as you know, NSHipster is all about getting developers excited about this kind of stuff.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nslocale/" title="NSLocale" class="title">NSLocale</a>
+          <time datetime="2012-09-03T00:00:00-07:00" itemprop="datePublished">September 3<sup>rd</sup>, 2012</time>
+          <p>Internationalization is like flossing: everyone knows they should do it, but probably don&rsquo;t.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/cfbag/" title="CFBag" class="title">CFBag</a>
+          <time datetime="2012-08-27T00:00:00-07:00" itemprop="datePublished">August 27<sup>th</sup>, 2012</time>
+          <p>In the pantheon of collection data types in computer science, bag doesn&rsquo;t really have the same clout as lists, sets, associative arrays, trees, graphs, or priority queues. In fact, it&rsquo;s pretty obscure. You&rsquo;ve probably never heard of it.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nsincrementalstore/" title="NSIncrementalStore" class="title">NSIncrementalStore</a>
+          <time datetime="2012-08-13T00:00:00-07:00" itemprop="datePublished">August 13<sup>th</sup>, 2012</time>
+          <p>Even for a blog dedicated to obscure APIs, <code>NSIncrementalStore</code> sets a new standard. It was introduced in iOS 5, with no more fanfare than the requisite entry in the SDK changelog. Ironically, it is arguably the most important thing to come out of iOS 5, which will completely change the way we build apps from here on out.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/cfstringtransform/" title="CFStringTransform" class="title">CFStringTransform</a>
+          <time datetime="2012-08-06T00:00:00-07:00" itemprop="datePublished">August 6<sup>th</sup>, 2012</time>
+          <p>NSString is the crown jewel of Foundation. But as powerful as it is, one would be remiss not to mention its toll-free bridged cousin, CFMutableString—or more specifically, CFStringTransform.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nsdatecomponents/" title="NSDateComponents" class="title">NSDateComponents</a>
+          <time datetime="2012-07-31T00:00:00-07:00" itemprop="datePublished">July 31<sup>st</sup>, 2012</time>
+          <p>NSDateComponents serves an important role in Foundation&rsquo;s date and time APIs. By itself, it&rsquo;s nothing impressive—just a container for information about a date (its month, year, day of month, week of year, or whether that month is a leap month). However, combined with NSCalendar, NSDateComponents becomes a remarkably convenient interchange format for calendar calculations.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nssortdescriptor/" title="NSSortDescriptor" class="title">NSSortDescriptor</a>
+          <time datetime="2012-07-24T00:00:00-07:00" itemprop="datePublished">July 24<sup>th</sup>, 2012</time>
+          <p>Sorting: it&rsquo;s the mainstay of Computer Science 101 exams and whiteboarding interview questions. But when was the last time you actually needed to know how to implement Quicksort yourself?</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nscache/" title="NSCache" class="title">NSCache</a>
+          <time datetime="2012-07-14T00:00:00-07:00" itemprop="datePublished">July 14<sup>th</sup>, 2012</time>
+          <p>Poor NSCache, always being overshadowed by NSMutableDictionary. It&rsquo;s as if no one knew how it provides all of that garbage collection behavior that developers take great pains to re-implement themselves.</p>
+
+        </li>
+      
+    
+      
+        <li>
+          <a href="/nsindexset/" title="NSIndexSet" class="title">NSIndexSet</a>
+          <time datetime="2012-07-07T00:00:00-07:00" itemprop="datePublished">July 7<sup>th</sup>, 2012</time>
+          <p>NSIndexSet (like its mutable counterpart, NSMutableIndexSet) is a sorted collection of unique unsigned integers. Think of it like an NSRange that supports non-contiguous series. It has wicked fast operations for finding indexes in ranges or set intersections, and comes with all of the convenience methods you&rsquo;d expect in a Foundation collection class.</p>
+
+        </li>
+      
+    
+    </ol>
+  </section>
+</article>
+
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>AddressBookUI - NSHipster</title>
+    <meta name="description" content="Address Book UI is an iOS framework for displaying, selecting, editing, and creating contacts in a user's Address Book. Similar to the Message UI framework, Address Book UI contains a number of controllers that can be presented modally, to provide common system functionality in a uniform interface."/>
+    <link rel="canonical" href="http://nshipster.com/addressbookui/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="AddressBookUI"/>
+    <meta name="twitter:description" content="Address Book UI is an iOS framework for displaying, selecting, editing, and creating contacts in a user&#39;s Address Book. Similar to the Message UI framework, Address Book UI contains a number of controllers that can be presented modally, to provide common system functionality in a uniform interface."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="AddressBookUI"/>
+    <meta property="og:url" content="http://nshipster.com/addressbookui/"/>
+    <meta property="og:description" content="Address Book UI is an iOS framework for displaying, selecting, editing, and creating contacts in a user&#39;s Address Book. Similar to the Message UI framework, Address Book UI contains a number of controllers that can be presented modally, to provide common system functionality in a uniform interface."/>
+    <meta property="article:published_time" content="2012-10-15T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="AddressBookUI"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/addressbookui/">Address​Book​UI</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2012-10-15T00:00:00-07:00" itemprop="datePublished">October 15<sup>th</sup>, 2012</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p><a href="https://developer.apple.com/LIBRARY/ios/documentation/AddressBookUI/Reference/AddressBookUI_Framework/index.html">Address Book UI</a> is an iOS framework for displaying, selecting, editing, and creating contacts in a user&rsquo;s Address Book. Similar to the <a href="https://developer.apple.com/library/IOs/documentation/MessageUI/Reference/MessageUI_Framework_Reference/index.html">Message UI</a> framework, Address Book UI contains a number of controllers that can be presented modally, to provide common system functionality in a uniform interface.</p>
+
+<p>To use the framework, add both <code>AddressBook.framework</code> and <code>AddressBookUI.framework</code> to your project, under the &ldquo;Link Binary With Libraries&rdquo; build phase.</p>
+
+<p>At first glance, it would seem that there&rsquo;s nothing really remarkable about the Address Book UI framework.</p>
+
+<p>However, tucked away from the rest of the controllers and protocols, there&rsquo;s a single Address Book UI function that&rsquo;s astoundingly useful:</p>
+
+<p><code>ABCreateStringWithAddressDictionary()</code> - Returns a localized, formatted address string from components.</p>
+
+<p>The first argument for the function is a dictionary containing the address components, keyed by string constants:</p>
+
+<ul>
+<li><code>kABPersonAddressStreetKey</code></li>
+<li><code>kABPersonAddressCityKey</code></li>
+<li><code>kABPersonAddressStateKey</code></li>
+<li><code>kABPersonAddressZIPKey</code></li>
+<li><code>kABPersonAddressCountryKey</code></li>
+<li><code>kABPersonAddressCountryCodeKey</code></li>
+</ul>
+
+<blockquote>
+<p><code>kABPersonAddressCountryCodeKey</code> is an especially important attribute, as it determines which locale used to format the address string. If you are unsure of the country code, or one isn&rsquo;t provided with your particular data set, <code>NSLocale</code> may be able to help you out:</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nl">countryCode</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="bp">NSLocale</span><span class="p">(</span><span class="nl">localeIdentifier</span><span class="p">:</span> <span class="s">&quot;en_US&quot;</span><span class="p">).</span><span class="n">objectForKey</span><span class="p">(</span><span class="n">NSLocaleCountryCode</span><span class="p">)</span> <span class="kt">as</span> <span class="n">String</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[</span><span class="n">mutableAddressComponents</span> <span class="nl">setValue</span><span class="p">:[[[</span><span class="bp">NSLocale</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithLocaleIdentifier</span><span class="p">:</span><span class="s">@&quot;en_US&quot;</span><span class="p">]</span> <span class="nl">objectForKey</span><span class="p">:</span><span class="n">NSLocaleCountryCode</span><span class="p">]</span> <span class="nl">forKey</span><span class="p">:(</span><span class="k">__bridge</span> <span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">kABPersonAddressCountryCodeKey</span><span class="p">];</span>
+</code></pre></div>
+<p>The second argument is a boolean flag, <code>addCountryName</code>. When <code>YES</code>, the name of the country corresponding to the specified country code will be automatically appended to the address. This should only used when the country code is known.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">addressComponents</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nl">kABPersonAddressStreetKey</span><span class="p">:</span> <span class="s">&quot;70 NW Couch Street&quot;</span><span class="p">,</span>
+    <span class="nl">kABPersonAddressCityKey</span><span class="p">:</span> <span class="s">&quot;Portland&quot;</span><span class="p">,</span>
+    <span class="nl">kABPersonAddressStateKey</span><span class="p">:</span> <span class="s">&quot;OR&quot;</span><span class="p">,</span>
+    <span class="nl">kABPersonAddressZIPKey</span><span class="p">:</span> <span class="s">&quot;97209&quot;</span><span class="p">,</span>
+    <span class="nl">kABPersonAddressCountryCodeKey</span><span class="p">:</span> <span class="s">&quot;US&quot;</span>
+<span class="p">]</span>
+
+<span class="n">ABCreateStringWithAddressDictionary</span><span class="p">(</span><span class="n">addressComponents</span><span class="p">,</span> <span class="nb">true</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-text" data-lang="text">70 NW Couch Street
+Portland‎ OR‎ 97209
+United States
+</code></pre></div>
+<p>Nowhere else in all of the other frameworks is this functionality provided. It&rsquo;s not part of <a href="http://nshipster.com/nslocale/"><code>NSLocale</code></a>, or even Map Kit or Core Location. For all of the care and attention to detail that Apple puts into localization, it&rsquo;s surprising that such an important task is relegated to the corners of an obscure, somewhat-unrelated framework.</p>
+
+<blockquote>
+<p>Unfortunately, Address Book UI is not available in OS X, and it would appear that there&rsquo;s no equivalent function provided on this platform.</p>
+</blockquote>
+
+<p>For you see, address formats vary greatly across different regions. For example, addresses in the United States take the form:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Street Address
+City State ZIP
+Country
+</code></pre></div>
+<p>Whereas addresses in Japan follow a different convention:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Postal Code
+Prefecture Municipality
+Street Address
+Country
+</code></pre></div>
+<p>This is at least as jarring a difference in localization as <a href="http://en.wikipedia.org/wiki/Decimal_mark#Hindu.E2.80.93Arabic_numeral_system">swapping periods for commas the radix point</a>, so make sure to use this function anytime you&rsquo;re displaying an address from its components.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2012-10-15-addressbookui.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 1.1.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nslinguistictagger/" title="NSLinguisticTagger" rel="next">NSLinguistic​Tagger</a>
+            </h1>
+
+            <p>NSLinguisticTagger is a veritable Swiss Army Knife of linguistic functionality, with the ability to tokenize natural language strings into words, determine their part-of-speech &amp; stem, extract names of people, places, &amp; organizations, and tell you the languages &amp; respective writing system used in the string.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nscache/" title="NSCache">NSCache</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsvalue/" title="NSValue">NSValue</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nshashtable-and-nsmaptable/" title="NSHashTable & NSMapTable">NSHashTable & NSMapTable</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/search-kit/" title="Search Kit">Search Kit</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

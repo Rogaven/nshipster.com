@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>BOOL / bool / Boolean / NSCFBoolean - NSHipster</title>
+    <meta name="description" content="Once again, encoding our logical universe into the cold, calculating bytecode of computers forces us to deal with these questions one way or another. And as you'll see from our discussion of boolean types in Objective-C and its kin, truth is indeed stranger than fiction."/>
+    <link rel="canonical" href="http://nshipster.com/bool/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="BOOL / bool / Boolean / NSCFBoolean"/>
+    <meta name="twitter:description" content="Once again, encoding our logical universe into the cold, calculating bytecode of computers forces us to deal with these questions one way or another. And as you&#39;ll see from our discussion of boolean types in Objective-C and its kin, truth is indeed stranger than fiction."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="BOOL / bool / Boolean / NSCFBoolean"/>
+    <meta property="og:url" content="http://nshipster.com/bool/"/>
+    <meta property="og:description" content="Once again, encoding our logical universe into the cold, calculating bytecode of computers forces us to deal with these questions one way or another. And as you&#39;ll see from our discussion of boolean types in Objective-C and its kin, truth is indeed stranger than fiction."/>
+    <meta property="article:published_time" content="2013-04-08T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="objective-c"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="BOOL / bool / Boolean / NSCFBoolean"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/bool/">BOOL / bool / Boolean / NSCFBoolean</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-04-08T00:00:00-07:00" itemprop="datePublished">April 8<sup>th</sup>, 2013</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>We&rsquo;ve talked before about the <a href="http://nshipster.com/nil/">philosophical and technical concerns of nothingness in programming</a>. This week, our attention turns to another fundamental matter: Truth.</p>
+
+<p>Truth. <em>Vēritās</em>. The entire charter of Philosophy is founded upon the pursuit of it, and yet its exact meaning and implications still elude us. Does truth exist independently, or is it defined contingently against falsity? Can a proposition be at once both true <em>and</em> false? Is there absolute truth in anything, or is everything relative?</p>
+
+<p>Once again, encoding our logical universe into the cold, calculating bytecode of computers forces us to deal with these questions one way or another. And as you&rsquo;ll see from our discussion of boolean types in Objective-C and its kin, truth is indeed stranger than fiction.</p>
+
+<hr>
+
+<p>Objective-C defines <code>BOOL</code> to encode truth value. It is a <code>typedef</code> of a <code>signed char</code>, with the macros <code>YES</code> and <code>NO</code> to represent true and false, respectively.</p>
+
+<p>Boolean values are used in conditionals, such as <code>if</code> or <code>while</code> statements, to conditionally perform logic or repeat execution. When evaluating a conditional statement, the value <code>0</code> is considered &ldquo;false&rdquo;, while any other value is considered &ldquo;true&rdquo;. Because <code>NULL</code> and <code>nil</code> are defined as <code>0</code>, conditional statements on these nonexistent values are also evaluated as &ldquo;false&rdquo;.</p>
+
+<p><strong>In Objective-C, use the <code>BOOL</code> type for parameters, properties, and instance variables dealing with truth values. When assigning literal values, use the <code>YES</code> and <code>NO</code> macros.</strong></p>
+
+<h2 id="the-wrong-answer-to-the-wrong-question">The Wrong Answer to the Wrong Question</h2>
+
+<p>Novice programmers often include an equality operator when evaluating conditionals:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">if</span> <span class="p">([</span><span class="n">a</span> <span class="nl">isEqual</span><span class="p">:</span><span class="n">b</span><span class="p">]</span> <span class="o">==</span> <span class="nb">YES</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Not only is this unnecessary, but depending on the left-hand value, it may also cause unexpected results, as described in the <a href="http://blog.bignerdranch.com/564-bools-sharp-corners/">Big Nerd Ranch blog post, &ldquo;BOOL&rsquo;s Sharp Edges&rdquo;</a>:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">static</span> <span class="kt">BOOL</span> <span class="nf">different</span> <span class="p">(</span><span class="kt">int</span> <span class="n">a</span><span class="p">,</span> <span class="kt">int</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>An overly clever C programmer might take some satisfaction in the simplicity of this approach: indeed, two integers are equal if and only if their difference is <code>0</code>.</p>
+
+<p>However, because of the reality of <code>BOOL</code> being <code>typedef</code>&rsquo;d as a <code>signed char</code>, this will not behave as expected:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">if</span> <span class="p">(</span><span class="n">different</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">==</span> <span class="nb">YES</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;11 != 10</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;11 == 10</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">different</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="o">==</span> <span class="nb">YES</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;10 != 11</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;10 == 11</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="n">different</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span> <span class="o">==</span> <span class="nb">YES</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;512 != 256</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="n">printf</span> <span class="p">(</span><span class="s">&quot;512 == 256</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This evaluates to:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">11 != 10
+10 == 11
+512 == 256
+</code></pre></div>
+<p>Now, <a href="https://www.destroyallsoftware.com/talks/wat">this might be acceptable for JavaScript</a>, but Objective-C don&rsquo;t suffer fools gladly.</p>
+
+<p>Deriving truth value directly from an arithmetic operation is never a good idea. Like the sentence <a href="http://en.wikipedia.org/wiki/Colorless_green_ideas_sleep_furiously">&ldquo;Colorless green ideas sleep furiously&rdquo;</a>, it may be grammatical (after all, <code>BOOL</code> is a <code>signed char</code> like any other, so it <em>could</em> be treated as a number), but it doesn&rsquo;t make sense semantically. Instead, use the result of the <code>==</code> operator, or cast values into booleans with the <code>!</code> (or <code>!!</code>) operator.</p>
+
+<h2 id="the-truth-about-nsnumber-and-bool">The Truth About <code>NSNumber</code> and <code>BOOL</code></h2>
+
+<p>Pop quiz: what is the output of the following expression?</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="l">@(</span><span class="nb">YES</span><span class="l">)</span> <span class="k">class</span><span class="p">]);</span>
+</code></pre></div>
+<p>The answer:</p>
+
+<p>__NSCFBoolean</p>
+
+<p>Wait, what?</p>
+
+<p>All this time, we&rsquo;ve been led to believe that <code>NSNumber</code> <a href="http://nshipster.com/nsvalue/">boxes</a> primitives into an object representation. Any other integer- or float-derived <code>NSNumber</code> object shows its class to be <code>__NSCFNumber</code>. What gives?</p>
+
+<p><code>NSCFBoolean</code> is a private class in the <code>NSNumber</code> <a href="http://nshipster.com/nsorderedset/">class cluster</a>. It is a bridge to the <a href="https://developer.apple.com/library/mac/#documentation/CoreFoundation/Reference/CFBooleanRef/Reference/reference.html"><code>CFBooleanRef</code> type</a>, which is used to wrap boolean values for Core Foundation property lists and collections. <code>CFBoolean</code> defines the constants <code>kCFBooleanTrue</code> and <code>kCFBooleanFalse</code>. Because <code>CFNumberRef</code> and <code>CFBooleanRef</code> are different types in Core Foundation, it makes sense that they are represented by different bridging classes in <code>NSNumber</code>.</p>
+
+<p>For most people, boolean values and boxed objects &ldquo;just work&rdquo;, and don&rsquo;t really care what goes into making the sausage. But here at NSHipster, we&rsquo;re all about sausages.</p>
+
+<hr>
+
+<p>So, to recap, here is a table of all of the truth types and values in Objective-C:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Typedef</tt>
+      <th>Header</th>
+      <th>True Value</th>
+      <th>False Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><tt>BOOL</tt></td>
+      <td><tt>signed char</tt></td>
+      <td>objc.h</td>
+      <td><tt>YES</tt></td>
+      <td><tt>NO</tt></td>
+    </tr>
+    <tr>
+      <td><tt>bool</tt></td>
+      <td><tt>_Bool</tt> (<tt>int</tt>)</td>
+      <td>stdbool.h</td>
+      <td><tt>true</tt></td>
+      <td><tt>false</tt></td>
+    </tr>
+    <tr>
+      <td><tt>Boolean</tt></td>
+      <td><tt>unsigned char</tt></td>
+      <td>MacTypes.h</td>
+      <td><tt>TRUE</tt></td>
+      <td><tt>FALSE</tt></td>
+    </tr>
+    <tr>
+      <td><tt>NSNumber</tt></td>
+      <td><tt>__NSCFBoolean</tt></td>
+      <td>Foundation.h</td>
+      <td><tt>@(YES)</tt></td>
+      <td><tt>@(NO)</tt></td>
+    </tr>
+    <tr>
+      <td><tt>CFBooleanRef</tt></td>
+      <td><tt>struct</tt></td>
+      <td>CoreFoundation.h</td>
+      <td><tt>kCFBooleanTrue</tt></td>
+      <td><tt>kCFBooleanFalse</tt></td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-04-08-bool.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+            
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nssecurecoding/" title="NSSecureCoding" rel="next">NSSecure​Coding</a>
+            </h1>
+
+            <p>A short post for this week: everything you need to know about NSSecureCoding.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/pragma/" title="#pragma">#pragma</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/instancetype/" title="instancetype">instancetype</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nil/" title="nil / Nil / NULL / NSNull">nil / Nil / NULL / NSNull</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/unit-testing/" title="Unit Testing">Unit Testing</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

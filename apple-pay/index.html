@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>Pay - NSHipster</title>
+    <meta name="description" content="There's a unique brand of modern angst that manifests the moment you decide to buy something online. While there's no English word for it, it translates roughly to "Where is my credit card? What is its number? How badly do I actually want this thing, anyway?""/>
+    <link rel="canonical" href="http://nshipster.com/apple-pay/"/>
+  
+  
+  
+  
+  <meta name="author" content="Jack Flintermann"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@jflinter"/>
+  
+  
+    <meta name="twitter:title" content="Pay"/>
+    <meta name="twitter:description" content="There&#39;s a unique brand of modern angst that manifests the moment you decide to buy something online. While there&#39;s no English word for it, it translates roughly to &quot;Where is my credit card? What is its number? How badly do I actually want this thing, anyway?&quot;"/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Pay"/>
+    <meta property="og:url" content="http://nshipster.com/apple-pay/"/>
+    <meta property="og:description" content="There&#39;s a unique brand of modern angst that manifests the moment you decide to buy something online. While there&#39;s no English word for it, it translates roughly to &quot;Where is my credit card? What is its number? How badly do I actually want this thing, anyway?&quot;"/>
+    <meta property="article:published_time" content="2014-12-08T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content=""/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="Pay"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/apple-pay/">Pay</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/jack-flintermann/">Jack Flintermann</a> —
+    
+    <time datetime="2014-12-08T00:00:00-08:00" itemprop="datePublished">December 8<sup>th</sup>, 2014</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>There&rsquo;s a unique brand of modern angst that manifests the moment you decide to buy something online. While there&rsquo;s no English word for it, it translates roughly to &ldquo;Where is my credit card? What is its number? How badly do I actually want this thing, anyway?&rdquo;.</p>
+
+<p>When you&rsquo;re on an iOS device, this ennui intensifies: there&rsquo;s a good chance you don&rsquo;t have your card with you, and holding your credit card and typing on your phone simultaneously is a feat best left to gymnasts and astronauts. (I&rsquo;m sort of joking, but also willing to bet Apple has measured this in a lab somewhere.)</p>
+
+<p>And if you&rsquo;re a developer accepting credit card payments in your app, this unfortunate phenomenon is directly correlated to lost revenue.</p>
+
+<p><a href="http://apple.com/apple-pay">Apple Pay</a> changes all this. Though a lot of the attention around its launch has focused on physical payments in stores (where customers can use their iPhone to pay at NFC-enabled payment terminals), there&rsquo;s an equally large opportunity for iOS developers to improve the checkout experience in their apps.</p>
+
+<blockquote>
+<p>Just a reminder: if you&rsquo;re selling digital goods or virtual currencies in your app, you should use In-App Purchases—not Apple Pay—to sell your content (See <a href="https://developer.apple.com/app-store/review/guidelines/#purchasing-currencies">section 11.2</a> of the App Store Review Guidelines). You can use Apple Pay for selling physical goods and services.</p>
+</blockquote>
+
+<hr>
+
+<h2 id="obtaining-an-apple-merchant-id">Obtaining an Apple Merchant ID</h2>
+
+<p>You&rsquo;ll have to register an Apple Merchant ID before testing anything out. Before doing this, you should choose a payment provider to actually handle your credit card processing. Apple provides a list of recommended ones at their <a href="http://developer.apple.com/apple-pay">Apple Pay Developer Page</a> (disclosure: I work for <a href="https://stripe.com/">Stripe</a>, one of the recommended companies, but the code in this article doesn&rsquo;t depend on you choosing any specific provider). While your provider should have a specific guide for how to get set up using Apple Pay with their platform, the process looks like this:</p>
+
+<ul>
+<li>Head to the <code>Certificates, Identifiers, and Profiles</code> section of the Apple Developer center and <a href="https://developer.apple.com/account/ios/identifiers/merchant/merchantCreate.action">create a new merchant ID</a>.</li>
+<li>Next, <a href="https://developer.apple.com/account/ios/certificate/certificateCreate.action">head to the Certificates section</a> and create a new Apple Pay Certificate. This involves uploading a Certificate Signing Request (CSR) to Apple. When you&rsquo;re signing up for a payment processor, they&rsquo;ll typically give you a CSR to use. You can use a CSR that you generate yourself to follow along with this guide, but your payment processor won&rsquo;t be able to decrypt payments made with it and you&rsquo;ll need to redo it later.</li>
+<li>In Xcode, go to the &ldquo;Capabilities&rdquo; section of your project settings and turn &ldquo;Apple Pay&rdquo; to on. You may have to select the merchant ID you created earlier from the list provided.</li>
+</ul>
+
+<h2 id="making-your-first-charge">Making Your First Charge</h2>
+
+<blockquote>
+<p>Apple Pay will only work on an iOS device capable of using Apple Pay (e.g. iPhone 6/6+, iPad Mini 3, iPad Air 2). In addition, you have to have successfully added the Apple Pay entitlement (described in &ldquo;Obtaining an Apple Merchant ID&rdquo;) in order to test it in your app. If you&rsquo;d like to approximate its behavior on the simulator, you can find a testing library that mimics its functionality (with test credit card details) at <a href="https://github.com/stripe/ApplePayStubs">https://github.com/stripe/ApplePayStubs</a>.</p>
+</blockquote>
+
+<p>Once you&rsquo;re up and running with a merchant account, getting started with Apple Pay is really straightforward. When it&rsquo;s time to check out, you&rsquo;ll first need to see if Apple Pay is supported on the device you&rsquo;re running and your customer has added any cards to Passbook:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">paymentNetworks</span> <span class="o">=</span> <span class="p">[</span><span class="n">PKPaymentNetworkAmex</span><span class="p">,</span> <span class="n">PKPaymentNetworkMasterCard</span><span class="p">,</span> <span class="n">PKPaymentNetworkVisa</span><span class="p">]</span>
+<span class="k">if</span> <span class="n">PKPaymentAuthorizationViewController</span><span class="p">.</span><span class="n">canMakePaymentsUsingNetworks</span><span class="p">(</span><span class="n">paymentNetworks</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Pay is available!</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Show your own credit card form.</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Assuming Apple Pay is available, the next step is to assemble a <code>PKPaymentRequest</code>. This object describes the charge you&rsquo;re requesting from your customer. If you&rsquo;re requesting payment in the U.S. (reasonable, as Apple Pay is currently US-only), here&rsquo;s some default options you&rsquo;ll need to set that&rsquo;ll likely stay constant:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">request</span> <span class="o">=</span> <span class="n">PKPaymentRequest</span><span class="p">()</span>
+<span class="n">request</span><span class="p">.</span><span class="n">supportedNetworks</span> <span class="o">=</span> <span class="p">[</span><span class="n">PKPaymentNetworkAmex</span><span class="p">,</span> <span class="n">PKPaymentNetworkMasterCard</span><span class="p">,</span> <span class="n">PKPaymentNetworkVisa</span><span class="p">]</span>
+<span class="n">request</span><span class="p">.</span><span class="n">countryCode</span> <span class="o">=</span> <span class="s">&quot;US&quot;</span>
+<span class="n">request</span><span class="p">.</span><span class="n">currencyCode</span> <span class="o">=</span> <span class="s">&quot;USD&quot;</span>
+<span class="n">request</span><span class="p">.</span><span class="n">merchantIdentifier</span> <span class="o">=</span> <span class="s">&quot;&lt;#Replace me with your Apple Merchant ID#&gt;&quot;</span>
+<span class="n">request</span><span class="p">.</span><span class="n">merchantCapabilities</span> <span class="o">=</span> <span class="p">.</span><span class="n">Capability3DS</span>
+</code></pre></div>
+<p>Next, describe the things the customer is actually buying with the <code>paymentSummaryItems</code> property. This takes an array of <code>PKPaymentSummaryItem</code>s, which have a <code>label</code> and <code>amount</code>. They&rsquo;re analogous to line items on a receipt (which we&rsquo;ll see momentarily).</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/apple-pay-payment-authorization.png" alt="Payment Authorization"></p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">wax</span> <span class="o">=</span> <span class="n">PKPaymentSummaryItem</span><span class="p">(</span><span class="nl">label</span><span class="p">:</span> <span class="s">&quot;Mustache Wax&quot;</span><span class="p">,</span> <span class="nl">amount</span><span class="p">:</span> <span class="bp">NSDecimalNumber</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;10.00&quot;</span><span class="p">))</span>
+<span class="k">let</span> <span class="n">discount</span> <span class="o">=</span> <span class="n">PKPaymentSummaryItem</span><span class="p">(</span><span class="nl">label</span><span class="p">:</span> <span class="s">&quot;Discount&quot;</span><span class="p">,</span> <span class="nl">amount</span><span class="p">:</span> <span class="bp">NSDecimalNumber</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;-1.00&quot;</span><span class="p">))</span>
+
+<span class="k">let</span> <span class="n">totalAmount</span> <span class="o">=</span> <span class="n">wax</span><span class="p">.</span><span class="n">amount</span><span class="p">.</span><span class="n">decimalNumberByAdding</span><span class="p">(</span><span class="n">discount</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span>
+                            <span class="p">.</span><span class="n">decimalNumberByAdding</span><span class="p">(</span><span class="n">shipping</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">total</span> <span class="o">=</span> <span class="n">PKPaymentSummaryItem</span><span class="p">(</span><span class="nl">label</span><span class="p">:</span> <span class="s">&quot;NSHipster&quot;</span><span class="p">,</span> <span class="nl">amount</span><span class="p">:</span> <span class="n">totalAmount</span><span class="p">)</span>
+
+<span class="n">request</span><span class="p">.</span><span class="n">paymentSummaryItems</span> <span class="o">=</span> <span class="p">[</span><span class="n">wax</span><span class="p">,</span> <span class="n">discount</span><span class="p">,</span> <span class="n">shipping</span><span class="p">,</span> <span class="n">total</span><span class="p">]</span>
+</code></pre></div>
+<p>Note that you can specify zero or negative amounts here to apply coupons or communicate other information. However, the total amount requested must be greater than zero. You&rsquo;ll note we use a <code>PKShippingMethod</code> (inherits from <code>PKPaymentSummaryItem</code>) to describe our shipping item. More on this later.</p>
+
+<p>Next, to display the actual payment sheet to the customer, we create an instance of <code>PKPaymentAuthorizationViewController</code> with our <code>PKPaymentRequest</code> and present it. (Assume for this example that all this code is inside a <code>UIViewController</code> that will sit behind the payment screen).</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">viewController</span> <span class="o">=</span> <span class="n">PKPaymentAuthorizationViewController</span><span class="p">(</span><span class="nl">paymentRequest</span><span class="p">:</span> <span class="n">request</span><span class="p">)</span>
+<span class="n">viewController</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="nb">self</span>
+<span class="n">presentViewController</span><span class="p">(</span><span class="n">viewController</span><span class="p">,</span> <span class="nl">animated</span><span class="p">:</span> <span class="nb">true</span><span class="p">,</span> <span class="nl">completion</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+</code></pre></div>
+<p>A few style nits to be aware of:</p>
+
+<ul>
+<li>The view controller doesn&rsquo;t fully obscure the screen (in this case the blue background is part of our application). You can update the background view controller while the <code>PKPaymentAuthorizationViewController</code> is visible if you want.</li>
+<li>All text is automatically capitalized.</li>
+<li>The final line item is separated from the rest, and is intended to display the total amount you&rsquo;re charging. The label will be prepended with the word &ldquo;PAY&rdquo;, so it usually makes sense to put your company name for the payment summary item&rsquo;s <code>label</code>.</li>
+<li>The entire UI is presented via a Remote View Controller. This means that outside the <code>PKPaymentRequest</code> you give it, it&rsquo;s impossible to otherwise style or modify the contents of this view.</li>
+</ul>
+
+<h2 id="pkpaymentauthorizationviewcontrollerdelegate">PKPaymentAuthorizationViewControllerDelegate</h2>
+
+<p>In order to actually handle the payment information returned by the <code>PKPaymentAuthorizationViewController</code>, you need to implement the <code>PKPaymentAuthorizationViewControllerDelegate</code> protocol. This has 2 required methods, <code>-(void)paymentAuthorizationViewController:didAuthorizePayment:completion:</code> and <code>-(void)paymentAuthorizationViewControllerDidFinish:</code>.</p>
+
+<p>To understand how each of these components work, let&rsquo;s check out a timeline of how an Apple Pay purchase works:</p>
+
+<ul>
+<li>You present a <code>PKPaymentAuthorizationViewController</code> as described above.</li>
+<li>The customer approves the purchase using Touch ID (or, if that fails 3 times, by entering their passcode).</li>
+<li>The thumbprint icon turns into a spinner, with the label &ldquo;Processing&rdquo;</li>
+<li>Your delegate receives the <code>paymentAuthorizationViewController:didAuthorizePayment:completion:</code> callback.</li>
+<li>Your application communicates asynchronously with your payment processor and website backend to actually make a charge with those payment details. Once this complete, you invoke the <code>completion</code> handler that you&rsquo;re given as a parameter with either <code>PKPaymentAuthorizationStatus.Success</code> or <code>PKPaymentAuthorizationStatus.Failure</code> depending on the result.</li>
+<li>The <code>PKPaymentAuthorizationViewController</code> spinner animates into a success or failure icon. If successful, a notification will arrive from PassBook indicating a charge on the customer&rsquo;s credit card.</li>
+<li>Your delegate receives the <code>paymentAuthorizationViewControllerDidFinish:</code> callback. It is then responsible for calling <code>dismissViewControllerAnimated:completion</code> to dismiss the payment screen.</li>
+</ul>
+
+<p><img src="http://nshipster.s3.amazonaws.com/apple-pay-indicators.png" alt="Status Indicator"></p>
+
+<p>Concretely, this comes out looking like this:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// MARK: - PKPaymentAuthorizationViewControllerDelegate</span>
+
+<span class="k">func</span> <span class="nf">paymentAuthorizationViewController</span><span class="p">(</span><span class="nl">controller</span><span class="p">:</span> <span class="n">PKPaymentAuthorizationViewController</span><span class="o">!</span><span class="p">,</span> <span class="n">didAuthorizePayment</span> <span class="nl">payment</span><span class="p">:</span> <span class="n">PKPayment</span><span class="o">!</span><span class="p">,</span> <span class="nl">completion</span><span class="p">:</span> <span class="p">((</span><span class="n">PKPaymentAuthorizationStatus</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Use your payment processor&#39;s SDK to finish charging your customer.</span>
+    <span class="c1">// When this is done, call completion(PKPaymentAuthorizationStatus.Success)</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="nf">paymentAuthorizationViewControllerDidFinish</span><span class="p">(</span><span class="nl">controller</span><span class="p">:</span> <span class="n">PKPaymentAuthorizationViewController</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">dismissViewControllerAnimated</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span> <span class="nl">completion</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Here, the <code>processPayment:payment completion:</code> method is your own code, and would leverage your payment processor&rsquo;s SDK to finish the charge.</p>
+
+<h2 id="dynamic-shipping-methods-and-pricing">Dynamic Shipping Methods and Pricing</h2>
+
+<p>If you&rsquo;re using Apple Pay to let your customer buy physical goods, you might want to offer them different shipping options. You can do this by setting the <code>shippingMethods</code> property on <code>PKPaymentRequest</code>. Then, you can respond to your customer&rsquo;s selection by implementing the optional <code>PKPaymentAuthorizationViewControllerDelegate</code> method, <code>paymentAuthorizationViewController:didSelectShippingMethod:completion:</code>. This method follows a similar pattern to the <code>didAuthorizePayment</code> method described above, where you&rsquo;re allowed to do asynchronous work and then call a callback with an updated array of <code>PKPaymentSummaryItem</code>s that includes the customer&rsquo;s desired shipping method. (Remember from earlier that <code>PKShippingMethod</code> inherits from <code>PKPaymentSummaryItem</code>? This is really helpful here!)</p>
+
+<p>Here&rsquo;s a modified version of our earlier example, implemented as a computed property on the view controller and helper function:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="nl">paymentRequest</span><span class="p">:</span> <span class="n">PKPaymentRequest</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">request</span> <span class="o">=</span> <span class="p">...</span> <span class="c1">// initialize as before</span>
+
+    <span class="k">let</span> <span class="n">freeShipping</span> <span class="o">=</span> <span class="n">PKShippingMethod</span><span class="p">(</span><span class="nl">label</span><span class="p">:</span> <span class="s">&quot;Free Shipping&quot;</span><span class="p">,</span> <span class="nl">amount</span><span class="p">:</span> <span class="bp">NSDecimalNumber</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;0&quot;</span><span class="p">))</span>
+    <span class="n">freeShipping</span><span class="p">.</span><span class="n">identifier</span> <span class="o">=</span> <span class="s">&quot;freeshipping&quot;</span>
+    <span class="n">freeShipping</span><span class="p">.</span><span class="n">detail</span> <span class="o">=</span> <span class="s">&quot;Arrives in 6-8 weeks&quot;</span>
+
+    <span class="k">let</span> <span class="n">expressShipping</span> <span class="o">=</span> <span class="n">PKShippingMethod</span><span class="p">(</span><span class="nl">label</span><span class="p">:</span> <span class="s">&quot;Express Shipping&quot;</span><span class="p">,</span> <span class="nl">amount</span><span class="p">:</span> <span class="bp">NSDecimalNumber</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;10.00&quot;</span><span class="p">))</span>
+    <span class="n">expressShipping</span><span class="p">.</span><span class="n">identifier</span> <span class="o">=</span> <span class="s">&quot;expressshipping&quot;</span>
+    <span class="n">expressShipping</span><span class="p">.</span><span class="n">detail</span> <span class="o">=</span> <span class="s">&quot;Arrives in 2-3 days&quot;</span>
+
+    <span class="n">request</span><span class="p">.</span><span class="n">shippingMethods</span> <span class="o">=</span> <span class="p">[</span><span class="n">freeShipping</span><span class="p">,</span> <span class="n">expressShipping</span><span class="p">]</span>
+    <span class="n">request</span><span class="p">.</span><span class="n">paymentSummaryItems</span> <span class="o">=</span> <span class="n">paymentSummaryItemsForShippingMethod</span><span class="p">(</span><span class="n">freeShipping</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">request</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">paymentSummaryItemsForShippingMethod</span><span class="p">(</span><span class="nl">shipping</span><span class="p">:</span> <span class="n">PKShippingMethod</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">([</span><span class="n">PKPaymentSummaryItem</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">wax</span> <span class="o">=</span> <span class="n">PKPaymentSummaryItem</span><span class="p">(</span><span class="nl">label</span><span class="p">:</span> <span class="s">&quot;Mustache Wax&quot;</span><span class="p">,</span> <span class="nl">amount</span><span class="p">:</span> <span class="bp">NSDecimalNumber</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;10.00&quot;</span><span class="p">))</span>
+    <span class="k">let</span> <span class="n">discount</span> <span class="o">=</span> <span class="n">PKPaymentSummaryItem</span><span class="p">(</span><span class="nl">label</span><span class="p">:</span> <span class="s">&quot;Discount&quot;</span><span class="p">,</span> <span class="nl">amount</span><span class="p">:</span> <span class="bp">NSDecimalNumber</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;-1.00&quot;</span><span class="p">))</span>
+
+    <span class="k">let</span> <span class="n">totalAmount</span> <span class="o">=</span> <span class="n">wax</span><span class="p">.</span><span class="n">amount</span><span class="p">.</span><span class="n">decimalNumberByAdding</span><span class="p">(</span><span class="n">discount</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span>
+                                <span class="p">.</span><span class="n">decimalNumberByAdding</span><span class="p">(</span><span class="n">shipping</span><span class="p">.</span><span class="n">amount</span><span class="p">)</span>
+    <span class="k">let</span> <span class="n">total</span> <span class="o">=</span> <span class="n">PKPaymentSummaryItem</span><span class="p">(</span><span class="nl">label</span><span class="p">:</span> <span class="s">&quot;NSHipster&quot;</span><span class="p">,</span> <span class="nl">amount</span><span class="p">:</span> <span class="n">totalAmount</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">wax</span><span class="p">,</span> <span class="n">discount</span><span class="p">,</span> <span class="n">shipping</span><span class="p">,</span> <span class="n">total</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">// MARK: - PKPaymentAuthorizationViewControllerDelegate</span>
+
+<span class="k">func</span> <span class="n">paymentAuthorizationViewController</span><span class="p">(</span><span class="nl">controller</span><span class="p">:</span> <span class="n">PKPaymentAuthorizationViewController</span><span class="o">!</span><span class="p">,</span> <span class="n">didSelectShippingMethod</span> <span class="nl">shippingMethod</span><span class="p">:</span> <span class="n">PKShippingMethod</span><span class="o">!</span><span class="p">,</span> <span class="nl">completion</span><span class="p">:</span> <span class="p">((</span><span class="n">PKPaymentAuthorizationStatus</span><span class="p">,</span> <span class="p">[</span><span class="n">AnyObject</span><span class="p">]</span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">completion</span><span class="p">(</span><span class="n">PKPaymentAuthorizationStatus</span><span class="p">.</span><span class="n">Success</span><span class="p">,</span> <span class="n">paymentSummaryItemsForShippingMethod</span><span class="p">(</span><span class="n">shippingMethod</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In this example, the customer will get the option to choose either free or express shipping—and the price they&rsquo;re quoted will adjust accordingly as they change their selection.</p>
+
+<p><em>But wait, there&rsquo;s more!</em></p>
+
+<p>Instead of having to provide a bunch of flat-rate shipping options, you can let your customer choose their shipping address and then calculate shipping rates dynamically based on that. To do that, you&rsquo;ll first need to set the <code>requiredShippingAddressFields</code> property on your <code>PKPaymentRequest</code>. This can represent any combination of <code>PKAddressField.Email</code> , .<code>PhoneNumber</code>, and .<code>PostalAddress</code>.</p>
+
+<blockquote>
+<p>Alternatively, if you don&rsquo;t need the user&rsquo;s full mailing address but need to collect some contact information (like an email address to send receipts to), this is a good way to do it.</p>
+</blockquote>
+
+<p>When this field is set, a new &ldquo;Shipping Address&rdquo; row appears in the payment UI that allows the customer to choose one of their saved addresses. Every time they choose one, the (aptly named) <code>paymentAuthorizationViewController:didSelectShippingAddress:completion:</code> message will be sent to your <code>PKPaymentAuthorizationViewControllerDelegate</code>.</p>
+
+<p>Here, you should calculate the shipping rates for the selected address and then call the <code>completion</code> callback with 3 arguments:</p>
+
+<ol>
+<li>The result of the call
+
+<ul>
+<li><code>PKPaymentAuthorizationStatus.Success</code> if successful</li>
+<li>`<code>PKPaymentAuthorizationStatus.</code>Failure` if a connection error occurs</li>
+<li><code>.InvalidShippingPostalAddress</code> if the API returns an empty array (i.e. shipping to that address is impossible).</li>
+</ul></li>
+<li>An array of <code>PKShippingMethod</code>s representing the customer&rsquo;s available shipping options</li>
+<li>A new array of <code>PKPaymentSummaryItem</code>s that contains one of the shipping methods</li>
+</ol>
+
+<p>I&rsquo;ve set up a really simple web backend that queries the EasyPost API for shipping rates to a given address. The source is available at <a href="https://github.com/jflinter/example-shipping-api">https://github.com/jflinter/example-shipping-api</a>.</p>
+
+<p>Here&rsquo;s a function to query it, using <a href="http://nshipster.com/alamofire/">Alamofire</a>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">AddressBook</span>
+<span class="k">import</span> <span class="n">PassKit</span>
+<span class="k">import</span> <span class="n">Alamofire</span>
+
+<span class="k">func</span> <span class="nf">addressesForRecord</span><span class="p">(</span><span class="nl">record</span><span class="p">:</span> <span class="n">ABRecord</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[[</span><span class="nl">String</span><span class="p">:</span> <span class="n">String</span><span class="p">]]</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nl">addresses</span><span class="p">:</span> <span class="p">[[</span><span class="nl">String</span><span class="p">:</span> <span class="n">String</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">let</span> <span class="nl">values</span><span class="p">:</span> <span class="n">ABMultiValue</span> <span class="o">=</span> <span class="n">ABRecordCopyValue</span><span class="p">(</span><span class="n">record</span><span class="p">,</span> <span class="n">kABPersonAddressProperty</span><span class="p">).</span><span class="n">takeRetainedValue</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.</span><span class="o">&lt;</span><span class="n">ABMultiValueGetCount</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="n">address</span> <span class="o">=</span> <span class="n">ABMultiValueCopyValueAtIndex</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">index</span><span class="p">).</span><span class="n">takeRetainedValue</span><span class="p">()</span> <span class="kt">as</span><span class="o">?</span> <span class="p">[</span><span class="nl">String</span><span class="p">:</span> <span class="n">String</span><span class="p">]</span> <span class="p">{</span>
+            <span class="n">addresses</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">addresses</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">fetchShippingMethodsForAddress</span><span class="p">(</span><span class="nl">address</span><span class="p">:</span> <span class="p">[</span><span class="nl">String</span><span class="p">:</span> <span class="n">String</span><span class="p">],</span> <span class="nl">completion</span><span class="p">:</span> <span class="p">([</span><span class="n">PKShippingMethod</span><span class="p">]</span><span class="o">?</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s">&quot;street&quot;</span><span class="o">:</span> <span class="n">address</span><span class="p">[</span><span class="n">kABPersonAddressStreetKey</span><span class="p">]</span> <span class="o">??</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+        <span class="s">&quot;city&quot;</span><span class="o">:</span> <span class="n">address</span><span class="p">[</span><span class="n">kABPersonAddressCityKey</span><span class="p">]</span> <span class="o">??</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+        <span class="s">&quot;state&quot;</span><span class="o">:</span> <span class="n">address</span><span class="p">[</span><span class="n">kABPersonAddressStateKey</span><span class="p">]</span> <span class="o">??</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+        <span class="s">&quot;zip&quot;</span><span class="o">:</span> <span class="n">address</span><span class="p">[</span><span class="n">kABPersonAddressZIPKey</span><span class="p">]</span> <span class="o">??</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+        <span class="s">&quot;country&quot;</span><span class="o">:</span> <span class="n">address</span><span class="p">[</span><span class="n">kABPersonAddressCountryKey</span><span class="p">]</span> <span class="o">??</span> <span class="s">&quot;&quot;</span>
+    <span class="p">]</span>
+
+    <span class="n">Alamofire</span><span class="p">.</span><span class="n">request</span><span class="p">(.</span><span class="n">GET</span><span class="p">,</span> <span class="s">&quot;http://example.com&quot;</span><span class="p">,</span> <span class="nl">parameters</span><span class="p">:</span> <span class="n">parameters</span><span class="p">)</span>
+             <span class="p">.</span><span class="n">responseJSON</span> <span class="p">{</span> <span class="p">(</span><span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">JSON</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="k">in</span>
+                <span class="k">if</span> <span class="k">let</span> <span class="n">rates</span> <span class="o">=</span> <span class="n">JSON</span> <span class="kt">as</span><span class="o">?</span> <span class="p">[[</span><span class="nl">String</span><span class="p">:</span> <span class="n">String</span><span class="p">]]</span> <span class="p">{</span>
+                    <span class="k">let</span> <span class="n">shippingMethods</span> <span class="o">=</span> <span class="n">map</span><span class="p">(</span><span class="n">rates</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">rate</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PKShippingMethod</span> <span class="k">in</span>
+                        <span class="k">let</span> <span class="n">identifier</span> <span class="o">=</span> <span class="n">rate</span><span class="p">[</span><span class="s">&quot;id&quot;</span><span class="p">]</span>
+                        <span class="k">let</span> <span class="n">carrier</span> <span class="o">=</span> <span class="n">rate</span><span class="p">[</span><span class="s">&quot;carrier&quot;</span><span class="p">]</span> <span class="o">??</span> <span class="s">&quot;Unknown Carrier&quot;</span>
+                        <span class="k">let</span> <span class="n">service</span> <span class="o">=</span> <span class="n">rate</span><span class="p">[</span><span class="s">&quot;service&quot;</span><span class="p">]</span> <span class="o">??</span> <span class="s">&quot;Unknown Service&quot;</span>
+                        <span class="k">let</span> <span class="n">amount</span> <span class="o">=</span> <span class="bp">NSDecimalNumber</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">rate</span><span class="p">[</span><span class="s">&quot;amount&quot;</span><span class="p">])</span>
+                        <span class="k">let</span> <span class="n">arrival</span> <span class="o">=</span> <span class="n">rate</span><span class="p">[</span><span class="s">&quot;formatted_arrival_date&quot;</span><span class="p">]</span> <span class="o">??</span> <span class="s">&quot;Unknown Arrival&quot;</span>
+
+                        <span class="k">let</span> <span class="n">shippingMethod</span> <span class="o">=</span> <span class="n">PKShippingMethod</span><span class="p">(</span><span class="nl">label</span><span class="p">:</span> <span class="s">&quot;\(carrier) \(service)&quot;</span><span class="p">,</span> <span class="nl">amount</span><span class="p">:</span> <span class="n">amount</span><span class="p">)</span>
+                        <span class="n">shippingMethod</span><span class="p">.</span><span class="n">identifier</span> <span class="o">=</span> <span class="n">identifier</span>
+                        <span class="n">shippingMethod</span><span class="p">.</span><span class="n">detail</span> <span class="o">=</span> <span class="n">arrival</span>
+
+                        <span class="k">return</span> <span class="n">shippingMethod</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+             <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>With this, it&rsquo;s simple to implement <code>PKPaymentAuthorizationViewControllerDelegate</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="nf">paymentAuthorizationViewController</span><span class="p">(</span><span class="nl">controller</span><span class="p">:</span> <span class="n">PKPaymentAuthorizationViewController</span><span class="o">!</span><span class="p">,</span> <span class="n">didSelectShippingAddress</span> <span class="nl">record</span><span class="p">:</span> <span class="n">ABRecord</span><span class="o">!</span><span class="p">,</span> <span class="nl">completion</span><span class="p">:</span> <span class="p">((</span><span class="n">PKPaymentAuthorizationStatus</span><span class="p">,</span> <span class="p">[</span><span class="n">AnyObject</span><span class="p">]</span><span class="o">!</span><span class="p">,</span> <span class="p">[</span><span class="n">AnyObject</span><span class="p">]</span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="n">address</span> <span class="o">=</span> <span class="n">addressesForRecord</span><span class="p">(</span><span class="n">record</span><span class="p">).</span><span class="n">first</span> <span class="p">{</span>
+        <span class="n">fetchShippingMethodsForAddress</span><span class="p">(</span><span class="n">address</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">shippingMethods</span><span class="p">)</span> <span class="k">in</span>
+            <span class="k">switch</span> <span class="n">shippingMethods</span><span class="o">?</span><span class="p">.</span><span class="n">count</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="p">.</span><span class="nl">None</span><span class="p">:</span>
+                <span class="n">completion</span><span class="p">(</span><span class="n">PKPaymentAuthorizationStatus</span><span class="p">.</span><span class="n">Failure</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="nb">nil</span><span class="p">)</span>
+            <span class="k">case</span> <span class="p">.</span><span class="n">Some</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">:</span>
+                <span class="n">completion</span><span class="p">(</span><span class="n">PKPaymentAuthorizationStatus</span><span class="p">.</span><span class="n">InvalidShippingPostalAddress</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="nb">nil</span><span class="p">)</span>
+            <span class="k">default</span><span class="o">:</span>
+                <span class="n">completion</span><span class="p">(</span><span class="n">PKPaymentAuthorizationStatus</span><span class="p">.</span><span class="n">Success</span><span class="p">,</span> <span class="n">shippingMethods</span><span class="p">,</span> <span class="nb">self</span><span class="p">.</span><span class="n">paymentSummaryItemsForShippingMethod</span><span class="p">(</span><span class="n">shippingMethods</span><span class="o">!</span><span class="p">.</span><span class="n">first</span><span class="o">!</span><span class="p">))</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">completion</span><span class="p">(</span><span class="n">PKPaymentAuthorizationStatus</span><span class="p">.</span><span class="n">Failure</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="nb">nil</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img src="http://nshipster.s3.amazonaws.com/apple-pay-select-shipping-method.png" alt="Select a Shipping Method"></p>
+
+<p>Now, the customer can select an address and receive a different set of shipping options depending on where they live. Both the <code>shippingAddress</code> and <code>shippingMethod</code> they ultimately select will be available as properties on the <code>PKPayment</code> that is given to your delegate in the <code>paymentAuthorizationViewController:didAuthorizePayment:completion:</code> method.</p>
+
+<blockquote>
+<p>You can find all of the source code in this article at <a href="https://github.com/jflinter/ApplePayExample">https://github.com/jflinter/ApplePayExample</a>.</p>
+</blockquote>
+
+<hr>
+
+<p>Even though Apple Pay only exposes a small number of public APIs,  its possible applications are <a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewFeature?id=927678292&amp;mt=8&amp;ls=1">wide-ranging</a> and you can customize your checkout flow to fit your app. It even enables you to build new types of flows, such as letting your customers buy stuff without having to create an account first.</p>
+
+<p>As more apps start using Apple Pay (and as more customers own devices that support it), it&rsquo;ll become a ubiquitous way of paying for things in iOS apps. I&rsquo;m excited to hear what you build with Apple Pay— if you have any questions, or want to show anything off, please <a href="mailto:jack+nshipster@stripe.com">get in touch</a>!</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-12-08-apple-pay.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 1.0.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Jack Flintermann" itemprop="image" src="http://nshipster.s3.amazonaws.com/jack-flintermann.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/jack-flintermann/">Jack Flintermann</a></span>
+
+      <p><a href="https://twitter.com/jflinter">Jack Flintermann</a> is a software developer at <a href="https://stripe.com/">Stripe</a>. He lives in New York City.</p>
+
+
+      
+        <a href="https://plus.google.com/?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nsundomanager/" title="NSUndoManager" rel="next">NSUndo​Manager</a>
+            </h1>
+
+            <p>We all make mistakes. Thankfully, Foundation comes to our rescue for more than just our misspellings. Cocoa includes a simple yet robust API for undoing or redoing actions through NSUndoManager.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/changing-of-the-guard/" title="Changing of the Guard">Changing of the Guard</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/icloud/" title="iCloud">iCloud</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/image-resizing/" title="Image Resizing Techniques">Image Resizing Techniques</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/inter-process-communication/" title="Inter-Process Communication">Inter-Process Communication</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

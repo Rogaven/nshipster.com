@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>Swift Operators - NSHipster</title>
+    <meta name="description" content="Operators in Swift are among the most interesting and indeed controversial features of this new language."/>
+    <link rel="canonical" href="http://nshipster.com/swift-operators/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="Swift Operators"/>
+    <meta name="twitter:description" content="Operators in Swift are among the most interesting and indeed controversial features of this new language."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Swift Operators"/>
+    <meta property="og:url" content="http://nshipster.com/swift-operators/"/>
+    <meta property="og:description" content="Operators in Swift are among the most interesting and indeed controversial features of this new language."/>
+    <meta property="article:published_time" content="2014-08-11T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="swift"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="Swift Operators"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/swift-operators/">Swift Operators</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2014-08-11T00:00:00-07:00" itemprop="datePublished">August 11<sup>th</sup>, 2014</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>What would a program be without statements? A mish-mash of classes, namespaces, conditionals, loops, and namespaces signifying nothing.</p>
+
+<p>Statements are what do the work of a program. They are the very execution of an executable.</p>
+
+<p>If we were to take apart a statement—say <code>1 + 2</code>—decomposing it into its constituent parts, we would find an operator and operands:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">1</th>
+<th style="text-align: center">+</th>
+<th style="text-align: center">2</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">left operand</td>
+<td style="text-align: center">operator</td>
+<td style="text-align: center">right operand</td>
+</tr>
+</tbody></table>
+
+<p>Although expressions are flat, the compiler will construct a tree representation, or AST:</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/swift-operators-one-plus-two.svg" alt="1 + 2 AST"></p>
+
+<p>Compound statements, like <code>1 + 2 + 3</code></p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">(1 + 2)</th>
+<th style="text-align: center">+</th>
+<th style="text-align: center">3</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">left operand</td>
+<td style="text-align: center">operator</td>
+<td style="text-align: center">right operand</td>
+</tr>
+</tbody></table>
+
+<p><img src="http://nshipster.s3.amazonaws.com/swift-operators-one-plus-two-plus-three.svg" alt="1 + 2 + 3 AST"></p>
+
+<p>Or, to take an even more complex statement, <code>1 + 2 * 3 % 4</code>, the compiler would use operator precedence to resolve the expression into a single statement:</p>
+
+<table><thead>
+<tr>
+<th style="text-align: center">1</th>
+<th style="text-align: center">+</th>
+<th style="text-align: center">((2 * 3) % 4)</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: center">left operand</td>
+<td style="text-align: center">operator</td>
+<td style="text-align: center">right operand</td>
+</tr>
+</tbody></table>
+
+<p><img src="http://nshipster.s3.amazonaws.com/swift-operators-one-plus-two-times-three-mod-four.svg" alt="1 + 2 * 3 % 4 AST"></p>
+
+<p>Operator precedence rules, similar to the ones <a href="http://en.wikipedia.org/wiki/Order_of_operations">you learned in primary school</a>, provide a canonical ordering for any compound statement:</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">1 + 2 * 3 % 4
+1 + ((2 * 3) % 4)
+1 + (6 % 4)
+1 + 2
+</code></pre></div>
+<p>However, consider the statement <code>5 - 2 + 3</code>. Addition and subtraction have the same operator precedence, but evaluating the subtraction first <code>(5 - 2) + 3</code> yields 6, whereas evaluating subtraction after addition, <code>5 - (2 + 3)</code>, yields <code>0</code>. In code, arithmetic operators are left-associative, meaning that the left hand side will evaluate first (<code>(5 - 2) + 3</code>).</p>
+
+<p>Operators can be unary and ternary as well. The <code>!</code> prefix operator negates a logical value of the operand, whereas the <code>++</code> postfix operator increments the operand. The <code>?:</code> ternary operator collapses an <code>if-else</code> expression, by evaluating the statement to the left of the <code>?</code> in order to either execute the statement left of the <code>:</code> (statement is <code>true</code>) or right of <code>:</code> (statement is <code>false</code>).</p>
+
+<h2 id="swift-operators">Swift Operators</h2>
+
+<p>Swift includes a set of operators that should be familiar to C or Objective-C developers, with a few additions (notably, the range and nil coalescing operators):</p>
+
+<h3 id="prefix">Prefix</h3>
+
+<ul>
+<li><code>++</code>: Increment</li>
+<li><code>--</code>: Decrement</li>
+<li><code>+</code>: Unary plus</li>
+<li><code>-</code>: Unary minus</li>
+<li><code>!</code>: Logical NOT</li>
+<li><code>~</code>: Bitwise NOT</li>
+</ul>
+
+<h3 id="infix">Infix</h3>
+
+<table>
+    <tr>
+        <th colspan="2">Exponentiative <tt>{precedence 160}</tt></th>
+    </tr>
+    <tbody>
+        <tr><td><tt>&lt;&lt;</tt></td><td>Bitwise left shift</td></tr>
+        <tr><td><tt>&gt;&gt;</tt></td><td>Bitwise right shift</td></tr>
+    </tbody>
+
+
+    <tr>
+        <th colspan="2">Multiplicative <tt>{ associativity left precedence 150 }</tt></th>
+    </tr>
+    <tbody>
+        <tr><td><tt>*</tt></td><td>Multiply</td></tr>
+        <tr><td><tt>/</tt></td><td>Divide</td></tr>
+        <tr><td><tt>%</tt></td><td>Remainder</td></tr>
+        <tr><td><tt>&amp;*</tt></td><td>Multiply, ignoring overflow</td></tr>
+        <tr><td><tt>&amp;/</tt></td><td>Divide, ignoring overflow</td></tr>
+        <tr><td><tt>&amp;%</tt></td><td>Remainder, ignoring overflow</td></tr>
+        <tr><td><tt>&amp;</tt></td><td>Bitwise AND</td></tr>
+    </tbody>
+
+    <tr>
+        <th colspan="2">Additive <tt>{ associativity left precedence 140 }</tt></th>
+    </tr>
+    <tbody>
+        <tr><td><tt>+</tt></td><td>Add</td></tr>
+        <tr><td><tt>-</tt></td><td>Subtract</td></tr>
+        <tr><td><tt>&amp;+</tt></td><td>Add with overflow</td></tr>
+        <tr><td><tt>&amp;-</tt></td><td>Subtract with overflow</td></tr>
+        <tr><td><tt>|</tt></td><td>Bitwise OR</td></tr>
+        <tr><td><tt>^</tt></td><td>Bitwise XOR</td></tr>
+    </tbody>
+
+    <tr>
+        <th colspan="2">Range <tt>{ precedence 135 }</tt></th>
+    </tr>
+    <tbody>
+        <tr><td><tt>..&lt;</tt></td><td>Half-open range</td></tr>
+        <tr><td><tt>&hellip;</tt></td><td>Closed range</td></tr>
+    </tbody>
+
+    <tr>
+        <th colspan="2">Cast <tt>{ precedence 132 }</tt></th>
+    </tr>
+    <tbody>
+        <tr><td><tt>is</tt></td><td>Type check</td></tr>
+        <tr><td><tt>as</tt></td><td>Type cast</td></tr>
+    </tbody>
+
+    <tr>
+        <th colspan="2">Comparative <tt>{ precedence 130 }</tt></th>
+    </tr>
+    <tbody>
+        <tr><td><tt>&lt;</tt></td><td>Less than</td></tr>
+        <tr><td><tt>&lt;=</tt></td><td>Less than or equal</td></tr>
+        <tr><td><tt>></tt></td><td>Greater than</td></tr>
+        <tr><td><tt>>=</tt></td><td>Greater than or equal</td></tr>
+        <tr><td><tt>==</tt></td><td>Equal</td></tr>
+        <tr><td><tt>!=</tt></td><td>Not equal</td></tr>
+        <tr><td><tt>===</tt></td><td>Identical</td></tr>
+        <tr><td><tt>!==</tt></td><td>Not identical</td></tr>
+        <tr><td><tt>~=</tt></td><td>Pattern match</td></tr>
+    </tbody>
+
+    <tr>
+        <th colspan="2">Conjunctive <tt>{ associativity left precedence 120 }</tt></th>
+    </tr>
+    <tbody>
+        <tr><td><tt>&amp;&amp;</tt></td><td>Logical AND</td></tr>
+    </tbody>
+
+    <tr>
+        <th colspan="2">Disjunctive <tt>{ associativity left precedence 110 }</tt></th>
+    </tr>
+    <tbody>
+        <tr><td><tt>||</tt></td><td>Logical OR</td></tr>
+    </tbody>
+
+    <tr>
+        <th colspan="2">Nil Coalescing <tt>{ associativity right precedence 110 }</tt></th>
+    </tr>
+    <tbody>
+        <tr><td><tt>??</tt></td><td>Nil coalescing</td></tr>
+    </tbody>
+
+    <tr>
+        <th colspan="2">Ternary Conditional <tt>{ associativity right precedence 100 }</tt></th>
+    </tr>
+    <tbody>
+        <tr><td><tt>?:</tt></td><td>Ternary conditional</td></tr>
+    </tbody>
+
+    <tr>
+        <th colspan="2">Assignment <tt>{ associativity right precedence 90 }</tt></th>
+    </tr>
+    <tbody>
+        <tr><td><tt>=</tt></td><td>Assign</td></tr>
+        <tr><td><tt>*=</tt></td><td>Multiply and assign</td></tr>
+        <tr><td><tt>/=</tt></td><td>Divide and assign</td></tr>
+        <tr><td><tt>%=</tt></td><td>Remainder and assign</td></tr>
+        <tr><td><tt>+=</tt></td><td>Add and assign</td></tr>
+        <tr><td><tt>-=</tt></td><td>Subtract and assign</td></tr>
+        <tr><td><tt>&lt;&lt;=</tt></td><td>Left bit shift and assign</td></tr>
+        <tr><td><tt>>>=</tt></td><td>Right bit shift and assign</td></tr>
+        <tr><td><tt>&amp;=</tt></td><td>Bitwise AND and assign</td></tr>
+        <tr><td><tt>^=</tt></td><td>Bitwise XOR and assign</td></tr>
+        <tr><td><tt>|=</tt></td><td>Bitwise OR and assign</td></tr>
+        <tr><td><tt>&amp;&amp;=</tt></td><td>Logical AND and assign</td></tr>
+        <tr><td><tt>||=</tt></td><td>Logical OR and assign</td></tr>
+    </tbody>
+</table>
+
+<h3 id="postfix">Postfix</h3>
+
+<ul>
+<li><code>++</code>: Increment</li>
+<li><code>--</code>: Decrement</li>
+</ul>
+
+<h3 id="member-functions">Member Functions</h3>
+
+<p>In addition to the aforementioned standard operators, there are some <em>de facto</em> operators defined by the language:</p>
+
+<ul>
+<li><code>.</code>: Member Access</li>
+<li><code>?</code>: Optional</li>
+<li><code>!</code>: Forced-Value</li>
+<li><code>[]</code>: Subscript</li>
+<li><code>[]=</code>: Subscript Assignment</li>
+</ul>
+
+<h2 id="overloading">Overloading</h2>
+
+<p>Swift has the ability to overload operators such that existing operators, like <code>+</code>, can be made to work with additional types.</p>
+
+<p>To overload an operator, simply define a new function for the operator symbol, taking the appropriate number and type of arguments.</p>
+
+<p>For example, to overload <code>*</code> to repeat a string a specified number of times:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="o">*</span> <span class="p">(</span><span class="nl">left</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">right</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="kr">right</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;&quot;</span>
+    <span class="p">}</span>
+
+    <span class="k">var</span> <span class="n">result</span> <span class="o">=</span> <span class="kr">left</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">.</span><span class="o">&lt;</span><span class="kr">right</span> <span class="p">{</span>
+        <span class="n">result</span> <span class="o">+=</span> <span class="kr">left</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+<span class="p">}</span>
+
+<span class="s">&quot;a&quot;</span> <span class="o">*</span> <span class="mi">6</span> 
+<span class="c1">// &quot;aaaaaa&quot;</span>
+</code></pre></div>
+<p>This is, however, a controversial language feature.</p>
+
+<p>Any C++ developer would be all too eager to regale you with horror stories of the non-deterministic havoc this can wreak.</p>
+
+<p>Consider the following statement:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="c1">// [1, 2, 3, 4]</span>
+</code></pre></div>
+<p>By default, the <code>+</code> operator acts on two arrays by appending the right hand to the left hand.</p>
+
+<p>However, when overridden thusly:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="o">+</span><span class="p">(</span><span class="nl">left</span><span class="p">:</span> <span class="p">[</span><span class="n">Double</span><span class="p">],</span> <span class="nl">right</span><span class="p">:</span> <span class="p">[</span><span class="n">Double</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">Double</span><span class="p">]</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="n">sum</span> <span class="o">=</span> <span class="p">[</span><span class="n">Double</span><span class="p">](</span><span class="nl">count</span><span class="p">:</span> <span class="kr">left</span><span class="p">.</span><span class="n">count</span><span class="p">,</span> <span class="nl">repeatedValue</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="k">in</span> <span class="n">enumerate</span><span class="p">(</span><span class="kr">left</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sum</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kr">left</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="kr">right</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">sum</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The result is now an array with the pairwise sums of each element, expressed as <code>Double</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="c1">// [4.0, 6.0]</span>
+</code></pre></div>
+<p>And if the operator were also overloaded to work with <code>Int</code> types, with:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="o">+</span><span class="p">(</span><span class="nl">left</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">],</span> <span class="nl">right</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">Int</span><span class="p">]</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="n">sum</span> <span class="o">=</span> <span class="p">[</span><span class="n">Int</span><span class="p">](</span><span class="nl">count</span><span class="p">:</span> <span class="kr">left</span><span class="p">.</span><span class="n">count</span><span class="p">,</span> <span class="nl">repeatedValue</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="k">in</span> <span class="n">enumerate</span><span class="p">(</span><span class="kr">left</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sum</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kr">left</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="kr">right</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">sum</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The result would then be an array of pairwise sums, expressed as <code>Int</code>.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span> <span class="c1">// [4, 6]</span>
+</code></pre></div>
+<p>Herein lies the original sin of operator overloading: <strong>ambiguous semantics</strong>.</p>
+
+<p>Having been limited to basic arithmetic operators across many years and programming languages, overloading of operators has become commonplace:</p>
+
+<ul>
+<li>Computing Sum of Integers: <code>1 + 2 // 3</code></li>
+<li>Computing Sum of Floats: <code>1.0 + 2.0 // 3.0</code></li>
+<li>Appending to String: <code>&quot;a&quot; + &quot;b&quot; // &quot;ab&quot;</code></li>
+<li>Appending to Array: <code>[&quot;foo&quot;] + [&quot;bar&quot;] // [&quot;foo&quot;, &quot;bar&quot;]</code></li>
+</ul>
+
+<p>It makes sense that <code>+</code> would work on numbers—that&rsquo;s just math. But think about it: <em>why should adding two strings together concatenate them</em>?  <code>1 + 2</code> isn&rsquo;t <code>12</code> (<a href="https://www.destroyallsoftware.com/talks/wat">except in Javascript</a>). Is this really intuitive, or is it just familiar.</p>
+
+<blockquote>
+<p>PHP uses <code>.</code> for string concatenation (which is objectively a terrible idea). Objective-C allows consecutive string literals to be appended with whitespace.</p>
+</blockquote>
+
+<p>In the run-up to its initial stable release, Swift still has some work to do in resolving ambiguities in operator semantics. Recent changes, such as the addition of the <code>nil</code> coalescing operator (<code>??</code>), and the decision for optionals not to conform to <code>BooleanType</code> (confusing in the case of <code>Bool?</code>) are encouraging, and demonstrate the need for us to collectively ask ourselves <em>&ldquo;does this really make sense?&rdquo;</em>, and file radars appropriately.</p>
+
+<blockquote>
+<p>I&rsquo;m specifically concerned about the semantics of array operators, as demonstrated in the previous example. My 2 cents: arrays should forego the <code>+</code> and <code>-</code> operators in lieu of <code>&lt;&lt;</code>:</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="o">&lt;&lt;&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">inout</span> <span class="nl">left</span><span class="p">:</span> <span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="nl">right</span><span class="p">:</span> <span class="p">[</span><span class="n">T</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="p">{</span>
+    <span class="kr">left</span><span class="p">.</span><span class="n">extend</span><span class="p">(</span><span class="kr">right</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kr">left</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="o">&lt;&lt;&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">(</span><span class="k">inout</span> <span class="nl">left</span><span class="p">:</span> <span class="p">[</span><span class="n">T</span><span class="p">],</span> <span class="nl">right</span><span class="p">:</span> <span class="n">T</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">T</span><span class="p">]</span> <span class="p">{</span>
+    <span class="kr">left</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="kr">right</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kr">left</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="custom-operators">Custom Operators</h2>
+
+<p>An even more controversial and exciting feature is the ability to define custom operators.</p>
+
+<p>Consider the arithmetic operator found in many programming languages, but missing in Swift is <code>**</code>, which raises the left hand number to the power of the right hand number (the <code>^</code> symbol, commonly used for superscripts, is already used to perform a <a href="http://en.wikipedia.org/wiki/Bitwise_operation#XOR">bitwise XOR</a>).</p>
+
+<p>To add this operator in Swift, first declare the operator:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kr">infix</span> <span class="kr">operator</span> <span class="o">**</span> <span class="p">{</span> <span class="kr">associativity</span> <span class="kr">left</span> <span class="kr">precedence</span> <span class="mi">160</span> <span class="p">}</span>
+</code></pre></div>
+<ul>
+<li><code>infix</code> specifies that it is a binary operator, taking a left and right hand argument</li>
+<li><code>operator</code> is a reserved word that must be preceded with either <code>prefix</code>, <code>infix</code>, or <code>postfix</code></li>
+<li><code>**</code> is the operator itself</li>
+<li><code>associativity left</code> means that operations are grouped from the left</li>
+<li><code>precedence 160</code> means that it will evaluate with the same precedence as the exponential operators <code>&lt;&lt;</code> and <code>&gt;&gt;</code> (left and right bitshift).</li>
+</ul>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="o">**</span> <span class="p">(</span><span class="nl">left</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="nl">right</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Double</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">pow</span><span class="p">(</span><span class="kr">left</span><span class="p">,</span> <span class="kr">right</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span> 
+<span class="c1">// 8</span>
+</code></pre></div>
+<p>When creating custom operators, make sure to also create the corresponding assignment operator, if appropriate:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kr">infix</span> <span class="kr">operator</span> <span class="o">**=</span> <span class="p">{</span> <span class="kr">associativity</span> <span class="kr">right</span> <span class="kr">precedence</span> <span class="mi">90</span> <span class="p">}</span>
+<span class="k">func</span> <span class="o">**=</span> <span class="p">(</span><span class="k">inout</span> <span class="nl">left</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="nl">right</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">left</span> <span class="o">=</span> <span class="kr">left</span> <span class="o">**</span> <span class="kr">right</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Note that <code>left</code> is <code>inout</code>, which makes sense, since assignment mutates the original value.</p>
+</blockquote>
+
+<h3 id="custom-operators-with-protocol-and-method">Custom Operators with Protocol and Method</h3>
+
+<p>Function definitions for the operators themselves should be extremely simple—a single LOC, really. For anything more complex, some additional setup is warranted.</p>
+
+<p>Take, for example, a custom operator, <code>=~</code>, which returns whether the left hand side matches a regular expression on the right hand side:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">protocol</span> <span class="n">RegularExpressionMatchable</span> <span class="p">{</span>
+    <span class="k">func</span> <span class="n">match</span><span class="p">(</span><span class="nl">pattern</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="n">NSRegularExpressionOptions</span><span class="p">)</span> <span class="kr">throws</span> <span class="o">-&gt;</span> <span class="n">Bool</span>
+<span class="p">}</span>
+
+<span class="k">extension</span> <span class="nl">String</span><span class="p">:</span> <span class="n">RegularExpressionMatchable</span> <span class="p">{</span>
+    <span class="k">func</span> <span class="n">match</span><span class="p">(</span><span class="nl">pattern</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="n">NSRegularExpressionOptions</span> <span class="o">=</span> <span class="p">[])</span> <span class="kr">throws</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="n">regex</span> <span class="o">=</span> <span class="n">try</span> <span class="bp">NSRegularExpression</span><span class="p">(</span><span class="nl">pattern</span><span class="p">:</span> <span class="n">pattern</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="n">options</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">regex</span><span class="p">.</span><span class="n">numberOfMatchesInString</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">[],</span> <span class="nl">range</span><span class="p">:</span> <span class="n">NSRange</span><span class="p">(</span><span class="nl">location</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">length</span><span class="p">:</span> <span class="mf">0.</span><span class="n">distanceTo</span><span class="p">(</span><span class="n">utf16</span><span class="p">.</span><span class="n">count</span><span class="p">)))</span> <span class="o">!=</span> <span class="mi">0</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">infix</span> <span class="kr">operator</span> <span class="o">=~</span> <span class="p">{</span> <span class="kr">associativity</span> <span class="kr">left</span> <span class="kr">precedence</span> <span class="mi">130</span> <span class="p">}</span>
+<span class="k">func</span> <span class="o">=~&lt;</span><span class="nl">T</span><span class="p">:</span> <span class="n">RegularExpressionMatchable</span><span class="o">&gt;</span> <span class="p">(</span><span class="nl">left</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="nl">right</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">try</span><span class="o">!</span> <span class="kr">left</span><span class="p">.</span><span class="n">match</span><span class="p">(</span><span class="kr">right</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">[])</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>First, a <code>RegularExpressionMatchable</code> <code>protocol</code> is declared, with a single method for matching regular expressions.</li>
+<li>Next, an <code>extension</code> adding conformance to this <code>protocol</code> to <code>String</code> is declared, with a provided implementation of <code>match</code>, using <code>NSRegularExpression</code>.</li>
+<li>Finally, the <code>=~</code> operator is declared and implemented on a generic type conforming to <code>RegularExpressionMatchable</code>.</li>
+</ul>
+
+<p>By doing this, a user has the option to use the <code>match</code> function instead of the operator. It also has the added benefit of greater flexibility in what options are passed into the method.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">cocoaClassPattern</span> <span class="o">=</span> <span class="s">&quot;^[A-Z]{2,}[A-Za-z0-9]+$&quot;</span>
+
+<span class="n">try</span><span class="o">?</span> <span class="s">&quot;NSHipster&quot;</span><span class="p">.</span><span class="n">match</span><span class="p">(</span><span class="n">cocoaClassPattern</span><span class="p">)</span>       <span class="c1">// true</span>
+<span class="s">&quot;NSHipster&quot;</span> <span class="o">=~</span> <span class="n">cocoaClassPattern</span>                <span class="c1">// true</span>
+</code></pre></div>
+<p>This is all to say: <strong>a custom operator should only ever be provided as a convenience for an existing function.</strong></p>
+
+<h3 id="use-of-mathematical-symbols">Use of Mathematical Symbols</h3>
+
+<p>Custom operators can begin with one of the ASCII characters /, =, -, +, !, *, %, &lt;, &gt;, &amp;, |, <sup>,</sup> or ~, or any of the Unicode characters in the &ldquo;Math Symbols&rdquo; character set.</p>
+
+<p>This makes it possible to take the square root of a number with a single <code>√</code> prefix operator (<code>⌥v</code>):</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kr">prefix</span> <span class="kr">operator</span> <span class="err">√</span> <span class="p">{}</span>
+<span class="kr">prefix</span> <span class="k">func</span> <span class="err">√</span> <span class="p">(</span><span class="nl">number</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Double</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="err">√</span><span class="mi">4</span> 
+<span class="c1">// 2</span>
+</code></pre></div>
+<p>Or consider the <code>±</code> operator, which can be used either as an <code>infix</code> or <code>prefix</code> to return a tuple with the sum and difference:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kr">infix</span> <span class="kr">operator</span> <span class="err">±</span> <span class="p">{</span> <span class="kr">associativity</span> <span class="kr">left</span> <span class="kr">precedence</span> <span class="mi">140</span> <span class="p">}</span>
+<span class="k">func</span> <span class="err">±</span> <span class="p">(</span><span class="nl">left</span><span class="p">:</span> <span class="n">Double</span><span class="p">,</span> <span class="nl">right</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">Double</span><span class="p">,</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="kr">left</span> <span class="o">+</span> <span class="kr">right</span><span class="p">,</span> <span class="kr">left</span> <span class="o">-</span> <span class="kr">right</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kr">prefix</span> <span class="kr">operator</span> <span class="err">±</span> <span class="p">{}</span>
+<span class="kr">prefix</span> <span class="k">func</span> <span class="err">±</span> <span class="p">(</span><span class="nl">value</span><span class="p">:</span> <span class="n">Double</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">Double</span><span class="p">,</span> <span class="n">Double</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="mi">0</span> <span class="err">±</span> <span class="n">value</span>
+<span class="p">}</span>
+
+<span class="mi">2</span> <span class="err">±</span> <span class="mi">3</span>
+<span class="c1">// (5, -1)</span>
+
+<span class="err">±</span><span class="mi">4</span>
+<span class="c1">// (4, -4)</span>
+</code></pre></div>
+<blockquote>
+<p>For more examples of functions using mathematical notation in Swift, check out <a href="https://github.com/mattt/Euler">Euler</a>.</p>
+</blockquote>
+
+<p>Custom operators are hard to type, and therefore hard to use. <strong>Exercise restraint when using custom operators with exotic symbols</strong>. After all, code should not be copy-pasted.</p>
+
+<hr>
+
+<p>Operators in Swift are among the most interesting and indeed controversial features of this new language.</p>
+
+<p>When overriding or defining new operators in your own code, make sure to follow these guidelines:</p>
+
+<h2 id="guidelines-for-swift-operators">Guidelines for Swift Operators</h2>
+
+<ol>
+<li>Don&rsquo;t create an operator unless its meaning is obvious and undisputed. Seek out any potential conflicts to ensure semantic consistency.</li>
+<li>Custom operators should only be provided as a convenience. Complex functionality should always be implemented in a function, preferably one specified as a generic using a custom protocol.</li>
+<li>Pay attention to the precedence and associativity of custom operators. Find the closest existing class of operators and use the appropriate precedence value.</li>
+<li>If it makes sense, be sure to implement assignment shorthand for a custom operator (e.g. <code>+=</code> for <code>+</code>).</li>
+</ol>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-08-11-swift-operators.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on September 8, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+        
+
+  <section id="promotion">
+    
+    <small>Recommended Reading</small>
+    
+    
+    
+
+<div id="" class="book" itemscope itemtype="http://schema.org/Product">
+  <div itemscope itemtype="http://schema.org/Book">
+    <link itemprop="bookFormat" href="http://schema.org/EBook"/>
+    <a href="https://gum.co/nshipster-swift/" title="NSHipster: Obscure Topics in Cocoa & Swift" target="_blank">
+      <img src="//cdn.nshipster.com/images/nshipster-swift-cover@2x.png" class="cover" alt="NSHipster: Obscure Topics in Cocoa & Swift" itemprop="image"/>
+    </a>
+    <span itemprop="name" style="display:none;" hidden>NSHipster: Obscure Topics in Cocoa & Swift</span>
+    <span itemprop="author" style="display:none;" hidden>Mattt Thompson & Nate Cook</span>
+    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display:none;">
+      <link itemprop="availability" href="http://schema.org/InStock"/>
+      <meta itemprop="priceCurrency" content="USD"/>
+      <span itemprop="price">29</span>
+    </div>
+  </div>
+</div>
+
+    <h3>NSHipster, Second Edition</h3>
+    <h4>Obscure Topics in Cocoa & Swift</h4>
+    <p>Revised and extended to focus on using Swift in iOS and OS X development, NSHipster: Obscure Topics in Cocoa &amp; Swift is an essential updated guide.</p>
+
+    
+    <a class="buy" href="https://gum.co/nshipster-swift/" target="_blank">Buy Now on Gumroad</a>
+    
+  </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/swift-literal-convertible/" title="Swift Literal Convertibles" rel="next">Swift Literal Convertibles</a>
+            </h1>
+
+            <p>Last week, we wrote about overloading and creating custom operators in Swift, a language feature that is as powerful as it is controversial. By all accounts, this week&rsquo;s issue threatens to be equally polarizing, as it covers a feature of Swift that is pervasive, yet invisible: literal convertibles.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/mirrortype/" title="MirrorType">MirrorType</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/swift-objc-runtime/" title="Swift & the Objective-C Runtime">Swift & the Objective-C Runtime</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/guard-and-defer/" title="guard & defer">guard & defer</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/swift-system-version-checking/" title="Swift System Version Checking">Swift System Version Checking</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

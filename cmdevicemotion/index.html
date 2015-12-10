@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>CMDeviceMotion - NSHipster</title>
+    <meta name="description" content="Beneath the smooth glass of each shiny iPhone, nestled on a logic board between touch screen controllers and Apple-designed SoCs, the gyroscope and accelerometer sit largely neglected."/>
+    <link rel="canonical" href="http://nshipster.com/cmdevicemotion/"/>
+  
+  
+  
+  
+  <meta name="author" content="Nate Cook"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@nnnnnnnn"/>
+  
+  
+    <meta name="twitter:title" content="CMDeviceMotion"/>
+    <meta name="twitter:description" content="Beneath the smooth glass of each shiny iPhone, nestled on a logic board between touch screen controllers and Apple-designed SoCs, the gyroscope and accelerometer sit largely neglected."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="CMDeviceMotion"/>
+    <meta property="og:url" content="http://nshipster.com/cmdevicemotion/"/>
+    <meta property="og:description" content="Beneath the smooth glass of each shiny iPhone, nestled on a logic board between touch screen controllers and Apple-designed SoCs, the gyroscope and accelerometer sit largely neglected."/>
+    <meta property="article:published_time" content="2014-10-28T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="CMDeviceMotion"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/cmdevicemotion/">CMDevice​Motion</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/nate-cook/">Nate Cook</a> —
+    
+    <time datetime="2014-10-28T00:00:00-07:00" itemprop="datePublished">October 28<sup>th</sup>, 2014</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Beneath the smooth glass of each shiny iPhone, nestled on a logic board between touch screen controllers and Apple-designed SoCs, the gyroscope and accelerometer sit largely neglected.</p>
+
+<p>Need it be so? The <em><a href="https://developer.apple.com/library/ios/documentation/coremotion/reference/coremotion_reference/index.html">Core Motion framework</a></em> makes it surprisingly easy to harness these sensors, opening the door to user interactions above and beyond the tapping and swiping we do every day.</p>
+
+<blockquote>
+<p>For devices that include the M7 or M8 motion processor, the Core Motion framework also provides access to stored motion activity, such as step counts, stairs climbed, and movement type (walking, cycling, etc.).</p>
+</blockquote>
+
+<hr>
+
+<p>Core Motion allows a developer to observe and respond to the motion and orientation of an iOS device by inspecting the raw and processed data from a combination of built-in sensors, including the accelerometer, gyroscope, and magnetometer.</p>
+
+<p>Both accelerometer and gyroscope data are presented in terms of three axes that run through the iOS device. For an iPhone held in portrait orientation, the X-axis runs through the device from left (negative values) to right (positive values), the Y-axis through the device from bottom (-) to top (+), and the Z-axis runs perpendicularly through the screen from the back (-) to the front (+).</p>
+
+<p>The composited device motion data are presented in a few different ways, each with their own uses, as we&rsquo;ll see below.</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/cmdm-axes.png" alt="Device X-, Y-, and Z-axes"></p>
+
+<h2 id="cmmotionmanager">CMMotionManager</h2>
+
+<p>The <code>CMMotionManager</code> class provides access to all the motion data on an iOS device. Interestingly, Core Motion provides both &ldquo;pull&rdquo; and &ldquo;push&rdquo; access to motion data. To &ldquo;pull&rdquo; motion data, you can access the current status of any sensor or the composited data as read-only properties of <code>CMMotionManager</code>. To receive &ldquo;pushed&rdquo; data, you start the collection of your desired data with a block or closure that receives updates at a specified interval.</p>
+
+<p>To keep performance at the highest level, Apple recommends using a single shared <code>CMMotionManager</code> instance throughout your app.</p>
+
+<p><code>CMMotionManager</code> provides a consistent interface for each of the four motion data types: <code>accelerometer</code>, <code>gyro</code>, <code>magnetometer</code>, and <code>deviceMotion</code>. As an example, here are the ways you can interact with the gyroscope—simply replace <code>gyro</code> with the motion data type you need.</p>
+
+<h4 id="checking-for-availability">Checking for Availability</h4>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">manager</span> <span class="o">=</span> <span class="bp">CMMotionManager</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">manager</span><span class="p">.</span><span class="n">gyroAvailable</span> <span class="p">{</span>
+     <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>To make things simpler and equivalent between Swift and Objective-C, assume we&rsquo;ve declared a <code>manager</code> instance as a view controller property for all the examples to come.</p>
+</blockquote>
+
+<h4 id="setting-the-update-interval">Setting the Update Interval</h4>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">manager</span><span class="p">.</span><span class="n">gyroUpdateInterval</span> <span class="o">=</span> <span class="mf">0.1</span>
+</code></pre></div>
+<p>This is an <code>NSTimeInterval</code>, so specify your update time in seconds: lower for smoother responsiveness, higher for less CPU usage.</p>
+
+<h4 id="starting-updates-to-&quot;pull&quot;-data">Starting Updates to &ldquo;pull&rdquo; Data</h4>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">manager</span><span class="p">.</span><span class="n">startGyroUpdates</span><span class="p">()</span>
+</code></pre></div>
+<p>After this call, <code>manager.gyroData</code> is accessible at any time with the device&rsquo;s current gyroscope data.</p>
+
+<h4 id="starting-updates-to-&quot;push&quot;-data">Starting Updates to &ldquo;push&rdquo; Data</h4>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">queue</span> <span class="o">=</span> <span class="bp">NSOperationQueue</span><span class="p">.</span><span class="n">mainQueue</span>
+<span class="n">manager</span><span class="p">.</span><span class="n">startGyroUpdatesToQueue</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The handler closure will be called at the frequency given by the update interval.</p>
+
+<h4 id="stopping-updates">Stopping Updates</h4>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">manager</span><span class="p">.</span><span class="n">stopGyroUpdates</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="using-the-accelerometer">Using the Accelerometer</h2>
+
+<p>Let&rsquo;s say we want to give the splash page of our app a fun effect, with the background image staying level no matter how the phone is tilted.</p>
+
+<p>Consider the following code:</p>
+
+<p>First, we check to make sure our device makes accelerometer data available, next we specify a very high update rate, and then we begin updates to a closure that will rotate a <code>UIImageView</code> property:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">if</span> <span class="n">manager</span><span class="p">.</span><span class="n">accelerometerAvailable</span> <span class="p">{</span>
+    <span class="n">manager</span><span class="p">.</span><span class="n">accelerometerUpdateInterval</span> <span class="o">=</span> <span class="mf">0.01</span>
+    <span class="n">manager</span><span class="p">.</span><span class="n">startAccelerometerUpdatesToQueue</span><span class="p">(</span><span class="bp">NSOperationQueue</span><span class="p">.</span><span class="n">mainQueue</span><span class="p">())</span> <span class="p">{</span>
+        <span class="p">[</span><span class="k">weak</span> <span class="nb">self</span><span class="p">]</span> <span class="p">(</span><span class="nl">data</span><span class="p">:</span> <span class="bp">CMAccelerometerData</span><span class="o">!</span><span class="p">,</span> <span class="nl">error</span><span class="p">:</span> <span class="bp">NSError</span><span class="o">!</span><span class="p">)</span> <span class="k">in</span>
+
+        <span class="k">let</span> <span class="n">rotation</span> <span class="o">=</span> <span class="n">atan2</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">acceleration</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">acceleration</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">M_PI</span>
+        <span class="nb">self</span><span class="o">?</span><span class="p">.</span><span class="n">imageView</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">CGAffineTransformMakeRotation</span><span class="p">(</span><span class="n">CGFloat</span><span class="p">(</span><span class="n">rotation</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">RotationViewController</span> <span class="o">*</span> <span class="k">__weak</span> <span class="n">weakSelf</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">manager</span><span class="p">.</span><span class="n">accelerometerAvailable</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">manager</span><span class="p">.</span><span class="n">accelerometerUpdateInterval</span> <span class="o">=</span> <span class="mf">0.01f</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">manager</span> <span class="nl">startAccelerometerUpdatesToQueue</span><span class="p">:[</span><span class="bp">NSOperationQueue</span> <span class="n">mainQueue</span><span class="p">]</span>
+                              <span class="nl">withHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">CMAccelerometerData</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">rotation</span> <span class="o">=</span> <span class="n">atan2</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">acceleration</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">acceleration</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">M_PI</span><span class="p">;</span>
+        <span class="n">weakSelf</span><span class="p">.</span><span class="n">imageView</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">CGAffineTransformMakeRotation</span><span class="p">(</span><span class="n">rotation</span><span class="p">);</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Each packet of <code>CMAccelerometerData</code> includes an <code>x</code>, <code>y</code>, and <code>z</code> value—each of these shows the amount of acceleration in Gs (where G is one unit of gravity) for that axis. That is, if your device were stationary and straight up in portrait orientation, it would have acceleration <code>(0, -1, 0)</code>; laying flat on its back on the table would be <code>(0, 0, -1)</code>; and tilted forty-five degrees to the right would be something like <code>(0.707, -0.707, 0)</code>.</p>
+
+<p>We&rsquo;re calculating the rotation by computing the <a href="http://en.wikipedia.org/wiki/Atan2"><code>arctan2</code></a> of the <code>x</code> and <code>y</code> components from the accelerometer data and then using that rotation in a <code>CGAffineTransform</code>. Our image should stay right-side up no matter how the phone is turned—here it is in a hypothetical app for the <em>National Air &amp; Space Museum</em> (my favorite museum as a kid):</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/cmdm-accelerometer.gif" alt="Rotation with accelerometer"></p>
+
+<p>The results are not terribly satisfactory—the image movement is jittery, and moving the device in space affects the accelerometer as much as or even more than rotating. These issues <em>could</em> be mitigated by sampling multiple readings and averaging them together, but instead let&rsquo;s look at what happens when we involve the gyroscope.</p>
+
+<h2 id="adding-the-gyroscope">Adding the Gyroscope</h2>
+
+<p>Rather than use the raw gyroscope data that we would get with <code>startGyroUpdates...</code>, let&rsquo;s get composited gyroscope <em>and</em> accelerometer data from the <code>deviceMotion</code> data type. Using the gyroscope, Core Motion separates user movement from gravitational acceleration and presents each as its own property of the <code>CMDeviceMotion</code> instance that we receive in our handler. The code is very similar to our first example:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">if</span> <span class="n">manager</span><span class="p">.</span><span class="n">deviceMotionAvailable</span> <span class="p">{</span>
+    <span class="n">manager</span><span class="p">.</span><span class="n">deviceMotionUpdateInterval</span> <span class="o">=</span> <span class="mf">0.01</span>
+    <span class="n">manager</span><span class="p">.</span><span class="n">startDeviceMotionUpdatesToQueue</span><span class="p">(</span><span class="bp">NSOperationQueue</span><span class="p">.</span><span class="n">mainQueue</span><span class="p">())</span> <span class="p">{</span>
+        <span class="p">[</span><span class="k">weak</span> <span class="nb">self</span><span class="p">]</span> <span class="p">(</span><span class="nl">data</span><span class="p">:</span> <span class="bp">CMDeviceMotion</span><span class="o">!</span><span class="p">,</span> <span class="nl">error</span><span class="p">:</span> <span class="bp">NSError</span><span class="o">!</span><span class="p">)</span> <span class="k">in</span>
+
+        <span class="k">let</span> <span class="n">rotation</span> <span class="o">=</span> <span class="n">atan2</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">gravity</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">gravity</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">M_PI</span>
+        <span class="nb">self</span><span class="o">?</span><span class="p">.</span><span class="n">imageView</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">CGAffineTransformMakeRotation</span><span class="p">(</span><span class="n">CGFloat</span><span class="p">(</span><span class="n">rotation</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">RotationViewController</span> <span class="o">*</span> <span class="k">__weak</span> <span class="n">weakSelf</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">manager</span><span class="p">.</span><span class="n">deviceMotionAvailable</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">manager</span><span class="p">.</span><span class="n">deviceMotionUpdateInterval</span> <span class="o">=</span> <span class="mf">0.01f</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">manager</span> <span class="nl">startDeviceMotionUpdatesToQueue</span><span class="p">:[</span><span class="bp">NSOperationQueue</span> <span class="n">mainQueue</span><span class="p">]</span>
+                                       <span class="nl">withHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">CMDeviceMotion</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">double</span> <span class="n">rotation</span> <span class="o">=</span> <span class="n">atan2</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">gravity</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">data</span><span class="p">.</span><span class="n">gravity</span><span class="p">.</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">M_PI</span><span class="p">;</span>
+        <span class="n">weakSelf</span><span class="p">.</span><span class="n">imageView</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">CGAffineTransformMakeRotation</span><span class="p">(</span><span class="n">rotation</span><span class="p">);</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Much better!</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/cmdm-gravity.gif" alt="Rotation with gravity"></p>
+
+<h2 id="uiclunkcontroller">UIClunkController</h2>
+
+<p>We can also use the other, non-gravity portion of this composited gyro/acceleration data to add new methods of interaction. In this case, let&rsquo;s use the <code>userAcceleration</code> property of <code>CMDeviceMotion</code> to navigate backward whenever a user taps the left side of her device against her hand.</p>
+
+<p>Remember that the X-axis runs laterally through the device in our hand, with negative values to the left. If we sense a <em>user</em> acceleration to the left of more than 2.5 Gs, that will be the cue to pop our view controller from the stack. The implementation is only a couple lines different from our previous example:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">if</span> <span class="n">manager</span><span class="p">.</span><span class="n">deviceMotionAvailable</span> <span class="p">{</span>
+    <span class="n">manager</span><span class="p">.</span><span class="n">deviceMotionUpdateInterval</span> <span class="o">=</span> <span class="mf">0.02</span>
+    <span class="n">manager</span><span class="p">.</span><span class="n">startDeviceMotionUpdatesToQueue</span><span class="p">(</span><span class="bp">NSOperationQueue</span><span class="p">.</span><span class="n">mainQueue</span><span class="p">())</span> <span class="p">{</span>
+        <span class="p">[</span><span class="k">weak</span> <span class="nb">self</span><span class="p">]</span> <span class="p">(</span><span class="nl">data</span><span class="p">:</span> <span class="bp">CMDeviceMotion</span><span class="o">!</span><span class="p">,</span> <span class="nl">error</span><span class="p">:</span> <span class="bp">NSError</span><span class="o">!</span><span class="p">)</span> <span class="k">in</span>
+
+        <span class="k">if</span> <span class="n">data</span><span class="p">.</span><span class="n">userAcceleration</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">2.5</span> <span class="p">{</span>
+            <span class="nb">self</span><span class="o">?</span><span class="p">.</span><span class="n">navigationController</span><span class="o">?</span><span class="p">.</span><span class="n">popViewControllerAnimated</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">ClunkViewController</span> <span class="o">*</span> <span class="k">__weak</span> <span class="n">weakSelf</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">manager</span><span class="p">.</span><span class="n">deviceMotionAvailable</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">manager</span><span class="p">.</span><span class="n">deviceMotionUpdateInterval</span> <span class="o">=</span> <span class="mf">0.01f</span><span class="p">;</span>
+    <span class="p">[</span><span class="n">manager</span> <span class="nl">startDeviceMotionUpdatesToQueue</span><span class="p">:[</span><span class="bp">NSOperationQueue</span> <span class="n">mainQueue</span><span class="p">]</span>
+                                       <span class="nl">withHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">CMDeviceMotion</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">userAcceleration</span><span class="p">.</span><span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">2.5f</span><span class="p">)</span> <span class="p">{</span>
+            <span class="p">[</span><span class="n">weakSelf</span><span class="p">.</span><span class="n">navigationController</span> <span class="nl">popViewControllerAnimated</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>And it works like a charm—tapping the device in a detail view immediately takes us back to the list of exhibits:</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/cmdm-clunk.gif" alt="Clunk to go back"></p>
+
+<h2 id="getting-an-attitude">Getting an Attitude</h2>
+
+<p>Better acceleration data isn&rsquo;t the only thing we gain by including gyroscope data—we now also know the device&rsquo;s true orientation in space. We find this data in the <code>attitude</code> property of <code>CMDeviceMotion</code>, an instance of <code>CMAttitude</code>. <code>CMAttitude</code> contains three different representations of the device&rsquo;s orientation: Euler angles, a quaternion, and a rotation matrix. Each of these is in relation to a given reference frame.</p>
+
+<h3 id="finding-a-frame-of-reference">Finding a Frame of Reference</h3>
+
+<p>You can think of a reference frame as the resting orientation of the device from which an attitude is calculated. All four possible reference frames describe the device laying flat on a table, with increasing specificity about the direction it&rsquo;s pointing.</p>
+
+<ul>
+<li><code>CMAttitudeReferenceFrameXArbitraryZVertical</code> describes a device laying flat (vertical Z-axis) with an &ldquo;arbitrary&rdquo; X-axis. In practice, the X-axis is fixed to the orientation of the device when you <em>first</em> start device motion updates.</li>
+<li><code>CMAttitudeReferenceFrameXArbitraryCorrectedZVertical</code> is essentially the same but uses the magnetometer to correct possible variation in the gyroscope&rsquo;s measurement over time. Using the magnetometer adds a CPU (and therefore battery) cost.</li>
+<li><code>CMAttitudeReferenceFrameXMagneticNorthZVertical</code> describes a device laying flat, with its X-axis (i.e., the right side of the device) pointed toward magnetic north. This setting may require your user to perform that figure-eight motion with their device to calibrate the magnetometer.</li>
+<li><code>CMAttitudeReferenceFrameXTrueNorthZVertical</code> is the same as the last, but this adjusts for the magnetic/true north discrepancy and therefore requires location data in addition to the magnetometer.</li>
+</ul>
+
+<p>For our purposes, the default &ldquo;arbitrary&rdquo; reference frame will be fine - you&rsquo;ll see why in a moment.</p>
+
+<h3 id="euler-angles">Euler Angles</h3>
+
+<p>Of the three attitude representations, Euler angles are the most readily understood, as they simply describe rotation around each of the axes we&rsquo;ve already been working with. <code>pitch</code> is rotation around the X-axis, increasing as the device tilts toward you, decreasing as it tilts away; <code>roll</code> is rotation around the Y-axis, decreasing as the device rotates to the left, increasing to the right; and <code>yaw</code> is rotation around the (vertical) Z-axis, decreasing clockwise, increasing counter-clockwise.</p>
+
+<blockquote>
+<p>Each of these values follows what&rsquo;s called the &ldquo;right hand rule&rdquo;: make a cupped hand with your thumb pointing up and point your thumb in the direction of any of the three axes. Turns that move toward your fingertips are positive, turns away are negative.</p>
+</blockquote>
+
+<h3 id="keep-it-to-yourself">Keep It To Yourself</h3>
+
+<p>Lastly, let&rsquo;s try using the device&rsquo;s attitude to enable a new interaction for a flash-card app, designed to be used by two study buddies. Instead of manually switching between the prompt and the answer, we&rsquo;ll automatically switch the view as the device turns around, so the quizzer sees the answer while the person being quizzed only sees the prompt.</p>
+
+<p>Figuring out this switch from the reference frame would be tricky. To know which angles to monitor, we would somehow need to take into account the starting orientation of the device and then determine which direction the device is pointing. Instead, we can save a <code>CMAttitude</code> instance and use it as the &ldquo;zero point&rdquo; for an adjusted set of Euler angles, calling the <code>multiplyByInverseOfAttitude()</code> method to translate all future attitude updates.</p>
+
+<p>When the quizzer taps the button to begin the quiz, we first configure the interaction—note the &ldquo;pull&rdquo; of the deviceMotion for <code>initialAttitude</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// get magnitude of vector via Pythagorean theorem</span>
+<span class="k">func</span> <span class="n">magnitudeFromAttitude</span><span class="p">(</span><span class="nl">attitude</span><span class="p">:</span> <span class="bp">CMAttitude</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Double</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">pow</span><span class="p">(</span><span class="n">attitude</span><span class="p">.</span><span class="n">roll</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">pow</span><span class="p">(</span><span class="n">attitude</span><span class="p">.</span><span class="n">yaw</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">pow</span><span class="p">(</span><span class="n">attitude</span><span class="p">.</span><span class="n">pitch</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="c1">// initial configuration</span>
+<span class="k">var</span> <span class="n">initialAttitude</span> <span class="o">=</span> <span class="n">manager</span><span class="p">.</span><span class="n">deviceMotion</span><span class="p">.</span><span class="n">attitude</span>
+<span class="k">var</span> <span class="n">showingPrompt</span> <span class="o">=</span> <span class="nb">false</span>
+
+<span class="c1">// trigger values - a gap so there isn&#39;t a flicker zone</span>
+<span class="k">let</span> <span class="n">showPromptTrigger</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="k">let</span> <span class="n">showAnswerTrigger</span> <span class="o">=</span> <span class="mf">0.8</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="c1">// --- class method to get magnitude of vector via Pythagorean theorem</span>
+<span class="p">+</span> <span class="p">(</span><span class="kt">double</span><span class="p">)</span><span class="nf">magnitudeFromAttitude:</span><span class="p">(</span><span class="bp">CMAttitude</span> <span class="o">*</span><span class="p">)</span><span class="nv">attitude</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">pow</span><span class="p">(</span><span class="n">attitude</span><span class="p">.</span><span class="n">roll</span><span class="p">,</span> <span class="mf">2.0f</span><span class="p">)</span> <span class="o">+</span> <span class="n">pow</span><span class="p">(</span><span class="n">attitude</span><span class="p">.</span><span class="n">yaw</span><span class="p">,</span> <span class="mf">2.0f</span><span class="p">)</span> <span class="o">+</span> <span class="n">pow</span><span class="p">(</span><span class="n">attitude</span><span class="p">.</span><span class="n">pitch</span><span class="p">,</span> <span class="mf">2.0f</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="c1">// --- In @IBAction handler</span>
+<span class="c1">// initial configuration</span>
+<span class="bp">CMAttitude</span> <span class="o">*</span><span class="n">initialAttitude</span> <span class="o">=</span> <span class="n">manager</span><span class="p">.</span><span class="n">deviceMotion</span><span class="p">.</span><span class="n">attitude</span><span class="p">;</span>
+<span class="k">__block</span> <span class="kt">BOOL</span> <span class="n">showingPrompt</span> <span class="o">=</span> <span class="nb">NO</span><span class="p">;</span>
+
+<span class="c1">// trigger values - a gap so there isn&#39;t a flicker zone</span>
+<span class="kt">double</span> <span class="n">showPromptTrigger</span> <span class="o">=</span> <span class="mf">1.0f</span><span class="p">;</span>
+<span class="kt">double</span> <span class="n">showAnswerTrigger</span> <span class="o">=</span> <span class="mf">0.8f</span><span class="p">;</span>
+</code></pre></div>
+<p>Then, in our now familiar call to <code>startDeviceMotionUpdates</code>, we calculate the magnitude of the vector described by the three Euler angles and use that as a trigger to show or hide the prompt view:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">if</span> <span class="n">manager</span><span class="p">.</span><span class="n">deviceMotionAvailable</span> <span class="p">{</span>
+    <span class="n">manager</span><span class="p">.</span><span class="n">startDeviceMotionUpdatesToQueue</span><span class="p">(</span><span class="bp">NSOperationQueue</span><span class="p">.</span><span class="n">mainQueue</span><span class="p">())</span> <span class="p">{</span>
+        <span class="p">[</span><span class="k">weak</span> <span class="nb">self</span><span class="p">]</span> <span class="p">(</span><span class="nl">data</span><span class="p">:</span> <span class="bp">CMDeviceMotion</span><span class="o">!</span><span class="p">,</span> <span class="nl">error</span><span class="p">:</span> <span class="bp">NSError</span><span class="o">!</span><span class="p">)</span> <span class="k">in</span>
+
+        <span class="c1">// translate the attitude</span>
+        <span class="n">data</span><span class="p">.</span><span class="n">attitude</span><span class="p">.</span><span class="n">multiplyByInverseOfAttitude</span><span class="p">(</span><span class="n">initialAttitude</span><span class="p">)</span>
+
+        <span class="c1">// calculate magnitude of the change from our initial attitude</span>
+        <span class="k">let</span> <span class="n">magnitude</span> <span class="o">=</span> <span class="n">magnitudeFromAttitude</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">attitude</span><span class="p">)</span> <span class="o">??</span> <span class="mi">0</span>
+
+        <span class="c1">// show the prompt</span>
+        <span class="k">if</span> <span class="o">!</span><span class="n">showingPrompt</span> <span class="o">&amp;&amp;</span> <span class="n">magnitude</span> <span class="o">&gt;</span> <span class="n">showPromptTrigger</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="k">let</span> <span class="n">promptViewController</span> <span class="o">=</span> <span class="nb">self</span><span class="o">?</span><span class="p">.</span><span class="n">storyboard</span><span class="o">?</span><span class="p">.</span><span class="n">instantiateViewControllerWithIdentifier</span><span class="p">(</span><span class="s">&quot;PromptViewController&quot;</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="n">PromptViewController</span> <span class="p">{</span>
+                <span class="n">showingPrompt</span> <span class="o">=</span> <span class="nb">true</span>
+
+                <span class="n">promptViewController</span><span class="p">.</span><span class="n">modalTransitionStyle</span> <span class="o">=</span> <span class="n">UIModalTransitionStyle</span><span class="p">.</span><span class="n">CrossDissolve</span>
+                <span class="nb">self</span><span class="o">!</span><span class="p">.</span><span class="n">presentViewController</span><span class="p">(</span><span class="n">promptViewController</span><span class="p">,</span> <span class="nl">animated</span><span class="p">:</span> <span class="nb">true</span><span class="p">,</span> <span class="nl">completion</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">// hide the prompt</span>
+        <span class="k">if</span> <span class="n">showingPrompt</span> <span class="o">&amp;&amp;</span> <span class="n">magnitude</span> <span class="o">&lt;</span> <span class="n">showAnswerTrigger</span> <span class="p">{</span>
+            <span class="n">showingPrompt</span> <span class="o">=</span> <span class="nb">false</span>
+            <span class="nb">self</span><span class="o">?</span><span class="p">.</span><span class="n">dismissViewControllerAnimated</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span> <span class="nl">completion</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">FacingViewController</span> <span class="o">*</span> <span class="k">__weak</span> <span class="n">weakSelf</span> <span class="o">=</span> <span class="nb">self</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">manager</span><span class="p">.</span><span class="n">deviceMotionAvailable</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">manager</span> <span class="nl">startDeviceMotionUpdatesToQueue</span><span class="p">:[</span><span class="bp">NSOperationQueue</span> <span class="n">mainQueue</span><span class="p">]</span>
+                                       <span class="nl">withHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">CMDeviceMotion</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="c1">// translate the attitude</span>
+        <span class="p">[</span><span class="n">data</span><span class="p">.</span><span class="n">attitude</span> <span class="nl">multiplyByInverseOfAttitude</span><span class="p">:</span><span class="n">initialAttitude</span><span class="p">];</span>
+
+        <span class="c1">// calculate magnitude of the change from our initial attitude</span>
+        <span class="kt">double</span> <span class="n">magnitude</span> <span class="o">=</span> <span class="p">[</span><span class="n">FacingViewController</span> <span class="nl">magnitudeFromAttitude</span><span class="p">:</span><span class="n">data</span><span class="p">.</span><span class="n">attitude</span><span class="p">];</span>
+
+        <span class="c1">// show the prompt</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">showingPrompt</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">magnitude</span> <span class="o">&gt;</span> <span class="n">showPromptTrigger</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">showingPrompt</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+
+            <span class="n">PromptViewController</span> <span class="o">*</span><span class="n">promptViewController</span> <span class="o">=</span> <span class="p">[</span><span class="n">weakSelf</span><span class="p">.</span><span class="n">storyboard</span> <span class="nl">instantiateViewControllerWithIdentifier</span><span class="p">:</span><span class="s">@&quot;PromptViewController&quot;</span><span class="p">];</span>
+            <span class="n">promptViewController</span><span class="p">.</span><span class="n">modalTransitionStyle</span> <span class="o">=</span> <span class="n">UIModalTransitionStyleCrossDissolve</span><span class="p">;</span>
+            <span class="p">[</span><span class="n">weakSelf</span> <span class="nl">presentViewController</span><span class="p">:</span><span class="n">promptViewController</span> <span class="nl">animated</span><span class="p">:</span><span class="nb">YES</span> <span class="nl">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="c1">// hide the prompt</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">showingPrompt</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">magnitude</span> <span class="o">&lt;</span> <span class="n">showAnswerTrigger</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">showingPrompt</span> <span class="o">=</span> <span class="nb">NO</span><span class="p">;</span>
+            <span class="p">[</span><span class="n">weakSelf</span> <span class="nl">dismissViewControllerAnimated</span><span class="p">:</span><span class="nb">YES</span> <span class="nl">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Having implemented all that, let&rsquo;s take a look at the interaction. As the device rotates, the display automatically switches views and the quizee never sees the answer:</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/cmdm-prompt.gif" alt="Prompt by turning the device"></p>
+
+<h3 id="further-reading">Further Reading</h3>
+
+<p>I skimmed over the <a href="http://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation">quaternion</a> and <a href="http://en.wikipedia.org/wiki/Rotation_matrix">rotation matrix</a> components of <code>CMAttitude</code> earlier, but they are not without intrigue. The quaternion, in particular, has <a href="http://en.wikipedia.org/wiki/History_of_quaternions">an interesting history</a>, and will bake your noodle if you think about it long enough.</p>
+
+<h2 id="queueing-up">Queueing Up</h2>
+
+<p>To keep the code examples readable, we&rsquo;ve been sending all our <code>CoreMotionManager</code> updates to the main queue. As a best practice, it would be better to have these updates on their own queue so they can&rsquo;t slow down user interaction, but then we&rsquo;ll need to get back on the main queue to update user interface elements. <a href="http://nshipster.com/nsoperation/"><code>NSOperationQueue</code></a> makes this easy with its <code>addOperationWithBlock</code> method:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">queue</span> <span class="o">=</span> <span class="bp">NSOperationQueue</span><span class="p">()</span>
+<span class="n">manager</span><span class="p">.</span><span class="n">startDeviceMotionUpdatesToQueue</span><span class="p">(</span><span class="n">queue</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="k">weak</span> <span class="nb">self</span><span class="p">]</span> <span class="p">(</span><span class="nl">data</span><span class="p">:</span> <span class="bp">CMDeviceMotion</span><span class="o">!</span><span class="p">,</span> <span class="nl">error</span><span class="p">:</span> <span class="bp">NSError</span><span class="o">!</span><span class="p">)</span> <span class="k">in</span>
+
+    <span class="c1">// motion processing here</span>
+
+    <span class="bp">NSOperationQueue</span><span class="p">.</span><span class="n">mainQueue</span><span class="p">().</span><span class="n">addOperationWithBlock</span> <span class="p">{</span>
+        <span class="c1">// update UI here</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSOperationQueue</span> <span class="o">*</span><span class="n">queue</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSOperationQueue</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="p">[</span><span class="n">manager</span> <span class="nl">startDeviceMotionUpdatesToQueue</span><span class="p">:</span><span class="n">queue</span>
+                             <span class="nl">withHandler</span><span class="p">:</span>
+<span class="o">^</span><span class="p">(</span><span class="bp">CMDeviceMotion</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// motion processing here</span>
+
+    <span class="p">[[</span><span class="bp">NSOperationQueue</span> <span class="n">mainQueue</span><span class="p">]</span> <span class="nl">addOperationWithBlock</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
+        <span class="c1">// update UI here</span>
+    <span class="p">}];</span>
+<span class="p">}];</span>
+</code></pre></div>
+<hr>
+
+<p>As a final note, clearly not all interactions made possible by Core Motion are good ones. Navigation through motion can be fun but also hard to discover or easy to accidentally trigger; purposeless animations can make it harder to focus on the task at hand. Prudent developers will skip over gimmicks that distract and find ways to use device motion that enrich their apps and delight their users.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-10-28-cmdevicemotion.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 1.0.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Nate Cook" itemprop="image" src="http://nshipster.s3.amazonaws.com/nate-cook.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/nate-cook/">Nate Cook</a></span>
+
+      <p><a href="http://natecook.com">Nate Cook</a> (<a href="https://twitter.com/nnnnnnnn">@nnnnnnnn</a>) is an independent web and application developer who <a href="http://natecook.com/blog/">writes frequently about topics in Swift</a>, and the creator of <a href="http://swiftdoc.org">SwiftDoc.org</a>.</p>
+
+
+      
+        <a href="https://plus.google.com/?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/uisplitviewcontroller/" title="UISplitViewController" rel="next">UISplit​View​Controller</a>
+            </h1>
+
+            <p>The introduction of iPhone 6+ brought on a new importance for UISplitViewController. With just a few little tweaks, an app can now become Universal, with Apple handling most of the UI logic for all the different screen sizes.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nscoding/" title="NSCoding / NSKeyedArchiver">NSCoding / NSKeyedArchiver</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nserror/" title="NSError">NSError</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/uiactivityviewcontroller/" title="UIActivityViewController">UIActivityViewController</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/dictionary-services/" title="UIReferenceLibraryViewController /<br/>DCSDictionaryRef/<br/>/usr/share/dict/words">UIReferenceLibraryViewController /<br/>DCSDictionaryRef/<br/>/usr/share/dict/words</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

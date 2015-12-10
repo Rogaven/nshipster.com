@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSDataDetector - NSHipster</title>
+    <meta name="description" content="Until humanity embraces RDF for all of their daily interactions, a large chunk of artificial intelligence is going to go into figuring out what the heck we're all talking about. Fortunately for Cocoa developers, there's NSDataDetector."/>
+    <link rel="canonical" href="http://nshipster.com/nsdatadetector/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="NSDataDetector"/>
+    <meta name="twitter:description" content="Until humanity embraces RDF for all of their daily interactions, a large chunk of artificial intelligence is going to go into figuring out what the heck we&#39;re all talking about. Fortunately for Cocoa developers, there&#39;s NSDataDetector."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NSDataDetector"/>
+    <meta property="og:url" content="http://nshipster.com/nsdatadetector/"/>
+    <meta property="og:description" content="Until humanity embraces RDF for all of their daily interactions, a large chunk of artificial intelligence is going to go into figuring out what the heck we&#39;re all talking about. Fortunately for Cocoa developers, there&#39;s NSDataDetector."/>
+    <meta property="article:published_time" content="2013-06-02T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NSDataDetector"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/nsdatadetector/">NSData​Detector</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-06-02T00:00:00-07:00" itemprop="datePublished">June 2<sup>nd</sup>, 2013</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Machines speak in binary, while humans speak in riddles, half-truths, and omissions.</p>
+
+<p>And until humanity embraces <a href="http://en.wikipedia.org/wiki/Resource_Description_Framework">RDF</a> for all of their daily interactions, a large chunk of artificial intelligence is going to go into figuring out what the heck we&rsquo;re all talking about.</p>
+
+<p>Because in the basic interactions of our daily lives—meeting people, making plans, finding information online—there is immense value in automatically converting from implicit human language to explicit structured data, so that it can be easily added to our calendars, address books, maps, and reminders.</p>
+
+<p>Fortunately for Cocoa developers, there&rsquo;s an easy solution: <code>NSDataDetector</code>.</p>
+
+<hr>
+
+<p><code>NSDataDetector</code> is a subclass of <a href="https://developer.apple.com/library/mac/#documentation/Foundation/Reference/NSRegularExpression_Class/Reference/Reference.html"><code>NSRegularExpression</code></a>, but instead of matching on an ICU pattern, it detects semi-structured information: dates, addresses, links, phone numbers and transit information.</p>
+
+<p>It does all of this with frightening accuracy. <code>NSDataDetector</code> will match flight numbers, address snippets, oddly formatted digits, and even relative deictic expressions like &ldquo;next Saturday at 5&rdquo;.</p>
+
+<p>You can think of it as a regexp matcher with incredibly complicated expressions that can extract information from natural language (though its actual implementation details may be somewhat more complicated than that).</p>
+
+<p><code>NSDataDetector</code> objects are initialized with a bitmask of types of information to check, and then passed strings to match on. Like <code>NSRegularExpression</code>, each match found in a string is represented by a <code>NSTextCheckingResult</code>, which has details like character range and match type. However, <code>NSDataDetector</code>-specific types may also contain metadata such as address or date components.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="s">&quot;123 Main St. / (555) 555-5555&quot;</span>
+<span class="k">let</span> <span class="nl">types</span><span class="p">:</span> <span class="n">NSTextCheckingType</span> <span class="o">=</span> <span class="p">[.</span><span class="n">Address</span><span class="p">,</span> <span class="p">.</span><span class="n">PhoneNumber</span><span class="p">]</span>
+<span class="k">let</span> <span class="n">detector</span> <span class="o">=</span> <span class="n">try</span><span class="o">?</span> <span class="bp">NSDataDetector</span><span class="p">(</span><span class="nl">types</span><span class="p">:</span> <span class="n">types</span><span class="p">.</span><span class="n">rawValue</span><span class="p">)</span>
+<span class="n">detector</span><span class="o">?</span><span class="p">.</span><span class="n">enumerateMatchesInString</span><span class="p">(</span><span class="n">string</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">[],</span> <span class="nl">range</span><span class="p">:</span> <span class="n">NSMakeRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">string</span> <span class="kt">as</span> <span class="bp">NSString</span><span class="p">).</span><span class="n">length</span><span class="p">))</span> <span class="p">{</span> <span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="k">in</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+<span class="bp">NSDataDetector</span> <span class="o">*</span><span class="n">detector</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSDataDetector</span> <span class="nl">dataDetectorWithTypes</span><span class="p">:</span><span class="n">NSTextCheckingTypeAddress</span>
+                                                        <span class="o">|</span> <span class="n">NSTextCheckingTypePhoneNumber</span>
+                                                           <span class="nl">error</span><span class="p">:</span><span class="o">&amp;</span><span class="n">error</span><span class="p">];</span>
+
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">string</span> <span class="o">=</span> <span class="s">@&quot;123 Main St. / (555) 555-5555&quot;</span><span class="p">;</span>
+<span class="p">[</span><span class="n">detector</span> <span class="nl">enumerateMatchesInString</span><span class="p">:</span><span class="n">string</span>
+                           <span class="nl">options</span><span class="p">:</span><span class="n">kNilOptions</span>
+                             <span class="nl">range</span><span class="p">:</span><span class="n">NSMakeRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">string</span> <span class="n">length</span><span class="p">])</span>
+                        <span class="nl">usingBlock</span><span class="p">:</span>
+<span class="o">^</span><span class="p">(</span><span class="bp">NSTextCheckingResult</span> <span class="o">*</span><span class="n">result</span><span class="p">,</span> <span class="n">NSMatchingFlags</span> <span class="n">flags</span><span class="p">,</span> <span class="kt">BOOL</span> <span class="o">*</span><span class="n">stop</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Match: %@&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+<span class="p">}];</span>
+</code></pre></div>
+<blockquote>
+<p>When initializing <code>NSDataDetector</code>, be sure to specify only the types you&rsquo;re interested in. With each additional type to be checked comes a nontrivial performance cost.</p>
+</blockquote>
+
+<h2 id="data-detector-match-types">Data Detector Match Types</h2>
+
+<p>Because of how much <code>NSTextCheckingResult</code> is used for, it&rsquo;s not immediately clear which properties are specific to <code>NSDataDetector</code>. For your reference, here is a table of the different <code>NSTextCheckingTypes</code> for <code>NSDataDetector</code> matches, and their associated properties:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Properties</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td><tt>NSTextCheckingTypeDate</tt></td>
+      <td>
+        <ul>
+          <li><tt>date</tt></li>
+          <li><tt>duration</tt></li>
+          <li><tt>timeZone</tt></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><tt>NSTextCheckingTypeAddress</tt></td>
+      <td>
+        <ul>
+          <li><tt>addressComponents</tt><sup>*</sup></li>
+          <ul>
+            <li><tt>NSTextCheckingNameKey</tt></li>
+            <li><tt>NSTextCheckingJobTitleKey</tt></li>
+            <li><tt>NSTextCheckingOrganizationKey</tt></li>
+            <li><tt>NSTextCheckingStreetKey</tt></li>
+            <li><tt>NSTextCheckingCityKey</tt></li>
+            <li><tt>NSTextCheckingStateKey</tt></li>
+            <li><tt>NSTextCheckingZIPKey</tt></li>
+            <li><tt>NSTextCheckingCountryKey</tt></li>
+            <li><tt>NSTextCheckingPhoneKey</tt></li>
+          </ul>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><tt>NSTextCheckingTypeLink</tt></td>
+      <td>
+        <ul>
+          <li><tt>url</tt></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><tt>NSTextCheckingTypePhoneNumber</tt></td>
+      <td>
+        <ul>
+          <li><tt>phoneNumber</tt></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><tt>NSTextCheckingTypeTransitInformation</tt></td>
+      <td>
+        <ul>
+          <li><tt>components</tt><sup>*</sup></li>
+          <ul>
+            <li><tt>NSTextCheckingAirlineKey</tt></li>
+            <li><tt>NSTextCheckingFlightKey</tt></li>
+          </ul>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2"><sup>*</sup> <tt>NSDictionary</tt> properties have values at defined keys.
+  </tfoot>
+</table>
+
+<h2 id="data-detection-on-ios">Data Detection on iOS</h2>
+
+<p>Somewhat confusingly, iOS also defines <code>UIDataDetectorTypes</code>. A bitmask of these values can be set as the <code>dataDetectorTypes</code> of a <code>UITextView</code> to have detected data automatically linked in the displayed text.</p>
+
+<p><code>UIDataDetectorTypes</code> is distinct from <code>NSTextCheckingTypes</code> in that equivalent enum constants (e.g. <code>UIDataDetectorTypePhoneNumber</code> and <code>NSTextCheckingTypePhoneNumber</code>) do not have the same integer value, and not all values in one are found in the other. Converting from <code>UIDataDetectorTypes</code> to <code>NSTextCheckingTypes</code> can be accomplished with a function:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="nf">NSTextCheckingTypesFromUIDataDetectorTypes</span><span class="p">(</span><span class="nl">dataDetectorType</span><span class="p">:</span> <span class="n">UIDataDetectorTypes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NSTextCheckingType</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nl">textCheckingType</span><span class="p">:</span> <span class="n">NSTextCheckingType</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">if</span> <span class="n">dataDetectorType</span><span class="p">.</span><span class="n">contains</span><span class="p">(.</span><span class="n">Address</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">textCheckingType</span><span class="p">.</span><span class="n">insert</span><span class="p">(.</span><span class="n">Address</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">dataDetectorType</span><span class="p">.</span><span class="n">contains</span><span class="p">(.</span><span class="n">CalendarEvent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">textCheckingType</span><span class="p">.</span><span class="n">insert</span><span class="p">(.</span><span class="n">Date</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">dataDetectorType</span><span class="p">.</span><span class="n">contains</span><span class="p">(.</span><span class="n">Link</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">textCheckingType</span><span class="p">.</span><span class="n">insert</span><span class="p">(.</span><span class="n">Link</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">dataDetectorType</span><span class="p">.</span><span class="n">contains</span><span class="p">(.</span><span class="n">PhoneNumber</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">textCheckingType</span><span class="p">.</span><span class="n">insert</span><span class="p">(.</span><span class="n">PhoneNumber</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">textCheckingType</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">static</span> <span class="kr">inline</span> <span class="n">NSTextCheckingType</span> <span class="nf">NSTextCheckingTypesFromUIDataDetectorTypes</span><span class="p">(</span><span class="n">UIDataDetectorTypes</span> <span class="n">dataDetectorType</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSTextCheckingType</span> <span class="n">textCheckingType</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">dataDetectorType</span> <span class="o">&amp;</span> <span class="n">UIDataDetectorTypeAddress</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">textCheckingType</span> <span class="o">|=</span> <span class="n">NSTextCheckingTypeAddress</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">dataDetectorType</span> <span class="o">&amp;</span> <span class="n">UIDataDetectorTypeCalendarEvent</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">textCheckingType</span> <span class="o">|=</span> <span class="n">NSTextCheckingTypeDate</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">dataDetectorType</span> <span class="o">&amp;</span> <span class="n">UIDataDetectorTypeLink</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">textCheckingType</span> <span class="o">|=</span> <span class="n">NSTextCheckingTypeLink</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">dataDetectorType</span> <span class="o">&amp;</span> <span class="n">UIDataDetectorTypePhoneNumber</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">textCheckingType</span> <span class="o">|=</span> <span class="n">NSTextCheckingTypePhoneNumber</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">textCheckingType</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<p>Do I detect some disbelief of how easy it is to translate between natural language and structured data? This should not be surprising, given how <a href="http://nshipster.com/cfstringtransform/">insanely</a> <a href="http://nshipster.com/nslinguistictagger/">great</a> Cocoa&rsquo;s linguistic APIs are.</p>
+
+<p>Don&rsquo;t make your users re-enter information by hand just because of a programming oversight. Take advantage of <code>NSDataDetector</code> in your app to unlock the structured information already hiding in plain sight.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-06-02-nsdatadetector.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on September 8, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nshipster-quiz-2/" title="NSHipster Quiz #2" rel="next">NSHipster Quiz #2</a>
+            </h1>
+
+            <p>Go up against some of the brightest minds in all things Apple at this special WWDC edition of NSHipster Quiz. Sure, you conform to the NSHipster protocol, but do you have what it takes to implement all of the @optional methods? Take the quiz and see for yourself!</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nslocalizedstring/" title="NSLocalizedString">NSLocalizedString</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsundomanager/" title="NSUndoManager">NSUndoManager</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/core-location-in-ios-8/" title="Core Location in iOS 8">Core Location in iOS 8</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsincrementalstore/" title="NSIncrementalStore">NSIncrementalStore</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

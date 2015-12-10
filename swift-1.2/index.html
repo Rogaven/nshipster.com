@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>Swift 1.2 - NSHipster</title>
+    <meta name="description" content="Swift, true to its name, is moving fast. With the beta release of Swift 1.2, the Swift team has responded to so many of the community's requests in one fell swoop, we're overflowing with new and exciting features. This week, take a look at two major aspects of the release that will significantly improve the experience of working in Swift: first, big changes in `if let` optional binding, and second, new access to nullability annotations in Objective-C."/>
+    <link rel="canonical" href="http://nshipster.com/swift-1.2/"/>
+  
+  
+  
+  
+  <meta name="author" content="Nate Cook"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@nnnnnnnn"/>
+  
+  
+    <meta name="twitter:title" content="Swift 1.2"/>
+    <meta name="twitter:description" content="Swift, true to its name, is moving fast. With the beta release of Swift 1.2, the Swift team has responded to so many of the community&#39;s requests in one fell swoop, we&#39;re overflowing with new and exciting features. This week, take a look at two major aspects of the release that will significantly improve the experience of working in Swift: first, big changes in `if let` optional binding, and second, new access to nullability annotations in Objective-C."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Swift 1.2"/>
+    <meta property="og:url" content="http://nshipster.com/swift-1.2/"/>
+    <meta property="og:description" content="Swift, true to its name, is moving fast. With the beta release of Swift 1.2, the Swift team has responded to so many of the community&#39;s requests in one fell swoop, we&#39;re overflowing with new and exciting features. This week, take a look at two major aspects of the release that will significantly improve the experience of working in Swift: first, big changes in `if let` optional binding, and second, new access to nullability annotations in Objective-C."/>
+    <meta property="article:published_time" content="2015-02-09T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="swift"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="Swift 1.2"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content=""/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/swift-1.2/">Swift 1.2</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/nate-cook/">Nate Cook</a> —
+    
+    <time datetime="2015-02-09T00:00:00-08:00" itemprop="datePublished">February 9<sup>th</sup>, 2015</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Swift, true to its name, is moving fast. This week marks the beta release of Swift 1.2, a <em>major</em> update to the language. The Swift team has responded to so many of the community&rsquo;s requests in one fell swoop, we&rsquo;re overflowing with new and exciting features. Every line-item in this announcement is a big advancement: incremental builds, improved error messages and stability in Xcode, static class properties, support for C unions and bitfields, bridging of Swift <code>enum</code>s to Objective-C, safer type casting, improvements to single-line closures, and more.</p>
+
+<p>In what follows, let&rsquo;s look at two major aspects of the release that will significantly improve the experience of working in Swift: first, big changes in <code>if let</code> optional binding (<em>&ldquo;finally&rdquo;</em>), and second, new access to nullability annotations in Objective-C.</p>
+
+<h2 id="improved-optional-binding">Improved Optional Binding</h2>
+
+<p>Swift 1.2 allows multiple simultaneous optional bindings, providing an escape from the trap of needing deeply nested <code>if let</code> statements to unwrap multiple values. Multiple optional bindings are separated by commas and can be paired with a <code>where</code> clause that acts like the expression in a traditional <code>if</code> statement. As such, the byzantine <a href="http://www.scottlogic.com/blog/2014/12/08/swift-optional-pyramids-of-doom.html">pyramid of doom</a> has been renovated into a mid-century modern ranch:</p>
+
+<p><strong>Old:</strong></p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">a</span> <span class="o">=</span> <span class="s">&quot;10&quot;</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">b</span> <span class="o">=</span> <span class="s">&quot;5&quot;</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">c</span> <span class="o">=</span> <span class="s">&quot;3&quot;</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="k">let</span> <span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+                <span class="n">println</span><span class="p">(</span><span class="s">&quot;(a + b) / c = \((a + b) / c)&quot;</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>New:</strong></p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">if</span> <span class="k">let</span> <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">c</span> <span class="k">where</span> <span class="n">c</span> <span class="o">!=</span> <span class="mi">0</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">&quot;(a + b) / c = \((a + b) / c)&quot;</span><span class="p">)</span>     <span class="c1">// (a + b) / c = 5</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>The order of execution in these two examples is identical. Using the new syntax, each binding is evaluated in turn, stopping if any of the attempted bindings is <code>nil</code>. Only after all the optional bindings are successful is the <code>where</code> clause checked.</p>
+
+<p>An <code>if</code> statement can actually have more than one <code>let</code> binding separated by commas. Since each <code>let</code> binding can bind multiple optionals <em>and</em> include a <code>where</code> clause, some truly sophisticated logic is possible with this construct. (Thanks to <a href="https://twitter.com/stephencelis">Stephen Celis</a> for helping clarify this point.)</p>
+</blockquote>
+
+<p>What&rsquo;s more, later binding expressions can reference earlier bindings. This means you can delve into <code>Dictionary</code> instances or cast an <code>AnyObject?</code> value to a specific type, then use it in another expression, all in a single <code>if let</code> statement.</p>
+
+<p>To revisit the canonical example, this is what parsing a <a href="http://jsonplaceholder.typicode.com/users">big block of JSON</a> can look like in Swift 1.2. The example uses one <code>if let</code> block to handle the optionals that come with using <code>NSBundle</code>, <code>NSURL</code> and <code>NSData</code>, then another to map several <code>AnyObject?</code> instances  from the interpreted JSON to specific types:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="nl">users</span><span class="p">:</span> <span class="p">[</span><span class="n">User</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1">// load and parse the JSON into an array</span>
+<span class="k">if</span> <span class="k">let</span>
+    <span class="n">path</span>     <span class="o">=</span> <span class="bp">NSBundle</span><span class="p">.</span><span class="n">mainBundle</span><span class="p">().</span><span class="n">pathForResource</span><span class="p">(</span><span class="s">&quot;users&quot;</span><span class="p">,</span> <span class="nl">ofType</span><span class="p">:</span> <span class="s">&quot;json&quot;</span><span class="p">),</span>
+    <span class="n">url</span>      <span class="o">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">fileURLWithPath</span><span class="p">:</span> <span class="n">path</span><span class="p">),</span>
+    <span class="n">data</span>     <span class="o">=</span> <span class="bp">NSData</span><span class="p">(</span><span class="nl">contentsOfURL</span><span class="p">:</span> <span class="n">url</span><span class="p">),</span>
+    <span class="n">userList</span> <span class="o">=</span> <span class="bp">NSJSONSerialization</span><span class="p">.</span><span class="n">JSONObjectWithData</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">error</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="p">[[</span><span class="nl">String</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">]]</span> 
+<span class="p">{</span>
+    <span class="c1">// extract individual users</span>
+    <span class="k">for</span> <span class="n">userDict</span> <span class="k">in</span> <span class="n">userList</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span>
+            <span class="kt">id</span>      <span class="o">=</span> <span class="n">userDict</span><span class="p">[</span><span class="s">&quot;id&quot;</span><span class="p">]</span> <span class="kt">as</span><span class="o">?</span> <span class="n">Int</span><span class="p">,</span>
+            <span class="n">name</span>    <span class="o">=</span> <span class="n">userDict</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]</span> <span class="kt">as</span><span class="o">?</span> <span class="n">String</span><span class="p">,</span>
+            <span class="n">email</span>   <span class="o">=</span> <span class="n">userDict</span><span class="p">[</span><span class="s">&quot;email&quot;</span><span class="p">]</span> <span class="kt">as</span><span class="o">?</span> <span class="n">String</span><span class="p">,</span>
+            <span class="n">address</span> <span class="o">=</span> <span class="n">userDict</span><span class="p">[</span><span class="s">&quot;address&quot;</span><span class="p">]</span> <span class="kt">as</span><span class="o">?</span> <span class="p">[</span><span class="nl">String</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">]</span>
+        <span class="p">{</span>
+            <span class="n">users</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">User</span><span class="p">(</span><span class="kt">id</span><span class="o">:</span> <span class="kt">id</span><span class="p">,</span> <span class="nl">name</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="p">...))</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-JSON" data-lang="JSON"><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Leanne Graham&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;Bret&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;Sincere@april.biz&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;street&quot;</span><span class="p">:</span> <span class="s2">&quot;Kulas Light&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;suite&quot;</span><span class="p">:</span> <span class="s2">&quot;Apt. 556&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Gwenborough&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;zipcode&quot;</span><span class="p">:</span> <span class="s2">&quot;92998-3874&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;geo&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;lat&quot;</span><span class="p">:</span> <span class="s2">&quot;-37.3159&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;lng&quot;</span><span class="p">:</span> <span class="s2">&quot;81.1496&quot;</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;1-770-736-8031 x56442&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;website&quot;</span><span class="p">:</span> <span class="s2">&quot;hildegard.org&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;company&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Romaguera-Crona&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;catchPhrase&quot;</span><span class="p">:</span> <span class="s2">&quot;Multi-layered client-server neural-net&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;bs&quot;</span><span class="p">:</span> <span class="s2">&quot;harness real-time e-markets&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Ervin Howell&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;Antonette&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;Shanna@melissa.tv&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;street&quot;</span><span class="p">:</span> <span class="s2">&quot;Victor Plains&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;suite&quot;</span><span class="p">:</span> <span class="s2">&quot;Suite 879&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Wisokyburgh&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;zipcode&quot;</span><span class="p">:</span> <span class="s2">&quot;90566-7771&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;geo&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;lat&quot;</span><span class="p">:</span> <span class="s2">&quot;-43.9509&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;lng&quot;</span><span class="p">:</span> <span class="s2">&quot;-34.4618&quot;</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;phone&quot;</span><span class="p">:</span> <span class="s2">&quot;010-692-6593 x09125&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;website&quot;</span><span class="p">:</span> <span class="s2">&quot;anastasia.net&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;company&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Deckow-Crist&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;catchPhrase&quot;</span><span class="p">:</span> <span class="s2">&quot;Proactive didactic contingency&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;bs&quot;</span><span class="p">:</span> <span class="s2">&quot;synergize scalable supply-chains&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="err">...</span>
+<span class="p">]</span>
+</code></pre></div>
+<p>I see many commas in our future.</p>
+
+<h2 id="nullability-annotations">Nullability Annotations</h2>
+
+<p>When Swift was first released, every call to a Cocoa API method took and returned implicitly unwrapped optionals (i.e., <code>AnyObject!</code>). Because they crash a program on access, implicitly unwrapped return values are inherently unsafe if there isn&rsquo;t clear documentation of whether or not a method will return a null value. All those exclamation marks were a sign of bad form. Sure, Swift bridged to the Cocoa APIs, but it always looked grumpy about it.</p>
+
+<p>As the beta releases rolled on through the summer and fall, internal audits gradually removed the offending punctuation, replacing implicitly unwrapped optionals with either true optionals or non-optional, never-gonna-be-<code>nil</code> values. This vastly improved the experience of working with Cocoa, but there was no mechanism to mark up third-party code in the same way, leaving part of the problem in place.</p>
+
+<p>But no longer—Swift 1.2 ships alongside a new version of Clang. New property attributes and pointer annotations allow you to indicate whether a pointer, be it an Objective-C property, method parameter, or return value, can or won&rsquo;t ever be <code>nil</code>.</p>
+
+<blockquote>
+<ul>
+<li><code>nonnull</code>: Indicates that the pointer should/will never be <code>nil</code>. Pointers annotated with <code>nonnull</code> are imported into Swift as their non-optional base value (i.e., <code>NSData</code>).</li>
+<li><code>nullable</code>: Indicates that the pointer can be <code>nil</code> in general practice. Imported into Swift as an optional value (<code>NSURL?</code>).</li>
+<li><code>null_unspecified</code>: Continues the current functionality of importing into Swift as an implicitly unwrapped optional, ideally to be used during this annotation process only.</li>
+<li><code>null_resettable</code>: Indicates that while a property will always have a value, it can be reset by assigning <code>nil</code>. Properties with a non-<code>nil</code> default value can be annotated this way, like <code>tintColor</code>. Imported into Swift as a (relatively safe) implicitly unwrapped optional. Document accordingly!</li>
+</ul>
+</blockquote>
+
+<p>The first three annotations can also be used with C pointers and block pointers, using the doubly-underscored <code>__nonnull</code>, <code>__nullable</code>, and <code>__null_unspecified</code>. The last annotation, <code>null_resettable</code>, is only valid as an Objective-C property attribute.</p>
+
+<h3 id="nullability-in-action">Nullability in Action</h3>
+
+<p>As an example to show the benefit of these annotations, let&rsquo;s take a look at a data controller used to handle a list of locations, each with a possible attached photo:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">@interface</span> <span class="nc">LocationDataController</span> : <span class="bp">NSObject</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">readonly</span><span class="p">)</span> <span class="bp">NSArray</span> <span class="o">*</span><span class="n">locations</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">readonly</span><span class="p">)</span> <span class="n">Location</span> <span class="o">*</span><span class="n">latestLocation</span><span class="p">;</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">addPhoto:</span><span class="p">(</span><span class="n">Photo</span> <span class="o">*</span><span class="p">)</span><span class="nv">photo</span> <span class="nf">forLocation:</span><span class="p">(</span><span class="n">Location</span> <span class="o">*</span><span class="p">)</span><span class="nv">location</span><span class="p">;</span>
+<span class="p">-</span> <span class="p">(</span><span class="n">Photo</span> <span class="o">*</span><span class="p">)</span><span class="nf">photoForLocation:</span><span class="p">(</span><span class="n">Location</span> <span class="o">*</span><span class="p">)</span><span class="nv">location</span><span class="p">;</span>
+<span class="k">@end</span>
+</code></pre></div>
+<p>Without any nullability annotations, each pointer in my <code>LocationDataController</code> class is imported to Swift as an implicitly unwrapped optional:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="nl">LocationDataController</span> <span class="p">:</span> <span class="bp">NSObject</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nl">locations</span><span class="p">:</span> <span class="p">[</span><span class="n">AnyObject</span><span class="p">]</span><span class="o">!</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+    <span class="k">var</span> <span class="nl">latestLocation</span><span class="p">:</span> <span class="n">Location</span><span class="o">!</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+
+    <span class="k">func</span> <span class="n">addPhoto</span><span class="p">(</span><span class="nl">photo</span><span class="p">:</span> <span class="n">Photo</span><span class="o">!</span><span class="p">,</span> <span class="n">forLocation</span> <span class="nl">location</span><span class="p">:</span> <span class="n">Location</span><span class="o">!</span><span class="p">)</span>
+    <span class="k">func</span> <span class="n">photoForLocation</span><span class="p">(</span><span class="nl">location</span><span class="p">:</span> <span class="n">Location</span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Photo</span><span class="o">!</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Enough! With! The shouting! Here&rsquo;s how I can now annotate the Objective-C interface:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">@interface</span> <span class="nc">LocationDataController</span> : <span class="bp">NSObject</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="n">nonnull</span><span class="p">,</span> <span class="k">nonatomic</span><span class="p">,</span> <span class="k">readonly</span><span class="p">)</span> <span class="bp">NSArray</span> <span class="o">*</span><span class="n">locations</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nullable</span><span class="p">,</span> <span class="k">nonatomic</span><span class="p">,</span> <span class="k">readonly</span><span class="p">)</span> <span class="n">Location</span> <span class="o">*</span><span class="n">latestLocation</span><span class="p">;</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">addPhoto:</span><span class="p">(</span><span class="n">nonnull</span> <span class="n">Photo</span> <span class="o">*</span><span class="p">)</span><span class="nv">photo</span> <span class="nf">forLocation:</span><span class="p">(</span><span class="n">nonnull</span> <span class="n">Location</span> <span class="o">*</span><span class="p">)</span><span class="nv">location</span><span class="p">;</span>
+<span class="p">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">Photo</span> <span class="o">*</span><span class="p">)</span><span class="nf">photoForLocation:</span><span class="p">(</span><span class="n">nonnull</span> <span class="n">Location</span> <span class="o">*</span><span class="p">)</span><span class="nv">location</span><span class="p">;</span>
+<span class="k">@end</span>
+</code></pre></div>
+<p>First, the properties—my <code>locations</code> list is <code>nonnull</code>, since at worst it will be an empty array, but <code>latestLocation</code> <em>can</em> be <code>nil</code> if there are no locations in the list yet. Likewise, the parameters to my two methods should always have a value, yet because not all locations have a photo, that second method returns a <code>nullable</code> photo. Back in Swift, the results are much better—that is, clearer about how to safely use the data controller and no more grumpy <code>!</code>s:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="nl">LocationDataController</span> <span class="p">:</span> <span class="bp">NSObject</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nl">locations</span><span class="p">:</span> <span class="p">[</span><span class="n">AnyObject</span><span class="p">]</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+    <span class="k">var</span> <span class="nl">latestLocation</span><span class="p">:</span> <span class="n">Location</span><span class="o">?</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+
+    <span class="k">func</span> <span class="n">addPhoto</span><span class="p">(</span><span class="nl">photo</span><span class="p">:</span> <span class="n">Photo</span><span class="p">,</span> <span class="n">forLocation</span> <span class="nl">location</span><span class="p">:</span> <span class="n">Location</span><span class="p">)</span>
+    <span class="k">func</span> <span class="n">photoForLocation</span><span class="p">(</span><span class="nl">location</span><span class="p">:</span> <span class="n">Location</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Photo</span><span class="o">?</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="ns_assume_nonnull_begin/end">NS_ASSUME_NONNULL_BEGIN/END</h3>
+
+<p>Annotating <em>any</em> pointer in an Objective-C header file causes the compiler to expect annotations for the entire file, bringing on a cascade of warnings. Given that most annotations will be <code>nonnull</code>, a new macro can help streamline the process of annotating existing classes. Simply mark the beginning and end of a section of your header with <code>NS_ASSUME_NONNULL_BEGIN</code> and <code>..._END</code>, then mark the exceptions.</p>
+
+<p>Another revision of our data controller interface from above results in a more readable version with the exact same Swift profile:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">@interface</span> <span class="nc">LocationDataController</span> : <span class="bp">NSObject</span>
+<span class="n">NS_ASSUME_NONNULL_BEGIN</span>
+
+<span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">readonly</span><span class="p">)</span> <span class="bp">NSArray</span> <span class="o">*</span><span class="n">locations</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="n">nullable</span><span class="p">,</span> <span class="k">nonatomic</span><span class="p">,</span> <span class="k">readonly</span><span class="p">)</span> <span class="n">Location</span> <span class="o">*</span><span class="n">latestLocation</span><span class="p">;</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">addPhoto:</span><span class="p">(</span><span class="n">Photo</span> <span class="o">*</span><span class="p">)</span><span class="nv">photo</span> <span class="nf">forLocation:</span><span class="p">(</span><span class="n">Location</span> <span class="o">*</span><span class="p">)</span><span class="nv">location</span><span class="p">;</span>
+<span class="p">-</span> <span class="p">(</span><span class="n">nullable</span> <span class="n">Photo</span> <span class="o">*</span><span class="p">)</span><span class="nf">photoForLocation:</span><span class="p">(</span><span class="n">Location</span> <span class="o">*</span><span class="p">)</span><span class="nv">location</span><span class="p">;</span>
+
+<span class="n">NS_ASSUME_NONNULL_END</span>
+<span class="k">@end</span>
+</code></pre></div>
+<h3 id="not-just-for-swift">Not Just for Swift</h3>
+
+<p>The new Objective-C nullability annotations have huge benefits for code on the Swift side of the fence, but there&rsquo;s a substantial gain here even without writing a line of Swift. Pointers marked as <code>nonnull</code> will now give a hint during autocomplete and yield a warning if sent <code>nil</code> instead of a proper pointer:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="c1">// Can I remove a photo by sending nil?</span>
+<span class="p">[</span><span class="n">dataController</span> <span class="nl">addPhoto</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">forLocation</span><span class="p">:</span><span class="n">currentLocation</span><span class="p">];</span>
+<span class="c1">// Nope -- Warning: Null passed to a callee that requires a non-null argument</span>
+</code></pre></div>
+<hr>
+
+<p>Excitingly, all that is just half the story. In addition to the changes in Swift syntax and compiler savoir faire, the standard library has also seen a <a href="http://swiftdoc.org/news/2015/02/swift1.2/">major revision</a>, including a proper <code>Set</code> class (so long, <a href="https://github.com/natecook1000/SwiftSets/blob/master/Set.swift">dear friend</a>). <em>Okaaay,</em> so none of our code works anymore, and Stack Overflow has 21,000 out-of-date Swift questions? It&rsquo;s still fun to be along for the ride.</p>
+
+<script language="Javascript">
+$(document).ready(function() {
+    $('code.language-objective-c .n').each(function(index, span) {
+        var text = $(span).text();
+        if ((text == 'nullable') || (text == 'nonnull')) $(span).css('font-weight', 'bold');
+    });
+});
+</script>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2015-02-09-swift-1.2.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 1.2.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Nate Cook" itemprop="image" src="http://nshipster.s3.amazonaws.com/nate-cook.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/nate-cook/">Nate Cook</a></span>
+
+      <p><a href="http://natecook.com">Nate Cook</a> (<a href="https://twitter.com/nnnnnnnn">@nnnnnnnn</a>) is an independent web and application developer who <a href="http://natecook.com/blog/">writes frequently about topics in Swift</a>, and the creator of <a href="http://swiftdoc.org">SwiftDoc.org</a>.</p>
+
+
+      
+        <a href="https://plus.google.com/?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+        
+
+  <section id="promotion">
+    
+    <small>Recommended Reading</small>
+    
+    
+    
+
+<div id="" class="book" itemscope itemtype="http://schema.org/Product">
+  <div itemscope itemtype="http://schema.org/Book">
+    <link itemprop="bookFormat" href="http://schema.org/EBook"/>
+    <a href="https://gum.co/nshipster-swift/" title="NSHipster: Obscure Topics in Cocoa & Swift" target="_blank">
+      <img src="//cdn.nshipster.com/images/nshipster-swift-cover@2x.png" class="cover" alt="NSHipster: Obscure Topics in Cocoa & Swift" itemprop="image"/>
+    </a>
+    <span itemprop="name" style="display:none;" hidden>NSHipster: Obscure Topics in Cocoa & Swift</span>
+    <span itemprop="author" style="display:none;" hidden>Mattt Thompson & Nate Cook</span>
+    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display:none;">
+      <link itemprop="availability" href="http://schema.org/InStock"/>
+      <meta itemprop="priceCurrency" content="USD"/>
+      <span itemprop="price">29</span>
+    </div>
+  </div>
+</div>
+
+    <h3>NSHipster, Second Edition</h3>
+    <h4>Obscure Topics in Cocoa & Swift</h4>
+    <p>Revised and extended to focus on using Swift in iOS and OS X development, NSHipster: Obscure Topics in Cocoa &amp; Swift is an essential updated guide.</p>
+
+    
+    <a class="buy" href="https://gum.co/nshipster-swift/" target="_blank">Buy Now on Gumroad</a>
+    
+  </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/swift-collection-protocols/" title="Swift Collection Protocols" rel="next">Swift Collection Protocols</a>
+            </h1>
+
+            <p>Swift&rsquo;s collection protocols act like the steps on a ladder. With each step up, a collection type gains more functionality within the language and the standard library. This week we&rsquo;ll explore these protocols: what they are, how to conform to them, and what benefits they can provide for your own custom collection types.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/mirrortype/" title="MirrorType">MirrorType</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/rawoptionsettype/" title="RawOptionSetType">RawOptionSetType</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/swift-documentation/" title="Swift Documentation">Swift Documentation</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/unmanaged/" title="Unmanaged">Unmanaged</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

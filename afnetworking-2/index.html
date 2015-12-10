@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>AFNetworking 2.0 - NSHipster</title>
+    <meta name="description" content="AFNetworking is one of the most widely used open source projects for iOS and OS X development. It's about as mainstream as it gets. But have you heard about the sequel?"/>
+    <link rel="canonical" href="http://nshipster.com/afnetworking-2/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="AFNetworking 2.0"/>
+    <meta name="twitter:description" content="AFNetworking is one of the most widely used open source projects for iOS and OS X development. It&#39;s about as mainstream as it gets. But have you heard about the sequel?"/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="AFNetworking 2.0"/>
+    <meta property="og:url" content="http://nshipster.com/afnetworking-2/"/>
+    <meta property="og:description" content="AFNetworking is one of the most widely used open source projects for iOS and OS X development. It&#39;s about as mainstream as it gets. But have you heard about the sequel?"/>
+    <meta property="article:published_time" content="2013-09-16T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="open source"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="AFNetworking 2.0"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/afnetworking-2/">AFNetworking 2.0</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-09-16T00:00:00-07:00" itemprop="datePublished">September 16<sup>th</sup>, 2013</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p><a href="http://afnetworking.com">AFNetworking</a> is one of the most widely used open source projects for iOS and OS X development. It powers thousands of popular and critically acclaimed apps, and serves as the foundation for dozens of other great open source libraries and frameworks. With thousands of stars and forks, and hundreds of contributors, the project is also among the most active and influential in the community.</p>
+
+<p>By all accounts, AFNetworking is about as mainstream as it gets.</p>
+
+<p><em>But have you heard about the sequel?</em>
+<a href="https://github.com/AFNetworking/AFNetworking/">AFNetworking 2.0</a>.</p>
+
+<p>This week on NSHipster: an exclusive look at the future of AFNetworking.</p>
+
+<blockquote>
+<p>Full Disclosure: NSHipster is written by the <a href="https://twitter.com/mattt">author of AFNetworking</a>, so this is anything but an objective account of AFNetworking or its merits. What you&rsquo;re getting is the personal, honest take of AFNetworking in its current and forthcoming releases.</p>
+</blockquote>
+
+<h2 id="afnetworking&#39;s-big-ideas">AFNetworking&rsquo;s Big Ideas</h2>
+
+<p>Started in May 2011 as a humble extension of an <a href="https://developer.apple.com/library/ios/samplecode/mvcnetworking/Introduction/Intro.html">Apple code sample</a> from a <a href="http://en.wikipedia.org/wiki/Gowalla">doomed location-based social network</a>, AFNetworking&rsquo;s success was a product of timing more than anything. At a time when <a href="https://github.com/pokeb/asi-http-request">ASIHTTPRequest</a> was the de facto networking solution, AFNetworking&rsquo;s core ideas caught on among developers looking for a more modern solution.</p>
+
+<h3 id="nsurlconnection-+-nsoperation">NSURLConnection + NSOperation</h3>
+
+<p><code>NSURLConnection</code> is the backbone of the Foundation URL Loading system. An <code>NSURLConnection</code> loads an <code>NSURLRequest</code> object asynchronously, calling methods on its delegates as the <code>NSURLResponse</code> / <code>NSHTTPURLResponse</code> and its associated <code>NSData</code> is sent to and loaded from the server; the delegate may also implement behavior for handling an <code>NSURLAuthenticationChallenge</code>, a redirect responses, or determine how the associated <code>NSCachedURLResponse</code> is stored to the shared <code>NSURLCache</code>.</p>
+
+<p><a href="http://nshipster.com/nsoperation"><code>NSOperation</code></a> is an abstract class that models a single unit of computation, with useful constructs like state, priority, dependencies, and cancellation.</p>
+
+<p>The first major breakthrough of AFNetworking was combining the two. <code>AFURLConnectionOperation</code>, an <code>NSOperation</code> subclass conforms to <code>NSURLConnectionDelegate</code> methods, and tracks the state of the request from start to finish, while storing intermediary state, such as request, response, and response data.</p>
+
+<h3 id="blocks">Blocks</h3>
+
+<p>iOS 4 radically improved the process of developing apps with its introduction of blocks and Grand Central Dispatch. Instead of scattering implementation logic across your application with delegates, developers could localize related functionality in block properties. Rather than struggle with a miasma of threads, invocations, and operation queues, GCD could dispatch work back and forth with ease.</p>
+
+<p>What&rsquo;s more, <code>NSURLConnectionDelegate</code> methods could be customized for each request operation by setting a corresponding block property (e.g. <code>setWillSendRequestForAuthenticationChallengeBlock:</code> to override the default implementation of <code>connection:willSendRequestForAuthenticationChallenge:</code>)</p>
+
+<p>Now, an <code>AFURLConnectionOperation</code> could be created and scheduled on an <code>NSOperationQueue</code>, with behavior specified on what to do with the response and response data (or any error encountered during the request lifecyle) when finished by setting the new <code>completionBlock</code> property on <code>NSOperation</code>.</p>
+
+<h3 id="serialization-&amp;-validation">Serialization &amp; Validation</h3>
+
+<p>Going even further, request operations could have their responsibilities extended to validate HTTP status codes and content type to validate the server response, and, for instance, serialize <code>NSData</code> into JSON objects for responses with an <code>application/json</code> MIME type.</p>
+
+<p>Loading JSON, XML, property lists, or images from the server was abstracted to more closely resemble a latent file loading operation, such that a developer could think in terms of promises rather than asynchronous networking.</p>
+
+<h2 id="introducing-afnetworking-2.0">Introducing AFNetworking 2.0</h2>
+
+<p>In many ways, AFNetworking succeeded in striking a balance between ease-of-use and extensibility. That&rsquo;s not to say that there wasn&rsquo;t room for improvement.</p>
+
+<p>With its second major release, AFNetworking aims to reconcile many of the quirks of the original design, while adding powerful new constructs to power the next generation of iOS and OS X apps.</p>
+
+<h3 id="motivations">Motivations</h3>
+
+<ul>
+<li><strong>NSURLSession Compatibility</strong> - <code>NSURLSession</code> is a replacement for <code>NSURLConnection</code> introduced in iOS 7. <code>NSURLConnection</code> isn&rsquo;t deprecated, and likely won&rsquo;t be for some time, but <code>NSURLSession</code> is the future of networking in Foundation, and it&rsquo;s a bright future at that, addressing many of the shortcomings of its predecessor. (See WWDC 2013 Session 705 &ldquo;What’s New in Foundation Networking&rdquo; for a good overview). Some had initially speculated that <code>NSURLSession</code> would obviate the need for AFNetworking; although there is overlap, there is still much that a higher-level abstraction can provide. <strong>AFNetworking 2.0 does just this, embracing and extending <code>NSURLSession</code> to pave over some of the rough spots, and maximize its usefulness.</strong></li>
+<li><strong>Modularity</strong> - One of the major criticisms of AFNetworking is how bulky it is. Although its architecture lent itself well to modularity on a class level, its packaging didn&rsquo;t allow for individual features to be selected à la carte. Over time, <code>AFHTTPClient</code> in particular became overburdened in its responsibilities (creating requests, serializing query string parameters, determining response parsing behavior, creating and managing operations, monitoring network reachability). <strong>In AFNetworking 2.0, you can pick and choose only the components you need using <a href="https://github.com/CocoaPods/CocoaPods/wiki/The-podspec-format#subspecs">CocoaPods subspecs</a>.</strong></li>
+</ul>
+
+<h3 id="meet-the-cast">Meet the Cast</h3>
+
+<h4 id="nsurlconnection-components-(ios-6-&amp;-7)"><code>NSURLConnection</code> Components <em>(iOS 6 &amp; 7)</em></h4>
+
+<ul>
+<li><code>AFURLConnectionOperation</code> - A subclass of <code>NSOperation</code> that manages an <code>NSURLConnection</code> and implements its delegate methods.</li>
+<li><code>AFHTTPRequestOperation</code> - A subclass of <code>AFURLConnectionOperation</code> specifically for making HTTP requests, which creates a distinction between acceptable and unacceptable status codes and content types. The main difference in 2.0 is that <em>you&rsquo;ll actually use this class directly, rather than subclass it</em>, for reasons explained in the &ldquo;Serialization&rdquo; section.</li>
+<li><code>AFHTTPRequestOperationManager</code> - A class that encapsulates the common patterns of communicating with a web service over HTTP, backed by <code>NSURLConnection</code> by way of <code>AFHTTPRequestOperation</code>.</li>
+</ul>
+
+<h4 id="nsurlsession-components-(ios-7)"><code>NSURLSession</code> Components <em>(iOS 7)</em></h4>
+
+<ul>
+<li><code>AFURLSessionManager</code> - A class that creates and manages an <code>NSURLSession</code> object based on a specified <code>NSURLSessionConfiguration</code> object, as well as data, download, and upload tasks for that session, implementing the delegate methods for both the session and its associated tasks. Because of the odd gaps in <code>NSURLSession</code>&rsquo;s API design, <strong>any code working with <code>NSURLSession</code> would be improved by <code>AFURLSessionManager</code></strong>.</li>
+<li><code>AFHTTPSessionManager</code> - A subclass of <code>AFURLSessionManager</code> that encapsulates the common patterns of communicating with an web service over HTTP, backed by <code>NSURLSession</code> by way of <code>AFURLSessionManager</code>.</li>
+</ul>
+
+<hr>
+
+<blockquote>
+<p><strong>So to recap</strong>: in order to support the new <code>NSURLSession</code> APIs as well as the old-but-not-deprecated-and-still-useful <code>NSURLConnection</code>, the core components of AFNetworking 2.0 are split between request operation and session tasks. <code>AFHTTPRequestOperationManager</code> and <code>AFHTTPSessionManager</code> provide similar functionality, with nearly interchangeable interfaces that can be swapped out rather easily, should the need arise (such as porting between iOS 6 and 7).</p>
+
+<p>All of the other functionality previous tied up in <code>AFHTTPClient</code>, such as serialization, security, and reachability, has been split out across several modules that are shared between <code>NSURLSession</code> and <code>NSURLConnection</code>-backed APIs.</p>
+</blockquote>
+
+<hr>
+
+<h4 id="serialization">Serialization</h4>
+
+<p>One of the breakthroughs of AFNetworking 2.0&rsquo;s new architecture is use of serializers for creating requests and parsing responses. The flexible design of serializers allows for more business logic to be transferred over to the networking layer, and for previously built-in default behavior to be easily customized.</p>
+
+<ul>
+<li><code>&lt;AFURLRequestSerializer&gt;</code> - Objects conforming to this protocol are used to decorate requests by translating parameters into either a query string or entity body representation, as well as setting any necessary headers. Anyone who had beef about the way <code>AFHTTPClient</code> encoded query string parameters should find this new approach to be more to your liking.</li>
+<li><code>&lt;AFURLResponseSerializer&gt;</code> - Objects conforming to this protocol are responsible for validating and serializing a response and its associated data into useful representations, such as JSON objects, images, or even <a href="https://github.com/blog/1299-mantle-a-model-framework-for-objective-c">Mantle</a>-backed model objects. Rather than endlessly subclassing <code>AFHTTPClient</code>, <code>AFHTTPRequestOperation</code> now has a single <code>responseSerializer</code> property, which is set to the appropriate handler. Likewise, the <a href="http://cocoadocs.org/docsets/AFNetworking/1.3.1/Classes/AFHTTPClient.html#//api/name/registerHTTPOperationClass:"><code>NSURLProtocol</code>-inspired request operation class registration nonsense</a> is no more—replaced by that single delightful <code>responseSerializer</code> property. Thank goodness.</li>
+</ul>
+
+<h4 id="security">Security</h4>
+
+<p>Thanks to the contributions of <a href="https://github.com/dstnbrkr">Dustin Barker</a>, <a href="https://github.com/OliverLetterer">Oliver Letterer</a>, and <a href="https://github.com/kcharwood">Kevin Harwood</a> and others, AFNetworking comes with built-in support for <a href="http://blog.lumberlabs.com/2012/04/why-app-developers-should-care-about.html">SSL pinning</a>, which is critical for apps that deal with sensitive information.</p>
+
+<ul>
+<li><code>AFSecurityPolicy</code> - A class that evaluates the server trust of secure connections against its specified pinned certificates or public keys. tl;dr Add your server certificate to your app bundle to help prevent against <a href="http://en.wikipedia.org/wiki/Man-in-the-middle_attack">man-in-the-middle attacks</a>.</li>
+</ul>
+
+<h4 id="reachability">Reachability</h4>
+
+<p>Another piece of functionality now decoupled from <code>AFHTTPClient</code> is network reachability. Now you can use it on its own, or as a property on <code>AFHTTPRequestOperationManager</code> / <code>AFHTTPSessionManager</code>.</p>
+
+<ul>
+<li><code>AFNetworkReachabilityManager</code> - This class monitors current network reachability, providing callback blocks and notifications for when reachability changes.</li>
+</ul>
+
+<h4 id="real-time">Real-time</h4>
+
+<ul>
+<li><code>AFEventSource</code> - An Objective-C implementation of the <a href="http://en.wikipedia.org/wiki/Server-sent_events"><code>EventSource</code> DOM API</a>. A persistent HTTP connection is opened to a host, which streams events to the event source, to be dispatched to listeners. Messages streamed to the event source formatted as <a href="http://tools.ietf.org/html/rfc6902">JSON Patch</a> documents are translated into arrays of <code>AFJSONPatchOperation</code> objects. These patch operations can be applied to the persistent data set fetched from the server.</li>
+</ul>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSURL</span> <span class="o">*</span><span class="n">URL</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSURL</span> <span class="nl">URLWithString</span><span class="p">:</span><span class="s">@&quot;http://example.com&quot;</span><span class="p">];</span>
+<span class="n">AFHTTPSessionManager</span> <span class="o">*</span><span class="n">manager</span> <span class="o">=</span> <span class="p">[[</span><span class="n">AFHTTPSessionManager</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithBaseURL</span><span class="p">:</span><span class="n">URL</span><span class="p">];</span>
+<span class="p">[</span><span class="n">manager</span> <span class="nl">GET</span><span class="p">:</span><span class="s">@&quot;/resources&quot;</span> <span class="nl">parameters</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">success</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSURLSessionDataTask</span> <span class="o">*</span><span class="n">task</span><span class="p">,</span> <span class="kt">id</span> <span class="n">responseObject</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">resources</span> <span class="nl">addObjectsFromArray</span><span class="p">:</span><span class="n">responseObject</span><span class="p">[</span><span class="s">@&quot;resources&quot;</span><span class="p">]];</span>
+
+    <span class="p">[</span><span class="n">manager</span> <span class="nl">SUBSCRIBE</span><span class="p">:</span><span class="s">@&quot;/resources&quot;</span> <span class="nl">usingBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSArray</span> <span class="o">*</span><span class="n">operations</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">AFJSONPatchOperation</span> <span class="o">*</span><span class="n">operation</span> <span class="k">in</span> <span class="n">operations</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">switch</span> <span class="p">(</span><span class="n">operation</span><span class="p">.</span><span class="n">type</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">case</span> <span class="nl">AFJSONAddOperationType</span><span class="p">:</span>
+                    <span class="p">[</span><span class="n">resources</span> <span class="nl">addObject</span><span class="p">:</span><span class="n">operation</span><span class="p">.</span><span class="n">value</span><span class="p">];</span>
+                    <span class="k">break</span><span class="p">;</span>
+                <span class="k">default</span><span class="o">:</span>
+                    <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="nl">error</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+<span class="p">}</span> <span class="nl">failure</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+</code></pre></div>
+<h4 id="uikit-extensions">UIKit Extensions</h4>
+
+<p>All of the UIKit categories in AFNetworking 2.0 have been extracted and expanded, with several new additions to the list.</p>
+
+<ul>
+<li><code>AFNetworkActivityIndicatorManager</code>: Automatically start and stop the network activity indicator in the status bar as request operations and tasks begin and finish loading.</li>
+<li><code>UIImageView+AFNetworking</code>: Adds <code>imageResponseSerializer</code> property, which makes it easy to automatically resize or apply a filter to images loaded remotely to an image view. For example, <a href="https://github.com/AFNetworking/AFCoreImageSerializer"><code>AFCoreImageSerializer</code></a> could be used to apply Core Image filters to the response image before being displayed.</li>
+<li><code>UIButton+AFNetworking</code> <em>(New)</em>: Similar to <code>UIImageView+AFNetworking</code>, loads <code>image</code> and <code>backgroundImage</code> from remote source.</li>
+<li><code>UIActivityIndicatorView+AFNetworking</code> <em>(New)</em>: Automatically start and stop a <code>UIActivityIndicatorView</code> according to the state of a specified request operation or session task.</li>
+<li><code>UIProgressView+AFNetworking</code> <em>(New)</em>: Automatically track the upload or download progress of a specified request operation or session task.</li>
+<li><code>UIWebView+AFNetworking</code> <em>(New)</em>: Provides a more sophisticated API for loading URL requests, with support for progress callbacks and content transformation.</li>
+</ul>
+
+<hr>
+
+<p>Thus concludes our whirlwind tour of AFNetworking 2.0. New features for the next generation of apps, combined with a fresh new architecture for all of the existing functionality. There&rsquo;s a lot to be excited about.</p>
+
+<h3 id="hit-the-ground-running">Hit the Ground Running</h3>
+
+<p>You can start playing around with AFNetworking 2.0 by putting the following in your <a href="http://cocoapods.org"><code>Podfile</code></a>:</p>
+<div class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">&#39;7.0&#39;</span>
+<span class="n">pod</span> <span class="s2">&quot;AFNetworking&quot;</span><span class="p">,</span> <span class="s2">&quot;2.5.0&quot;</span>
+</code></pre></div>
+<p>For anyone coming over to AFNetworking from the current 1.x release, you may find <a href="https://github.com/AFNetworking/AFNetworking/wiki/AFNetworking-2.0-Migration-Guide">the AFNetworking 2.0 Migration Guide</a> especially useful.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-09-16-afnetworking-2.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+            
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/ios7/" title="iOS 7" rel="next">i​OS 7</a>
+            </h1>
+
+            <p>With the NDA finally lifted, we can finally talk about all of the amazing new APIs in iOS 7.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/xctool/" title="xctool">xctool</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/reactivecocoa/" title="ReactiveCocoa">ReactiveCocoa</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/gpuimage/" title="GPUImage">GPUImage</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/alamofire/" title="Alamofire">Alamofire</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

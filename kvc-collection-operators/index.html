@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>KVC Collection Operators - NSHipster</title>
+    <meta name="description" content="Rubyists laugh at Objective-C’s bloated syntax. Although we lost a few pounds over the summer with our sleek new object literals, those Red-headed bullies still taunt us with their map one-liners and their fancy Symbol#to_proc. Fortunately, Key-Value Coding has an ace up its sleeves."/>
+    <link rel="canonical" href="http://nshipster.com/kvc-collection-operators/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="KVC Collection Operators"/>
+    <meta name="twitter:description" content="Rubyists laugh at Objective-C’s bloated syntax. Although we lost a few pounds over the summer with our sleek new object literals, those Red-headed bullies still taunt us with their map one-liners and their fancy Symbol#to_proc. Fortunately, Key-Value Coding has an ace up its sleeves."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="KVC Collection Operators"/>
+    <meta property="og:url" content="http://nshipster.com/kvc-collection-operators/"/>
+    <meta property="og:description" content="Rubyists laugh at Objective-C’s bloated syntax. Although we lost a few pounds over the summer with our sleek new object literals, those Red-headed bullies still taunt us with their map one-liners and their fancy Symbol#to_proc. Fortunately, Key-Value Coding has an ace up its sleeves."/>
+    <meta property="article:published_time" content="2012-12-03T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="KVC Collection Operators"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/kvc-collection-operators/">KVC Collection Operators</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2012-12-03T00:00:00-08:00" itemprop="datePublished">December 3<sup>rd</sup>, 2012</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Rubyists laugh at Objective-C&rsquo;s bloated syntax.</p>
+
+<p>Although we lost a few pounds over the summer with our <a href="http://nshipster.com/at-compiler-directives/">sleek new object literals</a>, those Red-headed bullies still taunt us with their <code>map</code> one-liners and their fancy <a href="http://pragdave.me/blog/2005/11/04/symboltoproc/"><code>Symbol#to_proc</code></a>.</p>
+
+<p>Really, a lot of how elegant (or clever) a language is comes down to how well it avoids loops. <code>for</code>, <code>while</code>; even <a href="http://nshipster.com/enumerators/">fast enumeration expressions</a> are a drag. No matter how you sugar-coat them, loops will be a block of code that does something that is much simpler to describe in natural language.</p>
+
+<p>&ldquo;get me the average salary of all of the employees in this array&rdquo;, versus&hellip;</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="kt">double</span> <span class="n">totalSalary</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">Employee</span> <span class="o">*</span><span class="n">employee</span> <span class="k">in</span> <span class="n">employees</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">totalSalary</span> <span class="o">+=</span> <span class="p">[</span><span class="n">employee</span><span class="p">.</span><span class="n">salary</span> <span class="n">doubleValue</span><span class="p">];</span>
+<span class="p">}</span>
+<span class="kt">double</span> <span class="n">averageSalary</span> <span class="o">=</span> <span class="n">totalSalary</span> <span class="o">/</span> <span class="p">[</span><span class="n">employees</span> <span class="n">count</span><span class="p">];</span>
+</code></pre></div>
+<p>Meh.</p>
+
+<p>Fortunately, <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/KeyValueCoding/Articles/KeyValueCoding.html">Key-Value Coding</a> gives us a much more concise&ndash;almost Ruby-like&ndash;way to do this:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[</span><span class="n">employees</span> <span class="nl">valueForKeyPath</span><span class="p">:</span><span class="s">@&quot;@avg.salary&quot;</span><span class="p">];</span>
+</code></pre></div>
+<p><a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/KeyValueCoding/Articles/CollectionOperators.html">KVC Collection Operators</a> allows actions to be performed on a collection using key path notation in <code>valueForKeyPath:</code>. Any time you see <code>@</code> in a key path, it denotes a particular aggregate function whose result can be returned or chained, just like any other key path.</p>
+
+<p>Collection Operators fall into one of three different categories, according to the kind of value they return:</p>
+
+<ul>
+<li><strong>Simple Collection Operators</strong> return strings, numbers, or dates, depending on the operator.</li>
+<li><strong>Object Operators</strong> return an array.</li>
+<li><strong>Array and Set Operators</strong> return an array or set, depending on the operator.</li>
+</ul>
+
+<p>The best way to understand how these work is to see them in action. Consider a <code>Product</code> class, and a <code>products</code> array with the following data:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">@interface</span> <span class="nc">Product</span> : <span class="bp">NSObject</span>
+<span class="k">@property</span> <span class="bp">NSString</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
+<span class="k">@property</span> <span class="kt">double</span> <span class="n">price</span><span class="p">;</span>
+<span class="k">@property</span> <span class="bp">NSDate</span> <span class="o">*</span><span class="n">launchedOn</span><span class="p">;</span>
+<span class="k">@end</span>
+</code></pre></div>
+<blockquote>
+<p>Key-Value Coding automatically boxes and un-boxes scalars into <code>NSNumber</code> or <code>NSValue</code> as necessary to make everything work.</p>
+</blockquote>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Launch Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>iPhone 5</td>
+      <td>$199</td>
+      <td>September 21, 2012</td>
+    </tr>
+    <tr>
+      <td>iPad Mini</td>
+      <td>$329</td>
+      <td>November 2, 2012</td>
+    </tr>
+    <tr>
+      <td>MacBook Pro</td>
+      <td>$1699</td>
+      <td>June 11, 2012</td>
+    </tr>
+    <tr>
+      <td>iMac</td>
+      <td>$1299</td>
+      <td>November 2, 2012</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="simple-collection-operators">Simple Collection Operators</h3>
+
+<ul>
+<li><code>@count</code>: Returns the number of objects in the collection as an <code>NSNumber</code>.</li>
+<li><code>@sum</code>: Converts each object in the collection to a <code>double</code>, computes the sum, and returns the sum as an <code>NSNumber</code>.</li>
+<li><code>@avg</code>: Takes the <code>double</code> value of each object in the collection, and returns the average value as an <code>NSNumber</code>.</li>
+<li><code>@max</code>: Determines the maximum value using <code>compare:</code>. Objects must support comparison with one another for this to work.</li>
+<li><code>@min</code>: Same as <code>@max</code>, but returns the minimum value in the collection.</li>
+</ul>
+
+<p><em>Example</em>:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[</span><span class="n">products</span> <span class="nl">valueForKeyPath</span><span class="p">:</span><span class="s">@&quot;@count&quot;</span><span class="p">];</span> <span class="c1">// 4</span>
+<span class="p">[</span><span class="n">products</span> <span class="nl">valueForKeyPath</span><span class="p">:</span><span class="s">@&quot;@sum.price&quot;</span><span class="p">];</span> <span class="c1">// 3526.00</span>
+<span class="p">[</span><span class="n">products</span> <span class="nl">valueForKeyPath</span><span class="p">:</span><span class="s">@&quot;@avg.price&quot;</span><span class="p">];</span> <span class="c1">// 881.50</span>
+<span class="p">[</span><span class="n">products</span> <span class="nl">valueForKeyPath</span><span class="p">:</span><span class="s">@&quot;@max.price&quot;</span><span class="p">];</span> <span class="c1">// 1699.00</span>
+<span class="p">[</span><span class="n">products</span> <span class="nl">valueForKeyPath</span><span class="p">:</span><span class="s">@&quot;@min.launchedOn&quot;</span><span class="p">];</span> <span class="c1">// June 11, 2012</span>
+</code></pre></div>
+<blockquote>
+<p>Pro Tip: To get the aggregate value of an array or set of <code>NSNumber</code>s, you can simply pass <code>self</code> as the key path after the operator, e.g. <code>[@[@(1), @(2), @(3)] valueForKeyPath:@&quot;@max.self&quot;]</code> (/via <a href="http://twitter.com/davandermobile">@davandermobile</a>, citing <a href="http://objectivesea.tumblr.com/post/34552840247/max-value-nsset-kvc">Objective Sea</a>)</p>
+</blockquote>
+
+<h3 id="object-operators">Object Operators</h3>
+
+<p>Let&rsquo;s say we have an <code>inventory</code> array, representing the current stock of our local Apple store (which is running low on iPad Mini, and doesn&rsquo;t have the new iMac, which hasn&rsquo;t shipped yet):</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSArray</span> <span class="o">*</span><span class="n">inventory</span> <span class="o">=</span> <span class="l">@[</span><span class="n">iPhone5</span><span class="p">,</span> <span class="n">iPhone5</span><span class="p">,</span> <span class="n">iPhone5</span><span class="p">,</span> <span class="n">iPadMini</span><span class="p">,</span> <span class="n">macBookPro</span><span class="p">,</span> <span class="n">macBookPro</span><span class="l">]</span><span class="p">;</span>
+</code></pre></div>
+<ul>
+<li><code>@unionOfObjects</code> / <code>@distinctUnionOfObjects</code>: Returns an array of the objects in the property specified in the key path to the right of the operator. <code>@distinctUnionOfObjects</code> removes duplicates, whereas <code>@unionOfObjects</code> does not.</li>
+</ul>
+
+<p><em>Example</em>:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[</span><span class="n">inventory</span> <span class="nl">valueForKeyPath</span><span class="p">:</span><span class="s">@&quot;@unionOfObjects.name&quot;</span><span class="p">];</span> <span class="c1">// &quot;iPhone 5&quot;, &quot;iPhone 5&quot;, &quot;iPhone 5&quot;, &quot;iPad Mini&quot;, &quot;MacBook Pro&quot;, &quot;MacBook Pro&quot;</span>
+<span class="p">[</span><span class="n">inventory</span> <span class="nl">valueForKeyPath</span><span class="p">:</span><span class="s">@&quot;@distinctUnionOfObjects.name&quot;</span><span class="p">];</span> <span class="c1">// &quot;iPhone 5&quot;, &quot;iPad Mini&quot;, &quot;MacBook Pro&quot;</span>
+</code></pre></div>
+<h3 id="array-and-set-operators">Array and Set Operators</h3>
+
+<p>Array and Set Operators are similar to Object Operators, but they work on collections of <code>NSArray</code> and <code>NSSet</code>.</p>
+
+<p>This would be useful if we were to, for example, compare the inventory of several stores, say <code>appleStoreInventory</code>, (same as in the previous example) and <code>verizonStoreInventory</code> (which sells iPhone 5 and iPad Mini, and has both in stock).</p>
+
+<ul>
+<li><code>@distinctUnionOfArrays</code> / <code>@unionOfArrays</code>: Returns an array containing the combined values of each array in the collection, as specified by the key path to the right of the operator. As you&rsquo;d expect, the <code>distinct</code> version removes duplicate values.</li>
+<li><code>@distinctUnionOfSets</code>: Similar to <code>@distinctUnionOfArrays</code>, but it expects an <code>NSSet</code> containing <code>NSSet</code> objects, and returns an <code>NSSet</code>. Because sets can&rsquo;t contain duplicate values anyway, there is only the <code>distinct</code> operator.</li>
+</ul>
+
+<p><em>Example</em>:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[</span><span class="l">@[</span><span class="n">appleStoreInventory</span><span class="p">,</span> <span class="n">verizonStoreInventory</span><span class="l">]</span> <span class="nl">valueForKeyPath</span><span class="p">:</span><span class="s">@&quot;@distinctUnionOfArrays.name&quot;</span><span class="p">];</span> <span class="c1">// &quot;iPhone 5&quot;, &quot;iPad Mini&quot;, &quot;MacBook Pro&quot;</span>
+</code></pre></div>
+<hr>
+
+<h2 id="this-is-probably-a-terrible-idea">This is Probably a Terrible Idea</h2>
+
+<p>Curiously, <a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/KeyValueCoding/Articles/CollectionOperators.html">Apple&rsquo;s documentation on KVC collection operators</a> goes out of its way to make the following point:</p>
+
+<blockquote>
+<p><strong>Note</strong>: It is not currently possible to define your own collection operators.</p>
+</blockquote>
+
+<p>This makes sense to spell out, since that&rsquo;s what most people are thinking about once they see collection operators for the first time.</p>
+
+<p>However, as it turns out, it <em>is</em> actually possible, with a little help from our friend, <code>objc/runtime</code>.</p>
+
+<p><a href="https://twitter.com/gte">Guy English</a> has a <a href="http://kickingbear.com/blog/archives/9">pretty amazing post</a> wherein he <a href="https://gist.github.com/4196641#file_kb_collection_extensions.m">swizzles <code>valueForKeyPath:</code></a> to parse a custom-defined <a href="http://en.wikipedia.org/wiki/Domain-specific_language">DSL</a>, which extends the existing offerings to interesting effect:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSArray</span> <span class="o">*</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="n">allEmployees</span> <span class="nl">valueForKeyPath</span><span class="p">:</span> <span class="s">@&quot;[collect].{daysOff&lt;10}.name&quot;</span><span class="p">];</span>
+</code></pre></div>
+<p>This code would get the names of anyone who has taken fewer than 10 days off (to remind them to take a vacation, no doubt!).</p>
+
+<p>Or, taken to a ridiculous extreme:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSArray</span> <span class="o">*</span><span class="n">albumCovers</span> <span class="o">=</span> <span class="p">[</span><span class="n">records</span> <span class="nl">valueForKeyPath</span><span class="p">:</span><span class="s">@&quot;[collect].{artist like &#39;Bon Iver&#39;}.&lt;NSUnarchiveFromDataTransformerName&gt;.albumCoverImageData&quot;</span><span class="p">];</span>
+</code></pre></div>
+<p>Eat your heart out, Ruby. This one-liner filters a record collection for artists whose name matches &ldquo;Bon Iver&rdquo;, and initializes an <code>NSImage</code> from the album cover image data of the matching albums.</p>
+
+<p>Is this a good idea? Probably not. (<code>NSPredicate</code> is rad, and breaking complicated logic up is under-rated)</p>
+
+<p>Is this insanely cool? You bet! This clever example has shown a possible direction for future Objective-C DSLs and meta-programming.</p>
+
+<hr>
+
+<p>KVC Collection Operators are a must-know for anyone who wants to save a few extra lines of code and look cool in the process.</p>
+
+<p>While scripting languages like Ruby boast considerably more flexibility in its one-liner capability, perhaps we should take a moment to celebrate the restraint built into Objective-C and Collection Operators. After all, Ruby is hella slow, amiright? &lt;/troll&gt;</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2012-12-03-kvc-collection-operators.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+            <em>This article was last reviewed on August 12, 2015.</em>
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/instancetype/" title="instancetype" rel="next">instancetype</a>
+            </h1>
+
+            <p>Objective-C is a rapidly evolving language, in a way that you just don&rsquo;t see in established programming languages. Developments range from the mundane to paradigm-changing, but telling the difference takes practice. Because we&rsquo;re talking about low-level language features, it&rsquo;s difficult to understand what implications they may have higher up with API design.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nserror/" title="NSError">NSError</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/uiappearance/" title="UIAppearance">UIAppearance</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/uilocalizedindexedcollation/" title="UILocalizedIndexedCollation">UILocalizedIndexedCollation</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsformatter/" title="NSFormatter">NSFormatter</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

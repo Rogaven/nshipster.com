@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>UIPrintInteractionController - NSHipster</title>
+    <meta name="description" content="With all the different means to comment, mark up, save, and share right at our fingertips, it's easy to overlook the value of a printed sheet of paper."/>
+    <link rel="canonical" href="http://nshipster.com/uiprintinteractioncontroller/"/>
+  
+  
+  
+  
+  <meta name="author" content="Nate Cook"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@nnnnnnnn"/>
+  
+  
+    <meta name="twitter:title" content="UIPrintInteractionController"/>
+    <meta name="twitter:description" content="With all the different means to comment, mark up, save, and share right at our fingertips, it&#39;s easy to overlook the value of a printed sheet of paper."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="UIPrintInteractionController"/>
+    <meta property="og:url" content="http://nshipster.com/uiprintinteractioncontroller/"/>
+    <meta property="og:description" content="With all the different means to comment, mark up, save, and share right at our fingertips, it&#39;s easy to overlook the value of a printed sheet of paper."/>
+    <meta property="article:published_time" content="2014-11-17T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="UIPrintInteractionController"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/uiprintinteractioncontroller/">UIPrint​Interaction​Controller</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/nate-cook/">Nate Cook</a> —
+    
+    <time datetime="2014-11-17T00:00:00-08:00" itemprop="datePublished">November 17<sup>th</sup>, 2014</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>With all the different means to comment, mark up, save, and share right at our fingertips, it&rsquo;s easy to overlook the value of a printed sheet of paper.</p>
+
+<p>UIKit makes it easy to print straight from a user&rsquo;s device with custom designs that you can adapt to both your content and the paper size.  This article will first walk through how to format your content for printing, then detail the different ways to present (or not!) the printing interface.</p>
+
+<hr>
+
+<blockquote>
+<p>The &ldquo;printed&rdquo; images throughout this article are taken from Apple&rsquo;s <em>Printer Simulator</em>. (The yellow edges represent the non-printable margins of the paper)</p>
+
+<p>As of Xcode 6, the printer simulator must be downloaded as part of the <em><a href="https://developer.apple.com/downloads/index.action?name=hardware%20io%20tools">Hardware IO Tools for Xcode</a></em>.</p>
+</blockquote>
+
+<p><img src="http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-hardware-io-tools-download.png" alt="Download Hardware I/O Tools from Apple Developer Website "></p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-printer-simulator-app.png" alt="PrintSimulator App Info"></p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-printersimulator-load-paper.pnd.png" alt="PrintSimulator App Load Paper"></p>
+
+<hr>
+
+<p>At the heart of the <a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/Printing/Printing.html#//apple_ref/doc/uid/TP40010156-CH12-SW3">UIKit Printing APIs</a> is <code>UIPrintInteractionController</code>. A shared instance of this class manages details of print jobs and configure any UI that will be presented to the user. It also provides three levels of control for the formatting of your content.</p>
+
+<h2 id="printing-is-a-job">Printing is a Job</h2>
+
+<p>Before we look at formatting actual content for printing, let&rsquo;s go through the options for configuring the print job and the print options presented to the user.</p>
+
+<h3 id="uiprintinfo">UIPrintInfo</h3>
+
+<p>Print job details are set in a <code>UIPrintInfo</code> instance. You can use the following properties:</p>
+
+<blockquote>
+<ul>
+<li><code>jobName</code> <em><code>String</code></em>: A name for this print job. The name will be displayed in the Print Center on the device and, for some printers, on the LCD display.</li>
+<li><code>orientation</code> <em><code>UIPrintInfoOrientation</code></em>: Either <code>.Portrait</code> (the default) or <code>.Landscape</code>—this is ignored if what you print has an intrinsic orientation, such as a PDF.</li>
+<li><code>duplex</code> <em><code>UIPrintInfoDuplex</code></em>: <code>.None</code>, <code>.ShortEdge</code>, or <code>.LongEdge</code>. The short- and long-edge settings indicate how double-sided pages could be bound, while <code>.None</code> suppresses double-sided printing (though not the UI toggle for duplexing, perplexingly).</li>
+<li><code>outputType</code> <em><code>UIPrintInfoOutputType</code></em>: Gives UIKit a hint about the type of content you&rsquo;re printing. Can be any of:
+
+<ul>
+<li><code>.General</code> (default): For mixed text and graphics; allows duplexing.</li>
+<li><code>.Grayscale</code>: Can be better than <code>.General</code> if your content includes black text only.</li>
+<li><code>.Photo</code>: For color or black and white images; disables duplexing and favors photo media for the paper type.</li>
+<li><code>.PhotoGrayscale</code>: Can be better than <code>.Photo</code> for grayscale-only images, depending on the printer.</li>
+</ul></li>
+<li><code>printerID</code> <em><code>String?</code></em>: An ID for a particular printer—you can retrieve this only <em>after</em> the user has selected a printer through the UI and save it to use as a preset for a future print job.</li>
+</ul>
+</blockquote>
+
+<p>In addition, <code>UIPrintInfo</code> provides a <code>dictionaryRepresentation</code> property, which can be saved and used to create a new <code>UIPrintInfo</code> instance later.</p>
+
+<h3 id="uiprintinteractioncontroller-settings"><code>UIPrintInteractionController</code> Settings</h3>
+
+<p>There are a handful of settings on the <code>UIPrintInteractionController</code> that you can configure before displaying the printing UI. These include:</p>
+
+<blockquote>
+<ul>
+<li><code>printInfo</code> <em><code>UIPrintInfo</code></em>: The aforementioned print job configuration.</li>
+<li><code>printPaper</code> <em><code>UIPrintPaper</code></em>: A simple type that describes the physical and printable size of a paper type; except for specialized applications, this will be handled for you by UIKit.</li>
+<li><code>showsNumberOfCopies</code> <em><code>Bool</code></em>: When <code>true</code>, lets the user choose the number of copies.</li>
+<li><code>showsPageRange</code> <em><code>Bool</code></em>: When <code>true</code>, lets the user choose a sub-range from the printed material. This only makes sense with multi-page content—it&rsquo;s turned off by default for images.</li>
+<li><code>showsPaperSelectionForLoadedPapers</code> <em><code>Bool</code></em>: When this is <code>true</code> and the selected printer has multiple paper options, the UI will let the user choose which paper to print on.</li>
+</ul>
+</blockquote>
+
+<h2 id="formatting-your-content">Formatting Your Content</h2>
+
+<p>Through four different properties of <code>UIPrintInteractionController</code>, you can select the level of control (and complexity) you want for your content.</p>
+
+<blockquote>
+<ol>
+<li><code>printingItem</code> <em><code>AnyObject!</code></em> or <code>printingItems</code> <em><code>[AnyObject]!</code></em>: At the most basic level, the controller simply takes content that is already printable (images and PDFs) and sends them to the printer.</li>
+<li><code>printFormatter</code> <em><code>UIPrintFormatter</code></em>: At the next level, you can use a <code>UIPrintFormatter</code> subclass to format content inside your application, then hand the formatter off to the <code>UIPrintInteractionController</code>. You have some control over the format, and the printing API largely takes care of the rest.</li>
+<li><code>printPageRenderer</code> <em><code>UIPrintPageRenderer</code></em>: At the highest level, you can create a custom subclass of <code>UIPrintPageRenderer</code>, combining page formatters and your own drawing routines for headers, footers, and page content.</li>
+</ol>
+</blockquote>
+
+<p>Since Thanksgiving (my favorite holiday) is around the corner, to illustrate these properties we&rsquo;ll add printing to different screens of a hypothetical app for Thanksgiving recipes.</p>
+
+<h2 id="printing-with-printitem(s)">Printing With <code>printItem</code>(<code>s</code>)</h2>
+
+<p>You can print pre-existing printable content by setting either the <code>printItem</code> or <code>printItems</code> property of <code>UIPrintInteractionController</code>. Images and PDFs can be given either as image data (in a <code>NSData</code>, <code>UIImage</code>, or <code>ALAsset</code> instance) or via any <code>NSURL</code> referencing something that can be loaded into an <code>NSData</code> object. To be printable, images must be in <a href="https://developer.apple.com/library/ios/documentation/Uikit/reference/UIImage_Class/index.html#//apple_ref/doc/uid/TP40006890-CH3-SW3">a format that <code>UIImage</code> supports</a>.</p>
+
+<p>Let&rsquo;s walk through a very simple case: showing the UI to print an image when the user taps a button. (We&rsquo;ll look at alternate ways of initiating printing below.) The process will be largely the same, no matter what you&rsquo;re printing—configure your print info, set up the print interaction controller, and provide your content before displaying the UI:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="p">@</span><span class="kt">IBAction</span> <span class="k">func</span> <span class="n">print</span><span class="p">(</span><span class="nl">sender</span><span class="p">:</span> <span class="bp">UIBarButtonItem</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="bp">UIPrintInteractionController</span><span class="p">.</span><span class="n">canPrintURL</span><span class="p">(</span><span class="n">imageURL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="n">printInfo</span> <span class="o">=</span> <span class="bp">UIPrintInfo</span><span class="p">(</span><span class="nl">dictionary</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+        <span class="n">printInfo</span><span class="p">.</span><span class="n">jobName</span> <span class="o">=</span> <span class="n">imageURL</span><span class="p">.</span><span class="n">lastPathComponent</span>
+        <span class="n">printInfo</span><span class="p">.</span><span class="n">outputType</span> <span class="o">=</span> <span class="p">.</span><span class="n">Photo</span>
+
+        <span class="k">let</span> <span class="n">printController</span> <span class="o">=</span> <span class="bp">UIPrintInteractionController</span><span class="p">.</span><span class="n">sharedPrintController</span><span class="p">()</span><span class="o">!</span>
+        <span class="n">printController</span><span class="p">.</span><span class="n">printInfo</span> <span class="o">=</span> <span class="n">printInfo</span>
+        <span class="n">printController</span><span class="p">.</span><span class="n">showsNumberOfCopies</span> <span class="o">=</span> <span class="nb">false</span>
+
+        <span class="n">printController</span><span class="p">.</span><span class="n">printingItem</span> <span class="o">=</span> <span class="n">imageURL</span>
+
+        <span class="n">printController</span><span class="p">.</span><span class="n">presentAnimated</span><span class="p">(</span><span class="nb">true</span><span class="p">,</span> <span class="nl">completionHandler</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">-</span> <span class="p">(</span><span class="kt">IBAction</span><span class="p">)</span><span class="nf">print:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">sender</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">([</span><span class="bp">UIPrintInteractionController</span> <span class="nl">canPrintURL</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">imageURL</span><span class="p">])</span> <span class="p">{</span>
+        <span class="bp">UIPrintInfo</span> <span class="o">*</span><span class="n">printInfo</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIPrintInfo</span> <span class="n">printInfo</span><span class="p">];</span>
+        <span class="n">printInfo</span><span class="p">.</span><span class="n">jobName</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">imageURL</span><span class="p">.</span><span class="n">lastPathComponent</span><span class="p">;</span>
+        <span class="n">printInfo</span><span class="p">.</span><span class="n">outputType</span> <span class="o">=</span> <span class="n">UIPrintInfoOutputGeneral</span><span class="p">;</span>
+
+        <span class="bp">UIPrintInteractionController</span> <span class="o">*</span><span class="n">printController</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIPrintInteractionController</span> <span class="n">sharedPrintController</span><span class="p">];</span>
+        <span class="n">printController</span><span class="p">.</span><span class="n">printInfo</span> <span class="o">=</span> <span class="n">printInfo</span><span class="p">;</span>
+
+        <span class="n">printController</span><span class="p">.</span><span class="n">printingItem</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">imageURL</span><span class="p">;</span>
+
+        <span class="p">[</span><span class="n">printController</span> <span class="nl">presentAnimated</span><span class="p">:</span><span class="nb">true</span> <span class="nl">completionHandler</span><span class="p">:</span> <span class="nb">nil</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Easy as pie! <em>(Or, in this case, sautéed Swiss chard.)</em></p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-image-print.png" alt="Print with .printingItem"></p>
+
+<blockquote>
+<p>The <code>presentAnimated(:completionHandler:)</code> method is for presenting the printing UI on the <strong>iPhone</strong>. If printing from the <strong>iPad</strong>, use one of the <code>presentFromBarButtonItem(:animated:completionHandler:)</code> or
+<code>presentFromRect(:inView:animated:completionHandler:)</code> methods instead.</p>
+</blockquote>
+
+<h2 id="uiprintformatter">UIPrintFormatter</h2>
+
+<p>The <code>UIPrintFormatter</code> class has two subclasses that can be used to format text (<code>UISimpleTextPrintFormatter</code> and <code>UIMarkupTextPrintFormatter</code>) plus another (<code>UIViewPrintFormatter</code>) that can format the content of three views: <code>UITextView</code>, <code>UIWebView</code>, and <code>MKMapView</code>. Print formatters have a few properties that allow you to define the printed area of the page in different ways; the final print area for the formatter will be the smallest rectangle that meets the following criteria:</p>
+
+<blockquote>
+<ul>
+<li><code>contentInsets</code> <em><code>UIEdgeInsets</code></em>: A set of insets from the edges of the page for the entire block of content. The left and right insets are applied on every page, but the top inset is <em>only</em> applied on the first page. The bottom inset is ignored.</li>
+<li><code>perPageContentInsets</code> <em><code>UIEdgeInsets</code></em> (iOS 8 only): A set of insets from the edges of the page for <em>every page</em> of formatted content.</li>
+<li><code>maximumContentWidth</code> and <code>maximumContentHeight</code> <em><code>CGFloat</code></em>: If specified, these can further constrain the width and height of the content area.</li>
+</ul>
+
+<p>Though not clearly documented by Apple, all of these values are based on 72 points per inch.</p>
+</blockquote>
+
+<p>The two text-based print formatters are initialized with the text they will be formatting. <code>UISimpleTextPrintFormatter</code> can handle plain or attributed text, while <code>UIMarkupTextPrintFormatter</code> takes and renders HTML text in its <code>markupText</code> property. Let&rsquo;s try sending an HTML version of our Swiss chard recipe through the markup formatter:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="bp">UIMarkupTextPrintFormatter</span><span class="p">(</span><span class="nl">markupText</span><span class="p">:</span> <span class="n">htmlString</span><span class="p">)</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">contentInsets</span> <span class="o">=</span> <span class="bp">UIEdgeInsets</span><span class="p">(</span><span class="nl">top</span><span class="p">:</span> <span class="mi">72</span><span class="p">,</span> <span class="nl">left</span><span class="p">:</span> <span class="mi">72</span><span class="p">,</span> <span class="nl">bottom</span><span class="p">:</span> <span class="mi">72</span><span class="p">,</span> <span class="nl">right</span><span class="p">:</span> <span class="mi">72</span><span class="p">)</span> <span class="c1">// 1&quot; margins</span>
+
+<span class="n">printController</span><span class="p">.</span><span class="n">printFormatter</span> <span class="o">=</span> <span class="n">formatter</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">UIMarkupTextPrintFormatter</span> <span class="o">*</span><span class="n">formatter</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UIMarkupTextPrintFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithMarkupText</span><span class="p">:</span><span class="n">htmlString</span><span class="p">];</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">contentInsets</span> <span class="o">=</span> <span class="n">UIEdgeInsetsMake</span><span class="p">(</span><span class="mi">72</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">72</span><span class="p">,</span> <span class="mi">72</span><span class="p">);</span> <span class="c1">// 1&quot; margins</span>
+
+<span class="n">printController</span><span class="p">.</span><span class="n">printFormatter</span> <span class="o">=</span> <span class="n">formatter</span><span class="p">;</span>
+</code></pre></div>
+<p>The result? A handsomely rendered HTML page:</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-html-print.png" alt="Print with UIMarkupTextPrintFormatter"></p>
+
+<p>On the other hand, to use a <code>UIViewPrintFormatter</code>, you retrieve one from the view you want to print via its <code>viewPrintFormatter</code> property. Here&rsquo;s a look at how the formatter does its job for each of the three supported views:</p>
+
+<h4 id="1)-uitextview">1) UITextView</h4>
+
+<p><img src="http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-textview-print.png" alt="Print with UITextView"></p>
+
+<h4 id="2)-uiwebview">2) UIWebView</h4>
+
+<p><img src="http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-webview-print.png" alt="Print with UIWebView"></p>
+
+<h4 id="3)-mkmapview">3) MKMapView</h4>
+
+<p><img src="http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-mapview-print.png" alt="Print with MKMapView"></p>
+
+<h2 id="uiprintpagerenderer">UIPrintPageRenderer</h2>
+
+<p>The built-in formatters are fine, but for the <em>most</em> control over the printed page, you can implement a subclass of <code>UIPrintPageRenderer</code>. In your subclass you can combine the print formatters we saw above with your own custom drawing routines to create terrific layouts for your app&rsquo;s content. Let&rsquo;s look at one more way of printing a recipe, this time using a page renderer to add a header and to draw the images alongside the text of the recipe.</p>
+
+<p>In the initializer, we save the data that we&rsquo;ll need to print, then set the <code>headerHeight</code> (the header and footer drawing methods won&rsquo;t even be called unless you set their respective heights) and create a markup text formatter for the text of the recipe.</p>
+
+<blockquote>
+<p>Complete Objective-C and Swift source code for the following examples <a href="https://gist.github.com/mattt/bd5e48ae461848cdbd1e">is available as a gist</a>.</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="nl">RecipePrintPageRenderer</span><span class="p">:</span> <span class="bp">UIPrintPageRenderer</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nl">authorName</span><span class="p">:</span> <span class="n">String</span>
+    <span class="k">let</span> <span class="nl">recipe</span><span class="p">:</span> <span class="n">Recipe</span>
+
+    <span class="k">init</span><span class="p">(</span><span class="nl">authorName</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">recipe</span><span class="p">:</span> <span class="n">Recipe</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">authorName</span> <span class="o">=</span> <span class="n">authorName</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">recipe</span> <span class="o">=</span> <span class="n">recipe</span>
+        <span class="nb">super</span><span class="p">.</span><span class="k">init</span><span class="p">()</span>
+
+        <span class="nb">self</span><span class="p">.</span><span class="n">headerHeight</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">POINTS_PER_INCH</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">footerHeight</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1">// default</span>
+
+        <span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="bp">UIMarkupTextPrintFormatter</span><span class="p">(</span><span class="nl">markupText</span><span class="p">:</span> <span class="n">recipe</span><span class="p">.</span><span class="n">html</span><span class="p">)</span>
+        <span class="n">formatter</span><span class="p">.</span><span class="n">perPageContentInsets</span> <span class="o">=</span> <span class="bp">UIEdgeInsets</span><span class="p">(</span><span class="nl">top</span><span class="p">:</span> <span class="n">POINTS_PER_INCH</span><span class="p">,</span> <span class="nl">left</span><span class="p">:</span> <span class="n">POINTS_PER_INCH</span><span class="p">,</span>
+            <span class="nl">bottom</span><span class="p">:</span> <span class="n">POINTS_PER_INCH</span><span class="p">,</span> <span class="nl">right</span><span class="p">:</span> <span class="n">POINTS_PER_INCH</span> <span class="o">*</span> <span class="mf">3.5</span><span class="p">)</span>
+        <span class="n">addPrintFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">,</span> <span class="nl">startingAtPageAtIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">@interface</span> <span class="nc">RecipePrintPageRenderer</span> : <span class="bp">UIPrintPageRenderer</span>
+<span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">strong</span><span class="p">)</span> <span class="bp">NSString</span> <span class="o">*</span><span class="n">authorName</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">strong</span><span class="p">)</span> <span class="n">Recipe</span> <span class="o">*</span><span class="n">recipe</span><span class="p">;</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">initWithAuthorName:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">authorName</span>
+                  <span class="nf">recipe:</span><span class="p">(</span><span class="n">Recipe</span> <span class="o">*</span><span class="p">)</span><span class="nv">recipe</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">RecipePrintPageRenderer</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">initWithAuthorName:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">authorName</span>
+                  <span class="nf">recipe:</span><span class="p">(</span><span class="n">Recipe</span> <span class="o">*</span><span class="p">)</span><span class="nv">recipe</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">self</span> <span class="o">=</span> <span class="p">[</span><span class="nb">super</span> <span class="n">init</span><span class="p">])</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">authorName</span> <span class="o">=</span> <span class="n">authorName</span><span class="p">;</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">recipe</span> <span class="o">=</span> <span class="n">recipe</span><span class="p">;</span>
+
+        <span class="nb">self</span><span class="p">.</span><span class="n">headerHeight</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">footerHeight</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>  <span class="c1">// default</span>
+
+        <span class="bp">UIMarkupTextPrintFormatter</span> <span class="o">*</span><span class="n">formatter</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UIMarkupTextPrintFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithMarkupText</span><span class="p">:</span><span class="n">recipe</span><span class="p">.</span><span class="n">html</span><span class="p">];</span>
+        <span class="n">formatter</span><span class="p">.</span><span class="n">perPageContentInsets</span> <span class="o">=</span> <span class="n">UIEdgeInsetsMake</span><span class="p">(</span><span class="n">POINTS_PER_INCH</span><span class="p">,</span> <span class="n">POINTS_PER_INCH</span><span class="p">,</span> <span class="n">POINTS_PER_INCH</span><span class="p">,</span> <span class="n">POINTS_PER_INCH</span> <span class="o">*</span> <span class="mf">3.5</span><span class="p">);</span>
+        <span class="p">[</span><span class="nb">self</span> <span class="nl">addPrintFormatter</span><span class="p">:</span><span class="n">formatter</span> <span class="nl">startingAtPageAtIndex</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nb">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+
+<span class="k">@end</span>
+</code></pre></div>
+<blockquote>
+<p>When you use one or more print formatters as part of your custom renderer (as we&rsquo;re doing here), UIKit queries them for the number of pages to print. If you&rsquo;re doing truly custom page layout, implement the <code>numberOfPages()</code> method to provide the correct value.</p>
+</blockquote>
+
+<p>Next, we override <code>drawHeaderForPageAtIndex(:inRect:)</code> to draw our custom header. Unfortunately, those handy per-page content insets on print formatters are gone here, so we first need to inset the <code>headerRect</code> parameter to match my margins, then simply draw into the current graphics context. There&rsquo;s a similar <code>drawFooterForPageAtIndex(:inRect:)</code> method for drawing the footer.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kr">override</span> <span class="k">func</span> <span class="nf">drawHeaderForPageAtIndex</span><span class="p">(</span><span class="nl">pageIndex</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="k">var</span> <span class="n">inRect</span> <span class="nl">headerRect</span><span class="p">:</span> <span class="bp">CGRect</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="n">headerInsets</span> <span class="o">=</span> <span class="bp">UIEdgeInsets</span><span class="p">(</span><span class="nl">top</span><span class="p">:</span> <span class="n">CGRectGetMinY</span><span class="p">(</span><span class="n">headerRect</span><span class="p">),</span> <span class="nl">left</span><span class="p">:</span> <span class="n">POINTS_PER_INCH</span><span class="p">,</span> <span class="nl">bottom</span><span class="p">:</span> <span class="n">CGRectGetMaxY</span><span class="p">(</span><span class="n">paperRect</span><span class="p">)</span> <span class="o">-</span> <span class="n">CGRectGetMaxY</span><span class="p">(</span><span class="n">headerRect</span><span class="p">),</span> <span class="nl">right</span><span class="p">:</span> <span class="n">POINTS_PER_INCH</span><span class="p">)</span>
+    <span class="n">headerRect</span> <span class="o">=</span> <span class="n">UIEdgeInsetsInsetRect</span><span class="p">(</span><span class="n">paperRect</span><span class="p">,</span> <span class="n">headerInsets</span><span class="p">)</span>
+
+    <span class="c1">// author name on left</span>
+    <span class="n">authorName</span><span class="p">.</span><span class="n">drawAtPointInRect</span><span class="p">(</span><span class="n">headerRect</span><span class="p">,</span> <span class="nl">withAttributes</span><span class="p">:</span> <span class="n">nameAttributes</span><span class="p">,</span> <span class="nl">andAlignment</span><span class="p">:</span> <span class="p">.</span><span class="n">LeftCenter</span><span class="p">)</span>
+
+    <span class="c1">// page number on right</span>
+    <span class="k">let</span> <span class="nl">pageNumberString</span><span class="p">:</span> <span class="bp">NSString</span> <span class="o">=</span> <span class="s">&quot;\(pageIndex + 1)&quot;</span>
+    <span class="n">pageNumberString</span><span class="p">.</span><span class="n">drawAtPointInRect</span><span class="p">(</span><span class="n">headerRect</span><span class="p">,</span> <span class="nl">withAttributes</span><span class="p">:</span> <span class="n">pageNumberAttributes</span><span class="p">,</span> <span class="nl">andAlignment</span><span class="p">:</span> <span class="p">.</span><span class="n">RightCenter</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">drawHeaderForPageAtIndex:</span><span class="p">(</span><span class="bp">NSInteger</span><span class="p">)</span><span class="nv">index</span>
+                          <span class="nf">inRect:</span><span class="p">(</span><span class="bp">CGRect</span><span class="p">)</span><span class="nv">headerRect</span>
+<span class="p">{</span>
+    <span class="bp">UIEdgeInsets</span> <span class="n">headerInsets</span> <span class="o">=</span> <span class="n">UIEdgeInsetsMake</span><span class="p">(</span><span class="n">CGRectGetMinY</span><span class="p">(</span><span class="n">headerRect</span><span class="p">),</span> <span class="n">POINTS_PER_INCH</span><span class="p">,</span> <span class="n">CGRectGetMaxY</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">paperRect</span><span class="p">)</span> <span class="o">-</span> <span class="n">CGRectGetMaxY</span><span class="p">(</span><span class="n">headerRect</span><span class="p">),</span> <span class="n">POINTS_PER_INCH</span><span class="p">);</span>
+    <span class="n">headerRect</span> <span class="o">=</span> <span class="n">UIEdgeInsetsInsetRect</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">paperRect</span><span class="p">,</span> <span class="n">headerInsets</span><span class="p">);</span>
+
+    <span class="c1">// author name on left</span>
+    <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">authorName</span> <span class="nl">drawAtPointInRect</span><span class="p">:</span><span class="n">headerRect</span> <span class="nl">withAttributes</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">nameAttributes</span> <span class="nl">andAlignment</span><span class="p">:</span><span class="n">NCStringAlignmentLeftCenter</span><span class="p">];</span>
+
+    <span class="c1">// page number on right</span>
+    <span class="bp">NSString</span> <span class="o">*</span><span class="n">pageNumberString</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSString</span> <span class="nl">stringWithFormat</span><span class="p">:</span><span class="s">@&quot;%ld&quot;</span><span class="p">,</span> <span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">pageNumberString</span> <span class="nl">drawAtPointInRect</span><span class="p">:</span><span class="n">headerRect</span> <span class="nl">withAttributes</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">pageNumberAttributes</span> <span class="nl">andAlignment</span><span class="p">:</span><span class="n">NCStringAlignmentRightCenter</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Lastly, let&rsquo;s provide an implementation of <code>drawContentForPageAtIndex(:inRect:)</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kr">override</span> <span class="k">func</span> <span class="nf">drawContentForPageAtIndex</span><span class="p">(</span><span class="nl">pageIndex</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="n">inRect</span> <span class="nl">contentRect</span><span class="p">:</span> <span class="bp">CGRect</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">pageIndex</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+        <span class="c1">// only use rightmost two inches of contentRect</span>
+        <span class="k">let</span> <span class="n">imagesRectWidth</span> <span class="o">=</span> <span class="n">POINTS_PER_INCH</span> <span class="o">*</span> <span class="mi">2</span>
+        <span class="k">let</span> <span class="n">imagesRectHeight</span> <span class="o">=</span> <span class="n">paperRect</span><span class="p">.</span><span class="n">height</span> <span class="o">-</span> <span class="n">POINTS_PER_INCH</span> <span class="o">-</span> <span class="p">(</span><span class="n">CGRectGetMaxY</span><span class="p">(</span><span class="n">paperRect</span><span class="p">)</span> <span class="o">-</span> <span class="n">CGRectGetMaxY</span><span class="p">(</span><span class="n">contentRect</span><span class="p">))</span>
+        <span class="k">let</span> <span class="n">imagesRect</span> <span class="o">=</span> <span class="bp">CGRect</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">CGRectGetMaxX</span><span class="p">(</span><span class="n">paperRect</span><span class="p">)</span> <span class="o">-</span> <span class="n">imagesRectWidth</span> <span class="o">-</span> <span class="n">POINTS_PER_INCH</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">paperRect</span><span class="p">.</span><span class="n">origin</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">POINTS_PER_INCH</span><span class="p">,</span> <span class="nl">width</span><span class="p">:</span> <span class="n">imagesRectWidth</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="n">imagesRectHeight</span><span class="p">)</span>
+
+        <span class="n">drawImages</span><span class="p">(</span><span class="n">recipe</span><span class="p">.</span><span class="n">images</span><span class="p">,</span> <span class="nl">inRect</span><span class="p">:</span> <span class="n">imagesRect</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">drawContentForPageAtIndex:</span><span class="p">(</span><span class="bp">NSInteger</span><span class="p">)</span><span class="nv">pageIndex</span>
+                           <span class="nf">inRect:</span><span class="p">(</span><span class="bp">CGRect</span><span class="p">)</span><span class="nv">contentRect</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">pageIndex</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// only use rightmost two inches of contentRect</span>
+        <span class="n">CGFloat</span> <span class="n">imagesRectWidth</span> <span class="o">=</span> <span class="n">POINTS_PER_INCH</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+        <span class="n">CGFloat</span> <span class="n">imagesRectHeight</span> <span class="o">=</span> <span class="n">CGRectGetHeight</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">paperRect</span><span class="p">)</span> <span class="o">-</span> <span class="n">POINTS_PER_INCH</span> <span class="o">-</span> <span class="p">(</span><span class="n">CGRectGetMaxY</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">paperRect</span><span class="p">)</span> <span class="o">-</span> <span class="n">CGRectGetMaxY</span><span class="p">(</span><span class="n">contentRect</span><span class="p">));</span>
+        <span class="bp">CGRect</span> <span class="n">imagesRect</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="n">CGRectGetMaxX</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">paperRect</span><span class="p">)</span> <span class="o">-</span> <span class="n">imagesRectWidth</span> <span class="o">-</span> <span class="n">POINTS_PER_INCH</span><span class="p">,</span> <span class="n">CGRectGetMinY</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">paperRect</span><span class="p">)</span> <span class="o">+</span> <span class="n">POINTS_PER_INCH</span><span class="p">,</span> <span class="n">imagesRectWidth</span><span class="p">,</span> <span class="n">imagesRectHeight</span><span class="p">);</span>
+
+        <span class="p">[</span><span class="nb">self</span> <span class="nl">drawImages</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">recipe</span><span class="p">.</span><span class="n">images</span> <span class="nl">inRect</span><span class="p">:</span><span class="n">imagesRect</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>With the implementation of our custom page renderer complete, we can set an instance as the <code>pageRenderer</code> property on the print interaction controller and we&rsquo;re ready to print.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">renderer</span> <span class="o">=</span> <span class="n">RecipePrintPageRenderer</span><span class="p">(</span><span class="nl">authorName</span><span class="p">:</span> <span class="s">&quot;Nate Cook&quot;</span><span class="p">,</span> <span class="nl">recipe</span><span class="p">:</span> <span class="n">selectedRecipe</span><span class="p">)</span>
+<span class="n">printController</span><span class="p">.</span><span class="n">printPageRenderer</span> <span class="o">=</span> <span class="n">renderer</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">RecipePrintPageRenderer</span> <span class="o">*</span><span class="n">renderer</span> <span class="o">=</span> <span class="p">[[</span><span class="n">RecipePrintPageRenderer</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithAuthorName</span><span class="p">:</span><span class="s">@&quot;Nate Cook&quot;</span> <span class="nl">recipe</span><span class="p">:</span><span class="n">selectedRecipe</span><span class="p">];</span>
+<span class="n">printController</span><span class="p">.</span><span class="n">printPageRenderer</span> <span class="o">=</span> <span class="n">renderer</span><span class="p">;</span>
+</code></pre></div>
+<p>The final result is much nicer than any of the built-in formatters.</p>
+
+<blockquote>
+<p>Note that the text of the recipe is being formatted by a <code>UIMarkupTextPrintFormatter</code>, while the header and images are drawn via custom code.</p>
+</blockquote>
+
+<p><img src="http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-renderer-print.png" alt="Print with UIPrintPageRenderer subclass"></p>
+
+<h2 id="printing-via-a-share-sheet">Printing via a Share Sheet</h2>
+
+<p>With the tools we&rsquo;ve learned above, adding printing capability in a share sheet is simple. Instead of using <code>UIPrintInteractionController</code> to present the printing UI, we pass off our configured <code>UIPrintInfo</code> and printing item(s), formatter, or renderer to a <code>UIActivityViewController</code>. If the user selects the <em>Print</em> button in the share sheet, the printing UI will be displayed with all our configurations intact.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="p">@</span><span class="kt">IBAction</span> <span class="k">func</span> <span class="n">openShareSheet</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">printInfo</span> <span class="o">=</span> <span class="p">...</span>
+    <span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="p">...</span>
+
+    <span class="k">let</span> <span class="n">activityItems</span> <span class="o">=</span> <span class="p">[</span><span class="n">printInfo</span><span class="p">,</span> <span class="n">formatter</span><span class="p">,</span> <span class="n">textView</span><span class="p">.</span><span class="n">attributedText</span><span class="p">]</span>
+    <span class="k">let</span> <span class="n">activityController</span> <span class="o">=</span> <span class="bp">UIActivityViewController</span><span class="p">(</span><span class="nl">activityItems</span><span class="p">:</span> <span class="n">activityItems</span><span class="p">,</span> <span class="nl">applicationActivities</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+    <span class="n">presentViewController</span><span class="p">(</span><span class="n">activityController</span><span class="p">,</span> <span class="nl">animated</span><span class="p">:</span> <span class="nb">true</span><span class="p">,</span> <span class="nl">completion</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">-</span> <span class="p">(</span><span class="kt">IBAction</span><span class="p">)</span><span class="nf">openShareSheet:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">sender</span> <span class="p">{</span>
+    <span class="bp">UIPrintInfo</span> <span class="o">*</span><span class="n">printInfo</span> <span class="o">=</span> <span class="p">...</span>
+    <span class="bp">UISimpleTextPrintFormatter</span> <span class="o">*</span><span class="n">formatter</span> <span class="o">=</span> <span class="p">...</span>
+
+    <span class="bp">NSArray</span> <span class="o">*</span><span class="n">activityItems</span> <span class="o">=</span> <span class="l">@[</span><span class="n">printInfo</span><span class="p">,</span> <span class="n">formatter</span><span class="p">,</span> <span class="nb">self</span><span class="p">.</span><span class="n">textView</span><span class="p">.</span><span class="n">attributedText</span><span class="l">]</span><span class="p">;</span>
+    <span class="bp">UIActivityViewController</span> <span class="o">*</span><span class="n">activityController</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UIActivityViewController</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithActivityItems</span><span class="p">:</span><span class="n">activityItems</span> <span class="nl">applicationActivities</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+    <span class="p">[</span><span class="nb">self</span> <span class="nl">presentViewController</span><span class="p">:</span><span class="n">activityController</span> <span class="nl">animated</span><span class="p">:</span><span class="nb">YES</span> <span class="nl">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>While <code>UIPrintInfo</code> and subclasses of <code>UIPrintFormatter</code> and <code>UIPrintPageRenderer</code> can be passed to a <code>UIActivityViewController</code> as activities, none of them seem to conform to the <code>UIActivityItemSource</code> protocol, so you&rsquo;ll see a (harmless) warning in your console about &ldquo;Unknown activity items.&rdquo;</p>
+</blockquote>
+
+<h2 id="skipping-the-printing-ui">Skipping the Printing UI</h2>
+
+<p>New in iOS 8 is a way to print without any presentation of the printing UI. Instead of presenting the UI each time the user presses a print button, you can provide a way for your users to select a printer somewhere in your app with the easy-to-use <code>UIPrinterPickerController</code>. It accepts an optional <code>UIPrinter</code> instance in its constructor for a pre-selection, uses the same presentation options as explained above, and has a completion handler for when the user has selected her printer:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">printerPicker</span> <span class="o">=</span> <span class="n">UIPrinterPickerController</span><span class="p">(</span><span class="nl">initiallySelectedPrinter</span><span class="p">:</span> <span class="n">savedPrinter</span><span class="p">)</span>
+<span class="n">printerPicker</span><span class="p">.</span><span class="n">presentAnimated</span><span class="p">(</span><span class="nb">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">(</span><span class="n">printerPicker</span><span class="p">,</span> <span class="n">userDidSelect</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+
+    <span class="k">if</span> <span class="n">userDidSelect</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">savedPrinter</span> <span class="o">=</span> <span class="n">printerPicker</span><span class="p">.</span><span class="n">selectedPrinter</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">UIPrinterPickerController</span> <span class="o">*</span><span class="n">printPicker</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIPrinterPickerController</span> <span class="nl">printerPickerControllerWithInitiallySelectedPrinter</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">savedPrinter</span><span class="p">];</span>
+<span class="p">[</span><span class="n">printPicker</span> <span class="nl">presentAnimated</span><span class="p">:</span><span class="nb">YES</span> <span class="nl">completionHandler</span><span class="p">:</span>
+    <span class="o">^</span><span class="p">(</span><span class="n">UIPrinterPickerController</span> <span class="o">*</span><span class="n">printerPicker</span><span class="p">,</span> <span class="kt">BOOL</span> <span class="n">userDidSelect</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">userDidSelect</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">savedPrinter</span> <span class="o">=</span> <span class="n">printerPicker</span><span class="p">.</span><span class="n">selectedPrinter</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}];</span>
+</code></pre></div>
+<p>Now you can tell your <code>UIPrintInteractionController</code> to print directly by calling <code>printToPrinter(:completionHandler:)</code> with the saved printer instead of using one of the <code>present...</code> methods.</p>
+
+<hr>
+
+<p>As one final recommendation, consider the printed page as you would any other way of interacting with your content. In the same way you scrutinize font size and weight or the contrast between elements on screen, make sure to test your print layouts <em>on paper</em>—the contrast, size, and margins should all be appropriate to the medium.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-11-17-uiprintinteractioncontroller.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 1.0.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Nate Cook" itemprop="image" src="http://nshipster.s3.amazonaws.com/nate-cook.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/nate-cook/">Nate Cook</a></span>
+
+      <p><a href="http://natecook.com">Nate Cook</a> (<a href="https://twitter.com/nnnnnnnn">@nnnnnnnn</a>) is an independent web and application developer who <a href="http://natecook.com/blog/">writes frequently about topics in Swift</a>, and the creator of <a href="http://swiftdoc.org">SwiftDoc.org</a>.</p>
+
+
+      
+        <a href="https://plus.google.com/?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/watchkit/" title="WatchKit" rel="next">Watch​Kit</a>
+            </h1>
+
+            <p>After taking a look at WatchKit, there were a few things that jumped out coming from UIKit. They&rsquo;re the kind of subjective, opinionated things that don&rsquo;t make for good documentation, but might be interesting or useful to anyone else as they&rsquo;re getting started.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nslinguistictagger/" title="NSLinguisticTagger">NSLinguisticTagger</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nscoding/" title="NSCoding / NSKeyedArchiver">NSCoding / NSKeyedArchiver</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/mklocalsearch/" title="MKLocalSearch">MKLocalSearch</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nssecurecoding/" title="NSSecureCoding">NSSecureCoding</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

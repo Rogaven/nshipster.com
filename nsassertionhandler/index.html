@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSAssertionHandler - NSHipster</title>
+    <meta name="description" content="Programming incorporates numerous disciplines of human reasoning, from high-level discourse and semantics—the story we tell each other to explain how a system works—to the mathematical and philosophical machinery that underpins everything."/>
+    <link rel="canonical" href="http://nshipster.com/nsassertionhandler/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="NSAssertionHandler"/>
+    <meta name="twitter:description" content="Programming incorporates numerous disciplines of human reasoning, from high-level discourse and semantics—the story we tell each other to explain how a system works—to the mathematical and philosophical machinery that underpins everything."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NSAssertionHandler"/>
+    <meta property="og:url" content="http://nshipster.com/nsassertionhandler/"/>
+    <meta property="og:description" content="Programming incorporates numerous disciplines of human reasoning, from high-level discourse and semantics—the story we tell each other to explain how a system works—to the mathematical and philosophical machinery that underpins everything."/>
+    <meta property="article:published_time" content="2013-02-25T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NSAssertionHandler"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/nsassertionhandler/">NSAssertion​Handler</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-02-25T00:00:00-08:00" itemprop="datePublished">February 25<sup>th</sup>, 2013</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>&ldquo;When at first you don&rsquo;t succeed, use an object-oriented injection point to override default exception handling.&rdquo; This is the sort of advice you would have learned at mother&rsquo;s knee if you were raised by <code>NSAssertionHandler</code>.</p>
+
+<p>Programming incorporates numerous disciplines of human reasoning, from high-level discourse and semantics—the &ldquo;story&rdquo; we tell each other to explain how a system works—to the mathematical and philosophical machinery that underpins everything.</p>
+
+<p>Assertions are a concept borrowed from classical logic. In logic, assertions are statements about propositions within a proof. In programming, assertions denote assumptions the programmer has made about the application at the place where they are declared.</p>
+
+<p>When used in the capacity of preconditions and postconditions, which describe expectations about the state of the code at the beginning and end of execution of a method or function, assertions form a <a href="http://en.wikipedia.org/wiki/Design_by_contract">contract</a>. Assertions can also be used to enforce conditions at run-time, in order to prevent execution when certain preconditions fail.</p>
+
+<p>Assertions are similar to <a href="http://en.wikipedia.org/wiki/Unit_testing">unit testing</a> in that they define expectations about the way code will execute. Unlike unit tests, assertions exist inside the program itself, and are thereby constrained to the context of the program. Because unit tests are fully independent, they have a much greater capacity to isolate and test certain behaviors, using tools like methods stubs and mock objects. Developers should use assertions and unit tests in combination and in reasonable quantity to test and define behavior in an application.</p>
+
+<h2 id="foundation-assertion-handling">Foundation Assertion Handling</h2>
+
+<p>Objective-C combines C-style assertion macros with an object-oriented approach to intercepting and handling assertion failures. Namely, <code>NSAssertionHandler</code>:</p>
+
+<blockquote>
+<p>Each thread has its own assertion handler, which is an object of class <code>NSAssertionHandler</code>. When invoked, an assertion handler prints an error message that includes the method and class names (or the function name). It then raises an <code>NSInternalInconsistencyException</code> exception.</p>
+</blockquote>
+
+<p>Foundation <a href="https://gist.github.com/mattt/5031388#file-nsassertionhandler-m-L50-L56">defines</a> two pairs of assertion macros:</p>
+
+<ul>
+<li><code>NSAssert</code> / <code>NSCAssert</code></li>
+<li><code>NSParameterAssert</code> / <code>NSCParameterAssert</code></li>
+</ul>
+
+<p>Foundation makes two distinctions in their assertion handler APIs that are both semantic and functional.</p>
+
+<p>The first distinction is between a general assertion (<code>NSAssert</code>) and a parameter assertion (<code>NSParameterAssert</code>). As a rule of thumb, methods / functions should use <code>NSParameterAssert</code> / <code>NSCParameterAssert</code> statements at the top of methods to enforce any preconditions about the input values; in all other cases, use <code>NSAssert</code> / <code>NSCAssert</code>.</p>
+
+<p>The second is the difference between C and Objective-C assertions: <code>NSAssert</code> should only be used in an Objective-C context (i.e. method implementations), whereas <code>NSCAssert</code> should only be used in a C context (i.e. functions).</p>
+
+<ul>
+<li>When a condition in <code>NSAssert</code> or <code>NSParameterAssert</code> fails, <code>-handleFailureInMethod:object:file:lineNumber:description:</code> is called in the assertion handler.</li>
+<li>When a condition in <code>NSCAssert</code> or <code>NSCParameterAssert</code> fails, <code>-handleFailureInFunction:file:lineNumber:description:</code> is called in the assertion handler.</li>
+</ul>
+
+<p>Additionally, there are variations of <code>NSAssert</code> / <code>NSCAssert</code>, from <code>NSAssert1</code> &hellip; <code>NSAssert5</code>, which take their respective number of arguments to use in a <code>printf</code>-style format string.</p>
+
+<h2 id="using-nsassertionhandler">Using NSAssertionHandler</h2>
+
+<p>It&rsquo;s important to note that as of Xcode 4.2, <a href="http://stackoverflow.com/questions/6445222/ns-block-assertions-in-objective-c">assertions are turned off by default for release builds</a>, which is accomplished by defining the <code>NS_BLOCK_ASSERTIONS</code> macro. That is to say, when compiled for release, any calls to <code>NSAssert</code> &amp; co. are effectively removed.</p>
+
+<p>And while Foundation assertion macros are extremely useful in their own right—even when just used in development—the fun doesn&rsquo;t have to stop there. <code>NSAssertionHandler</code> provides a way to gracefully handle assertion failures in a way that preserves valuable real-world usage information.</p>
+
+<blockquote>
+<p>That said, many seasoned Objective-C developers caution against actually using <code>NSAssertionHandler</code> in production applications. Foundation assertion handlers are something to understand and appreciate from a safe distance. <strong>Proceed with caution if you decide to use this in a shipping application.</strong></p>
+</blockquote>
+
+<p><code>NSAssertionHandler</code> is a straightforward class, with two methods to implement in your subclass: <code>-handleFailureInMethod:...</code> (called on a failed <code>NSAssert</code> / <code>NSParameterAssert</code>) and <code>-handleFailureInFunction:...</code> (called on a failed <code>NSCAssert</code> / <code>NSCParameterAssert</code>).</p>
+
+<p><code>LoggingAssertionHandler</code> simply logs out the assertion failures, but those failures could also be logged to an external web service to be aggregated and analyzed, for example.</p>
+
+<h3 id="loggingassertionhandler.h">LoggingAssertionHandler.h</h3>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">@interface</span> <span class="nc">LoggingAssertionHandler</span> : <span class="bp">NSAssertionHandler</span>
+<span class="k">@end</span>
+</code></pre></div>
+<h3 id="loggingassertionhandler.m">LoggingAssertionHandler.m</h3>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">@implementation</span> <span class="nc">LoggingAssertionHandler</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">handleFailureInMethod:</span><span class="p">(</span><span class="kt">SEL</span><span class="p">)</span><span class="nv">selector</span>
+                       <span class="nf">object:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">object</span>
+                         <span class="nf">file:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">fileName</span>
+                   <span class="nf">lineNumber:</span><span class="p">(</span><span class="bp">NSInteger</span><span class="p">)</span><span class="nv">line</span>
+                  <span class="nf">description:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">format</span><span class="p">,</span> <span class="p">...</span>
+<span class="p">{</span>
+  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;NSAssert Failure: Method %@ for object %@ in %@#%i&quot;</span><span class="p">,</span> <span class="n">NSStringFromSelector</span><span class="p">(</span><span class="n">selector</span><span class="p">),</span> <span class="n">object</span><span class="p">,</span> <span class="n">fileName</span><span class="p">,</span> <span class="n">line</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">handleFailureInFunction:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">functionName</span>
+                           <span class="nf">file:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">fileName</span>
+                     <span class="nf">lineNumber:</span><span class="p">(</span><span class="bp">NSInteger</span><span class="p">)</span><span class="nv">line</span>
+                    <span class="nf">description:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">format</span><span class="p">,</span> <span class="p">...</span>
+<span class="p">{</span>
+  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;NSCAssert Failure: Function (%@) in %@#%i&quot;</span><span class="p">,</span> <span class="n">functionName</span><span class="p">,</span> <span class="n">fileName</span><span class="p">,</span> <span class="n">line</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre></div>
+<p>Each thread has the option of specifying an assertion handler. To have the <code>NSAssertionHandler</code> subclass start handling failed assertions, set it as the value for the <code>NSAssertionHandlerKey</code> key in the thread&rsquo;s <code>threadDictionary</code>.</p>
+
+<p>In most cases, it will make sense to set your assertion handler on the current thread inside <code>-application:
+didFinishLaunchingWithOptions:</code>.</p>
+
+<h3 id="appdelegate.m">AppDelegate.m</h3>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="bp">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span>
+<span class="nf">didFinishLaunchingWithOptions:</span><span class="p">(</span><span class="bp">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">launchOptions</span>
+<span class="p">{</span>
+  <span class="bp">NSAssertionHandler</span> <span class="o">*</span><span class="n">assertionHandler</span> <span class="o">=</span> <span class="p">[[</span><span class="n">LoggingAssertionHandler</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+  <span class="p">[[[</span><span class="bp">NSThread</span> <span class="n">currentThread</span><span class="p">]</span> <span class="n">threadDictionary</span><span class="p">]</span> <span class="nl">setValue</span><span class="p">:</span><span class="n">assertionHandler</span>
+                                                 <span class="nl">forKey</span><span class="p">:</span><span class="n">NSAssertionHandlerKey</span><span class="p">];</span>
+  <span class="c1">// ...</span>
+
+  <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<p><code>NSAssertionHandler</code> reminds us of the best practices around articulating our expectations as programmers through assert statements.</p>
+
+<p>But if we look deeper into <code>NSAssertionHandler</code>—and indeed, into our own hearts, there are lessons to be learned about our capacity for kindness and compassion; about our ability to forgive others, and to recover from our own missteps. We can&rsquo;t be right all of the time. We all make mistakes. By accepting limitations in ourselves and others, only then are we able to grow as individuals.</p>
+
+<p>Or whatever.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-02-25-nsassertionhandler.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+            
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/backrow/" title="Back Row" rel="next">Back Row</a>
+            </h1>
+
+            <p>Back Row is a private framework used in the Apple TV user experience. Rather than waiting for Apple to open up the Apple TV SDK, one can take matters into their own hands.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nscoding/" title="NSCoding / NSKeyedArchiver">NSCoding / NSKeyedArchiver</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/core-location-in-ios-8/" title="Core Location in iOS 8">Core Location in iOS 8</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nshashtable-and-nsmaptable/" title="NSHashTable & NSMapTable">NSHashTable & NSMapTable</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/cggeometry/" title="CGGeometry">CGGeometry</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

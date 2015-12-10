@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSValueTransformer - NSHipster</title>
+    <meta name="description" content="Of all the Foundation classes, NSValueTransformer is perhaps the one that fared the worst in the shift from OS X to iOS. But you know what? It's ripe for a comeback. With a little bit of re-tooling and some recontextualization, this blast from the past could be the next big thing in your application."/>
+    <link rel="canonical" href="http://nshipster.com/nsvaluetransformer/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="NSValueTransformer"/>
+    <meta name="twitter:description" content="Of all the Foundation classes, NSValueTransformer is perhaps the one that fared the worst in the shift from OS X to iOS. But you know what? It&#39;s ripe for a comeback. With a little bit of re-tooling and some recontextualization, this blast from the past could be the next big thing in your application."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NSValueTransformer"/>
+    <meta property="og:url" content="http://nshipster.com/nsvaluetransformer/"/>
+    <meta property="og:description" content="Of all the Foundation classes, NSValueTransformer is perhaps the one that fared the worst in the shift from OS X to iOS. But you know what? It&#39;s ripe for a comeback. With a little bit of re-tooling and some recontextualization, this blast from the past could be the next big thing in your application."/>
+    <meta property="article:published_time" content="2012-11-12T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NSValueTransformer"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/nsvaluetransformer/">NSValue​Transformer</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2012-11-12T00:00:00-08:00" itemprop="datePublished">November 12<sup>th</sup>, 2012</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Of all the Foundation classes, <code>NSValueTransformer</code> is perhaps the one that fared the worst in the shift from OS X to iOS.</p>
+
+<p>Why? Well, there are two reasons:</p>
+
+<p>The first and most obvious reason is that <code>NSValueTransformer</code> was mainly used in AppKit with Cocoa bindings. Here, they could automatically transform values from one property to another without the need of intermediary glue code, like for negating a boolean, or checking whether a value was <code>nil</code>. iOS, of course, doesn&rsquo;t have bindings.</p>
+
+<p>The second reason has less to do with iOS than the Objective-C runtime itself. With the introduction of blocks, it got a whole lot easier to pass behavior between objects&ndash;significantly easier than, say <code>NSValueTransformer</code> or <code>NSInvocation</code>. So even if iOS were to get bindings tomorrow, it&rsquo;s uncertain as to whether <code>NSValueTransformer</code> would play as significant a role this time around.</p>
+
+<p>But you know what? <code>NSValueTransformer</code> is ripe for a comeback. With a little bit of re-tooling and some recontextualization, this blast from the past could be the next big thing in your application.</p>
+
+<hr>
+
+<p><code>NSValueTransformer</code> is an abstract class that transforms one value into another. A transformation specifies what kinds of input values can be handled, and can even supports reversible transformations, where applicable.</p>
+
+<p>A typical implementation would look something like this:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="nl">ClassNameTransformer</span><span class="p">:</span> <span class="bp">NSValueTransformer</span> <span class="p">{</span>
+
+    <span class="kr">override</span> <span class="k">class</span> <span class="k">func</span> <span class="n">transformedValueClass</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">AnyClass</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="bp">NSString</span><span class="p">.</span><span class="nb">self</span>
+    <span class="p">}</span>
+
+    <span class="kr">override</span> <span class="k">class</span> <span class="k">func</span> <span class="n">allowsReverseTransformation</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">false</span>
+    <span class="p">}</span>
+
+    <span class="kr">override</span> <span class="k">func</span> <span class="n">transformedValue</span><span class="p">(</span><span class="nl">value</span><span class="p">:</span> <span class="n">AnyObject</span><span class="o">?</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">AnyObject</span><span class="o">?</span> <span class="p">{</span>
+        <span class="kr">guard</span> <span class="k">let</span> <span class="n">type</span> <span class="o">=</span> <span class="n">value</span> <span class="kt">as</span><span class="o">?</span> <span class="n">AnyClass</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">nil</span> <span class="p">}</span>
+        <span class="k">return</span> <span class="n">NSStringFromClass</span><span class="p">(</span><span class="n">type</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">@interface</span> <span class="nc">ClassNameTransformer</span>: <span class="bp">NSValueTransformer</span> <span class="p">{}</span>
+<span class="k">@end</span>
+
+<span class="cp">#pragma mark -</span>
+
+<span class="k">@implementation</span> <span class="nc">ClassNameTransformer</span>
+<span class="p">+</span> <span class="p">(</span><span class="kt">Class</span><span class="p">)</span><span class="nf">transformedValueClass</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">[</span><span class="bp">NSString</span> <span class="k">class</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="p">+</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">allowsReverseTransformation</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">NO</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">transformedValue:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">value</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">value</span> <span class="o">==</span> <span class="nb">nil</span><span class="p">)</span> <span class="o">?</span> <span class="nb">nil</span> <span class="o">:</span> <span class="n">NSStringFromClass</span><span class="p">([</span><span class="n">value</span> <span class="k">class</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+</code></pre></div>
+<p><code>NSValueTransformer</code> is rarely initialized directly. Instead, it follows a pattern familiar to fans of <code>NSPersistentStore</code> or <code>NSURLProtocol</code>, where a class is registered, and instances are created from a manager&ndash;except in this case, you register the <em>instance</em> to act as a singleton (with a particular name):</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">ClassNameTransformerName</span> <span class="o">=</span> <span class="s">&quot;ClassNameTransformer&quot;</span>
+
+<span class="c1">// Set the value transformer</span>
+<span class="bp">NSValueTransformer</span><span class="p">.</span><span class="n">setValueTransformer</span><span class="p">(</span><span class="n">ClassNameTransformer</span><span class="p">(),</span> <span class="nl">forName</span><span class="p">:</span> <span class="n">ClassNameTransformerName</span><span class="p">)</span>
+
+<span class="c1">// Get the value transformer</span>
+<span class="k">let</span> <span class="n">valueTransformer</span> <span class="o">=</span> <span class="bp">NSValueTransformer</span><span class="p">(</span><span class="nl">forName</span><span class="p">:</span> <span class="n">ClassNameTransformerName</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSString</span> <span class="o">*</span> <span class="k">const</span> <span class="n">ClassNameTransformerName</span> <span class="o">=</span> <span class="s">@&quot;ClassNameTransformer&quot;</span><span class="p">;</span>
+
+<span class="c1">// Set the value transformer</span>
+<span class="p">[</span><span class="bp">NSValueTransformer</span> <span class="nl">setValueTransformer</span><span class="p">:[[</span><span class="n">ClassNameTransformer</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">]</span> <span class="nl">forName</span><span class="p">:</span><span class="n">ClassNameTransformerName</span><span class="p">];</span>
+
+<span class="c1">// Get the value transformer</span>
+<span class="bp">NSValueTransformer</span> <span class="o">*</span><span class="n">valueTransformer</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSValueTransformer</span> <span class="nl">valueTransformerForName</span><span class="p">:</span><span class="n">ClassNameTransformerName</span><span class="p">];</span>
+</code></pre></div>
+<p>Typically, the singleton instance would be registered in the <code>+initialize</code> method of the value transformer subclass, so it could be used without further setup.</p>
+
+<p>Now, at this point, you probably realize <code>NSValueTransformer</code>&rsquo;s fatal flaw: it&rsquo;s a pain in the ass to set up! Create a class, implement a handful of simple methods, define a constant, <em>and</em> register it in an <code>+initialize</code> method? No thanks.</p>
+
+<p>In this age of blocks, we want&ndash;nay, <em>demand</em>&ndash;a way to declare functionality in one (albeit gigantic) line of code.</p>
+
+<p>Nothing <a href="https://github.com/mattt/TransformerKit/blob/master/TransformerKit/NSValueTransformer%2BTransformerKit.m#L36">a little metaprogramming</a> can&rsquo;t fix. Behold:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">TKCapitalizedStringTransformerName</span> <span class="o">=</span> <span class="s">&quot;TKCapitalizedStringTransformerName&quot;</span>
+
+<span class="bp">NSValueTransformer</span><span class="p">.</span><span class="n">registerValueTransformerWithName</span><span class="p">(</span><span class="n">TKCapitalizedStringTransformerName</span><span class="p">,</span>
+    <span class="nl">transformedValueClass</span><span class="p">:</span><span class="bp">NSString</span><span class="p">.</span><span class="nb">self</span><span class="p">)</span> <span class="p">{</span> <span class="n">obj</span> <span class="k">in</span>
+        <span class="kr">guard</span> <span class="k">let</span> <span class="n">str</span> <span class="o">=</span> <span class="n">obj</span> <span class="kt">as</span><span class="o">?</span> <span class="n">String</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">nil</span> <span class="p">}</span>
+        <span class="k">return</span> <span class="n">str</span><span class="p">.</span><span class="n">capitalizedString</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSString</span> <span class="o">*</span> <span class="k">const</span> <span class="n">TKCapitalizedStringTransformerName</span> <span class="o">=</span> <span class="s">@&quot;TKCapitalizedStringTransformerName&quot;</span><span class="p">;</span>
+
+<span class="p">[</span><span class="bp">NSValueTransformer</span> <span class="nl">registerValueTransformerWithName</span><span class="p">:</span><span class="n">TKCapitalizedStringTransformerName</span>
+           <span class="nl">transformedValueClass</span><span class="p">:[</span><span class="bp">NSString</span> <span class="k">class</span><span class="p">]</span>
+<span class="nl">returningTransformedValueWithBlock</span><span class="p">:</span><span class="o">^</span><span class="kt">id</span><span class="p">(</span><span class="kt">id</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">value</span> <span class="n">capitalizedString</span><span class="p">];</span>
+<span class="p">}];</span>
+</code></pre></div>
+<p>Not to break the 4th wall or anything, but in the middle of writing this article, I was compelled to see what could be done to improve the experience of <code>NSValueTransformer</code>. What I came up with was <a href="https://github.com/mattt/TransformerKit">TransformerKit</a>.</p>
+
+<p>The entire library is based on some objc runtime hackery in an <code>NSValueTransformer</code> category. Also included with this category are a number of convenient examples, like string case transformers (i.e. <code>CamelCase</code>, <code>llamaCase</code>, <code>snake_case</code>, and <code>train-case</code>).</p>
+
+<p>Now with its sexy new getup, we start to form a better understanding of where this could be useful:</p>
+
+<ul>
+<li><code>NSValueTransformers</code> are the ideal way to represent an ordered chain of fixed transformations. For instance, an app interfacing with a legacy system might transform user input through a succession of string transformations (trim whitespace, remove diacritics, and then capitalize letters) before sending it off to the mainframe.</li>
+<li>Unlike blocks, <code>NSValueTransformer</code> encapsulates reversible transformations. Let&rsquo;s say you were wanted to map keys from a REST API representation into a Model object; you could create a reversible transformation that converted <code>snake_case</code> to <code>llamaCase</code> when initializing, and <code>llamaCase</code> to <code>snake_case</code> when serializing back to the server.</li>
+<li>Another advantage over blocks is that <code>NSValueTransformer</code> subclasses can expose new properties that could be used to configure behavior in a particular way. Access to <code>ivars</code> also make it easier to cleanly memoize results, or do any necessary book-keeping along the way.</li>
+<li>Lest we forget, <code>NSValueTransformer</code> can be used with Core Data, as a way to encode and decode compound data types from blob fields. It seems to have fallen out of fashion over the years, but serializing simple collections in this way, for example, is an excellent strategy for information that isn&rsquo;t well-modeled as its own entity. Just don&rsquo;t serialize images to a database this way&ndash;that&rsquo;s generally a Bad Idea™.</li>
+</ul>
+
+<p>And the list goes on.</p>
+
+<hr>
+
+<p><code>NSValueTransformer</code>, far from a vestige of AppKit, remains Foundation&rsquo;s purest connection to that fundamental concept of computation: input goes in, output comes out.</p>
+
+<p>Although it hasn&rsquo;t aged very well on its own, a little modernization restores <code>NSValueTransformer</code> to that highest esteem of NSHipsterdom: the solution that we didn&rsquo;t know we needed, but was there all along.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2012-11-12-nsvaluetransformer.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on September 8, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/ns_enum-ns_options/" title="NS_ENUM & NS_OPTIONS" rel="next">NS_ENUM & NS_OPTIONS</a>
+            </h1>
+
+            <p>A skilled Objective-C developer is able to gracefully switch between Objective and Procedural paradigms, and use each to their own advantage.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/uilocalizedindexedcollation/" title="UILocalizedIndexedCollation">UILocalizedIndexedCollation</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsnotification-and-nsnotificationcenter/" title="NSNotification &<br/>NSNotificationCenter">NSNotification &<br/>NSNotificationCenter</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/phimagemanager/" title="PHImageManager">PHImageManager</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nslocale/" title="NSLocale">NSLocale</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

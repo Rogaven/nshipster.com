@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSScanner - NSHipster</title>
+    <meta name="description" content="Being able to pull apart strings and extract particular bits of data is a powerful skill, one that we use over and over building apps and shaping our tools. Cocoa provides a powerful set of frameworks to handle string processing. This week's article focuses on `NSScanner`, a highly configurable tool designed for extracting substrings and numeric values from loosely demarcated strings."/>
+    <link rel="canonical" href="http://nshipster.com/nsscanner/"/>
+  
+  
+  
+  
+  <meta name="author" content="Nate Cook"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@nnnnnnnn"/>
+  
+  
+    <meta name="twitter:title" content="NSScanner"/>
+    <meta name="twitter:description" content="Being able to pull apart strings and extract particular bits of data is a powerful skill, one that we use over and over building apps and shaping our tools. Cocoa provides a powerful set of frameworks to handle string processing. This week&#39;s article focuses on `NSScanner`, a highly configurable tool designed for extracting substrings and numeric values from loosely demarcated strings."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NSScanner"/>
+    <meta property="og:url" content="http://nshipster.com/nsscanner/"/>
+    <meta property="og:description" content="Being able to pull apart strings and extract particular bits of data is a powerful skill, one that we use over and over building apps and shaping our tools. Cocoa provides a powerful set of frameworks to handle string processing. This week&#39;s article focuses on `NSScanner`, a highly configurable tool designed for extracting substrings and numeric values from loosely demarcated strings."/>
+    <meta property="article:published_time" content="2015-03-02T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NSScanner"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/nsscanner/">NSScanner</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/nate-cook/">Nate Cook</a> —
+    
+    <time datetime="2015-03-02T00:00:00-08:00" itemprop="datePublished">March 2<sup>nd</sup>, 2015</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Strings are a ubiquitous and diverse part of our computing lives. They comprise emails and essays, poems and novels—and indeed, every article on <a href="http://nshipster.com">nshipster.com</a>, the configuration files that shape the site, and the code that builds it.</p>
+
+<p>Being able to pull apart strings and extract particular bits of data is therefore a powerful skill, one that we use over and over building apps and shaping our tools.  Cocoa provides a powerful set of tools to handle string processing. In particular:</p>
+
+<ul>
+<li><p><strong><code>string.componentsSeparatedByCharactersInSet</code></strong> / <strong><code>string.componentsSeparatedByString</code></strong>: Great for splitting a string into constituent pieces. Not so great at anything else.</p></li>
+<li><p><strong><code>NSRegularExpression</code></strong>: Powerful for validating and extracting string data from an expected format. Cumbersome when dealing with complex serial input and finicky for parsing numeric values.</p></li>
+<li><p><strong><code>NSDataDetector</code></strong>: Perfect for detecting and extracting dates, addresses, links, and more. Limited to its predefined types.</p></li>
+<li><p><strong><code>NSScanner</code></strong>: Highly configurable and designed for scanning string and numeric values from loosely demarcated strings.</p></li>
+</ul>
+
+<p>This week&rsquo;s article focuses on the last of these, <code>NSScanner</code>. Read on to learn about its flexibility and power.</p>
+
+<hr>
+
+<p>Among Cocoa&rsquo;s tools, <code>NSScanner</code> serves as a wrapper around a string, scanning through its contents to efficiently retrieve substrings and numeric values. It offers several properties that modify an <code>NSScanner</code> instance&rsquo;s behavior:</p>
+
+<blockquote>
+<ul>
+<li><code>caseSensitive</code> <em><code>Bool</code></em>: Whether to pay attention to the upper- or lower-case while scanning. Note that this property <em>only</em> applies to the string-matching methods <code>scanString:intoString:</code> and <code>scanUpToString:intoString:</code>—character sets scanning is always case-sensitive.</li>
+<li><code>charactersToBeSkipped</code>  <em><code>NSCharacterSet</code></em>: The characters to skip over on the way to finding a match for the requested value type.</li>
+<li><code>scanLocation</code> <em><code>Int</code></em>: The current position of the scanner in its string. Scanning can be rewound or restarted by setting this property.</li>
+<li><code>locale</code> <em><code>NSLocale</code></em>: The locale that the scanner should use when parsing numeric values (see below).</li>
+</ul>
+</blockquote>
+
+<p>An <code>NSScanner</code> instance has two additional read-only properties: <code>string</code>, which gives you back the string the scanner is scanning; and <code>atEnd</code>, which is true if <code>scanLocation</code> is at the end of the string.</p>
+
+<blockquote>
+<p><em>Note:</em> <code>NSScanner</code> is actually the abstract superclass of a private cluster of scanner implementation classes. Even though you&rsquo;re calling <code>alloc</code> and <code>init</code> on <code>NSScanner</code>, you&rsquo;ll actually receive one of these subclasses, such as <code>NSConcreteScanner</code>. No need to fret over this.</p>
+</blockquote>
+
+<h2 id="extracting-substrings-and-numeric-values">Extracting Substrings and Numeric Values</h2>
+
+<p>The <em>raison d&#39;être</em> of <code>NSScanner</code> is to pull substrings and numeric values from a larger string. It has fifteen methods to do this, <em>all</em> of which follow the same basic pattern. Each method takes a reference to an output variable as a parameter and returns a boolean value indicating success or failure of the scan:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">whitespaceAndPunctuationSet</span> <span class="o">=</span> <span class="bp">NSMutableCharacterSet</span><span class="p">.</span><span class="n">whitespaceAndNewlineCharacterSet</span><span class="p">()</span>
+<span class="n">whitespaceAndPunctuationSet</span><span class="p">.</span><span class="n">formUnionWithCharacterSet</span><span class="p">(</span><span class="bp">NSCharacterSet</span><span class="p">.</span><span class="n">punctuationCharacterSet</span><span class="p">())</span>
+
+<span class="k">let</span> <span class="n">stringScanner</span> <span class="o">=</span> <span class="bp">NSScanner</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;John &amp; Paul &amp; Ringo &amp; George.&quot;</span><span class="p">)</span>
+<span class="n">stringScanner</span><span class="p">.</span><span class="n">charactersToBeSkipped</span> <span class="o">=</span> <span class="n">whitespaceAndPunctuationSet</span>
+
+<span class="c1">// using the latest Swift 1.2 beta 2 syntax:</span>
+<span class="k">var</span> <span class="nl">name</span><span class="p">:</span> <span class="bp">NSString</span><span class="o">?</span>
+<span class="k">while</span> <span class="n">stringScanner</span><span class="p">.</span><span class="n">scanUpToCharactersFromSet</span><span class="p">(</span><span class="n">whitespaceAndPunctuationSet</span><span class="p">,</span> <span class="nl">intoString</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">name</span><span class="p">),</span> 
+        <span class="k">let</span> <span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+<span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// John</span>
+<span class="c1">// Paul</span>
+<span class="c1">// Ringo</span>
+<span class="c1">// George</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSMutableCharacterSet</span> <span class="o">*</span><span class="n">whitespaceAndPunctuationSet</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSMutableCharacterSet</span> <span class="n">punctuationCharacterSet</span><span class="p">];</span>
+<span class="p">[</span><span class="n">whitespaceAndPunctuationSet</span> <span class="nl">formUnionWithCharacterSet</span><span class="p">:[</span><span class="bp">NSCharacterSet</span> <span class="n">whitespaceAndNewlineCharacterSet</span><span class="p">]];</span>
+
+<span class="bp">NSScanner</span> <span class="o">*</span><span class="n">stringScanner</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSScanner</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithString</span><span class="p">:</span><span class="s">@&quot;John &amp; Paul &amp; Ringo &amp; George.&quot;</span><span class="p">];</span>
+<span class="n">stringScanner</span><span class="p">.</span><span class="n">charactersToBeSkipped</span> <span class="o">=</span> <span class="n">whitespaceAndPunctuationSet</span><span class="p">;</span>
+
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
+<span class="k">while</span> <span class="p">([</span><span class="n">stringScanner</span> <span class="nl">scanUpToCharactersFromSet</span><span class="p">:</span><span class="n">whitespaceAndPunctuationSet</span> <span class="nl">intoString</span><span class="p">:</span><span class="o">&amp;</span><span class="n">name</span><span class="p">])</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// John</span>
+<span class="c1">// Paul</span>
+<span class="c1">// Ringo</span>
+<span class="c1">// George</span>
+</code></pre></div>
+<p>The NSScanner API has methods for two use-cases: scanning for strings generally, or for numeric types specifically.</p>
+
+<h4 id="1)-string-scanners">1) String Scanners</h4>
+
+<blockquote>
+<dl>
+<dt><code>scanString:intoString:</code> / <code>scanCharactersFromSet:intoString:</code></dt>
+<dd>
+Scans to match the string parameter or characters in the <code>NSCharacterSet</code> parameter, respectively. The <code>intoString</code> parameter will return containing the scanned string, if found. These methods are often used to advance the scanner&rsquo;s location—pass <code>nil</code> for the <code>intoString</code> parameter to ignore the output.
+</dd>
+
+<dt><code>scanUpToString:intoString:</code> / <code>scanUpToCharactersFromSet:intoString:</code></dt>
+<dd>
+Scans characters into a string <em>until</em> finding the string parameter or characters in the <code>NSCharacterSet</code> parameter, respectively. The <code>intoString</code> parameter will return containing the scanned string, if any was found. If the given string or character set are <em>not</em> found, the result will be the entire rest of the scanner&rsquo;s string.
+</dd>
+</dl>
+</blockquote>
+
+<h4 id="2)-numeric-scanners">2) Numeric Scanners</h4>
+
+<blockquote>
+<dl>
+<dt><code>scanDouble:</code> / <code>scanFloat:</code> / <code>scanDecimal:</code></dt>
+<dd>
+Scans a floating-point value from the scanner&rsquo;s string and returns the value in the referenced <code>Double</code>, <code>Float</code>, or <code>NSDecimal</code> instance, if found.
+</dd>
+
+<dt><code>scanInteger:</code> / <code>scanInt:</code> / <code>scanLongLong:</code> / <code>scanUnsignedLongLong:</code></dt>
+<dd>
+Scans an integer value from the scanner&rsquo;s string and returns the value in the referenced <code>Int</code>, <code>Int32</code>, <code>Int64</code>, or <code>UInt64</code> instance, if found.
+</dd>
+
+<dt><code>scanHexDouble:</code> / <code>scanHexFloat:</code></dt>
+<dd>
+Scans a hexadecimal floating-point value from the scanner&rsquo;s string and returns the value in the referenced <code>Double</code> or <code>Float</code> instance, if found. To scan properly, the floating-point value <em>must</em> have a <code>0x</code> or <code>0X</code> prefix.
+</dd>
+
+<dt><code>scanHexInt:</code> / <code>scanHexLongLong:</code></dt>
+<dd>
+Scans a hexadecimal integer value from the scanner&rsquo;s string and returns the value in the referenced <code>UInt32</code> or <code>UInt64</code> instance, if found. The value may have a <code>0x</code> or <code>0X</code> prefix, but it is not required.
+</dd>
+
+</dl>
+</blockquote>
+
+<hr>
+
+<h2 id="localizedscannerwithstring-/-locale"><code>localizedScannerWithString / locale</code></h2>
+
+<p>Because it is a part of Cocoa, <code>NSScanner</code> has built-in localization support (of course). An <code>NSScanner</code> instance can work with either the user&rsquo;s locale when created via <code>+ localizedScannerWithString:</code>, or a specific locale after setting its <code>locale</code> property. In particular, the separator for floating-point values will be correctly interpreted based on the given locale:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="n">price</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="k">let</span> <span class="n">gasPriceScanner</span> <span class="o">=</span> <span class="bp">NSScanner</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;2.09 per gallon&quot;</span><span class="p">)</span>
+<span class="n">gasPriceScanner</span><span class="p">.</span><span class="n">scanDouble</span><span class="p">(</span><span class="o">&amp;</span><span class="n">price</span><span class="p">)</span>
+<span class="c1">// 2.09</span>
+
+<span class="c1">// use a german locale instead of the default</span>
+<span class="k">let</span> <span class="n">benzinPriceScanner</span> <span class="o">=</span> <span class="bp">NSScanner</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;1,38 pro Liter&quot;</span><span class="p">)</span>
+<span class="n">benzinPriceScanner</span><span class="p">.</span><span class="n">locale</span> <span class="o">=</span> <span class="bp">NSLocale</span><span class="p">(</span><span class="nl">localeIdentifier</span><span class="p">:</span> <span class="s">&quot;de-DE&quot;</span><span class="p">)</span>
+<span class="n">benzinPriceScanner</span><span class="p">.</span><span class="n">scanDouble</span><span class="p">(</span><span class="o">&amp;</span><span class="n">price</span><span class="p">)</span>
+<span class="c1">// 1.38</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="kt">double</span> <span class="n">price</span><span class="p">;</span>
+<span class="bp">NSScanner</span> <span class="o">*</span><span class="n">gasPriceScanner</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSScanner</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithString</span><span class="p">:</span><span class="s">@&quot;2.09 per gallon&quot;</span><span class="p">];</span>
+<span class="p">[</span><span class="n">gasPriceScanner</span> <span class="nl">scanDouble</span><span class="p">:</span><span class="o">&amp;</span><span class="n">price</span><span class="p">];</span>
+<span class="c1">// 2.09</span>
+
+<span class="c1">// use a german locale instead of the default</span>
+<span class="bp">NSScanner</span> <span class="o">*</span><span class="n">benzinPriceScanner</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSScanner</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithString</span><span class="p">:</span><span class="s">@&quot;1,38 pro Liter&quot;</span><span class="p">];</span>
+<span class="p">[</span><span class="n">benzinPriceScanner</span> <span class="nl">setLocale</span><span class="p">:[</span><span class="bp">NSLocale</span> <span class="nl">localeWithLocaleIdentifier</span><span class="p">:</span><span class="s">@&quot;de-DE&quot;</span><span class="p">]];</span>
+<span class="p">[</span><span class="n">benzinPriceScanner</span> <span class="nl">scanDouble</span><span class="p">:</span><span class="o">&amp;</span><span class="n">price</span><span class="p">];</span>
+<span class="c1">// 1.38</span>
+</code></pre></div>
+<hr>
+
+<h2 id="example:-parsing-svg-path-data">Example: Parsing SVG Path Data</h2>
+
+<p>To take <code>NSScanner</code> out for a spin, we&rsquo;ll look at parsing the path data from an SVG path. SVG path data are stored as a string of instructions for drawing the path, where &ldquo;M&rdquo; indicates a &ldquo;move-to&rdquo; step, &ldquo;L&rdquo; stands for &ldquo;line-to&rdquo;, and &ldquo;C&rdquo; stands for a curve. Uppercase instructions are followed by points in absolute coordinates; lowercase instructions are followed by coordinates relative to the last point in the path.</p>
+
+<p>Here&rsquo;s an SVG path I happen to have lying around (and a point-offsetting helper we&rsquo;ll use later):</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="n">svgPathData</span> <span class="o">=</span> <span class="s">&quot;M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z&quot;</span>
+
+<span class="k">extension</span> <span class="bp">CGPoint</span> <span class="p">{</span>
+    <span class="k">func</span> <span class="n">offset</span><span class="p">(</span><span class="nl">p</span><span class="p">:</span> <span class="bp">CGPoint</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">CGPoint</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="bp">CGPoint</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">y</span> <span class="o">+</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">static</span> <span class="bp">NSString</span> <span class="o">*</span><span class="k">const</span> <span class="n">svgPathData</span> <span class="o">=</span> <span class="s">@&quot;M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z&quot;</span><span class="p">;</span>
+
+<span class="bp">CGPoint</span> <span class="nf">offsetPoint</span><span class="p">(</span><span class="bp">CGPoint</span> <span class="n">p1</span><span class="p">,</span> <span class="bp">CGPoint</span> <span class="n">p2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">CGPointMake</span><span class="p">(</span><span class="n">p1</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">p2</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">p1</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">p2</span><span class="p">.</span><span class="n">y</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Note that the point data are fairly irregular. Sometimes the <code>x</code> and <code>y</code> values of a point are separated by a comma, sometimes not, and likewise with points themselves. Parsing these data with regular expressions could turn into a mess pretty quickly, but with <code>NSScanner</code> the code is clear and straightforward.</p>
+
+<p>We&rsquo;ll define a <code>bezierPathFromSVGPath</code> function that will convert a string of path data into an <code>UIBezierPath</code>. Our scanner is set up to skip commas and whitespace while scanning for values:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="n">bezierPathFromSVGPath</span><span class="p">(</span><span class="nl">str</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">UIBezierPath</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">scanner</span> <span class="o">=</span> <span class="bp">NSScanner</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">str</span><span class="p">)</span>
+
+    <span class="c1">// skip commas and whitespace</span>
+    <span class="k">let</span> <span class="n">skipChars</span> <span class="o">=</span> <span class="bp">NSMutableCharacterSet</span><span class="p">(</span><span class="nl">charactersInString</span><span class="p">:</span> <span class="s">&quot;,&quot;</span><span class="p">)</span>
+    <span class="n">skipChars</span><span class="p">.</span><span class="n">formUnionWithCharacterSet</span><span class="p">(</span><span class="bp">NSCharacterSet</span><span class="p">.</span><span class="n">whitespaceAndNewlineCharacterSet</span><span class="p">())</span>
+    <span class="n">scanner</span><span class="p">.</span><span class="n">charactersToBeSkipped</span> <span class="o">=</span> <span class="n">skipChars</span>
+
+    <span class="c1">// the resulting bezier path</span>
+    <span class="k">var</span> <span class="n">path</span> <span class="o">=</span> <span class="bp">UIBezierPath</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">-</span> <span class="p">(</span><span class="bp">UIBezierPath</span> <span class="o">*</span><span class="p">)</span><span class="nf">bezierPathFromSVGPath:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">str</span> <span class="p">{</span>
+    <span class="bp">NSScanner</span> <span class="o">*</span><span class="n">scanner</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSScanner</span> <span class="nl">scannerWithString</span><span class="p">:</span><span class="n">str</span><span class="p">];</span>
+
+    <span class="c1">// skip commas and whitespace</span>
+    <span class="bp">NSMutableCharacterSet</span> <span class="o">*</span><span class="n">skipChars</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSMutableCharacterSet</span> <span class="nl">characterSetWithCharactersInString</span><span class="p">:</span><span class="s">@&quot;,&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">skipChars</span> <span class="nl">formUnionWithCharacterSet</span><span class="p">:[</span><span class="bp">NSCharacterSet</span> <span class="n">whitespaceAndNewlineCharacterSet</span><span class="p">]];</span>
+    <span class="n">scanner</span><span class="p">.</span><span class="n">charactersToBeSkipped</span> <span class="o">=</span> <span class="n">skipChars</span><span class="p">;</span>
+
+    <span class="c1">// the resulting bezier path</span>
+    <span class="bp">UIBezierPath</span> <span class="o">*</span><span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIBezierPath</span> <span class="n">bezierPath</span><span class="p">];</span>
+</code></pre></div>
+<p>With the setup out of the way, it&rsquo;s time to start scanning. We start by scanning for a string made up of characters in the allowed set of instructions:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="c1">// instructions code can be upper- or lower-case</span>
+    <span class="k">let</span> <span class="n">instructionSet</span> <span class="o">=</span> <span class="bp">NSCharacterSet</span><span class="p">(</span><span class="nl">charactersInString</span><span class="p">:</span> <span class="s">&quot;MCSQTAmcsqta&quot;</span><span class="p">)</span>
+    <span class="k">var</span> <span class="nl">instruction</span><span class="p">:</span> <span class="bp">NSString</span><span class="o">?</span>
+
+    <span class="c1">// scan for an instruction code</span>
+    <span class="k">while</span> <span class="n">scanner</span><span class="p">.</span><span class="n">scanCharactersFromSet</span><span class="p">(</span><span class="n">instructionSet</span><span class="p">,</span> <span class="nl">intoString</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">instruction</span><span class="p">)</span> <span class="p">{</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c">    <span class="c1">// instructions codes can be upper- or lower-case</span>
+    <span class="bp">NSCharacterSet</span> <span class="o">*</span><span class="n">instructionSet</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSCharacterSet</span> <span class="nl">characterSetWithCharactersInString</span><span class="p">:</span><span class="s">@&quot;MCSQTAmcsqta&quot;</span><span class="p">];</span>
+    <span class="bp">NSString</span> <span class="o">*</span><span class="n">instruction</span><span class="p">;</span>
+
+    <span class="c1">// scan for an instruction code</span>
+    <span class="k">while</span> <span class="p">([</span><span class="n">scanner</span> <span class="nl">scanCharactersFromSet</span><span class="p">:</span><span class="n">instructionSet</span> <span class="nl">intoString</span><span class="p">:</span><span class="o">&amp;</span><span class="n">instruction</span><span class="p">])</span> <span class="p">{</span>
+</code></pre></div>
+<p>The next section scans for two <code>Double</code> values in a row, converts them to a <code>CGPoint</code>, and then ultimately adds the correct step to the bezier path:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift">        <span class="k">var</span> <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="k">var</span> <span class="nl">points</span><span class="p">:</span> <span class="p">[</span><span class="bp">CGPoint</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1">// scan for pairs of Double, adding them as CGPoints to the points array</span>
+        <span class="k">while</span> <span class="n">scanner</span><span class="p">.</span><span class="n">scanDouble</span><span class="p">(</span><span class="o">&amp;</span><span class="n">x</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">scanner</span><span class="p">.</span><span class="n">scanDouble</span><span class="p">(</span><span class="o">&amp;</span><span class="n">y</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">points</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="bp">CGPoint</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">y</span><span class="p">))</span>
+        <span class="p">}</span>
+
+        <span class="c1">// new point for bezier path</span>
+        <span class="k">switch</span> <span class="n">instruction</span> <span class="o">??</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="s">&quot;M&quot;</span><span class="o">:</span>
+            <span class="n">path</span><span class="p">.</span><span class="n">moveToPoint</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">case</span> <span class="s">&quot;C&quot;</span><span class="o">:</span>
+            <span class="n">path</span><span class="p">.</span><span class="n">addCurveToPoint</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="nl">controlPoint1</span><span class="p">:</span> <span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nl">controlPoint2</span><span class="p">:</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">case</span> <span class="s">&quot;c&quot;</span><span class="o">:</span>
+            <span class="n">path</span><span class="p">.</span><span class="n">addCurveToPoint</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">currentPoint</span><span class="p">.</span><span class="n">offset</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+                    <span class="nl">controlPoint1</span><span class="p">:</span> <span class="n">path</span><span class="p">.</span><span class="n">currentPoint</span><span class="p">.</span><span class="n">offset</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+                    <span class="nl">controlPoint2</span><span class="p">:</span> <span class="n">path</span><span class="p">.</span><span class="n">currentPoint</span><span class="p">.</span><span class="n">offset</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="k">break</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="n">path</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c">        <span class="kt">double</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span>
+        <span class="bp">NSMutableArray</span> <span class="o">*</span><span class="n">points</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSMutableArray</span> <span class="n">array</span><span class="p">];</span>
+
+        <span class="c1">// scan for pairs of Double, adding them as CGPoints to the points array</span>
+        <span class="k">while</span> <span class="p">([</span><span class="n">scanner</span> <span class="nl">scanDouble</span><span class="p">:</span><span class="o">&amp;</span><span class="n">x</span><span class="p">]</span> <span class="o">&amp;&amp;</span> <span class="p">[</span><span class="n">scanner</span> <span class="nl">scanDouble</span><span class="p">:</span><span class="o">&amp;</span><span class="n">y</span><span class="p">])</span> <span class="p">{</span>
+            <span class="p">[</span><span class="n">points</span> <span class="nl">addObject</span><span class="p">:[</span><span class="bp">NSValue</span> <span class="nl">valueWithCGPoint</span><span class="p">:</span><span class="n">CGPointMake</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)]];</span>
+        <span class="p">}</span>
+
+        <span class="c1">// new point in path</span>
+        <span class="k">if</span> <span class="p">([</span><span class="n">instruction</span> <span class="nl">isEqualToString</span><span class="p">:</span><span class="s">@&quot;M&quot;</span><span class="p">])</span> <span class="p">{</span>
+            <span class="p">[</span><span class="n">path</span> <span class="nl">moveToPoint</span><span class="p">:[</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="n">CGPointValue</span><span class="p">]];</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">([</span><span class="n">instruction</span> <span class="nl">isEqualToString</span><span class="p">:</span><span class="s">@&quot;C&quot;</span><span class="p">])</span> <span class="p">{</span>
+            <span class="p">[</span><span class="n">path</span> <span class="nl">addCurveToPoint</span><span class="p">:[</span><span class="n">points</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">CGPointValue</span><span class="p">]</span>
+                    <span class="nl">controlPoint1</span><span class="p">:[</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="n">CGPointValue</span><span class="p">]</span>
+                    <span class="nl">controlPoint2</span><span class="p">:[</span><span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">CGPointValue</span><span class="p">]];</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">([</span><span class="n">instruction</span> <span class="nl">isEqualToString</span><span class="p">:</span><span class="s">@&quot;c&quot;</span><span class="p">])</span> <span class="p">{</span>
+            <span class="bp">CGPoint</span> <span class="n">newPoint</span> <span class="o">=</span> <span class="n">offsetPoint</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">currentPoint</span><span class="p">,</span> <span class="p">[</span><span class="n">points</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">CGPointValue</span><span class="p">]);</span>
+            <span class="bp">CGPoint</span> <span class="n">control1</span> <span class="o">=</span> <span class="n">offsetPoint</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">currentPoint</span><span class="p">,</span> <span class="p">[</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="n">CGPointValue</span><span class="p">]);</span>
+            <span class="bp">CGPoint</span> <span class="n">control2</span> <span class="o">=</span> <span class="n">offsetPoint</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">currentPoint</span><span class="p">,</span> <span class="p">[</span><span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">CGPointValue</span><span class="p">]);</span>
+
+            <span class="p">[</span><span class="n">path</span> <span class="nl">addCurveToPoint</span><span class="p">:</span><span class="n">newPoint</span>
+                    <span class="nl">controlPoint1</span><span class="p">:</span><span class="n">control1</span>
+                    <span class="nl">controlPoint2</span><span class="p">:</span><span class="n">control2</span><span class="p">];</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="p">[</span><span class="n">path</span> <span class="nl">applyTransform</span><span class="p">:</span><span class="n">CGAffineTransformMakeScale</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)];</span>
+    <span class="k">return</span> <span class="n">path</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Lo and behold, the result:</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/nsscanner-rendered.gif" alt="NSMustacheScanner"></p>
+
+<p>The required flipping, resizing, waxing, and twirling are left as an exercise for the reader.</p>
+
+<hr>
+
+<h2 id="swift-friendly-scanning">Swift-Friendly Scanning</h2>
+
+<p>As a last note, working with <code>NSScanner</code> in Swift can feel almost silly. Really, <code>NSScanner</code>, I need to pass in a pointer just so you can return a <code>Bool</code>? I can&rsquo;t use optionals, which are pretty much designed for this exact purpose? <em>Really?</em></p>
+
+<p>With a <a href="https://gist.github.com/natecook1000/59bb0c9117b555f5d40d">simple extension converting the built-in methods to ones returning optional values</a>, scanning becomes far more in sync with Swift&rsquo;s idiom. Our path data scanning example can now use optional binding instead of <code>inout</code> variables for a cleaner, easier-to-read implementation:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// look for an instruction code</span>
+<span class="k">while</span> <span class="k">let</span> <span class="n">instruction</span> <span class="o">=</span> <span class="n">scanner</span><span class="p">.</span><span class="n">scanCharactersFromSet</span><span class="p">(</span><span class="n">instructionSet</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">var</span> <span class="nl">points</span><span class="p">:</span> <span class="p">[</span><span class="bp">CGPoint</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+   <span class="c1">// scan for pairs of Double, adding them as CGPoints to the points array</span>
+   <span class="k">while</span> <span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="n">scanner</span><span class="p">.</span><span class="n">scanDouble</span><span class="p">(),</span> <span class="n">y</span> <span class="o">=</span> <span class="n">scanner</span><span class="p">.</span><span class="n">scanDouble</span><span class="p">()</span> <span class="p">{</span>
+       <span class="n">points</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="bp">CGPoint</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="nl">y</span><span class="p">:</span> <span class="n">y</span><span class="p">))</span>
+   <span class="p">}</span>
+
+   <span class="c1">// new point for bezier path</span>
+   <span class="k">switch</span> <span class="n">instruction</span> <span class="p">{</span>
+       <span class="c1">// ...</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<p>You&rsquo;ve gotta have the right tools for every job. <code>NSScanner</code> can be the shiny tool to reach for when it&rsquo;s time to parse a user&rsquo;s input or a web service&rsquo;s data. Being able to distinguish which tools are right for which tasks helps us on our way to creating clear and accurate code. </p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2015-03-02-nsscanner.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 1.2.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Nate Cook" itemprop="image" src="http://nshipster.s3.amazonaws.com/nate-cook.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/nate-cook/">Nate Cook</a></span>
+
+      <p><a href="http://natecook.com">Nate Cook</a> (<a href="https://twitter.com/nnnnnnnn">@nnnnnnnn</a>) is an independent web and application developer who <a href="http://natecook.com/blog/">writes frequently about topics in Swift</a>, and the creator of <a href="http://swiftdoc.org">SwiftDoc.org</a>.</p>
+
+
+      
+        <a href="https://plus.google.com/?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nscalendar-additions/" title="NSCalendar Additions" rel="next">NSCalendar Additions</a>
+            </h1>
+
+            <p><code>NSCalendar</code> has been quietly building a powerful set of methods for accessing and manipulating dates. From new ways of accessing individual date components and flexibly comparing dates to powerful date interpolation and enumeration methods, there&rsquo;s far too much to ignore. Make some room in your calendar and read on for more.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nsvalue/" title="NSValue">NSValue</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/addressbookui/" title="AddressBookUI">AddressBookUI</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsassertionhandler/" title="NSAssertionHandler">NSAssertionHandler</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nscache/" title="NSCache">NSCache</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

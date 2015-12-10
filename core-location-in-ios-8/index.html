@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>Core Location in iOS 8 - NSHipster</title>
+    <meta name="description" content="For as long as the iPhone has existed, location services have been front and center. iOS 8 brings three major sets of changes to the Core Location framework: more granular permissions, indoor positioning, and visit monitoring."/>
+    <link rel="canonical" href="http://nshipster.com/core-location-in-ios-8/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mike Lazer-Walker"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@lazerwalker"/>
+  
+  
+    <meta name="twitter:title" content="Core Location in iOS 8"/>
+    <meta name="twitter:description" content="For as long as the iPhone has existed, location services have been front and center. iOS 8 brings three major sets of changes to the Core Location framework: more granular permissions, indoor positioning, and visit monitoring."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Core Location in iOS 8"/>
+    <meta property="og:url" content="http://nshipster.com/core-location-in-ios-8/"/>
+    <meta property="og:description" content="For as long as the iPhone has existed, location services have been front and center. iOS 8 brings three major sets of changes to the Core Location framework: more granular permissions, indoor positioning, and visit monitoring."/>
+    <meta property="article:published_time" content="2014-11-10T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="Core Location in iOS 8"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/core-location-in-ios-8/">Core Location in i​OS 8</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mike-lazer-walker/">Mike Lazer-Walker</a> —
+    
+    <time datetime="2014-11-10T00:00:00-08:00" itemprop="datePublished">November 10<sup>th</sup>, 2014</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>For as long as the iPhone has existed, location services have been front and center. Maps.app was one of the killer features that launched with the original iPhone. The Core Location API has existed in public form since the first public iPhone OS SDK. With each release of iOS, Apple has steadily added new features to the framework, like background location services, geocoding, and iBeacons.</p>
+
+<p>iOS 8 continues that inexorable march of progress. Like many other aspects of the latest update, Core Location has been shaken up, with changes designed both to enable developers to build new kinds of things they couldn&rsquo;t before and to help maintain user privacy. Specifically, iOS 8 brings three major sets of changes to the Core Location framework: more granular permissions, indoor positioning, and visit monitoring.</p>
+
+<h2 id="permissions">Permissions</h2>
+
+<p>There are a number of different reasons an app might request permission to access your location. A GPS app that provides turn-by-turn directions needs constant access to your location so it can tell you when to turn. A restaurant recommendation app might want to be able to access your location (even when it&rsquo;s not open) so it can send you a push notification when you&rsquo;re near a restaurant your friends like. A Twitter app might want your location when it posts, but shouldn&rsquo;t need to monitor your location when you&rsquo;re not using it.</p>
+
+<p>Prior to iOS 8, location services permissions were binary: you either gave an app permission to use location services, or you didn&rsquo;t. Settings.app would show you which apps were accessing your location in the background, but you couldn&rsquo;t do anything about it short of blocking the app from using location services entirely.</p>
+
+<p>iOS 8 fixes that by breaking up location services permissions into two different types of authorization.</p>
+
+<ul>
+<li><p>&ldquo;When In Use&rdquo; authorization only gives the app permission to receive your location when — you guessed it — the app is in use.</p></li>
+<li><p>&ldquo;Always&rdquo; authorization, gives the app traditional background permissions, just as has always existed in prior iOS versions.</p></li>
+</ul>
+
+<p>This is a major boon for user privacy, but it does mean a bit more effort on the part of us developers.</p>
+
+<h3 id="requesting-permission">Requesting Permission</h3>
+
+<p>In earlier versions of iOS, requesting permission to use location services was implicit. Given an instance of <code>CLLocationManager</code>, the following code would trigger the system prompting the user to authorize access to location services if they hadn&rsquo;t yet explicitly approved or denied the app:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">Foundation</span>
+<span class="k">import</span> <span class="n">CoreLocation</span>
+
+<span class="k">let</span> <span class="n">manager</span> <span class="o">=</span> <span class="bp">CLLocationManager</span><span class="p">()</span>
+<span class="k">if</span> <span class="bp">CLLocationManager</span><span class="p">.</span><span class="n">locationServicesEnabled</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">manager</span><span class="p">.</span><span class="n">startUpdatingLocation</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>To make things simpler, assume we&rsquo;ve declared a <code>manager</code> instance as a property for all the examples to come, and that its delegate is set to its owner.</p>
+</blockquote>
+
+<p>The very act of telling a <code>CLLocationManager</code> to get the latest location would cause it to prompt for location services permission if appropriate.</p>
+
+<p>With iOS 8, requesting permission and beginning to use location services are now separate actions. Specifically, there are two different methods you can use to explicitly request permissions: <code>requestWhenInUseAuthorization</code> and <code>requestAlwaysAuthorization</code>. The former only gives you permission to access location data while the app is open; the latter gives you the traditional background location services that prior versions of iOS have had.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">if</span> <span class="bp">CLLocationManager</span><span class="p">.</span><span class="n">authorizationStatus</span><span class="p">()</span> <span class="o">==</span> <span class="p">.</span><span class="n">NotDetermined</span> <span class="p">{</span>
+    <span class="n">manager</span><span class="p">.</span><span class="n">requestAlwaysAuthorization</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">if</span> <span class="bp">CLLocationManager</span><span class="p">.</span><span class="n">authorizationStatus</span><span class="p">()</span> <span class="o">==</span> <span class="p">.</span><span class="n">NotDetermined</span> <span class="p">{</span>
+    <span class="n">manager</span><span class="p">.</span><span class="n">requestWhenInUseAuthorization</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Since this happens asynchronously, the app can&rsquo;t start using location services immediately. Instead, one must implement the <code>locationManager:didChangeAuthorizationStatus</code> delegate method, which fires any time the authorization status changes based on user input.</p>
+
+<p>If the user has previously given permission to use location services, this delegate method will also be called after the location manager is initialized and has its delegate set with the appropriate authorization status. Which conveniently makes for a single code path for using location services.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="nf">locationManager</span><span class="p">(</span><span class="nl">manager</span><span class="p">:</span> <span class="bp">CLLocationManager</span><span class="o">!</span><span class="p">,</span>
+                     <span class="n">didChangeAuthorizationStatus</span> <span class="nl">status</span><span class="p">:</span> <span class="n">CLAuthorizationStatus</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="p">.</span><span class="n">AuthorizedAlways</span> <span class="o">||</span> <span class="n">status</span> <span class="o">==</span> <span class="p">.</span><span class="n">AuthorizedWhenInUse</span> <span class="p">{</span>
+        <span class="n">manager</span><span class="p">.</span><span class="n">startUpdatingLocation</span><span class="p">()</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="descriptive-string">Descriptive String</h3>
+
+<p>Another change is required to use location services in iOS 8. In the past, one could optionally include a &lsquo;NSLocationUsageDescription&rsquo; key in <code>Info.plist</code>. This value was a plain-text string explaining to the user for what the app was planning to use location services. This has since been split up into two separate keys (<code>NSLocationWhenInUseUsageDescription</code> and <code>NSLocationAlwaysUsageDescription</code>), and is now mandatory; if you call <code>requestWhenInUseAuthorization</code> or <code>requestAlwaysAuthorization</code> without the corresponding key, the prompt simply won&rsquo;t be shown to the user.</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/core-location-always-authorization.png" alt="Core Location Always Authorization"></p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/core-location-when-in-use-authorization.png" alt="Core Location When In Use Authorization"></p>
+
+<h3 id="requesting-multiple-permissions">Requesting Multiple Permissions</h3>
+
+<p>Another detail worth noting is that the authorization pop-up will only ever be shown to a user once. After <code>CLLocationManager.authorizationStatus()</code> returns anything other than <code>NotDetermined</code>, calling either <code>requestWhenInUseAuthorization()</code> or <code>requestAlwaysAuthorization()</code> won&rsquo;t result in a <code>UIAlertController</code> being displayed to the user.  After the user&rsquo;s initial choice, the only way to change authorization settings is to go to Settings.app and go to either the privacy settings or the settings page for that specific app.</p>
+
+<p>While more of an inconvenience under the old permission system, this significantly complicates things if an app asks for both &ldquo;when-in-use&rdquo; and &ldquo;always&rdquo; authorization at different times in its lifecycle. To help mitigate this, Apple has introduced a string constant, <code>UIApplicationOpenSettingsURLString</code>, that represents a URL that will open the current app&rsquo;s settings screen in Settings.app.</p>
+
+<p>Here&rsquo;s an example of how an app that prompts for both kinds of permissions might decide what to do when trying to prompt for Always permissions.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">switch</span> <span class="bp">CLLocationManager</span><span class="p">.</span><span class="n">authorizationStatus</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="p">.</span><span class="nl">AuthorizedAlways</span><span class="p">:</span>
+        <span class="c1">// ...</span>
+    <span class="k">case</span> <span class="p">.</span><span class="nl">NotDetermined</span><span class="p">:</span>
+        <span class="n">manager</span><span class="p">.</span><span class="n">requestAlwaysAuthorization</span><span class="p">()</span>
+    <span class="k">case</span> <span class="p">.</span><span class="n">AuthorizedWhenInUse</span><span class="p">,</span> <span class="p">.</span><span class="n">Restricted</span><span class="p">,</span> <span class="p">.</span><span class="nl">Denied</span><span class="p">:</span>
+        <span class="k">let</span> <span class="n">alertController</span> <span class="o">=</span> <span class="n">UIAlertController</span><span class="p">(</span>
+            <span class="nl">title</span><span class="p">:</span> <span class="s">&quot;Background Location Access Disabled&quot;</span><span class="p">,</span>
+            <span class="nl">message</span><span class="p">:</span> <span class="s">&quot;In order to be notified about adorable kittens near you, please open this app&#39;s settings and set location access to &#39;Always&#39;.&quot;</span><span class="p">,</span>
+            <span class="nl">preferredStyle</span><span class="p">:</span> <span class="p">.</span><span class="n">Alert</span><span class="p">)</span>
+
+        <span class="k">let</span> <span class="n">cancelAction</span> <span class="o">=</span> <span class="n">UIAlertAction</span><span class="p">(</span><span class="nl">title</span><span class="p">:</span> <span class="s">&quot;Cancel&quot;</span><span class="p">,</span> <span class="nl">style</span><span class="p">:</span> <span class="p">.</span><span class="n">Cancel</span><span class="p">,</span> <span class="nl">handler</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+        <span class="n">alertController</span><span class="p">.</span><span class="n">addAction</span><span class="p">(</span><span class="n">cancelAction</span><span class="p">)</span>
+
+        <span class="k">let</span> <span class="n">openAction</span> <span class="o">=</span> <span class="n">UIAlertAction</span><span class="p">(</span><span class="nl">title</span><span class="p">:</span> <span class="s">&quot;Open Settings&quot;</span><span class="p">,</span> <span class="nl">style</span><span class="p">:</span> <span class="p">.</span><span class="n">Default</span><span class="p">)</span> <span class="p">{</span> <span class="p">(</span><span class="n">action</span><span class="p">)</span> <span class="k">in</span>
+            <span class="k">if</span> <span class="k">let</span> <span class="n">url</span> <span class="o">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span><span class="n">UIApplicationOpenSettingsURLString</span><span class="p">)</span> <span class="p">{</span>
+                <span class="bp">UIApplication</span><span class="p">.</span><span class="n">sharedApplication</span><span class="p">().</span><span class="n">openURL</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">alertController</span><span class="p">.</span><span class="n">addAction</span><span class="p">(</span><span class="n">openAction</span><span class="p">)</span>
+
+        <span class="nb">self</span><span class="p">.</span><span class="n">presentViewController</span><span class="p">(</span><span class="n">alertController</span><span class="p">,</span> <span class="nl">animated</span><span class="p">:</span> <span class="nb">true</span><span class="p">,</span> <span class="nl">completion</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img src="http://nshipster.s3.amazonaws.com/core-location-settings-alert.png" alt="Core Location Settings Alert"></p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/core-location-settings-1.png" alt="Core Location Settings Location Never"></p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/core-location-settings-2.png" alt="Core Location Settings Location Always"></p>
+
+<h3 id="backwards-compatibility">Backwards Compatibility</h3>
+
+<p>All of these new APIs require iOS 8. For apps still supporting iOS 7 or earlier, one must maintain two parallel code paths—one that explicitly asks for permission for iOS 8 and one that maintains the traditional method of just asking for location updates. A simple implementation might look something like this:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="nf">triggerLocationServices</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="bp">CLLocationManager</span><span class="p">.</span><span class="n">locationServicesEnabled</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="nb">self</span><span class="p">.</span><span class="n">manager</span><span class="p">.</span><span class="n">respondsToSelector</span><span class="p">(</span><span class="s">&quot;requestWhenInUseAuthorization&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">manager</span><span class="p">.</span><span class="n">requestWhenInUseAuthorization</span><span class="p">()</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">startUpdatingLocation</span><span class="p">()</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="nf">startUpdatingLocation</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">manager</span><span class="p">.</span><span class="n">startUpdatingLocation</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1">// MARK: - CLLocationManagerDelegate</span>
+
+<span class="k">func</span> <span class="nf">locationManager</span><span class="p">(</span><span class="nl">manager</span><span class="p">:</span> <span class="bp">CLLocationManager</span><span class="o">!</span><span class="p">,</span> <span class="n">didChangeAuthorizationStatus</span> <span class="nl">status</span><span class="p">:</span> <span class="n">CLAuthorizationStatus</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="p">.</span><span class="n">AuthorizedWhenInUse</span> <span class="o">||</span> <span class="n">status</span> <span class="o">==</span> <span class="p">.</span><span class="n">AuthorizedAlways</span> <span class="p">{</span>
+        <span class="n">startUpdatingLocation</span><span class="p">()</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="building-user-trust">Building User Trust</h3>
+
+<p>There is a common thread running throughout all of the changes in iOS 8: they all make it easier to earn the trust of your users.</p>
+
+<p>Explicit calls to request authorization encourage apps to not ask for permission until the user attempts to do something that requires authorization. Including a usage description makes it easy to explain why you need location access and what the app will use it for. The distinction between &ldquo;When In Use&rdquo; and &ldquo;Always&rdquo; authorization makes users feel comfortable that you only have as much of their data as is needed.</p>
+
+<p>Of course, there is little in these new APIs to stop one from doing things the same way as always. All one &ldquo;needs&rdquo; to do for iOS 8 support is to add in a call to <code>useAlwaysAuthorization</code> and add in a generic usage string. But with these new changes, Apple is sending the strong message that you should respect your users. Once users get accustomed to apps that respect users&#39; privacy in this way, it isn&rsquo;t hard to imagine that irresponsible use of location services could result in negative App Store ratings.</p>
+
+<h2 id="indoor-positional-tracking">Indoor Positional Tracking</h2>
+
+<p>If one were to peruse the API diffs for <code>CoreLocation.framework</code>, among the most baffling discoveries would be the introduction of <code>CLFloor</code>, a new object with a quite simple interface:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="nl">CLFloor</span> <span class="p">:</span> <span class="bp">NSObject</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nl">level</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="kr">get</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">@interface</span> <span class="nc">CLFLoor</span> : <span class="bp">NSObject</span>
+<span class="k">@property</span><span class="p">(</span><span class="k">readonly</span><span class="p">,</span> <span class="k">nonatomic</span><span class="p">)</span> <span class="bp">NSInteger</span> <span class="n">level</span>
+<span class="k">@end</span>
+</code></pre></div>
+<p>That&rsquo;s it. A single property, an integer that tells you what floor of a building the location represents.</p>
+
+<blockquote>
+<p>Europeans will surely be glad to know that the ground floor of a building is represented by &lsquo;0&rsquo;, not &lsquo;1&rsquo;.</p>
+</blockquote>
+
+<p>A <code>CLLocation</code> object returned by a <code>CLLocationManager</code> may include a <code>floor</code> property, but if you were to write a sample app that used location services you&rsquo;d notice that your <code>CLLocation</code> objects&#39; <code>floor</code> property was always <code>nil</code>.</p>
+
+<p>That&rsquo;s because this API change is the tip of the iceberg for a larger suite of features introduced in iOS 8 to facilitate indoor location tracking. For developers building applications in large spaces, like art museums or department stores, Apple now has tooling to support <abbr title="Indoor Positioning Systems">IPS</abbr> using the built-in Core Location APIs and a combination of WiFi, GPS, cellular, and iBeacon data.</p>
+
+<p>That said, information about this new functionality is surprisingly hard to come by. The program is currently limited to businesses who have applied for the program via <a href="https://mapsconnect.apple.com">Apple Maps Connect</a>, with a pretty strict barrier to entry. Limited information about the program was outlined in <a href="http://asciiwwdc.com/2014/sessions/708">this year&rsquo;s WWDC (Session 708: Taking Core Location Indoors)</a>, but for the most part, most logistical details are locked behind closed doors. For all but the most well-connected of us, we have no choice but to be content writing this off as an idle curiosity.</p>
+
+<h2 id="clvisit">CLVisit</h2>
+
+<p>In many apps, the reason to use location monitoring is determining whether a user is in a given place. Conceptually, you&rsquo;re thinking in terms of nouns like &ldquo;places&rdquo; or &ldquo;visits&rdquo;, rather than raw GPS coordinates.</p>
+
+<p>However, unless you have the benefit of being able to use region monitoring (which is limited to a relatively small number of regions) or iBeacon ranging (which requires beacon hardware to be physically installed in a space) Core Location&rsquo;s background monitoring tools aren&rsquo;t a great fit. Building a check-in app or a more comprehensive journaling app along the lines of <a href="https://moves-app.com">Moves</a> has traditionally meant eating up a lot of battery life with location monitoring and spending a lot of time doing custom processing.</p>
+
+<p>With iOS 8, Apple has tried to solve this by introducing <code>CLVisit</code>, a new type of background location monitoring. A single <code>CLVisit</code> represents a period of time a user has spent in a single location, including both a coordinate and start / end timestamps.</p>
+
+<p>In theory, using visit monitoring is no more work than any other background location tracking. Simply calling <code>manager.startMonitoringVisits()</code> will enable background visit tracking, assuming the user has given Always authorization to your app. Once started, your app will be woken up periodically in the background when new updates come in. Unlike with basic location monitoring, if the system has a number of visit updates queued up (typically by enabling deferred updates), your delegate method will be called multiple times, with each call having a single visit, rather than the array of CLLocation objects that <code>locationManager:didReceiveUpdates:</code> is called with. Calling <code>manager.stopMonitoringVisits()</code> will stop tracking.</p>
+
+<h3 id="handling-visits">Handling Visits</h3>
+
+<p>Each <code>CLVisit</code> object contains a few basic properties: its average coordinate, a horizontal accuracy, and dates for arrival and departure times.</p>
+
+<p>Every time a visit is tracked, the <code>CLLocationManagerDelegate</code> might be informed twice: once while the user has just arrived to a new place, and again when they leave it. You can figure out which is which by checking the <code>departureDate</code> property; a departure time of <code>NSDate.distantFuture()</code> means that the user is still there.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="nf">locationManager</span><span class="p">(</span><span class="nl">manager</span><span class="p">:</span> <span class="bp">CLLocationManager</span><span class="o">!</span><span class="p">,</span> <span class="n">didVisit</span> <span class="nl">visit</span><span class="p">:</span> <span class="n">CLVisit</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">visit</span><span class="p">.</span><span class="n">departureDate</span><span class="p">.</span><span class="n">isEqualToDate</span><span class="p">(</span><span class="bp">NSDate</span><span class="p">.</span><span class="n">distantFuture</span><span class="p">())</span> <span class="p">{</span>
+        <span class="c1">// User has arrived, but not left, the location</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// The visit is complete</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="caveat-implementor">Caveat Implementor</h3>
+
+<p>CLVisit is, as of iOS 8.1, not all that precise. While start and end times are generally accurate within a minute or two, lines get blurred at the edges of what is and what is not a visit. Ducking into a corner coffee shop for a minute might not trigger a visit, but waiting at a particularly long traffic light might. It&rsquo;s likely that Apple will improve the quality of visit detection in future OS upgrades, but for now you might want to hold off on relying on <code>CLVisit</code> in favor of your own visit detection for use cases where it&rsquo;s vital your data is as accurate as it can be.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-11-10-core-location-in-ios-8.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 1.2 and was last reviewed on June 24, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mike Lazer-Walker" itemprop="image" src="http://nshipster.s3.amazonaws.com/mike-lazer-walker.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mike-lazer-walker/">Mike Lazer-Walker</a></span>
+
+      <p><a href="http://lazerwalker.com">Mike Lazer-Walker</a> (<a href="https://twitter.com/lazerwalker">@lazerwalker</a>) is an independent app and game developer, and the creator of <a href="http://goshdarnblocksyntax.com">F***ing Block Syntax</a>. He frequently writes about engineering and design on his <a href="http://blog.lazerwalker.com">blog</a>.</p>
+
+
+      
+        <a href="https://plus.google.com/?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/uiprintinteractioncontroller/" title="UIPrintInteractionController" rel="next">UIPrint​Interaction​Controller</a>
+            </h1>
+
+            <p>With all the different means to comment, mark up, save, and share right at our fingertips, it&rsquo;s easy to overlook the value of a printed sheet of paper.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nsformatter/" title="NSFormatter">NSFormatter</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nscharacterset/" title="NSCharacterSet">NSCharacterSet</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/uikeycommand/" title="UIKeyCommand">UIKeyCommand</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/cggeometry/" title="CGGeometry">CGGeometry</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

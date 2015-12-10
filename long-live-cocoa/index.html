@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>Long Live Cocoa - NSHipster</title>
+    <meta name="description" content="Swift is an exciting language for many of us, but it's still brand new. The stability of Objective-C and the history and strength of Cocoa mean that Swift isn't ready to be the driving force behind a major change, at least not quite yet. Cocoa's depth and the power it affords, along with the way it and Swift go hand in hand, make Cocoa as relevant and as promising as ever."/>
+    <link rel="canonical" href="http://nshipster.com/long-live-cocoa/"/>
+  
+  
+  
+  
+  <meta name="author" content="Nate Cook"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@nnnnnnnn"/>
+  
+  
+    <meta name="twitter:title" content="Long Live Cocoa"/>
+    <meta name="twitter:description" content="Swift is an exciting language for many of us, but it&#39;s still brand new. The stability of Objective-C and the history and strength of Cocoa mean that Swift isn&#39;t ready to be the driving force behind a major change, at least not quite yet. Cocoa&#39;s depth and the power it affords, along with the way it and Swift go hand in hand, make Cocoa as relevant and as promising as ever."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Long Live Cocoa"/>
+    <meta property="og:url" content="http://nshipster.com/long-live-cocoa/"/>
+    <meta property="og:description" content="Swift is an exciting language for many of us, but it&#39;s still brand new. The stability of Objective-C and the history and strength of Cocoa mean that Swift isn&#39;t ready to be the driving force behind a major change, at least not quite yet. Cocoa&#39;s depth and the power it affords, along with the way it and Swift go hand in hand, make Cocoa as relevant and as promising as ever."/>
+    <meta property="article:published_time" content="2015-01-12T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content=""/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="Long Live Cocoa"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content=""/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/long-live-cocoa/">Long Live Cocoa</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/nate-cook/">Nate Cook</a> —
+    
+    <time datetime="2015-01-12T00:00:00-08:00" itemprop="datePublished">January 12<sup>th</sup>, 2015</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>It&rsquo;s the start of a new year—2015, the year of Watch, the first full year for Swift, and a bit of a new start for NSHipster. Before we get caught up in the excitement of new devices and the next beta of Xcode or start planning our trips to WWDC 2015, let&rsquo;s take a moment to look at our tools as they are today: Objective-C, Swift, and most importantly, Cocoa.</p>
+
+<p>Swift is an exciting language for many of us, but it&rsquo;s still brand new. The stability of Objective-C and the history and strength of Cocoa mean that Swift isn&rsquo;t ready to be the driving force behind a <a href="/the-death-of-cocoa/">major change</a>, at least not quite yet. Cocoa&rsquo;s depth and the power it affords, along with the way it and Swift go hand in hand, make Cocoa as relevant and as promising as ever. In fact, I don&rsquo;t think there&rsquo;s been a more exciting time to be a Cocoa developer.</p>
+
+<hr>
+
+<p>Cocoa is an impressively deep API—dig a little below the surface of any common tool and you unearth a trove of functionality. You need look no further for proof than the incredible work <a href="http://nshipster.com/authors/mattt-thompson/">Mattt</a> has done in these very pages over the last few years, illuminating what we didn&rsquo;t know Cocoa could do. To name just a few:</p>
+
+<ul>
+<li>The foundations of natural language interfaces with <a href="/nslinguistictagger/"><code>NSLinguisticTagger</code></a> and <a href="/avspeechsynthesizer/"><code>AVSpeechSynthesizer</code></a></li>
+<li>Simple data persistence with <a href="/nscoding/"><code>NSCoding</code> and <code>NSKeyedArchiver</code></a></li>
+<li>Object-oriented concurrent execution with <a href="/nsoperation/"><code>NSOperation</code></a></li>
+<li>Normalizing and transliterating multi-language input with <a href="/cfstringtransform/"><code>CFStringTransform</code></a></li>
+<li>Detection of all sorts of data with <a href="/nsdatadetector/"><code>NSDataDetector</code></a></li>
+<li>Native custom sharing and editing controls with <a href="/uiactivityviewcontroller/"><code>UIActivityViewController</code></a> and <a href="/uimenucontroller/"><code>UIMenuController</code></a></li>
+<li>Built-in <a href="/nsurlcache/">network caching</a> for our <a href="/nsurl/"><code>NSURL</code></a> requests</li>
+</ul>
+
+<p>The list goes on and on. (Check it out—right there on the <a href="/#archive">front page</a>.)</p>
+
+<h3 id="hand-in-hand">Hand in Hand</h3>
+
+<p>What&rsquo;s more, Cocoa and Swift are practically—and in Swift&rsquo;s case, literally—made for each other.</p>
+
+<p>On the Cocoa side, changes to the toolset over the past few years paved the way for Cocoa to be Swift-friendly right out of the gate. Shifting to LLVM/Clang, adding block syntax to Objective-C, pushing the <code>NS_ENUM</code> &amp; <code>NS_OPTIONS</code> macros, converting initializers to return <code>instancetype</code>—all these steps make the Cocoa APIs we&rsquo;re using today far more compatible with Swift than they could have been even a few years ago. Whenever you supply a Swift closure as a <code>NSURLSession</code> completion handler, or use the suggested completions for <code>UIModalTransitionStyle</code>, you&rsquo;re building on that work, done years ago when Swift was still behind closed doors (or in Chris Lattner&rsquo;s head).</p>
+
+<p>Swift was then designed from the ground up to be used with Cocoa. If I could nominate a single Swift feature as <a href="http://stackoverflow.com/search?q=swift+unwrapped+unexpectedly">most confusing to newcomers</a>, it would be Optionals, with their extra punctuation and unwrapping requirements. Even so, Optionals represent a crowning achievement, one so foundational it fades into the woodwork: Swift is a brand-new language that <em>doesn&rsquo;t</em> require a brand-new API. It&rsquo;s a type-safe, memory-safe language whose primary purpose is interacting directly with the enormous C-based Cocoa API, with pointers and raw memory lying all over the place.</p>
+
+<p>This is no small feat. The developer tools team at Apple has been busy annotating the entire API with information about memory management for parameters and return values. Once annotated, functions can be used safely from within Swift, since the compiler knows how to bridge types back and forth from Swift to annotated C code.</p>
+
+<p>Here&rsquo;s an example of similar annotated and unannotated functions. First, the C versions:</p>
+<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="c1">// Creates an immutable copy of a string.</span>
+<span class="n">CFStringRef</span> <span class="nf">CFStringCreateCopy</span> <span class="p">(</span> <span class="n">CFAllocatorRef</span> <span class="n">alloc</span><span class="p">,</span> <span class="n">CFStringRef</span> <span class="n">theString</span> <span class="p">);</span>
+<span class="c1">// Encodes an OSType into a string suitable for use as a tag argument.</span>
+<span class="n">CFStringRef</span> <span class="nf">UTCreateStringForOSType</span> <span class="p">(</span> <span class="n">OSType</span> <span class="n">inOSType</span> <span class="p">);</span>
+</code></pre></div>
+<p>Both of these functions return a <code>CFStringRef</code>—a reference to a <code>CFString</code>. A <code>CFStringRef</code> can be bridged to a Swift <code>CFString</code> instance, but this is <em>only</em> safe if the method has been annotated. In Swift, you can readily see the difference:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// annotated: returns a memory-managed Swift `CFString`</span>
+<span class="k">func</span> <span class="n">CFStringCreateCopy</span><span class="p">(</span><span class="nl">alloc</span><span class="p">:</span> <span class="n">CFAllocator</span><span class="o">!</span><span class="p">,</span> <span class="nl">theString</span><span class="p">:</span> <span class="n">CFString</span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">CFString</span><span class="o">!</span>
+<span class="c1">// unannotated: returns an *unmanaged* `CFString`</span>
+<span class="k">func</span> <span class="n">UTCreateStringForOSType</span><span class="p">(</span><span class="nl">inOSType</span><span class="p">:</span> <span class="n">OSType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Unmanaged</span><span class="o">&lt;</span><span class="n">CFString</span><span class="o">&gt;!</span>
+</code></pre></div>
+<p>Upon receiving an <code>Unmanaged&lt;CFString&gt;!</code>, you need to follow up with <code>.takeRetainedValue()</code> or <code>.takeUnretainedValue()</code> to get a memory-managed <code>CFString</code> instance. Which to call? To know that, you have to read the documentation or know the conventions governing whether the result you get back is retained or unretained. By annotating these functions, Apple has done that work for you, already guaranteeing memory safety across a huge swath of Cocoa.</p>
+
+<hr>
+
+<p>Moreover, Swift doesn&rsquo;t just embrace Cocoa APIs, it actively improves them. Take the venerable <code>CGRect</code>, for example. As a C struct, it can&rsquo;t contain any instance methods, so all the <a href="/cggeometry/">tools to manipulate <code>CGRect</code>s</a> live in top-level functions. These tools are powerful, but you need to know they exist and how to put them to use. These four lines of code, dividing a <code>CGRect</code> into two smaller pieces, might require three trips to the documentation:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">CGRect</span> <span class="n">nextRect</span><span class="p">;</span>
+<span class="bp">CGRect</span> <span class="n">remainingRect</span><span class="p">;</span>
+<span class="n">CGRectDivide</span><span class="p">(</span><span class="n">sourceRect</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">nextRect</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">remainingRect</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="n">CGRectMinXEdge</span><span class="p">);</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">&quot;Remaining rect: %@&quot;</span><span class="p">,</span> <span class="n">NSStringFromCGRect</span><span class="p">(</span><span class="n">remainingRect</span><span class="p">));</span>
+</code></pre></div>
+<p>In Swift, structs happily contain both static and instance methods and computed properties, so Core Graphics extends <code>CGRect</code> to make finding and using those tools far easier. Because <code>CGRect*</code> functions are mapped to instance methods or properties, the code above is reduced to this:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="p">(</span><span class="n">nextRect</span><span class="p">,</span> <span class="n">remainingRect</span><span class="p">)</span> <span class="o">=</span> <span class="n">sourceRect</span><span class="p">.</span><span class="n">rectsByDividing</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="bp">CGRectEdge</span><span class="p">.</span><span class="n">MinXEdge</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Remaining rect: \(remainingRect)&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="getting-better-all-the-time">Getting Better All The Time</h3>
+
+<p>To be sure, working with Cocoa and Swift together is sometimes awkward. Where that does happen, it often comes from using patterns that are idiomatic to Objective-C. Delegates, target-selector, and <code>NSInvocation</code> still have their place, but with closures so easy in Swift, it can feel like overkill to add a whole method (or three) just to accomplish something simple. Bringing more closure- or block-based methods to existing Cocoa types can easily smooth out these bumps.</p>
+
+<p>For example, <code>NSTimer</code> has a perfectly fine interface, but it suffers from requiring an Objective-C method to call, either via target-selector or invocation. When defining a timer, chances are I already have everything ready to go. <a href="https://gist.github.com/natecook1000/b0285b518576b22c4dc8">With a simple <code>NSTimer</code> extension</a> using its toll-free bridged Core Foundation counterpart, <code>CFTimer</code>, we&rsquo;re in business in no time:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">message</span> <span class="o">=</span> <span class="s">&quot;Are we there yet?&quot;</span>
+<span class="k">let</span> <span class="n">alert</span> <span class="o">=</span> <span class="n">UIAlertController</span><span class="p">(</span><span class="nl">title</span><span class="p">:</span> <span class="n">message</span><span class="p">,</span> <span class="nl">message</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">preferredStyle</span><span class="p">:</span> <span class="p">.</span><span class="n">Alert</span><span class="p">)</span>
+<span class="n">alert</span><span class="p">.</span><span class="n">addAction</span><span class="p">(</span><span class="n">UIAlertAction</span><span class="p">(</span><span class="nl">title</span><span class="p">:</span> <span class="s">&quot;No&quot;</span><span class="p">,</span> <span class="nl">style</span><span class="p">:</span> <span class="p">.</span><span class="n">Default</span><span class="p">,</span> <span class="nl">handler</span><span class="p">:</span> <span class="nb">nil</span><span class="p">))</span>
+
+<span class="bp">NSTimer</span><span class="p">.</span><span class="n">scheduledTimerWithTimeInterval</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="nl">repeats</span><span class="p">:</span> <span class="nb">true</span><span class="p">)</span> <span class="p">{</span> <span class="p">[</span><span class="k">weak</span> <span class="nb">self</span><span class="p">]</span> <span class="n">timer</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="nb">self</span><span class="o">?</span><span class="p">.</span><span class="n">presentedViewController</span> <span class="o">==</span> <span class="nb">nil</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="o">?</span><span class="p">.</span><span class="n">presentViewController</span><span class="p">(</span><span class="n">alert</span><span class="p">,</span> <span class="nl">animated</span><span class="p">:</span> <span class="nb">true</span><span class="p">,</span> <span class="nl">completion</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="c1">// I swear I&#39;ll turn this car around.</span>
+</code></pre></div>
+<hr>
+
+<p>None of this is to refute <a href="/the-death-of-cocoa/">Mattt&rsquo;s last post</a>, though—on an infinite time scale, we&rsquo;ll surely be coding against Cocoa&rsquo;s successor on our 42&quot; iPads while looking out across the Titan moonscape. But as long as Cocoa&rsquo;s still around, isn&rsquo;t it <em>great?</em></p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2015-01-12-long-live-cocoa.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 1.0.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Nate Cook" itemprop="image" src="http://nshipster.s3.amazonaws.com/nate-cook.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/nate-cook/">Nate Cook</a></span>
+
+      <p><a href="http://natecook.com">Nate Cook</a> (<a href="https://twitter.com/nnnnnnnn">@nnnnnnnn</a>) is an independent web and application developer who <a href="http://natecook.com/blog/">writes frequently about topics in Swift</a>, and the creator of <a href="http://swiftdoc.org">SwiftDoc.org</a>.</p>
+
+
+      
+        <a href="https://plus.google.com/?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/javascriptcore/" title="JavaScriptCore" rel="next">Java​Script​Core</a>
+            </h1>
+
+            <p>Introduced with OS X Mavericks and iOS 7, the JavaScriptCore framework puts an Objective-C wrapper around WebKit&rsquo;s JavaScript engine, providing easy, fast, and safe access to the world&rsquo;s most prevalent language. Love it or hate it, JavaScript&rsquo;s ubiquity has led to an explosion of developers, tools, and resources along with ultra-fast virtual machines like the one built into OS X and iOS.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/ios8/" title="iOS 8">iOS 8</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/inter-process-communication/" title="Inter-Process Communication">Inter-Process Communication</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/watchkit/" title="WatchKit">WatchKit</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/changing-of-the-guard/" title="Changing of the Guard">Changing of the Guard</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

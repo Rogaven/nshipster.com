@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSFastEnumeration / NSEnumerator - NSHipster</title>
+    <meta name="description" content="Enumeration is where computation gets interesting. It's one thing to encode logic that's executed once, but applying it across a collection—that's what makes programming so powerful."/>
+    <link rel="canonical" href="http://nshipster.com/enumerators/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="NSFastEnumeration / NSEnumerator"/>
+    <meta name="twitter:description" content="Enumeration is where computation gets interesting. It&#39;s one thing to encode logic that&#39;s executed once, but applying it across a collection—that&#39;s what makes programming so powerful."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NSFastEnumeration / NSEnumerator"/>
+    <meta property="og:url" content="http://nshipster.com/enumerators/"/>
+    <meta property="og:description" content="Enumeration is where computation gets interesting. It&#39;s one thing to encode logic that&#39;s executed once, but applying it across a collection—that&#39;s what makes programming so powerful."/>
+    <meta property="article:published_time" content="2013-07-01T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NSFastEnumeration / NSEnumerator"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/enumerators/">NSFast​Enumeration / NSEnumerator</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-07-01T00:00:00-07:00" itemprop="datePublished">July 1<sup>st</sup>, 2013</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Enumeration is where computation gets interesting. It&rsquo;s one thing to encode logic that&rsquo;s executed once, but applying it across a collection—that&rsquo;s what makes programming so powerful.</p>
+
+<p>Each programming paradigm has its own way to iterate over a collection:</p>
+
+<ul>
+<li><strong>Procedural</strong> increments a pointer within a loop</li>
+<li><strong>Object Oriented</strong> applies a function or block to each object in a collection</li>
+<li><strong>Functional</strong> works through a data structure recursively</li>
+</ul>
+
+<p>Objective-C, to echo one of the central themes of this blog, plays a fascinating role as a bridge between the Procedural traditions of C and the Object Oriented model pioneered in Smalltalk. In many ways, enumeration is where the proverbial rubber hits the road.</p>
+
+<p>This article will cover all of the different ways collections are enumerated in Objective-C &amp; Cocoa. How do I love thee? Let me count the ways.</p>
+
+<hr>
+
+<h2 id="c-loops-(for/while)">C Loops (<code>for/while</code>)</h2>
+
+<p><code>for</code> and <code>while</code> loops are the &ldquo;classic&rdquo; method of iterating over a collection. Anyone who&rsquo;s taken Computer Science 101 has written code like this before:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">for</span> <span class="p">(</span><span class="bp">NSUInteger</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">[</span><span class="n">array</span> <span class="n">count</span><span class="p">];</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kt">id</span> <span class="n">object</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+  <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">object</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>But as anyone who has used C-style loops knows, this method is prone to <a href="http://en.wikipedia.org/wiki/Off-by-one_error">off-by-one errors</a>—particularly when used in a non-standard way.</p>
+
+<p>Fortunately, Smalltalk significantly improved this state of affairs with an idea called <a href="http://en.wikipedia.org/wiki/List_comprehension">list comprehensions</a>, which are commonly known today as <code>for/in</code> loops.</p>
+
+<h2 id="list-comprehension-(for/in)">List Comprehension (<code>for/in</code>)</h2>
+
+<p>By using a higher level of abstraction, declaring the intention of iterating through all elements of a collection, not only are we less prone to error, but there&rsquo;s a lot less to type:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">for</span> <span class="p">(</span><span class="kt">id</span> <span class="n">object</span> <span class="k">in</span> <span class="n">array</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">object</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In Cocoa, comprehensions are available to any class that implements the <code>NSFastEnumeration</code> protocol, including <code>NSArray</code>, <code>NSSet</code>, and <code>NSDictionary</code>.</p>
+
+<h3 id="&lt;nsfastenumeration&gt;"><code>&lt;NSFastEnumeration&gt;</code></h3>
+
+<p><code>NSFastEnumeration</code> contains a single method:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">-</span> <span class="p">(</span><span class="bp">NSUInteger</span><span class="p">)</span><span class="nf">countByEnumeratingWithState:</span><span class="p">(</span><span class="n">NSFastEnumerationState</span> <span class="o">*</span><span class="p">)</span><span class="nv">state</span>
+                                  <span class="nf">objects:</span><span class="p">(</span><span class="kt">id</span> <span class="o">*</span><span class="p">)</span><span class="nv">stackbuf</span>
+                                    <span class="nf">count:</span><span class="p">(</span><span class="bp">NSUInteger</span><span class="p">)</span><span class="nv">len</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><code>state</code>: Context information that is used in the enumeration to, in addition to other possibilities, ensure that the collection has not been mutated.</li>
+<li><code>stackbuf</code>: A C array of objects over which the sender is to iterate.</li>
+<li><code>len</code>: The maximum number of objects to return in stackbuf.</li>
+</ul>
+</blockquote>
+
+<p>One single, <em>deceptively complicated</em> method. There&rsquo;s that <code>stackbuf</code> out pointer parameter, and a <code>state</code> parameter of type <code>NSFastEnumerationState *</code>. Let&rsquo;s take a closer look at that&hellip;</p>
+
+<h3 id="nsfastenumerationstate"><code>NSFastEnumerationState</code></h3>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+      <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">state</span><span class="p">;</span>
+      <span class="kt">id</span> <span class="o">*</span><span class="n">itemsPtr</span><span class="p">;</span>
+      <span class="kt">unsigned</span> <span class="kt">long</span> <span class="o">*</span><span class="n">mutationsPtr</span><span class="p">;</span>
+      <span class="kt">unsigned</span> <span class="kt">long</span> <span class="n">extra</span><span class="p">[</span><span class="mi">5</span><span class="p">];</span>
+<span class="p">}</span> <span class="n">NSFastEnumerationState</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><code>state</code>: Arbitrary state information used by the iterator. Typically this is set to 0 at the beginning of the iteration.</li>
+<li><code>itemsPtr</code>: A C array of objects.</li>
+<li><code>mutationsPtr</code>: Arbitrary state information used to detect whether the collection has been mutated.</li>
+<li><code>extra</code>: A C array that you can use to hold returned values.</li>
+</ul>
+</blockquote>
+
+<p>Under every elegant abstraction is an underlying implementation deserving to be hidden from the eyes of God. <code>itemsPtr</code>? <code>mutationsPtr</code>? <code>extra</code>‽ Seriously, what gives?</p>
+
+<blockquote>
+<p>For the curious, <a href="http://www.mikeash.com/pyblog/friday-qa-2010-04-16-implementing-fast-enumeration.html">Mike Ash has a fantastic blog post</a> where he dives into the internals, providing several reference implementations of <code>NSFastEnumeration</code>.</p>
+</blockquote>
+
+<p>What you should know about <code>NSFastEnumeration</code> is that it is <em>fast</em>. At least as fast if not significantly faster than rolling your own <code>for</code> loop, in fact. The secret behind its speed is how <code>-countByEnumeratingWithState:objects:count:</code> buffers collection members, loading them in as necessary. Unlike a single-threaded <code>for</code> loop implementation, objects can be loaded concurrently, making better use of available system resources.</p>
+
+<p>Apple recommends that you use <code>NSFastEnumeration</code> <code>for/in</code>-style enumeration for your collections wherever possible and appropriate. And to be honest, for how easy it is to use and how well it performs, that&rsquo;s a pretty easy sell. Seriously, use it.</p>
+
+<h2 id="nsenumerator"><code>NSEnumerator</code></h2>
+
+<p>But of course, before <code>NSFastEnumeration</code> (circa OS X Leopard / iOS 2.0), there was the venerable <code>NSEnumerator</code>.</p>
+
+<p>For the uninitiated, <code>NSEnumerator</code> is an abstract class that implements two methods:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">nextObject</span>
+<span class="p">-</span> <span class="p">(</span><span class="bp">NSArray</span> <span class="o">*</span><span class="p">)</span><span class="nf">allObjects</span>
+</code></pre></div>
+<p><code>nextObject</code> returns the next object in the collection, or <code>nil</code> if unavailable. <code>allObjects</code> returns all of the remaining objects, if any. <code>NSEnumerator</code>s can only go forward, and only in single increments.</p>
+
+<p>To enumerate through all elements in a collection, one would use <code>NSEnumerator</code> thusly:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="kt">id</span> <span class="n">object</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+<span class="bp">NSEnumerator</span> <span class="o">*</span><span class="n">enumerator</span> <span class="o">=</span> <span class="p">...;</span>
+<span class="k">while</span> <span class="p">((</span><span class="n">object</span> <span class="o">=</span> <span class="p">[</span><span class="n">enumerator</span> <span class="n">nextObject</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">object</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>&hellip;or because <code>NSEnumerator</code> itself conforms to <code>&lt;NSFastEnumeration&gt;</code> in an attempt to stay hip to the way kids do things these days:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">for</span> <span class="p">(</span><span class="kt">id</span> <span class="n">object</span> <span class="k">in</span> <span class="n">enumerator</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">object</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If you&rsquo;re looking for a convenient way to add fast enumeration to your own non-collection-class-backed objects, <code>NSEnumerator</code> is likely a much more palatable option than getting your hands messy with <code>NSFastEnumeration</code>&rsquo;s implementation details.</p>
+
+<p>Some quick points of interest about <code>NSEnumeration</code>:</p>
+
+<ul>
+<li>Reverse an array in one line of code with (and excuse the excessive dot syntax) <code>array.reverseObjectEnumerator.allObjects</code>.</li>
+<li>Add LINQ-style operations with <a href="https://github.com/k06a/NSEnumeratorLinq"><code>NSEnumeratorLinq</code></a>, a third-party library using chained <code>NSEnumerator</code> subclasses.</li>
+<li>Shake things up with your collection classes in style with <a href="https://github.com/mattt/TTTRandomizedEnumerator"><code>TTTRandomizedEnumerator</code></a>, another third-party library, which iterates through elements in a random order.</li>
+</ul>
+
+<h2 id="enumerate-with-blocks">Enumerate With Blocks</h2>
+
+<p>Finally, with the introduction of blocks in OS X Snow Leopard / iOS 4, came a new block-based way to enumerate collections:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[</span><span class="n">array</span> <span class="nl">enumerateObjectsUsingBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">object</span><span class="p">,</span> <span class="bp">NSUInteger</span> <span class="n">idx</span><span class="p">,</span> <span class="kt">BOOL</span> <span class="o">*</span><span class="n">stop</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">object</span><span class="p">);</span>
+<span class="p">}];</span>
+</code></pre></div>
+<p>Collection classes like <code>NSArray</code>, <code>NSSet</code>, <code>NSDictionary</code>, and <code>NSIndexSet</code> include a similar set of block enumeration methods.</p>
+
+<p>One of the advantages of this approach is that the current object index (<code>idx</code>) is passed along with the object itself. The <code>BOOL</code> pointer allows for early returns, equivalent to a <code>break</code> statement in a regular C loop.</p>
+
+<p>Unless you actually need the numerical index while iterating, it&rsquo;s almost always faster to use a <code>for/in</code> <code>NSFastEnumeration</code> loop instead.</p>
+
+<p>One last thing to be aware of are the expanded method variants with an <code>options</code> parameter:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">enumerateObjectsWithOptions:</span><span class="p">(</span><span class="n">NSEnumerationOptions</span><span class="p">)</span><span class="nv">opts</span>
+                         <span class="nf">usingBlock:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="kt">id</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">NSUInteger</span> <span class="n">idx</span><span class="p">,</span> <span class="kt">BOOL</span> <span class="o">*</span><span class="n">stop</span><span class="p">))</span><span class="nv">block</span>
+</code></pre></div>
+<h3 id="nsenumerationoptions"><code>NSEnumerationOptions</code></h3>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">enum</span> <span class="p">{</span>
+   <span class="n">NSEnumerationConcurrent</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1UL</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">),</span>
+   <span class="n">NSEnumerationReverse</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1UL</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">};</span>
+<span class="k">typedef</span> <span class="bp">NSUInteger</span> <span class="n">NSEnumerationOptions</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><code>NSEnumerationConcurrent</code>: Specifies that the Block enumeration should be concurrent. The order of invocation is nondeterministic and undefined; this flag is a hint and may be ignored by the implementation under some circumstances; the code of the Block must be safe against concurrent invocation.</li>
+<li><code>NSEnumerationReverse</code>: Specifies that the enumeration should be performed in reverse. This option is available for <code>NSArray</code> and <code>NSIndexSet</code> classes; its behavior is undefined for <code>NSDictionary</code> and <code>NSSet</code> classes, or when combined with the <code>NSEnumerationConcurrent</code> flag.</li>
+</ul>
+</blockquote>
+
+<p>Again, fast enumeration is almost certain to be much faster than block enumeration, but these options may be useful if you&rsquo;re resigned to using blocks.</p>
+
+<hr>
+
+<p>So there you have all of the conventional forms of enumeration in Objective-C and Cocoa.</p>
+
+<p>What&rsquo;s especially interesting is that in looking at these approaches, we learn a lesson about the power of abstraction. Higher levels of abstraction are not just easier to write and comprehend, but can often be much faster than doing it the &ldquo;hard way&rdquo;.</p>
+
+<p>High-level commands that declare intention, like &ldquo;iterate through all of the elements of this collection&rdquo; lend themselves to high-level compiler optimization in a way that just isn&rsquo;t possible with pointer arithmetic in a loop. Context is a powerful thing, and designing APIs and functionality accordingly ultimately fulfill that great promise of abstraction: to solve larger problems more easily.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-07-01-enumerators.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+            
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nsexpression/" title="NSExpression" rel="next">NSExpression</a>
+            </h1>
+
+            <p>Cocoa is the envy of other standard libraries when it comes to querying and arranging information. With NSPredicate, NSSortDescriptor, and an occasional NSFetchRequest, even the most complex data tasks can be reduced into just a few, extremely-understandable lines of code.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nstemporarydirectory/" title="NSTemporaryDirectory /<br/>NSItemReplacementDirectory /<br/>mktemp(3)">NSTemporaryDirectory /<br/>NSItemReplacementDirectory /<br/>mktemp(3)</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsurl/" title="NSURL /<br/>NSURLComponents">NSURL /<br/>NSURLComponents</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nssecurecoding/" title="NSSecureCoding">NSSecureCoding</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsrange/" title="NSRange">NSRange</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

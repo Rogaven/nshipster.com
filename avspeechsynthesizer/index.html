@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>AVSpeechSynthesizer - NSHipster</title>
+    <meta name="description" content="Though we're a long way off from Hal or Her, we should never forget about the billions of other people out there for us to talk to."/>
+    <link rel="canonical" href="http://nshipster.com/avspeechsynthesizer/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="AVSpeechSynthesizer"/>
+    <meta name="twitter:description" content="Though we&#39;re a long way off from Hal or Her, we should never forget about the billions of other people out there for us to talk to."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="AVSpeechSynthesizer"/>
+    <meta property="og:url" content="http://nshipster.com/avspeechsynthesizer/"/>
+    <meta property="og:description" content="Though we&#39;re a long way off from Hal or Her, we should never forget about the billions of other people out there for us to talk to."/>
+    <meta property="article:published_time" content="2014-03-31T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="AVSpeechSynthesizer"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/avspeechsynthesizer/">AVSpeech​Synthesizer</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2014-03-31T00:00:00-07:00" itemprop="datePublished">March 31<sup>st</sup>, 2014</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Though we&rsquo;re a long way off from <a href="https://www.youtube.com/watch?v=ARJ8cAGm6JE"><em>Hal</em></a> or <a href="https://www.youtube.com/watch?v=WzV6mXIOVl4"><em>Her</em></a>, we should never forget about the billions of other people out there for us to talk to.</p>
+
+<p>Of the thousands of languages in existence, an individual is fortunate to gain a command of just two within their lifetime. And yet, over several millennia of human co-existence, civilization has managed to make things work, more or less, through an ad-hoc network of interpreters, translators, scholars, and children raised in the mixed linguistic traditions of their parents. We&rsquo;ve seen that mutual understanding fosters peace, and that conversely, mutual unintelligibility destabilizes human relations.</p>
+
+<p>It is fitting that the development of computational linguistics should coincide with the emergence of the international community we have today. Working towards mutual understanding, intergovernmental organizations like the United Nations and European Union have produced a substantial corpora of <a href="http://en.wikipedia.org/wiki/Parallel_text">parallel texts</a>, which form the foundation of modern language translation technologies.</p>
+
+<blockquote>
+<p>Another related linguistic development is the <a href="http://en.wikipedia.org/wiki/Esperanto">Esperanto</a> language, created by L. L. Zamenhof in an effort to promote harmony between people of different countries.</p>
+</blockquote>
+
+<p>And while automatic text translation has reached an acceptable level for everyday communication, there is still a divide when we venture out into unfamiliar places. There is still much work to be done in order to augment our ability to communicate with one another in person.</p>
+
+<hr>
+
+<p>Introduced in iOS 7, <code>AVSpeechSynthesizer</code> produces synthesized speech from a given <code>AVSpeechUtterance</code>. Each utterance can adjust its rate of speech and pitch, and be configured to use any one of the available <code>AVSpeechSynthesisVoice</code>s:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">AVFoundation</span>
+
+<span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="s">&quot;Hello, World!&quot;</span>
+<span class="k">let</span> <span class="n">utterance</span> <span class="o">=</span> <span class="bp">AVSpeechUtterance</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">string</span><span class="p">)</span>
+<span class="n">utterance</span><span class="p">.</span><span class="n">voice</span> <span class="o">=</span> <span class="bp">AVSpeechSynthesisVoice</span><span class="p">(</span><span class="nl">language</span><span class="p">:</span> <span class="s">&quot;en-US&quot;</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="n">synthesizer</span> <span class="o">=</span> <span class="bp">AVSpeechSynthesizer</span><span class="p">()</span>
+<span class="n">synthesizer</span><span class="p">.</span><span class="n">speakUtterance</span><span class="p">(</span><span class="n">utterance</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSString</span> <span class="o">*</span><span class="n">string</span> <span class="o">=</span> <span class="s">@&quot;Hello, World!&quot;</span><span class="p">;</span>
+<span class="bp">AVSpeechUtterance</span> <span class="o">*</span><span class="n">utterance</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">AVSpeechUtterance</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithString</span><span class="p">:</span><span class="n">string</span><span class="p">];</span>
+<span class="n">utterance</span><span class="p">.</span><span class="n">voice</span> <span class="o">=</span> <span class="p">[</span><span class="bp">AVSpeechSynthesisVoice</span> <span class="nl">voiceWithLanguage</span><span class="p">:</span><span class="s">@&quot;en-US&quot;</span><span class="p">];</span>
+
+<span class="bp">AVSpeechSynthesizer</span> <span class="o">*</span><span class="n">synthesizer</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">AVSpeechSynthesizer</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="p">[</span><span class="n">synthesizer</span> <span class="nl">speakUtterance</span><span class="p">:</span><span class="n">utterance</span><span class="p">];</span>
+</code></pre></div>
+<p>When speaking, a synthesizer can either be paused immediately or on the next word boundary, which makes for a less jarring user experience.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">synthesizer</span><span class="p">.</span><span class="n">pauseSpeakingAtBoundary</span><span class="p">(.</span><span class="n">Word</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[</span><span class="n">synthesizer</span> <span class="nl">pauseSpeakingAtBoundary</span><span class="p">:</span><span class="n">AVSpeechBoundaryWord</span><span class="p">];</span>
+</code></pre></div>
+<h2 id="supported-languages">Supported Languages</h2>
+
+<p>Mac OS 9 users will no doubt have fond memories of the old system voices: Bubbles, Cellos, Pipe Organ, and Bad News.</p>
+
+<blockquote>
+<p>These can still be installed on OS X. Just look under the &ldquo;English (United States) - Novelty&rdquo; voices in the &ldquo;Dictation &amp; Speech&rdquo; preference pane.</p>
+</blockquote>
+
+<p>In the name of quality over quantity, each language is provided a voice for each major locale region. So instead of asking for &ldquo;Fred&rdquo; and &ldquo;Markus&rdquo;, <code>AVSpeechSynthesisVoice</code> asks for <code>en-US</code> and <code>de-DE</code>.</p>
+
+<p>As of iOS 8.1, <code>[AVSpeechSynthesisVoice speechVoices]</code> the following languages and locales are supported:</p>
+
+<ul>
+<li>Arabic (<code>ar-SA</code>)</li>
+<li>Chinese (<code>zh-CN</code>, <code>zh-HK</code>, <code>zh-TW</code>)</li>
+<li>Czech (<code>cs-CZ</code>)</li>
+<li>Danish (<code>da-DK</code>)</li>
+<li>Dutch (<code>nl-BE</code>, <code>nl-NL</code>)</li>
+<li>English (<code>en-AU</code>, <code>en-GB</code>, <code>en-IE</code>, <code>en-US</code>, <code>en-ZA</code>)</li>
+<li>Finnish (<code>fi-FI</code>)</li>
+<li>French (<code>fr-CA</code>, <code>fr-FR</code>)</li>
+<li>German (<code>de-DE</code>)</li>
+<li>Greek (<code>el-GR</code>)</li>
+<li>Hebrew (<code>he-IL</code>)</li>
+<li>Hindi (<code>hi-IN</code>)</li>
+<li>Hungarian (<code>hu-HU</code>)</li>
+<li>Indonesian (<code>id-ID</code>)</li>
+<li>Italian (<code>it-IT</code>)</li>
+<li>Japanese (<code>ja-JP</code>)</li>
+<li>Korean (<code>ko-KR</code>)</li>
+<li>Norwegian (<code>no-NO</code>)</li>
+<li>Polish (<code>pl-PL</code>)</li>
+<li>Portuguese (<code>pt-BR</code>, <code>pt-PT</code>)</li>
+<li>Romanian (<code>ro-RO</code>)</li>
+<li>Russian (<code>ru-RU</code>)</li>
+<li>Slovak (<code>sk-SK</code>)</li>
+<li>Spanish (<code>es-ES</code>, <code>es-MX</code>)</li>
+<li>Swedish (<code>sv-SE</code>)</li>
+<li>Thai (<code>th-TH</code>)</li>
+<li>Turkish (<code>tr-TR</code>)</li>
+</ul>
+
+<p><code>NSLocale</code> and <code>NSLinguisticTagger</code> both use ISO 681 codes to identify languages. <code>AVSpeechSynthesisVoice</code>, however, takes an <a href="http://en.wikipedia.org/wiki/IETF_language_tag">IETF Language Tag</a>, as specified <a href="http://tools.ietf.org/html/bcp47">BCP 47 Document Series</a>. If an utterance string and voice aren&rsquo;t in the same language, speech synthesis will fail.</p>
+
+<blockquote>
+<p><a href="https://gist.github.com/mattt/9892187">This gist</a> shows how to detect an ISO 681 language code from an arbitrary string, and convert that to an IETF language tag.</p>
+</blockquote>
+
+<h2 id="delegate-methods">Delegate Methods</h2>
+
+<p>What makes <code>AVSpeechSynthesizer</code> really amazing for developers is the ability to hook into speech events. An object conforming to <code>AVSpeechSynthesizerDelegate</code> can be called when its speech synthesizer either starts or finishes, pauses or continues, and as each range of the utterance is spoken.</p>
+
+<p>For example, an app, in addition to synthesizing a voice utterance, could show that utterance in a label, and highlight the word currently being spoken:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="nl">utteranceLabel</span><span class="p">:</span> <span class="bp">UILabel</span><span class="o">!</span>
+
+<span class="c1">// MARK: AVSpeechSynthesizerDelegate</span>
+
+<span class="k">func</span> <span class="n">speechSynthesizer</span><span class="p">(</span><span class="nl">synthesizer</span><span class="p">:</span> <span class="bp">AVSpeechSynthesizer</span><span class="p">,</span> <span class="n">willSpeakRangeOfSpeechString</span> <span class="nl">characterRange</span><span class="p">:</span> <span class="n">NSRange</span><span class="p">,</span> <span class="nl">utterance</span><span class="p">:</span> <span class="bp">AVSpeechUtterance</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">mutableAttributedString</span> <span class="o">=</span> <span class="bp">NSMutableAttributedString</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">utterance</span><span class="p">.</span><span class="n">speechString</span><span class="p">)</span>
+    <span class="n">mutableAttributedString</span><span class="p">.</span><span class="n">addAttribute</span><span class="p">(</span><span class="n">NSForegroundColorAttributeName</span><span class="p">,</span> <span class="nl">value</span><span class="p">:</span> <span class="bp">UIColor</span><span class="p">.</span><span class="n">redColor</span><span class="p">(),</span> <span class="nl">range</span><span class="p">:</span> <span class="n">characterRange</span><span class="p">)</span>
+    <span class="n">utteranceLabel</span><span class="p">.</span><span class="n">attributedText</span> <span class="o">=</span> <span class="n">mutableAttributedString</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">speechSynthesizer</span><span class="p">(</span><span class="nl">synthesizer</span><span class="p">:</span> <span class="bp">AVSpeechSynthesizer</span><span class="p">,</span> <span class="n">didFinishSpeechUtterance</span> <span class="nl">utterance</span><span class="p">:</span> <span class="bp">AVSpeechUtterance</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">utteranceLabel</span><span class="p">.</span><span class="n">attributedText</span> <span class="o">=</span> <span class="bp">NSAttributedString</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">utterance</span><span class="p">.</span><span class="n">speechString</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="cp">#pragma mark - AVSpeechSynthesizerDelegate</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">speechSynthesizer:</span><span class="p">(</span><span class="bp">AVSpeechSynthesizer</span> <span class="o">*</span><span class="p">)</span><span class="nv">synthesizer</span>
+<span class="nf">willSpeakRangeOfSpeechString:</span><span class="p">(</span><span class="n">NSRange</span><span class="p">)</span><span class="nv">characterRange</span>
+                <span class="nf">utterance:</span><span class="p">(</span><span class="bp">AVSpeechUtterance</span> <span class="o">*</span><span class="p">)</span><span class="nv">utterance</span>
+<span class="p">{</span>
+    <span class="bp">NSMutableAttributedString</span> <span class="o">*</span><span class="n">mutableAttributedString</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSMutableAttributedString</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithString</span><span class="p">:</span><span class="n">utterance</span><span class="p">.</span><span class="n">speechString</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">mutableAttributedString</span> <span class="nl">addAttribute</span><span class="p">:</span><span class="n">NSForegroundColorAttributeName</span>
+                                    <span class="nl">value</span><span class="p">:[</span><span class="bp">UIColor</span> <span class="n">redColor</span><span class="p">]</span> <span class="nl">range</span><span class="p">:</span><span class="n">characterRange</span><span class="p">];</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">utteranceLabel</span><span class="p">.</span><span class="n">attributedText</span> <span class="o">=</span> <span class="n">mutableAttributedString</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">speechSynthesizer:</span><span class="p">(</span><span class="bp">AVSpeechSynthesizer</span> <span class="o">*</span><span class="p">)</span><span class="nv">synthesizer</span>
+ <span class="nf">didFinishSpeechUtterance:</span><span class="p">(</span><span class="bp">AVSpeechUtterance</span> <span class="o">*</span><span class="p">)</span><span class="nv">utterance</span>
+<span class="p">{</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">utteranceLabel</span><span class="p">.</span><span class="n">attributedText</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSAttributedString</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithString</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">utteranceString</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><img src="http://nshipster.s3.amazonaws.com/avspeechsynthesizer-example.gif" alt="AVSpeechSynthesizer Example"></p>
+
+<p>See <a href="https://github.com/mattt/AVSpeechSynthesizer-Example">this example app</a> for a demonstration of live text-highlighting for all of the supported languages.</p>
+
+<hr>
+
+<p>Anyone who travels to an unfamiliar place returns with a profound understanding of what it means to communicate. It&rsquo;s totally different from how one is taught a language in High School: instead of genders and cases, it&rsquo;s about emotions and patience and clinging onto every shred of understanding. One is astounded by the extent to which two humans can communicate with hand gestures and facial expressions. One is also humbled by how frustrating it can be when pantomiming breaks down.</p>
+
+<p>In our modern age, we have the opportunity to go out in a world augmented by a collective computational infrastructure. Armed with <code>AVSpeechSynthesizer</code> and the myriad other linguistic technologies on iOS and elsewhere, we have never been more capable of breaking down the forces that most divide our species.</p>
+
+<p>If that isn&rsquo;t universe-denting, then I don&rsquo;t know what is.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-03-31-avspeechsynthesizer.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on September 10, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/configuration-profiles/" title="Configuration Profiles" rel="next">Configuration Profiles</a>
+            </h1>
+
+            <p>One of the major criticisms of iOS as a platform is how locked down it is. iOS Configuration Profiles offer an interesting mechanism to work around these restrictions.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nscharacterset/" title="NSCharacterSet">NSCharacterSet</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/cmdevicemotion/" title="CMDeviceMotion">CMDeviceMotion</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/mklocalsearch/" title="MKLocalSearch">MKLocalSearch</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nssortdescriptor/" title="NSSortDescriptor">NSSortDescriptor</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

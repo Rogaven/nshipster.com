@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>iOS 7 - NSHipster</title>
+    <meta name="description" content="With the NDA finally lifted, we can finally talk about all of the amazing new APIs in iOS 7."/>
+    <link rel="canonical" href="http://nshipster.com/ios7/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="iOS 7"/>
+    <meta name="twitter:description" content="With the NDA finally lifted, we can finally talk about all of the amazing new APIs in iOS 7."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="iOS 7"/>
+    <meta property="og:url" content="http://nshipster.com/ios7/"/>
+    <meta property="og:description" content="With the NDA finally lifted, we can finally talk about all of the amazing new APIs in iOS 7."/>
+    <meta property="article:published_time" content="2013-09-23T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content=""/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="iOS 7"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/ios7/">i​OS 7</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-09-23T00:00:00-07:00" itemprop="datePublished">September 23<sup>rd</sup>, 2013</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>With the NDA finally lifted, we can finally talk about all of the amazing new APIs in iOS 7. And there are a <em>lot</em> of them. &ldquo;1500 new APIs&rdquo;, by Apple&rsquo;s count during the WWDC Keynote. (Granted, a good portion of that could just be all of the changes from <code>id</code> to <code>instancetype</code>, but that&rsquo;s a huge number, regardless).</p>
+
+<p>We&rsquo;ll be going over many of the new features iOS 7 in depth over the coming weeks, but with all of the excitement around this major release, this week&rsquo;s issue will hit on some of the gems hiding in plain sight: <code>NSData</code> Base64 encoding, <code>NSURLComponents</code>, <code>NSProgress</code>, <code>CIDetectorSmile</code>, <code>CIDetectorEyeBlink</code>, <code>SSReadingList</code>, <code>AVCaptureMetaDataOutput</code>, <code>AVSpeechSynthesizer</code>, and <code>MKDistanceFormatter</code>.</p>
+
+<hr>
+
+<h2 id="nsdata-(nsdatabase64encoding)">NSData (NSDataBase64Encoding)</h2>
+
+<p><a href="http://en.wikipedia.org/wiki/Base64">Base64</a> is a general term for encoding binary data as ASCII text. This is used all over the place on the web, since many core technologies are designed to support text, but not raw binary. For instance, CSS can embed images with <a href="http://en.wikipedia.org/wiki/Data_URI_scheme">inline <code>data://</code> URIs</a>, which are often Base64-encoded. Another example is <a href="http://en.wikipedia.org/wiki/Basic_access_authentication">Basic <code>Authentication</code> headers</a>, which Base64-encodes its username/password pair, which is marginally better than having them completely in the clear.</p>
+
+<p>For the longest time, this boringly essential function was completely MIA, leaving thousands of developers to copy-paste random code snippets from forum threads. It was an omission as conspicuous and annoying as JSON pre-iOS 5.</p>
+
+<p>But no longer! iOS 7 finally bakes-in Base64:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="s">&quot;Lorem ipsum dolor sit amet.&quot;</span>
+<span class="k">if</span> <span class="k">let</span> <span class="n">data</span> <span class="o">=</span> <span class="n">string</span><span class="p">.</span><span class="n">dataUsingEncoding</span><span class="p">(</span><span class="n">NSUTF8StringEncoding</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">base64EncodedString</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">base64EncodedStringWithOptions</span><span class="p">([])</span>
+
+    <span class="n">print</span><span class="p">(</span><span class="n">base64EncodedString</span><span class="p">)</span>    <span class="c1">// TG9yZW0gaXBzdW0gZG9sYXIgc2l0IGFtZXQu</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSString</span> <span class="o">*</span><span class="n">string</span> <span class="o">=</span> <span class="s">@&quot;Lorem ipsum dolor sit amet.&quot;</span><span class="p">;</span>
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">base64EncodedString</span> <span class="o">=</span> <span class="p">[[</span><span class="n">string</span> <span class="nl">dataUsingEncoding</span><span class="p">:</span><span class="n">NSUTF8StringEncoding</span><span class="p">]</span> <span class="nl">base64EncodedStringWithOptions</span><span class="p">:</span><span class="mi">0</span><span class="p">];</span>
+
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">base64EncodedString</span><span class="p">);</span>  <span class="c1">// TG9yZW0gaXBzdW0gZG9sYXIgc2l0IGFtZXQu</span>
+</code></pre></div>
+<h2 id="nsurlcomponents-&amp;-nscharacterset-(nsurlutilities)">NSURLComponents &amp; NSCharacterSet (NSURLUtilities)</h2>
+
+<p>Foundation is blessed with a wealth of functionality for working with URIs. Unfortunately, many of the APIs for manipulating URLs are strewn across <code>NSString</code>, since <code>NSURL</code> is immutable.</p>
+
+<p><code>NSURLComponents</code> dramatically improves this situation. Think of it as <code>NSMutableURL</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">if</span> <span class="k">let</span> <span class="n">components</span> <span class="o">=</span> <span class="bp">NSURLComponents</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;http://nshipster.com&quot;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">components</span><span class="p">.</span><span class="n">path</span> <span class="o">=</span> <span class="s">&quot;/iOS7&quot;</span>
+    <span class="n">components</span><span class="p">.</span><span class="n">query</span> <span class="o">=</span> <span class="s">&quot;foo=bar&quot;</span>
+
+    <span class="n">print</span><span class="p">(</span><span class="n">components</span><span class="p">.</span><span class="n">scheme</span><span class="o">!</span><span class="p">)</span>     <span class="c1">// http</span>
+    <span class="n">print</span><span class="p">(</span><span class="n">components</span><span class="p">.</span><span class="n">URL</span><span class="o">!</span><span class="p">)</span>        <span class="c1">// http://nshipster.com/iOS7?foo=bar</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSURLComponents</span> <span class="o">*</span><span class="n">components</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSURLComponents</span> <span class="nl">componentsWithString</span><span class="p">:</span><span class="s">@&quot;http://nshipster.com&quot;</span><span class="p">];</span>
+<span class="n">components</span><span class="p">.</span><span class="n">path</span> <span class="o">=</span> <span class="s">@&quot;/iOS7&quot;</span><span class="p">;</span>
+<span class="n">components</span><span class="p">.</span><span class="n">query</span> <span class="o">=</span> <span class="s">@&quot;foo=bar&quot;</span><span class="p">;</span>
+
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">components</span><span class="p">.</span><span class="n">scheme</span><span class="p">);</span>    <span class="c1">// http</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">components</span> <span class="n">URL</span><span class="p">]);</span>     <span class="c1">// http://nshipster.com/iOS7?foo=bar</span>
+</code></pre></div>
+<p>Each property for URL components also has a <code>percentEncoded*</code> variation (e.g. <code>user</code> &amp; <code>percentEncodedUser</code>), which forgoes any additional URI percent encoding of special characters.</p>
+
+<p>Which characters are special, you ask? Well, it depends on what part of the URL you&rsquo;re talking about. Good thing that <code>NSCharacterSet</code> adds a new category for allowed URL characters in iOS 7:</p>
+
+<ul>
+<li><code>+ (id)URLUserAllowedCharacterSet</code></li>
+<li><code>+ (id)URLPasswordAllowedCharacterSet</code></li>
+<li><code>+ (id)URLHostAllowedCharacterSet</code></li>
+<li><code>+ (id)URLPathAllowedCharacterSet</code></li>
+<li><code>+ (id)URLQueryAllowedCharacterSet</code></li>
+<li><code>+ (id)URLFragmentAllowedCharacterSet</code></li>
+</ul>
+
+<h2 id="nsprogress">NSProgress</h2>
+
+<p><code>NSProgress</code> is a tough class to describe. It acts as both an observer and a delegate / coordinator, acting as a handle for reporting and monitoring progress. It integrates with system-level processes on OS X, but can also be plugged into user-facing UI. It can specify handlers for pausing and canceling, which then forward onto the operation actually doing the work.</p>
+
+<p>Anything with a notion of completed and total units is a candidate for <code>NSProgress</code>, whether it&rsquo;s the bytes written to a file, the number of frames in a large render job, or the files downloaded from a server.</p>
+
+<p><code>NSProgress</code> can be used to simply report overall progress in a localized way:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">progress</span> <span class="o">=</span> <span class="bp">NSProgress</span><span class="p">(</span><span class="nl">totalUnitCount</span><span class="p">:</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">progress</span><span class="p">.</span><span class="n">completedUnitCount</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+
+<span class="n">print</span><span class="p">(</span><span class="n">progress</span><span class="p">.</span><span class="n">localizedDescription</span><span class="p">)</span> <span class="c1">// 42% completed</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSProgress</span> <span class="o">*</span><span class="n">progress</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSProgress</span> <span class="nl">progressWithTotalUnitCount</span><span class="p">:</span><span class="mi">100</span><span class="p">];</span>
+<span class="n">progress</span><span class="p">.</span><span class="n">completedUnitCount</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">progress</span> <span class="n">localizedDescription</span><span class="p">]);</span> <span class="c1">// 42% completed</span>
+</code></pre></div>
+<p>&hellip;or it can be given a handler for stopping work entirely:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">timer</span> <span class="o">=</span> <span class="bp">NSTimer</span><span class="p">(</span><span class="nl">timeInterval</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="nl">target</span><span class="p">:</span> <span class="nb">self</span><span class="p">,</span> <span class="nl">selector</span><span class="p">:</span> <span class="s">&quot;incrementCompletedUnitCount:&quot;</span><span class="p">,</span>
+    <span class="nl">userInfo</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">repeats</span><span class="p">:</span> <span class="nb">true</span><span class="p">)</span>
+
+<span class="n">progress</span><span class="p">.</span><span class="n">cancellationHandler</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">timer</span><span class="p">.</span><span class="n">invalidate</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="n">progress</span><span class="p">.</span><span class="n">cancel</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSTimer</span> <span class="o">*</span><span class="n">timer</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSTimer</span> <span class="nl">timerWithTimeInterval</span><span class="p">:</span><span class="mf">1.0</span>
+                                         <span class="nl">target</span><span class="p">:</span><span class="nb">self</span>
+                                       <span class="nl">selector</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">incrementCompletedUnitCount</span><span class="p">:)</span> <span class="nl">userInfo</span><span class="p">:</span><span class="nb">nil</span>
+                                        <span class="nl">repeats</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+
+<span class="n">progress</span><span class="p">.</span><span class="n">cancellationHandler</span> <span class="o">=</span> <span class="o">^</span><span class="p">{</span>
+    <span class="p">[</span><span class="n">timer</span> <span class="n">invalidate</span><span class="p">];</span>
+<span class="p">};</span>
+
+<span class="p">[</span><span class="n">progress</span> <span class="n">cancel</span><span class="p">];</span>
+</code></pre></div>
+<p><code>NSProgress</code> makes a lot more sense in the context of OS X Mavericks, but for now, it remains a useful class for encapsulating the shared patterns of work units.</p>
+
+<h2 id="nsarray--firstobject">NSArray -firstObject</h2>
+
+<p>Rejoice! The <code>NSRangeException</code>-dodging convenience of <code>-lastObject</code> has finally been extended to the first member of an <code>NSArray</code>. (Well, it <em>has</em> been there as a private API since ~iOS 4, but that&rsquo;s water under the bridge now).</p>
+
+<p>Behold!</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="kt">as</span> <span class="bp">NSArray</span>
+
+<span class="n">print</span><span class="p">(</span><span class="s">&quot;First Object: \(array.firstObject)&quot;</span><span class="p">)</span>   <span class="c1">// First Object: Optional(1)</span>
+<span class="n">print</span><span class="p">(</span><span class="s">&quot;Last Object: \(array.lastObject)&quot;</span><span class="p">)</span>     <span class="c1">// Last Object: Optional(3)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSArray</span> <span class="o">*</span><span class="n">array</span> <span class="o">=</span> <span class="l">@[</span><span class="mi">@1</span><span class="p">,</span> <span class="mi">@2</span><span class="p">,</span> <span class="mi">@3</span><span class="l">]</span><span class="p">;</span>
+
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;First Object: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">array</span> <span class="n">firstObject</span><span class="p">]);</span> <span class="c1">// First Object: 1</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Last Object: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">array</span> <span class="n">lastObject</span><span class="p">]);</span>   <span class="c1">// Last Object: 3</span>
+</code></pre></div>
+<p>Refreshing!</p>
+
+<h2 id="cidetectorsmile-&amp;-cidetectoreyeblink">CIDetectorSmile &amp; CIDetectorEyeBlink</h2>
+
+<blockquote>
+<p>As a random aside, shouldn&rsquo;t it be a cause for concern that the device most capable of taking embarrassing photos of ourselves is also the device most capable of distributing it to millions or people? Just a thought.</p>
+</blockquote>
+
+<p>Since iOS 5, the Core Image framework has provided facial detection and recognition functionality through the <code>CIDetector</code> class. If it wasn&rsquo;t insaneballs enough that we could detect faces in photos, in iOS 7 we can even tell if that face is smiling or has its eyes closed. *shudder*</p>
+
+<p>In yet another free app idea, here&rsquo;s a snippet that might be used by a camera that only saves pictures of smiling faces:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">CoreImage</span>
+
+<span class="k">let</span> <span class="n">smileDetector</span> <span class="o">=</span> <span class="bp">CIDetector</span><span class="p">(</span><span class="nl">ofType</span><span class="p">:</span> <span class="n">CIDetectorTypeFace</span><span class="p">,</span> <span class="nl">context</span><span class="p">:</span> <span class="n">context</span><span class="p">,</span>
+    <span class="nl">options</span><span class="p">:</span> <span class="p">[</span><span class="nl">CIDetectorTracking</span><span class="p">:</span> <span class="nb">true</span><span class="p">,</span> <span class="nl">CIDetectorAccuracy</span><span class="p">:</span> <span class="n">CIDetectorAccuracyLow</span><span class="p">])</span>
+
+<span class="k">var</span> <span class="n">features</span> <span class="o">=</span> <span class="n">smileDetector</span><span class="p">.</span><span class="n">featuresInImage</span><span class="p">(</span><span class="n">ciImage</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">[</span><span class="nl">CIDetectorSmile</span><span class="p">:</span> <span class="nb">true</span><span class="p">])</span>
+
+<span class="k">if</span> <span class="k">let</span> <span class="n">feature</span> <span class="o">=</span> <span class="n">features</span><span class="p">.</span><span class="n">first</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">CIFaceFeature</span> <span class="k">where</span> <span class="n">feature</span><span class="p">.</span><span class="n">hasSmile</span> <span class="p">{</span>
+    <span class="n">UIImageWriteToSavedPhotosAlbum</span><span class="p">(</span><span class="bp">UIImage</span><span class="p">(</span><span class="nl">CIImage</span><span class="p">:</span> <span class="n">ciImage</span><span class="p">),</span> <span class="nb">self</span><span class="p">,</span> <span class="s">&quot;didFinishWritingImage&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">features</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">label</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">&quot;Say Cheese!&quot;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">@</span><span class="n">import</span> <span class="n">CoreImage</span><span class="p">;</span>
+
+<span class="bp">CIDetector</span> <span class="o">*</span><span class="n">smileDetector</span> <span class="o">=</span> <span class="p">[</span><span class="bp">CIDetector</span> <span class="nl">detectorOfType</span><span class="p">:</span><span class="n">CIDetectorTypeFace</span>
+                                <span class="nl">context</span><span class="p">:</span><span class="n">context</span>
+                                <span class="nl">options</span><span class="p">:</span><span class="l">@{</span><span class="nl">CIDetectorTracking</span><span class="p">:</span> <span class="m">@YES</span><span class="p">,</span>
+                                          <span class="nl">CIDetectorAccuracy</span><span class="p">:</span> <span class="n">CIDetectorAccuracyLow</span><span class="l">}</span><span class="p">];</span>
+<span class="bp">NSArray</span> <span class="o">*</span><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="n">smileDetector</span> <span class="nl">featuresInImage</span><span class="p">:</span><span class="n">ciImage</span> <span class="nl">options</span><span class="p">:</span><span class="l">@{</span><span class="nl">CIDetectorSmile</span><span class="p">:</span><span class="m">@YES</span><span class="l">}</span><span class="p">];</span>
+<span class="k">if</span> <span class="p">(([</span><span class="n">features</span> <span class="n">count</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="p">(((</span><span class="bp">CIFaceFeature</span> <span class="o">*</span><span class="p">)</span><span class="n">features</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="n">hasSmile</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">UIImageWriteToSavedPhotosAlbum</span><span class="p">([</span><span class="bp">UIImage</span> <span class="nl">imageWithCIImage</span><span class="p">:</span><span class="n">ciImage</span><span class="p">],</span> <span class="nb">self</span><span class="p">,</span> <span class="k">@selector</span><span class="p">(</span><span class="n">didFinishWritingImage</span><span class="p">),</span> <span class="n">features</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">@&quot;Say Cheese!&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="avcapturemetadataoutput">AVCaptureMetaDataOutput</h2>
+
+<p>Scan UPCs, QR codes, and barcodes of all varieties with <code>AVCaptureMetaDataOutput</code>, new to iOS 7. All you need to do is set it up as the output of an <code>AVCaptureSession</code>, and implement the <code>captureOutput:didOutputMetadataObjects:fromConnection:</code> method accordingly:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">AVFoundation</span>
+
+<span class="k">let</span> <span class="n">session</span> <span class="o">=</span> <span class="bp">AVCaptureSession</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">device</span> <span class="o">=</span> <span class="bp">AVCaptureDevice</span><span class="p">.</span><span class="n">defaultDeviceWithMediaType</span><span class="p">(</span><span class="n">AVMediaTypeVideo</span><span class="p">)</span>
+<span class="k">var</span> <span class="nl">error</span><span class="p">:</span> <span class="bp">NSError</span><span class="o">?</span>
+
+<span class="k">do</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">input</span> <span class="o">=</span> <span class="n">try</span> <span class="bp">AVCaptureDeviceInput</span><span class="p">(</span><span class="nl">device</span><span class="p">:</span> <span class="n">device</span><span class="p">)</span>
+    <span class="n">session</span><span class="p">.</span><span class="n">addInput</span><span class="p">(</span><span class="n">input</span><span class="p">)</span>
+<span class="p">}</span> <span class="n">catch</span> <span class="k">let</span> <span class="n">error</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Error: \(error)&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="n">output</span> <span class="o">=</span> <span class="bp">AVCaptureMetadataOutput</span><span class="p">()</span>
+<span class="n">output</span><span class="p">.</span><span class="n">setMetadataObjectsDelegate</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="nl">queue</span><span class="p">:</span> <span class="n">dispatch_get_main_queue</span><span class="p">())</span>
+<span class="n">session</span><span class="p">.</span><span class="n">addOutput</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+<span class="n">output</span><span class="p">.</span><span class="n">metadataObjectTypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">AVMetadataObjectTypeQRCode</span><span class="p">]</span>
+
+<span class="n">session</span><span class="p">.</span><span class="n">startRunning</span><span class="p">()</span>
+
+<span class="c1">// MARK: - AVCaptureMetadataOutputObjectsDelegate</span>
+
+<span class="k">func</span> <span class="n">captureOutput</span><span class="p">(</span>
+    <span class="nl">captureOutput</span><span class="p">:</span> <span class="bp">AVCaptureOutput</span><span class="o">!</span><span class="p">,</span>
+    <span class="n">didOutputMetadataObjects</span> <span class="nl">metadataObjects</span><span class="p">:</span> <span class="p">[</span><span class="n">AnyObject</span><span class="p">]</span><span class="o">!</span><span class="p">,</span>
+    <span class="n">fromConnection</span> <span class="nl">connection</span><span class="p">:</span> <span class="bp">AVCaptureConnection</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="k">var</span> <span class="nl">QRCode</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span>
+        <span class="k">for</span> <span class="n">metadata</span> <span class="k">in</span> <span class="n">metadataObjects</span> <span class="kt">as</span><span class="o">!</span> <span class="p">[</span><span class="bp">AVMetadataObject</span><span class="p">]</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="n">metadata</span><span class="p">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">AVMetadataObjectTypeQRCode</span> <span class="p">{</span>
+                <span class="c1">// This will never happen; nobody has ever scanned a QR code... ever</span>
+                <span class="n">QRCode</span> <span class="o">=</span> <span class="p">(</span><span class="n">metadata</span> <span class="kt">as</span><span class="o">!</span> <span class="bp">AVMetadataMachineReadableCodeObject</span><span class="p">).</span><span class="n">stringValue</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;QRCode: \(QRCode)&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">@</span><span class="n">import</span> <span class="n">AVFoundation</span><span class="p">;</span>
+
+<span class="bp">AVCaptureSession</span> <span class="o">*</span><span class="n">session</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">AVCaptureSession</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="bp">AVCaptureDevice</span> <span class="o">*</span><span class="n">device</span> <span class="o">=</span> <span class="p">[</span><span class="bp">AVCaptureDevice</span> <span class="nl">defaultDeviceWithMediaType</span><span class="p">:</span><span class="n">AVMediaTypeVideo</span><span class="p">];</span>
+<span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+
+<span class="bp">AVCaptureDeviceInput</span> <span class="o">*</span><span class="n">input</span> <span class="o">=</span> <span class="p">[</span><span class="bp">AVCaptureDeviceInput</span> <span class="nl">deviceInputWithDevice</span><span class="p">:</span><span class="n">device</span>
+                                                                    <span class="nl">error</span><span class="p">:</span><span class="o">&amp;</span><span class="n">error</span><span class="p">];</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">input</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">session</span> <span class="nl">addInput</span><span class="p">:</span><span class="n">input</span><span class="p">];</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Error: %@&quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="bp">AVCaptureMetadataOutput</span> <span class="o">*</span><span class="n">output</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">AVCaptureMetadataOutput</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="p">[</span><span class="n">output</span> <span class="nl">setMetadataObjectsDelegate</span><span class="p">:</span><span class="nb">self</span> <span class="nl">queue</span><span class="p">:</span><span class="n">dispatch_get_main_queue</span><span class="p">()];</span>
+<span class="p">[</span><span class="n">session</span> <span class="nl">addOutput</span><span class="p">:</span><span class="n">output</span><span class="p">];</span>
+<span class="p">[</span><span class="n">output</span> <span class="nl">setMetadataObjectTypes</span><span class="p">:</span><span class="l">@[</span><span class="n">AVMetadataObjectTypeQRCode</span><span class="l">]</span><span class="p">];</span>
+
+<span class="p">[</span><span class="n">session</span> <span class="n">startRunning</span><span class="p">];</span>
+
+<span class="cp">#pragma mark - AVCaptureMetadataOutputObjectsDelegate</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">captureOutput:</span><span class="p">(</span><span class="bp">AVCaptureOutput</span> <span class="o">*</span><span class="p">)</span><span class="nv">captureOutput</span>
+<span class="nf">didOutputMetadataObjects:</span><span class="p">(</span><span class="bp">NSArray</span> <span class="o">*</span><span class="p">)</span><span class="nv">metadataObjects</span>
+       <span class="nf">fromConnection:</span><span class="p">(</span><span class="bp">AVCaptureConnection</span> <span class="o">*</span><span class="p">)</span><span class="nv">connection</span>
+<span class="p">{</span>
+    <span class="bp">NSString</span> <span class="o">*</span><span class="n">QRCode</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="k">for</span> <span class="p">(</span><span class="bp">AVMetadataObject</span> <span class="o">*</span><span class="n">metadata</span> <span class="k">in</span> <span class="n">metadataObjects</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">([</span><span class="n">metadata</span><span class="p">.</span><span class="n">type</span> <span class="nl">isEqualToString</span><span class="p">:</span><span class="n">AVMetadataObjectTypeQRCode</span><span class="p">])</span> <span class="p">{</span>
+            <span class="c1">// This will never happen; nobody has ever scanned a QR code... ever</span>
+            <span class="n">QRCode</span> <span class="o">=</span> <span class="p">[(</span><span class="bp">AVMetadataMachineReadableCodeObject</span> <span class="o">*</span><span class="p">)</span><span class="n">metadata</span> <span class="n">stringValue</span><span class="p">];</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;QR Code: %@&quot;</span><span class="p">,</span> <span class="n">QRCode</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><code>AVFoundation</code> supports every code you&rsquo;ve heard of (and probably a few that you haven&rsquo;t):</p>
+
+<ul>
+<li><code>AVMetadataObjectTypeUPCECode</code></li>
+<li><code>AVMetadataObjectTypeCode39Code</code></li>
+<li><code>AVMetadataObjectTypeCode39Mod43Code</code></li>
+<li><code>AVMetadataObjectTypeEAN13Code</code></li>
+<li><code>AVMetadataObjectTypeEAN8Code</code></li>
+<li><code>AVMetadataObjectTypeCode93Code</code></li>
+<li><code>AVMetadataObjectTypeCode128Code</code></li>
+<li><code>AVMetadataObjectTypePDF417Code</code></li>
+<li><code>AVMetadataObjectTypeQRCode</code></li>
+<li><code>AVMetadataObjectTypeAztecCode</code></li>
+</ul>
+
+<p>If nothing else, <code>AVCaptureMetaDataOutput</code> makes it possible to easily create a Passbook pass reader for the iPhone and iPad. There&rsquo;s still a lot of unrealized potential in Passbook, so here&rsquo;s to hoping that this API will be a factor in more widespread adoption.</p>
+
+<h2 id="ssreadinglist">SSReadingList</h2>
+
+<p>Even though the number of people who have actually read something saved for later is only marginally greater than <a href="http://picturesofpeoplescanningqrcodes.tumblr.com">the number of people who have ever used a QR code</a>, it&rsquo;s nice that iOS 7 adds a way to add items to the Safari reading list with the new Safari Services framework.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">SafariServices</span>
+
+<span class="k">let</span> <span class="n">url</span> <span class="o">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;http://nshipster.com/ios7&quot;</span><span class="p">)</span><span class="o">!</span>
+<span class="n">try</span><span class="o">?</span> <span class="bp">SSReadingList</span><span class="p">.</span><span class="n">defaultReadingList</span><span class="p">()</span><span class="o">?</span><span class="p">.</span><span class="n">addReadingListItemWithURL</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="nl">title</span><span class="p">:</span> <span class="s">&quot;NSHipster&quot;</span><span class="p">,</span> <span class="nl">previewText</span><span class="p">:</span> <span class="s">&quot;...&quot;</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">@</span><span class="n">import</span> <span class="n">SafariServices</span><span class="p">;</span>
+
+<span class="bp">NSURL</span> <span class="o">*</span><span class="n">URL</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSURL</span> <span class="nl">URLWithString</span><span class="p">:</span><span class="s">@&quot;http://nshipster.com/ios7&quot;</span><span class="p">];</span>
+<span class="p">[[</span><span class="bp">SSReadingList</span> <span class="n">defaultReadingList</span><span class="p">]</span> <span class="nl">addReadingListItemWithURL</span><span class="p">:</span><span class="n">URL</span>
+                                                        <span class="nl">title</span><span class="p">:</span><span class="s">@&quot;NSHipster&quot;</span>
+                                                  <span class="nl">previewText</span><span class="p">:</span><span class="s">@&quot;...&quot;</span>
+                                                        <span class="nl">error</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+</code></pre></div>
+<h2 id="avspeechsynthesizer">AVSpeechSynthesizer</h2>
+
+<p>Text-to-Speech has been the killer feature of computers for <a href="http://nshipster.com/uiaccessibility/">accessibility</a> and <a href="http://nshipster.com/icloud/">pranking</a> enthusiasts since its inception in the late 1960s.</p>
+
+<p>iOS 7 brings the power of Siri with the convenience of a <a href="http://en.wikipedia.org/wiki/Speak_%26_Spell_%28toy%29">Speak &amp; Spell</a> in a new class <code>AVSpeechSynthesizer</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">AVFoundation</span>
+
+<span class="k">let</span> <span class="n">synthesizer</span> <span class="o">=</span> <span class="bp">AVSpeechSynthesizer</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">utterance</span> <span class="o">=</span> <span class="bp">AVSpeechUtterance</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;Just what do you think you&#39;re doing, Dave?&quot;</span><span class="p">)</span>
+<span class="n">utterance</span><span class="p">.</span><span class="n">rate</span> <span class="o">=</span> <span class="n">AVSpeechUtteranceMinimumSpeechRate</span>   <span class="c1">// Tell it to me slowly</span>
+<span class="n">synthesizer</span><span class="p">.</span><span class="n">speakUtterance</span><span class="p">(</span><span class="n">utterance</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">@</span><span class="n">import</span> <span class="n">AVFoundation</span><span class="p">;</span>
+
+<span class="bp">AVSpeechSynthesizer</span> <span class="o">*</span><span class="n">synthesizer</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">AVSpeechSynthesizer</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="bp">AVSpeechUtterance</span> <span class="o">*</span><span class="n">utterance</span> <span class="o">=</span> <span class="p">[</span><span class="bp">AVSpeechUtterance</span> <span class="nl">speechUtteranceWithString</span><span class="p">:</span><span class="s">@&quot;Just what do you think you&#39;re doing, Dave?&quot;</span><span class="p">];</span>
+<span class="n">utterance</span><span class="p">.</span><span class="n">rate</span> <span class="o">=</span> <span class="n">AVSpeechUtteranceMinimumSpeechRate</span><span class="p">;</span>  <span class="c1">// Tell it to me slowly</span>
+<span class="p">[</span><span class="n">synthesizer</span> <span class="nl">speakUtterance</span><span class="p">:</span><span class="n">utterance</span><span class="p">];</span>
+</code></pre></div>
+<h2 id="mkdistanceformatter">MKDistanceFormatter</h2>
+
+<p>Finally, we end our showcase of iOS 7&rsquo;s new and noteworthy APIs with another class that has NSHipsters crying out &ldquo;finally!&rdquo;: <code>MKDistanceFormatter</code>.</p>
+
+<p>As advertised, <code>MKDistanceFormatter</code> provides a way to convert distances into localized strings using either imperial or metric units:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">CoreLocation</span>
+<span class="k">import</span> <span class="n">MapKit</span>
+
+<span class="k">let</span> <span class="n">sanFrancisco</span> <span class="o">=</span> <span class="bp">CLLocation</span><span class="p">(</span><span class="nl">latitude</span><span class="p">:</span> <span class="mf">37.775</span><span class="p">,</span> <span class="nl">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mf">122.4183333</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">portland</span> <span class="o">=</span> <span class="bp">CLLocation</span><span class="p">(</span><span class="nl">latitude</span><span class="p">:</span> <span class="mf">45.5236111</span><span class="p">,</span> <span class="nl">longitude</span><span class="p">:</span> <span class="o">-</span><span class="mf">122.675</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">portland</span><span class="p">.</span><span class="n">distanceFromLocation</span><span class="p">(</span><span class="n">sanFrancisco</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="bp">MKDistanceFormatter</span><span class="p">()</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">units</span> <span class="o">=</span> <span class="p">.</span><span class="n">Imperial</span>
+<span class="n">print</span><span class="p">(</span><span class="n">formatter</span><span class="p">.</span><span class="n">stringFromDistance</span><span class="p">(</span><span class="n">distance</span><span class="p">))</span> <span class="c1">// 535 miles</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">@</span><span class="n">import</span> <span class="n">CoreLocation</span><span class="p">;</span>
+<span class="p">@</span><span class="n">import</span> <span class="n">MapKit</span><span class="p">;</span>
+
+<span class="bp">CLLocation</span> <span class="o">*</span><span class="n">sanFrancisco</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">CLLocation</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithLatitude</span><span class="p">:</span><span class="mf">37.775</span> <span class="nl">longitude</span><span class="p">:</span><span class="o">-</span><span class="mf">122.4183333</span><span class="p">];</span>
+<span class="bp">CLLocation</span> <span class="o">*</span><span class="n">portland</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">CLLocation</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithLatitude</span><span class="p">:</span><span class="mf">45.5236111</span> <span class="nl">longitude</span><span class="p">:</span><span class="o">-</span><span class="mf">122.675</span><span class="p">];</span>
+<span class="n">CLLocationDistance</span> <span class="n">distance</span> <span class="o">=</span> <span class="p">[</span><span class="n">portland</span> <span class="nl">distanceFromLocation</span><span class="p">:</span><span class="n">sanFrancisco</span><span class="p">];</span>
+
+<span class="bp">MKDistanceFormatter</span> <span class="o">*</span><span class="n">formatter</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">MKDistanceFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">units</span> <span class="o">=</span> <span class="n">MKDistanceFormatterUnitsImperial</span><span class="p">;</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">formatter</span> <span class="nl">stringFromDistance</span><span class="p">:</span><span class="n">distance</span><span class="p">]);</span> <span class="c1">// 535 miles</span>
+</code></pre></div>
+<hr>
+
+<p>So there you have it! This was just a small sample of the great new features of iOS 7. Still craving more? Check out Apple&rsquo;s <a href="https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS7.html">&ldquo;What&rsquo;s New in iOS 7&rdquo;</a> guide on the Developer Center.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-09-23-ios7.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on Sep 12, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/xcode-key-bindings-and-gestures/" title="Xcode Key Bindings & Gestures" rel="next">Xcode Key Bindings & Gestures</a>
+            </h1>
+
+            <p>Xcode key bindings and gestures not only shave off seconds of precious work, but make you look more confident, competent, and cromulent in the process.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/stewardship/" title="Stewardship">Stewardship</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/icloud/" title="iCloud">iCloud</a>
+            </li>
+            
+          
+          
+          
+          
+            <li>
+              <a href="/empathy/" title="Empathy">Empathy</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

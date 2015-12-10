@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>iOS 9 - NSHipster</title>
+    <meta name="description" content="WWDC 2015 may not have packed quite as many fireworks as its predecessor, but neither was it short on the new and shiny. For this week's issue, we'll take a look at some of the changes that iOS 9 brings to the APIs we already know and love."/>
+    <link rel="canonical" href="http://nshipster.com/ios9/"/>
+  
+  
+  
+  
+  <meta name="author" content="Nate Cook"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@nnnnnnnn"/>
+  
+  
+    <meta name="twitter:title" content="iOS 9"/>
+    <meta name="twitter:description" content="WWDC 2015 may not have packed quite as many fireworks as its predecessor, but neither was it short on the new and shiny. For this week&#39;s issue, we&#39;ll take a look at some of the changes that iOS 9 brings to the APIs we already know and love."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="iOS 9"/>
+    <meta property="og:url" content="http://nshipster.com/ios9/"/>
+    <meta property="og:description" content="WWDC 2015 may not have packed quite as many fireworks as its predecessor, but neither was it short on the new and shiny. For this week&#39;s issue, we&#39;ll take a look at some of the changes that iOS 9 brings to the APIs we already know and love."/>
+    <meta property="article:published_time" content="2015-06-22T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content=""/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="iOS 9"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/ios9/">i​OS 9</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/nate-cook/">Nate Cook</a> —
+    
+    <time datetime="2015-06-22T00:00:00-07:00" itemprop="datePublished">June 22<sup>nd</sup>, 2015</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>WWDC 2015 may not have packed quite as many fireworks as its predecessor, but neither was it short on the new and shiny. The introduction of watchOS 2, including a revamped WatchKit, access to the Apple Watch hardware, and support for complications. Major changes to the Swift language and the announcement of open source plans. Brand new frameworks, such as Contacts, ContactsUI, and CoreSpotlight, and new UIKit types like <code>UIStackView</code> and <code>SFSafariViewController</code>.</p>
+
+<p>We&rsquo;ll surely delve into these major new components in the weeks and months to come. For now, however, let&rsquo;s take a look at some of the smaller changes that iOS 9 brings to the APIs we already know and love.</p>
+
+<hr>
+
+<h2 id="string-transformations">String Transformations</h2>
+
+<p>Up first is the news that string transformations, formerly housed in Core Foundation, have made their way to <code>NSString</code> and the Swift <code>String</code> type. This is a huge advance in discoverability and ease-of-use for this powerful Cocoa feature, because there is no longer any need to deal with the hassle of bridging to and from <code>CFStringRef</code>. Here&rsquo;s how some of our favorite transformations can be done along with the new <code>NSStringTransform*</code> constants that enable them:</p>
+
+<h3 id="transliteration">Transliteration</h3>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="s">&quot;privet&quot;</span><span class="p">.</span><span class="n">stringByApplyingTransform</span><span class="p">(</span><span class="n">NSStringTransformLatinToCyrillic</span><span class="p">,</span> <span class="nl">reverse</span><span class="p">:</span> <span class="nb">false</span><span class="p">)</span>
+<span class="c1">// &quot;привет&quot;</span>
+<span class="s">&quot;안녕하세요&quot;</span><span class="p">.</span><span class="n">stringByApplyingTransform</span><span class="p">(</span><span class="n">NSStringTransformLatinToHangul</span><span class="p">,</span> <span class="nl">reverse</span><span class="p">:</span> <span class="nb">true</span><span class="p">)</span>
+<span class="c1">// &quot;annyeonghaseyo&quot;</span>
+<span class="s">&quot;annyeonghaseyo&quot;</span><span class="p">.</span><span class="n">stringByApplyingTransform</span><span class="p">(</span><span class="n">NSStringTransformLatinToHangul</span><span class="p">,</span> <span class="nl">reverse</span><span class="p">:</span> <span class="nb">false</span><span class="p">)</span>
+<span class="c1">// &quot;안녕하세요&quot;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s">@&quot;privet&quot;</span> <span class="nl">stringByApplyingTransform</span><span class="p">:</span><span class="n">NSStringTransformLatinToCyrillic</span> <span class="nl">reverse</span><span class="p">:</span><span class="nb">NO</span><span class="p">]);</span>
+<span class="c1">// &quot;привет&quot;</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s">@&quot;annyeonghaseyo&quot;</span> <span class="nl">stringByApplyingTransform</span><span class="p">:</span><span class="n">NSStringTransformLatinToHangul</span> <span class="nl">reverse</span><span class="p">:</span><span class="nb">NO</span><span class="p">]);</span>
+<span class="c1">// &quot;안녕하세요&quot;</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s">@&quot;안녕하세요&quot;</span> <span class="nl">stringByApplyingTransform</span><span class="p">:</span><span class="n">NSStringTransformLatinToHangul</span> <span class="nl">reverse</span><span class="p">:</span><span class="nb">YES</span><span class="p">]);</span>
+<span class="c1">// &quot;annyeonghaseyo&quot;</span>
+</code></pre></div>
+<h3 id="unicode-names">Unicode Names</h3>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="s">&quot;🐷&quot;</span><span class="p">.</span><span class="n">stringByApplyingTransform</span><span class="p">(</span><span class="n">NSStringTransformToUnicodeName</span><span class="p">,</span> <span class="nl">reverse</span><span class="p">:</span> <span class="nb">false</span><span class="p">)</span>
+<span class="c1">// &quot;{PIG FACE}&quot;</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s">@&quot;🐷&quot;</span> <span class="nl">stringByApplyingTransform</span><span class="p">:</span><span class="n">NSStringTransformToUnicodeName</span> <span class="nl">reverse</span><span class="p">:</span><span class="nb">NO</span><span class="p">]);</span>
+<span class="c1">// &quot;{PIG FACE}&quot;</span>
+</code></pre></div>
+<h3 id="normalizing-user-input">Normalizing User Input</h3>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="s">&quot;Hello! こんにちは! สวัสดี! مرحبا! 您好!&quot;</span>
+        <span class="p">.</span><span class="n">stringByApplyingTransform</span><span class="p">(</span><span class="n">NSStringTransformToLatin</span><span class="p">,</span> <span class="nl">reverse</span><span class="p">:</span> <span class="nb">false</span><span class="p">)</span><span class="o">?</span>
+        <span class="p">.</span><span class="n">stringByApplyingTransform</span><span class="p">(</span><span class="n">NSStringTransformStripDiacritics</span><span class="p">,</span> <span class="nl">reverse</span><span class="p">:</span> <span class="nb">false</span><span class="p">)</span><span class="o">?</span>
+        <span class="p">.</span><span class="n">localizedLowercaseString</span>
+        <span class="p">.</span><span class="n">componentsSeparatedByCharactersInSet</span><span class="p">(</span><span class="bp">NSCharacterSet</span><span class="p">.</span><span class="n">whitespaceCharacterSet</span><span class="p">())</span>
+<span class="c1">// [&quot;hello!&quot;, &quot;kon&#39;nichiha!&quot;, &quot;swasdi!&quot;, &quot;mrhba!&quot;, &quot;nin&quot;, &quot;hao!&quot;]</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSString</span> <span class="o">*</span><span class="n">input</span> <span class="o">=</span> <span class="s">@&quot;Hello! こんにちは! สวัสดี! مرحبا! 您好!&quot;</span><span class="p">;</span>
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">processing</span> <span class="o">=</span> <span class="p">[</span><span class="n">input</span> <span class="nl">stringByApplyingTransform</span><span class="p">:</span><span class="n">NSStringTransformToLatin</span> <span class="nl">reverse</span><span class="p">:</span><span class="nb">NO</span><span class="p">];</span>
+<span class="n">processing</span> <span class="o">=</span> <span class="p">[</span><span class="n">processing</span> <span class="nl">stringByApplyingTransform</span><span class="p">:</span><span class="n">NSStringTransformStripDiacritics</span> <span class="nl">reverse</span><span class="p">:</span><span class="nb">NO</span><span class="p">];</span>
+
+<span class="bp">NSArray</span><span class="o">&lt;</span><span class="bp">NSString</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">output</span> <span class="o">=</span> <span class="p">[</span><span class="n">processing</span><span class="p">.</span><span class="n">localizedLowercaseString</span>
+                               <span class="nl">componentsSeparatedByCharactersInSet</span><span class="p">:[</span><span class="bp">NSCharacterSet</span> <span class="n">whitespaceCharacterSet</span><span class="p">]];</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">output</span><span class="p">);</span>
+<span class="c1">// [&quot;hello!&quot;, &quot;kon&#39;nichiha!&quot;, &quot;swasdi!&quot;, &quot;mrhba!&quot;, &quot;nin&quot;, &quot;hao!&quot;]</span>
+</code></pre></div>
+<p>For more on string transformations, be sure to check out Mattt&rsquo;s <a href="http://nshipster.com/cfstringtransform/">terrific article on <code>CFStringTransform</code></a>.</p>
+
+<h2 id="cllocationmanager.requestlocation">CLLocationManager.requestLocation</h2>
+
+<p>Core Location includes a nice new API for apps that simply need to fetch the user&rsquo;s location without continuous location updates. <code>requestLocation()</code> uses the same delegate methods as continuous updates, turning itself off after delivering the location with the desired accuracy:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="nl">ViewController</span> <span class="p">:</span> <span class="bp">UIViewController</span><span class="p">,</span> <span class="bp">CLLocationManagerDelegate</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">locationManager</span> <span class="o">=</span> <span class="bp">CLLocationManager</span><span class="p">()</span>
+    <span class="c1">// ...</span>
+
+    <span class="kr">override</span> <span class="k">func</span> <span class="n">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nb">super</span><span class="p">.</span><span class="n">viewDidLoad</span><span class="p">()</span>
+
+        <span class="n">locationManager</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="nb">self</span>
+        <span class="n">locationManager</span><span class="p">.</span><span class="n">desiredAccuracy</span> <span class="o">=</span> <span class="n">kCLLocationAccuracyHundredMeters</span>
+        <span class="n">locationManager</span><span class="p">.</span><span class="n">requestLocation</span><span class="p">()</span>
+    <span class="p">}</span>
+
+   <span class="c1">// MARK: - CLLocationManagerDelegate</span>
+
+    <span class="k">func</span> <span class="n">locationManager</span><span class="p">(</span><span class="nl">manager</span><span class="p">:</span> <span class="bp">CLLocationManager</span><span class="p">,</span> <span class="n">didUpdateLocations</span> <span class="nl">locations</span><span class="p">:</span> <span class="p">[</span><span class="bp">CLLocation</span><span class="p">])</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="n">location</span> <span class="o">=</span> <span class="n">locations</span><span class="p">.</span><span class="n">first</span> <span class="p">{</span>
+            <span class="n">print</span><span class="p">(</span><span class="s">&quot;Current location: \(location)&quot;</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">func</span> <span class="n">locationManager</span><span class="p">(</span><span class="nl">manager</span><span class="p">:</span> <span class="bp">CLLocationManager</span><span class="p">,</span> <span class="n">didFailWithError</span> <span class="nl">error</span><span class="p">:</span> <span class="bp">NSError</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;Error finding location: \(error.localizedDescription)&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="swiftification">Swiftification</h2>
+
+<p>The Cocoa APIs in iOS 9 (and OS X 10.11) include thousands of minor changes designed to make Swift interoperability safer and cleaner. These changes start with the familiar nullability annotations, converting implicitly unwrapped parameters and return values to either true Optionals or simple, non-optional data types. But they also go much further.</p>
+
+<p>For example, instead of marking <code>NSArray</code> return values as nullable, many APIs have been modified to return an empty array—semantically these have the same value (i.e., nothing), but a non-optional array is far simpler to work with. Moreover, many Cocoa APIs are gradually taking advantage of the new Objective-C generic syntax to provide typed arrays. The <code>CLLocationManagerDelegate</code> method <code>locationManager(_:didUpdateLocations:)</code> shown above is one such example: where the <code>locations</code> parameter used to be imported as an  <code>AnyObject</code> array, it is now an array of <code>CLLocation</code>, eliminating the need for any casting in the method body.</p>
+
+<p>Finally, some APIs that were completely inaccessible from Swift have been revised, such as methods for retrieving <code>UIAppearance</code> proxies that limit appearance to a particular containment hierarchy—UIKit&rsquo;s version of CSS-lite. The old <code>appearanceWhenContainedIn:</code> method is implemented with C variadic parameters, which Swift doesn&rsquo;t import; the new <code>appearanceWhenContainedInInstancesOfClasses(_:)</code> method simply takes an array of type objects:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="bp">UIBarButtonItem</span><span class="p">.</span><span class="n">appearanceWhenContainedInInstancesOfClasses</span><span class="p">([</span><span class="bp">UINavigationController</span><span class="p">.</span><span class="nb">self</span><span class="p">]).</span><span class="n">tintColor</span> <span class="o">=</span> <span class="bp">UIColor</span><span class="p">.</span><span class="n">redColor</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[</span><span class="bp">UIBarButtonItem</span> <span class="nl">appearanceWhenContainedInInstancesOfClasses</span><span class="p">:</span><span class="l">@[</span><span class="p">[</span><span class="bp">UINavigationController</span> <span class="k">class</span><span class="p">]</span><span class="l">]</span><span class="p">].</span><span class="n">tintColor</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIColor</span> <span class="n">redColor</span><span class="p">];</span>
+</code></pre></div>
+<blockquote>
+<p>Ironically enough, this method crashes at runtime when used from Swift. Betas gonna beta.</p>
+</blockquote>
+
+<h2 id="nsformatter-additions">NSFormatter Additions</h2>
+
+<p>The new Contacts framework includes <code>NSFormatter</code> subclasses for localized formatting of contacts and addresses alongside a new Foundation <code>NSPersonNameComponentsFormatter</code> class. We&rsquo;ll cover those more in the weeks to come, but here let&rsquo;s highlight a few additions to two old favorites: <code>NSNumberFormatter</code> and <code>NSDateFormatter</code>.</p>
+
+<h3 id="nsnumberformatter">NSNumberFormatter</h3>
+
+<p>First, <code>NSNumberFormatter</code> sees four additional styles in iOS 9, starting with <code>.OrdinalStyle</code>, used for converting numbers to their ordinal equivalent:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">formatter</span> <span class="o">=</span> <span class="bp">NSNumberFormatter</span><span class="p">()</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">numberStyle</span> <span class="o">=</span> <span class="p">.</span><span class="n">OrdinalStyle</span>
+
+<span class="k">let</span> <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">numbers</span><span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="n">formatter</span><span class="p">.</span><span class="n">stringFromNumber</span><span class="p">(</span><span class="err">$</span><span class="mi">0</span><span class="p">)</span><span class="o">!</span> <span class="p">}</span>
+<span class="c1">// [&quot;1st&quot;, &quot;2nd&quot;, &quot;3rd&quot;, &quot;4th&quot;, &quot;5th&quot;]</span>
+
+<span class="n">formatter</span><span class="p">.</span><span class="n">locale</span> <span class="o">=</span> <span class="bp">NSLocale</span><span class="p">(</span><span class="nl">localeIdentifier</span><span class="p">:</span> <span class="s">&quot;es&quot;</span><span class="p">)</span>
+<span class="n">numbers</span><span class="p">.</span><span class="n">map</span> <span class="p">{</span> <span class="n">formatter</span><span class="p">.</span><span class="n">stringFromNumber</span><span class="p">(</span><span class="err">$</span><span class="mi">0</span><span class="p">)</span><span class="o">!</span> <span class="p">}</span>
+<span class="c1">// [&quot;1º&quot;, &quot;2º&quot;, &quot;3º&quot;, &quot;4º&quot;, &quot;5º&quot;]</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSNumberFormatter</span> <span class="o">*</span><span class="n">formatter</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSNumberFormatter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">numberStyle</span> <span class="o">=</span> <span class="n">NSNumberFormatterOrdinalStyle</span><span class="p">;</span>
+<span class="bp">NSArray</span><span class="o">&lt;</span><span class="bp">NSNumber</span> <span class="o">*&gt;</span> <span class="o">*</span><span class="n">numbers</span> <span class="o">=</span> <span class="l">@[</span><span class="mi">@1</span><span class="p">,</span> <span class="mi">@2</span><span class="p">,</span> <span class="mi">@3</span><span class="p">,</span> <span class="mi">@4</span><span class="p">,</span> <span class="mi">@5</span><span class="l">]</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="bp">NSNumber</span> <span class="o">*</span><span class="n">number</span> <span class="k">in</span> <span class="n">numbers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">formatter</span> <span class="nl">stringFromNumber</span><span class="p">:</span><span class="n">number</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="c1">// &quot;1st&quot;, &quot;2nd&quot;, &quot;3rd&quot;, &quot;4th&quot;, &quot;5th&quot;</span>
+
+<span class="n">formatter</span><span class="p">.</span><span class="n">locale</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSLocale</span> <span class="nl">localeWithLocaleIdentifier</span><span class="p">:</span><span class="s">@&quot;es&quot;</span><span class="p">];</span>
+<span class="k">for</span> <span class="p">(</span><span class="bp">NSNumber</span> <span class="o">*</span><span class="n">number</span> <span class="k">in</span> <span class="n">numbers</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">formatter</span> <span class="nl">stringFromNumber</span><span class="p">:</span><span class="n">number</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="c1">// &quot;1º&quot;, &quot;2º&quot;, &quot;3º&quot;, &quot;4º&quot;, &quot;5º&quot;</span>
+</code></pre></div>
+<p>Next, the existing <code>.CurrencyStyle</code> gets some company with <code>.CurrencyPluralStyle</code>, <code>.CurrencyISOCodeStyle</code>, and <code>.CurrencyAccountingStyle</code>. When using these new styles, be sure your locale fully specifies both a language <em>and</em> a country, which it makes it possible for the formatter to choose the right currency and presentation:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nl">styles</span><span class="p">:</span> <span class="p">[</span><span class="n">NSNumberFormatterStyle</span><span class="p">]</span> <span class="o">=</span> <span class="p">[.</span><span class="n">CurrencyStyle</span><span class="p">,</span> <span class="p">.</span><span class="n">CurrencyPluralStyle</span><span class="p">,</span> 
+                <span class="p">.</span><span class="n">CurrencyISOCodeStyle</span><span class="p">,</span> <span class="p">.</span><span class="n">CurrencyAccountingStyle</span><span class="p">]</span>
+<span class="n">formatter</span><span class="p">.</span><span class="n">locale</span> <span class="o">=</span> <span class="bp">NSLocale</span><span class="p">(</span><span class="nl">localeIdentifier</span><span class="p">:</span> <span class="s">&quot;en_US&quot;</span><span class="p">)</span>
+<span class="n">styles</span><span class="p">.</span><span class="n">map</span> <span class="p">{</span>
+    <span class="n">formatter</span><span class="p">.</span><span class="n">numberStyle</span> <span class="o">=</span> <span class="err">$</span><span class="mi">0</span>
+    <span class="k">return</span> <span class="n">formatter</span><span class="p">.</span><span class="n">stringFromNumber</span><span class="p">(</span><span class="o">-</span><span class="mi">125</span><span class="p">)</span><span class="o">!</span>
+<span class="p">}</span>
+<span class="c1">// [&quot;-$125.00&quot;, &quot;-125.00 US dollars&quot;, &quot;-USD125.00&quot;, &quot;($125.00)&quot;]</span>
+
+<span class="n">formatter</span><span class="p">.</span><span class="n">locale</span> <span class="o">=</span> <span class="bp">NSLocale</span><span class="p">(</span><span class="nl">localeIdentifier</span><span class="p">:</span> <span class="s">&quot;es_ES&quot;</span><span class="p">)</span>
+<span class="n">styles</span><span class="p">.</span><span class="n">map</span> <span class="p">{</span>
+    <span class="n">formatter</span><span class="p">.</span><span class="n">numberStyle</span> <span class="o">=</span> <span class="err">$</span><span class="mi">0</span>
+    <span class="k">return</span> <span class="n">formatter</span><span class="p">.</span><span class="n">stringFromNumber</span><span class="p">(</span><span class="o">-</span><span class="mi">125</span><span class="p">)</span><span class="o">!</span>
+<span class="p">}</span>
+<span class="c1">// [&quot;-125,00 €&quot;, &quot;-125,00 euros&quot;, &quot;-125,00 EUR&quot;, &quot;-125,00 €&quot;]</span>
+</code></pre></div>
+<h3 id="nsdateformatter">NSDateFormatter</h3>
+
+<p>Second—and I&rsquo;ll fess up—this new <code>NSDateFormatter</code> method is a bit of a cheat. <code>setLocalizedDateFormatFromTemplate(_:)</code> was introduced in iOS 8 but largely slid under the radar until this year&rsquo;s sessions on internationalization. This new-<em>ish</em> method makes it supremely easy to define a template for the date and time elements you want; however, it leaves the formatting up to the excellent localization built into <code>NSDateFormatter</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">now</span> <span class="o">=</span> <span class="bp">NSDate</span><span class="p">()</span>
+
+<span class="c1">// full date and time</span>
+<span class="k">let</span> <span class="n">fullFormatter</span> <span class="o">=</span> <span class="bp">NSDateFormatter</span><span class="p">()</span>
+<span class="n">fullFormatter</span><span class="p">.</span><span class="n">setLocalizedDateFormatFromTemplate</span><span class="p">(</span><span class="s">&quot;yyyyMMMMddhhmm&quot;</span><span class="p">)</span>
+<span class="c1">// month name and year only</span>
+<span class="k">let</span> <span class="n">shortFormatter</span> <span class="o">=</span> <span class="bp">NSDateFormatter</span><span class="p">()</span>
+<span class="n">shortFormatter</span><span class="p">.</span><span class="n">setLocalizedDateFormatFromTemplate</span><span class="p">(</span><span class="s">&quot;yyMMMM&quot;</span><span class="p">)</span>
+
+<span class="n">fullFormatter</span><span class="p">.</span><span class="n">stringFromDate</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
+<span class="c1">// &quot;June 23, 2015, 4:56 PM&quot;</span>
+<span class="n">shortFormatter</span><span class="p">.</span><span class="n">stringFromDate</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
+<span class="c1">// &quot;June 15&quot;</span>
+</code></pre></div>
+<p>If you switch locales, you&rsquo;ll need to reset the localized date format to get the correct template for the new locale:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">fullFormatter</span><span class="p">.</span><span class="n">locale</span> <span class="o">=</span> <span class="bp">NSLocale</span><span class="p">(</span><span class="nl">localeIdentifier</span><span class="p">:</span> <span class="s">&quot;de_DE&quot;</span><span class="p">)</span>
+<span class="n">fullFormatter</span><span class="p">.</span><span class="n">setLocalizedDateFormatFromTemplate</span><span class="p">(</span><span class="s">&quot;yyyyMMMMddhhmm&quot;</span><span class="p">)</span>
+
+<span class="n">shortFormatter</span><span class="p">.</span><span class="n">locale</span> <span class="o">=</span> <span class="bp">NSLocale</span><span class="p">(</span><span class="nl">localeIdentifier</span><span class="p">:</span> <span class="s">&quot;de_DE&quot;</span><span class="p">)</span>
+<span class="n">shortFormatter</span><span class="p">.</span><span class="n">setLocalizedDateFormatFromTemplate</span><span class="p">(</span><span class="s">&quot;yyMMMM&quot;</span><span class="p">)</span>
+
+<span class="n">fullFormatter</span><span class="p">.</span><span class="n">stringFromDate</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
+<span class="c1">// &quot;23. Juni 2015, 4:56 nachm.&quot;</span>
+<span class="n">shortFormatter</span><span class="p">.</span><span class="n">stringFromDate</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>
+<span class="c1">// &quot;Juni 15&quot;</span>
+</code></pre></div>
+<hr>
+
+<p>Well, that&rsquo;s that for our quick tour through some of iOS 9&rsquo;s new APIs, though there are many more where those came from. What new features are <em>you</em> most excited about in iOS 9 or OS X 10.11? Check out <a href="https://developer.apple.com/library/prerelease/ios/releasenotes/General/iOS90APIDiffs/">Apple&rsquo;s diffs</a> and <a href="https://twitter.com/nshipster">let us know</a>!</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2015-06-22-ios9.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Nate Cook" itemprop="image" src="http://nshipster.s3.amazonaws.com/nate-cook.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/nate-cook/">Nate Cook</a></span>
+
+      <p><a href="http://natecook.com">Nate Cook</a> (<a href="https://twitter.com/nnnnnnnn">@nnnnnnnn</a>) is an independent web and application developer who <a href="http://natecook.com/blog/">writes frequently about topics in Swift</a>, and the creator of <a href="http://swiftdoc.org">SwiftDoc.org</a>.</p>
+
+
+      
+        <a href="https://plus.google.com/?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/cloudkit/" title="CloudKit" rel="next">Cloud​Kit</a>
+            </h1>
+
+            <p>As an iOS developer, if you want to make an application on your own, you sometimes need to write back-end code. Even for the developer who can take that on, there is more than just the code, there&rsquo;s also maintenance. Your worst fear becomes not that people might not like your application, but that your server might fail under heavy traffic.</p>
+
+<p>Fortunately, we now have CloudKit. Apple takes care of all these details, so you can focus on how to make your application great.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/image-resizing/" title="Image Resizing Techniques">Image Resizing Techniques</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/the-death-of-cocoa/" title="The Death of Cocoa">The Death of Cocoa</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/icloud/" title="iCloud">iCloud</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/apple-pay/" title="Pay">Pay</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

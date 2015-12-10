@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>JavaScriptCore - NSHipster</title>
+    <meta name="description" content="Introduced with OS X Mavericks and iOS 7, the JavaScriptCore framework puts an Objective-C wrapper around WebKit's JavaScript engine, providing easy, fast, and safe access to the world's most prevalent language. Love it or hate it, JavaScript's ubiquity has led to an explosion of developers, tools, and resources along with ultra-fast virtual machines like the one built into OS X and iOS."/>
+    <link rel="canonical" href="http://nshipster.com/javascriptcore/"/>
+  
+  
+  
+  
+  <meta name="author" content="Nate Cook"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@nnnnnnnn"/>
+  
+  
+    <meta name="twitter:title" content="JavaScriptCore"/>
+    <meta name="twitter:description" content="Introduced with OS X Mavericks and iOS 7, the JavaScriptCore framework puts an Objective-C wrapper around WebKit&#39;s JavaScript engine, providing easy, fast, and safe access to the world&#39;s most prevalent language. Love it or hate it, JavaScript&#39;s ubiquity has led to an explosion of developers, tools, and resources along with ultra-fast virtual machines like the one built into OS X and iOS."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="JavaScriptCore"/>
+    <meta property="og:url" content="http://nshipster.com/javascriptcore/"/>
+    <meta property="og:description" content="Introduced with OS X Mavericks and iOS 7, the JavaScriptCore framework puts an Objective-C wrapper around WebKit&#39;s JavaScript engine, providing easy, fast, and safe access to the world&#39;s most prevalent language. Love it or hate it, JavaScript&#39;s ubiquity has led to an explosion of developers, tools, and resources along with ultra-fast virtual machines like the one built into OS X and iOS."/>
+    <meta property="article:published_time" content="2015-01-19T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="JavaScriptCore"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/javascriptcore/">Java​Script​Core</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/nate-cook/">Nate Cook</a> —
+    
+    <time datetime="2015-01-19T00:00:00-08:00" itemprop="datePublished">January 19<sup>th</sup>, 2015</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>An updated ranking of programming language popularity is <a href="http://redmonk.com/sogrady/category/programming-languages/">out this week</a>, showing Swift leaping upward through the ranks from 68th to 22nd, while Objective-C holds a strong lead up ahead at #10. Both, however, are blown away by the only other language allowed to run natively on iOS: the current champion, JavaScript.</p>
+
+<p>Introduced with OS X Mavericks and iOS 7, the JavaScriptCore framework puts an Objective-C wrapper around WebKit&rsquo;s JavaScript engine, providing easy, fast, and safe access to the world&rsquo;s most prevalent language. Love it or hate it, JavaScript&rsquo;s ubiquity has led to an explosion of developers, tools, and resources along with ultra-fast virtual machines like the one built into OS X and iOS.</p>
+
+<p>So come, lay aside bitter debates about dynamism and type safety, and join me for a tour of <em>JavaScriptCore.</em></p>
+
+<hr>
+
+<h3 id="jscontext-/-jsvalue"><code>JSContext</code> / <code>JSValue</code></h3>
+
+<p><code>JSContext</code> is an environment for running JavaScript code. A <code>JSContext</code> instance represents the global object in the environment—if you&rsquo;ve written JavaScript that runs in a browser, <code>JSContext</code> is analogous to <code>window</code>. After creating a <code>JSContext</code>, it&rsquo;s easy to run JavaScript code that creates variables, does calculations, or even defines functions:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">context</span> <span class="o">=</span> <span class="bp">JSContext</span><span class="p">()</span>
+<span class="n">context</span><span class="p">.</span><span class="n">evaluateScript</span><span class="p">(</span><span class="s">&quot;var num = 5 + 5&quot;</span><span class="p">)</span>
+<span class="n">context</span><span class="p">.</span><span class="n">evaluateScript</span><span class="p">(</span><span class="s">&quot;var names = [&#39;Grace&#39;, &#39;Ada&#39;, &#39;Margaret&#39;]&quot;</span><span class="p">)</span>
+<span class="n">context</span><span class="p">.</span><span class="n">evaluateScript</span><span class="p">(</span><span class="s">&quot;var triple = function(value) { return value * 3 }&quot;</span><span class="p">)</span>
+<span class="k">let</span> <span class="nl">tripleNum</span><span class="p">:</span> <span class="bp">JSValue</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">evaluateScript</span><span class="p">(</span><span class="s">&quot;triple(num)&quot;</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">JSContext</span> <span class="o">*</span><span class="n">context</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">JSContext</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="p">[</span><span class="n">context</span> <span class="nl">evaluateScript</span><span class="p">:</span><span class="s">@&quot;var num = 5 + 5&quot;</span><span class="p">];</span>
+<span class="p">[</span><span class="n">context</span> <span class="nl">evaluateScript</span><span class="p">:</span><span class="s">@&quot;var names = [&#39;Grace&#39;, &#39;Ada&#39;, &#39;Margaret&#39;]&quot;</span><span class="p">];</span>
+<span class="p">[</span><span class="n">context</span> <span class="nl">evaluateScript</span><span class="p">:</span><span class="s">@&quot;var triple = function(value) { return value * 3 }&quot;</span><span class="p">];</span>
+<span class="bp">JSValue</span> <span class="o">*</span><span class="n">tripleNum</span> <span class="o">=</span> <span class="p">[</span><span class="n">context</span> <span class="nl">evaluateScript</span><span class="p">:</span><span class="s">@&quot;triple(num)&quot;</span><span class="p">];</span>
+</code></pre></div>
+<p>As that last line shows, any value that comes <em>out</em> of a <code>JSContext</code> is wrapped in a <code>JSValue</code> object. A language as dynamic as JavaScript requires a dynamic type, so <code>JSValue</code> wraps every possible kind of JavaScript value: strings and numbers; arrays, objects, and functions; even errors and the special JavaScript values <code>null</code> and <code>undefined</code>.</p>
+
+<p><code>JSValue</code> includes a host of methods for accessing its underlying value as the correct Foundation type, including:</p>
+
+<table><thead>
+<tr>
+<th>JavaScript Type</th>
+<th><code>JSValue</code> method</th>
+<th>Objective-C Type</th>
+<th>Swift Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>string</td>
+<td><code>toString</code></td>
+<td><code>NSString</code></td>
+<td><code>String!</code></td>
+</tr>
+<tr>
+<td>boolean</td>
+<td><code>toBool</code></td>
+<td><code>BOOL</code></td>
+<td><code>Bool</code></td>
+</tr>
+<tr>
+<td>number</td>
+<td><code>toNumber</code><br><code>toDouble</code><br><code>toInt32</code><br><code>toUInt32</code></td>
+<td><code>NSNumber</code><br><code>double</code><br><code>int32_t</code><br><code>uint32_t</code></td>
+<td><code>NSNumber!</code><br><code>Double</code><br><code>Int32</code><br><code>UInt32</code></td>
+</tr>
+<tr>
+<td>Date</td>
+<td><code>toDate</code></td>
+<td><code>NSDate</code></td>
+<td><code>NSDate!</code></td>
+</tr>
+<tr>
+<td>Array</td>
+<td><code>toArray</code></td>
+<td><code>NSArray</code></td>
+<td><code>[AnyObject]!</code></td>
+</tr>
+<tr>
+<td>Object</td>
+<td><code>toDictionary</code></td>
+<td><code>NSDictionary</code></td>
+<td><code>[NSObject : AnyObject]!</code></td>
+</tr>
+<tr>
+<td>Object</td>
+<td><code>toObject</code><br><code>toObjectOfClass:</code></td>
+<td><em>custom type</em></td>
+<td><em>custom type</em></td>
+</tr>
+</tbody></table>
+
+<p>To retrieve the value of <code>tripleNum</code> from the above example, simply use the appropriate method:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">print</span><span class="p">(</span><span class="s">&quot;Tripled: \(tripleNum.toInt32())&quot;</span><span class="p">)</span>
+<span class="c1">// Tripled: 30</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Tripled: %d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">tripleNum</span> <span class="n">toInt32</span><span class="p">]);</span>
+<span class="c1">// Tripled: 30</span>
+</code></pre></div>
+<h3 id="subscripting-values">Subscripting Values</h3>
+
+<p>We can easily access any values we&rsquo;ve created in our <code>context</code> using subscript notation on both <code>JSContext</code> and <code>JSValue</code> instances. <code>JSContext</code> requires a string subscript, while <code>JSValue</code> allows either string or integer subscripts for delving down into objects and arrays:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">names</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">objectForKeyedSubscript</span><span class="p">(</span><span class="s">&quot;names&quot;</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">initialName</span> <span class="o">=</span> <span class="n">names</span><span class="p">.</span><span class="n">objectAtIndexedSubscript</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">print</span><span class="p">(</span><span class="s">&quot;The first name: \(initialName.toString())&quot;</span><span class="p">)</span>
+<span class="c1">// The first name: Grace</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">JSValue</span> <span class="o">*</span><span class="n">names</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s">@&quot;names&quot;</span><span class="p">];</span>
+<span class="bp">JSValue</span> <span class="o">*</span><span class="n">initialName</span> <span class="o">=</span> <span class="n">names</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;The first name: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">initialName</span> <span class="n">toString</span><span class="p">]);</span>
+<span class="c1">// The first name: Grace</span>
+</code></pre></div>
+<blockquote>
+<p>Swift shows its youth, here—while Objective-C code can take advantage of subscript notation, Swift currently only exposes the <a href="/object-subscripting/">raw methods</a> that should make such subscripting possible: <code>objectForKeyedSubscript()</code> and <code>objectAtIndexedSubscript()</code>.</p>
+</blockquote>
+
+<h3 id="calling-functions">Calling Functions</h3>
+
+<p>With a <code>JSValue</code> that wraps a JavaScript function, we can call that function directly from our Objective-C/Swift code using Foundation types as parameters. Once again, JavaScriptCore handles the bridging without any trouble:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">tripleFunction</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">objectForKeyedSubscript</span><span class="p">(</span><span class="s">&quot;triple&quot;</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">result</span> <span class="o">=</span> <span class="n">tripleFunction</span><span class="p">.</span><span class="n">callWithArguments</span><span class="p">([</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">print</span><span class="p">(</span><span class="s">&quot;Five tripled: \(result.toInt32())&quot;</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">JSValue</span> <span class="o">*</span><span class="n">tripleFunction</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s">@&quot;triple&quot;</span><span class="p">];</span>
+<span class="bp">JSValue</span> <span class="o">*</span><span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="n">tripleFunction</span> <span class="nl">callWithArguments</span><span class="p">:</span><span class="l">@[</span><span class="mi">@5</span><span class="l">]</span> <span class="p">];</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Five tripled: %d&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">result</span> <span class="n">toInt32</span><span class="p">]);</span>
+</code></pre></div>
+<h3 id="exception-handling">Exception Handling</h3>
+
+<p><code>JSContext</code> has another useful trick up its sleeve: by setting the context&rsquo;s <code>exceptionHandler</code> property, you can observe and log syntax, type, and runtime errors as they happen. <code>exceptionHandler</code> is a callback handler that receives a reference to the <code>JSContext</code> and the exception itself:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">context</span><span class="p">.</span><span class="n">exceptionHandler</span> <span class="o">=</span> <span class="p">{</span> <span class="n">context</span><span class="p">,</span> <span class="n">exception</span> <span class="k">in</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;JS Error: \(exception)&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">context</span><span class="p">.</span><span class="n">evaluateScript</span><span class="p">(</span><span class="s">&quot;function multiply(value1, value2) { return value1 * value2 &quot;</span><span class="p">)</span>
+<span class="c1">// JS Error: SyntaxError: Unexpected end of script</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">context</span><span class="p">.</span><span class="n">exceptionHandler</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="bp">JSContext</span> <span class="o">*</span><span class="n">context</span><span class="p">,</span> <span class="bp">JSValue</span> <span class="o">*</span><span class="n">exception</span><span class="p">)</span> <span class="p">{</span>
+   <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;JS Error: %@&quot;</span><span class="p">,</span> <span class="n">exception</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="p">[</span><span class="n">context</span> <span class="nl">evaluateScript</span><span class="p">:</span><span class="s">@&quot;function multiply(value1, value2) { return value1 * value2 &quot;</span><span class="p">];</span>
+<span class="c1">// JS Error: SyntaxError: Unexpected end of script</span>
+</code></pre></div>
+<h2 id="javascript-calling">JavaScript Calling</h2>
+
+<p>Now we know how to extract values from a JavaScript environment and call functions defined therein. What about the reverse? How can we get access to our custom objects and methods, defined in Objective-C or Swift, from within the JavaScript realm?</p>
+
+<p>There are two main ways of giving a <code>JSContext</code> access to our native client code: blocks and the <code>JSExport</code> protocol.</p>
+
+<h3 id="blocks">Blocks</h3>
+
+<p>When an Objective-C block is assigned to an identifier in a <code>JSContext</code>, JavaScriptCore automatically wraps the block in a JavaScript function. This makes it simple to use Foundation and Cocoa classes from within JavaScript—again, all the bridging happens for you. Witness the full power of Foundation string transformations, now accessible to JavaScript:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nl">simplifyString</span><span class="p">:</span> <span class="p">@</span><span class="n">convention</span><span class="p">(</span><span class="n">block</span><span class="p">)</span> <span class="n">String</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="o">=</span> <span class="p">{</span> <span class="n">input</span> <span class="k">in</span>
+    <span class="k">let</span> <span class="n">result</span> <span class="o">=</span> <span class="n">input</span><span class="p">.</span><span class="n">stringByApplyingTransform</span><span class="p">(</span><span class="n">NSStringTransformToLatin</span><span class="p">,</span> <span class="nl">reverse</span><span class="p">:</span> <span class="nb">false</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span><span class="o">?</span><span class="p">.</span><span class="n">stringByApplyingTransform</span><span class="p">(</span><span class="n">NSStringTransformStripCombiningMarks</span><span class="p">,</span> <span class="nl">reverse</span><span class="p">:</span> <span class="nb">false</span><span class="p">)</span> <span class="o">??</span> <span class="s">&quot;&quot;</span>
+<span class="p">}</span>
+<span class="n">context</span><span class="p">.</span><span class="n">setObject</span><span class="p">(</span><span class="n">unsafeBitCast</span><span class="p">(</span><span class="n">simplifyString</span><span class="p">,</span> <span class="n">AnyObject</span><span class="p">.</span><span class="nb">self</span><span class="p">),</span> <span class="nl">forKeyedSubscript</span><span class="p">:</span> <span class="s">&quot;simplifyString&quot;</span><span class="p">)</span>
+
+<span class="n">print</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">evaluateScript</span><span class="p">(</span><span class="s">&quot;simplifyString(&#39;안녕하새요!&#39;)&quot;</span><span class="p">))</span>
+<span class="c1">// annyeonghasaeyo!</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">context</span><span class="p">[</span><span class="s">@&quot;simplifyString&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="n">input</span><span class="p">)</span> <span class="p">{</span>
+   <span class="bp">NSMutableString</span> <span class="o">*</span><span class="n">mutableString</span> <span class="o">=</span> <span class="p">[</span><span class="n">input</span> <span class="n">mutableCopy</span><span class="p">];</span>
+   <span class="n">CFStringTransform</span><span class="p">((</span><span class="k">__bridge</span> <span class="n">CFMutableStringRef</span><span class="p">)</span><span class="n">mutableString</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">kCFStringTransformToLatin</span><span class="p">,</span> <span class="nb">NO</span><span class="p">);</span>
+   <span class="n">CFStringTransform</span><span class="p">((</span><span class="k">__bridge</span> <span class="n">CFMutableStringRef</span><span class="p">)</span><span class="n">mutableString</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">kCFStringTransformStripCombiningMarks</span><span class="p">,</span> <span class="nb">NO</span><span class="p">);</span>
+   <span class="k">return</span> <span class="n">mutableString</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">context</span> <span class="nl">evaluateScript</span><span class="p">:</span><span class="s">@&quot;simplifyString(&#39;안녕하새요!&#39;)&quot;</span><span class="p">]);</span>
+</code></pre></div>
+<blockquote>
+<p>There&rsquo;s another speedbump for Swift here—note that this only works for <em>Objective-C blocks</em>, not Swift closures. To use a Swift closure in a <code>JSContext</code>, it needs to be (a) declared with the <code>@convention(block)</code> attribute, and (b) cast to <code>AnyObject</code> using Swift&rsquo;s knuckle-whitening <code>unsafeBitCast()</code> function.</p>
+</blockquote>
+
+<h4 id="memory-management">Memory Management</h4>
+
+<p>Since blocks can capture references to variables and <code>JSContext</code>s maintain strong references to all their variables, some care needs to be taken to avoid strong reference cycles. Avoid capturing your <code>JSContext</code> or any <code>JSValue</code>s inside a block. Instead, use <code>[JSContext currentContext]</code> to get the current context and pass any values you need as parameters.</p>
+
+<h3 id="jsexport-protocol"><code>JSExport</code> Protocol</h3>
+
+<p>Another way to use our custom objects from within JavaScript code is to add conformance to the <code>JSExport</code> protocol. Whatever properties, instance methods, and class methods we declare in our <code>JSExport</code>-inherited protocol will <em>automatically</em> be available to any JavaScript code. We&rsquo;ll see how in the following section.</p>
+
+<h2 id="javascriptcore-in-practice">JavaScriptCore in Practice</h2>
+
+<p>Let&rsquo;s build out an example that will use all these different techniques—we&rsquo;ll define a <code>Person</code> model that conforms to the <code>JSExport</code> sub-protocol <code>PersonJSExports</code>, then use JavaScript to create and populate instances from a JSON file. Who needs <code>NSJSONSerialization</code> when there&rsquo;s an entire JavaScript VM lying around?</p>
+
+<h3 id="1)-personjsexports-and-person">1) <code>PersonJSExports</code> and <code>Person</code></h3>
+
+<p>Our <code>Person</code> class implements the <code>PersonJSExports</code> protocol, which specifies what properties should be available in JavaScript. </p>
+
+<blockquote>
+<p>The <code>create...</code> class method is necessary because JavaScriptCore does <em>not</em> bridge initializers—we can&rsquo;t simply say <code>var person = new Person()</code> the way we would with a native JavaScript type.</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// Custom protocol must be declared with `@objc`</span>
+<span class="p">@</span><span class="n">objc</span> <span class="k">protocol</span> <span class="nl">PersonJSExports</span> <span class="p">:</span> <span class="bp">JSExport</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nl">firstName</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="kr">set</span> <span class="p">}</span>
+    <span class="k">var</span> <span class="nl">lastName</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span> <span class="kr">get</span> <span class="kr">set</span> <span class="p">}</span>
+    <span class="k">var</span> <span class="nl">birthYear</span><span class="p">:</span> <span class="bp">NSNumber</span><span class="o">?</span> <span class="p">{</span> <span class="kr">get</span> <span class="kr">set</span> <span class="p">}</span>
+
+    <span class="k">func</span> <span class="n">getFullName</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span>
+
+    <span class="c1">/// create and return a new Person instance with `firstName` and `lastName`</span>
+    <span class="k">static</span> <span class="k">func</span> <span class="n">createWithFirstName</span><span class="p">(</span><span class="nl">firstName</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">lastName</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Person</span>
+<span class="p">}</span>
+
+<span class="c1">// Custom class must inherit from `NSObject`</span>
+<span class="p">@</span><span class="n">objc</span> <span class="k">class</span> <span class="nl">Person</span> <span class="p">:</span> <span class="bp">NSObject</span><span class="p">,</span> <span class="n">PersonJSExports</span> <span class="p">{</span>
+    <span class="c1">// properties must be declared as `dynamic`</span>
+    <span class="n">dynamic</span> <span class="k">var</span> <span class="nl">firstName</span><span class="p">:</span> <span class="n">String</span>
+    <span class="n">dynamic</span> <span class="k">var</span> <span class="nl">lastName</span><span class="p">:</span> <span class="n">String</span>
+    <span class="n">dynamic</span> <span class="k">var</span> <span class="nl">birthYear</span><span class="p">:</span> <span class="bp">NSNumber</span><span class="o">?</span>
+
+    <span class="k">init</span><span class="p">(</span><span class="nl">firstName</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">lastName</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">firstName</span> <span class="o">=</span> <span class="n">firstName</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">lastName</span> <span class="o">=</span> <span class="n">lastName</span>
+    <span class="p">}</span>
+
+    <span class="k">class</span> <span class="k">func</span> <span class="n">createWithFirstName</span><span class="p">(</span><span class="nl">firstName</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">lastName</span><span class="p">:</span> <span class="n">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Person</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">Person</span><span class="p">(</span><span class="nl">firstName</span><span class="p">:</span> <span class="n">firstName</span><span class="p">,</span> <span class="nl">lastName</span><span class="p">:</span> <span class="n">lastName</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">func</span> <span class="n">getFullName</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;\(firstName) \(lastName)&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="c1">// in Person.h -----------------</span>
+<span class="k">@class</span> <span class="nc">Person</span>;
+
+<span class="k">@protocol</span> <span class="nc">PersonJSExports</span> <span class="o">&lt;</span><span class="bp">JSExport</span><span class="o">&gt;</span>
+    <span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">copy</span><span class="p">)</span> <span class="bp">NSString</span> <span class="o">*</span><span class="n">firstName</span><span class="p">;</span>
+    <span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">copy</span><span class="p">)</span> <span class="bp">NSString</span> <span class="o">*</span><span class="n">lastName</span><span class="p">;</span>
+    <span class="k">@property</span> <span class="bp">NSInteger</span> <span class="n">ageToday</span><span class="p">;</span>
+
+    <span class="o">-</span> <span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">getFullName</span><span class="p">;</span>
+
+    <span class="c1">// create and return a new Person instance with `firstName` and `lastName`</span>
+    <span class="o">+</span> <span class="p">(</span><span class="kt">instancetype</span><span class="p">)</span><span class="nl">createWithFirstName</span><span class="p">:(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">firstName</span> <span class="nl">lastName</span><span class="p">:(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">lastName</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="k">@interface</span> <span class="nc">Person</span> : <span class="bp">NSObject</span> <span class="o">&lt;</span><span class="n">PersonJSExports</span><span class="o">&gt;</span>
+    <span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">copy</span><span class="p">)</span> <span class="bp">NSString</span> <span class="o">*</span><span class="n">firstName</span><span class="p">;</span>
+    <span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">copy</span><span class="p">)</span> <span class="bp">NSString</span> <span class="o">*</span><span class="n">lastName</span><span class="p">;</span>
+    <span class="k">@property</span> <span class="bp">NSInteger</span> <span class="n">ageToday</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="c1">// in Person.m -----------------</span>
+<span class="k">@implementation</span> <span class="nc">Person</span>
+<span class="p">-</span> <span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">getFullName</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="bp">NSString</span> <span class="nl">stringWithFormat</span><span class="p">:</span><span class="s">@&quot;%@ %@&quot;</span><span class="p">,</span> <span class="nb">self</span><span class="p">.</span><span class="n">firstName</span><span class="p">,</span> <span class="nb">self</span><span class="p">.</span><span class="n">lastName</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="p">+</span> <span class="p">(</span><span class="kt">instancetype</span><span class="p">)</span> <span class="nf">createWithFirstName:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">firstName</span> <span class="nf">lastName:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">lastName</span> <span class="p">{</span>
+    <span class="n">Person</span> <span class="o">*</span><span class="n">person</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Person</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+    <span class="n">person</span><span class="p">.</span><span class="n">firstName</span> <span class="o">=</span> <span class="n">firstName</span><span class="p">;</span>
+    <span class="n">person</span><span class="p">.</span><span class="n">lastName</span> <span class="o">=</span> <span class="n">lastName</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">person</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">@end</span>
+</code></pre></div>
+<h3 id="2)-jscontext-configuration">2) <code>JSContext</code> Configuration</h3>
+
+<p>Before we can use the <code>Person</code> class we&rsquo;ve created, we need to export it to the JavaScript environment. We&rsquo;ll also take this moment to import the <a href="http://mustache.github.io/">Mustache JS library</a>, which we&rsquo;ll use to apply templates to our <code>Person</code> objects later.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// export Person class</span>
+<span class="n">context</span><span class="p">.</span><span class="n">setObject</span><span class="p">(</span><span class="n">Person</span><span class="p">.</span><span class="nb">self</span><span class="p">,</span> <span class="nl">forKeyedSubscript</span><span class="p">:</span> <span class="s">&quot;Person&quot;</span><span class="p">)</span>
+
+<span class="c1">// load Mustache.js</span>
+<span class="k">if</span> <span class="k">let</span> <span class="n">mustacheJSString</span> <span class="o">=</span> <span class="n">String</span><span class="p">(</span><span class="nl">contentsOfFile</span><span class="p">:...,</span> <span class="nl">encoding</span><span class="p">:</span><span class="n">NSUTF8StringEncoding</span><span class="p">,</span> <span class="nl">error</span><span class="p">:</span><span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">context</span><span class="p">.</span><span class="n">evaluateScript</span><span class="p">(</span><span class="n">mustacheJSString</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="c1">// export Person class</span>
+<span class="n">context</span><span class="p">[</span><span class="s">@&quot;Person&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">Person</span> <span class="k">class</span><span class="p">];</span>
+
+<span class="c1">// load Mustache.js</span>
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">mustacheJSString</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSString</span> <span class="nl">stringWithContentsOfFile</span><span class="p">:...</span> <span class="nl">encoding</span><span class="p">:</span><span class="n">NSUTF8StringEncoding</span> <span class="nl">error</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+<span class="p">[</span><span class="n">context</span> <span class="nl">evaluateScript</span><span class="p">:</span><span class="n">mustacheJSString</span><span class="p">];</span>
+</code></pre></div>
+<h3 id="3)-javascript-data-&amp;-processing">3) JavaScript Data &amp; Processing</h3>
+
+<p>Here&rsquo;s a look at our simple JSON example and the code that will process it to create new <code>Person</code> instances. </p>
+
+<blockquote>
+<p>Note: JavaScriptCore translates Objective-C/Swift method names to be JavaScript-compatible. Since JavaScript doesn&rsquo;t have named parameters, any external parameter names are converted to camel-case and appended to the function name. In this example, the Objective-C method <code>createWithFirstName:lastName:</code> becomes <code>createWithFirstNameLastName()</code> in JavaScript.</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-JavaScript" data-lang="JavaScript"><span class="kd">var</span> <span class="nx">loadPeopleFromJSON</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">jsonString</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">jsonString</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">people</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">person</span> <span class="o">=</span> <span class="nx">Person</span><span class="p">.</span><span class="nx">createWithFirstNameLastName</span><span class="p">(</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">first</span><span class="p">,</span> <span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">last</span><span class="p">);</span>
+        <span class="nx">person</span><span class="p">.</span><span class="nx">birthYear</span> <span class="o">=</span> <span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">year</span><span class="p">;</span>
+
+        <span class="nx">people</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">person</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">people</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-JSON" data-lang="JSON"><span class="p">[</span>
+    <span class="p">{</span> <span class="nt">&quot;first&quot;</span><span class="p">:</span> <span class="s2">&quot;Grace&quot;</span><span class="p">,</span>     <span class="nt">&quot;last&quot;</span><span class="p">:</span> <span class="s2">&quot;Hopper&quot;</span><span class="p">,</span>   <span class="nt">&quot;year&quot;</span><span class="p">:</span> <span class="mi">1906</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nt">&quot;first&quot;</span><span class="p">:</span> <span class="s2">&quot;Ada&quot;</span><span class="p">,</span>       <span class="nt">&quot;last&quot;</span><span class="p">:</span> <span class="s2">&quot;Lovelace&quot;</span><span class="p">,</span> <span class="nt">&quot;year&quot;</span><span class="p">:</span> <span class="mi">1815</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nt">&quot;first&quot;</span><span class="p">:</span> <span class="s2">&quot;Margaret&quot;</span><span class="p">,</span>  <span class="nt">&quot;last&quot;</span><span class="p">:</span> <span class="s2">&quot;Hamilton&quot;</span><span class="p">,</span> <span class="nt">&quot;year&quot;</span><span class="p">:</span> <span class="mi">1936</span> <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+<h3 id="4)-tying-it-all-together">4) Tying It All Together</h3>
+
+<p>All that remains is to load the JSON data, call into the <code>JSContext</code> to parse the data into an array of <code>Person</code> objects, and render each <code>Person</code> using a Mustache template:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// get JSON string</span>
+<span class="k">let</span> <span class="n">peopleJSON</span> <span class="o">=</span> <span class="n">try</span><span class="o">!</span> <span class="n">String</span><span class="p">(</span><span class="nl">contentsOfFile</span><span class="p">:</span> <span class="p">...,</span> <span class="nl">encoding</span><span class="p">:</span> <span class="n">NSUTF8StringEncoding</span><span class="p">)</span>
+
+<span class="c1">// get load function</span>
+<span class="k">let</span> <span class="n">load</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">objectForKeyedSubscript</span><span class="p">(</span><span class="s">&quot;loadPeopleFromJSON&quot;</span><span class="p">)</span>
+<span class="c1">// call with JSON and convert to an Array</span>
+<span class="k">if</span> <span class="k">let</span> <span class="n">people</span> <span class="o">=</span> <span class="n">load</span><span class="p">.</span><span class="n">callWithArguments</span><span class="p">([</span><span class="n">peopleJSON</span><span class="p">]).</span><span class="n">toArray</span><span class="p">()</span> <span class="kt">as</span><span class="o">?</span> <span class="p">[</span><span class="n">Person</span><span class="p">]</span> <span class="p">{</span>
+
+    <span class="c1">// get rendering function and create template</span>
+    <span class="k">let</span> <span class="n">mustacheRender</span> <span class="o">=</span> <span class="n">context</span><span class="p">.</span><span class="n">objectForKeyedSubscript</span><span class="p">(</span><span class="s">&quot;Mustache&quot;</span><span class="p">).</span><span class="n">objectForKeyedSubscript</span><span class="p">(</span><span class="s">&quot;render&quot;</span><span class="p">)</span>
+    <span class="k">let</span> <span class="n">template</span> <span class="o">=</span> <span class="s">&quot;{{getFullName}}, born {{birthYear}}&quot;</span>
+
+    <span class="c1">// loop through people and render Person object as string</span>
+    <span class="k">for</span> <span class="n">person</span> <span class="k">in</span> <span class="n">people</span> <span class="p">{</span>
+        <span class="n">print</span><span class="p">(</span><span class="n">mustacheRender</span><span class="p">.</span><span class="n">callWithArguments</span><span class="p">([</span><span class="n">template</span><span class="p">,</span> <span class="n">person</span><span class="p">]))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Output:</span>
+<span class="c1">// Grace Hopper, born 1906</span>
+<span class="c1">// Ada Lovelace, born 1815</span>
+<span class="c1">// Margaret Hamilton, born 1936</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="c1">// get JSON string</span>
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">peopleJSON</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSString</span> <span class="nl">stringWithContentsOfFile</span><span class="p">:...</span> <span class="nl">encoding</span><span class="p">:</span><span class="n">NSUTF8StringEncoding</span> <span class="nl">error</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+
+<span class="c1">// get load function</span>
+<span class="bp">JSValue</span> <span class="o">*</span><span class="n">load</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s">@&quot;loadPeopleFromJSON&quot;</span><span class="p">];</span>
+<span class="c1">// call with JSON and convert to an NSArray</span>
+<span class="bp">JSValue</span> <span class="o">*</span><span class="n">loadResult</span> <span class="o">=</span> <span class="p">[</span><span class="n">load</span> <span class="nl">callWithArguments</span><span class="p">:</span><span class="l">@[</span><span class="n">peopleJSON</span><span class="l">]</span><span class="p">];</span>
+<span class="bp">NSArray</span> <span class="o">*</span><span class="n">people</span> <span class="o">=</span> <span class="p">[</span><span class="n">loadResult</span> <span class="n">toArray</span><span class="p">];</span>
+
+<span class="c1">// get rendering function and create template</span>
+<span class="bp">JSValue</span> <span class="o">*</span><span class="n">mustacheRender</span> <span class="o">=</span> <span class="n">context</span><span class="p">[</span><span class="s">@&quot;Mustache&quot;</span><span class="p">][</span><span class="s">@&quot;render&quot;</span><span class="p">];</span>
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">template</span> <span class="o">=</span> <span class="s">@&quot;{{getFullName}}, born {{birthYear}}&quot;</span><span class="p">;</span>
+
+<span class="c1">// loop through people and render Person object as string</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">Person</span> <span class="o">*</span><span class="n">person</span> <span class="k">in</span> <span class="n">people</span><span class="p">)</span> <span class="p">{</span>
+   <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">mustacheRender</span> <span class="nl">callWithArguments</span><span class="p">:</span><span class="l">@[</span><span class="n">template</span><span class="p">,</span> <span class="n">person</span><span class="l">]</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="c1">// Output:</span>
+<span class="c1">// Grace Hopper, born 1906</span>
+<span class="c1">// Ada Lovelace, born 1815</span>
+<span class="c1">// Margaret Hamilton, born 1936</span>
+</code></pre></div>
+<hr>
+
+<p>How can you use JavaScript in your apps? JavaScript snippets could be the basis for user-defined plugins that ship alongside yours. If your product started out on the web, you may have existing infrastructure that can be used with only minor changes. Or if <em>you</em> started out as a programmer on the web, you might relish the chance to get back to your scripty roots. Whatever the case, JavaScriptCore is too well-built and powerful to ignore.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2015-01-19-javascriptcore.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on November 9, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Nate Cook" itemprop="image" src="http://nshipster.s3.amazonaws.com/nate-cook.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/nate-cook/">Nate Cook</a></span>
+
+      <p><a href="http://natecook.com">Nate Cook</a> (<a href="https://twitter.com/nnnnnnnn">@nnnnnnnn</a>) is an independent web and application developer who <a href="http://natecook.com/blog/">writes frequently about topics in Swift</a>, and the creator of <a href="http://swiftdoc.org">SwiftDoc.org</a>.</p>
+
+
+      
+        <a href="https://plus.google.com/?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/swift-objc-runtime/" title="Swift & the Objective-C Runtime" rel="next">Swift & the Objective-C Runtime</a>
+            </h1>
+
+            <p>Even when written without a single line of Objective-C code, every Swift app executes inside the Objective-C runtime, opening up a world of dynamic dispatch and associated runtime manipulation. To be sure, this may not always be the case—Swift-only frameworks, whenever they come, may lead to a Swift-only runtime. But as long as the Objective-C runtime is with us, let&rsquo;s use it to its fullest potential.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nsundomanager/" title="NSUndoManager">NSUndoManager</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsassertionhandler/" title="NSAssertionHandler">NSAssertionHandler</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/mkgeodesicpolyline/" title="MKGeodesicPolyline">MKGeodesicPolyline</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/dictionary-services/" title="UIReferenceLibraryViewController /<br/>DCSDictionaryRef/<br/>/usr/share/dict/words">UIReferenceLibraryViewController /<br/>DCSDictionaryRef/<br/>/usr/share/dict/words</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

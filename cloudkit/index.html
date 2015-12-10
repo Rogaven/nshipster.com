@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>CloudKit - NSHipster</title>
+    <meta name="description" content="As an iOS developer, if you want to make an application on your own, you sometimes need to write back-end code. Even for the developer who can take that on, there is more than just the code, there's also maintenance. Your worst fear becomes not that people might not like your application, but that your server might fail under heavy traffic.
+
+Fortunately, we now have CloudKit. Apple takes care of all these details, so you can focus on how to make your application great."/>
+    <link rel="canonical" href="http://nshipster.com/cloudkit/"/>
+  
+  
+  
+  
+  <meta name="author" content="Croath Liu"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@cr0ath"/>
+  
+  
+    <meta name="twitter:title" content="CloudKit"/>
+    <meta name="twitter:description" content="As an iOS developer, if you want to make an application on your own, you sometimes need to write back-end code. Even for the developer who can take that on, there is more than just the code, there&#39;s also maintenance. Your worst fear becomes not that people might not like your application, but that your server might fail under heavy traffic.
+
+Fortunately, we now have CloudKit. Apple takes care of all these details, so you can focus on how to make your application great."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="CloudKit"/>
+    <meta property="og:url" content="http://nshipster.com/cloudkit/"/>
+    <meta property="og:description" content="As an iOS developer, if you want to make an application on your own, you sometimes need to write back-end code. Even for the developer who can take that on, there is more than just the code, there&#39;s also maintenance. Your worst fear becomes not that people might not like your application, but that your server might fail under heavy traffic.
+
+Fortunately, we now have CloudKit. Apple takes care of all these details, so you can focus on how to make your application great."/>
+    <meta property="article:published_time" content="2015-06-29T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="CloudKit"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/cloudkit/">Cloud​Kit</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/croath-liu/">Croath Liu</a> —
+    
+    <time datetime="2015-06-29T00:00:00-07:00" itemprop="datePublished">June 29<sup>th</sup>, 2015</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>As an iOS developer, if you want to make an application on your own, you sometimes need to write back-end code. Even for the developer who can take that on, there is more than just the code, there&rsquo;s also maintenance. Your worst fear becomes not that people might not like your application, but that your server might fail under heavy traffic.</p>
+
+<p>Fortunately, we now have CloudKit. Apple takes care of all these details, so you can focus on how to make your application great. </p>
+
+<h2 id="what-is-cloudkit?">What is CloudKit?</h2>
+
+<p>Perhaps you&rsquo;ve heard of iCloud Drive before—iCloud Drive is where we can store our user&rsquo;s data and files for easy access from other devices. CloudKit is the framework that helps us do this easily in the apps we create.</p>
+
+<p>CloudKit offers tons of APIs to access iCloud. You can create a user model inside your application linked to a user&rsquo;s iCloud account. Meanwhile, you can have a public global database to store application-level data. You can also save large files and bulk data into iCloud Drive, so your users can use their data from their other devices. This works just like working on local files, but with all the operations sent to the cloud.</p>
+
+<p>Overall, CloudKit is a framework that replaces back-end web services like old-school databases, file storage, and user authentication systems. With CloudKit&rsquo;s help you don&rsquo;t need to worry about any of these, so you can focus your energy on your application.</p>
+
+<h2 id="get-into-cloudkit">Get into CloudKit</h2>
+
+<p>Imagine that you&rsquo;re working on a check-in application where users can add &ldquo;places&rdquo; with their location and check in at these places. We&rsquo;ll talk about how to build some basic functions of the check-in application with CloudKit.</p>
+
+<h3 id="enable-cloudkit">Enable CloudKit</h3>
+
+<p>We have already talked about how powerful CloudKit is, now it is the time to show you how to use it. It&rsquo;s simple. All you need is to turn on <code>iCloud</code> and check <code>CloudKit</code> in the project panel of Xcode:</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/cloudkit-xcode.png" alt="Enabling CloudKit in Xcode"></p>
+
+<h3 id="fundamental-cloudkit-objects">Fundamental CloudKit Objects</h3>
+
+<p>There are 7 different fundamental objects in CloudKit. You may have seen this elsewhere in your programming career, but there are some slight differences.</p>
+
+<ul>
+<li><p><code>CKContainer</code>: A container is like a sandbox. An application can only use the resources inside its container. The container is located at the very outer border and each application has one and only one separate container. (You can allow other applications to access your container by configuring  CloudKit Dashboard.)</p></li>
+<li><p><code>CKDatabase</code>: A database is the place that you put all your data. There are two different kinds of databases: private and public. The private database is where you store sensitive data, like user&rsquo;s information. The public database is where you store shared data. For example, in our check-in application, you would store a user&rsquo;s birthday and check-ins in the private database but store &ldquo;places&rdquo; information in the public database.</p></li>
+<li><p><code>CKRecord</code>: A record is a piece of data inside your database. It is stored as a key-value pair. For now, you can save <code>NSString</code>, <code>NSNumber</code>, <code>NSData</code>, <code>NSDate</code>, <code>CLLocation</code>, <code>CKReference</code>, and <code>CKAsset</code>, as well as arrays of  all the types listed above.</p></li>
+<li><p><code>CKRecordZone</code>: Records are not stored scattered in a database, they are located in record zones. Every application has a default record zone, and you can also have your own custom record zones.</p></li>
+<li><p><code>CKRecordIdentifier</code>: the unique label of a record, used for locating a particular record.</p></li>
+<li><p><code>CKReference</code>: Reference is like the relationship in an RDBMS. In our check-in example, there may be many people checked in at the same place, so we&rsquo;ll need to establish a reference between places and check-ins.</p></li>
+<li><p><code>CKAsset</code>: Assets are resources, like binary files or bulk data. For example, a user&rsquo;s picture should be stored as an asset.</p></li>
+</ul>
+
+<h3 id="convenience-api">Convenience API</h3>
+
+<p>CloudKit&rsquo;s convenience API is there to do basic operations such as reading, writing, and editing records.</p>
+
+<p>Let&rsquo;s work on our check-in application. To get started, import the CloudKit framework and get a reference to the public database:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">CloudKit</span>
+<span class="c1">// ...</span>
+
+<span class="k">let</span> <span class="n">publicDB</span> <span class="o">=</span> <span class="n">CKContainer</span><span class="p">.</span><span class="n">defaultContainer</span><span class="p">().</span><span class="n">publicCloudDatabase</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="cp">#import &lt;CloudKit/CloudKit.h&gt;</span>
+<span class="c1">// ...</span>
+
+<span class="n">CKDatabase</span> <span class="o">*</span><span class="n">publicDB</span> <span class="o">=</span> <span class="p">[[</span><span class="n">CKContainer</span> <span class="n">defaultContainer</span><span class="p">]</span> <span class="n">publicCloudDatabase</span><span class="p">];</span>
+</code></pre></div>
+<p>Next, create a new place and save it:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">greatID</span> <span class="o">=</span> <span class="n">CKRecordID</span><span class="p">(</span><span class="nl">recordName</span><span class="p">:</span> <span class="s">&quot;GreatPlace&quot;</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">place</span> <span class="o">=</span> <span class="n">CKRecord</span><span class="p">(</span><span class="nl">recordType</span><span class="p">:</span> <span class="s">&quot;Place&quot;</span><span class="p">,</span> <span class="nl">recordID</span><span class="p">:</span> <span class="n">greatID</span><span class="p">)</span>
+
+<span class="n">publicDB</span><span class="p">.</span><span class="n">saveRecord</span><span class="p">(</span><span class="n">place</span><span class="p">)</span> <span class="p">{</span> <span class="n">savedRecord</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
+    <span class="c1">// handle errors here</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">CKRecordID</span> <span class="o">*</span><span class="n">greatID</span> <span class="o">=</span> <span class="p">[[</span><span class="n">CKRecordID</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithRecordName</span><span class="p">:</span><span class="s">@&quot;GreatPlace&quot;</span><span class="p">];</span>
+<span class="n">CKRecord</span> <span class="o">*</span><span class="n">place</span> <span class="o">=</span> <span class="p">[[</span><span class="n">CKRecord</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithRecordType</span><span class="p">:</span><span class="s">@&quot;Place&quot;</span> <span class="nl">recordID</span><span class="p">:</span><span class="n">greatID</span><span class="p">];</span>
+
+<span class="p">[</span><span class="n">publicDB</span> <span class="nl">saveRecord</span><span class="p">:</span><span class="n">place</span> <span class="nl">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">CKRecord</span> <span class="o">*</span><span class="n">savedPlace</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle errors here</span>
+<span class="p">}];</span>
+</code></pre></div>
+<p>CloudKit will connect to the Internet asynchronously when <code>saveRecord:completionHandler:</code> method is invoked. Remember to handle the error in the block, since the user&rsquo;s connection may be unstable. A good application deserves perfect error handling logic.</p>
+
+<p>You should check the error code of the <code>NSError</code> object to detect which kind of error you are dealing with. A <code>CKErrorNetworkUnavailable</code> error may occur if you were on a bad internet connection, and what you need to do is to retry the operation after failure. But when to retry? Immediately or 10 seconds later? Don&rsquo;t worry, CloudKit offers a suggestion in the error&rsquo;s <code>userInfo</code> dictionary with the key <code>CKErrorRetryAfterKey</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">if</span> <span class="k">let</span> <span class="n">retryAfterValue</span> <span class="o">=</span> <span class="n">error</span><span class="p">.</span><span class="n">userInfo</span><span class="p">[</span><span class="n">CKErrorRetryAfterKey</span><span class="p">]</span> <span class="kt">as</span><span class="o">?</span> <span class="n">NSTimeInterval</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">retryAfterDate</span> <span class="o">=</span> <span class="bp">NSDate</span><span class="p">(</span><span class="nl">timeIntervalSinceNow</span><span class="p">:</span> <span class="n">retryAfterValue</span><span class="p">)</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="kt">double</span> <span class="n">retryAfterValue</span> <span class="o">=</span> <span class="p">[</span><span class="n">error</span><span class="p">.</span><span class="n">userInfo</span><span class="p">[</span><span class="n">CKErrorRetryAfterKey</span><span class="p">]</span> <span class="n">doubleValue</span><span class="p">];</span>
+<span class="bp">NSDate</span> <span class="o">*</span><span class="n">retryAfterDate</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSDate</span> <span class="nl">dateWithTimeIntervalSinceNow</span><span class="p">:</span><span class="n">retryAfterValue</span><span class="p">];</span>
+</code></pre></div>
+<p>Here I&rsquo;ll read the place&rsquo;s information back:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">greatID</span> <span class="o">=</span> <span class="n">CKRecordID</span><span class="p">(</span><span class="nl">recordName</span><span class="p">:</span> <span class="s">&quot;GreatPlace&quot;</span><span class="p">)</span>
+
+<span class="n">publicDB</span><span class="p">.</span><span class="n">fetchRecordWithID</span><span class="p">(</span><span class="n">greatID</span><span class="p">)</span> <span class="p">{</span> <span class="n">fetchedPlace</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
+    <span class="c1">// handle errors here</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">CKRecordID</span> <span class="o">*</span><span class="n">greatID</span> <span class="o">=</span> <span class="p">[[</span><span class="n">CKRecordID</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithRecordName</span><span class="p">:</span><span class="s">@&quot;GreatPlace&quot;</span><span class="p">];</span>
+
+<span class="p">[</span><span class="n">publicDB</span> <span class="nl">fetchRecordWithID</span><span class="p">:</span><span class="n">greatID</span> <span class="nl">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">CKRecord</span> <span class="o">*</span><span class="n">fetchedPlace</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle errors here</span>
+<span class="p">}];</span>
+</code></pre></div>
+<p>And here I&rsquo;ll edit an existing place&rsquo;s information:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">greatID</span> <span class="o">=</span> <span class="n">CKRecordID</span><span class="p">(</span><span class="nl">recordName</span><span class="p">:</span> <span class="s">&quot;GreatPlace&quot;</span><span class="p">)</span>
+
+<span class="n">publicDB</span><span class="p">.</span><span class="n">fetchRecordWithID</span><span class="p">(</span><span class="n">greatID</span><span class="p">)</span> <span class="p">{</span> <span class="n">fetchedPlace</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
+    <span class="kr">guard</span> <span class="k">let</span> <span class="n">fetchedPlace</span> <span class="o">=</span> <span class="n">fetchedPlace</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// handle errors here</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="k">let</span> <span class="n">name</span> <span class="o">=</span> <span class="n">fetchedPlace</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]</span> <span class="kt">as</span><span class="o">?</span> <span class="n">String</span> <span class="o">??</span> <span class="s">&quot;Unnamed Place&quot;</span>
+    <span class="n">fetchedPlace</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&quot; Door A&quot;</span>
+
+    <span class="n">publicDB</span><span class="p">.</span><span class="n">saveRecord</span><span class="p">(</span><span class="n">fetchedPlace</span><span class="p">)</span> <span class="p">{</span> <span class="n">savedPlace</span><span class="p">,</span> <span class="n">savedError</span> <span class="k">in</span>
+        <span class="c1">//...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">CKRecordID</span> <span class="o">*</span><span class="n">greatID</span> <span class="o">=</span> <span class="p">[[</span><span class="n">CKRecordID</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithRecordName</span><span class="p">:</span><span class="s">@&quot;GreatPlace&quot;</span><span class="p">];</span>
+
+<span class="p">[</span><span class="n">publicDB</span> <span class="nl">fetchRecordWithID</span><span class="p">:</span><span class="n">greatID</span> <span class="nl">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">CKRecord</span> <span class="o">*</span><span class="n">fetchedPlace</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">fetchedPlace</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+        <span class="bp">NSString</span> <span class="o">*</span><span class="n">name</span> <span class="o">=</span> <span class="n">fetchedPlace</span><span class="p">[</span><span class="s">@&quot;name&quot;</span><span class="p">];</span>
+        <span class="n">fetchedPlace</span><span class="p">[</span><span class="s">@&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="nl">stringByAppendingString</span><span class="p">:</span><span class="s">@&quot; Door A&quot;</span><span class="p">];</span>
+
+        <span class="p">[</span><span class="n">publicDB</span> <span class="nl">saveRecord</span><span class="p">:</span><span class="n">fetchedPlace</span> <span class="nl">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">CKRecord</span> <span class="o">*</span><span class="n">savedPlace</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">savedError</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//...</span>
+        <span class="p">}];</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// handle errors here</span>
+    <span class="p">}</span>
+<span class="p">}];</span>
+</code></pre></div>
+<p>The progress of editing a record is pretty simple: read, edit, then save. What you should really pay attention to is <em>how</em> to do the three-step updating process, especially when updating one record depends on fetching others.</p>
+
+<p>A bad practice:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">database</span><span class="p">.</span><span class="n">fetchRecordWithID</span><span class="p">(</span><span class="n">recordID</span><span class="p">,</span> <span class="nl">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="n">record</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
+    <span class="c1">//...</span>
+    <span class="n">database</span><span class="p">.</span><span class="n">fetchRecordWithID</span><span class="p">(</span><span class="n">otherRecordID</span><span class="p">,</span> <span class="nl">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="n">otherRecord</span><span class="p">,</span> <span class="n">otherError</span> <span class="k">in</span>
+        <span class="c1">//...</span>
+        <span class="n">database</span><span class="p">.</span><span class="n">saveRecord</span><span class="p">(</span><span class="n">record</span><span class="o">!</span><span class="p">,</span> <span class="nl">completionHandler</span><span class="p">:</span> <span class="p">{</span> <span class="n">anotherRecord</span><span class="p">,</span> <span class="n">anotherError</span> <span class="k">in</span>
+            <span class="c1">//...</span>
+        <span class="p">})</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[</span><span class="n">database</span> <span class="nl">fetchRecordWithID</span><span class="p">:</span><span class="n">recordID</span> <span class="nl">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">CKRecord</span> <span class="o">*</span><span class="n">record</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">//...</span>
+        <span class="p">[</span><span class="n">database</span> <span class="nl">fetchRecordWithID</span><span class="p">:</span><span class="n">otherRecordID</span> <span class="nl">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">CKRecord</span> <span class="o">*</span><span class="n">otherRecord</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">otherError</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">//...</span>
+                <span class="p">[</span><span class="n">database</span> <span class="nl">saveRecord</span><span class="p">:</span><span class="n">record</span> <span class="nl">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">CKRecord</span> <span class="o">*</span><span class="n">anotherRecord</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">anotherError</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">//...</span>
+                <span class="p">}];</span>
+        <span class="p">}];</span>
+<span class="p">}];</span>
+</code></pre></div>
+<p>With very complex nested operations you may run into a dilemma: There are three (or more) blocks and three (or more) errors to handle, so where should you handle the errors? where should you retry the operation if an error occurs? All together it starts looking like kind of a disaster.</p>
+
+<p>A better approach is to use <code>NSOperation</code> dependencies to manage the dependent tasks:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">firstFetch</span> <span class="o">=</span> <span class="n">CKFetchRecordsOperation</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">secondFetch</span> <span class="o">=</span> <span class="n">CKFetchRecordsOperation</span><span class="p">()</span>
+
+<span class="n">secondFetch</span><span class="p">.</span><span class="n">addDependency</span><span class="p">(</span><span class="n">firstFetch</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="n">queue</span> <span class="o">=</span> <span class="bp">NSOperationQueue</span><span class="p">()</span>
+<span class="n">queue</span><span class="p">.</span><span class="n">addOperations</span><span class="p">([</span><span class="n">firstFetch</span><span class="p">,</span> <span class="n">secondFetch</span><span class="p">],</span> <span class="nl">waitUntilFinished</span><span class="p">:</span> <span class="nb">false</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">CKFetchRecordsOperation</span> <span class="o">*</span><span class="n">firstFetch</span> <span class="o">=</span> <span class="p">...;</span>
+<span class="n">CKFetchRecordsOperation</span> <span class="o">*</span><span class="n">secondFetch</span> <span class="o">=</span> <span class="p">...;</span>
+
+<span class="p">[</span><span class="n">secondFetch</span> <span class="nl">addDependency</span><span class="p">:</span><span class="n">firstFetch</span><span class="p">];</span>
+
+<span class="bp">NSOperationQueue</span> <span class="o">*</span><span class="n">queue</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSOperationQueue</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="p">[</span><span class="n">queue</span> <span class="nl">addOperations</span><span class="p">:[</span><span class="n">firstFetch</span><span class="p">,</span> <span class="n">secondFetch</span><span class="p">]</span> <span class="nl">waitUntilFinished</span><span class="p">:</span> <span class="nb">NO</span><span class="p">];</span>
+</code></pre></div>
+<p>You can finish almost all the work you need to do with the convenience API. What do you think so far? It&rsquo;s much easier than writing backend code, maintaining a server, and writing the code to communicate with it.</p>
+
+<h2 id="advanced-features">Advanced Features</h2>
+
+<h3 id="queries">Queries</h3>
+
+<p>While powerful, the convenience APIs aren&rsquo;t quite enough to finish our check-in application—now it&rsquo;s time to add search functionality. To add a search function, you will need a <em>query</em>. A <code>CKQuery</code> object is made up of <code>RecordType</code>, <code>NSPredicate</code> and <code>NSSortDescriptors</code>.</p>
+
+<blockquote>
+<p><code>NSPredicate</code> plays an important role here, handling string matching, location and date ranging, and combinations of simple queries. Refer to the <a href="https://developer.apple.com/library/ios/documentation/CloudKit/Reference/CKQuery_class/index.html#//apple_ref/occ/cl/CKQuery"><code>CKQuery</code> documentation for more</a>.</p>
+</blockquote>
+
+<p>Let&rsquo;s say I want all places containing the name &lsquo;Apple Store&rsquo;:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">predicate</span> <span class="o">=</span> <span class="bp">NSPredicate</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="s">&quot;name CONTAINS &#39;Apple Store&#39;&quot;</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">query</span> <span class="o">=</span> <span class="n">CKQuery</span><span class="p">(</span><span class="nl">recordType</span><span class="p">:</span> <span class="s">&quot;Place&quot;</span><span class="p">,</span> <span class="nl">predicate</span><span class="p">:</span> <span class="n">predicate</span><span class="p">)</span>
+
+<span class="n">publicDB</span><span class="p">.</span><span class="n">performQuery</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="nl">inZoneWithID</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span> <span class="n">results</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSPredicate</span> <span class="o">*</span><span class="n">predicate</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithFormat</span><span class="p">:</span><span class="s">@&quot;name CONTAINS &#39;Apple Store&#39;&quot;</span><span class="p">];</span>
+<span class="n">CKQuery</span> <span class="o">*</span><span class="n">query</span> <span class="o">=</span> <span class="p">[[</span><span class="n">CKQuery</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithRecordType</span><span class="p">:</span><span class="s">@&quot;Place&quot;</span> <span class="nl">predicate</span><span class="p">:</span><span class="n">predicate</span><span class="p">];</span>
+
+<span class="p">[</span><span class="n">publicDB</span> <span class="nl">performQuery</span><span class="p">:</span><span class="n">query</span>
+          <span class="nl">inZoneWithID</span><span class="p">:</span><span class="nb">nil</span>
+     <span class="nl">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSArray</span> <span class="o">*</span><span class="n">results</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+         <span class="c1">// ...</span>
+     <span class="p">}];</span>
+</code></pre></div>
+<p>Alternately, you could modify the query to retrieve all the places within one mile around the user.</p>
+
+<h3 id="subscriptions">Subscriptions</h3>
+
+<p>After adding queries, our application is almost complete. Or wait, did we forget something?</p>
+
+<p>Yes: notifications. They&rsquo;re a critical part of any check-in application. </p>
+
+<p>For example, a social person may want to be notified if someone mentions &ldquo;party&rdquo; around him or her. This is possible with CloudKit—the framework already provides something to achieve this using the <code>CKSubscription</code> class:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">predicate</span> <span class="o">=</span> <span class="bp">NSPredicate</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="s">&quot;description CONTAINS &#39;party&#39;&quot;</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="n">subscription</span> <span class="o">=</span> <span class="n">CKSubscription</span><span class="p">(</span><span class="nl">recordType</span><span class="p">:</span> <span class="s">&quot;Checkin&quot;</span><span class="p">,</span> <span class="nl">predicate</span><span class="p">:</span> <span class="n">predicate</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="p">.</span><span class="n">FiresOnRecordCreation</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="n">info</span> <span class="o">=</span> <span class="n">CKNotificationInfo</span><span class="p">()</span>
+<span class="n">info</span><span class="p">.</span><span class="n">alertLocalizationKey</span> <span class="o">=</span> <span class="s">&quot;NEW_PARTY_ALERT_KEY&quot;</span>
+<span class="n">info</span><span class="p">.</span><span class="n">soundName</span> <span class="o">=</span> <span class="s">&quot;NewAlert.aiff&quot;</span>
+<span class="n">info</span><span class="p">.</span><span class="n">shouldBadge</span> <span class="o">=</span> <span class="nb">true</span>
+
+<span class="n">subscription</span><span class="p">.</span><span class="n">notificationInfo</span> <span class="o">=</span> <span class="n">info</span>
+
+<span class="n">publicDB</span><span class="p">.</span><span class="n">saveSubscription</span><span class="p">(</span><span class="n">subscription</span><span class="p">)</span> <span class="p">{</span> <span class="n">subscription</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
+    <span class="c1">//...</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">CKDatabase</span> <span class="o">*</span><span class="n">publicDB</span> <span class="o">=</span> <span class="p">[[</span><span class="n">CKContainer</span> <span class="n">defaultContainer</span><span class="p">]</span> <span class="n">publicCloudDatabase</span><span class="p">];</span>
+
+<span class="bp">NSPredicate</span> <span class="o">*</span><span class="n">predicate</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithFormat</span><span class="p">:</span><span class="s">@&quot;description CONTAINS &#39;party&#39;&quot;</span><span class="p">];</span>
+
+<span class="n">CKSubscription</span> <span class="o">*</span><span class="n">subscription</span> <span class="o">=</span> <span class="p">[[</span><span class="n">CKSubscription</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithRecordType</span><span class="p">:</span><span class="s">@&quot;Checkin&quot;</span> <span class="nl">predicate</span><span class="p">:</span><span class="n">predicate</span> <span class="nl">options</span><span class="p">:</span><span class="n">CKSubscriptionOptionsFiresOnRecordCreation</span><span class="p">];</span>
+
+<span class="n">CKNotificationInfo</span> <span class="o">*</span><span class="n">info</span> <span class="o">=</span> <span class="p">[</span><span class="n">CKNotificationInfo</span> <span class="n">new</span><span class="p">];</span>
+<span class="n">info</span><span class="p">.</span><span class="n">alertLocalizationKey</span> <span class="o">=</span> <span class="s">@&quot;NEW_PARTY_ALERT_KEY&quot;</span><span class="p">;</span>
+<span class="n">info</span><span class="p">.</span><span class="n">soundName</span> <span class="o">=</span> <span class="s">@&quot;NewAlert.aiff&quot;</span><span class="p">;</span>
+<span class="n">info</span><span class="p">.</span><span class="n">shouldBadge</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+
+<span class="n">subscription</span><span class="p">.</span><span class="n">notificationInfo</span> <span class="o">=</span> <span class="n">info</span><span class="p">;</span>
+
+<span class="p">[</span><span class="n">publicDB</span> <span class="nl">saveSubscription</span><span class="p">:</span><span class="n">subscription</span>
+         <span class="nl">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="n">CKSubscription</span> <span class="o">*</span><span class="n">subscription</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+             <span class="c1">//...</span>
+         <span class="p">}];</span>
+</code></pre></div>
+<p>Receiving the notification is handled by the application delegate:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="nf">application</span><span class="p">(</span><span class="nl">application</span><span class="p">:</span> <span class="bp">UIApplication</span><span class="p">,</span> <span class="n">didReceiveRemoteNotification</span> <span class="nl">userInfo</span><span class="p">:</span> <span class="p">[</span><span class="nl">NSObject</span> <span class="p">:</span> <span class="n">AnyObject</span><span class="p">])</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">ckNotification</span> <span class="o">=</span> <span class="n">CKNotification</span><span class="p">(</span><span class="nl">fromRemoteNotificationDictionary</span><span class="p">:</span> <span class="n">userInfo</span> <span class="kt">as</span><span class="o">!</span> <span class="p">[</span><span class="nl">String</span> <span class="p">:</span> <span class="bp">NSObject</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">ckNotification</span><span class="p">.</span><span class="n">notificationType</span> <span class="o">==</span> <span class="p">.</span><span class="n">Query</span><span class="p">,</span>
+        <span class="k">let</span> <span class="n">queryNotification</span> <span class="o">=</span> <span class="n">ckNotification</span> <span class="kt">as</span><span class="o">?</span> <span class="n">CKQueryNotification</span>
+    <span class="p">{</span>
+        <span class="k">let</span> <span class="n">recordID</span> <span class="o">=</span> <span class="n">queryNotification</span><span class="p">.</span><span class="n">recordID</span>
+        <span class="c1">//...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">application:</span><span class="p">(</span><span class="bp">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span> <span class="nf">didReceiveRemoteNotification:</span><span class="p">(</span><span class="bp">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="nv">userInfo</span><span class="p">{</span>
+    <span class="n">CKNotification</span> <span class="o">*</span><span class="n">ckNotification</span> <span class="o">=</span> <span class="p">[</span><span class="n">CKNotification</span> <span class="nl">notificationFromRemoteNotificationDictionary</span><span class="p">:</span><span class="n">userInfo</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ckNotification</span><span class="p">.</span><span class="n">notificationType</span> <span class="o">==</span> <span class="n">CKNotificationTypeQuery</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">CKQueryNotification</span> <span class="o">*</span><span class="n">queryNotification</span> <span class="o">=</span> <span class="n">ckNotification</span><span class="p">;</span>
+        <span class="n">CKRecordID</span> <span class="o">*</span><span class="n">recordID</span> <span class="o">=</span> <span class="p">[</span><span class="n">queryNotification</span> <span class="n">recordID</span><span class="p">];</span>
+        <span class="c1">// ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="more">More</h2>
+
+<p>As I said in the beginning, CloudKit can do much more than described in this article. You can allow your users to add pictures to their check-ins. References in CloudKit allow you to get all the related check-ins for certain places. Moreover, CloudKit has an API that allows you to find your users&#39; friends who are also using your application via their address book.</p>
+
+<p>Can&rsquo;t wait to try out CloudKit? It could free you from writing backend code, caring about server pressure, maintaining a large CDN network, renting a server, and more. But wait—what about the price? How much does it cost? The answer is: free. Apple allows using CloudKit for 10 GB of resource storage, 100 MB of data storage, and 2 GB of daily transfer, scaling with your user base up to to 1 petabyte of resources, 10 TB database, and 200 TB transfer.</p>
+
+<blockquote>
+<p>Check out the <a href="https://developer.apple.com/icloud/index.html">CloudKit cost calculator</a> at the bottom of the page for detailed free limits and pricing.</p>
+</blockquote>
+
+<hr>
+
+<p>As of WWDC 2015, CloudKit is <em>not only</em> available on iOS or OS X. You can now integrate <a href="https://developer.apple.com/library/prerelease/ios/documentation/CloudKitJS/Reference/CloudKitJavaScriptReference/index.html">CloudKit JS</a> with your website to make it possible for iCloud users to enjoy your service in a web browser or use the <a href="https://developer.apple.com/library/prerelease/ios/documentation/DataManagement/Conceptual/CloutKitWebServicesReference/Introduction/Introduction.html">CloudKit web service</a> to communicate with CloudKit servers directly via HTTP request. All this means it&rsquo;s now possible to use CloudKit from any other mobile or desktop platform!</p>
+
+<p>CloudKit is an amazing thing. I can&rsquo;t wait to see the awesome applications you NSHipsters make with it.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2015-06-29-cloudkit.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Croath Liu" itemprop="image" src="http://nshipster.s3.amazonaws.com/croath-liu.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/croath-liu/">Croath Liu</a></span>
+
+      <p><a href="http://croath.com">Croath Liu</a> (<a href="https://twitter.com/cr0ath">@cr0ath</a>) is an iOS developer and one of the <a href="http://nshipster.cn/translators/croath-liu/">lead translators</a> for <a href="http://nshipster.cn/">nshipster.cn</a>. He lives in Beijing.</p>
+
+
+      
+        <a href="https://plus.google.com/?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/uikeycommand/" title="UIKeyCommand" rel="next">UIKey​Command</a>
+            </h1>
+
+            <p>As part of the push for greater productivity on the iPad, iOS 9 adds <em>Discoverability</em>, an overlay showing the currently available key commands inside an app. This small change suddenly makes key commands far more viable on the iPad and, with it, makes <code>UIKeyCommand</code> a necessary addition to your app.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nsorderedset/" title="NSOrderedSet">NSOrderedSet</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsurlcache/" title="NSURLCache">NSURLCache</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsdatadetector/" title="NSDataDetector">NSDataDetector</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/core-location-in-ios-8/" title="Core Location in iOS 8">Core Location in iOS 8</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

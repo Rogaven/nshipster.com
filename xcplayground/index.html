@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>XCPlayground - NSHipster</title>
+    <meta name="description" content="Playgrounds aren't a feature of the Swift language *per se*—instead, they are a terrific showcase for all that Swift has to offer, from its efficiency and power to its opacity and depth. Take a look past the surface of Playgrounds, at tools that make them a powerful part of the development process: sources and resources, captured values and extended execution, and integrated rich formatting that can transform a Playground into an interactive teaching tool."/>
+    <link rel="canonical" href="http://nshipster.com/xcplayground/"/>
+  
+  
+  
+  
+  <meta name="author" content="Nate Cook"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@nnnnnnnn"/>
+  
+  
+    <meta name="twitter:title" content="XCPlayground"/>
+    <meta name="twitter:description" content="Playgrounds aren&#39;t a feature of the Swift language *per se*—instead, they are a terrific showcase for all that Swift has to offer, from its efficiency and power to its opacity and depth. Take a look past the surface of Playgrounds, at tools that make them a powerful part of the development process: sources and resources, captured values and extended execution, and integrated rich formatting that can transform a Playground into an interactive teaching tool."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="XCPlayground"/>
+    <meta property="og:url" content="http://nshipster.com/xcplayground/"/>
+    <meta property="og:description" content="Playgrounds aren&#39;t a feature of the Swift language *per se*—instead, they are a terrific showcase for all that Swift has to offer, from its efficiency and power to its opacity and depth. Take a look past the surface of Playgrounds, at tools that make them a powerful part of the development process: sources and resources, captured values and extended execution, and integrated rich formatting that can transform a Playground into an interactive teaching tool."/>
+    <meta property="article:published_time" content="2015-05-11T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="swift"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="XCPlayground"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/xcplayground/">XCPlayground</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/nate-cook/">Nate Cook</a> —
+    
+    <time datetime="2015-05-11T00:00:00-07:00" itemprop="datePublished">May 11<sup>th</sup>, 2015</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <blockquote>
+<p>Stop right there! Given the topic, wouldn&rsquo;t you rather read this article as a Playground? <strong><a href="http://nshipster.s3.amazonaws.com/XCPlayground.playground.zip" onclick="ga('send', 'event', 'link', 'click', 'XCPlayground.playground');">Download Now &rarr;</a></strong></p>
+</blockquote>
+
+<p><em>Play.</em></p>
+
+<p>Given the association of play with childish exuberance, one could define <em>play</em> as the opposite of <em>work</em>. And yet, the elements of play are what we do in our line of work every day: experimentation, exploration, discovery. </p>
+
+<p>Playgrounds aren&rsquo;t a feature of the Swift language <em>per se</em>—instead, they are a terrific showcase for all that Swift has to offer, from its efficiency and power to its opacity and depth. Playgrounds make it truly simple to create a working program—indeed, every new Playground starts with the soon-familiar <code>&quot;Hello, playground&quot;</code>. At the same time, Playgrounds hide some of their most powerful features, leaving exploration as the only means to discovering their rapidly advancing capabilities.</p>
+
+<p>This week, we&rsquo;ll take a look past the surface of Playgrounds, giving you tools to make them a powerful part of your development process. Read on for more about Playground sources and resources, captured values and extended execution, and integrated rich formatting that can transform a Playground into an interactive teaching tool.</p>
+
+<blockquote>
+<p><strong>Note:</strong> The digital version of the recently released <a href="http://gum.co/nshipster-swift"><em>NSHipster: Obscure Topics in Cocoa &amp; Swift</em></a> includes a package of Playgrounds—one for every chapter in the book. Each Playground provides a chance to explore and experiment with the concepts presented therein, including extended examples. </p>
+</blockquote>
+
+<h2 id="sources">Sources</h2>
+
+<p>The revamped Playground package structure includes a &ldquo;Sources&rdquo; folder for code that is more stable than experimental. All files in the &ldquo;Sources&rdquo; directory are compiled (just once, not every time you press a key) into a single module and automatically imported into the Playground. In addition to simplifying the code in your Playground, this compilation <em>drastically</em> speeds up execution. This means that if I have defined a type, function, or global constant in those files with <code>public</code> accessibility, I can use it in a Playground without further ado:</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/xcplayground-sources.png" alt="Compiled Sources"></p>
+
+<p>To get started in your own Playground, open the Project Navigator (⌘1) and expand the Playground file to see the &ldquo;Sources&rdquo; directory.</p>
+
+<h3 id="importing-frameworks">Importing Frameworks</h3>
+
+<p>To import an external framework, create a new Xcode Workspace that contains both the framework project and your Playground. After building the framework, it can be imported with a standard <code>import</code> statement.</p>
+
+<h2 id="resources">Resources</h2>
+
+<p>No playground is complete without a sandbox to play in, and Swift Playgrounds don&rsquo;t disappoint. Playgrounds have <em>two</em> places to keep associated resources: one local to each individual playground and a second shared amongst all of them. Being able to load and work with XML, JSON data, XIBs, and images extends the usefulness of your Playground experimentation.</p>
+
+<h3 id="local">Local</h3>
+
+<p>The <code>Resources</code> folder, embedded in the Playground package alongside <code>Sources</code>, is visible in the Project Navigator—simply drag and drop images or data files to use them in your Playground. The contents are then available via the main bundle. For example, we can easily load a JSON file filled with weather data:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">jsonPath</span> <span class="o">=</span> <span class="bp">NSBundle</span><span class="p">.</span><span class="n">mainBundle</span><span class="p">().</span><span class="n">bundlePath</span><span class="p">.</span><span class="n">stringByAppendingPathComponent</span><span class="p">(</span><span class="s">&quot;weather.json&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="k">let</span>
+   <span class="n">jsonData</span> <span class="o">=</span> <span class="bp">NSData</span><span class="p">(</span><span class="nl">contentsOfFile</span><span class="p">:</span> <span class="n">jsonPath</span><span class="p">),</span>
+   <span class="n">json</span> <span class="o">=</span> <span class="bp">NSJSONSerialization</span><span class="p">.</span><span class="n">JSONObjectWithData</span><span class="p">(</span><span class="n">jsonData</span><span class="p">,</span> <span class="nl">options</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">error</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="p">[</span><span class="nl">String</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">]</span> 
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="shared">Shared</h3>
+
+<p>The contents of a &ldquo;Shared Playground Data&rdquo; directory inside your &ldquo;Documents&rdquo; folder are available to any Playground you create. Access the shared folder via the <code>XCPSharedDataDirectoryPath</code> constant.</p>
+
+<blockquote>
+<p>To try this out yourself, you&rsquo;ll need to create the directory at &ldquo;~/Documents/Shared Playground Data&rdquo;. Here we&rsquo;re attempting to load an image named &ldquo;image.png&rdquo;:</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">sharedImagePath</span> <span class="o">=</span> <span class="n">XCPSharedDataDirectoryPath</span><span class="p">.</span><span class="n">stringByAppendingPathComponent</span><span class="p">(</span><span class="s">&quot;image.png&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="k">let</span> <span class="n">image</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">contentsOfFile</span><span class="p">:</span> <span class="n">sharedImagePath</span><span class="p">)</span> <span class="p">{</span>
+   <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="captured-values">Captured Values</h2>
+
+<p>A Playground normally shows the results of simple expressions immediately. Arrays, strings, numbers, and more have their values shown in the results pane as they are calculated. But what about values that change over time?</p>
+
+<p>By using the <code>XCPCaptureValue()</code> function, we can build a graph of a changing value over a series of iterations. Returning to our weather sample, let&rsquo;s take a look at the hourly temperatures in the data, using <code>XCPCaptureValue</code> to display the value of <code>temperature</code> in the Assistant Editor&rsquo;s timeline view:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">XCPlayground</span>
+
+<span class="k">for</span> <span class="n">forecast</span> <span class="k">in</span> <span class="n">forecasts</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="k">let</span>
+        <span class="n">tempString</span> <span class="o">=</span> <span class="n">forecast</span><span class="p">[</span><span class="s">&quot;temp&quot;</span><span class="p">]</span><span class="o">?</span><span class="p">[</span><span class="s">&quot;english&quot;</span><span class="p">]</span> <span class="kt">as</span><span class="o">?</span> <span class="n">String</span><span class="p">,</span>
+        <span class="n">temperature</span> <span class="o">=</span> <span class="n">tempString</span><span class="p">.</span><span class="n">toInt</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">XCPCaptureValue</span><span class="p">(</span><span class="s">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">temperature</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Alternatively, choosing <strong>Editor &rarr; Show Result For Current Line</strong> will capture the current line&rsquo;s values and display the chart directly in the flow of the Playground:</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/xcplayground-capture.png" alt="Result for Current Line"></p>
+
+<h2 id="asynchronous-execution">Asynchronous Execution</h2>
+
+<p>Unlike most Swift code that is written as part of an app or framework, Playgrounds are treated as <em>top-level code.</em> Top-level code in a Playground is executed instruction-by-instruction in order, from top to bottom. This container-less style of execution provides immediate feedback, but there is one problem: execution halts as soon as it reaches the end of the Playground. Network requests, timers, and long-running background queues are abandoned before they can return to report on success or failure.</p>
+
+<p>To keep execution going long enough to see the results of these kinds of asynchronous operations, the <code>XCPlayground</code> module includes a function that extends the length of the process:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">XCPlayground</span>
+
+<span class="nf">XCPSetExecutionShouldContinueIndefinitely</span><span class="p">(</span><span class="nl">continueIndefinitely</span><span class="p">:</span> <span class="nb">true</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="n">url</span> <span class="o">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;http://httpbin.org/image/png&quot;</span><span class="p">)</span><span class="o">!</span>
+<span class="k">let</span> <span class="n">task</span> <span class="o">=</span> <span class="bp">NSURLSession</span><span class="p">.</span><span class="n">sharedSession</span><span class="p">().</span><span class="n">dataTaskWithURL</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">data</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span>
+    <span class="k">let</span> <span class="n">image</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">data</span><span class="p">:</span> <span class="n">data</span><span class="p">)</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+<span class="n">task</span><span class="p">.</span><span class="n">resume</span><span class="p">()</span>
+</code></pre></div>
+<blockquote>
+<p>In addition to the code in a Playground, Swift code run from the command line in a scripting file, in the Swift REPL, or in a project&rsquo;s optional &ldquo;main.swift&rdquo; file is also considered top-level code. Along with order-dependent execution, top-level code is the only kind that can contain statements outside of a function or encapsulated within a type.</p>
+</blockquote>
+
+<h2 id="documentation">Documentation</h2>
+
+<p>Beyond experimentation, Playgrounds are also powerful for demonstrating tools and frameworks in the Swift language. Special documentation sections can be rendered as rich text, giving clear narration to code that demonstrates a technique or the correct way to use a library.</p>
+
+<p>Unlike <a href="/swift-documentation/">Swift&rsquo;s <em>other</em> documentation syntax</a>, Swift Playgrounds use Markdown for richly formatted text. (If you downloaded the Playground for this post, you&rsquo;re reading Markdown right now.) A colon (<code>:</code>) added to a single- or multi-line comment marker signifies a rich-text comment:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">//: This line will have **bold** and *italic* text.</span>
+
+<span class="cm">/*:</span>
+<span class="cm">## Headers of All Sizes</span>
+
+<span class="cm">### Lists of Links</span>
+
+<span class="cm">- [NSHipster](http://nshipster.com)</span>
+<span class="cm">- [ASCIIwwdc](http://asciiwwdc.com)</span>
+<span class="cm">- [SwiftDoc](http://swiftdoc.org)</span>
+
+<span class="cm">### Images, Too</span>
+
+<span class="cm">![Remote Image](http://nshipster.s3.amazonaws.com/alert.gif)</span>
+<span class="cm">![Local Image](bomb.gif) </span>
+
+<span class="cm">*Images in the Resources directory can be referenced locally*</span>
+<span class="cm">*/</span>
+</code></pre></div>
+<p><img src="http://nshipster.s3.amazonaws.com/xcplayground-documentation.png" alt="Rendered Documentation"></p>
+
+<p>It&rsquo;s possible to toggle rich documentation rendering either by selecting the <strong>Editor &rarr; Show Rendered Markup</strong> menu item or by checking the <strong>Render Documentation</strong> checkbox in the File Inspector (⌘⌥1).</p>
+
+<hr>
+
+<p>Playgrounds represent a major shift in the way we share and learn about tools for OS X and iOS. A Playground can demonstrate each feature and provide a space for potential users to discover and explore the library you&rsquo;ve created. Trade out your static <code>README.md</code> for an interactive <code>README.playground</code> and let the play begin anew.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2015-05-11-xcplayground.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 1.2.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Nate Cook" itemprop="image" src="http://nshipster.s3.amazonaws.com/nate-cook.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/nate-cook/">Nate Cook</a></span>
+
+      <p><a href="http://natecook.com">Nate Cook</a> (<a href="https://twitter.com/nnnnnnnn">@nnnnnnnn</a>) is an independent web and application developer who <a href="http://natecook.com/blog/">writes frequently about topics in Swift</a>, and the creator of <a href="http://swiftdoc.org">SwiftDoc.org</a>.</p>
+
+
+      
+        <a href="https://plus.google.com/?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+        
+
+  <section id="promotion">
+    
+    <small>Recommended Reading</small>
+    
+    
+    
+
+<div id="" class="book" itemscope itemtype="http://schema.org/Product">
+  <div itemscope itemtype="http://schema.org/Book">
+    <link itemprop="bookFormat" href="http://schema.org/EBook"/>
+    <a href="https://gum.co/nshipster-swift/" title="NSHipster: Obscure Topics in Cocoa & Swift" target="_blank">
+      <img src="//cdn.nshipster.com/images/nshipster-swift-cover@2x.png" class="cover" alt="NSHipster: Obscure Topics in Cocoa & Swift" itemprop="image"/>
+    </a>
+    <span itemprop="name" style="display:none;" hidden>NSHipster: Obscure Topics in Cocoa & Swift</span>
+    <span itemprop="author" style="display:none;" hidden>Mattt Thompson & Nate Cook</span>
+    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display:none;">
+      <link itemprop="availability" href="http://schema.org/InStock"/>
+      <meta itemprop="priceCurrency" content="USD"/>
+      <span itemprop="price">29</span>
+    </div>
+  </div>
+</div>
+
+    <h3>NSHipster, Second Edition</h3>
+    <h4>Obscure Topics in Cocoa & Swift</h4>
+    <p>Revised and extended to focus on using Swift in iOS and OS X development, NSHipster: Obscure Topics in Cocoa &amp; Swift is an essential updated guide.</p>
+
+    
+    <a class="buy" href="https://gum.co/nshipster-swift/" target="_blank">Buy Now on Gumroad</a>
+    
+  </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/mirrortype/" title="MirrorType" rel="next">Mirror​Type</a>
+            </h1>
+
+            <p>Reflection in Swift is a limited affair, providing read-only access to a subset of type metadata. While far from the rich array of run-time hackery familiar to seasoned Objective-C developers, Swift&rsquo;s tools enable the immediate feedback and sense of exploration offered by Xcode Playgrounds. This week, we&rsquo;ll reflect on reflection in Swift, its mirror types, and <code>MirrorType</code>, the protocol that binds them together.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/unmanaged/" title="Unmanaged">Unmanaged</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/swift-objc-runtime/" title="Swift & the Objective-C Runtime">Swift & the Objective-C Runtime</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/swift-1.2/" title="Swift 1.2">Swift 1.2</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/mirrortype/" title="MirrorType">MirrorType</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

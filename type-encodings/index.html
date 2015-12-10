@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>Type Encodings - NSHipster</title>
+    <meta name="description" content="From number stations and numerology to hieroglyphics and hobo codes, there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it's the thrill of the hunt that piques our deepest curiosities."/>
+    <link rel="canonical" href="http://nshipster.com/type-encodings/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="Type Encodings"/>
+    <meta name="twitter:description" content="From number stations and numerology to hieroglyphics and hobo codes, there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it&#39;s the thrill of the hunt that piques our deepest curiosities."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Type Encodings"/>
+    <meta property="og:url" content="http://nshipster.com/type-encodings/"/>
+    <meta property="og:description" content="From number stations and numerology to hieroglyphics and hobo codes, there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it&#39;s the thrill of the hunt that piques our deepest curiosities."/>
+    <meta property="article:published_time" content="2013-02-04T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="objective-c"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="Type Encodings"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/type-encodings/">Type Encodings</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-02-04T00:00:00-08:00" itemprop="datePublished">February 4<sup>th</sup>, 2013</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>From <a href="http://en.wikipedia.org/wiki/Numbers_station">number stations</a> and <a href="http://en.wikipedia.org/wiki/Numerology">numerology</a> to <a href="http://en.wikipedia.org/wiki/Egyptian_hieroglyphs">hieroglyphs</a> and <a href="http://en.wikipedia.org/wiki/Hobo#Hobo_.28sign.29_code">hobo codes</a>, there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it&rsquo;s the thrill of the hunt that piques our deepest curiosities.</p>
+
+<p>It is in this spirit that we take a look at <a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html">Objective-C Type Encodings</a> in this week&rsquo;s edition of NSHipster.</p>
+
+<hr>
+
+<p><a href="http://nshipster.com/nsvalue/">Last week</a>, in a discussion about <code>NSValue</code>, there was mention of <code>+valueWithBytes:objCType:</code>, whose second parameter should be created with the Objective-C <code>@encode()</code> compiler directive.</p>
+
+<p><code>@encode</code>, one of the <a href="http://nshipster.com/at-compiler-directives/"><code>@</code> Compiler Directives</a>, returns a C string that encodes the internal representation of a given type (e.g., <code>@encode(int)</code> → <code>i</code>), similar to the ANSI C <code>typeof</code> operator. Apple&rsquo;s Objective-C runtime uses type encodings internally to help facilitate message dispatching.</p>
+
+<p>Here&rsquo;s a rundown of all of the different Objective-C Type Encodings:</p>
+
+<table id="type-encodings">
+  <caption>Objective-C Type Encodings</caption>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><tt>c</tt></td>
+      <td>A <tt>char</tt></td>
+    </tr>
+    <tr>
+      <td><tt>i</tt></td>
+      <td>An <tt>int</tt></td></tr>
+    <tr>
+      <td><tt>s</tt></td>
+      <td>A <tt>short</tt></td></tr>
+    <tr>
+      <td><tt>l</tt></td>
+      <td>A <tt>long</tt><tt>l</tt> is treated as a 32-bit quantity on 64-bit programs.</td></tr>
+    <tr>
+      <td><tt>q</tt></td>
+      <td>A <tt>long long</tt></td></tr>
+    <tr>
+      <td><tt>C</tt></td>
+      <td>An <tt>unsigned char</tt></td></tr>
+    <tr>
+      <td><tt>I</tt></td>
+      <td>An <tt>unsigned int</tt></td></tr>
+    <tr>
+      <td><tt>S</tt></td>
+      <td>An <tt>unsigned short</tt></td></tr>
+    <tr>
+      <td><tt>L</tt></td>
+      <td>An <tt>unsigned long</tt></td></tr>
+    <tr>
+      <td><tt>Q</tt></td>
+      <td>An <tt>unsigned long long</tt></td></tr>
+    <tr>
+      <td><tt>f</tt></td>
+      <td>A <tt>float</tt></td></tr>
+    <tr>
+      <td><tt>d</tt></td>
+      <td>A <tt>double</tt></td></tr>
+    <tr>
+      <td><tt>B</tt></td>
+      <td>A C++ <tt>bool</tt> or a C99 <tt>_Bool</tt></td></tr>
+    <tr>
+      <td><tt>v</tt></td>
+      <td>A <tt>void</tt></td></tr>
+    <tr>
+      <td><tt>*</tt></td>
+      <td>A character string (<tt>char *</tt>)</td></tr>
+    <tr>
+      <td><tt>@</tt></td>
+      <td>An object (whether statically typed or typed <tt>id</tt>)</td></tr>
+    <tr>
+      <td><tt>#</tt></td>
+      <td>A class object (<tt>Class</tt>)</td></tr>
+    <tr>
+      <td><tt>:</tt></td>
+      <td>A method selector (<tt>SEL</tt>)</td></tr>
+    <tr>
+      <td>[<em>array type</em>] </td>
+      <td>An array</td></tr>
+    <tr>
+      <td>{<em>name=type&hellip;</em>}</td>
+      <td>A structure</td></tr>
+    <tr>
+      <td>(<em>name</em>=<em>type&hellip;</em>)</td>
+      <td>A union</td></tr>
+    <tr>
+      <td><tt>b</tt>num</td>
+      <td>A bit field of <em>num</em> bits</td></tr>
+    <tr>
+      <td><tt>^</tt>type</td>
+      <td>A pointer to <em>type</em></td></tr>
+    <tr>
+      <td><tt>?</tt></td>
+      <td>An unknown type (among other things, this code is used for function pointers)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Of course, charts are fine, but experimenting in code is even better:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;int        : %s&quot;</span><span class="p">,</span> <span class="k">@encode</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;float      : %s&quot;</span><span class="p">,</span> <span class="k">@encode</span><span class="p">(</span><span class="kt">float</span><span class="p">));</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;float *    : %s&quot;</span><span class="p">,</span> <span class="k">@encode</span><span class="p">(</span><span class="kt">float</span><span class="o">*</span><span class="p">));</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;char       : %s&quot;</span><span class="p">,</span> <span class="k">@encode</span><span class="p">(</span><span class="kt">char</span><span class="p">));</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;char *     : %s&quot;</span><span class="p">,</span> <span class="k">@encode</span><span class="p">(</span><span class="kt">char</span> <span class="o">*</span><span class="p">));</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;BOOL       : %s&quot;</span><span class="p">,</span> <span class="k">@encode</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">));</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;void       : %s&quot;</span><span class="p">,</span> <span class="k">@encode</span><span class="p">(</span><span class="kt">void</span><span class="p">));</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;void *     : %s&quot;</span><span class="p">,</span> <span class="k">@encode</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">));</span>
+
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;NSObject * : %s&quot;</span><span class="p">,</span> <span class="k">@encode</span><span class="p">(</span><span class="bp">NSObject</span> <span class="o">*</span><span class="p">));</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;NSObject   : %s&quot;</span><span class="p">,</span> <span class="k">@encode</span><span class="p">(</span><span class="bp">NSObject</span><span class="p">));</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;[NSObject] : %s&quot;</span><span class="p">,</span> <span class="k">@encode</span><span class="p">(</span><span class="k">typeof</span><span class="p">([</span><span class="bp">NSObject</span> <span class="k">class</span><span class="p">])));</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;NSError ** : %s&quot;</span><span class="p">,</span> <span class="k">@encode</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="bp">NSError</span> <span class="o">**</span><span class="p">)));</span>
+
+<span class="kt">int</span> <span class="n">intArray</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">};</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;int[]      : %s&quot;</span><span class="p">,</span> <span class="k">@encode</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">intArray</span><span class="p">)));</span>
+
+<span class="kt">float</span> <span class="n">floatArray</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0.1f</span><span class="p">,</span> <span class="mf">0.2f</span><span class="p">,</span> <span class="mf">0.3f</span><span class="p">};</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;float[]    : %s&quot;</span><span class="p">,</span> <span class="k">@encode</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">floatArray</span><span class="p">)));</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="n">_struct</span> <span class="p">{</span>
+    <span class="kt">short</span> <span class="n">a</span><span class="p">;</span>
+    <span class="kt">long</span> <span class="kt">long</span> <span class="n">b</span><span class="p">;</span>
+    <span class="kt">unsigned</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">c</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">Struct</span><span class="p">;</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;struct     : %s&quot;</span><span class="p">,</span> <span class="k">@encode</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">Struct</span><span class="p">)));</span>
+</code></pre></div>
+<p>Result:</p>
+
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Encoding</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>int</code></td>
+<td><code>i</code></td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td><code>f</code></td>
+</tr>
+<tr>
+<td><code>float *</code></td>
+<td><code>^f</code></td>
+</tr>
+<tr>
+<td><code>char</code></td>
+<td><code>c</code></td>
+</tr>
+<tr>
+<td><code>char *</code></td>
+<td><code>*</code></td>
+</tr>
+<tr>
+<td><code>BOOL</code></td>
+<td><code>c</code></td>
+</tr>
+<tr>
+<td><code>void</code></td>
+<td><code>v</code></td>
+</tr>
+<tr>
+<td><code>void *</code></td>
+<td><code>^v</code></td>
+</tr>
+<tr>
+<td><code>NSObject *</code></td>
+<td><code>@</code></td>
+</tr>
+<tr>
+<td><code>NSObject</code></td>
+<td><code>#</code></td>
+</tr>
+<tr>
+<td><code>[NSObject]</code></td>
+<td><code>{NSObject=#}</code></td>
+</tr>
+<tr>
+<td><code>NSError **</code></td>
+<td><code>^@</code></td>
+</tr>
+<tr>
+<td><code>int[]</code></td>
+<td><code>[5i]</code></td>
+</tr>
+<tr>
+<td><code>float[]</code></td>
+<td><code>[3f]</code></td>
+</tr>
+<tr>
+<td><code>struct</code></td>
+<td><code>{_struct=sqQ}</code></td>
+</tr>
+</tbody></table>
+
+<p>There are some interesting takeaways from this:</p>
+
+<ul>
+<li>Whereas the standard encoding for pointers is a preceding <code>^</code>, <code>char *</code> gets its own code: <code>*</code>. This makes sense conceptually, as C strings are thought to be entities in and of themselves, rather than a pointer to something else.</li>
+<li><code>BOOL</code> is <code>c</code>, rather than <code>i</code>, as one might expect. Reason being, <code>char</code> is smaller than an <code>int</code>, and when Objective-C was originally designed in the 80&rsquo;s, bits (much like the dollar) were more valuable than they are today. <code>BOOL</code> is specifically a <code>signed char</code> (even if <code>-funsigned-char</code> is set), to ensure a consistent type between compilers, since <code>char</code> could be either <code>signed</code> or <code>unsigned</code>.</li>
+<li>Passing <code>NSObject</code> directly yields <code>#</code>. However, passing <code>[NSObject class]</code> yields a struct named <code>NSObject</code> with a single class field. That is, of course, the <code>isa</code> field, which all <code>NSObject</code> instances have to signify their type.</li>
+</ul>
+
+<h2 id="method-encodings">Method Encodings</h2>
+
+<p>As mentioned in Apple&rsquo;s <a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html">&ldquo;Objective-C Runtime Programming Guide&rdquo;</a>, there are a handful of type encodings that are used internally, but cannot be returned with <code>@encode</code>.</p>
+
+<p>These are the type qualifiers for methods declared in a protocol:</p>
+
+<table id="method-encodings">
+  <caption>Objective-C Method Encodings</caption>
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Meaning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><tt>r</tt></td>
+      <td><tt>const</tt></td>
+    </tr>
+    <tr>
+      <td><tt>n</tt></td>
+      <td><tt>in</tt></td>
+    </tr>
+    <tr>
+      <td><tt>N</tt></td>
+      <td><tt>inout</tt></td>
+    </tr>
+    <tr>
+      <td><tt>o</tt></td>
+      <td><tt>out</tt></td>
+    </tr>
+    <tr>
+      <td><tt>O</tt></td>
+      <td><tt>bycopy</tt></td>
+    </tr>
+    <tr>
+      <td><tt>R</tt></td>
+      <td><tt>byref</tt></td>
+    </tr>
+    <tr>
+      <td><tt>V</tt></td>
+      <td><tt>oneway</tt></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For anyone familiar with <a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSDistantObject_Class/Reference/Reference.html">NSDistantObject</a>, you&rsquo;ll doubtless recognize these as a vestige of <a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/DistrObjects/DistrObjects.html#//apple_ref/doc/uid/10000102i">Distributed Objects</a>.</p>
+
+<p>Although DO has fallen out of fashion in the age of iOS, it was an interprocess messaging protocol used between Cocoa applications&ndash;even running on different machines on the network. Under these constraints, there were benefits to be had from the additional context.</p>
+
+<p>For example, parameters in distributed object messages were passed as proxies by default. In situations where proxying would be unnecessarily inefficient, the <code>bycopy</code> qualifier could be added to make sure a full copy of the object was sent. Also by default, parameters were <code>inout</code>, signifying that objects needed to be sent back and forth when sending the message. By specifying a parameter as <code>in</code> or <code>out</code> instead, the application could avoid the round-trip overhead.</p>
+
+<hr>
+
+<p>So what do we gain from our newfound understanding of Objective-C Type Encodings?
+Honestly, not that much (unless you&rsquo;re doing any crazy metaprogramming).</p>
+
+<p>But as we said from the very outset, there is wisdom in the pursuit of deciphering secret messages.</p>
+
+<p>Looking at type encodings reveals details about Objective-C runtime internals, which is a noble pursuit in and of itself. Going further down the rabbit hole, and we come to the secret history of Distributed Objects, and the obscure parameter qualifiers that <a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSNumberFormatter_Class/Reference/Reference.html%23jumpTo_22">still linger around to this day</a>.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-02-04-type-encodings.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+            
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nsurlcache/" title="NSURLCache" rel="next">NSURLCache</a>
+            </h1>
+
+            <p>NSURLCache provides a composite in-memory and on-disk caching mechanism for URL requests to your application. As part of Foundation&rsquo;s URL Loading System, any request loaded through NSURLConnection will be handled by NSURLCache.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/method-swizzling/" title="Method Swizzling">Method Swizzling</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/bool/" title="BOOL / bool / Boolean / NSCFBoolean">BOOL / bool / Boolean / NSCFBoolean</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nil/" title="nil / Nil / NULL / NSNull">nil / Nil / NULL / NSNull</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/extended-file-attributes/" title="Extended File Attributes">Extended File Attributes</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

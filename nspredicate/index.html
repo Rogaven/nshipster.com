@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSPredicate - NSHipster</title>
+    <meta name="description" content="NSPredicate is a Foundation class that specifies how data should be fetched or filtered. Its query language, which is like a cross between a SQL WHERE clause and a regular expression, provides an expressive, natural language interface to define logical conditions on which a collection is searched."/>
+    <link rel="canonical" href="http://nshipster.com/nspredicate/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="NSPredicate"/>
+    <meta name="twitter:description" content="NSPredicate is a Foundation class that specifies how data should be fetched or filtered. Its query language, which is like a cross between a SQL WHERE clause and a regular expression, provides an expressive, natural language interface to define logical conditions on which a collection is searched."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NSPredicate"/>
+    <meta property="og:url" content="http://nshipster.com/nspredicate/"/>
+    <meta property="og:description" content="NSPredicate is a Foundation class that specifies how data should be fetched or filtered. Its query language, which is like a cross between a SQL WHERE clause and a regular expression, provides an expressive, natural language interface to define logical conditions on which a collection is searched."/>
+    <meta property="article:published_time" content="2013-07-15T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NSPredicate"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/nspredicate/">NSPredicate</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-07-15T00:00:00-07:00" itemprop="datePublished">July 15<sup>th</sup>, 2013</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p><code>NSPredicate</code> is a Foundation class that specifies how data should be fetched or filtered. Its query language, which is like a cross between a SQL <code>WHERE</code> clause and a regular expression, provides an expressive, natural language interface to define logical conditions on which a collection is searched.</p>
+
+<p>It&rsquo;s easier to show <code>NSPredicate</code> in use, rather than talk about it in the abstract, so we&rsquo;re going to revisit the example data set used in the <a href="http://nshipster.com/nssortdescriptor/"><code>NSSortDescriptor</code> article</a>:</p>
+
+<table><thead>
+<tr>
+<th><code>firstName</code></th>
+<th><code>lastName</code></th>
+<th><code>age</code></th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Alice</td>
+<td>Smith</td>
+<td>24</td>
+</tr>
+<tr>
+<td>Bob</td>
+<td>Jones</td>
+<td>27</td>
+</tr>
+<tr>
+<td>Charlie</td>
+<td>Smith</td>
+<td>33</td>
+</tr>
+<tr>
+<td>Quentin</td>
+<td>Alberts</td>
+<td>31</td>
+</tr>
+</tbody></table>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="nl">Person</span><span class="p">:</span> <span class="bp">NSObject</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nl">firstName</span><span class="p">:</span> <span class="n">String</span>
+    <span class="k">let</span> <span class="nl">lastName</span><span class="p">:</span> <span class="n">String</span>
+    <span class="k">let</span> <span class="nl">age</span><span class="p">:</span> <span class="n">Int</span>
+
+    <span class="k">init</span><span class="p">(</span><span class="nl">firstName</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">lastName</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">firstName</span> <span class="o">=</span> <span class="n">firstName</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">lastName</span> <span class="o">=</span> <span class="n">lastName</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">age</span>
+    <span class="p">}</span>
+
+    <span class="kr">override</span> <span class="k">var</span> <span class="nl">description</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;\(firstName) \(lastName)&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="n">alice</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">firstName</span><span class="p">:</span> <span class="s">&quot;Alice&quot;</span><span class="p">,</span> <span class="nl">lastName</span><span class="p">:</span> <span class="s">&quot;Smith&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">24</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">bob</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">firstName</span><span class="p">:</span> <span class="s">&quot;Bob&quot;</span><span class="p">,</span> <span class="nl">lastName</span><span class="p">:</span> <span class="s">&quot;Jones&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">27</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">charlie</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">firstName</span><span class="p">:</span> <span class="s">&quot;Charlie&quot;</span><span class="p">,</span> <span class="nl">lastName</span><span class="p">:</span> <span class="s">&quot;Smith&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">33</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">quentin</span> <span class="o">=</span> <span class="n">Person</span><span class="p">(</span><span class="nl">firstName</span><span class="p">:</span> <span class="s">&quot;Quentin&quot;</span><span class="p">,</span> <span class="nl">lastName</span><span class="p">:</span> <span class="s">&quot;Alberts&quot;</span><span class="p">,</span> <span class="nl">age</span><span class="p">:</span> <span class="mi">31</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">people</span> <span class="o">=</span> <span class="p">[</span><span class="n">alice</span><span class="p">,</span> <span class="n">bob</span><span class="p">,</span> <span class="n">charlie</span><span class="p">,</span> <span class="n">quentin</span><span class="p">]</span>
+
+<span class="k">let</span> <span class="n">bobPredicate</span> <span class="o">=</span> <span class="bp">NSPredicate</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="s">&quot;firstName = &#39;Bob&#39;&quot;</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">smithPredicate</span> <span class="o">=</span> <span class="bp">NSPredicate</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="s">&quot;lastName = %@&quot;</span><span class="p">,</span> <span class="s">&quot;Smith&quot;</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">thirtiesPredicate</span> <span class="o">=</span> <span class="bp">NSPredicate</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="s">&quot;age &gt;= 30&quot;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">people</span> <span class="kt">as</span> <span class="bp">NSArray</span><span class="p">).</span><span class="n">filteredArrayUsingPredicate</span><span class="p">(</span><span class="n">bobPredicate</span><span class="p">)</span>
+<span class="c1">// [&quot;Bob Jones&quot;]</span>
+
+<span class="p">(</span><span class="n">people</span> <span class="kt">as</span> <span class="bp">NSArray</span><span class="p">).</span><span class="n">filteredArrayUsingPredicate</span><span class="p">(</span><span class="n">smithPredicate</span><span class="p">)</span>
+<span class="c1">// [&quot;Alice Smith&quot;, &quot;Charlie Smith&quot;]</span>
+
+<span class="p">(</span><span class="n">people</span> <span class="kt">as</span> <span class="bp">NSArray</span><span class="p">).</span><span class="n">filteredArrayUsingPredicate</span><span class="p">(</span><span class="n">thirtiesPredicate</span><span class="p">)</span>
+<span class="c1">// [&quot;Charlie Smith&quot;, &quot;Quentin Alberts&quot;]</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">@interface</span> <span class="nc">Person</span> : <span class="bp">NSObject</span>
+<span class="k">@property</span> <span class="bp">NSString</span> <span class="o">*</span><span class="n">firstName</span><span class="p">;</span>
+<span class="k">@property</span> <span class="bp">NSString</span> <span class="o">*</span><span class="n">lastName</span><span class="p">;</span>
+<span class="k">@property</span> <span class="bp">NSNumber</span> <span class="o">*</span><span class="n">age</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Person</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">description</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="bp">NSString</span> <span class="nl">stringWithFormat</span><span class="p">:</span><span class="s">@&quot;%@ %@&quot;</span><span class="p">,</span> <span class="nb">self</span><span class="p">.</span><span class="n">firstName</span><span class="p">,</span> <span class="nb">self</span><span class="p">.</span><span class="n">lastName</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+
+<span class="cp">#pragma mark -</span>
+
+<span class="bp">NSArray</span> <span class="o">*</span><span class="n">firstNames</span> <span class="o">=</span> <span class="l">@[</span> <span class="s">@&quot;Alice&quot;</span><span class="p">,</span> <span class="s">@&quot;Bob&quot;</span><span class="p">,</span> <span class="s">@&quot;Charlie&quot;</span><span class="p">,</span> <span class="s">@&quot;Quentin&quot;</span> <span class="l">]</span><span class="p">;</span>
+<span class="bp">NSArray</span> <span class="o">*</span><span class="n">lastNames</span> <span class="o">=</span> <span class="l">@[</span> <span class="s">@&quot;Smith&quot;</span><span class="p">,</span> <span class="s">@&quot;Jones&quot;</span><span class="p">,</span> <span class="s">@&quot;Smith&quot;</span><span class="p">,</span> <span class="s">@&quot;Alberts&quot;</span> <span class="l">]</span><span class="p">;</span>
+<span class="bp">NSArray</span> <span class="o">*</span><span class="n">ages</span> <span class="o">=</span> <span class="l">@[</span> <span class="mi">@24</span><span class="p">,</span> <span class="mi">@27</span><span class="p">,</span> <span class="mi">@33</span><span class="p">,</span> <span class="mi">@31</span> <span class="l">]</span><span class="p">;</span>
+
+<span class="bp">NSMutableArray</span> <span class="o">*</span><span class="n">people</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSMutableArray</span> <span class="n">array</span><span class="p">];</span>
+<span class="p">[</span><span class="n">firstNames</span> <span class="nl">enumerateObjectsUsingBlock</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">obj</span><span class="p">,</span> <span class="bp">NSUInteger</span> <span class="n">idx</span><span class="p">,</span> <span class="kt">BOOL</span> <span class="o">*</span><span class="n">stop</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Person</span> <span class="o">*</span><span class="n">person</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Person</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+    <span class="n">person</span><span class="p">.</span><span class="n">firstName</span> <span class="o">=</span> <span class="n">firstNames</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+    <span class="n">person</span><span class="p">.</span><span class="n">lastName</span> <span class="o">=</span> <span class="n">lastNames</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+    <span class="n">person</span><span class="p">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">ages</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">people</span> <span class="nl">addObject</span><span class="p">:</span><span class="n">person</span><span class="p">];</span>
+<span class="p">}];</span>
+
+<span class="bp">NSPredicate</span> <span class="o">*</span><span class="n">bobPredicate</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithFormat</span><span class="p">:</span><span class="s">@&quot;firstName = &#39;Bob&#39;&quot;</span><span class="p">];</span>
+<span class="bp">NSPredicate</span> <span class="o">*</span><span class="n">smithPredicate</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithFormat</span><span class="p">:</span><span class="s">@&quot;lastName = %@&quot;</span><span class="p">,</span> <span class="s">@&quot;Smith&quot;</span><span class="p">];</span>
+<span class="bp">NSPredicate</span> <span class="o">*</span><span class="n">thirtiesPredicate</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithFormat</span><span class="p">:</span><span class="s">@&quot;age &gt;= 30&quot;</span><span class="p">];</span>
+
+<span class="c1">// [&quot;Bob Jones&quot;]</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Bobs: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">people</span> <span class="nl">filteredArrayUsingPredicate</span><span class="p">:</span><span class="n">bobPredicate</span><span class="p">]);</span>
+
+<span class="c1">// [&quot;Alice Smith&quot;, &quot;Charlie Smith&quot;]</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Smiths: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">people</span> <span class="nl">filteredArrayUsingPredicate</span><span class="p">:</span><span class="n">smithPredicate</span><span class="p">]);</span>
+
+<span class="c1">// [&quot;Charlie Smith&quot;, &quot;Quentin Alberts&quot;]</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;30&#39;s: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">people</span> <span class="nl">filteredArrayUsingPredicate</span><span class="p">:</span><span class="n">thirtiesPredicate</span><span class="p">]);</span>
+</code></pre></div>
+<h2 id="using-nspredicate-with-collections">Using <code>NSPredicate</code> with Collections</h2>
+
+<p>Foundation provides methods to filter <code>NSArray</code> / <code>NSMutableArray</code> &amp; <code>NSSet</code> / <code>NSMutableSet</code> with predicates.</p>
+
+<p>Immutable collections, <code>NSArray</code> &amp; <code>NSSet</code>, have the methods <code>filteredArrayUsingPredicate:</code> and <code>filteredSetUsingPredicate:</code> which return an immutable collection by evaluating a predicate on the receiver.</p>
+
+<p>Mutable collections, <code>NSMutableArray</code> &amp; <code>NSMutableSet</code> have the method <code>filterUsingPredicate:</code>, which removes any objects that evaluate to <code>FALSE</code> when running the predicate on the receiver.</p>
+
+<p><code>NSDictionary</code> can use predicates by filtering its keys or values (both <code>NSArray</code> objects). <code>NSOrderedSet</code> can either create new ordered sets from a filtered <code>NSArray</code> or <code>NSSet</code>, or alternatively, <code>NSMutableSet</code> can simply <code>removeObjectsInArray:</code>, passing objects filtered with the <em>negated</em> predicate.</p>
+
+<h2 id="using-nspredicate-with-core-data">Using <code>NSPredicate</code> with Core Data</h2>
+
+<p><code>NSFetchRequest</code> has a <code>predicate</code> property, which specifies the logical conditions under which managed objects should be retrieved. The same rules apply, except that predicates are evaluated by the persistent store coordinator within a managed object context, rather than collections being filtered in-memory.</p>
+
+<h2 id="predicate-syntax">Predicate Syntax</h2>
+
+<h3 id="substitutions">Substitutions</h3>
+
+<blockquote>
+<ul>
+<li><code>%@</code> is a var arg substitution for an object value—often a string, number, or date.</li>
+<li><code>%K</code> is a var arg substitution for a key path.</li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">ageIs33Predicate</span> <span class="o">=</span> <span class="bp">NSPredicate</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="s">&quot;%K = %@&quot;</span><span class="p">,</span> <span class="s">&quot;age&quot;</span><span class="p">,</span> <span class="s">&quot;33&quot;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">people</span> <span class="kt">as</span> <span class="bp">NSArray</span><span class="p">).</span><span class="n">filteredArrayUsingPredicate</span><span class="p">(</span><span class="n">ageIs33Predicate</span><span class="p">)</span>
+<span class="c1">// [&quot;Charlie Smith&quot;]</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSPredicate</span> <span class="o">*</span><span class="n">ageIs33Predicate</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithFormat</span><span class="p">:</span><span class="s">@&quot;%K = %@&quot;</span><span class="p">,</span> <span class="s">@&quot;age&quot;</span><span class="p">,</span> <span class="mi">@33</span><span class="p">];</span>
+
+<span class="c1">// [&quot;Charlie Smith&quot;]</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Age 33: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">people</span> <span class="nl">filteredArrayUsingPredicate</span><span class="p">:</span><span class="n">ageIs33Predicate</span><span class="p">]);</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><code>$VARIABLE_NAME</code> is a value that can be substituted with <code>NSPredicate -predicateWithSubstitutionVariables:</code>.</li>
+</ul>
+</blockquote>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">namesBeginningWithLetterPredicate</span> <span class="o">=</span> <span class="bp">NSPredicate</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="s">&quot;(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)&quot;</span><span class="p">)</span>
+
+<span class="p">(</span><span class="n">people</span> <span class="kt">as</span> <span class="bp">NSArray</span><span class="p">).</span><span class="n">filteredArrayUsingPredicate</span><span class="p">(</span><span class="n">namesBeginningWithLetterPredicate</span><span class="p">.</span><span class="n">predicateWithSubstitutionVariables</span><span class="p">([</span><span class="s">&quot;letter&quot;</span><span class="o">:</span> <span class="s">&quot;A&quot;</span><span class="p">]))</span>
+<span class="c1">// [&quot;Alice Smith&quot;, &quot;Quentin Alberts&quot;]</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSPredicate</span> <span class="o">*</span><span class="n">namesBeginningWithLetterPredicate</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithFormat</span><span class="p">:</span><span class="s">@&quot;(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)&quot;</span><span class="p">];</span>
+
+<span class="c1">// [&quot;Alice Smith&quot;, &quot;Quentin Alberts&quot;]</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;&#39;A&#39; Names: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">people</span> <span class="nl">filteredArrayUsingPredicate</span><span class="p">:[</span><span class="n">namesBeginningWithLetterPredicate</span> <span class="nl">predicateWithSubstitutionVariables</span><span class="p">:</span><span class="l">@{</span><span class="s">@&quot;letter&quot;</span><span class="o">:</span> <span class="s">@&quot;A&quot;</span><span class="l">}</span><span class="p">]]);</span>
+</code></pre></div>
+<h3 id="basic-comparisons">Basic Comparisons</h3>
+
+<blockquote>
+<ul>
+<li><code>=</code>, <code>==</code>: The left-hand expression is equal to the right-hand expression.</li>
+<li><code>&gt;=</code>, <code>=&gt;</code>: The left-hand expression is greater than or equal to the right-hand expression.</li>
+<li><code>&lt;=</code>, <code>=&lt;</code>: The left-hand expression is less than or equal to the right-hand expression.</li>
+<li><code>&gt;</code>: The left-hand expression is greater than the right-hand expression.</li>
+<li><code>&lt;</code>: The left-hand expression is less than the right-hand expression.</li>
+<li><code>!=</code>, <code>&lt;&gt;</code>: The left-hand expression is not equal to the right-hand expression.</li>
+<li><code>BETWEEN</code>: The left-hand expression is between, or equal to either of, the values specified in the right-hand side. The right-hand side is a two value array (an array is required to specify order) giving upper and lower bounds. For example, <code>1 BETWEEN { 0 , 33 }</code>, or <code>$INPUT BETWEEN { $LOWER, $UPPER }</code>.</li>
+</ul>
+</blockquote>
+
+<h3 id="basic-compound-predicates">Basic Compound Predicates</h3>
+
+<blockquote>
+<ul>
+<li><code>AND</code>, <code>&amp;&amp;</code>: Logical <code>AND</code>.</li>
+<li><code>OR</code>, <code>||</code>: Logical <code>OR</code>.</li>
+<li><code>NOT</code>, <code>!</code>: Logical <code>NOT</code>.</li>
+</ul>
+</blockquote>
+
+<h3 id="string-comparisons">String Comparisons</h3>
+
+<blockquote>
+<p>String comparisons are by default case and diacritic sensitive. You can modify an operator using the key characters c and d within square braces to specify case and diacritic insensitivity respectively, for example firstName BEGINSWITH[cd] $FIRST_NAME.</p>
+
+<ul>
+<li><code>BEGINSWITH</code>: The left-hand expression begins with the right-hand expression.</li>
+<li><code>CONTAINS</code>: The left-hand expression contains the right-hand expression.</li>
+<li><code>ENDSWITH</code>: The left-hand expression ends with the right-hand expression.</li>
+<li><code>LIKE</code>: The left hand expression equals the right-hand expression: <code>?</code> and <code>*</code> are allowed as wildcard characters, where <code>?</code> matches 1 character and <code>*</code> matches 0 or more characters.</li>
+<li><code>MATCHES</code>:  The left hand expression equals the right hand expression using a regex-style comparison according to ICU v3 (for more details see the <a href="http://userguide.icu-project.org/strings/regexp">ICU User Guide for Regular Expressions</a>).</li>
+</ul>
+</blockquote>
+
+<h3 id="aggregate-operations">Aggregate Operations</h3>
+
+<h4 id="relational-operations">Relational Operations</h4>
+
+<blockquote>
+<ul>
+<li><code>ANY</code>, <code>SOME</code>: Specifies any of the elements in the following expression. For example, <code>ANY children.age &lt; 18</code>.</li>
+<li><code>ALL</code>: Specifies all of the elements in the following expression. For example, <code>ALL children.age &lt; 18</code>.</li>
+<li><code>NONE</code>: Specifies none of the elements in the following expression. For example, <code>NONE children.age &lt; 18</code>. This is logically equivalent to <code>NOT (ANY ...)</code>.</li>
+<li><code>IN</code>: Equivalent to an SQL <code>IN</code> operation, the left-hand side must appear in the collection specified by the right-hand side. For example, <code>name IN { &#39;Ben&#39;, &#39;Melissa&#39;, &#39;Nick&#39; }</code>.</li>
+</ul>
+</blockquote>
+
+<h4 id="array-operations">Array Operations</h4>
+
+<blockquote>
+<ul>
+<li><code>array[index]</code>: Specifies the element at the specified index in <code>array</code>.</li>
+<li><code>array[FIRST]</code>: Specifies the first element in <code>array</code>.</li>
+<li><code>array[LAST]</code>: Specifies the last element in <code>array</code>.</li>
+<li><code>array[SIZE]</code>: Specifies the size of <code>array</code>.</li>
+</ul>
+</blockquote>
+
+<h3 id="boolean-value-predicates">Boolean Value Predicates</h3>
+
+<blockquote>
+<ul>
+<li><code>TRUEPREDICATE</code>: A predicate that always evaluates to <code>TRUE</code>.</li>
+<li><code>FALSEPREDICATE</code>: A predicate that always evaluates to <code>FALSE</code>.</li>
+</ul>
+</blockquote>
+
+<h2 id="nscompoundpredicate"><code>NSCompoundPredicate</code></h2>
+
+<p>We saw that <code>AND</code> &amp; <code>OR</code> can be used in predicate format strings to create compound predicates. However, the same can be accomplished using an <code>NSCompoundPredicate</code>.</p>
+
+<p>For example, the following predicates are equivalent:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="bp">NSCompoundPredicate</span><span class="p">(</span><span class="nl">type</span><span class="p">:</span> <span class="p">.</span><span class="n">AndPredicateType</span><span class="p">,</span> <span class="nl">subpredicates</span><span class="p">:</span> <span class="p">[</span><span class="bp">NSPredicate</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="s">&quot;age &gt; 25&quot;</span><span class="p">),</span> <span class="bp">NSPredicate</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="s">&quot;firstName = %@&quot;</span><span class="p">,</span> <span class="s">&quot;Quentin&quot;</span><span class="p">)])</span>
+
+<span class="bp">NSPredicate</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="s">&quot;(age &gt; 25) AND (firstName = %@)&quot;</span><span class="p">,</span> <span class="s">&quot;Quentin&quot;</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[</span><span class="bp">NSCompoundPredicate</span> <span class="nl">andPredicateWithSubpredicates</span><span class="p">:</span><span class="l">@[</span><span class="p">[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithFormat</span><span class="p">:</span><span class="s">@&quot;age &gt; 25&quot;</span><span class="p">],</span> <span class="p">[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithFormat</span><span class="p">:</span><span class="s">@&quot;firstName = %@&quot;</span><span class="p">,</span> <span class="s">@&quot;Quentin&quot;</span><span class="p">]</span><span class="l">]</span><span class="p">];</span>
+
+<span class="p">[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithFormat</span><span class="p">:</span><span class="s">@&quot;(age &gt; 25) AND (firstName = %@)&quot;</span><span class="p">,</span> <span class="s">@&quot;Quentin&quot;</span><span class="p">];</span>
+</code></pre></div>
+<p>While the syntax string literal is certainly easier to type, there are occasions where you may need to combine existing predicates. In these cases, <code>NSCompoundPredicate -andPredicateWithSubpredicates:</code> &amp; <code>-orPredicateWithSubpredicates:</code> is the way to go.</p>
+
+<h2 id="nscomparisonpredicate"><code>NSComparisonPredicate</code></h2>
+
+<p>Similarly, if after reading <a href="http://nshipster.com/nsexpression/">last week&rsquo;s article</a> you now find yourself with more <code>NSExpression</code> objects than you know what to do with, <code>NSComparisonPredicate</code> can help you out.</p>
+
+<p>Like <code>NSCompoundPredicate</code>, <code>NSComparisonPredicate</code> constructs an <code>NSPredicate</code> from subcomponents—in this case, <code>NSExpression</code>s on the left and right hand sides.
+Analyzing its class constructor provides a glimpse into the way <code>NSPredicate</code> format strings are parsed:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">+</span> <span class="p">(</span><span class="bp">NSPredicate</span> <span class="o">*</span><span class="p">)</span><span class="nf">predicateWithLeftExpression:</span><span class="p">(</span><span class="bp">NSExpression</span> <span class="o">*</span><span class="p">)</span><span class="nv">lhs</span>
+                             <span class="nf">rightExpression:</span><span class="p">(</span><span class="bp">NSExpression</span> <span class="o">*</span><span class="p">)</span><span class="nv">rhs</span>
+                                    <span class="nf">modifier:</span><span class="p">(</span><span class="n">NSComparisonPredicateModifier</span><span class="p">)</span><span class="nv">modifier</span>
+                                        <span class="nf">type:</span><span class="p">(</span><span class="n">NSPredicateOperatorType</span><span class="p">)</span><span class="nv">type</span>
+                                     <span class="nf">options:</span><span class="p">(</span><span class="bp">NSUInteger</span><span class="p">)</span><span class="nv">options</span>
+</code></pre></div>
+<h4 id="parameters">Parameters</h4>
+
+<blockquote>
+<ul>
+<li><code>lhs</code>: The left hand expression.</li>
+<li><code>rhs</code>: The right hand expression.</li>
+<li><code>modifier</code>: The modifier to apply. (<code>ANY</code> or <code>ALL</code>)</li>
+<li><code>type</code>: The predicate operator type.</li>
+<li><code>options</code>: The options to apply. For no options, pass <code>0</code>.</li>
+</ul>
+</blockquote>
+
+<h3 id="nscomparisonpredicate-types"><code>NSComparisonPredicate</code> Types</h3>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kr">public</span> <span class="k">enum</span> <span class="nl">NSPredicateOperatorType</span> <span class="p">:</span> <span class="n">UInt</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">LessThanPredicateOperatorType</span>
+    <span class="k">case</span> <span class="n">LessThanOrEqualToPredicateOperatorType</span>
+    <span class="k">case</span> <span class="n">GreaterThanPredicateOperatorType</span>
+    <span class="k">case</span> <span class="n">GreaterThanOrEqualToPredicateOperatorType</span>
+    <span class="k">case</span> <span class="n">EqualToPredicateOperatorType</span>
+    <span class="k">case</span> <span class="n">NotEqualToPredicateOperatorType</span>
+    <span class="k">case</span> <span class="n">MatchesPredicateOperatorType</span>
+    <span class="k">case</span> <span class="n">LikePredicateOperatorType</span>
+    <span class="k">case</span> <span class="n">BeginsWithPredicateOperatorType</span>
+    <span class="k">case</span> <span class="n">EndsWithPredicateOperatorType</span>
+    <span class="k">case</span> <span class="n">InPredicateOperatorType</span>
+    <span class="k">case</span> <span class="n">CustomSelectorPredicateOperatorType</span>
+    <span class="k">case</span> <span class="n">ContainsPredicateOperatorType</span>
+    <span class="k">case</span> <span class="n">BetweenPredicateOperatorType</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">enum</span> <span class="p">{</span>
+   <span class="n">NSLessThanPredicateOperatorType</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+   <span class="n">NSLessThanOrEqualToPredicateOperatorType</span><span class="p">,</span>
+   <span class="n">NSGreaterThanPredicateOperatorType</span><span class="p">,</span>
+   <span class="n">NSGreaterThanOrEqualToPredicateOperatorType</span><span class="p">,</span>
+   <span class="n">NSEqualToPredicateOperatorType</span><span class="p">,</span>
+   <span class="n">NSNotEqualToPredicateOperatorType</span><span class="p">,</span>
+   <span class="n">NSMatchesPredicateOperatorType</span><span class="p">,</span>
+   <span class="n">NSLikePredicateOperatorType</span><span class="p">,</span>
+   <span class="n">NSBeginsWithPredicateOperatorType</span><span class="p">,</span>
+   <span class="n">NSEndsWithPredicateOperatorType</span><span class="p">,</span>
+   <span class="n">NSInPredicateOperatorType</span><span class="p">,</span>
+   <span class="n">NSCustomSelectorPredicateOperatorType</span><span class="p">,</span>
+   <span class="n">NSContainsPredicateOperatorType</span><span class="p">,</span>
+   <span class="n">NSBetweenPredicateOperatorType</span>
+<span class="p">};</span>
+
+<span class="k">typedef</span> <span class="bp">NSUInteger</span> <span class="n">NSPredicateOperatorType</span><span class="p">;</span>
+</code></pre></div>
+<h3 id="nscomparisonpredicate-options"><code>NSComparisonPredicate</code> Options</h3>
+
+<blockquote>
+<ul>
+<li><code>NSCaseInsensitivePredicateOption</code>: A case-insensitive predicate. You represent this option in a predicate format string using a [c] following a string operation (for example, &ldquo;NeXT&rdquo; like[c] &ldquo;next&rdquo;).</li>
+<li><code>NSDiacriticInsensitivePredicateOption</code>: A diacritic-insensitive predicate. You represent this option in a predicate format string using a [d] following a string operation (for example, &ldquo;naïve&rdquo; like[d] &ldquo;naive&rdquo;).</li>
+<li><code>NSNormalizedPredicateOption</code>: Indicates that the strings to be compared have been preprocessed. This option supersedes NSCaseInsensitivePredicateOption and NSDiacriticInsensitivePredicateOption, and is intended as a performance optimization option. You represent this option in a predicate format string using a [n] following a string operation (for example, &ldquo;WXYZlan&rdquo; matches[n] &ldquo;.lan&rdquo;).</li>
+<li><code>NSLocaleSensitivePredicateOption</code>: Indicates that strings to be compared using <code>&lt;</code>, <code>&lt;=</code>, <code>=</code>, <code>=&gt;</code>, <code>&gt;</code> should be handled in a locale-aware fashion. You represent this option in a predicate format string using a <code>[l]</code> following one of the <code>&lt;</code>, <code>&lt;=</code>, <code>=</code>, <code>=&gt;</code>, <code>&gt;</code> operators (for example, &ldquo;straße&rdquo; &gt;[l] &ldquo;strasse&rdquo;).</li>
+</ul>
+</blockquote>
+
+<h2 id="block-predicates">Block Predicates</h2>
+
+<p>Finally, if you just can&rsquo;t be bothered to learn the <code>NSPredicate</code> format syntax, you can go through the motions with <code>NSPredicate +predicateWithBlock:</code>.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">shortNamePredicate</span> <span class="o">=</span> <span class="bp">NSPredicate</span> <span class="p">{</span> <span class="p">(</span><span class="n">evaluatedObject</span><span class="p">,</span> <span class="n">_</span><span class="p">)</span> <span class="k">in</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">evaluatedObject</span> <span class="kt">as</span><span class="o">!</span> <span class="n">Person</span><span class="p">).</span><span class="n">firstName</span><span class="p">.</span><span class="n">utf16</span><span class="p">.</span><span class="n">count</span> <span class="o">&lt;=</span> <span class="mi">5</span>
+<span class="p">}</span>
+
+<span class="p">(</span><span class="n">people</span> <span class="kt">as</span> <span class="bp">NSArray</span><span class="p">).</span><span class="n">filteredArrayUsingPredicate</span><span class="p">(</span><span class="n">shortNamePredicate</span><span class="p">)</span>
+<span class="c1">// [&quot;Alice Smith&quot;, &quot;Bob Jones&quot;]</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSPredicate</span> <span class="o">*</span><span class="n">shortNamePredicate</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSPredicate</span> <span class="nl">predicateWithBlock</span><span class="p">:</span><span class="o">^</span><span class="kt">BOOL</span><span class="p">(</span><span class="kt">id</span> <span class="n">evaluatedObject</span><span class="p">,</span> <span class="bp">NSDictionary</span> <span class="o">*</span><span class="n">bindings</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">[[</span><span class="n">evaluatedObject</span> <span class="n">firstName</span><span class="p">]</span> <span class="n">length</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="p">}];</span>
+
+<span class="c1">// [&quot;Alice Smith&quot;, &quot;Bob Jones&quot;]</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Short Names: %@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">people</span> <span class="nl">filteredArrayUsingPredicate</span><span class="p">:</span><span class="n">shortNamePredicate</span><span class="p">]);</span>
+</code></pre></div>
+<p>&hellip;Alright, that whole dig on <code>predicateWithBlock:</code> as being the lazy way out wasn&rsquo;t <em>entirely</em> charitable.</p>
+
+<p>Actually, since blocks can encapsulate any kind of calculation, there is a whole class of queries that can&rsquo;t be expressed with the <code>NSPredicate</code> format string (such as evaluating against values dynamically calculated at run-time). And while its possible to accomplish the same using an <code>NSExpression</code> with a custom selector, blocks provide a convenient interface to get the job done.</p>
+
+<p>One important note: <strong><code>NSPredicate</code>s created with <code>predicateWithBlock:</code> cannot be used for Core Data fetch requests backed by a <code>SQLite</code> store.</strong></p>
+
+<hr>
+
+<p><code>NSPredicate</code> is, and I know this is said a lot, truly one of the jewels of Cocoa. Other languages would be lucky to have something with half of its capabilities in a third-party library—let alone the standard library. Having it as a standard-issue component affords us as application and framework developers an incredible amount of leverage in working with data.</p>
+
+<p>Together with <code>NSExpression</code>, <code>NSPredicate</code> reminds us what a treat Foundation is: a framework that is not only incredibly useful, but meticulously architected and engineered, to be taken as inspiration for how we should write our own code.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-07-15-nspredicate.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on September 19, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/uimenucontroller/" title="UIMenuController" rel="next">UIMenu​Controller</a>
+            </h1>
+
+            <p>Mobile usability today is truly quite remarkable—especially considering how far it&rsquo;s come in just the last decade. What was once a clumsy technology relegated to the tech elite has now become the primary mode of computation for a significant portion of the general population.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/mktileoverlay-mkmapsnapshotter-mkdirections/" title="MKTileOverlay,<br/>MKMapSnapshotter &<br/>MKDirections">MKTileOverlay,<br/>MKMapSnapshotter &<br/>MKDirections</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/uiprintinteractioncontroller/" title="UIPrintInteractionController">UIPrintInteractionController</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/uiappearance/" title="UIAppearance">UIAppearance</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/uilocalizedindexedcollation/" title="UILocalizedIndexedCollation">UILocalizedIndexedCollation</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

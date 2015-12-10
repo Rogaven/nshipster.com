@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>UIKeyCommand - NSHipster</title>
+    <meta name="description" content="As part of the push for greater productivity on the iPad, iOS 9 adds *Discoverability*, an overlay showing the currently available key commands inside an app. This small change suddenly makes key commands far more viable on the iPad and, with it, makes `UIKeyCommand` a necessary addition to your app."/>
+    <link rel="canonical" href="http://nshipster.com/uikeycommand/"/>
+  
+  
+  
+  
+  <meta name="author" content="Nate Cook"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@nnnnnnnn"/>
+  
+  
+    <meta name="twitter:title" content="UIKeyCommand"/>
+    <meta name="twitter:description" content="As part of the push for greater productivity on the iPad, iOS 9 adds *Discoverability*, an overlay showing the currently available key commands inside an app. This small change suddenly makes key commands far more viable on the iPad and, with it, makes `UIKeyCommand` a necessary addition to your app."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="UIKeyCommand"/>
+    <meta property="og:url" content="http://nshipster.com/uikeycommand/"/>
+    <meta property="og:description" content="As part of the push for greater productivity on the iPad, iOS 9 adds *Discoverability*, an overlay showing the currently available key commands inside an app. This small change suddenly makes key commands far more viable on the iPad and, with it, makes `UIKeyCommand` a necessary addition to your app."/>
+    <meta property="article:published_time" content="2015-07-27T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="UIKeyCommand"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/uikeycommand/">UIKey​Command</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/nate-cook/">Nate Cook</a> —
+    
+    <time datetime="2015-07-27T00:00:00-07:00" itemprop="datePublished">July 27<sup>th</sup>, 2015</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Adding a new feature to a product is always a tradeoff. Will the added utility of a new feature be enough to offset the added complexity? Shortcuts would seem to side-step this issue—after all, they&rsquo;re simply a quicker alternative for features already in your app. But that creates another dilemma: what if a new feature is added and no one knows it&rsquo;s there?</p>
+
+<p>When key commands for external keyboards debuted in iOS 7, there was no intrinsic way to learn of their existence. Unlike in OS X, where a user can gradually discover shortcuts for the menu items they use most often, an iOS app had few ways to communicate what key commands are available. Initial tours flash by and fade from memory; help screens are hidden out of sight. Without a way to make shortcuts visible in a timely and relevant manner, users were sure to miss out on useful features that developers had taken the time to implement.</p>
+
+<p>No longer. As part of the push for greater productivity on the iPad, iOS 9 adds <em>Discoverability</em>, an overlay showing the currently available key commands inside an app. This small change suddenly makes key commands far more viable on the iPad and, with it, makes <code>UIKeyCommand</code> a necessary addition to your app.</p>
+
+<hr>
+
+<h2 id="uikeycommand"><code>UIKeyCommand</code></h2>
+
+<p>The <code>UIKeyCommand</code> class is in fact quite simple, with only four properties to configure:</p>
+
+<ul>
+<li><p><code>input</code>: The character of the key you&rsquo;d like to recognize, or the correct constant for the arrow and escape keys, which do not have characters themselves. The available constants are:</p>
+
+<ul>
+<li><code>UIKeyInputUpArrow</code></li>
+<li><code>UIKeyInputDownArrow</code></li>
+<li><code>UIKeyInputLeftArrow</code></li>
+<li><code>UIKeyInputRightArrow</code></li>
+<li><code>UIKeyInputEscape</code></li>
+</ul></li>
+<li><p><code>modifierFlags</code>: One or more <code>UIKeyModifierFlags</code>, describing the modifier keys that should be pressed in combination with <code>input</code>:</p>
+
+<ul>
+<li><code>.Command</code>, <code>.Alternate</code>, <code>.Shift</code>, <code>.Control</code>: The Command, Option, Shift, and Control keys, respectively.</li>
+<li><code>.NumericPad</code>: Indicates that <code>input</code> should come from the numeric keypad rather than the top row of the standard keyboard.</li>
+<li><code>.AlphaShift</code>: Indicates that the CapsLock key should be <em>pressed</em> as part of the combination, rather than just engaged.</li>
+</ul></li>
+<li><p><code>action</code>: The selector to call when the key command is invoked, called with a <code>UIKeyCommand</code> as its only argument. The key event will travel up the responder chain until a matching selector is found.</p></li>
+<li><p><code>discoverabilityTitle</code> <em>(iOS 9 only)</em>: An optional label to display for the key command in the Discoverability layover. Only key commands with a title set will be listed.</p></li>
+</ul>
+
+<h2 id="responding-to-key-commands">Responding to Key Commands</h2>
+
+<p>Enabling key commands is as simple as providing an array of <code>UIKeyCommand</code> instances somewhere in the responder chain. Text inputs are automatically first responders, but perhaps more usefully, a view controller can respond to key commands by implementing <code>canBecomeFirstResponder()</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kr">override</span> <span class="k">func</span> <span class="n">canBecomeFirstResponder</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Bool</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">true</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">canBecomeFirstResponder</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Next, provide a list of available key commands via the <code>keyCommands</code> property:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kr">override</span> <span class="k">var</span> <span class="nl">keyCommands</span><span class="p">:</span> <span class="p">[</span><span class="bp">UIKeyCommand</span><span class="p">]</span><span class="o">?</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="bp">UIKeyCommand</span><span class="p">(</span><span class="nl">input</span><span class="p">:</span> <span class="s">&quot;1&quot;</span><span class="p">,</span> <span class="nl">modifierFlags</span><span class="p">:</span> <span class="p">.</span><span class="n">Command</span><span class="p">,</span> <span class="nl">action</span><span class="p">:</span> <span class="s">&quot;selectTab:&quot;</span><span class="p">,</span> <span class="nl">discoverabilityTitle</span><span class="p">:</span> <span class="s">&quot;Types&quot;</span><span class="p">),</span>
+        <span class="bp">UIKeyCommand</span><span class="p">(</span><span class="nl">input</span><span class="p">:</span> <span class="s">&quot;2&quot;</span><span class="p">,</span> <span class="nl">modifierFlags</span><span class="p">:</span> <span class="p">.</span><span class="n">Command</span><span class="p">,</span> <span class="nl">action</span><span class="p">:</span> <span class="s">&quot;selectTab:&quot;</span><span class="p">,</span> <span class="nl">discoverabilityTitle</span><span class="p">:</span> <span class="s">&quot;Protocols&quot;</span><span class="p">),</span>
+        <span class="bp">UIKeyCommand</span><span class="p">(</span><span class="nl">input</span><span class="p">:</span> <span class="s">&quot;3&quot;</span><span class="p">,</span> <span class="nl">modifierFlags</span><span class="p">:</span> <span class="p">.</span><span class="n">Command</span><span class="p">,</span> <span class="nl">action</span><span class="p">:</span> <span class="s">&quot;selectTab:&quot;</span><span class="p">,</span> <span class="nl">discoverabilityTitle</span><span class="p">:</span> <span class="s">&quot;Functions&quot;</span><span class="p">),</span>
+        <span class="bp">UIKeyCommand</span><span class="p">(</span><span class="nl">input</span><span class="p">:</span> <span class="s">&quot;4&quot;</span><span class="p">,</span> <span class="nl">modifierFlags</span><span class="p">:</span> <span class="p">.</span><span class="n">Command</span><span class="p">,</span> <span class="nl">action</span><span class="p">:</span> <span class="s">&quot;selectTab:&quot;</span><span class="p">,</span> <span class="nl">discoverabilityTitle</span><span class="p">:</span> <span class="s">&quot;Operators&quot;</span><span class="p">),</span>
+
+        <span class="bp">UIKeyCommand</span><span class="p">(</span><span class="nl">input</span><span class="p">:</span> <span class="s">&quot;f&quot;</span><span class="p">,</span> <span class="nl">modifierFlags</span><span class="p">:</span> <span class="p">[.</span><span class="n">Command</span><span class="p">,</span> <span class="p">.</span><span class="n">Alternate</span><span class="p">],</span> <span class="nl">action</span><span class="p">:</span> <span class="s">&quot;search:&quot;</span><span class="p">,</span> <span class="nl">discoverabilityTitle</span><span class="p">:</span> <span class="s">&quot;Find…&quot;</span><span class="p">),</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+
+<span class="k">func</span> <span class="n">selectTab</span><span class="p">(</span><span class="nl">sender</span><span class="p">:</span> <span class="bp">UIKeyCommand</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">selectedTab</span> <span class="o">=</span> <span class="n">sender</span><span class="p">.</span><span class="n">input</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">-</span> <span class="p">(</span><span class="bp">NSArray</span><span class="o">&lt;</span><span class="bp">UIKeyCommand</span> <span class="o">*&gt;*</span><span class="p">)</span><span class="nf">keyCommands</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="l">@[</span>
+        <span class="p">[</span><span class="bp">UIKeyCommand</span> <span class="nl">keyCommandWithInput</span><span class="p">:</span><span class="s">@&quot;1&quot;</span> <span class="nl">modifierFlags</span><span class="p">:</span><span class="n">UIKeyModifierCommand</span> <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">selectTab</span><span class="p">:)</span> <span class="nl">discoverabilityTitle</span><span class="p">:</span><span class="s">@&quot;Types&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="bp">UIKeyCommand</span> <span class="nl">keyCommandWithInput</span><span class="p">:</span><span class="s">@&quot;2&quot;</span> <span class="nl">modifierFlags</span><span class="p">:</span><span class="n">UIKeyModifierCommand</span> <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">selectTab</span><span class="p">:)</span> <span class="nl">discoverabilityTitle</span><span class="p">:</span><span class="s">@&quot;Protocols&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="bp">UIKeyCommand</span> <span class="nl">keyCommandWithInput</span><span class="p">:</span><span class="s">@&quot;3&quot;</span> <span class="nl">modifierFlags</span><span class="p">:</span><span class="n">UIKeyModifierCommand</span> <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">selectTab</span><span class="p">:)</span> <span class="nl">discoverabilityTitle</span><span class="p">:</span><span class="s">@&quot;Functions&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="bp">UIKeyCommand</span> <span class="nl">keyCommandWithInput</span><span class="p">:</span><span class="s">@&quot;4&quot;</span> <span class="nl">modifierFlags</span><span class="p">:</span><span class="n">UIKeyModifierCommand</span> <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">selectTab</span><span class="p">:)</span> <span class="nl">discoverabilityTitle</span><span class="p">:</span><span class="s">@&quot;Operators&quot;</span><span class="p">],</span>
+
+        <span class="p">[</span><span class="bp">UIKeyCommand</span> <span class="nl">keyCommandWithInput</span><span class="p">:</span><span class="s">@&quot;f&quot;</span> 
+                            <span class="nl">modifierFlags</span><span class="p">:</span><span class="n">UIKeyModifierCommand</span> <span class="o">|</span> <span class="n">UIKeyModifierAlternate</span> 
+                                   <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">search</span><span class="p">:)</span> 
+                     <span class="nl">discoverabilityTitle</span><span class="p">:</span><span class="s">@&quot;Find…&quot;</span><span class="p">]</span>
+    <span class="l">]</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// ...</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">selectTab:</span><span class="p">(</span><span class="bp">UIKeyCommand</span> <span class="o">*</span><span class="p">)</span><span class="nv">sender</span> <span class="p">{</span>
+    <span class="bp">NSString</span> <span class="o">*</span><span class="n">selectedTab</span> <span class="o">=</span> <span class="n">sender</span><span class="p">.</span><span class="n">input</span><span class="p">;</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In the Discoverability layover, accessed by holding down the Command key, key commands are listed in the order you specified:</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/uikeycommand-discoverability.png" alt="Discoverability Layover"></p>
+
+<p><em>Voila!</em> Secrets, revealed!</p>
+
+<h3 id="context-sensitivity">Context Sensitivity</h3>
+
+<p>The <code>keyCommands</code> property is accessed whenever a key pressed, making it possible to provide context-sensitive responses depending on the state of your application. While this is similar to the way a menu item and its active/inactive state are configured in OS X, the recommendation for iOS is to omit inactive commands completely—that is, there are no grayed out commands in the Discoverability layover.</p>
+
+<p>Here, a set of commands that are available to logged in users of an app are included only when appropriate:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">globalKeyCommands</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIKeyCommand</span><span class="p">(</span><span class="nl">input</span><span class="p">:...),</span> <span class="p">...]</span>
+<span class="k">let</span> <span class="n">loggedInUserKeyCommands</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIKeyCommand</span><span class="p">(</span><span class="nl">input</span><span class="p">:...),</span> <span class="p">...]</span>
+
+<span class="kr">override</span> <span class="k">var</span> <span class="nl">keyCommands</span><span class="p">:</span> <span class="p">[</span><span class="bp">UIKeyCommand</span><span class="p">]</span><span class="o">?</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="n">isLoggedInUser</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">globalKeyCommands</span> <span class="o">+</span> <span class="n">loggedInUserKeyCommands</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">globalKeyCommands</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<p>Although we don&rsquo;t take shortcuts when creating our apps, that doesn&rsquo;t mean our users won&rsquo;t find shortcuts useful. Adding key commands lets control of your app shift from the screen to the keyboard—your users will love the option.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2015-07-27-uikeycommand.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Nate Cook" itemprop="image" src="http://nshipster.s3.amazonaws.com/nate-cook.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/nate-cook/">Nate Cook</a></span>
+
+      <p><a href="http://natecook.com">Nate Cook</a> (<a href="https://twitter.com/nnnnnnnn">@nnnnnnnn</a>) is an independent web and application developer who <a href="http://natecook.com/blog/">writes frequently about topics in Swift</a>, and the creator of <a href="http://swiftdoc.org">SwiftDoc.org</a>.</p>
+
+
+      
+        <a href="https://plus.google.com/?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/guard-and-defer/" title="guard & defer" rel="next">guard & defer</a>
+            </h1>
+
+            <p>Recently, Swift 2.0 introduced two new control statements that aim to simplify and streamline the programs we write: <code>guard</code> and <code>defer</code>. While the first by its nature makes our code more linear, the other defers execution of its contents. How should we approach these new control statements? How can <code>guard</code> and <code>defer</code> help us clarify the correspondence between the program and the process?</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nstemporarydirectory/" title="NSTemporaryDirectory /<br/>NSItemReplacementDirectory /<br/>mktemp(3)">NSTemporaryDirectory /<br/>NSItemReplacementDirectory /<br/>mktemp(3)</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsincrementalstore/" title="NSIncrementalStore">NSIncrementalStore</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/cfbag/" title="CFBag">CFBag</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsundomanager/" title="NSUndoManager">NSUndoManager</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

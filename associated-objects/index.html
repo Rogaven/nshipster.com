@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>Associated Objects - NSHipster</title>
+    <meta name="description" content="Associated Objects is a feature of the Objective-C 2.0 runtime, which allows objects to associate arbitrary values for keys at runtime. It's dark juju, to be handled with as much caution as any other function from objc/runtime.h"/>
+    <link rel="canonical" href="http://nshipster.com/associated-objects/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="Associated Objects"/>
+    <meta name="twitter:description" content="Associated Objects is a feature of the Objective-C 2.0 runtime, which allows objects to associate arbitrary values for keys at runtime. It&#39;s dark juju, to be handled with as much caution as any other function from objc/runtime.h"/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Associated Objects"/>
+    <meta property="og:url" content="http://nshipster.com/associated-objects/"/>
+    <meta property="og:description" content="Associated Objects is a feature of the Objective-C 2.0 runtime, which allows objects to associate arbitrary values for keys at runtime. It&#39;s dark juju, to be handled with as much caution as any other function from objc/runtime.h"/>
+    <meta property="article:published_time" content="2014-02-10T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="objective-c"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="Associated Objects"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/associated-objects/">Associated Objects</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2014-02-10T00:00:00-08:00" itemprop="datePublished">February 10<sup>th</sup>, 2014</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="cp">#import &lt;objc/runtime.h&gt;</span>
+</code></pre></div>
+<p>Objective-C developers are conditioned to be wary of whatever follows this ominous incantation. And for good reason: messing with the Objective-C runtime changes the very fabric of reality for all of the code that runs on it.</p>
+
+<p>In the right hands, the functions of <code>&lt;objc/runtime.h&gt;</code> have the potential to add powerful new behavior to an application or framework, in ways that would otherwise not be possible. In the wrong hands, it drains the proverbial <a href="http://en.wikipedia.org/wiki/Eternal_Darkness:_Sanity&#x27;s_Requiem#Sanity_effects">sanity meter</a> of the code, and everything it may interact with (with <a href="http://www.youtube.com/watch?v=RSXcajQnasc#t=0m30s">terrifying side-effects</a>).</p>
+
+<p>Therefore, it is with great trepidation that we consider this <a href="http://en.wikipedia.org/wiki/Deal_with_the_Devil">Faustian bargain</a>, and look at one of the subjects most-often requested by NSHipster readers: associated objects.</p>
+
+<hr>
+
+<p>Associated Objects—or Associative References, as they were originally known—are a feature of the Objective-C 2.0 runtime, introduced in OS X Snow Leopard (available in iOS 4). The term refers to the following three C functions declared in <code>&lt;objc/runtime.h&gt;</code>, which allow objects to associate arbitrary values for keys at runtime:</p>
+
+<ul>
+<li><code>objc_setAssociatedObject</code></li>
+<li><code>objc_getAssociatedObject</code></li>
+<li><code>objc_removeAssociatedObjects</code></li>
+</ul>
+
+<p>Why is this useful? It allows developers to <strong>add custom properties to existing classes in categories</strong>, which <a href="https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html">is an otherwise notable shortcoming for Objective-C</a>.</p>
+
+<h4 id="nsobject+associatedobject.h">NSObject+AssociatedObject.h</h4>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">@interface</span> <span class="bp">NSObject</span> <span class="nl">(AssociatedObject)</span>
+<span class="k">@property</span> <span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">strong</span><span class="p">)</span> <span class="kt">id</span> <span class="n">associatedObject</span><span class="p">;</span>
+<span class="k">@end</span>
+</code></pre></div>
+<h4 id="nsobject+associatedobject.m">NSObject+AssociatedObject.m</h4>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">@implementation</span> <span class="bp">NSObject</span> <span class="nl">(AssociatedObject)</span>
+<span class="k">@dynamic</span> <span class="n">associatedObject</span><span class="p">;</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setAssociatedObject:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">object</span> <span class="p">{</span>
+     <span class="n">objc_setAssociatedObject</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="k">@selector</span><span class="p">(</span><span class="n">associatedObject</span><span class="p">),</span> <span class="n">object</span><span class="p">,</span> <span class="n">OBJC_ASSOCIATION_RETAIN_NONATOMIC</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">associatedObject</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">objc_getAssociatedObject</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="k">@selector</span><span class="p">(</span><span class="n">associatedObject</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>It is often recommended that they key be a <code>static char</code>—or better yet, the pointer to one. Basically, an arbitrary value that is guaranteed to be constant, unique, and scoped for use within getters and setters:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">static</span> <span class="kt">char</span> <span class="n">kAssociatedObjectKey</span><span class="p">;</span>
+
+<span class="n">objc_getAssociatedObject</span><span class="p">(</span><span class="nb">self</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">kAssociatedObjectKey</span><span class="p">);</span>
+</code></pre></div>
+<p>However, a much simpler solution exists: just use a selector.</p>
+
+<blockquote class="twitter-tweet" lang="en"><p>Since <tt>SEL</tt>s are guaranteed to be unique and constant, you can use <tt>_cmd</tt> as the key for <tt>objc_setAssociatedObject()</tt>. <a href="https://twitter.com/search?q=%23objective&amp;src=hash">#objective</a>-c <a href="https://twitter.com/search?q=%23snowleopard&amp;src=hash">#snowleopard</a></p>&mdash; Bill Bumgarner (@bbum) <a href="https://twitter.com/bbum/statuses/3609098005">August 28, 2009</a></blockquote>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<h2 id="associative-object-behaviors">Associative Object Behaviors</h2>
+
+<p>Values can be associated onto objects according to the behaviors defined by the enumerated type <code>objc_AssociationPolicy</code>:</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Behavior</th>
+            <th><tt>@property</tt> Equivalent</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <tt>OBJC_ASSOCIATION_ASSIGN</tt>
+            </td>
+            <td>
+                <tt>@property (assign)</tt> or <tt>@property (unsafe_unretained)</tt>
+            </td>
+            <td>
+                Specifies a weak reference to the associated object.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <tt>OBJC_ASSOCIATION_RETAIN_NONATOMIC</tt>
+            </td>
+            <td>
+                <tt>@property (nonatomic, strong)</tt>
+            </td>
+            <td>
+                Specifies a strong reference to the associated object, and that the association is not made atomically.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <tt>OBJC_ASSOCIATION_COPY_NONATOMIC</tt>
+            </td>
+            <td>
+                <tt>@property (nonatomic, copy)</tt>
+            </td>
+            <td>
+                Specifies that the associated object is copied, and that the association is not made atomically.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <tt>OBJC_ASSOCIATION_RETAIN</tt>
+            </td>
+            <td>
+                <tt>@property (atomic, strong)</tt>
+            </td>
+            <td>
+                Specifies a strong reference to the associated object, and that the association is made atomically.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <tt>OBJC_ASSOCIATION_COPY</tt>
+            </td>
+            <td>
+                <tt>@property (atomic, copy)</tt>
+            </td>
+            <td>
+                Specifies that the associated object is copied, and that the association is made atomically.
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p>Weak associations to objects made with <code>OBJC_ASSOCIATION_ASSIGN</code> are not zero <code>weak</code> references, but rather follow a behavior similar to <code>unsafe_unretained</code>, which means that one should be cautious when accessing weakly associated objects within an implementation.</p>
+
+<blockquote>
+<p>According to the Deallocation Timeline described in <a href="https://developer.apple.com/videos/wwdc/2011/#322-video">WWDC 2011, Session 322</a> (~36:00), associated objects are erased surprisingly late in the object lifecycle, in <code>object_dispose()</code>, which is invoked by <code>NSObject -dealloc</code>.</p>
+</blockquote>
+
+<h2 id="removing-values">Removing Values</h2>
+
+<p>One may be tempted to call <code>objc_removeAssociatedObjects()</code> at some point in their foray into associated objects. However, <a href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/objc_removeAssociatedObjects">as described in the documentation</a>, it&rsquo;s unlikely that you would have an occasion to invoke it yourself:</p>
+
+<blockquote>
+<p>The main purpose of this function is to make it easy to return an object to a &ldquo;pristine state”. You should not use this function for general removal of associations from objects, since it also removes associations that other clients may have added to the object. Typically you should use objc_setAssociatedObject with a nil value to clear an association.</p>
+</blockquote>
+
+<h2 id="patterns">Patterns</h2>
+
+<ul>
+<li><strong>Adding private variables to facilitate implementation details</strong>. When extending the behavior of a built-in class, it may be necessary to keep track of additional state. This is the <em>textbook</em> use case for associated objects. For example, AFNetworking uses associated objects on its <code>UIImageView</code> category to <a href="https://github.com/AFNetworking/AFNetworking/blob/2.1.0/UIKit%2BAFNetworking/UIImageView%2BAFNetworking.m#L57-L63">store a request operation object</a>, used to asynchronously fetch a remote image at a particular URL.</li>
+<li><strong>Adding public properties to configure category behavior.</strong> Sometimes, it makes more sense to make category behavior more flexible with a property, than in a method parameter. In these situations, a public-facing property is an acceptable situation to use associated objects. To go back to the previous example of AFNetworking, its category on <code>UIImageView</code>, <a href="https://github.com/AFNetworking/AFNetworking/blob/2.1.0/UIKit%2BAFNetworking/UIImageView%2BAFNetworking.h#L60-L65">its <code>imageResponseSerializer</code></a> allows image views to optionally apply a filter, or otherwise change the rendering of a remote image before it is set and cached to disk.</li>
+<li><strong>Creating an associated observer for KVO</strong>. When using <a href="http://nshipster.com/key-value-observing/">KVO</a> in a category implementation, it is recommended that a custom associated-object be used as an observer, rather than the object observing itself.</li>
+</ul>
+
+<h2 id="anti-patterns">Anti-Patterns</h2>
+
+<ul>
+<li><strong>Storing an associated object, when the value is not needed</strong>. A common pattern for views is to create a convenience method that populates fields and attributes based on a model object or compound value. If that value does not need to be recalled later, it is acceptable, and indeed preferable, not to associate with that object.</li>
+<li><strong>Storing an associated object, when the value can be inferred.</strong> For example, one might be tempted to store a reference to a custom accessory view&rsquo;s containing <code>UITableViewCell</code>, for use in <code>tableView:accessoryButtonTappedForRowWithIndexPath:</code>, when this can retrieved by calling <code>cellForRowAtIndexPath:</code>.</li>
+<li><strong>Using associated objects instead of X</strong>, where X is any one the following:
+
+<ul>
+<li><a href="https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html">Subclassing</a> for when inheritance is a more reasonable fit than composition.</li>
+<li><a href="https://developer.apple.com/library/ios/documentation/general/conceptual/Devpedia-CocoaApp/TargetAction.html">Target-Action</a> for adding interaction events to responders.</li>
+<li><a href="https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/GestureRecognizer_basics/GestureRecognizer_basics.html">Gesture Recognizers</a> for any situations when target-action doesn&rsquo;t suffice.</li>
+<li><a href="https://developer.apple.com/library/ios/documentation/general/conceptual/DevPedia-CocoaCore/Delegation.html">Delegation</a> when behavior can be delegated to another object.</li>
+<li><a href="http://nshipster.com/nsnotification-and-nsnotificationcenter/">NSNotification &amp; NSNotificationCenter</a> for communicating events across a system in a loosely-coupled way.</li>
+</ul></li>
+</ul>
+
+<hr>
+
+<p>Associated objects should be seen as a method of last resort, rather than a solution in search of a problem (and really, categories themselves really shouldn&rsquo;t be at the top of the toolchain to begin with).</p>
+
+<p>Like any clever trick, hack, or workaround, there is a natural tendency for one to actively seek out occasions to use it—especially just after learning about it. Do your best to understand and appreciate when it&rsquo;s the right solution, and save yourself the embarrassment of being scornfully asked &quot;why in the name of $DEITY&rdquo; you decided to go with <em>that</em> solution.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-02-10-associated-objects.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+            
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/method-swizzling/" title="Method Swizzling" rel="next">Method Swizzling</a>
+            </h1>
+
+            <p>Method swizzling is the process of changing the implementation of an existing selector. It&rsquo;s a technique made possible by the fact that method invocations in Objective-C can be changed at runtime, by changing how selectors are mapped to underlying functions in a class&rsquo;s dispatch table.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/namespacing/" title="Namespacing">Namespacing</a>
+            </li>
+            
+          
+          
+          
+          
+            <li>
+              <a href="/nil/" title="nil / Nil / NULL / NSNull">nil / Nil / NULL / NSNull</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/method-swizzling/" title="Method Swizzling">Method Swizzling</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,2940 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSHipster</title>
+    <meta name="description" content="NSHipster is a journal of the overlooked bits in Objective-C, Swift, and Cocoa. Updated weekly."/>
+    <link rel="canonical" href="http://nshipster.com"/>
+    <link rel="alternate" hreflang="en-us" href="http://nshipster.com/"/>
+    <link rel="alternate" hreflang="zh-Hans" href="http://nshipster.cn/"/>
+    <link rel="alternate" hreflang="x-default" href="http://nshipster.com/"/>
+  
+  
+  
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  
+    <meta name="twitter:title" content="NSHipster"/>
+    <meta name="twitter:description" content="NSHipster is a journal of the overlooked bits in Objective-C, Swift, and Cocoa. Updated weekly."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:title" content="NSHipster"/>
+    <meta property="og:url" content="http://nshipster.com"/>
+    <meta property="og:description" content="NSHipster is a journal of the overlooked bits in Objective-C, Swift, and Cocoa. Updated weekly." />
+  
+
+  
+    <meta property="st:type" content="home"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+        <h2 class="tagline"><strong>NSHipster</strong> is a journal of the overlooked bits in Objective-C, Swift, and Cocoa. Updated weekly.</h2>
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      <section id="latest">
+  <article>
+    <header>
+      <small>This Week...</small>
+      <h1><a href="/guard-and-defer/">guard & defer</a></h1>
+    </header>
+
+    <p>Recently, Swift 2.0 introduced two new control statements that aim to simplify and streamline the programs we write: <code>guard</code> and <code>defer</code>. While the first by its nature makes our code more linear, the other defers execution of its contents. How should we approach these new control statements? How can <code>guard</code> and <code>defer</code> help us clarify the correspondence between the program and the process?</p>
+
+
+    <a class="readmore" href="/guard-and-defer/">Continue Reading</a>
+  </article>
+</section>
+
+<section id="merchandise">
+  <h1>Merchandise</h1>
+
+  <a href="http://gumroad.com/nshipster/"><img src="http://nshipster.s3.amazonaws.com/merch.png" alt="NSHipster Merchandise" /></a>
+</section>
+
+<section id="recent">
+  <h1>Recent Articles</h1>
+
+  
+    <article class="excerpt">
+      <header>
+        <h1 class="title"><a href="/uikeycommand/">UIKey​Command</a></h1>
+      </header>
+
+      <p>As part of the push for greater productivity on the iPad, iOS 9 adds <em>Discoverability</em>, an overlay showing the currently available key commands inside an app. This small change suddenly makes key commands far more viable on the iPad and, with it, makes <code>UIKeyCommand</code> a necessary addition to your app.</p>
+
+    </article>
+  
+    <article class="excerpt">
+      <header>
+        <h1 class="title"><a href="/cloudkit/">Cloud​Kit</a></h1>
+      </header>
+
+      <p>As an iOS developer, if you want to make an application on your own, you sometimes need to write back-end code. Even for the developer who can take that on, there is more than just the code, there&rsquo;s also maintenance. Your worst fear becomes not that people might not like your application, but that your server might fail under heavy traffic.</p>
+
+<p>Fortunately, we now have CloudKit. Apple takes care of all these details, so you can focus on how to make your application great.</p>
+
+    </article>
+  
+    <article class="excerpt">
+      <header>
+        <h1 class="title"><a href="/ios9/">i​OS 9</a></h1>
+      </header>
+
+      <p>WWDC 2015 may not have packed quite as many fireworks as its predecessor, but neither was it short on the new and shiny. For this week&rsquo;s issue, we&rsquo;ll take a look at some of the changes that iOS 9 brings to the APIs we already know and love.</p>
+
+    </article>
+  
+    <article class="excerpt">
+      <header>
+        <h1 class="title"><a href="/nshipster-quiz-7/">NSHipster Quiz #7</a></h1>
+      </header>
+
+      <p>Our third annual WWDC NSHipster Pub Quiz! Scores of developers, dozens of teams, and a down-to-the-wire finish. How will you fare?</p>
+
+    </article>
+  
+    <article class="excerpt">
+      <header>
+        <h1 class="title"><a href="/mirrortype/">Mirror​Type</a></h1>
+      </header>
+
+      <p>Reflection in Swift is a limited affair, providing read-only access to a subset of type metadata. While far from the rich array of run-time hackery familiar to seasoned Objective-C developers, Swift&rsquo;s tools enable the immediate feedback and sense of exploration offered by Xcode Playgrounds. This week, we&rsquo;ll reflect on reflection in Swift, its mirror types, and <code>MirrorType</code>, the protocol that binds them together.</p>
+
+    </article>
+  
+    <article class="excerpt">
+      <header>
+        <h1 class="title"><a href="/xcplayground/">XCPlayground</a></h1>
+      </header>
+
+      <p>Playgrounds aren&rsquo;t a feature of the Swift language <em>per se</em>—instead, they are a terrific showcase for all that Swift has to offer, from its efficiency and power to its opacity and depth. Take a look past the surface of Playgrounds, at tools that make them a powerful part of the development process: sources and resources, captured values and extended execution, and integrated rich formatting that can transform a Playground into an interactive teaching tool.</p>
+
+    </article>
+  
+</section>
+
+<section id="publications">
+  <h1>Publications</h1>
+
+  
+
+<div id="" class="book" itemscope itemtype="http://schema.org/Product">
+  <div itemscope itemtype="http://schema.org/Book">
+    <link itemprop="bookFormat" href="http://schema.org/EBook"/>
+    <a href="https://gum.co/nshipster-swift/" title="NSHipster: Obscure Topics in Cocoa & Swift" target="_blank">
+      <img src="//cdn.nshipster.com/images/nshipster-swift-cover@2x.png" class="cover" alt="NSHipster: Obscure Topics in Cocoa & Swift" itemprop="image"/>
+    </a>
+    <span itemprop="name" style="display:none;" hidden>NSHipster: Obscure Topics in Cocoa & Swift</span>
+    <span itemprop="author" style="display:none;" hidden>Mattt Thompson & Nate Cook</span>
+    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display:none;">
+      <link itemprop="availability" href="http://schema.org/InStock"/>
+      <meta itemprop="priceCurrency" content="USD"/>
+      <span itemprop="price">29</span>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="" class="book" itemscope itemtype="http://schema.org/Product">
+  <div itemscope itemtype="http://schema.org/Book">
+    <link itemprop="bookFormat" href="http://schema.org/EBook"/>
+    <a href="https://gum.co/cfhipsterref" title="CFHipsterRef: Low-Level Programming on iOS & OS X" target="_blank">
+      <img src="//cdn.nshipster.com/images/cfhipsterref-cover@2x.png" class="cover" alt="CFHipsterRef: Low-Level Programming on iOS & OS X" itemprop="image"/>
+    </a>
+    <span itemprop="name" style="display:none;" hidden>CFHipsterRef: Low-Level Programming on iOS & OS X</span>
+    <span itemprop="author" style="display:none;" hidden>Mattt Thompson</span>
+    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display:none;">
+      <link itemprop="availability" href="http://schema.org/InStock"/>
+      <meta itemprop="priceCurrency" content="USD"/>
+      <span itemprop="price">29.99</span>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="" class="book" itemscope itemtype="http://schema.org/Product">
+  <div itemscope itemtype="http://schema.org/Book">
+    <link itemprop="bookFormat" href="http://schema.org/EBook"/>
+    <a href="https://gum.co/the-nshipster-fake-book" title="The NSHipster Fake Book (Objective-C)" target="_blank">
+      <img src="//cdn.nshipster.com/images/the-nshipster-fake-book-cover@2x.png" class="cover" alt="The NSHipster Fake Book (Objective-C)" itemprop="image"/>
+    </a>
+    <span itemprop="name" style="display:none;" hidden>The NSHipster Fake Book (Objective-C)</span>
+    <span itemprop="author" style="display:none;" hidden>Mattt Thompson</span>
+    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display:none;">
+      <link itemprop="availability" href="http://schema.org/InStock"/>
+      <meta itemprop="priceCurrency" content="USD"/>
+      <span itemprop="price">19.99</span>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<section id="popular">
+  <h1>Popular Articles</h1>
+
+  
+  
+    <article class="excerpt">
+      <header>
+        <h1 class="title"><a href="/nsformatter/">NSFormatter</a></h1>
+      </header>
+
+      <p>Conversion is the tireless errand of software development. Most programming tasks boil down to some variation of transforming data into something more useful.</p>
+
+    </article>
+  
+    <article class="excerpt">
+      <header>
+        <h1 class="title"><a href="/nsnotification-and-nsnotificationcenter/">NSNotification &<br/>NSNotification​Center</a></h1>
+      </header>
+
+      <p>Any idea is inextricably linked to how its communicated. A medium defines the form and scale of significance in such a way to shape the very meaning of an idea. Very truly, the medium is the message.</p>
+
+    </article>
+  
+    <article class="excerpt">
+      <header>
+        <h1 class="title"><a href="/ns_enum-ns_options/">NS_ENUM & NS_OPTIONS</a></h1>
+      </header>
+
+      <p>A skilled Objective-C developer is able to gracefully switch between Objective and Procedural paradigms, and use each to their own advantage.</p>
+
+    </article>
+  
+    <article class="excerpt">
+      <header>
+        <h1 class="title"><a href="/xcode-key-bindings-and-gestures/">Xcode Key Bindings & Gestures</a></h1>
+      </header>
+
+      <p>Xcode key bindings and gestures not only shave off seconds of precious work, but make you look more confident, competent, and cromulent in the process.</p>
+
+    </article>
+  
+</section>
+
+<section id="contributors">
+  <h1>Contributors</h1>
+
+  <ul>
+  
+    <li class="author">
+      <a href="/authors/croath-liu/"><img class="avatar" alt="Croath Liu" itemprop="image" src="http://nshipster.s3.amazonaws.com/croath-liu.jpg" draggable="false"/></a>
+      <a href="/authors/croath-liu/">Croath Liu</a>
+    </li>
+  
+    <li class="author">
+      <a href="/authors/delisa-mason/"><img class="avatar" alt="Delisa Mason" itemprop="image" src="http://nshipster.s3.amazonaws.com/delisa-mason.jpg" draggable="false"/></a>
+      <a href="/authors/delisa-mason/">Delisa Mason</a>
+    </li>
+  
+    <li class="author">
+      <a href="/authors/jack-flintermann/"><img class="avatar" alt="Jack Flintermann" itemprop="image" src="http://nshipster.s3.amazonaws.com/jack-flintermann.jpg" draggable="false"/></a>
+      <a href="/authors/jack-flintermann/">Jack Flintermann</a>
+    </li>
+  
+    <li class="author">
+      <a href="/authors/mattt-thompson/"><img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/></a>
+      <a href="/authors/mattt-thompson/">Mattt Thompson</a>
+    </li>
+  
+    <li class="author">
+      <a href="/authors/mike-lazer-walker/"><img class="avatar" alt="Mike Lazer-Walker" itemprop="image" src="http://nshipster.s3.amazonaws.com/mike-lazer-walker.jpg" draggable="false"/></a>
+      <a href="/authors/mike-lazer-walker/">Mike Lazer-Walker</a>
+    </li>
+  
+    <li class="author">
+      <a href="/authors/natasha-murashev/"><img class="avatar" alt="Natasha Murashev" itemprop="image" src="http://nshipster.s3.amazonaws.com/natasha-murashev.jpg" draggable="false"/></a>
+      <a href="/authors/natasha-murashev/">Natasha Murashev</a>
+    </li>
+  
+    <li class="author">
+      <a href="/authors/nate-cook/"><img class="avatar" alt="Nate Cook" itemprop="image" src="http://nshipster.s3.amazonaws.com/nate-cook.jpg" draggable="false"/></a>
+      <a href="/authors/nate-cook/">Nate Cook</a>
+    </li>
+  
+  </ul>
+</section>
+
+<section id="archive" class="archive" role="navigation">
+  
+    <dl>
+      <dt>Cocoa</dt>
+      
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/avspeechsynthesizer/">AVSpeechSynthesizer</a></dd>
+        
+      
+        
+          <dd><a href="/addressbookui/">AddressBookUI</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/cfbag/">CFBag</a></dd>
+        
+      
+        
+          <dd><a href="/cfstringtransform/">CFStringTransform</a></dd>
+        
+      
+        
+          <dd><a href="/cggeometry/">CGGeometry</a></dd>
+        
+      
+        
+          <dd><a href="/cmdevicemotion/">CMDeviceMotion</a></dd>
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/cloudkit/">CloudKit</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/core-location-in-ios-8/">Core Location in iOS 8</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/ibaction-iboutlet-iboutletcollection/">IBAction / IBOutlet / IBOutletCollection</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/javascriptcore/">JavaScriptCore</a></dd>
+        
+      
+        
+          <dd><a href="/kvc-collection-operators/">KVC Collection Operators</a></dd>
+        
+      
+        
+          <dd><a href="/key-value-observing/">Key-Value Observing</a></dd>
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/mkgeodesicpolyline/">MKGeodesicPolyline</a></dd>
+        
+      
+        
+          <dd><a href="/mklocalsearch/">MKLocalSearch</a></dd>
+        
+      
+        
+          <dd><a href="/mktileoverlay-mkmapsnapshotter-mkdirections/">MKTileOverlay,<br/>MKMapSnapshotter &<br/>MKDirections</a></dd>
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/multipeer-connectivity/">Multipeer Connectivity</a></dd>
+        
+      
+        
+          <dd><a href="/nsassertionhandler/">NSAssertionHandler</a></dd>
+        
+      
+        
+          <dd><a href="/nscache/">NSCache</a></dd>
+        
+      
+        
+          <dd><a href="/nscalendar-additions/">NSCalendar Additions</a></dd>
+        
+      
+        
+      
+        
+          <dd><a href="/nscharacterset/">NSCharacterSet</a></dd>
+        
+      
+        
+          <dd><a href="/nscoding/">NSCoding / NSKeyedArchiver</a></dd>
+        
+      
+        
+          <dd><a href="/nsdatadetector/">NSDataDetector</a></dd>
+        
+      
+        
+          <dd><a href="/nsdatecomponents/">NSDateComponents</a></dd>
+        
+      
+        
+          <dd><a href="/nserror/">NSError</a></dd>
+        
+      
+        
+          <dd><a href="/nsexpression/">NSExpression</a></dd>
+        
+      
+        
+          <dd><a href="/enumerators/">NSFastEnumeration / NSEnumerator</a></dd>
+        
+      
+        
+          <dd><a href="/nsfilemanager/">NSFileManager</a></dd>
+        
+      
+        
+          <dd><a href="/nsformatter/">NSFormatter</a></dd>
+        
+      
+        
+          <dd><a href="/nshashtable-and-nsmaptable/">NSHashTable & NSMapTable</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/nsincrementalstore/">NSIncrementalStore</a></dd>
+        
+      
+        
+          <dd><a href="/nsindexset/">NSIndexSet</a></dd>
+        
+      
+        
+          <dd><a href="/nslinguistictagger/">NSLinguisticTagger</a></dd>
+        
+      
+        
+          <dd><a href="/nslocale/">NSLocale</a></dd>
+        
+      
+        
+          <dd><a href="/nslocalizedstring/">NSLocalizedString</a></dd>
+        
+      
+        
+          <dd><a href="/nsnotification-and-nsnotificationcenter/">NSNotification &<br/>NSNotificationCenter</a></dd>
+        
+      
+        
+          <dd><a href="/nsoperation/">NSOperation</a></dd>
+        
+      
+        
+          <dd><a href="/nsorderedset/">NSOrderedSet</a></dd>
+        
+      
+        
+          <dd><a href="/nspredicate/">NSPredicate</a></dd>
+        
+      
+        
+          <dd><a href="/nsrange/">NSRange</a></dd>
+        
+      
+        
+          <dd><a href="/nsscanner/">NSScanner</a></dd>
+        
+      
+        
+          <dd><a href="/nssecurecoding/">NSSecureCoding</a></dd>
+        
+      
+        
+          <dd><a href="/nssortdescriptor/">NSSortDescriptor</a></dd>
+        
+      
+        
+          <dd><a href="/nstemporarydirectory/">NSTemporaryDirectory /<br/>NSItemReplacementDirectory /<br/>mktemp(3)</a></dd>
+        
+      
+        
+          <dd><a href="/nsurl/">NSURL /<br/>NSURLComponents</a></dd>
+        
+      
+        
+          <dd><a href="/nsurlcache/">NSURLCache</a></dd>
+        
+      
+        
+          <dd><a href="/nsurlprotocol/">NSURLProtocol</a></dd>
+        
+      
+        
+          <dd><a href="/uuid-udid-unique-identifier/">NSUUID /<br/>CFUUIDRef /<br/>UIDevice -uniqueIdentifier /<br/>-identifierForVendor</a></dd>
+        
+      
+        
+          <dd><a href="/nsundomanager/">NSUndoManager</a></dd>
+        
+      
+        
+          <dd><a href="/nsvalue/">NSValue</a></dd>
+        
+      
+        
+          <dd><a href="/nsvaluetransformer/">NSValueTransformer</a></dd>
+        
+      
+        
+          <dd><a href="/ns_enum-ns_options/">NS_ENUM & NS_OPTIONS</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/phimagemanager/">PHImageManager</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/search-kit/">Search Kit</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/uiaccessibility/">UIAccessibility</a></dd>
+        
+      
+        
+          <dd><a href="/uiactivityviewcontroller/">UIActivityViewController</a></dd>
+        
+      
+        
+          <dd><a href="/uialertcontroller/">UIAlertController</a></dd>
+        
+      
+        
+          <dd><a href="/uiappearance/">UIAppearance</a></dd>
+        
+      
+        
+          <dd><a href="/launch-options/">UIApplicationDelegate launchOptions</a></dd>
+        
+      
+        
+          <dd><a href="/uicollectionview/">UICollectionView</a></dd>
+        
+      
+        
+          <dd><a href="/uikeycommand/">UIKeyCommand</a></dd>
+        
+      
+        
+          <dd><a href="/uilocalizedindexedcollation/">UILocalizedIndexedCollation</a></dd>
+        
+      
+        
+          <dd><a href="/uimenucontroller/">UIMenuController</a></dd>
+        
+      
+        
+          <dd><a href="/uiprintinteractioncontroller/">UIPrintInteractionController</a></dd>
+        
+      
+        
+          <dd><a href="/dictionary-services/">UIReferenceLibraryViewController /<br/>DCSDictionaryRef/<br/>/usr/share/dict/words</a></dd>
+        
+      
+        
+          <dd><a href="/uisplitviewcontroller/">UISplitViewController</a></dd>
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/wkwebkit/">WKWebView</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </dl>
+  
+    <dl>
+      <dt>Objective-C</dt>
+      
+      
+        
+          <dd><a href="/pragma/">#pragma</a></dd>
+        
+      
+        
+          <dd><a href="/at-compiler-directives/">@</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/associated-objects/">Associated Objects</a></dd>
+        
+      
+        
+          <dd><a href="/bool/">BOOL / bool / Boolean / NSCFBoolean</a></dd>
+        
+      
+        
+      
+        
+          <dd><a href="/benchmarking/">Benchmarking</a></dd>
+        
+      
+        
+          <dd><a href="/c-storage-classes/">C Storage Classes</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/clang-diagnostics/">Clang Diagnostics</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/documentation/">Documentation</a></dd>
+        
+      
+        
+      
+        
+          <dd><a href="/equality/">Equality</a></dd>
+        
+      
+        
+          <dd><a href="/extended-file-attributes/">Extended File Attributes</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/method-swizzling/">Method Swizzling</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/namespacing/">Namespacing</a></dd>
+        
+      
+        
+      
+        
+          <dd><a href="/object-subscripting/">Object Subscripting</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/type-encodings/">Type Encodings</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/unit-testing/">Unit Testing</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/__attribute__/">__attribute__</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/instancetype/">instancetype</a></dd>
+        
+      
+        
+          <dd><a href="/nil/">nil / Nil / NULL / NSNull</a></dd>
+        
+      
+        
+          <dd><a href="/random/">rand(3) / random(3) / arc4random(3) / et al.</a></dd>
+        
+      
+        
+      
+        
+      
+    </dl>
+  
+    <dl>
+      <dt>Swift</dt>
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/mirrortype/">MirrorType</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/nscalendarunityear/">NSCalendarUnitYear</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/rawoptionsettype/">RawOptionSetType</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/swift-objc-runtime/">Swift & the Objective-C Runtime</a></dd>
+        
+      
+        
+          <dd><a href="/swift-1.2/">Swift 1.2</a></dd>
+        
+      
+        
+          <dd><a href="/swift-collection-protocols/">Swift Collection Protocols</a></dd>
+        
+      
+        
+          <dd><a href="/swift-comparison-protocols/">Swift Comparison Protocols</a></dd>
+        
+      
+        
+          <dd><a href="/swift-default-protocol-implementations/">Swift Default Protocol Implementations</a></dd>
+        
+      
+        
+          <dd><a href="/swift-documentation/">Swift Documentation</a></dd>
+        
+      
+        
+          <dd><a href="/swift-literal-convertible/">Swift Literal Convertibles</a></dd>
+        
+      
+        
+          <dd><a href="/swift-operators/">Swift Operators</a></dd>
+        
+      
+        
+          <dd><a href="/swift-system-version-checking/">Swift System Version Checking</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/unmanaged/">Unmanaged</a></dd>
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/xcplayground/">XCPlayground</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/guard-and-defer/">guard & defer</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </dl>
+  
+    <dl>
+      <dt>Open Source</dt>
+      
+      
+        
+      
+        
+      
+        
+          <dd><a href="/afnetworking-2/">AFNetworking 2.0</a></dd>
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/alamofire/">Alamofire</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/cocoapods/">CocoaPods</a></dd>
+        
+      
+        
+      
+        
+          <dd><a href="/core-data-libraries-and-utilities/">Core Data Libraries & Utilities</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/gpuimage/">GPUImage</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/reactivecocoa/">ReactiveCocoa</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/xctool/">xctool</a></dd>
+        
+      
+        
+      
+    </dl>
+  
+    <dl>
+      <dt>Xcode</dt>
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/ibinspectable-ibdesignable/">IBInspectable&nbsp;/ IBDesignable</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/launch-arguments-and-environment-variables/">Launch Arguments &<br/>Environment Variables</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/network-link-conditioner/">Network Link Conditioner</a></dd>
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/quick-look-debugging/">Quick Look Debugging</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/xctestcase/">XCTestCase /<br/>XCTestExpectation /<br/> measureBlock()</a></dd>
+        
+      
+        
+          <dd><a href="/xcode-key-bindings-and-gestures/">Xcode Key Bindings & Gestures</a></dd>
+        
+      
+        
+          <dd><a href="/xcode-plugins/">Xcode Plugins</a></dd>
+        
+      
+        
+          <dd><a href="/xcode-snippets/">Xcode Snippets</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </dl>
+  
+    <dl>
+      <dt>Miscellanea</dt>
+      
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <dd><a href="/backrow/">Back Row</a></dd>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <dd><a href="/changing-of-the-guard/">Changing of the Guard</a></dd>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <dd><a href="/configuration-profiles/">Configuration Profiles</a></dd>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <dd><a href="/empathy/">Empathy</a></dd>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <dd><a href="/image-resizing/">Image Resizing Techniques</a></dd>
+          
+        
+      
+        
+          
+            <dd><a href="/inter-process-communication/">Inter-Process Communication</a></dd>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <dd><a href="/long-live-cocoa/">Long Live Cocoa</a></dd>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <dd><a href="/new-years-2013/">Reader Submissions -<br/> New Year's 2013</a></dd>
+          
+        
+      
+        
+          
+            <dd><a href="/new-years-2014/">Reader Submissions -<br/> New Year's 2014</a></dd>
+          
+        
+      
+        
+          
+            <dd><a href="/new-years-2015/">Reader Submissions -<br/> New Year's 2015</a></dd>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <dd><a href="/stewardship/">Stewardship</a></dd>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <dd><a href="/the-death-of-cocoa/">The Death of Cocoa</a></dd>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <dd><a href="/watchkit/">WatchKit</a></dd>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <dd><a href="/icloud/">iCloud</a></dd>
+          
+        
+      
+        
+          
+            <dd><a href="/ios7/">iOS 7</a></dd>
+          
+        
+      
+        
+          
+            <dd><a href="/ios8/">iOS 8</a></dd>
+          
+        
+      
+        
+          
+            <dd><a href="/ios9/">iOS 9</a></dd>
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+        
+          
+            <dd><a href="/apple-pay/">Pay</a></dd>
+          
+        
+      
+    </dl>
+  
+    <dl>
+      <dt>Trivia</dt>
+      
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <dd><a href="/nshipster-quiz-1/">NSHipster Quiz #1</a></dd>
+        
+      
+        
+          <dd><a href="/nshipster-quiz-2/">NSHipster Quiz #2</a></dd>
+        
+      
+        
+          <dd><a href="/nshipster-quiz-3/">NSHipster Quiz #3</a></dd>
+        
+      
+        
+          <dd><a href="/nshipster-quiz-4/">NSHipster Quiz #4</a></dd>
+        
+      
+        
+          <dd><a href="/nshipster-quiz-5/">NSHipster Quiz #5</a></dd>
+        
+      
+        
+          <dd><a href="/nshipster-quiz-6/">NSHipster Quiz #6</a></dd>
+        
+      
+        
+          <dd><a href="/nshipster-quiz-7/">NSHipster Quiz #7</a></dd>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </dl>
+  
+</section>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

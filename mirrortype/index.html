@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>MirrorType - NSHipster</title>
+    <meta name="description" content="Reflection in Swift is a limited affair, providing read-only access to a subset of type metadata. While far from the rich array of run-time hackery familiar to seasoned Objective-C developers, Swift's tools enable the immediate feedback and sense of exploration offered by Xcode Playgrounds. This week, we'll reflect on reflection in Swift, its mirror types, and `MirrorType`, the protocol that binds them together."/>
+    <link rel="canonical" href="http://nshipster.com/mirrortype/"/>
+  
+  
+  
+  
+  <meta name="author" content="Nate Cook"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@nnnnnnnn"/>
+  
+  
+    <meta name="twitter:title" content="MirrorType"/>
+    <meta name="twitter:description" content="Reflection in Swift is a limited affair, providing read-only access to a subset of type metadata. While far from the rich array of run-time hackery familiar to seasoned Objective-C developers, Swift&#39;s tools enable the immediate feedback and sense of exploration offered by Xcode Playgrounds. This week, we&#39;ll reflect on reflection in Swift, its mirror types, and `MirrorType`, the protocol that binds them together."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="MirrorType"/>
+    <meta property="og:url" content="http://nshipster.com/mirrortype/"/>
+    <meta property="og:description" content="Reflection in Swift is a limited affair, providing read-only access to a subset of type metadata. While far from the rich array of run-time hackery familiar to seasoned Objective-C developers, Swift&#39;s tools enable the immediate feedback and sense of exploration offered by Xcode Playgrounds. This week, we&#39;ll reflect on reflection in Swift, its mirror types, and `MirrorType`, the protocol that binds them together."/>
+    <meta property="article:published_time" content="2015-06-01T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="swift"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="MirrorType"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/mirrortype/">Mirror​Type</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/nate-cook/">Nate Cook</a> —
+    
+    <time datetime="2015-06-01T00:00:00-07:00" itemprop="datePublished">June 1<sup>st</sup>, 2015</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Reflection in Swift is a limited affair, providing read-only access to a subset of type metadata. While far from the rich array of run-time hackery familiar to seasoned Objective-C developers, Swift&rsquo;s tools enable the immediate feedback and sense of exploration offered by Xcode Playgrounds.</p>
+
+<p>Perhaps Swift&rsquo;s strict type checking obviates the need for reflection. With variable types typically known at compile time, there might not be cause for further examination or branching. Then again, a hefty number of Cocoa APIs dole out <code>AnyObject</code> instances at the drop of a hat, leaving us to cast about for the matching type.</p>
+
+<p>This week, we&rsquo;ll reflect on reflection in Swift, its mirror types, and <code>MirrorType</code>, the protocol that binds them together.</p>
+
+<hr>
+
+<h2 id="mirrortype"><code>MirrorType</code></h2>
+
+<p>The entry point for reflection is the <code>reflect</code> function, which can take an instance of any type as its single parameter and returns a <code>MirrorType</code>. Now, <code>MirrorType</code> is something of an oddity for the Swift standard libary: a protocol used as a type. Other than the ubiquitous <code>AnyObject</code>, to date no other protocol is used this way. The particular <code>MirrorType</code>-conforming instance that you receive depends on the type passed to <code>reflect</code>—Swift&rsquo;s internals define mirrors for types such as <code>Array</code>, <code>Dictionary</code>, <code>Optional</code>, and <code>Range</code>, along with more generic mirrors for structs, classes, tuples, and metatypes.</p>
+
+<p><code>MirrorType</code> provides the nascent reflection API that Swift offers, wrapping a value along with its type information, information about its children, and different representations of the instance. Mirrors have the following properties:</p>
+
+<blockquote>
+<ul>
+<li><code>value</code>: access to the original reflected value, but with type <code>Any</code>.</li>
+<li><code>valueType</code>: the <code>Type</code> of the original reflected value—equivalent to <code>value.dynamicType</code>.</li>
+<li><code>count</code>: the number of logical children. For a collection, like <code>Array</code> or <code>Set</code>, this is the number of elements; for a struct, this is the number of stored properties.</li>
+<li><code>disposition</code>: a value from the <code>MirrorDisposition</code> enumeration, intended to help the IDE choose how to display the value. <code>MirrorDisposition</code> has eleven cases:
+
+<ul>
+<li><code>IndexContainer</code>, <code>KeyContainer</code>, <code>MembershipContainer</code>, <code>Container</code>: used for collections.</li>
+<li><code>Optional</code>: used for optional values. Implicitly unwrapped optionals are skipped over by <code>reflect()</code> to fetch the reflection of the unwrapped value.</li>
+<li><code>Aggregate</code>: used for Swift types that bridge to Objective-C and for Objective-C types that have been augmented for use with Swift. For example, <code>Float</code> has an <code>Aggregate</code> disposition while the non-bridged <code>Float80</code> returns <code>Struct</code>, and <code>UIView</code> (extended for <code>Reflectable</code> conformance), has an <code>Aggregate</code> disposition while the unadorned <code>UIBarButtonItem</code> returns <code>ObjCObject</code>.</li>
+<li><code>ObjCObject</code>: by contrast with <code>Aggregate</code>, used for unextended Objective-C classes.</li>
+<li><code>Tuple</code>: used for tuple values.</li>
+<li><code>Struct</code>, <code>Class</code>, <code>Enum</code>: used as fallback cases for types that don&rsquo;t fall into any of the above categories.</li>
+</ul></li>
+<li><code>objectIdentifier</code>: the unique object identifier for a class or metatype instance.</li>
+<li><code>summary</code>: a string description of the value.</li>
+<li><code>quickLookObject</code>: a <a href="http://swiftdoc.org/type/QuickLookObject/"><code>QuickLookObject</code></a> instance holding a visual or text representation of the value. Its behavior is similar to the <code>debugQuickLookObject</code> <a href="/quick-look-debugging/">we covered a few weeks back</a>.</li>
+</ul>
+</blockquote>
+
+<p>Additionally, a mirror has an <code>Int</code>-based subscript that returns a <code>(String, MirrorType)</code> tuple for each child. That&rsquo;s the <em>name</em> of the property/key/index and a <em>mirror</em> of the value.</p>
+
+<p>So how can we put <code>MirrorType</code> to use? Let&rsquo;s suppose we have a group of numbers in a tuple that we want to use for a lottery ticket, but we need to convert them to an <code>[Int]</code> array first:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">lotteryTuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">42</span><span class="p">)</span>
+</code></pre></div>
+<p>Rather than extracting the pieces of the tuple one by one (i.e., <code>lotteryType.0</code>, <code>lotteryTuple.1</code>, etc.), we can use <code>reflect()</code> to iterate over the elements:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// create a mirror of the tuple</span>
+<span class="k">let</span> <span class="n">lotteryMirror</span> <span class="o">=</span> <span class="n">reflect</span><span class="p">(</span><span class="n">lotteryTuple</span><span class="p">)</span>
+
+<span class="c1">// loop over the elements of the mirror to build an array</span>
+<span class="k">var</span> <span class="nl">lotteryArray</span><span class="p">:</span> <span class="p">[</span><span class="n">Int</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.</span><span class="o">&lt;</span><span class="n">lotteryMirror</span><span class="p">.</span><span class="n">count</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">mirror</span><span class="p">)</span> <span class="o">=</span> <span class="n">lotteryMirror</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="n">number</span> <span class="o">=</span> <span class="n">mirror</span><span class="p">.</span><span class="n">value</span> <span class="kt">as</span><span class="o">?</span> <span class="n">Int</span> <span class="p">{</span>
+        <span class="n">lotteryArray</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">println</span><span class="p">(</span><span class="n">lotteryArray</span><span class="p">)</span>   <span class="c1">// [4, 8, 15, 16, 23, 42]</span>
+</code></pre></div>
+<p>Not bad.</p>
+
+<h3 id="mapping-a-mirror">Mapping a Mirror</h3>
+
+<p>If we could map over the elements in a mirror, reflecting over an instance&rsquo;s properties or elements would be a bit easier. Let&rsquo;s write a <code>mapReflection</code> function that takes an instance of any type and a transforming closure:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">func</span> <span class="n">mapReflection</span><span class="o">&lt;</span><span class="n">T</span><span class="p">,</span> <span class="n">U</span><span class="o">&gt;</span><span class="p">(</span><span class="nl">x</span><span class="p">:</span> <span class="n">T</span><span class="p">,</span> <span class="p">@</span><span class="n">noescape</span> <span class="nl">transform</span><span class="p">:</span> <span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="n">MirrorType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">U</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="n">U</span><span class="p">]</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nl">result</span><span class="p">:</span> <span class="p">[</span><span class="n">U</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">let</span> <span class="n">mirror</span> <span class="o">=</span> <span class="n">reflect</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.</span><span class="o">&lt;</span><span class="n">mirror</span><span class="p">.</span><span class="n">count</span> <span class="p">{</span>
+        <span class="n">result</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">transform</span><span class="p">(</span><span class="n">mirror</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">result</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Now we can quite simply print all the logical children of any instance:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="nl">printChild</span><span class="p">:</span> <span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="n">MirrorType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">()</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">&quot;\($0): \($1.value)&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">mapReflection</span><span class="p">(</span><span class="n">lotteryTuple</span><span class="p">,</span> <span class="n">printChild</span><span class="p">)</span>
+<span class="c1">// .0: 4</span>
+<span class="c1">// .1: 8</span>
+<span class="c1">// ...</span>
+
+<span class="n">mapReflection</span><span class="p">(</span><span class="n">lotteryArray</span><span class="p">,</span> <span class="n">printChild</span><span class="p">)</span>
+<span class="c1">// [0]: 4</span>
+<span class="c1">// [1]: 8</span>
+<span class="c1">// ...</span>
+
+<span class="n">mapReflection</span><span class="p">(</span><span class="bp">CGRect</span><span class="p">.</span><span class="n">zeroRect</span><span class="p">,</span> <span class="n">printChild</span><span class="p">)</span>
+<span class="c1">// origin: (0.0, 0.0)</span>
+<span class="c1">// size: (0.0, 0.0)</span>
+</code></pre></div>
+<p>That output might look familiar to those who have used Swift&rsquo;s <code>dump</code> function before. <code>dump</code> uses reflection recursively to print out an instance&rsquo;s children, their children, and so on:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">dump</span><span class="p">(</span><span class="bp">CGRect</span><span class="p">.</span><span class="n">zeroRect</span><span class="p">)</span>
+<span class="c1">// ▿ (0.0, 0.0, 0.0, 0.0)</span>
+<span class="c1">//   ▿ origin: (0.0, 0.0)</span>
+<span class="c1">//     - x: 0.0</span>
+<span class="c1">//     - y: 0.0</span>
+<span class="c1">//   ▿ size: (0.0, 0.0)</span>
+<span class="c1">//     - width: 0.0</span>
+<span class="c1">//     - height: 0.0</span>
+</code></pre></div>
+<h2 id="custom-cut-mirrors">Custom-Cut Mirrors</h2>
+
+<p>Beyond <code>dump</code>, Xcode also uses mirrors extensively for the display of values in a <a href="/xcplayground/">Playground</a>, both in the results pane on the right side of a Playground window and in captured value displays. Custom types don&rsquo;t start out with a custom mirror, so their display can leave something to be desired. Let&rsquo;s look at the default behavior of a custom type in a Playground and then see how a custom <code>MirrorType</code> can improve that display.</p>
+
+<p>For our custom type, we&rsquo;ll use a simple struct to hold information about a WWDC session:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">/// Information for a single WWDC session.</span>
+<span class="k">struct</span> <span class="n">WWDCSession</span> <span class="p">{</span>
+    <span class="c1">/// An enumeration of the different WWDC tracks.</span>
+    <span class="k">enum</span> <span class="nl">Track</span> <span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="n">Featured</span>         <span class="o">=</span> <span class="s">&quot;Featured&quot;</span>
+        <span class="k">case</span> <span class="n">AppFrameworks</span>    <span class="o">=</span> <span class="s">&quot;App Frameworks&quot;</span>
+        <span class="k">case</span> <span class="n">Distribution</span>     <span class="o">=</span> <span class="s">&quot;Distribution&quot;</span>
+        <span class="k">case</span> <span class="n">DeveloperTools</span>   <span class="o">=</span> <span class="s">&quot;Developer Tools&quot;</span>
+        <span class="k">case</span> <span class="n">Media</span>            <span class="o">=</span> <span class="s">&quot;Media&quot;</span>
+        <span class="k">case</span> <span class="n">GraphicsAndGames</span> <span class="o">=</span> <span class="s">&quot;Graphics &amp; Games&quot;</span>
+        <span class="k">case</span> <span class="n">SystemFrameworks</span> <span class="o">=</span> <span class="s">&quot;System Frameworks&quot;</span>
+        <span class="k">case</span> <span class="n">Design</span>           <span class="o">=</span> <span class="s">&quot;Design&quot;</span>
+    <span class="p">}</span>
+
+    <span class="k">let</span> <span class="nl">number</span><span class="p">:</span> <span class="n">Int</span>
+    <span class="k">let</span> <span class="nl">title</span><span class="p">:</span> <span class="n">String</span>
+    <span class="k">let</span> <span class="nl">track</span><span class="p">:</span> <span class="n">Track</span>
+    <span class="k">let</span> <span class="nl">summary</span><span class="p">:</span> <span class="n">String</span><span class="o">?</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="n">session801</span> <span class="o">=</span> <span class="n">WWDCSession</span><span class="p">(</span><span class="nl">number</span><span class="p">:</span> <span class="mi">801</span><span class="p">,</span>
+    <span class="nl">title</span><span class="p">:</span> <span class="s">&quot;Designing for Future Hardware&quot;</span><span class="p">,</span>
+    <span class="nl">track</span><span class="p">:</span> <span class="p">.</span><span class="n">Design</span><span class="p">,</span>
+    <span class="nl">summary</span><span class="p">:</span> <span class="s">&quot;Design for tomorrow&#39;s products today. See examples...&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>By default, reflection on a <code>WWDCSession</code> instance uses the built-in <code>_StructMirror</code> type. This provides a property-based summary on the right (useful) but only the class name in a captured value pane (not so useful):</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/mirrortype-default.gif" alt="Default WWDCSession Representation"></p>
+
+<p>To provide a richer representation of a <code>WWDCSession</code>, we&rsquo;ll implement a new type, <code>WWDCSessionMirror</code>. This type must conform to <code>MirrorType</code>,  including all the properties listed above:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">struct</span> <span class="nl">WWDCSessionMirror</span><span class="p">:</span> <span class="n">MirrorType</span> <span class="p">{</span>
+    <span class="kr">private</span> <span class="k">let</span> <span class="nl">_value</span><span class="p">:</span> <span class="n">WWDCSession</span>
+
+    <span class="k">init</span><span class="p">(</span><span class="n">_</span> <span class="nl">value</span><span class="p">:</span> <span class="n">WWDCSession</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">_value</span> <span class="o">=</span> <span class="n">value</span>
+    <span class="p">}</span>
+
+    <span class="k">var</span> <span class="nl">value</span><span class="p">:</span> <span class="n">Any</span> <span class="p">{</span> <span class="k">return</span> <span class="n">_value</span> <span class="p">}</span>
+
+    <span class="k">var</span> <span class="nl">valueType</span><span class="p">:</span> <span class="n">Any</span><span class="p">.</span><span class="kt">Type</span> <span class="p">{</span> <span class="k">return</span> <span class="n">WWDCSession</span><span class="p">.</span><span class="nb">self</span> <span class="p">}</span>
+
+    <span class="k">var</span> <span class="nl">objectIdentifier</span><span class="p">:</span> <span class="n">ObjectIdentifier</span><span class="o">?</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">nil</span> <span class="p">}</span>
+
+    <span class="k">var</span> <span class="nl">disposition</span><span class="p">:</span> <span class="n">MirrorDisposition</span> <span class="p">{</span> <span class="k">return</span> <span class="p">.</span><span class="n">Struct</span> <span class="p">}</span>
+
+    <span class="c1">// MARK: Child properties</span>
+
+    <span class="k">var</span> <span class="nl">count</span><span class="p">:</span> <span class="n">Int</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">4</span> <span class="p">}</span>
+
+    <span class="k">subscript</span><span class="p">(</span><span class="nl">index</span><span class="p">:</span> <span class="n">Int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="n">MirrorType</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">switch</span> <span class="n">index</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="s">&quot;number&quot;</span><span class="p">,</span> <span class="n">reflect</span><span class="p">(</span><span class="n">_value</span><span class="p">.</span><span class="n">number</span><span class="p">))</span>
+        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">,</span> <span class="n">reflect</span><span class="p">(</span><span class="n">_value</span><span class="p">.</span><span class="n">title</span><span class="p">))</span>
+        <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="s">&quot;track&quot;</span><span class="p">,</span> <span class="n">reflect</span><span class="p">(</span><span class="n">_value</span><span class="p">.</span><span class="n">track</span><span class="p">))</span>
+        <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="s">&quot;summary&quot;</span><span class="p">,</span> <span class="n">reflect</span><span class="p">(</span><span class="n">_value</span><span class="p">.</span><span class="n">summary</span><span class="p">))</span>
+        <span class="k">default</span><span class="o">:</span>
+            <span class="n">fatalError</span><span class="p">(</span><span class="s">&quot;Index out of range&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// MARK: Custom representation</span>
+
+    <span class="k">var</span> <span class="nl">summary</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s">&quot;WWDCSession \(_value.number) [\(_value.track.rawValue)]: \(_value.title)&quot;</span>
+    <span class="p">}</span>
+
+    <span class="k">var</span> <span class="nl">quickLookObject</span><span class="p">:</span> <span class="n">QuickLookObject</span><span class="o">?</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">.</span><span class="n">Text</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In the <code>summary</code> and <code>quickLookObject</code> properties, we provide our custom representation of a <code>WWDCSession</code>—a nicely formatted string. Note, in particular, that the implementation of <code>count</code> and the subscript are completely manual. The default mirror types ignore <code>private</code> and <code>internal</code> access modifiers, so a custom mirror <em>could</em> be used to hide implementation details, even from reflection.</p>
+
+<p>Lastly, we must link <code>WWDCSession</code> to its custom mirror by adding conformance to the <code>Reflectable</code> protocol. Conformance only requires a single new method, <code>getMirror()</code>, which returns a <code>MirrorType</code>—in this case, our shiny new <code>WWDCSessionMirror</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">extension</span> <span class="nl">WWDCSession</span> <span class="p">:</span> <span class="n">Reflectable</span> <span class="p">{</span>
+    <span class="k">func</span> <span class="n">getMirror</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">MirrorType</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">WWDCSessionMirror</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>That&rsquo;s it! The Playground now uses our custom representation instead of the default:</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/mirrortype-custom.gif" alt="Custom WWDCSession Representation"></p>
+
+<blockquote>
+<p>In the absence of <code>Printable</code> conformance, <code>println()</code> and <code>toString()</code> will also pull the string representation from an instance&rsquo;s mirror.</p>
+</blockquote>
+
+<hr>
+
+<p>In its current form, Swift reflection is more novelty than powerful feature. With new Swift functionality surely right around the corner at WWDC, this article may prove to have a very short shelf life indeed. But in the mean time, should you find the need for introspection, you&rsquo;ll know just where to look.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2015-06-01-mirrortype.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 1.2.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Nate Cook" itemprop="image" src="http://nshipster.s3.amazonaws.com/nate-cook.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/nate-cook/">Nate Cook</a></span>
+
+      <p><a href="http://natecook.com">Nate Cook</a> (<a href="https://twitter.com/nnnnnnnn">@nnnnnnnn</a>) is an independent web and application developer who <a href="http://natecook.com/blog/">writes frequently about topics in Swift</a>, and the creator of <a href="http://swiftdoc.org">SwiftDoc.org</a>.</p>
+
+
+      
+        <a href="https://plus.google.com/?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nshipster-quiz-7/" title="NSHipster Quiz #7" rel="next">NSHipster Quiz #7</a>
+            </h1>
+
+            <p>Our third annual WWDC NSHipster Pub Quiz! Scores of developers, dozens of teams, and a down-to-the-wire finish. How will you fare?</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/swift-default-protocol-implementations/" title="Swift Default Protocol Implementations">Swift Default Protocol Implementations</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/swift-1.2/" title="Swift 1.2">Swift 1.2</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/swift-operators/" title="Swift Operators">Swift Operators</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/swift-comparison-protocols/" title="Swift Comparison Protocols">Swift Comparison Protocols</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

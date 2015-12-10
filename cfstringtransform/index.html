@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>CFStringTransform - NSHipster</title>
+    <meta name="description" content="NSString is the crown jewel of Foundation. But as powerful as it is, one would be remiss not to mention its toll-free bridged cousin, CFMutableString—or more specifically, CFStringTransform."/>
+    <link rel="canonical" href="http://nshipster.com/cfstringtransform/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="CFStringTransform"/>
+    <meta name="twitter:description" content="NSString is the crown jewel of Foundation. But as powerful as it is, one would be remiss not to mention its toll-free bridged cousin, CFMutableString—or more specifically, CFStringTransform."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="CFStringTransform"/>
+    <meta property="og:url" content="http://nshipster.com/cfstringtransform/"/>
+    <meta property="og:description" content="NSString is the crown jewel of Foundation. But as powerful as it is, one would be remiss not to mention its toll-free bridged cousin, CFMutableString—or more specifically, CFStringTransform."/>
+    <meta property="article:published_time" content="2012-08-06T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="CFStringTransform"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/cfstringtransform/">CFString​Transform</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2012-08-06T00:00:00-07:00" itemprop="datePublished">August 6<sup>th</sup>, 2012</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>There are two indicators that tell you everything you need to know about how nice a language is to use:</p>
+
+<ol>
+<li>API Consistency</li>
+<li>Quality of String Implementation</li>
+</ol>
+
+<p><code>NSString</code> is the crown jewel of Foundation. In an age where other languages <em>still</em> struggle to handle Unicode correctly, <code>NSString</code> is especially impressive. Not content to <em>just work</em> with whatever is thrown at it, <code>NSString</code> can parse strings into linguistic tags, determine the dominant language of the content, and convert between every string encoding imaginable. It&rsquo;s unfairly good.</p>
+
+<p>But as powerful as <code>NSString</code> / <code>NSMutableString</code> are, one would be remiss not to mention their <a href="http://developer.apple.com/library/ios/#documentation/CoreFoundation/Conceptual/CFDesignConcepts/Articles/tollFreeBridgedTypes.html">toll-free bridged</a> cousin, <code>CFMutableString</code>—or more specifically, <code>CFStringTransform</code>.</p>
+
+<p>As denoted by the <code>CF</code> prefix, <code>CFStringTransform</code> is part of Core Foundation. The function takes the following arguments, and returns a <code>Boolean</code> for whether or not the transform was successful:</p>
+
+<ul>
+<li><code>string</code>: The string to be transformed. Since this argument is a <code>CFMutableStringRef</code>, an <code>NSMutableString</code> can be passed using toll-free bridging cast.</li>
+<li><code>range</code>: The range of the string over which the transformation should be applied. This argument is a <code>CFRange</code>, rather than an <code>NSRange</code> value.</li>
+<li><code>transform</code>: The transformation to apply. This argument takes an <a href="http://userguide.icu-project.org/transforms/general">ICU transform string</a>, including any one of the string constants described below.</li>
+<li><code>reverse</code>: Whether to run the transformation in reverse, where applicable.</li>
+</ul>
+
+<p><code>CFStringTransform</code> covers a lot of ground with its <code>transform</code> argument. Here&rsquo;s a rundown of what it can do:</p>
+
+<h2 id="strip-accents-and-diacritics">Strip Accents and Diacritics</h2>
+
+<p>Énġlišh långuãge lẳcks iñterêßţing diaçrïtičş. As such, it can be useful to normalize extended Latin characters into ASCII-friendly representations. Rid any string of its squiggly bits using the <code>kCFStringTransformStripCombiningMarks</code> transformation.</p>
+
+<h2 id="name-unicode-characters">Name Unicode Characters</h2>
+
+<p><code>kCFStringTransformToUnicodeName</code> allows you to determine the Unicode standard name for special characters, including Emoji. For instance, &ldquo;🐑💨✨&rdquo; is transformed into &ldquo;{SHEEP} {DASH SYMBOL} {SPARKLES}&rdquo;, and &ldquo;🐷&rdquo; becomes &ldquo;{PIG FACE}&rdquo;.</p>
+
+<h2 id="transliterate-between-orthographies">Transliterate Between Orthographies</h2>
+
+<p>With the notable exception of English (and its delightful spelling inconsistencies), writing systems generally encode speech sounds into a consistent written representation. European languages generally use the Latin alphabet (with a few added diacritics), Russian uses Cyrillic, Japanese uses Hiragana &amp; Katakana, and Thai, Korean, &amp; Arabic each have their own scripts.</p>
+
+<p>Although each language has a particular inventory of sounds, some of which other languages may lack, the overlap across all of the major writing systems is remarkably high—enough so that one can rather effectively <a href="http://en.wikipedia.org/wiki/Transliteration">transliterate</a> (not to be confused with <a href="http://en.wikipedia.org/wiki/Translation">translation</a>) from one script to another.</p>
+
+<p><code>CFStringTransform</code> can transliterate back and forth between Latin and Arabic, Cyrillic, Greek, Korean (Hangul), Hebrew, Japanese (Hiragana &amp; Katakana), Mandarin Chinese, and Thai.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Transformation</th>
+      <th>Input</th>
+      <th>Output</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><tt>kCFStringTransformLatinArabic</tt></td>
+      <td>mrḥbạ</td>
+      <td>مرحبا</td>
+    </tr>
+    <tr>
+      <td><tt>kCFStringTransformLatinCyrillic</tt></td>
+      <td>privet</td>
+      <td>привет</td>
+    </tr>
+    <tr>
+      <td><tt>kCFStringTransformLatinGreek</tt></td>
+      <td>geiá sou</td>
+      <td>γειά σου</td>
+    </tr>
+    <tr>
+      <td><tt>kCFStringTransformLatinHangul</tt></td>
+      <td>annyeonghaseyo</td>
+      <td>안녕하세요</td>
+    </tr>
+    <tr>
+      <td><tt>kCFStringTransformLatinHebrew</tt></td>
+      <td>şlwm</td>
+      <td>שלום</td>
+    </tr>
+    <tr>
+      <td><tt>kCFStringTransformLatinHiragana</tt></td>
+      <td>hiragana</td>
+      <td>ひらがな</td>
+    </tr>
+    <tr>
+      <td><tt>kCFStringTransformLatinKatakana</tt></td>
+      <td>katakana</td>
+      <td>カタカナ</td>
+    </tr>
+    <tr>
+      <td><tt>kCFStringTransformLatinThai</tt></td>
+      <td>s̄wạs̄dī</td>
+      <td>สวัสดี</td>
+    </tr>
+    <tr>
+      <td><tt>kCFStringTransformHiraganaKatakana</tt></td>
+      <td>にほんご</td>
+      <td>ニホンゴ</td>
+    </tr>
+    <tr>
+      <td><tt>kCFStringTransformMandarinLatin</tt></td>
+      <td>中文</td>
+      <td>zhōng wén</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+<p>And that&rsquo;s only using the constants defined in Core Foundation! By passing an <a href="http://userguide.icu-project.org/transforms/general#TOC-ICU-Transliterators">ICU transform</a> directly, <code>CFStringTransform</code> can transliterate between Latin and Arabic, Armenian, Bopomofo, Cyrillic, Georgian, Greek, Han, Hangul, Hebrew, Hiragana, Indic ( Devanagari, Gujarati, Gurmukhi, Kannada, Malayalam, Oriya, Tamil, &amp; Telegu), Jamo, Katakana, Syriac, Thaana, &amp; Thai.</p>
+</blockquote>
+
+<h2 id="normalize-user-generated-content">Normalize User-Generated Content</h2>
+
+<p>One of the more practical applications for string transformation is to normalize unpredictable user input. Even if your application doesn&rsquo;t specifically deal with other languages, you should be able to intelligently process anything the user types into your app.</p>
+
+<p>For example, let&rsquo;s say you want to build a searchable index of movies on the device, which includes greetings from around the world:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="n">mutableString</span> <span class="o">=</span> <span class="bp">NSMutableString</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;Hello! こんにちは! สวัสดี! مرحبا! 您好!&quot;</span><span class="p">)</span> <span class="kt">as</span> <span class="n">CFMutableStringRef</span>
+</code></pre></div>
+<ul>
+<li>First, apply the <code>kCFStringTransformToLatin</code> transform to transliterate all non-English text into a Latin alphabetic representation.</li>
+</ul>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">CFStringTransform</span><span class="p">(</span><span class="n">mutableString</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="n">kCFStringTransformToLatin</span><span class="p">,</span> <span class="kt">Boolean</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>Hello! こんにちは! สวัสดี! مرحبا! 您好! →
+Hello! kon&#39;nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo!</p>
+</blockquote>
+
+<ul>
+<li>Next, apply the <code>kCFStringTransformStripCombiningMarks</code> transform to remove any diacritics or accents.</li>
+</ul>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">CFStringTransform</span><span class="p">(</span><span class="n">mutableString</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="n">kCFStringTransformStripCombiningMarks</span><span class="p">,</span> <span class="kt">Boolean</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>Hello! kon&#39;nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo! →
+Hello! kon&#39;nichiha! swasdi! mrhba! nin hao!</p>
+</blockquote>
+
+<ul>
+<li>Finally, downcase the text with <code>CFStringLowercase</code>, and split the text into tokens with <a href="https://developer.apple.com/library/mac/#documentation/CoreFoundation/Reference/CFStringTokenizerRef/Reference/reference.html"><code>CFStringTokenizer</code></a> to use as an index for the text.</li>
+</ul>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">CFStringTokenizerCreate</span><span class="p">(</span><span class="nb">nil</span><span class="p">,</span> <span class="n">mutableString</span><span class="p">,</span> <span class="n">CFRangeMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">CFStringGetLength</span><span class="p">(</span><span class="n">mutableString</span><span class="p">)),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">CFLocaleCopyCurrent</span><span class="p">())</span>
+
+<span class="k">var</span> <span class="nl">mutableTokens</span><span class="p">:</span> <span class="p">[</span><span class="n">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">var</span> <span class="nl">type</span><span class="p">:</span> <span class="n">CFStringTokenizerTokenType</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="n">type</span> <span class="o">=</span> <span class="n">CFStringTokenizerAdvanceToNextToken</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">)</span>
+    <span class="k">let</span> <span class="n">range</span> <span class="o">=</span> <span class="n">CFStringTokenizerGetCurrentTokenRange</span><span class="p">(</span><span class="n">tokenizer</span><span class="p">)</span>
+    <span class="k">let</span> <span class="n">token</span> <span class="o">=</span> <span class="n">CFStringCreateWithSubstring</span><span class="p">(</span><span class="nb">nil</span><span class="p">,</span> <span class="n">mutableString</span><span class="p">,</span> <span class="n">range</span><span class="p">)</span> <span class="kt">as</span> <span class="bp">NSString</span>
+    <span class="n">mutableTokens</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+<span class="p">}</span> <span class="k">while</span> <span class="n">type</span> <span class="o">!=</span> <span class="p">.</span><span class="n">None</span>
+</code></pre></div>
+<blockquote>
+<p>(hello, kon&#39;nichiha, swasdi, mrhba, nin, hao)</p>
+</blockquote>
+
+<p>By applying the same set of transformations on search text entered by the user, you have a universal way to search regardless of either the language of the search string or content!</p>
+
+<blockquote>
+<p>For anyone wanting to be especially clever, all of the necessary transformations can actually be done in a single pass, by specifying the ICU transform <code>&quot;Any-Latin; Latin-ASCII; Any-Lower&quot;</code>.</p>
+</blockquote>
+
+<hr>
+
+<p><code>CFStringTransform</code> can be an insanely powerful way to bend language to your will. And it&rsquo;s but one of many powerful features that await you if you&rsquo;re brave enough to explore outside of Objective-C&rsquo;s warm OO embrace.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2012-08-06-cfstringtransform.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 1.2.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nsincrementalstore/" title="NSIncrementalStore" rel="next">NSIncremental​Store</a>
+            </h1>
+
+            <p>Even for a blog dedicated to obscure APIs, <code>NSIncrementalStore</code> sets a new standard. It was introduced in iOS 5, with no more fanfare than the requisite entry in the SDK changelog. Ironically, it is arguably the most important thing to come out of iOS 5, which will completely change the way we build apps from here on out.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/multipeer-connectivity/" title="Multipeer Connectivity">Multipeer Connectivity</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/avspeechsynthesizer/" title="AVSpeechSynthesizer">AVSpeechSynthesizer</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/key-value-observing/" title="Key-Value Observing">Key-Value Observing</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/core-location-in-ios-8/" title="Core Location in iOS 8">Core Location in iOS 8</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>Image Resizing Techniques - NSHipster</title>
+    <meta name="description" content="Since time immemorial, iOS developers have been perplexed by a singular question: 'How do you resize an image?'. This article endeavors to provide a clear answer to this eternal question."/>
+    <link rel="canonical" href="http://nshipster.com/image-resizing/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="Image Resizing Techniques"/>
+    <meta name="twitter:description" content="Since time immemorial, iOS developers have been perplexed by a singular question: &#39;How do you resize an image?&#39;. This article endeavors to provide a clear answer to this eternal question."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Image Resizing Techniques"/>
+    <meta property="og:url" content="http://nshipster.com/image-resizing/"/>
+    <meta property="og:description" content="Since time immemorial, iOS developers have been perplexed by a singular question: &#39;How do you resize an image?&#39;. This article endeavors to provide a clear answer to this eternal question."/>
+    <meta property="article:published_time" content="2014-09-15T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content=""/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="Image Resizing Techniques"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/image-resizing/">Image Resizing Techniques</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2014-09-15T00:00:00-07:00" itemprop="datePublished">September 15<sup>th</sup>, 2014</time>
+    
+    (<a href="#revisions">revised</a>)
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Since time immemorial, iOS developers have been perplexed by a singular question: &ldquo;How do you resize an image?&rdquo;. It is a question of beguiling clarity, spurred on by a mutual mistrust of developer and platform. A thousand code samples litter web search results, each claiming to be the One True Solution, and all the others false prophets.</p>
+
+<p>It&rsquo;s embarrassing, really.</p>
+
+<p>This week&rsquo;s article endeavors to provide a clear explanation of the various approaches to image resizing on iOS (and OS X, making the appropriate <code>UIImage</code> → <code>NSImage</code> conversions), using empirical evidence to offer insights into the performance characteristics of each approach, rather than simply prescribing any one way for all situations.</p>
+
+<p><strong>Before reading any further, please note the following:</strong></p>
+
+<p>When setting a <code>UIImage</code> on a <code>UIImageView</code>, manual resizing is unnecessary for the vast majority of use cases. Instead, one can simply set the <code>contentMode</code> property to either <code>.ScaleAspectFit</code> to ensure that the entire image is visible within the frame of the image view, or <code>.ScaleAspectFill</code> to have the entire image view filled by the image, cropping as necessary from the center.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">imageView</span><span class="p">.</span><span class="n">contentMode</span> <span class="o">=</span> <span class="p">.</span><span class="n">ScaleAspectFit</span>
+<span class="n">imageView</span><span class="p">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">image</span>
+</code></pre></div>
+<hr>
+
+<h2 id="determining-scaled-size">Determining Scaled Size</h2>
+
+<p>Before doing any image resizing, one must first determine the target size to scale to.</p>
+
+<h3 id="scaling-by-factor">Scaling by Factor</h3>
+
+<p>The simplest way to scale an image is by a constant factor. Generally, this involves dividing by a whole number to reduce the original size (rather than multiplying by a whole number to magnify).</p>
+
+<p>A new <code>CGSize</code> can be computed by scaling the width and height components individually:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">size</span> <span class="o">=</span> <span class="bp">CGSize</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<p>&hellip;or by applying a <code>CGAffineTransform</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">size</span> <span class="o">=</span> <span class="n">CGSizeApplyAffineTransform</span><span class="p">(</span><span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> <span class="n">CGAffineTransformMakeScale</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="scaling-by-aspect-ratio">Scaling by Aspect Ratio</h3>
+
+<p>It&rsquo;s often useful to scale the original size in such a way that fits within a rectangle without changing the original aspect ratio. <code>AVMakeRectWithAspectRatioInsideRect</code> is a useful function found in the AVFoundation framework that takes care of that calculation for you:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">AVFoundation</span>
+<span class="k">let</span> <span class="n">rect</span> <span class="o">=</span> <span class="n">AVMakeRectWithAspectRatioInsideRect</span><span class="p">(</span><span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> <span class="n">imageView</span><span class="p">.</span><span class="n">bounds</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="resizing-images">Resizing Images</h2>
+
+<p>There are a number of different approaches to resizing an image, each with different capabilities and performance characteristics.</p>
+
+<h3 id="uigraphicsbeginimagecontextwithoptions-&amp;-uiimage--drawinrect:"><code>UIGraphicsBeginImageContextWithOptions</code> &amp; <code>UIImage -drawInRect:</code></h3>
+
+<p>The highest-level APIs for image resizing can be found in the UIKit framework. Given a <code>UIImage</code>, a temporary graphics context can be used to render a scaled version, using <code>UIGraphicsBeginImageContextWithOptions()</code> and <code>UIGraphicsGetImageFromCurrentImageContext()</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">image</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">contentsOfFile</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">URL</span><span class="p">.</span><span class="n">absoluteString</span><span class="o">!</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="n">size</span> <span class="o">=</span> <span class="n">CGSizeApplyAffineTransform</span><span class="p">(</span><span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> <span class="n">CGAffineTransformMakeScale</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+<span class="k">let</span> <span class="n">hasAlpha</span> <span class="o">=</span> <span class="nb">false</span>
+<span class="k">let</span> <span class="nl">scale</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="c1">// Automatically use scale factor of main screen</span>
+
+<span class="n">UIGraphicsBeginImageContextWithOptions</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="o">!</span><span class="n">hasAlpha</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span>
+<span class="n">image</span><span class="p">.</span><span class="n">drawInRect</span><span class="p">(</span><span class="bp">CGRect</span><span class="p">(</span><span class="nl">origin</span><span class="p">:</span> <span class="n">CGPointZero</span><span class="p">,</span> <span class="nl">size</span><span class="p">:</span> <span class="n">size</span><span class="p">))</span>
+
+<span class="k">let</span> <span class="n">scaledImage</span> <span class="o">=</span> <span class="n">UIGraphicsGetImageFromCurrentImageContext</span><span class="p">()</span>
+<span class="n">UIGraphicsEndImageContext</span><span class="p">()</span>
+</code></pre></div>
+<p><code>UIGraphicsBeginImageContextWithOptions()</code> creates a temporary rendering context into which the original is drawn. The first argument, <code>size</code>, is the target size of the scaled image. The second argument, <code>isOpaque</code> is used to determine whether an alpha channel is rendered. Setting this to <code>false</code> for images without transparency (i.e. an alpha channel) may result in an image with a pink hue. The third argument <code>scale</code> is the display scale factor. When set to <code>0.0</code>, the scale factor of the main screen is used, which for Retina displays is <code>2.0</code> or higher (<code>3.0</code> on the iPhone 6 Plus).</p>
+
+<h3 id="cgbitmapcontextcreate-&amp;-cgcontextdrawimage"><code>CGBitmapContextCreate</code> &amp; <code>CGContextDrawImage</code></h3>
+
+<p>Core Graphics / Quartz 2D offers a lower-level set of APIs that allow for more advanced configuration. Given a <code>CGImage</code>, a temporary bitmap context is used to render the scaled image, using <code>CGBitmapContextCreate()</code> and <code>CGBitmapContextCreateImage()</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">cgImage</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">contentsOfFile</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">URL</span><span class="p">.</span><span class="n">absoluteString</span><span class="o">!</span><span class="p">).</span><span class="bp">CGImage</span>
+
+<span class="k">let</span> <span class="n">width</span> <span class="o">=</span> <span class="n">CGImageGetWidth</span><span class="p">(</span><span class="n">cgImage</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="k">let</span> <span class="n">height</span> <span class="o">=</span> <span class="n">CGImageGetHeight</span><span class="p">(</span><span class="n">cgImage</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="k">let</span> <span class="n">bitsPerComponent</span> <span class="o">=</span> <span class="n">CGImageGetBitsPerComponent</span><span class="p">(</span><span class="n">cgImage</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">bytesPerRow</span> <span class="o">=</span> <span class="n">CGImageGetBytesPerRow</span><span class="p">(</span><span class="n">cgImage</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">colorSpace</span> <span class="o">=</span> <span class="n">CGImageGetColorSpace</span><span class="p">(</span><span class="n">cgImage</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">bitmapInfo</span> <span class="o">=</span> <span class="n">CGImageGetBitmapInfo</span><span class="p">(</span><span class="n">cgImage</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="n">context</span> <span class="o">=</span> <span class="n">CGBitmapContextCreate</span><span class="p">(</span><span class="nb">nil</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">bitsPerComponent</span><span class="p">,</span> <span class="n">bytesPerRow</span><span class="p">,</span> <span class="n">colorSpace</span><span class="p">,</span> <span class="n">bitmapInfo</span><span class="p">.</span><span class="n">rawValue</span><span class="p">)</span>
+
+<span class="n">CGContextSetInterpolationQuality</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">kCGInterpolationHigh</span><span class="p">)</span>
+
+<span class="n">CGContextDrawImage</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="bp">CGRect</span><span class="p">(</span><span class="nl">origin</span><span class="p">:</span> <span class="n">CGPointZero</span><span class="p">,</span> <span class="nl">size</span><span class="p">:</span> <span class="bp">CGSize</span><span class="p">(</span><span class="nl">width</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">width</span><span class="p">),</span> <span class="nl">height</span><span class="p">:</span> <span class="n">CGFloat</span><span class="p">(</span><span class="n">height</span><span class="p">))),</span> <span class="n">cgImage</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="n">scaledImage</span> <span class="o">=</span> <span class="n">CGBitmapContextCreateImage</span><span class="p">(</span><span class="n">context</span><span class="p">).</span><span class="n">flatMap</span> <span class="p">{</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">CGImage</span><span class="p">:</span> <span class="err">$</span><span class="mi">0</span><span class="p">)</span> <span class="p">}</span>
+</code></pre></div>
+<p><code>CGBitmapContextCreate</code> takes several arguments to construct a context with desired dimensions and amount of memory for each channel within a given colorspace. In the example, these values are fetched from the <code>CGImage</code>. Next, <code>CGContextSetInterpolationQuality</code> allows for the context to interpolate pixels at various levels of fidelity. In this case, <code>kCGInterpolationHigh</code> is passed for best results. <code>CGContextDrawImage</code> allows for the image to be drawn at a given size and position, allowing for the image to be cropped on a particular edge or to fit a set of image features, such as faces. Finally, <code>CGBitmapContextCreateImage</code> creates a <code>CGImage</code> from the context.</p>
+
+<h3 id="cgimagesourcecreatethumbnailatindex"><code>CGImageSourceCreateThumbnailAtIndex</code></h3>
+
+<p>Image I/O is a powerful, yet lesser-known framework for working with images. Independent of Core Graphics, it can read and write between many different formats, access photo metadata, and perform common image processing operations. The framework offers the fastest image encoders and decoders on the platform, with advanced caching mechanisms and even the ability to load images incrementally.</p>
+
+<p><code>CGImageSourceCreateThumbnailAtIndex</code> offers a concise API with different options than found in equivalent Core Graphics calls:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">ImageIO</span>
+
+<span class="k">if</span> <span class="k">let</span> <span class="n">imageSource</span> <span class="o">=</span> <span class="n">CGImageSourceCreateWithURL</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">URL</span><span class="p">,</span> <span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="nl">options</span><span class="p">:</span> <span class="p">[</span><span class="nl">NSString</span><span class="p">:</span> <span class="bp">NSObject</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="nl">kCGImageSourceThumbnailMaxPixelSize</span><span class="p">:</span> <span class="n">max</span><span class="p">(</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span>
+        <span class="nl">kCGImageSourceCreateThumbnailFromImageAlways</span><span class="p">:</span> <span class="nb">true</span>
+    <span class="p">]</span>
+
+    <span class="k">let</span> <span class="n">scaledImage</span> <span class="o">=</span> <span class="n">CGImageSourceCreateThumbnailAtIndex</span><span class="p">(</span><span class="n">imageSource</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">options</span><span class="p">).</span><span class="n">flatMap</span> <span class="p">{</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">CGImage</span><span class="p">:</span> <span class="err">$</span><span class="mi">0</span><span class="p">)</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Given a <code>CGImageSource</code> and set of options, <code>CGImageSourceCreateThumbnailAtIndex</code> creates a thumbnail image. Resizing is accomplished by the <code>kCGImageSourceThumbnailMaxPixelSize</code>. Specifying the maximum dimension divided by a constant factor scales the image while maintaining the original aspect ratio. By specifying either <code>kCGImageSourceCreateThumbnailFromImageIfAbsent</code> or <code>kCGImageSourceCreateThumbnailFromImageAlways</code>, Image I/O will automatically cache the scaled result for subsequent calls.</p>
+
+<h3 id="lanczos-resampling-with-core-image">Lanczos Resampling with Core Image</h3>
+
+<p>Core Image provides a built-in <a href="http://en.wikipedia.org/wiki/Lanczos_resampling">Lanczos resampling</a> functionality with the <code>CILanczosScaleTransform</code> filter. Although arguably a higher-level API than UIKit, the pervasive use of key-value coding in Core Image makes it unwieldy.</p>
+
+<p>That said, at least the pattern is consistent. The process of creating a transform filter, configuring it, and rendering an output image is just like any other Core Image workflow:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">image</span> <span class="o">=</span> <span class="bp">CIImage</span><span class="p">(</span><span class="nl">contentsOfURL</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">URL</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="n">filter</span> <span class="o">=</span> <span class="bp">CIFilter</span><span class="p">(</span><span class="nl">name</span><span class="p">:</span> <span class="s">&quot;CILanczosScaleTransform&quot;</span><span class="p">)</span><span class="o">!</span>
+<span class="n">filter</span><span class="p">.</span><span class="n">setValue</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="nl">forKey</span><span class="p">:</span> <span class="s">&quot;inputImage&quot;</span><span class="p">)</span>
+<span class="n">filter</span><span class="p">.</span><span class="n">setValue</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="nl">forKey</span><span class="p">:</span> <span class="s">&quot;inputScale&quot;</span><span class="p">)</span>
+<span class="n">filter</span><span class="p">.</span><span class="n">setValue</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="nl">forKey</span><span class="p">:</span> <span class="s">&quot;inputAspectRatio&quot;</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">outputImage</span> <span class="o">=</span> <span class="n">filter</span><span class="p">.</span><span class="n">valueForKey</span><span class="p">(</span><span class="s">&quot;outputImage&quot;</span><span class="p">)</span> <span class="kt">as</span><span class="o">!</span> <span class="bp">CIImage</span>
+
+<span class="k">let</span> <span class="n">context</span> <span class="o">=</span> <span class="bp">CIContext</span><span class="p">(</span><span class="nl">options</span><span class="p">:</span> <span class="p">[</span><span class="nl">kCIContextUseSoftwareRenderer</span><span class="p">:</span> <span class="nb">false</span><span class="p">])</span>
+<span class="k">let</span> <span class="n">scaledImage</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">CGImage</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">context</span><span class="p">.</span><span class="n">createCGImage</span><span class="p">(</span><span class="n">outputImage</span><span class="p">,</span> <span class="nl">fromRect</span><span class="p">:</span> <span class="n">outputImage</span><span class="p">.</span><span class="n">extent</span><span class="p">()))</span>
+</code></pre></div>
+<p><code>CILanczosScaleTransform</code> accepts an <code>inputImage</code>, <code>inputScale</code>, and <code>inputAspectRatio</code>, all of which are pretty self-explanatory. A <code>CIContext</code> is used to create a <code>UIImage</code> by way of a <code>CGImageRef</code> intermediary representation, since <code>UIImage(CIImage:)</code> doesn&rsquo;t often work as expected.</p>
+
+<p>Creating a <code>CIContext</code> is an expensive operation, so a cached context should always be used for repeated resizing. A <code>CIContext</code> can be created using either the GPU or the CPU (much slower) for rendering—use the <code>kCIContextUseSoftwareRenderer</code> key in the options dictionary to specify which.</p>
+
+<h3 id="vimage-in-accelerate"><code>vImage</code> in Accelerate</h3>
+
+<p>The <a href="https://developer.apple.com/library/prerelease/ios/documentation/Accelerate/Reference/AccelerateFWRef/index.html#//apple_ref/doc/uid/TP40009465">Accelerate framework</a> includes a suite of <code>vImage</code> image-processing functions, with a <a href="https://developer.apple.com/library/prerelease/ios/documentation/Performance/Reference/vImage_geometric/index.html#//apple_ref/doc/uid/TP40005490-CH212-145717">set of functions</a> that scale an image buffer. These lower-level APIs promise high performance with low power consumption, but at the cost of managing the buffers yourself. The following is a Swift version of a method <a href="https://gist.github.com/Nyx0uf/217d97f81f4889f4445a">suggested by Nyx0uf on GitHub</a>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">cgImage</span> <span class="o">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">contentsOfFile</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">URL</span><span class="p">.</span><span class="n">absoluteString</span><span class="o">!</span><span class="p">).</span><span class="bp">CGImage</span>
+
+<span class="c1">// create a source buffer</span>
+<span class="k">var</span> <span class="n">format</span> <span class="o">=</span> <span class="n">vImage_CGImageFormat</span><span class="p">(</span><span class="nl">bitsPerComponent</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="nl">bitsPerPixel</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span> <span class="nl">colorSpace</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> 
+    <span class="nl">bitmapInfo</span><span class="p">:</span> <span class="n">CGBitmapInfo</span><span class="p">(</span><span class="nl">rawValue</span><span class="p">:</span> <span class="n">CGImageAlphaInfo</span><span class="p">.</span><span class="n">First</span><span class="p">.</span><span class="n">rawValue</span><span class="p">),</span> 
+    <span class="nl">version</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">decode</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">renderingIntent</span><span class="p">:</span> <span class="bp">CGColorRenderingIntent</span><span class="p">.</span><span class="n">RenderingIntentDefault</span><span class="p">)</span>
+<span class="k">var</span> <span class="n">sourceBuffer</span> <span class="o">=</span> <span class="n">vImage_Buffer</span><span class="p">()</span>
+<span class="kr">defer</span> <span class="p">{</span>
+    <span class="n">sourceBuffer</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">dealloc</span><span class="p">(</span><span class="n">Int</span><span class="p">(</span><span class="n">sourceBuffer</span><span class="p">.</span><span class="n">height</span><span class="p">)</span> <span class="o">*</span> <span class="n">Int</span><span class="p">(</span><span class="n">sourceBuffer</span><span class="p">.</span><span class="n">height</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="k">var</span> <span class="n">error</span> <span class="o">=</span> <span class="n">vImageBuffer_InitWithCGImage</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sourceBuffer</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">format</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="n">cgImage</span><span class="p">,</span> <span class="n">numericCast</span><span class="p">(</span><span class="n">kvImageNoFlags</span><span class="p">))</span>
+<span class="kr">guard</span> <span class="n">error</span> <span class="o">==</span> <span class="n">kvImageNoError</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">nil</span> <span class="p">}</span>
+
+<span class="c1">// create a destination buffer</span>
+<span class="k">let</span> <span class="n">scale</span> <span class="o">=</span> <span class="bp">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">().</span><span class="n">scale</span>
+<span class="k">let</span> <span class="n">destWidth</span> <span class="o">=</span> <span class="n">Int</span><span class="p">(</span><span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">scale</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">destHeight</span> <span class="o">=</span> <span class="n">Int</span><span class="p">(</span><span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">scale</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">bytesPerPixel</span> <span class="o">=</span> <span class="n">CGImageGetBitsPerPixel</span><span class="p">(</span><span class="n">image</span><span class="p">.</span><span class="bp">CGImage</span><span class="p">)</span> <span class="o">/</span> <span class="mi">8</span>
+<span class="k">let</span> <span class="n">destBytesPerRow</span> <span class="o">=</span> <span class="n">destWidth</span> <span class="o">*</span> <span class="n">bytesPerPixel</span>
+<span class="k">let</span> <span class="n">destData</span> <span class="o">=</span> <span class="n">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="kt">UInt8</span><span class="o">&gt;</span><span class="p">.</span><span class="n">alloc</span><span class="p">(</span><span class="n">destHeight</span> <span class="o">*</span> <span class="n">destBytesPerRow</span><span class="p">)</span>
+<span class="kr">defer</span> <span class="p">{</span>
+    <span class="n">destData</span><span class="p">.</span><span class="n">dealloc</span><span class="p">(</span><span class="n">destHeight</span> <span class="o">*</span> <span class="n">destBytesPerRow</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">var</span> <span class="n">destBuffer</span> <span class="o">=</span> <span class="n">vImage_Buffer</span><span class="p">(</span><span class="nl">data</span><span class="p">:</span> <span class="n">destData</span><span class="p">,</span> <span class="nl">height</span><span class="p">:</span> <span class="n">vImagePixelCount</span><span class="p">(</span><span class="n">destHeight</span><span class="p">),</span> <span class="nl">width</span><span class="p">:</span> <span class="n">vImagePixelCount</span><span class="p">(</span><span class="n">destWidth</span><span class="p">),</span> <span class="nl">rowBytes</span><span class="p">:</span> <span class="n">destBytesPerRow</span><span class="p">)</span>
+
+<span class="c1">// scale the image</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">vImageScale_ARGB8888</span><span class="p">(</span><span class="o">&amp;</span><span class="n">sourceBuffer</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">destBuffer</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="n">numericCast</span><span class="p">(</span><span class="n">kvImageHighQualityResampling</span><span class="p">))</span>
+<span class="kr">guard</span> <span class="n">error</span> <span class="o">==</span> <span class="n">kvImageNoError</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">nil</span> <span class="p">}</span>
+
+<span class="c1">// create a CGImage from vImage_Buffer</span>
+<span class="k">let</span> <span class="n">destCGImage</span> <span class="o">=</span> <span class="n">vImageCreateCGImageFromBuffer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">destBuffer</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">format</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="nb">nil</span><span class="p">,</span> <span class="n">numericCast</span><span class="p">(</span><span class="n">kvImageNoFlags</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">error</span><span class="p">)</span><span class="o">?</span><span class="p">.</span><span class="n">takeRetainedValue</span><span class="p">()</span>
+<span class="kr">guard</span> <span class="n">error</span> <span class="o">==</span> <span class="n">kvImageNoError</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">nil</span> <span class="p">}</span>
+
+<span class="c1">// create a UIImage</span>
+<span class="k">let</span> <span class="n">scaledImage</span> <span class="o">=</span> <span class="n">destCGImage</span><span class="p">.</span><span class="n">flatMap</span> <span class="p">{</span> <span class="bp">UIImage</span><span class="p">(</span><span class="nl">CGImage</span><span class="p">:</span> <span class="err">$</span><span class="mi">0</span><span class="p">,</span> <span class="nl">scale</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="nl">orientation</span><span class="p">:</span> <span class="n">image</span><span class="p">.</span><span class="n">imageOrientation</span><span class="p">)</span> <span class="p">}</span>
+</code></pre></div>
+<p>The Accelerate APIs used here clearly operate at a lower-level than the other resizing methods. To use this method, you first create a source buffer from your CGImage using a <code>vImage_CGImageFormat</code> with <code>vImageBuffer_InitWithCGImage()</code>. The destination buffer is allocated at the desired image resolution, then <code>vImageScale_ARGB8888</code> does the actual work of resizing the image. Managing your own buffers when operating on images larger than your app&rsquo;s memory limit is left as an exercise for the reader.</p>
+
+<hr>
+
+<h2 id="performance-benchmarks">Performance Benchmarks</h2>
+
+<p>So how do these various approaches stack up to one another?</p>
+
+<p>Here are the results of a set of <a href="http://nshipster.com/benchmarking/">performance benchmarks</a> done on an iPhone 6 running iOS 8.4, via <a href="https://github.com/natecook1000/Image-Resizing">this project</a>:</p>
+
+<h3 id="jpeg">JPEG</h3>
+
+<p>Loading, scaling, and displaying a large, high-resolution (12000 ⨉ 12000 px 20 MB JPEG) source image from <a href="http://visibleearth.nasa.gov/view.php?id=78314">NASA Visible Earth</a> at 1/10<sup>th</sup> the size:</p>
+
+<table><thead>
+<tr>
+<th>Operation</th>
+<th>Time <em>(sec)</em></th>
+<th>σ</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>UIKit</code></td>
+<td>0.612</td>
+<td>14%</td>
+</tr>
+<tr>
+<td><code>Core Graphics</code> <sup>1</sup></td>
+<td>0.266</td>
+<td>3%</td>
+</tr>
+<tr>
+<td><code>Image I/O</code></td>
+<td>0.255</td>
+<td>2%</td>
+</tr>
+<tr>
+<td><code>Core Image</code> <sup>2</sup></td>
+<td>3.703</td>
+<td>33%</td>
+</tr>
+<tr>
+<td><code>vImage</code> <sup>3</sup></td>
+<td>&ndash;</td>
+<td>&ndash;</td>
+</tr>
+</tbody></table>
+
+<h3 id="png">PNG</h3>
+
+<p>Loading, scaling, and displaying a reasonably large (1024 ⨉ 1024 px 1MB PNG) rendering of the <a href="http://postgresapp.com">Postgres.app</a> Icon at 1/10<sup>th</sup> the size:</p>
+
+<table><thead>
+<tr>
+<th>Operation</th>
+<th>Time <em>(sec)</em></th>
+<th>σ</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>UIKit</code></td>
+<td>0.044</td>
+<td>30%</td>
+</tr>
+<tr>
+<td><code>Core Graphics</code> <sup>4</sup></td>
+<td>0.036</td>
+<td>10%</td>
+</tr>
+<tr>
+<td><code>Image I/O</code></td>
+<td>0.038</td>
+<td>11%</td>
+</tr>
+<tr>
+<td><code>Core Image</code> <sup>5</sup></td>
+<td>0.053</td>
+<td>68%</td>
+</tr>
+<tr>
+<td><code>vImage</code></td>
+<td>0.050</td>
+<td>25%</td>
+</tr>
+</tbody></table>
+
+<p><sup>1, 4</sup> Results were consistent across different values of <code>CGInterpolationQuality</code>, with negligible differences in performance benchmarks.</p>
+
+<p><sup>3</sup> The size of the NASA Visible Earth image was larger than could be processed in a single pass on the device.</p>
+
+<p><sup>2, 5</sup> Setting <code>kCIContextUseSoftwareRenderer</code> to <code>true</code> on the options passed on <code>CIContext</code> creation yielded results an order of magnitude slower than base results.</p>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<ul>
+<li><strong>UIKit</strong>, <strong>Core Graphics</strong>, and <strong>Image I/O</strong> all perform well for scaling operations on most images.</li>
+<li><strong>Core Image</strong> is outperformed for image scaling operations. In fact, it is specifically recommended in the <a href="https://developer.apple.com/library/mac/documentation/graphicsimaging/Conceptual/CoreImaging/ci_performance/ci_performance.html#//apple_ref/doc/uid/TP30001185-CH10-SW1">Performance Best Practices section of the Core Image Programming Guide</a> to use Core Graphics or Image I/O functions to crop or downsample images beforehand.</li>
+<li>For general image scaling without any additional functionality, <strong><code>UIGraphicsBeginImageContextWithOptions</code></strong> is probably the best option.</li>
+<li>If image quality is a consideration, consider using <strong><code>CGBitmapContextCreate</code></strong> in combination with <strong><code>CGContextSetInterpolationQuality</code></strong>.</li>
+<li>When scaling images with the intent purpose of displaying thumbnails, <strong><code>CGImageSourceCreateThumbnailAtIndex</code></strong> offers a compelling solution for both rendering and caching.</li>
+<li>Unless you&rsquo;re already working with <strong><code>vImage</code></strong>, the extra work to use the low-level Accelerate framework for resizing doesn&rsquo;t pay off.</li>
+</ul>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-09-15-image-resizing.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on September 30, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+        <dt>September 15<sup>th</sup>, 2014</dt>
+        <dd><p>Original publication.</p>
+</dd>
+      
+        <dt>September 30<sup>th</sup>, 2015</dt>
+        <dd><p>Revised for Swift 2.0, <code>vImage</code> method added.</p>
+</dd>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/phimagemanager/" title="PHImageManager" rel="next">PHImage​Manager</a>
+            </h1>
+
+            <p>Yesterday&rsquo;s article described various techniques for resizing images using APIs from the UIKit, Core Graphics, Core Image, and Image I/O frameworks. However, that article failed to mention some rather extraordinary functionality baked into the new Photos framework which takes care of all of this for you.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/stewardship/" title="Stewardship">Stewardship</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/inter-process-communication/" title="Inter-Process Communication">Inter-Process Communication</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/watchkit/" title="WatchKit">WatchKit</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/apple-pay/" title="Pay">Pay</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

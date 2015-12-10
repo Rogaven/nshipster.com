@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSURLProtocol - NSHipster</title>
+    <meta name="description" content="Foundation’s URL Loading System is something that every iOS developer would do well to buddy up with. And of all of networking classes and protocols of Foundation, NSURLProtocol is perhaps the most obscure and powerful."/>
+    <link rel="canonical" href="http://nshipster.com/nsurlprotocol/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="NSURLProtocol"/>
+    <meta name="twitter:description" content="Foundation’s URL Loading System is something that every iOS developer would do well to buddy up with. And of all of networking classes and protocols of Foundation, NSURLProtocol is perhaps the most obscure and powerful."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NSURLProtocol"/>
+    <meta property="og:url" content="http://nshipster.com/nsurlprotocol/"/>
+    <meta property="og:description" content="Foundation’s URL Loading System is something that every iOS developer would do well to buddy up with. And of all of networking classes and protocols of Foundation, NSURLProtocol is perhaps the most obscure and powerful."/>
+    <meta property="article:published_time" content="2012-11-05T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NSURLProtocol"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/nsurlprotocol/">NSURLProtocol</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2012-11-05T00:00:00-08:00" itemprop="datePublished">November 5<sup>th</sup>, 2012</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>iOS is all about networking&ndash;whether it&rsquo;s reading or writing state to and from the server, offloading computation to a distributed system, or loading remote images, audio, and video from the cloud.</p>
+
+<p>Because of this, Foundation&rsquo;s <a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i">URL Loading System</a> is something that every iOS developer would do well to buddy up with.</p>
+
+<p>When given the choice, applications should adopt the highest-level framework possible for what needs to be done. So, if that task is communicating over <code>http://</code>, <code>https://</code> or <code>ftp://</code>, then <code>NSURLConnection</code> and friends are a clear choice. Apple&rsquo;s networking classes cover the essentials for modern Objective-C application development, from URL and cache management to authentication &amp; cookie storage:</p>
+
+<figure id="url-loading-system">
+  <figcaption>The URL Loading System</figcaption>
+  <table>
+    <thead>
+      <tr>
+        <td colspan="2"><strong>URL Loading</strong></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="2">NSURLConnection</td>
+      </tr>
+      <tr>
+        <td>NSURLRequest</td>
+        <td>NSMutableURLRequest</td>
+      </tr>
+      <tr>
+        <td>NSURLResponse</td>
+        <td>NSHTTPURLResponse</td>
+      </tr>
+    </tbody>
+    <thead>
+      <tr>
+        <td colspan="2"><strong>Cache Management</strong></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="2">NSURLCache</td>
+      </tr>
+      <tr>
+        <td colspan="2">NSCacheURLRequest</td>
+      </tr>
+      <tr>
+        <td colspan="2">NSCachedURLResponse</td>
+      </tr>
+    </tbody>
+    <thead>
+      <tr>
+        <td colspan="2"><strong>Authentication &amp; Credentials</strong></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="2">NSURLCredential</td>
+      </tr>
+      <tr>
+        <td colspan="2">NSURLCredentialStorage</td>
+      </tr>
+      <tr>
+        <td colspan="2">NSURLAuthenticationChallenge</td>
+      </tr>
+      <tr>
+        <td colspan="2">NSURLProtectionSpace</td>
+      </tr>
+    </tbody>
+    <thead>
+      <tr>
+        <td colspan="2"><strong>Cookie Storage</strong></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="2">NSHTTPCookie</td>
+      </tr>
+      <tr>
+        <td colspan="2">NSHTTPCookieStorage</td>
+      </tr>
+    </tbody>
+    <thead>
+      <tr>
+        <td colspan="2"><strong>Protocol Support</strong></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="2">NSURLProtocol</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+
+<p>Although there&rsquo;s a lot to the URL Loading System, it&rsquo;s designed in a way that hides the underlying complexity, with hooks to provide configuration when needed. Any request going through <code>NSURLConnection</code> is intercepted by other parts of the system along the way, allowing for things like cached responses being transparently loaded from disk when available.</p>
+
+<p>Which brings us to this week&rsquo;s topic: <code>NSURLProtocol</code>.</p>
+
+<hr>
+
+<p><code>NSURLProtocol</code> is both the most obscure and the most powerful part of the URL Loading System. It&rsquo;s an abstract class that allows subclasses to define the URL loading behavior of new or existing schemes.</p>
+
+<p>If you aren&rsquo;t already <code>mindblown.gif</code>, here are some examples of what this can be used for, <em>without changing anything else about how requests are loaded</em>:</p>
+
+<ul>
+<li><a href="http://stackoverflow.com/questions/5572258/ios-webview-remote-html-with-local-image-files">Intercepting HTTP requests to serve images locally from the app bundle resources, if available</a></li>
+<li><a href="http://www.infinite-loop.dk/blog/2011/09/using-nsurlprotocol-for-injecting-test-data/">Mocking and stubbing HTTP responses for testing</a></li>
+<li>Normalizing headers and parameters of outgoing requests</li>
+<li>Signing outgoing streaming media requests</li>
+<li>Creating a proxy server for a local data transformation service with a URL request interface</li>
+<li>Deliberately sending malformed &amp; illegal response data to test the robustness of the application</li>
+<li>Filtering sensitive information from requests or responses</li>
+<li>Implementing an <code>NSURLConnection</code>-compatible interface to an existing protocol.</li>
+</ul>
+
+<p>Again, it&rsquo;s important to reiterate that the whole point of <code>NSURLProtocol</code> is that you can change everything about the loading behavior of your application without doing anything differently with how your application communicates to the network.</p>
+
+<p>Or, put another way: <code>NSURLProtocol</code> is an Apple-sanctioned man-in-the-middle attack.</p>
+
+<h2 id="subclassing-nsurlprotocol">Subclassing NSURLProtocol</h2>
+
+<p>As mentioned previously, <code>NSURLProtocol</code> is an abstract class, which means it will be subclassed rather than used directly.</p>
+
+<h3 id="determining-if-a-subclass-can-handle-a-request">Determining if a Subclass Can Handle a Request</h3>
+
+<p>The first task of an <code>NSURLProtocol</code> subclass is to define what requests to handle. For example, if you want to serve bundle resources when available, it would only want to respond to requests that matched the name of an existing resource.</p>
+
+<p>This logic is specified in <code>+canInitWithRequest:</code>. If <code>YES</code>, the specified request is handled. If <code>NO</code>, it&rsquo;s passed down the line to the next URL Protocol.</p>
+
+<h3 id="providing-a-canonical-version-of-a-request">Providing a Canonical Version of a Request</h3>
+
+<p>If you wanted to modify a request in any particular way, <code>+canonicalRequestForRequest:</code> is your opportunity. It&rsquo;s up to each subclass to determine what &ldquo;canonical&rdquo; means, but the gist is that a protocol should ensure that a request has only one canonical form (although many different requests may normalize into the same canonical form).</p>
+
+<h3 id="getting-and-setting-properties-on-requests">Getting and Setting Properties on Requests</h3>
+
+<p><code>NSURLProtocol</code> provides methods that allow you to add, retrieve, and remove arbitrary metadata to a request object&ndash;without the need for a private category or swizzling:</p>
+
+<ul>
+<li><code>+propertyForKey:inRequest:</code></li>
+<li><code>+setProperty:forKey:inRequest:</code></li>
+<li><code>+removePropertyForKey:inRequest:</code></li>
+</ul>
+
+<p>This is especially important for subclasses created to interact with protocols that have information not already provided by <code>NSURLRequest</code>. It can also be useful as a way to pass state between other methods in your implementation.</p>
+
+<h3 id="loading-requests">Loading Requests</h3>
+
+<p>The most important methods in your subclass are <code>-startLoading</code> and <code>-stopLoading</code>. What goes into either of these methods is entirely dependent on what your subclass is trying to accomplish, but there is one commonality: communicating with the protocol client.</p>
+
+<p>Each instance of a <code>NSURLProtocol</code> subclass has a <code>client</code> property, which is the object that is communicating with the URL Loading system. It&rsquo;s not <code>NSURLConnection</code>, but the object does conform to a protocol that should look familiar to anyone who has implemented <code>NSURLConnectionDelegate</code></p>
+
+<h4 id="&lt;nsurlprotocolclient&gt;"><code>&lt;NSURLProtocolClient&gt;</code></h4>
+
+<ul>
+<li><code>-URLProtocol:cachedResponseIsValid:</code></li>
+<li><code>-URLProtocol:didCancelAuthenticationChallenge:</code></li>
+<li><code>-URLProtocol:didFailWithError:</code></li>
+<li><code>-URLProtocol:didLoadData:</code></li>
+<li><code>-URLProtocol:didReceiveAuthenticationChallenge:</code></li>
+<li><code>-URLProtocol:didReceiveResponse:cacheStoragePolicy:</code></li>
+<li><code>-URLProtocol:wasRedirectedToRequest:redirectResponse:</code></li>
+<li><code>-URLProtocolDidFinishLoading:</code></li>
+</ul>
+
+<p>In your implementation of <code>-startLoading</code> and <code>-stopLoading</code>, you will need to send each delegate method to your <code>client</code> when appropriate. For something simple, this may mean sending several in rapid succession, but it&rsquo;s important nonetheless.</p>
+
+<h3 id="registering-the-subclass-with-the-url-loading-system">Registering the Subclass with the URL Loading System</h3>
+
+<p>Finally, in order to actually use an <code>NSURLProtocol</code> subclass, it needs to be registered into the URL Loading System.</p>
+
+<p>When a request is loaded, each registered protocol is asked &ldquo;hey, can you handle this request?&rdquo;. The first one to respond with <code>YES</code> with <code>+canInitWithRequest:</code> gets to handle the request. URL protocols are consulted in reverse order of when they were registered, so by calling <code>[NSURLProtocol registerClass:[MyURLProtocol class]];</code> in <code>-application:didFinishLoadingWithOptions:</code>, your protocol will have priority over any of the built-in protocols.</p>
+
+<hr>
+
+<p>Like the URL Loading System that contains it, <code>NSURLProtocol</code> is incredibly powerful, and can be used in exceedingly clever ways. As a relatively obscure class, we&rsquo;ve only just started to mine its potential for how we can use it to make our code cleaner, faster, and more robust.</p>
+
+<p>So go forth and hack! I can&rsquo;t wait to see what y&#39;all come up with!</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2012-11-05-nsurlprotocol.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+            
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nsvaluetransformer/" title="NSValueTransformer" rel="next">NSValue​Transformer</a>
+            </h1>
+
+            <p>Of all the Foundation classes, NSValueTransformer is perhaps the one that fared the worst in the shift from OS X to iOS. But you know what? It&rsquo;s ripe for a comeback. With a little bit of re-tooling and some recontextualization, this blast from the past could be the next big thing in your application.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nslinguistictagger/" title="NSLinguisticTagger">NSLinguisticTagger</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nstemporarydirectory/" title="NSTemporaryDirectory /<br/>NSItemReplacementDirectory /<br/>mktemp(3)">NSTemporaryDirectory /<br/>NSItemReplacementDirectory /<br/>mktemp(3)</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsvaluetransformer/" title="NSValueTransformer">NSValueTransformer</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/uiaccessibility/" title="UIAccessibility">UIAccessibility</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

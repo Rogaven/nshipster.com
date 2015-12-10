@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>MKTileOverlay, MKMapSnapshotter & MKDirections - NSHipster</title>
+    <meta name="description" content="Unless you work with MKMapView. on a regular basis, the last you may have heard about the current state of cartography on iOS may not have been under the cheeriest of circumstances. Therefore, it may come as a surprise maps on iOS have gotten quite a bit better in the intervening releases. Quite good, in fact."/>
+    <link rel="canonical" href="http://nshipster.com/mktileoverlay-mkmapsnapshotter-mkdirections/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="MKTileOverlay,<br/>MKMapSnapshotter &<br/>MKDirections"/>
+    <meta name="twitter:description" content="Unless you work with MKMapView. on a regular basis, the last you may have heard about the current state of cartography on iOS may not have been under the cheeriest of circumstances. Therefore, it may come as a surprise maps on iOS have gotten quite a bit better in the intervening releases. Quite good, in fact."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="MKTileOverlay,<br/>MKMapSnapshotter &<br/>MKDirections"/>
+    <meta property="og:url" content="http://nshipster.com/mktileoverlay-mkmapsnapshotter-mkdirections/"/>
+    <meta property="og:description" content="Unless you work with MKMapView. on a regular basis, the last you may have heard about the current state of cartography on iOS may not have been under the cheeriest of circumstances. Therefore, it may come as a surprise maps on iOS have gotten quite a bit better in the intervening releases. Quite good, in fact."/>
+    <meta property="article:published_time" content="2014-02-03T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="MKTileOverlay,<br/>MKMapSnapshotter &<br/>MKDirections"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/mktileoverlay-mkmapsnapshotter-mkdirections/">MKTile​Overlay,<br/>MKMap​Snapshotter &<br/>MKDirections</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2014-02-03T00:00:00-08:00" itemprop="datePublished">February 3<sup>rd</sup>, 2014</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Unless you work with <code>MKMapView</code> on a regular basis, the last you may have heard about the current state of cartography on iOS may not have been <a href="http://www.apple.com/letter-from-tim-cook-on-maps/">under the cheeriest of circumstances</a>. Even now, years after the ire of armchair usability experts has moved on to iOS 7&rsquo;s distinct &ldquo;look and feel&rdquo;, the phrase &ldquo;Apple Maps&rdquo; still does not inspire confidence in the average developer.</p>
+
+<p>Therefore, it may come as a surprise maps on iOS have gotten quite a bit better in the intervening releases. Quite good, in fact—especially with the new mapping APIs introduced in iOS 7.  These new APIs not only expose the advanced presentational functionality seen in Maps, but provide workarounds for MapKit&rsquo;s limitations.</p>
+
+<p>This week on NSHipster, we&rsquo;ll introduce <code>MKTileOverlay</code>, <code>MKMapSnapshotter</code>, and <code>MKDirections</code>: three new MapKit APIs introduced in iOS 7 that unlock a new world of possibilities.</p>
+
+<hr>
+
+<h2 id="mktileoverlay">MKTileOverlay</h2>
+
+<p>Don&rsquo;t like the default Apple Maps tiles? <a href="https://developer.apple.com/library/ios/documentation/MapKit/Reference/MKTileOverlay_class/Reference/Reference.html"><code>MKTileOverlay</code></a> allows you to seamlessly swap out to another tile set in just a few lines of code.</p>
+
+<blockquote>
+<p>Just like <a href="http://www.openstreetmap.org">OpenStreetMap</a> and <a href="https://maps.google.com">Google Maps</a>, MKTileOverlay uses <a href="http://en.wikipedia.org/wiki/Mercator_projection#The_spherical_model">spherical mercator projection (EPSG:3857)</a>.</p>
+</blockquote>
+
+<h3 id="setting-custom-map-view-tile-overlay">Setting Custom Map View Tile Overlay</h3>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">template</span> <span class="o">=</span> <span class="s">&quot;http://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;</span>
+
+<span class="k">let</span> <span class="n">overlay</span> <span class="o">=</span> <span class="bp">MKTileOverlay</span><span class="p">(</span><span class="nl">URLTemplate</span><span class="p">:</span> <span class="n">template</span><span class="p">)</span>
+<span class="n">overlay</span><span class="p">.</span><span class="n">canReplaceMapContent</span> <span class="o">=</span> <span class="nb">true</span>
+
+<span class="n">mapView</span><span class="p">.</span><span class="n">addOverlay</span><span class="p">(</span><span class="n">overlay</span><span class="p">,</span> <span class="nl">level</span><span class="p">:</span> <span class="p">.</span><span class="n">AboveLabels</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">static</span> <span class="bp">NSString</span> <span class="o">*</span> <span class="k">const</span> <span class="n">template</span> <span class="o">=</span> <span class="s">@&quot;http://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;</span><span class="p">;</span>
+
+<span class="bp">MKTileOverlay</span> <span class="o">*</span><span class="n">overlay</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">MKTileOverlay</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithURLTemplate</span><span class="p">:</span><span class="n">template</span><span class="p">];</span>
+<span class="n">overlay</span><span class="p">.</span><span class="n">canReplaceMapContent</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+
+<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">mapView</span> <span class="nl">addOverlay</span><span class="p">:</span><span class="n">overlay</span>
+                   <span class="nl">level</span><span class="p">:</span><span class="n">MKOverlayLevelAboveLabels</span><span class="p">];</span>
+</code></pre></div>
+<p>MKTileOverlay is initialized with a URL template string, with the <code>x</code> &amp; <code>y</code> tile coordinates within the specified zoom level. <a href="https://www.mapbox.com/developers/guide/">MapBox has a great explanation for this scheme is used to generate tiles</a>:</p>
+
+<blockquote>
+<p>Each tile has a z coordinate describing its zoom level and x and y coordinates describing its position within a square grid for that zoom level. Hence, the very first tile in the web map system is at 0/0/0.</p>
+</blockquote>
+
+<table style="display:block;width:256px;margin:10px auto">
+    <tr>
+        <td style="background-image:url(https://a.tiles.mapbox.com/v3/examples.map-9ijuk24y/0/0/0.png);width:256px;height:256px;padding:0;border:1px #fff solid;"><span style="text-align:center;display:block">0/0/0</span></td>
+    </tr>
+</table>
+
+<blockquote>
+<p>Zoom level 0 covers the entire globe. The very next zoom level divides z0 into four equal squares such that 1/0/0 and 1/1/0 cover the northern hemisphere while 1/0/1 and 1/1/1 cover the southern hemisphere.</p>
+</blockquote>
+
+<table style="display:block;width:514px;margin:10px auto;">
+    <tr>
+        <td style="background-image:url(https://a.tiles.mapbox.com/v3/examples.map-9ijuk24y/1/0/0.png);width:256px;height:256px;padding:0;border:1px #fff solid;"><span style="text-align:center;display:block">1/0/0</span></td>
+        <td style="background-image:url(https://a.tiles.mapbox.com/v3/examples.map-9ijuk24y/1/1/0.png);width:256px;height:256px;padding:0;border:1px #fff solid;"><span style="text-align:center;display:block">1/1/0</span></td>
+    </tr>
+    <tr>
+        <td style="background-image:url(https://a.tiles.mapbox.com/v3/examples.map-9ijuk24y/1/0/1.png);width:256px;height:256px;padding:0;border:1px #fff solid;"><span style="text-align:center;display:block">1/0/1</span></td>
+        <td style="background-image:url(https://a.tiles.mapbox.com/v3/examples.map-9ijuk24y/1/1/1.png);width:256px;height:256px;padding:0;border:1px #fff solid;"><span style="text-align:center;display:block">1/1/1</span></td>
+    </tr>
+</table>
+
+<blockquote>
+<p>Zoom levels are related to each other by powers of four - <code>z0</code> contains 1 tile, <code>z1</code> contains 4 tiles, <code>z2</code> contains 16, and so on. Because of this exponential relationship the amount of detail increases at every zoom level but so does the amount of bandwidth and storage required to serve up tiles. For example, a map at <code>z15</code> – about when city building footprints first become visible – requires about 1.1 billion tiles to cover the entire world. At <code>z17</code>, just two zoom levels greater, the world requires 17 billion tiles.</p>
+</blockquote>
+
+<p>After setting <code>canReplaceMapContent</code> to <code>YES</code>, the overlay is added to the <code>MKMapView</code>.</p>
+
+<p>In the map view&rsquo;s delegate, <code>mapView:rendererForOverlay:</code> is implemented simply to return a new <code>MKTileOverlayRenderer</code> instance when called for the <code>MKTileOverlay</code> overlay.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// MARK: MKMapViewDelegate</span>
+
+<span class="k">func</span> <span class="n">mapView</span><span class="p">(</span><span class="nl">mapView</span><span class="p">:</span> <span class="bp">MKMapView</span><span class="p">,</span> <span class="n">rendererForOverlay</span> <span class="nl">overlay</span><span class="p">:</span> <span class="bp">MKOverlay</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">MKOverlayRenderer</span> <span class="p">{</span>
+    <span class="kr">guard</span> <span class="k">let</span> <span class="n">tileOverlay</span> <span class="o">=</span> <span class="n">overlay</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">MKTileOverlay</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="bp">MKOverlayRenderer</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="bp">MKTileOverlayRenderer</span><span class="p">(</span><span class="nl">tileOverlay</span><span class="p">:</span> <span class="n">tileOverlay</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="cp">#pragma mark - MKMapViewDelegate</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="bp">MKOverlayRenderer</span> <span class="o">*</span><span class="p">)</span><span class="nf">mapView:</span><span class="p">(</span><span class="bp">MKMapView</span> <span class="o">*</span><span class="p">)</span><span class="nv">mapView</span>
+            <span class="nf">rendererForOverlay:</span><span class="p">(</span><span class="kt">id</span> <span class="o">&lt;</span><span class="bp">MKOverlay</span><span class="o">&gt;</span><span class="p">)</span><span class="nv">overlay</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">([</span><span class="n">overlay</span> <span class="nl">isKindOfClass</span><span class="p">:[</span><span class="bp">MKTileOverlay</span> <span class="k">class</span><span class="p">]])</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[[</span><span class="bp">MKTileOverlayRenderer</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithTileOverlay</span><span class="p">:</span><span class="n">overlay</span><span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Speaking of <a href="https://www.mapbox.com">MapBox</a>, <a href="https://github.com/incanus">Justin R. Miller</a> maintains <a href="https://www.mapbox.com/mbxmapkit/">MBXMapKit</a>, a MapBox-enabled drop-in replacement for <code>MKMapView</code>. It&rsquo;s the easiest way to get up-and-running with this world-class mapping service, and highly recommended for anyone looking to make an impact with maps in their next release.</p>
+</blockquote>
+
+<h3 id="implementing-custom-behavior-with-mktileoverlay-subclass">Implementing Custom Behavior with MKTileOverlay Subclass</h3>
+
+<p>If you need to accommodate a different tile coordinate scheme with your server, or want to add in-memory or offline caching, this can be done by subclassing <code>MKTileOverlay</code> and overriding <code>-URLForTilePath:</code> and <code>-loadTileAtPath:result:</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="nl">MKHipsterTileOverlay</span> <span class="p">:</span> <span class="bp">MKTileOverlay</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">cache</span> <span class="o">=</span> <span class="bp">NSCache</span><span class="p">()</span>
+    <span class="k">let</span> <span class="n">operationQueue</span> <span class="o">=</span> <span class="bp">NSOperationQueue</span><span class="p">()</span>
+
+    <span class="kr">override</span> <span class="k">func</span> <span class="n">URLForTilePath</span><span class="p">(</span><span class="nl">path</span><span class="p">:</span> <span class="n">MKTileOverlayPath</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">NSURL</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="n">String</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="s">&quot;http://tile.example.com/%d/%d/%d&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">.</span><span class="n">z</span><span class="p">,</span> <span class="n">path</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">path</span><span class="p">.</span><span class="n">y</span><span class="p">))</span><span class="o">!</span>
+    <span class="p">}</span>
+
+    <span class="kr">override</span> <span class="k">func</span> <span class="n">loadTileAtPath</span><span class="p">(</span><span class="nl">path</span><span class="p">:</span> <span class="n">MKTileOverlayPath</span><span class="p">,</span> <span class="nl">result</span><span class="p">:</span> <span class="p">(</span><span class="bp">NSData</span><span class="o">?</span><span class="p">,</span> <span class="bp">NSError</span><span class="o">?</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="n">url</span> <span class="o">=</span> <span class="n">URLForTilePath</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="n">cachedData</span> <span class="o">=</span> <span class="n">cache</span><span class="p">.</span><span class="n">objectForKey</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">NSData</span> <span class="p">{</span>
+            <span class="n">result</span><span class="p">(</span><span class="n">cachedData</span><span class="p">,</span> <span class="nb">nil</span><span class="p">)</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="n">request</span> <span class="o">=</span> <span class="bp">NSURLRequest</span><span class="p">(</span><span class="nl">URL</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span>
+            <span class="bp">NSURLConnection</span><span class="p">.</span><span class="n">sendAsynchronousRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="nl">queue</span><span class="p">:</span> <span class="n">operationQueue</span><span class="p">)</span> <span class="p">{</span>
+                <span class="p">[</span><span class="k">weak</span> <span class="nb">self</span><span class="p">]</span>
+                <span class="n">response</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
+                <span class="k">if</span> <span class="k">let</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span> <span class="p">{</span>
+                    <span class="nb">self</span><span class="o">?</span><span class="p">.</span><span class="n">cache</span><span class="p">.</span><span class="n">setObject</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nl">forKey</span><span class="p">:</span> <span class="n">url</span><span class="p">)</span>
+                <span class="p">}</span>
+                <span class="n">result</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">@interface</span> <span class="nc">XXTileOverlay</span> : <span class="bp">MKTileOverlay</span>
+<span class="k">@property</span> <span class="bp">NSCache</span> <span class="o">*</span><span class="n">cache</span><span class="p">;</span>
+<span class="k">@property</span> <span class="bp">NSOperationQueue</span> <span class="o">*</span><span class="n">operationQueue</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">XXTileOverlay</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nf">URLForTilePath:</span><span class="p">(</span><span class="n">MKTileOverlayPath</span><span class="p">)</span><span class="nv">path</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="bp">NSURL</span> <span class="nl">URLWithString</span><span class="p">:[</span><span class="bp">NSString</span> <span class="nl">stringWithFormat</span><span class="p">:</span><span class="s">@&quot;http://tile.example.com/%d/%d/%d&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">.</span><span class="n">z</span><span class="p">,</span> <span class="n">path</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">path</span><span class="p">.</span><span class="n">y</span><span class="p">]];</span>
+<span class="p">}</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">loadTileAtPath:</span><span class="p">(</span><span class="n">MKTileOverlayPath</span><span class="p">)</span><span class="nv">path</span>
+                <span class="nf">result:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="bp">NSData</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">))</span><span class="nv">result</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="bp">NSData</span> <span class="o">*</span><span class="n">cachedData</span> <span class="o">=</span> <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">cache</span> <span class="nl">objectForKey</span><span class="p">:[</span><span class="nb">self</span> <span class="nl">URLForTilePath</span><span class="p">:</span><span class="n">path</span><span class="p">]];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">cachedData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">result</span><span class="p">(</span><span class="n">cachedData</span><span class="p">,</span> <span class="nb">nil</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="bp">NSURLRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSURLRequest</span> <span class="nl">requestWithURL</span><span class="p">:[</span><span class="nb">self</span> <span class="nl">URLForTilePath</span><span class="p">:</span><span class="n">path</span><span class="p">]];</span>
+        <span class="p">[</span><span class="bp">NSURLConnection</span> <span class="nl">sendAsynchronousRequest</span><span class="p">:</span><span class="n">request</span> <span class="nl">queue</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">operationQueue</span> <span class="nl">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSURLResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="bp">NSData</span> <span class="o">*</span><span class="n">data</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">connectionError</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">result</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">connectionError</span><span class="p">);</span>
+        <span class="p">}];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre></div>
+<h2 id="mkmapsnapshotter">MKMapSnapshotter</h2>
+
+<p>Another addition to iOS 7 was <a href="https://developer.apple.com/library/ios/documentation/MapKit/Reference/MKMapSnapshotter_class/Reference/Reference.html"><code>MKMapSnapshotter</code></a>, which formalizes the process of creating an image representation of a map view. Previously, this would involve playing fast and loose with the <code>UIGraphicsContext</code>, but now images can reliably be created for any particular region and perspective.</p>
+
+<blockquote>
+<p>See <a href="https://developer.apple.com/wwdc/videos/?id=309">WWDC 2013 Session 309: &ldquo;Putting Map Kit in Perspective&rdquo;</a> for additional information on how and when to use <code>MKMapSnapshotter</code>.</p>
+</blockquote>
+
+<h3 id="creating-a-map-view-snapshot">Creating a Map View Snapshot</h3>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">options</span> <span class="o">=</span> <span class="bp">MKMapSnapshotOptions</span><span class="p">()</span>
+<span class="n">options</span><span class="p">.</span><span class="n">region</span> <span class="o">=</span> <span class="n">mapView</span><span class="p">.</span><span class="n">region</span>
+<span class="n">options</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">mapView</span><span class="p">.</span><span class="n">frame</span><span class="p">.</span><span class="n">size</span>
+<span class="n">options</span><span class="p">.</span><span class="n">scale</span> <span class="o">=</span> <span class="bp">UIScreen</span><span class="p">.</span><span class="n">mainScreen</span><span class="p">().</span><span class="n">scale</span>
+
+<span class="k">let</span> <span class="n">fileURL</span> <span class="o">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">fileURLWithPath</span><span class="p">:</span> <span class="s">&quot;path/to/snapshot.png&quot;</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="n">snapshotter</span> <span class="o">=</span> <span class="bp">MKMapSnapshotter</span><span class="p">(</span><span class="nl">options</span><span class="p">:</span> <span class="n">options</span><span class="p">)</span>
+<span class="n">snapshotter</span><span class="p">.</span><span class="n">startWithCompletionHandler</span> <span class="p">{</span> <span class="n">snapshot</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
+    <span class="kr">guard</span> <span class="k">let</span> <span class="n">snapshot</span> <span class="o">=</span> <span class="n">snapshot</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;Snapshot error: \(error)&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="k">let</span> <span class="n">data</span> <span class="o">=</span> <span class="n">UIImagePNGRepresentation</span><span class="p">(</span><span class="n">snapshot</span><span class="p">.</span><span class="n">image</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">?</span><span class="p">.</span><span class="n">writeToURL</span><span class="p">(</span><span class="n">fileURL</span><span class="p">,</span> <span class="nl">atomically</span><span class="p">:</span> <span class="nb">true</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">MKMapSnapshotOptions</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">MKMapSnapshotOptions</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="n">options</span><span class="p">.</span><span class="n">region</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">mapView</span><span class="p">.</span><span class="n">region</span><span class="p">;</span>
+<span class="n">options</span><span class="p">.</span><span class="n">size</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">mapView</span><span class="p">.</span><span class="n">frame</span><span class="p">.</span><span class="n">size</span><span class="p">;</span>
+<span class="n">options</span><span class="p">.</span><span class="n">scale</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UIScreen</span> <span class="n">mainScreen</span><span class="p">]</span> <span class="n">scale</span><span class="p">];</span>
+
+<span class="bp">NSURL</span> <span class="o">*</span><span class="n">fileURL</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSURL</span> <span class="nl">fileURLWithPath</span><span class="p">:</span><span class="s">@&quot;path/to/snapshot.png&quot;</span><span class="p">];</span>
+
+<span class="bp">MKMapSnapshotter</span> <span class="o">*</span><span class="n">snapshotter</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">MKMapSnapshotter</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithOptions</span><span class="p">:</span><span class="n">options</span><span class="p">];</span>
+<span class="p">[</span><span class="n">snapshotter</span> <span class="nl">startWithCompletionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">MKMapSnapshot</span> <span class="o">*</span><span class="n">snapshot</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;[Error] %@&quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="bp">UIImage</span> <span class="o">*</span><span class="n">image</span> <span class="o">=</span> <span class="n">snapshot</span><span class="p">.</span><span class="n">image</span><span class="p">;</span>
+    <span class="bp">NSData</span> <span class="o">*</span><span class="n">data</span> <span class="o">=</span> <span class="n">UIImagePNGRepresentation</span><span class="p">(</span><span class="n">image</span><span class="p">);</span>
+    <span class="p">[</span><span class="n">data</span> <span class="nl">writeToURL</span><span class="p">:</span><span class="n">fileURL</span> <span class="nl">atomically</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+<span class="p">}];</span>
+</code></pre></div>
+<p>First, an <code>MKMapSnapshotOptions</code> object is created, which is used to specify the region, size, scale, and <a href="https://developer.apple.com/library/mac/documentation/MapKit/Reference/MKMapCamera_class/Reference/Reference.html">camera</a> used to render the map image.</p>
+
+<p>Then, these options are passed to a new <code>MKMapSnapshotter</code> instance, which asynchronously creates an image with <code>-startWithCompletionHandler:</code>. In this example, a PNG representation of the image is written to disk.</p>
+
+<h3 id="drawing-annotations-on-map-view-snapshot">Drawing Annotations on Map View Snapshot</h3>
+
+<p>However, this only draws the map for the specified region; annotations are rendered separately.</p>
+
+<p>Including annotations—or indeed, any additional information to the map snapshot—can be done by dropping down into Core Graphics:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">snapshotter</span><span class="p">.</span><span class="n">startWithQueue</span><span class="p">(</span><span class="n">dispatch_get_global_queue</span><span class="p">(</span><span class="n">DISPATCH_QUEUE_PRIORITY_DEFAULT</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">{</span> <span class="n">snapshot</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
+    <span class="kr">guard</span> <span class="k">let</span> <span class="n">snapshot</span> <span class="o">=</span> <span class="n">snapshot</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;Snapshot error: \(error)&quot;</span><span class="p">)</span>
+        <span class="n">fatalError</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">let</span> <span class="n">pin</span> <span class="o">=</span> <span class="bp">MKPinAnnotationView</span><span class="p">(</span><span class="nl">annotation</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">reuseIdentifier</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+    <span class="k">let</span> <span class="n">image</span> <span class="o">=</span> <span class="n">snapshot</span><span class="p">.</span><span class="n">image</span>
+
+    <span class="n">UIGraphicsBeginImageContextWithOptions</span><span class="p">(</span><span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> <span class="nb">true</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">scale</span><span class="p">)</span>
+    <span class="n">image</span><span class="p">.</span><span class="n">drawAtPoint</span><span class="p">(</span><span class="bp">CGPoint</span><span class="p">.</span><span class="n">zero</span><span class="p">)</span>
+
+    <span class="k">let</span> <span class="n">visibleRect</span> <span class="o">=</span> <span class="bp">CGRect</span><span class="p">(</span><span class="nl">origin</span><span class="p">:</span> <span class="bp">CGPoint</span><span class="p">.</span><span class="n">zero</span><span class="p">,</span> <span class="nl">size</span><span class="p">:</span> <span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">annotation</span> <span class="k">in</span> <span class="n">mapView</span><span class="p">.</span><span class="n">annotations</span> <span class="p">{</span>
+        <span class="k">var</span> <span class="n">point</span> <span class="o">=</span> <span class="n">snapshot</span><span class="p">.</span><span class="n">pointForCoordinate</span><span class="p">(</span><span class="n">annotation</span><span class="p">.</span><span class="n">coordinate</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">visibleRect</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">point</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">point</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">point</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">pin</span><span class="p">.</span><span class="n">centerOffset</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">pin</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">point</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">point</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">pin</span><span class="p">.</span><span class="n">centerOffset</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">pin</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">pin</span><span class="p">.</span><span class="n">image</span><span class="o">?</span><span class="p">.</span><span class="n">drawAtPoint</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">let</span> <span class="n">compositeImage</span> <span class="o">=</span> <span class="n">UIGraphicsGetImageFromCurrentImageContext</span><span class="p">()</span>
+    <span class="n">UIGraphicsEndImageContext</span><span class="p">()</span>
+
+    <span class="k">let</span> <span class="n">data</span> <span class="o">=</span> <span class="n">UIImagePNGRepresentation</span><span class="p">(</span><span class="n">compositeImage</span><span class="p">)</span>
+    <span class="n">data</span><span class="o">?</span><span class="p">.</span><span class="n">writeToURL</span><span class="p">(</span><span class="n">fileURL</span><span class="p">,</span> <span class="nl">atomically</span><span class="p">:</span> <span class="nb">true</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[</span><span class="n">snapshotter</span> <span class="nl">startWithQueue</span><span class="p">:</span><span class="n">dispatch_get_global_queue</span><span class="p">(</span><span class="n">DISPATCH_QUEUE_PRIORITY_DEFAULT</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+              <span class="nl">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">MKMapSnapshot</span> <span class="o">*</span><span class="n">snapshot</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+          <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;[Error] %@&quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+          <span class="k">return</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="bp">MKAnnotationView</span> <span class="o">*</span><span class="n">pin</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">MKPinAnnotationView</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithAnnotation</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">reuseIdentifier</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+
+      <span class="bp">UIImage</span> <span class="o">*</span><span class="n">image</span> <span class="o">=</span> <span class="n">snapshot</span><span class="p">.</span><span class="n">image</span><span class="p">;</span>
+      <span class="n">UIGraphicsBeginImageContextWithOptions</span><span class="p">(</span><span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> <span class="nb">YES</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">scale</span><span class="p">);</span>
+      <span class="p">{</span>
+          <span class="p">[</span><span class="n">image</span> <span class="nl">drawAtPoint</span><span class="p">:</span><span class="n">CGPointMake</span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">)];</span>
+
+          <span class="bp">CGRect</span> <span class="n">rect</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">);</span>
+          <span class="k">for</span> <span class="p">(</span><span class="kt">id</span> <span class="o">&lt;</span><span class="bp">MKAnnotation</span><span class="o">&gt;</span> <span class="n">annotation</span> <span class="k">in</span> <span class="nb">self</span><span class="p">.</span><span class="n">mapView</span><span class="p">.</span><span class="n">annotations</span><span class="p">)</span> <span class="p">{</span>
+              <span class="bp">CGPoint</span> <span class="n">point</span> <span class="o">=</span> <span class="p">[</span><span class="n">snapshot</span> <span class="nl">pointForCoordinate</span><span class="p">:</span><span class="n">annotation</span><span class="p">.</span><span class="n">coordinate</span><span class="p">];</span>
+              <span class="k">if</span> <span class="p">(</span><span class="n">CGRectContainsPoint</span><span class="p">(</span><span class="n">rect</span><span class="p">,</span> <span class="n">point</span><span class="p">))</span> <span class="p">{</span>
+                  <span class="n">point</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">point</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">pin</span><span class="p">.</span><span class="n">centerOffset</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span>
+                                <span class="p">(</span><span class="n">pin</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">);</span>
+                  <span class="n">point</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">point</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">pin</span><span class="p">.</span><span class="n">centerOffset</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span>
+                                <span class="p">(</span><span class="n">pin</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">);</span>
+                  <span class="p">[</span><span class="n">pin</span><span class="p">.</span><span class="n">image</span> <span class="nl">drawAtPoint</span><span class="p">:</span><span class="n">point</span><span class="p">];</span>
+              <span class="p">}</span>
+          <span class="p">}</span>
+
+          <span class="bp">UIImage</span> <span class="o">*</span><span class="n">compositeImage</span> <span class="o">=</span> <span class="n">UIGraphicsGetImageFromCurrentImageContext</span><span class="p">();</span>
+          <span class="bp">NSData</span> <span class="o">*</span><span class="n">data</span> <span class="o">=</span> <span class="n">UIImagePNGRepresentation</span><span class="p">(</span><span class="n">compositeImage</span><span class="p">);</span>
+          <span class="p">[</span><span class="n">data</span> <span class="nl">writeToURL</span><span class="p">:</span><span class="n">fileURL</span> <span class="nl">atomically</span><span class="p">:</span><span class="nb">YES</span><span class="p">];</span>
+      <span class="p">}</span>
+      <span class="n">UIGraphicsEndImageContext</span><span class="p">();</span>
+<span class="p">}];</span>
+</code></pre></div>
+<h2 id="mkdirections">MKDirections</h2>
+
+<p>The final iOS 7 addition to MapKit that we&rsquo;ll discuss is <a href="https://developer.apple.com/library/mac/documentation/MapKit/Reference/MKDirections_class/Reference/Reference.html"><code>MKDirections</code></a>.</p>
+
+<blockquote>
+<p><code>MKDirections</code>&lsquo; spiritual predecessor (of sorts), <a href="https://developer.apple.com/library/ios/documentation/MapKit/Reference/MKLocalSearch/Reference/Reference.html"><code>MKLocalSearch</code></a> was discussed in <a href="http://nshipster.com/mklocalsearch/">a previous NSHipster article</a></p>
+</blockquote>
+
+<p>As its name implies, <code>MKDirections</code> fetches routes between two waypoints. A <code>MKDirectionsRequest</code> object is initialized with a <code>source</code> and <code>destination</code>, and is then passed into an <code>MKDirections</code> object, which can calculate several possible routes and estimated travel times.</p>
+
+<p>It does so asynchronously, with <code>calculateDirectionsWithCompletionHandler:</code>, which returns either an <code>MKDirectionsResponse</code> object or an <code>NSError</code> describing why the directions request failed. An <code>MKDirectionsResponse</code> object contains an array of <code>routes</code>: <code>MKRoute</code> objects with an array of <code>MKRouteStep</code> <code>steps</code> objects, a polyline shape that can be drawn on the map, and other information like estimated travel distance and any travel advisories in effect.</p>
+
+<p>Building on the previous example, here is how <code>MKDirections</code> might be used to create an array of images representing each step in a calculated route between two points (which might then be pasted into an email or cached on disk):</p>
+
+<h3 id="getting-snapshots-for-each-step-of-directions-on-a-map-view">Getting Snapshots for each Step of Directions on a Map View</h3>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">request</span> <span class="o">=</span> <span class="bp">MKDirectionsRequest</span><span class="p">()</span>
+<span class="n">request</span><span class="p">.</span><span class="n">source</span> <span class="o">=</span> <span class="bp">MKMapItem</span><span class="p">.</span><span class="n">mapItemForCurrentLocation</span><span class="p">()</span>
+<span class="n">request</span><span class="p">.</span><span class="n">destination</span> <span class="o">=</span> <span class="bp">MKMapItem</span><span class="p">(...)</span>
+
+<span class="k">let</span> <span class="n">directions</span> <span class="o">=</span> <span class="bp">MKDirections</span><span class="p">(</span><span class="nl">request</span><span class="p">:</span> <span class="n">request</span><span class="p">)</span>
+<span class="n">directions</span><span class="p">.</span><span class="n">calculateDirectionsWithCompletionHandler</span> <span class="p">{</span> <span class="n">response</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
+    <span class="kr">guard</span> <span class="k">let</span> <span class="n">response</span> <span class="o">=</span> <span class="n">response</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;Directions error: \(error)&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="n">stepImagesFromDirectionsResponse</span><span class="p">(</span><span class="n">response</span><span class="p">)</span> <span class="p">{</span> <span class="n">stepImages</span> <span class="k">in</span>
+        <span class="n">stepImages</span><span class="p">.</span><span class="n">first</span>
+        <span class="n">print</span><span class="p">(</span><span class="n">stepImages</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">stepImagesFromDirectionsResponse</span><span class="p">(</span><span class="nl">response</span><span class="p">:</span> <span class="bp">MKDirectionsResponse</span><span class="p">,</span> <span class="nl">completionHandler</span><span class="p">:</span> <span class="p">([</span><span class="bp">UIImage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">guard</span> <span class="k">let</span> <span class="n">route</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">routes</span><span class="p">.</span><span class="n">first</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="n">completionHandler</span><span class="p">([])</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+
+    <span class="k">var</span> <span class="nl">stepImages</span><span class="p">:</span> <span class="p">[</span><span class="bp">UIImage</span><span class="o">?</span><span class="p">]</span> <span class="o">=</span> <span class="n">Array</span><span class="p">(</span><span class="nl">count</span><span class="p">:</span> <span class="n">route</span><span class="p">.</span><span class="n">steps</span><span class="p">.</span><span class="n">count</span><span class="p">,</span> <span class="nl">repeatedValue</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+    <span class="k">var</span> <span class="n">stepImageCount</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span> <span class="k">in</span> <span class="n">route</span><span class="p">.</span><span class="n">steps</span><span class="p">.</span><span class="n">enumerate</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">let</span> <span class="n">snapshotter</span> <span class="o">=</span> <span class="bp">MKMapSnapshotter</span><span class="p">(</span><span class="nl">options</span><span class="p">:</span> <span class="n">options</span><span class="p">)</span>
+        <span class="n">snapshotter</span><span class="p">.</span><span class="n">startWithCompletionHandler</span> <span class="p">{</span> <span class="n">snapshot</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
+            <span class="o">++</span><span class="n">stepImageCount</span>
+
+            <span class="kr">guard</span> <span class="k">let</span> <span class="n">snapshot</span> <span class="o">=</span> <span class="n">snapshot</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="n">print</span><span class="p">(</span><span class="s">&quot;Snapshot error: \(error)&quot;</span><span class="p">)</span>
+                <span class="k">return</span>
+            <span class="p">}</span>
+
+            <span class="k">let</span> <span class="n">image</span> <span class="o">=</span> <span class="n">snapshot</span><span class="p">.</span><span class="n">image</span>
+
+            <span class="n">UIGraphicsBeginImageContextWithOptions</span><span class="p">(</span><span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> <span class="nb">true</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">scale</span><span class="p">)</span>
+            <span class="n">image</span><span class="p">.</span><span class="n">drawAtPoint</span><span class="p">(</span><span class="bp">CGPoint</span><span class="p">.</span><span class="n">zero</span><span class="p">)</span>
+
+            <span class="c1">// draw the path</span>
+            <span class="kr">guard</span> <span class="k">let</span> <span class="n">c</span> <span class="o">=</span> <span class="n">UIGraphicsGetCurrentContext</span><span class="p">()</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="p">}</span>
+            <span class="n">CGContextSetStrokeColorWithColor</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="bp">UIColor</span><span class="p">.</span><span class="n">blueColor</span><span class="p">().</span><span class="bp">CGColor</span><span class="p">)</span>
+            <span class="n">CGContextSetLineWidth</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+            <span class="n">CGContextBeginPath</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+            <span class="k">var</span> <span class="nl">coordinates</span><span class="p">:</span> <span class="n">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="n">CLLocationCoordinate2D</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">UnsafeMutablePointer</span><span class="p">.</span><span class="n">alloc</span><span class="p">(</span><span class="n">step</span><span class="p">.</span><span class="n">polyline</span><span class="p">.</span><span class="n">pointCount</span><span class="p">)</span>
+            <span class="kr">defer</span> <span class="p">{</span> <span class="n">coordinates</span><span class="p">.</span><span class="n">dealloc</span><span class="p">(</span><span class="n">step</span><span class="p">.</span><span class="n">polyline</span><span class="p">.</span><span class="n">pointCount</span><span class="p">)</span> <span class="p">}</span>
+
+            <span class="n">step</span><span class="p">.</span><span class="n">polyline</span><span class="p">.</span><span class="n">getCoordinates</span><span class="p">(</span><span class="n">coordinates</span><span class="p">,</span> <span class="nl">range</span><span class="p">:</span> <span class="n">NSRange</span><span class="p">(</span><span class="nl">location</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="nl">length</span><span class="p">:</span> <span class="n">step</span><span class="p">.</span><span class="n">polyline</span><span class="p">.</span><span class="n">pointCount</span><span class="p">))</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span> <span class="p">..</span><span class="o">&lt;</span> <span class="n">step</span><span class="p">.</span><span class="n">polyline</span><span class="p">.</span><span class="n">pointCount</span> <span class="p">{</span>
+                <span class="k">let</span> <span class="n">p</span> <span class="o">=</span> <span class="n">snapshot</span><span class="p">.</span><span class="n">pointForCoordinate</span><span class="p">(</span><span class="n">coordinates</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">{</span>
+                    <span class="n">CGContextMoveToPoint</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="n">CGContextAddLineToPoint</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="p">.</span><span class="n">y</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="n">CGContextStrokePath</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+            <span class="c1">// add the start and end points</span>
+            <span class="k">let</span> <span class="n">visibleRect</span> <span class="o">=</span> <span class="bp">CGRect</span><span class="p">(</span><span class="nl">origin</span><span class="p">:</span> <span class="bp">CGPoint</span><span class="p">.</span><span class="n">zero</span><span class="p">,</span> <span class="nl">size</span><span class="p">:</span> <span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">mapItem</span> <span class="k">in</span> <span class="p">[</span><span class="n">response</span><span class="p">.</span><span class="n">source</span><span class="p">,</span> <span class="n">response</span><span class="p">.</span><span class="n">destination</span><span class="p">]</span>
+                <span class="k">where</span> <span class="n">mapItem</span><span class="p">.</span><span class="n">placemark</span><span class="p">.</span><span class="n">location</span> <span class="o">!=</span> <span class="nb">nil</span> <span class="p">{</span>
+                <span class="k">var</span> <span class="n">point</span> <span class="o">=</span> <span class="n">snapshot</span><span class="p">.</span><span class="n">pointForCoordinate</span><span class="p">(</span><span class="n">mapItem</span><span class="p">.</span><span class="n">placemark</span><span class="p">.</span><span class="n">location</span><span class="o">!</span><span class="p">.</span><span class="n">coordinate</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">visibleRect</span><span class="p">.</span><span class="n">contains</span><span class="p">(</span><span class="n">point</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">let</span> <span class="n">pin</span> <span class="o">=</span> <span class="bp">MKPinAnnotationView</span><span class="p">(</span><span class="nl">annotation</span><span class="p">:</span> <span class="nb">nil</span><span class="p">,</span> <span class="nl">reuseIdentifier</span><span class="p">:</span> <span class="nb">nil</span><span class="p">)</span>
+                    <span class="n">pin</span><span class="p">.</span><span class="n">pinTintColor</span> <span class="o">=</span> <span class="n">mapItem</span><span class="p">.</span><span class="n">isEqual</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">source</span><span class="p">)</span> <span class="o">?</span>
+                            <span class="bp">MKPinAnnotationView</span><span class="p">.</span><span class="n">greenPinColor</span><span class="p">()</span> <span class="o">:</span> <span class="bp">MKPinAnnotationView</span><span class="p">.</span><span class="n">redPinColor</span><span class="p">()</span>
+                    <span class="n">point</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">point</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">pin</span><span class="p">.</span><span class="n">centerOffset</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span> <span class="p">(</span><span class="n">pin</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+                    <span class="n">point</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">point</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">pin</span><span class="p">.</span><span class="n">centerOffset</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span> <span class="p">(</span><span class="n">pin</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+                    <span class="n">pin</span><span class="p">.</span><span class="n">image</span><span class="o">?</span><span class="p">.</span><span class="n">drawAtPoint</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="k">let</span> <span class="n">stepImage</span> <span class="o">=</span> <span class="n">UIGraphicsGetImageFromCurrentImageContext</span><span class="p">()</span>
+            <span class="n">UIGraphicsEndImageContext</span><span class="p">()</span>
+
+            <span class="n">stepImages</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">stepImage</span>
+
+            <span class="k">if</span> <span class="n">stepImageCount</span> <span class="o">==</span> <span class="n">stepImages</span><span class="p">.</span><span class="n">count</span> <span class="p">{</span>
+                <span class="n">completionHandler</span><span class="p">(</span><span class="n">stepImages</span><span class="p">.</span><span class="n">flatMap</span><span class="p">({</span> <span class="err">$</span><span class="mi">0</span> <span class="p">}))</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSMutableArray</span> <span class="o">*</span><span class="n">mutableStepImages</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSMutableArray</span> <span class="n">array</span><span class="p">];</span>
+
+<span class="bp">MKDirectionsRequest</span> <span class="o">*</span><span class="n">request</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">MKDirectionsRequest</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="n">request</span><span class="p">.</span><span class="n">source</span> <span class="o">=</span> <span class="p">[</span><span class="bp">MKMapItem</span> <span class="n">mapItemForCurrentLocation</span><span class="p">];</span>
+<span class="n">request</span><span class="p">.</span><span class="n">destination</span> <span class="o">=</span> <span class="p">...;</span>
+
+<span class="bp">MKDirections</span> <span class="o">*</span><span class="n">directions</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">MKDirections</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithRequest</span><span class="p">:</span><span class="n">request</span><span class="p">];</span>
+<span class="p">[</span><span class="n">directions</span> <span class="nl">calculateDirectionsWithCompletionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">MKDirectionsResponse</span> <span class="o">*</span><span class="n">response</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;[Error] %@&quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="bp">MKRoute</span> <span class="o">*</span><span class="n">route</span> <span class="o">=</span> <span class="p">[</span><span class="n">response</span><span class="p">.</span><span class="n">routes</span> <span class="n">firstObject</span><span class="p">];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="bp">MKRouteStep</span> <span class="o">*</span><span class="n">step</span> <span class="k">in</span> <span class="n">route</span><span class="p">.</span><span class="n">steps</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">snapshotter</span> <span class="nl">startWithCompletionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">MKMapSnapshot</span> <span class="o">*</span><span class="n">snapshot</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;[Error] %@&quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+                <span class="k">return</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="bp">UIImage</span> <span class="o">*</span><span class="n">image</span> <span class="o">=</span> <span class="n">snapshot</span><span class="p">.</span><span class="n">image</span><span class="p">;</span>
+            <span class="n">UIGraphicsBeginImageContextWithOptions</span><span class="p">(</span><span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> <span class="nb">YES</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">scale</span><span class="p">);</span>
+            <span class="p">{</span>
+                <span class="p">[</span><span class="n">image</span> <span class="nl">drawAtPoint</span><span class="p">:</span><span class="n">CGPointMake</span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">)];</span>
+
+                <span class="n">CGContextRef</span> <span class="n">c</span> <span class="o">=</span> <span class="n">UIGraphicsGetCurrentContext</span><span class="p">();</span>
+                <span class="bp">MKPolylineRenderer</span> <span class="o">*</span><span class="n">polylineRenderer</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">MKPolylineRenderer</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithPolyline</span><span class="p">:</span><span class="n">step</span><span class="p">.</span><span class="n">polyline</span><span class="p">];</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">polylineRenderer</span><span class="p">.</span><span class="n">path</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="p">[</span><span class="n">polylineRenderer</span> <span class="nl">applyStrokePropertiesToContext</span><span class="p">:</span><span class="n">c</span> <span class="nl">atZoomScale</span><span class="p">:</span><span class="mf">1.0f</span><span class="p">];</span>
+                    <span class="n">CGContextAddPath</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">polylineRenderer</span><span class="p">.</span><span class="n">path</span><span class="p">);</span>
+                    <span class="n">CGContextStrokePath</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+                <span class="p">}</span>
+
+                <span class="bp">CGRect</span> <span class="n">rect</span> <span class="o">=</span> <span class="n">CGRectMake</span><span class="p">(</span><span class="mf">0.0f</span><span class="p">,</span> <span class="mf">0.0f</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span><span class="p">,</span> <span class="n">image</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span><span class="p">);</span>
+                <span class="k">for</span> <span class="p">(</span><span class="bp">MKMapItem</span> <span class="o">*</span><span class="n">mapItem</span> <span class="k">in</span> <span class="l">@[</span><span class="n">response</span><span class="p">.</span><span class="n">source</span><span class="p">,</span> <span class="n">response</span><span class="p">.</span><span class="n">destination</span><span class="l">]</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="bp">CGPoint</span> <span class="n">point</span> <span class="o">=</span> <span class="p">[</span><span class="n">snapshot</span> <span class="nl">pointForCoordinate</span><span class="p">:</span><span class="n">mapItem</span><span class="p">.</span><span class="n">placemark</span><span class="p">.</span><span class="n">location</span><span class="p">.</span><span class="n">coordinate</span><span class="p">];</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">CGRectContainsPoint</span><span class="p">(</span><span class="n">rect</span><span class="p">,</span> <span class="n">point</span><span class="p">))</span> <span class="p">{</span>
+                        <span class="bp">MKPinAnnotationView</span> <span class="o">*</span><span class="n">pin</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">MKPinAnnotationView</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithAnnotation</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">reuseIdentifier</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+                        <span class="n">pin</span><span class="p">.</span><span class="n">pinColor</span> <span class="o">=</span> <span class="p">[</span><span class="n">mapItem</span> <span class="nl">isEqual</span><span class="p">:</span><span class="n">response</span><span class="p">.</span><span class="n">source</span><span class="p">]</span> <span class="o">?</span> <span class="nl">MKPinAnnotationColorGreen</span> <span class="p">:</span> <span class="n">MKPinAnnotationColorRed</span><span class="p">;</span>
+
+                        <span class="n">point</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">point</span><span class="p">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">pin</span><span class="p">.</span><span class="n">centerOffset</span><span class="p">.</span><span class="n">x</span> <span class="o">-</span>
+                            <span class="p">(</span><span class="n">pin</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">width</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">);</span>
+                        <span class="n">point</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">point</span><span class="p">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">pin</span><span class="p">.</span><span class="n">centerOffset</span><span class="p">.</span><span class="n">y</span> <span class="o">-</span>
+                            <span class="p">(</span><span class="n">pin</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">.</span><span class="n">height</span> <span class="o">/</span> <span class="mf">2.0f</span><span class="p">);</span>
+                        <span class="p">[</span><span class="n">pin</span><span class="p">.</span><span class="n">image</span> <span class="nl">drawAtPoint</span><span class="p">:</span><span class="n">point</span><span class="p">];</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+
+                <span class="bp">UIImage</span> <span class="o">*</span><span class="n">stepImage</span> <span class="o">=</span> <span class="n">UIGraphicsGetImageFromCurrentImageContext</span><span class="p">();</span>
+                <span class="p">[</span><span class="n">mutableStepImages</span> <span class="nl">addObject</span><span class="p">:</span><span class="n">stepImage</span><span class="p">];</span>
+            <span class="p">}</span>
+            <span class="n">UIGraphicsEndImageContext</span><span class="p">();</span>
+        <span class="p">}];</span>
+    <span class="p">}</span>
+<span class="p">}];</span>
+</code></pre></div>
+<hr>
+
+<p>As the tools used to map the world around us become increasingly sophisticated and ubiquitous, we become ever more capable of uncovering and communicating connections we create between ideas and the spaces they inhabit. With the introduction of several new MapKit APIs, iOS 7 took great strides to expand on what&rsquo;s possible. Although (perhaps unfairly) overshadowed by the mistakes of the past, MapKit is, and remains an extremely capable framework, worthy of further investigation.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-02-03-mktileoverlay-mkmapsnapshotter-mkdirections.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on November 12, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/associated-objects/" title="Associated Objects" rel="next">Associated Objects</a>
+            </h1>
+
+            <p>Associated Objects is a feature of the Objective-C 2.0 runtime, which allows objects to associate arbitrary values for keys at runtime. It&rsquo;s dark juju, to be handled with as much caution as any other function from objc/runtime.h</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nslocalizedstring/" title="NSLocalizedString">NSLocalizedString</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsfilemanager/" title="NSFileManager">NSFileManager</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/mkgeodesicpolyline/" title="MKGeodesicPolyline">MKGeodesicPolyline</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/multipeer-connectivity/" title="Multipeer Connectivity">Multipeer Connectivity</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>Alamofire - NSHipster</title>
+    <meta name="description" content="Although we still have a few months to wait before we can ship apps in Swift, there is already a proliferation of open source projects built with this new language. One such project is Alamofire."/>
+    <link rel="canonical" href="http://nshipster.com/alamofire/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="Alamofire"/>
+    <meta name="twitter:description" content="Although we still have a few months to wait before we can ship apps in Swift, there is already a proliferation of open source projects built with this new language. One such project is Alamofire."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Alamofire"/>
+    <meta property="og:url" content="http://nshipster.com/alamofire/"/>
+    <meta property="og:description" content="Although we still have a few months to wait before we can ship apps in Swift, there is already a proliferation of open source projects built with this new language. One such project is Alamofire."/>
+    <meta property="article:published_time" content="2014-08-04T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="open source"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="Alamofire"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/alamofire/">Alamofire</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2014-08-04T00:00:00-07:00" itemprop="datePublished">August 4<sup>th</sup>, 2014</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Swift has hit a reset button on the iOS developer community. It&rsquo;s really been something to behold for seasoned Objective-C developers.</p>
+
+<p>Literally overnight, conversations shifted from <a href="http://nshipster.com/namespacing/">namespacing</a> and <a href="http://nshipster.com/method-swizzling/">swizzling</a> to <a href="https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-XID_272">generics</a> and <a href="https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/TypeCasting.html#//apple_ref/doc/uid/TP40014097-CH22-XID_487">type inference</a>. At a time of the year when Twitter would normally be abuzz with discussion about the latest APIs or speculation about upcoming hardware announcements, the discourse has been dominated by all things Swift.</p>
+
+<p>A new language with new syntax and evolving conventions, Swift has captured the attention and imagination of iOS &amp; OS X developers both old and new.</p>
+
+<p>Although we still have a few months to wait before we can ship apps in Swift, there is already a proliferation of open source projects built with this new language.</p>
+
+<p>One such project is <a href="https://github.com/Alamofire/Alamofire">Alamofire</a>. This week, we&rsquo;ll take a look at the design and implementation of Alamofire, and how it&rsquo;s using the language features of Swift to those ends.</p>
+
+<blockquote>
+<p>Full Disclosure: this article, as with the rest of NSHipster, is written by the creator of AFNetworking and Alamofire. While this makes me qualified to write about the technical details and direction of these projects, it certainly doesn&rsquo;t allow for an objective take on their relative merits. So take all of this with a grain of salt.</p>
+</blockquote>
+
+<hr>
+
+<p><a href="https://github.com/Alamofire/Alamofire">Alamofire</a> is an HTTP networking library written in Swift. It leverages NSURLSession and the Foundation URL Loading System to provide first-class networking capabilities in a convenient Swift interface.</p>
+
+<p>Getting started with Alamofire is easy. Here&rsquo;s how to make a <code>GET</code> request:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">Alamofire</span><span class="p">.</span><span class="n">request</span><span class="p">(.</span><span class="n">GET</span><span class="p">,</span> <span class="s">&quot;http://httpbin.org/get&quot;</span><span class="p">)</span>
+         <span class="p">.</span><span class="n">response</span> <span class="p">{</span> <span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+                     <span class="n">println</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+                     <span class="n">println</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+                     <span class="n">println</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+                   <span class="p">}</span>
+</code></pre></div>
+<p><code>Alamofire.request</code> is a convenience method that returns an <code>Alamofire.Request</code> object, which can be chained to add a response handler with <code>response</code>.</p>
+
+<p>By default, <code>response</code> returns the accumulated <code>NSData</code> of the server response. To get a string representation of this instead, use the <code>responseString</code> method instead.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">Alamofire</span><span class="p">.</span><span class="n">request</span><span class="p">(.</span><span class="n">GET</span><span class="p">,</span> <span class="s">&quot;http://httpbin.org/get&quot;</span><span class="p">)</span>
+         <span class="p">.</span><span class="n">responseString</span> <span class="p">{</span> <span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+             <span class="n">println</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+         <span class="p">}</span>
+</code></pre></div>
+<p>Similarly, to get a JSON object from the request, use the <code>responseJSON</code> method:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">Alamofire</span><span class="p">.</span><span class="n">request</span><span class="p">(.</span><span class="n">GET</span><span class="p">,</span> <span class="s">&quot;http://httpbin.org/get&quot;</span><span class="p">)</span>
+         <span class="p">.</span><span class="n">responseJSON</span> <span class="p">{(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">JSON</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+             <span class="n">println</span><span class="p">(</span><span class="n">JSON</span><span class="p">)</span>
+         <span class="p">}</span>
+</code></pre></div>
+<h3 id="chaining">Chaining</h3>
+
+<p>Even minor syntactic differences can have wide-reaching implications for language conventions.</p>
+
+<p>Chief among the complaints lodged against Objective-C was its use of square brackets for denoting <a href="http://en.wikipedia.org/wiki/Message_passing">message passing</a>. One of the practical implications of <code>[ ]</code> syntax is the difficulty in chaining methods together. Even with Xcode autocomplete, <code>@property</code> dot syntax, and <a href="http://nshipster.com/kvc-collection-operators/">key-value coding key-paths</a>, it is still rare to see deeply nested invocations.</p>
+
+<blockquote>
+<p>In many ways, the concession of introducing dot syntax for properties in Objective-C 2.0 only served to escalate tensions further, although conventions have started to solidify in recent years.</p>
+</blockquote>
+
+<p>In Swift, though, all methods are invoked using dot syntax with ordered and parameterized arguments passed inside parentheses, allowing methods returning <code>Self</code> to have successive methods chained together.</p>
+
+<p>Alamofire uses this pattern for succinct, localized networking declarations:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">Alamofire</span><span class="p">.</span><span class="n">request</span><span class="p">(.</span><span class="n">GET</span><span class="p">,</span> <span class="s">&quot;http://httpbin.org/get&quot;</span><span class="p">)</span>
+         <span class="p">.</span><span class="n">authenticate</span><span class="p">(</span><span class="nl">HTTPBasic</span><span class="p">:</span> <span class="n">user</span><span class="p">,</span> <span class="nl">password</span><span class="p">:</span> <span class="n">password</span><span class="p">)</span>
+         <span class="p">.</span><span class="n">progress</span> <span class="p">{</span> <span class="p">(</span><span class="n">bytesRead</span><span class="p">,</span> <span class="n">totalBytesRead</span><span class="p">,</span> <span class="n">totalBytesExpectedToRead</span><span class="p">)</span> <span class="k">in</span>
+             <span class="n">println</span><span class="p">(</span><span class="n">totalBytesRead</span><span class="p">)</span>
+         <span class="p">}</span>
+         <span class="p">.</span><span class="n">responseJSON</span> <span class="p">{</span> <span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">JSON</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+             <span class="n">println</span><span class="p">(</span><span class="n">JSON</span><span class="p">)</span>
+         <span class="p">}</span>
+         <span class="p">.</span><span class="n">responseString</span> <span class="p">{</span> <span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">string</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+             <span class="n">println</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+         <span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>Requests can have multiple response handlers, which each execute asynchronously once the server has finished sending its response.</p>
+</blockquote>
+
+<h3 id="trailing-closures">Trailing Closures</h3>
+
+<p>Closures are deeply integrated into Swift, so much so that if a methods&rsquo;s last argument is a closure type, a trailing closure can be used instead.</p>
+
+<p>The chained methods in the previous example show this in action. For typical usage, it&rsquo;s really convenient to omit the syntactic cruft.</p>
+
+<h3 id="optional-arguments-&amp;-flexible-method-signatures">Optional Arguments &amp;  Flexible Method Signatures</h3>
+
+<p>When communicating with web APIs, it&rsquo;s common to send parameters with URL queries or HTTP body data:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">Alamofire</span><span class="p">.</span><span class="n">request</span><span class="p">(.</span><span class="n">GET</span><span class="p">,</span> <span class="s">&quot;http://httpbin.org/get&quot;</span><span class="p">,</span> <span class="nl">parameters</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="o">:</span> <span class="s">&quot;bar&quot;</span><span class="p">])</span>
+<span class="c1">// GET http://httpbin.org/get?foo=bar</span>
+</code></pre></div>
+<p>This is actually the same method as before. By default the <code>parameters</code> argument is <code>nil</code>. There&rsquo;s a fourth argument, and it&rsquo;s optional as well: the parameter <code>encoding</code>.</p>
+
+<h3 id="parameterencoding-&amp;-enums">ParameterEncoding &amp; Enums</h3>
+
+<p>This brings us to one of the cooler features of Swift: enums. Whereas C / Objective-C enums are merely <code>typedef</code>&rsquo;d integer declarations, Swift enums support parameterized arguments and can have associated functionality.</p>
+
+<p>Alamofire encapsulates all of the logic for encoding parameters into an HTTP message representation with the <code>ParameterEncoding</code> enum:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">enum</span> <span class="n">ParameterEncoding</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">URL</span>
+    <span class="k">case</span> <span class="n">JSON</span>
+    <span class="k">case</span> <span class="n">PropertyList</span><span class="p">(</span><span class="nl">format</span><span class="p">:</span> <span class="n">NSPropertyListFormat</span><span class="p">,</span>
+                      <span class="nl">options</span><span class="p">:</span> <span class="n">NSPropertyListWriteOptions</span><span class="p">)</span>
+
+    <span class="k">func</span> <span class="n">encode</span><span class="p">(</span><span class="nl">request</span><span class="p">:</span> <span class="bp">NSURLRequest</span><span class="p">,</span>
+                <span class="nl">parameters</span><span class="p">:</span> <span class="p">[</span><span class="nl">String</span><span class="p">:</span> <span class="n">AnyObject</span><span class="p">]</span><span class="o">?</span><span class="p">)</span> <span class="o">-&gt;</span>
+                    <span class="p">(</span><span class="bp">NSURLRequest</span><span class="p">,</span> <span class="bp">NSError</span><span class="o">?</span><span class="p">)</span>
+    <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The parameterized arguments of <code>ParameterEncoding</code> cases allows for different JSON and Property List serialization options to be specified.</p>
+
+<p>The <code>encode</code> method on each <code>ParameterEncoding</code> case transforms a request and set of parameters into a new request (with optional error return value).</p>
+
+<p>Given a complex, nested set of parameters, encoding and sending as JSON is recommended:</p>
+
+<blockquote>
+<p>There are no standards defining the encoding of data structures into URL-encoded query parameters, meaning that parsing behavior can vary between web application implementations. Even worse, there are certain structures that cannot be unambiguously represented by a query string. This is why JSON (or XML or plist) encoding is recommended for anything more complex than key-value, if the web API supports it.</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">parameters</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s">&quot;foo&quot;</span><span class="o">:</span> <span class="s">&quot;bar&quot;</span><span class="p">,</span>
+    <span class="s">&quot;baz&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="s">&quot;qux&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s">&quot;x&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s">&quot;y&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s">&quot;z&quot;</span><span class="o">:</span> <span class="mi">3</span>
+    <span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">Alamofire</span><span class="p">.</span><span class="n">request</span><span class="p">(.</span><span class="n">POST</span><span class="p">,</span> <span class="s">&quot;http://httpbin.org/post&quot;</span><span class="p">,</span> <span class="nl">parameters</span><span class="p">:</span> <span class="n">parameters</span><span class="p">,</span> <span class="nl">encoding</span><span class="p">:</span> <span class="p">.</span><span class="n">JSON</span><span class="p">(</span><span class="nl">options</span><span class="p">:</span> <span class="nb">nil</span><span class="p">))</span>
+         <span class="p">.</span><span class="n">responseJSON</span> <span class="p">{(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">JSON</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+            <span class="n">println</span><span class="p">(</span><span class="n">JSON</span><span class="p">)</span>
+         <span class="p">}</span>
+</code></pre></div>
+<p>Another enum is used in Alamofire to represent the HTTP methods defined in RFC 2616 §9:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kr">public</span> <span class="k">enum</span> <span class="nl">Method</span><span class="p">:</span> <span class="n">String</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="n">OPTIONS</span> <span class="o">=</span> <span class="s">&quot;OPTIONS&quot;</span>
+    <span class="k">case</span> <span class="n">GET</span> <span class="o">=</span> <span class="s">&quot;GET&quot;</span>
+    <span class="k">case</span> <span class="n">HEAD</span> <span class="o">=</span> <span class="s">&quot;HEAD&quot;</span>
+    <span class="k">case</span> <span class="n">POST</span> <span class="o">=</span> <span class="s">&quot;POST&quot;</span>
+    <span class="k">case</span> <span class="n">PUT</span> <span class="o">=</span> <span class="s">&quot;PUT&quot;</span>
+    <span class="k">case</span> <span class="n">PATCH</span> <span class="o">=</span> <span class="s">&quot;PATCH&quot;</span>
+    <span class="k">case</span> <span class="n">DELETE</span> <span class="o">=</span> <span class="s">&quot;DELETE&quot;</span>
+    <span class="k">case</span> <span class="n">TRACE</span> <span class="o">=</span> <span class="s">&quot;TRACE&quot;</span>
+    <span class="k">case</span> <span class="n">CONNECT</span> <span class="o">=</span> <span class="s">&quot;CONNECT&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>These values are passed as the first argument in <code>request</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">Alamofire</span><span class="p">.</span><span class="n">request</span><span class="p">(.</span><span class="n">POST</span><span class="p">,</span> <span class="s">&quot;http://httpbin.org/get&quot;</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">Alamofire</span><span class="p">.</span><span class="n">request</span><span class="p">(.</span><span class="n">POST</span><span class="p">,</span> <span class="s">&quot;http://httpbin.org/get&quot;</span><span class="p">,</span> <span class="nl">parameters</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="o">:</span> <span class="s">&quot;bar&quot;</span><span class="p">])</span>
+</code></pre></div><div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">Alamofire</span><span class="p">.</span><span class="n">request</span><span class="p">(.</span><span class="n">POST</span><span class="p">,</span> <span class="s">&quot;http://httpbin.org/get&quot;</span><span class="p">,</span> <span class="nl">parameters</span><span class="p">:</span> <span class="p">[</span><span class="s">&quot;foo&quot;</span><span class="o">:</span> <span class="s">&quot;bar&quot;</span><span class="p">],</span> <span class="nl">encoding</span><span class="p">:</span> <span class="p">.</span><span class="n">JSON</span><span class="p">(</span><span class="nl">options</span><span class="p">:</span> <span class="nb">nil</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="lazy-properties">Lazy Properties</h3>
+
+<p>Another new feature of Swift is the ability to lazily evaluate properties. A property with the <code>lazy</code> annotation will only evaluate, set, and return the value of an expression after it&rsquo;s called for the first time in code.</p>
+
+<p>An <code>Alamofire.Manager</code> object takes advantage of this to defer construction of the default HTTP headers (<code>Accept-Encoding</code>, <code>Accept-Language</code>, &amp; <code>User-Agent</code>) until the first request is constructed:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="n">lazy</span> <span class="k">var</span> <span class="nl">defaultHeaders</span><span class="p">:</span> <span class="p">[</span><span class="nl">String</span><span class="p">:</span> <span class="n">String</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// Accept-Language HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.3</span>
+    <span class="k">let</span> <span class="nl">acceptEncoding</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="s">&quot;Accept-Encoding: gzip;q=1.0,compress;q=0.5&quot;</span>
+
+    <span class="c1">// Accept-Language HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4</span>
+    <span class="k">let</span> <span class="nl">acceptLanguage</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}()</span>
+
+    <span class="c1">// User-Agent Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43</span>
+    <span class="k">let</span> <span class="nl">userAgent</span><span class="p">:</span> <span class="n">String</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="c1">// ...</span>
+    <span class="p">}()</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="s">&quot;Accept-Encoding&quot;</span><span class="o">:</span> <span class="n">acceptEncoding</span><span class="p">,</span>
+            <span class="s">&quot;Accept-Language&quot;</span><span class="o">:</span> <span class="n">acceptLanguage</span><span class="p">,</span>
+            <span class="s">&quot;User-Agent&quot;</span><span class="o">:</span> <span class="n">userAgent</span><span class="p">]</span>
+<span class="p">}()</span>
+</code></pre></div>
+<h3 id="public-immutable-property-backed-by-private-mutable-property">Public Immutable Property Backed By Private Mutable Property</h3>
+
+<p>In Objective-C, exposing <code>readonly</code>, immutable properties backed by mutable variables in the private implementation required some non-obvious declaration trickery.</p>
+
+<p>With the introduction of access control to Swift in Xcode 6 β4, it&rsquo;s much easier to design a safe, immutable public API:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kr">private</span> <span class="k">var</span> <span class="nl">mutableData</span><span class="p">:</span> <span class="bp">NSMutableData</span>
+<span class="kr">override</span> <span class="k">var</span> <span class="nl">data</span><span class="p">:</span> <span class="bp">NSData</span><span class="o">!</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">self</span><span class="p">.</span><span class="n">mutableData</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="and-much,-much-more...">And Much, Much More&hellip;</h3>
+
+<p>There&rsquo;s a lot baked into the &lt; 1000 LOC comprising Alamofire. Any aspiring Swift developer or API author would be advised to <a href="https://github.com/Alamofire/Alamofire">peruse through the source code</a> to get a better sense of what&rsquo;s going on.</p>
+
+<hr>
+
+<blockquote>
+<p>For anyone wondering where this leaves AFNetworking, don&rsquo;t worry: <strong>AFNetworking is stable and reliable, and isn&rsquo;t going anywhere.</strong> In fact, over the coming months, a great deal of work is going to be put into improving test coverage and documentation for AFNetworking 2 and its first-party extensions.</p>
+
+<p>It&rsquo;s also important to note that AFNetworking can be easily used from Swift code, just like any other Objective-C code. Alamofire is a separate project investigating the implications of new language features and conventions on the problem of making HTTP requests.</p>
+</blockquote>
+
+<p>Alamofire 1.0 is scheduled to coincide with the 1.0 release of Swift&hellip; whenever that is. Part of that milestone is <a href="http://nshipster.com/swift-documentation/">complete documentation</a>, and 100% Unit Test Coverage, making use of the new <a href="http://nshipster.com/xctestcase/">Xcode 6 testing infrastructure</a> &amp; <a href="http://httpbin.org">httpbin</a> by <a href="http://www.kennethreitz.org">Kenneth Reitz</a>.</p>
+
+<p>We&rsquo;re all doing our best to understand how to design, implement, and distribute code in Swift. Alamofire is just one of many exciting new libraries that will guide the development of the language and community in the coming months and years. For anyone interested in being part of this, I welcome your contributions. As the mantra goes: <a href="https://github.com/Alamofire/Alamofire/compare/">pull requests welcome</a>.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-08-04-alamofire.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 1.1.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/swift-operators/" title="Swift Operators" rel="next">Swift Operators</a>
+            </h1>
+
+            <p>Operators in Swift are among the most interesting and indeed controversial features of this new language.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/cocoapods/" title="CocoaPods">CocoaPods</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/xctool/" title="xctool">xctool</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/gpuimage/" title="GPUImage">GPUImage</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/core-data-libraries-and-utilities/" title="Core Data Libraries & Utilities">Core Data Libraries & Utilities</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

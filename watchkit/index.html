@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>WatchKit - NSHipster</title>
+    <meta name="description" content="After taking a look at WatchKit, there were a few things that jumped out coming from UIKit. They're the kind of subjective, opinionated things that don't make for good documentation, but might be interesting or useful to anyone else as they're getting started."/>
+    <link rel="canonical" href="http://nshipster.com/watchkit/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="WatchKit"/>
+    <meta name="twitter:description" content="After taking a look at WatchKit, there were a few things that jumped out coming from UIKit. They&#39;re the kind of subjective, opinionated things that don&#39;t make for good documentation, but might be interesting or useful to anyone else as they&#39;re getting started."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="WatchKit"/>
+    <meta property="og:url" content="http://nshipster.com/watchkit/"/>
+    <meta property="og:description" content="After taking a look at WatchKit, there were a few things that jumped out coming from UIKit. They&#39;re the kind of subjective, opinionated things that don&#39;t make for good documentation, but might be interesting or useful to anyone else as they&#39;re getting started."/>
+    <meta property="article:published_time" content="2014-12-01T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content=""/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="WatchKit"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/watchkit/">Watch​Kit</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2014-12-01T00:00:00-08:00" itemprop="datePublished">December 1<sup>st</sup>, 2014</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Everyone is excited about <a href="http://www.apple.com/watch/">ᴡᴀᴛᴄʜ</a>. Developers especially.</p>
+
+<p>What&rsquo;s the best way to get started? Look no further than <a href="https://developer.apple.com/watchkit/">Apple&rsquo;s WatchKit developer resources</a>.</p>
+
+<ul>
+<li>Watch the &ldquo;Getting Started&rdquo; video—it&rsquo;s like being in Moscone.</li>
+<li>Read the <a href="https://developer.apple.com/library/prerelease/ios/documentation/UserExperience/Conceptual/WatchHumanInterfaceGuidelines/index.html">Human Interface Guidelines</a>—consider it a prerequisite for designing your application.</li>
+<li>Peruse the <a href="https://developer.apple.com/library/prerelease/ios/documentation/General/Conceptual/WatchKitProgrammingGuide/index.html">WatchKit Programming Guide</a> and <a href="https://developer.apple.com/library/prerelease/ios/samplecode/WKInterfaceCatalog/Introduction/Intro.html">WKInterfaceCatalog</a> for an introduction everything the framework provides.</li>
+<li>And when you&rsquo;re finally ready to add that App Extension target to your app, consult the <a href="https://developer.apple.com/library/prerelease/ios/samplecode/Lister/Introduction/Intro.html">Lister Sample App</a> (in both Objective-C &amp; Swift!) to see how everything fits together.</li>
+</ul>
+
+<p>Apple&rsquo;s Developer Publications, Developer Evangelism, and WatchKit teams knocked it out of the park with the WatchKit launch. The official resources are superb.</p>
+
+<p>That said, after taking a look at everything, there were a few things that jumped out as it relates to UIKit. They&rsquo;re the kind of subjective, opinionated things that don&rsquo;t make for good documentation, but might be interesting or useful to anyone else as they&rsquo;re getting started.</p>
+
+<p>So this week, some initial impressions of WatchKit from the perspective of an iOS developer.</p>
+
+<hr>
+
+<p>WatchKit harkens back to the earliest days of iOS development, when the platform limitations acted as liberating constraints for developers. Compared to OS X &amp; AppKit, mired in decades of cruft and churn, iPhoneOS (as it was originally known) &amp; UIKit were a breath of fresh air. Apps were small, simple, and humble.</p>
+
+<p>After 7 years and as many major releases, iOS has grown to encompass myriad devices and configurations, from iPhones and iPads of all shapes and sizes, to the TV and CarPlay. It&rsquo;s still an amazing developer experience (for the most part), but it feels like some of the magic has been lost along the way.</p>
+
+<blockquote>
+<p><strong>Counterpoint</strong>: Nostalgia is bullshit. Remember, back in those days, there was no ARC, no GCD, no Interface Builder support for iOS and certainly no Swift. The indispensable open source libraries of the time were Three20 and asi-http-request. The state of the art for table view scroll performance was to manually composite text and images in a cell&rsquo;s content view <code>drawRect:</code>. Life was solitary, poor, nasty, brutish, and short.</p>
+</blockquote>
+
+<p>Regardless of where you&rsquo;re personally coming from, the simplicity of WatchKit is something to be enjoyed and celebrated.</p>
+
+<h2 id="comparison-to-uikit">Comparison to UIKit</h2>
+
+<p>WatchKit bears a striking resemblance to UIKit, which is not entirely surprising, given their shared history and purpose. Watches are different from phones and tablets, which themselves are different from desktops. Some concepts are shared, but each have unique purposes and constraints that shape the topography of their software.</p>
+
+<p>For sake of comparison, here is how one might understand WatchKit in terms of UIKit / Cocoa concepts:</p>
+
+<table><thead>
+<tr>
+<th>WatchKit</th>
+<th>UIKit</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>WKInterfaceController</code></td>
+<td><code>UIViewController</code></td>
+</tr>
+<tr>
+<td><code>WKUserNotificationInterfaceController</code></td>
+<td><code>UIApplicationDelegate</code> + <code>UIAlertController</code></td>
+</tr>
+<tr>
+<td><code>WKInterfaceDevice</code></td>
+<td><code>UIDevice</code></td>
+</tr>
+<tr>
+<td><code>WKInterfaceObject</code></td>
+<td><code>UIView</code></td>
+</tr>
+<tr>
+<td><code>WKInterfaceButton</code></td>
+<td><code>UIButton</code></td>
+</tr>
+<tr>
+<td><code>WKInterfaceDate</code></td>
+<td><code>UILabel</code> + <code>NSDateFormatter</code></td>
+</tr>
+<tr>
+<td><code>WKInterfaceGroup</code></td>
+<td><code>UIScrollView</code></td>
+</tr>
+<tr>
+<td><code>WKInterfaceImage</code></td>
+<td><code>UIImageView</code></td>
+</tr>
+<tr>
+<td><code>WKInterfaceLabel</code></td>
+<td><code>UILabel</code></td>
+</tr>
+<tr>
+<td><code>WKInterfaceMap</code></td>
+<td><code>MKMapView</code></td>
+</tr>
+<tr>
+<td><code>WKInterfaceSeparator</code></td>
+<td><code>UITableView.separatorColor</code> / <code>.separatorStyle</code></td>
+</tr>
+<tr>
+<td><code>WKInterfaceSlider</code></td>
+<td><code>UIStepper</code> + <code>UISlider</code></td>
+</tr>
+<tr>
+<td><code>WKInterfaceSwitch</code></td>
+<td><code>UISwitch</code></td>
+</tr>
+<tr>
+<td><code>WKInterfaceTable</code></td>
+<td><code>UITableView</code></td>
+</tr>
+<tr>
+<td><code>WKInterfaceTimer</code></td>
+<td><code>UILabel</code> + <code>NSDateFormatter</code> + <code>NSTimer</code></td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>As a <a href="http://nshipster.com/namespacing/">namespace prefix</a>, <code>WKInterface</code> sticks out like a sore thumb, but <code>WK</code> on its own was recently claimed by the new <a href="http://nshipster.com/wkwebkit/">WebKit</a> framework. Although the Watch platform is a long way from being able to embed web views, the decision to demarcate things as they are is sensible.</p>
+</blockquote>
+
+<p>There&rsquo;s a lot of overlap, but there are important differences. Understanding those differences is both informative to making great WatchKit apps as well as enlightening in terms of how Apple&rsquo;s thinking about API and best practices continues to evolve.</p>
+
+<h3 id="wkinterfacecontroller">WKInterfaceController</h3>
+
+<p><code>WKInterfaceController</code> manages the elements in a scene, whereas <code>UIViewController</code> manages a view and its subviews. Interface objects are not views, but they act in similar ways.</p>
+
+<p>The designated initializer for <code>WKInterfaceController</code> is <code>initWithContext:</code>, which accepts an optional <code>context</code> object:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kr">override</span> <span class="nf">init</span><span class="p">(</span><span class="nl">context</span><span class="p">:</span> <span class="n">AnyObject</span><span class="o">?</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">super</span><span class="p">.</span><span class="k">init</span><span class="p">(</span><span class="nl">context</span><span class="p">:</span> <span class="n">context</span><span class="p">)</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>What&rsquo;s a <code>context</code>? It&rsquo;s anything you want it to be: a date, a string, a model object, or nothing at all.</p>
+
+<p>The open-endedness of <code>context</code> may be disorienting at first, but it&rsquo;s actually a remarkably clever solution to a long-standing problem of UIKit—namely, the difficulty passing information between view controllers. Without a standard convention for configuring <code>UIViewController</code>s as they are pushed, popped, and presented, developers are regularly faced with a miserable choice between custom designated initializers (incompatible with Storyboards), property configuration (prone to creating controllers with incomplete state), custom delegates (overly ceremonious when done correctly), or notifications (just&hellip; no). It&rsquo;s for this reason that so many applications backed by Core Data fall into the pattern of referencing a shared <code>managedObjectContext</code> in the App Delegate.</p>
+
+<p>But I digress.</p>
+
+<p>Overall, <code>WKInterfaceController</code>&rsquo;s API has a tiny footprint, and there&rsquo;s no better illustration than its lifecycle methods:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="c1">// MARK: - WKInterfaceController</span>
+
+<span class="kr">override</span> <span class="k">func</span> <span class="nf">willActivate</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="kr">override</span> <span class="k">func</span> <span class="nf">didDeactivate</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>That&rsquo;s it: 2 methods. No loading / unloading, no will / did appear / disappear, no <code>animated:YES</code>. Watch apps are simple by necessity. Communication between the iOS device driving the application and the watch is both time-consuming and battery-consuming, so all of the setup for the interface controller&rsquo;s scene is to be done in the initializer and <code>willActivate</code>. Both during and after <code>didDeactivate</code>, the Watch will ignore attempts to update the state of interface elements.</p>
+
+<p>Watch applications are either Hierarchical or Page-Based. This is similar to Xcode&rsquo;s project templates for &ldquo;Master-Detail Application&rdquo;, &ldquo;Page-Based Application&rdquo;, and &ldquo;Tabbed Application&rdquo;, except that the design choices are mutually exclusive.</p>
+
+<p>Hierarchical applications have an implicit navigational stack, which <code>WKInterfaceController</code> can manage with <code>
+-pushControllerWithName:context:</code> &amp; <code>-popController</code>. One thing to note here is how <code>-pushControllerWithName:context:</code> takes a string—the name of the controller as specified in the Storyboard—rather than an instance of the controller itself.</p>
+
+<p>Page-Based applications, on the other hand, act like a horizontal or vertical paged <code>UIScrollView</code>, with a pre-determined number of scenes each managed by a controller. It will be interesting to see which use cases are best served by Page-Based and Hierarchical interfaces. Without trying out stock applications on a real device, there&rsquo;s not much context to understand the trade-offs of each intuitively.</p>
+
+<p>As a final aside, there is an interesting pattern in Apple&rsquo;s Swift sample code, to use inner structs as namespaces for Storyboard constants:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="nl">WatchListsInterfaceController</span><span class="p">:</span> <span class="n">WKInterfaceController</span><span class="p">,</span> <span class="n">ListsControllerDelegate</span> <span class="p">{</span>
+    <span class="k">struct</span> <span class="n">WatchStoryboard</span> <span class="p">{</span>
+        <span class="k">static</span> <span class="k">let</span> <span class="n">interfaceControllerName</span> <span class="o">=</span> <span class="s">&quot;WatchListsInterfaceController&quot;</span>
+
+        <span class="k">struct</span> <span class="n">RowTypes</span> <span class="p">{</span>
+            <span class="k">static</span> <span class="k">let</span> <span class="n">list</span> <span class="o">=</span> <span class="s">&quot;WatchListsInterfaceControllerListRowType&quot;</span>
+            <span class="k">static</span> <span class="k">let</span> <span class="n">noLists</span> <span class="o">=</span> <span class="s">&quot;WatchListsInterfaceControllerNoListsRowType&quot;</span>
+        <span class="p">}</span>
+
+        <span class="k">struct</span> <span class="n">Segues</span> <span class="p">{</span>
+            <span class="k">static</span> <span class="k">let</span> <span class="n">listSelection</span> <span class="o">=</span> <span class="s">&quot;WatchListsInterfaceControllerListSelectionSegue&quot;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="wkinterfaceobject">WKInterfaceObject</h3>
+
+<p><code>WKInterfaceObject</code> resembles a streamlined rendition of <code>UIView</code>, with properties for <code>alpha</code>, <code>hidden</code>, <code>horizontal</code> &amp; <code>vertical</code> alignment, and <code>width</code> &amp; <code>height</code>.</p>
+
+<p>The most striking difference is the lack of a <code>frame</code>. Instead of manually specifying coordinate points or setting up Auto Layout constraints, WatchKit interface objects are laid out in a grid according to their margins and respective ordering, which is reminiscent to working with a CSS framework like <a href="http://getbootstrap.com">Bootstrap</a> (or for you Rubyists out there, remember <a href="http://shoesrb.com">Shoes</a>?).</p>
+
+<p>Another departure from Cocoa Touch is that Target-Action methods use a fixed-format specific for each type of control, rather than passing a dynamic <code>sender</code> and <code>UIEvent</code>.</p>
+
+<table><thead>
+<tr>
+<th>Object</th>
+<th>Action Method</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Button</td>
+<td><code>- (IBAction)doButtonAction</code></td>
+</tr>
+<tr>
+<td>Switch</td>
+<td><code>- (IBAction)doSwitchAction:(BOOL)on</code></td>
+</tr>
+<tr>
+<td>Slider</td>
+<td><code>- (IBAction)doSliderAction:(float)value</code></td>
+</tr>
+<tr>
+<td>Table</td>
+<td><code>- (IBAction)doTableRowTapAction:(NSInteger)rowIndex</code></td>
+</tr>
+<tr>
+<td>Menu Item</td>
+<td><code>- (IBAction)doMenuItemAction</code></td>
+</tr>
+</tbody></table>
+
+<p>For the small, closed set of controls, this approach is really appealing—much better than typing <code>UIControlEventTouchUpInside</code>.</p>
+
+<h3 id="wkinterfacebutton">WKInterfaceButton</h3>
+
+<p><code>WKInterfaceButton</code> is an interface object that can be tapped to trigger an action. Its contents can be either a single text label or a group.</p>
+
+<p>That latter part—being able to contain a group—is <em>huge</em>. This avoids one of the biggest gripes folks have with <code>UIButton</code>, the difficulty of adding subviews and having things position and interact correctly, which would otherwise drive people to give up and use <code>UITapGestureRecognizer</code>.</p>
+
+<h3 id="wkinterfacetable">WKInterfaceTable</h3>
+
+<p>Of all of the concepts carried over from iOS, tables are perhaps the most-changed.</p>
+
+<p><code>UITableView</code> is the backbone of iPhone applications. As such, they&rsquo;ve evolved significant complexity to handle the demands of applications with a lot of data that needs to be displayed in many different ways. <code>WKInterfaceTable</code>, by comparison, seems marginal by comparison.</p>
+
+<p>WatchKit tables do not have sections or headers, or footers, or editing, or searching, or data sources, or delegates. Rows are pre-populated at <code>WKInterfaceController -willActivate</code>, with each row specifying its own row controller (an <code>NSObject</code> subclass with <code>IBOutlet</code>s). <code>WKInterfaceController</code> can respond to table interactions either with the <code>table:didSelectrowAtIndex:</code> delegate method, or using the aforementioned Target-Action method.</p>
+
+<p>It may not seem like much, but this approach is well-suited for the watch, and is a lot more straightforward than on iOS.</p>
+
+<h3 id="wkinterfacelabel">WKInterfaceLabel</h3>
+
+<p>By contrast, <code>WKInterfaceLabel</code> is perhaps the least-changed thing carried over from iOS. With support for <code>NSAttributedString</code>, custom fonts, and font scaling, it&rsquo;s pretty much everything you could ask for.</p>
+
+<h3 id="wkinterfacedate-&amp;-wkinterfacetimer">WKInterfaceDate &amp; WKInterfaceTimer</h3>
+
+<p>Let us not forget that time is a pretty important concept for watch. As such, WatchKit introduces two new interface objects that are unprecedented in Cocoa or Cocoa Touch: <code>WKInterfaceDate</code> &amp; <code>WKInterfaceTimer</code>.</p>
+
+<p><code>WKInterfaceDate</code> is a special kind of label that displays the current date or time. <code>WKInterfaceTimer</code> is similar, except that it displays a countdown until a specified <code>date</code>.</p>
+
+<p>Including these two classes does as much to ensure app quality as much as anything else in WatchKit. Given how these essential these tasks are for a watch, and how notoriously bad programmers are at using <code>NSDateFormatter</code> and <code>NSTimer</code>, one can only imagine where we&rsquo;d be without these.</p>
+
+<h3 id="wkinterfaceslider-&amp;-wkinterfaceswitch">WKInterfaceSlider &amp; WKInterfaceSwitch</h3>
+
+<p>Sliders and Switches are due for a comeback on the watch. Without the benefit of touch gestures, interfaces are resigned to go back to basics. <em>Tap, Tap</em>, <code>On</code> / <code>Off</code>. <em>Tap, Tap</em>, <code>+</code> / <code>-</code>.</p>
+
+<p><code>WKInterfaceSlider</code> &amp; <code>WKInterfaceSwitch</code> both appear to be well-crafted and rather customizable.</p>
+
+<hr>
+
+<p>This is, of course, but a superficial reflection into the capabilities of WatchKit. Like I said at the beginning of the article, <a href="https://developer.apple.com/watchkit/">Apple&rsquo;s official resources for WatchKit</a> have everything you could ever need.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-12-01-watchkit.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 1.0.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/apple-pay/" title="Pay" rel="next">Pay</a>
+            </h1>
+
+            <p>There&rsquo;s a unique brand of modern angst that manifests the moment you decide to buy something online. While there&rsquo;s no English word for it, it translates roughly to &ldquo;Where is my credit card? What is its number? How badly do I actually want this thing, anyway?&rdquo;</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/backrow/" title="Back Row">Back Row</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/configuration-profiles/" title="Configuration Profiles">Configuration Profiles</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/stewardship/" title="Stewardship">Stewardship</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/long-live-cocoa/" title="Long Live Cocoa">Long Live Cocoa</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

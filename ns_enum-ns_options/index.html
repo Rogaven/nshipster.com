@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NS_ENUM & NS_OPTIONS - NSHipster</title>
+    <meta name="description" content="A skilled Objective-C developer is able to gracefully switch between Objective and Procedural paradigms, and use each to their own advantage."/>
+    <link rel="canonical" href="http://nshipster.com/ns_enum-ns_options/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="NS_ENUM & NS_OPTIONS"/>
+    <meta name="twitter:description" content="A skilled Objective-C developer is able to gracefully switch between Objective and Procedural paradigms, and use each to their own advantage."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NS_ENUM & NS_OPTIONS"/>
+    <meta property="og:url" content="http://nshipster.com/ns_enum-ns_options/"/>
+    <meta property="og:description" content="A skilled Objective-C developer is able to gracefully switch between Objective and Procedural paradigms, and use each to their own advantage."/>
+    <meta property="article:published_time" content="2012-11-19T00:00:00-08:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NS_ENUM & NS_OPTIONS"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/ns_enum-ns_options/">NS_ENUM & NS_OPTIONS</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2012-11-19T00:00:00-08:00" itemprop="datePublished">November 19<sup>th</sup>, 2012</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>When everything is an object, nothing is.</p>
+
+<p>So, there are a few ways you could parse that, but for the purposes of this article, this is all to say: sometimes it&rsquo;s nice to be able to drop down to the C layer of things.</p>
+
+<p>Yes&ndash;that non-objective part of our favorite Smalltalk-inspired hybrid language, C can be a great asset. It&rsquo;s fast, it&rsquo;s battle-tested, it&rsquo;s the very foundation of modern computing. But more than that, C is the escape hatch for when the Object-Oriented paradigm cracks under its own cognitive weight.</p>
+
+<p>Static functions are nicer than shoe-horned class methods.
+Enums are nicer than string constants.
+Bitmasks are nicer than arrays of string constants.
+Preprocessor directives are nicer than runtime hacks.</p>
+
+<p>A skilled Objective-C developer is able to gracefully switch between Objective and Procedural paradigms, and use each to their own advantage.</p>
+
+<p>And on that note, this week&rsquo;s topic has to do with two simple-but-handy macros: <code>NS_ENUM</code> and <code>NS_OPTIONS</code>.</p>
+
+<hr>
+
+<p>Introduced in Foundation with iOS 6 / OS X Mountain Lion, the <code>NS_ENUM</code> and <code>NS_OPTIONS</code> macros are the new, preferred way to declare <code>enum</code> types.</p>
+
+<blockquote>
+<p>If you&rsquo;d like to use either macro when targeting a previous version of iOS or OS X, you can simply inline like so:</p>
+</blockquote>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="cp">#ifndef NS_ENUM</span>
+<span class="cp">#define NS_ENUM(_type, _name) enum _name : _type _name; enum _name : _type</span>
+<span class="cp">#endif</span>
+</code></pre></div>
+<p><code>enum</code>, or enumerated value types, are the C way to define constants for fixed values, like days of the week, or available styles of table view cells. In an <code>enum</code> declaration, constants without explicit values will automatically be assigned values sequentially, starting from <code>0</code>.</p>
+
+<p>There are several legal ways that <code>enum</code>s can be defined. What&rsquo;s confusing is that there are subtle functional differences between each approach, and without knowing any better, someone is just as likely to use them interchangeably.</p>
+
+<p>For instance:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">enum</span> <span class="p">{</span>
+    <span class="n">UITableViewCellStyleDefault</span><span class="p">,</span>
+    <span class="n">UITableViewCellStyleValue1</span><span class="p">,</span>
+    <span class="n">UITableViewCellStyleValue2</span><span class="p">,</span>
+    <span class="n">UITableViewCellStyleSubtitle</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>&hellip;declares integer values, but no type.</p>
+
+<p>Whereas:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span>
+    <span class="n">UITableViewCellStyleDefault</span><span class="p">,</span>
+    <span class="n">UITableViewCellStyleValue1</span><span class="p">,</span>
+    <span class="n">UITableViewCellStyleValue2</span><span class="p">,</span>
+    <span class="n">UITableViewCellStyleSubtitle</span>
+<span class="p">}</span> <span class="n">UITableViewCellStyle</span><span class="p">;</span>
+</code></pre></div>
+<p>&hellip;defines the <code>UITableViewCellStyle</code> type, suitable for specifying the type of method parameters.</p>
+
+<p>However, Apple had previously defined all of their <code>enum</code> types as:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span>
+    <span class="n">UITableViewCellStyleDefault</span><span class="p">,</span>
+    <span class="n">UITableViewCellStyleValue1</span><span class="p">,</span>
+    <span class="n">UITableViewCellStyleValue2</span><span class="p">,</span>
+    <span class="n">UITableViewCellStyleSubtitle</span>
+<span class="p">};</span>
+
+<span class="k">typedef</span> <span class="bp">NSInteger</span> <span class="n">UITableViewCellStyle</span><span class="p">;</span>
+</code></pre></div>
+<p>&hellip;which ensures a fixed size for <code>UITableViewCellStyle</code>, but does nothing to hint the relation between the aforementioned <code>enum</code> and the new type to the compiler.</p>
+
+<p>Thankfully, Apple has decided on &ldquo;One Macro To Rule Them All&rdquo; with <code>NS_ENUM</code>.</p>
+
+<h2 id="ns_enum"><code>NS_ENUM</code></h2>
+
+<p>Now, <code>UITableViewCellStyle</code> is declared with:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">typedef</span> <span class="nf">NS_ENUM</span><span class="p">(</span><span class="bp">NSInteger</span><span class="p">,</span> <span class="n">UITableViewCellStyle</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">UITableViewCellStyleDefault</span><span class="p">,</span>
+    <span class="n">UITableViewCellStyleValue1</span><span class="p">,</span>
+    <span class="n">UITableViewCellStyleValue2</span><span class="p">,</span>
+    <span class="n">UITableViewCellStyleSubtitle</span>
+<span class="p">};</span>
+</code></pre></div>
+<p>The first argument for <code>NS_ENUM</code> is the type used to store the new type. In a 64-bit environment, <code>UITableViewCellStyle</code> will be 8 bytes long&ndash;same as <code>NSInteger</code>. Make sure that the specified size can fit all of the defined values, or else an error will be generated. The second argument is the name of the new type (as you probably guessed). Inside the block, the values are defined as usual.</p>
+
+<p>This approach combines the best of all of the aforementioned approaches, and even provides hints to the compiler for type-checking and <code>switch</code> statement completeness.</p>
+
+<h2 id="ns_options"><code>NS_OPTIONS</code></h2>
+
+<p><code>enum</code> can also be used to define a <a href="http://en.wikipedia.org/wiki/Mask_(computing)">bitmask</a>. Using a convenient property of binary math, a single integer value can encode a combination of values all at once using the bitwise <code>OR</code> (<code>|</code>), and decoded with bitwise <code>AND</code> (<code>&amp;</code>). Each subsequent value, rather than automatically being incremented by 1 from 0, are manually given a value with a bit offset: <code>1 &lt;&lt; 0</code>, <code>1 &lt;&lt; 1</code>, <code>1 &lt;&lt; 2</code>, and so on. If you imagine the binary representation of a number, like <code>10110</code> for 22, each bit can be though to represent a single boolean. In UIKit, for example, <code>UIViewAutoresizing</code> is a bitmask that can represent any combination of flexible top, bottom, left, and right margins, or width and height.</p>
+
+<p>Rather than <code>NS_ENUM</code>, bitmasks should now use the <code>NS_OPTIONS</code> macro.</p>
+
+<p>The syntax is exactly the same as <code>NS_ENUM</code>, but this macro alerts the compiler to how values can be combined with bitmask <code>|</code>. Again, you must be careful that all of the enumerated values fit within the specified type.</p>
+
+<hr>
+
+<p><code>NS_ENUM</code> and <code>NS_OPTIONS</code> are handy additions to the Objective-C development experience, and reaffirm the healthy dialectic between its objective and procedural nature. Keep this in mind as you move forward in your own journey to understand the logical tensions that underpin everything around us.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2012-11-19-ns_enum-ns_options.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+            
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/nsorderedset/" title="NSOrderedSet" rel="next">NSOrdered​Set</a>
+            </h1>
+
+            <p>Why isn&rsquo;t NSOrderedSet a subclass of NSSet? The answer may surprise you.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nspredicate/" title="NSPredicate">NSPredicate</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsvalue/" title="NSValue">NSValue</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/uimenucontroller/" title="UIMenuController">UIMenuController</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/uisplitviewcontroller/" title="UISplitViewController">UISplitViewController</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>NSCoding / NSKeyedArchiver - NSHipster</title>
+    <meta name="description" content="Among the most important architectural decisions made when building an app is how to persist data between launches. The question of how, exactly, to re-create the state of the app from the time it was last opened; of how to describe the object graph in such a way that it can be flawlessly reconstructed next time."/>
+    <link rel="canonical" href="http://nshipster.com/nscoding/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="NSCoding / NSKeyedArchiver"/>
+    <meta name="twitter:description" content="Among the most important architectural decisions made when building an app is how to persist data between launches. The question of how, exactly, to re-create the state of the app from the time it was last opened; of how to describe the object graph in such a way that it can be flawlessly reconstructed next time."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="NSCoding / NSKeyedArchiver"/>
+    <meta property="og:url" content="http://nshipster.com/nscoding/"/>
+    <meta property="og:description" content="Among the most important architectural decisions made when building an app is how to persist data between launches. The question of how, exactly, to re-create the state of the app from the time it was last opened; of how to describe the object graph in such a way that it can be flawlessly reconstructed next time."/>
+    <meta property="article:published_time" content="2013-05-13T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="NSCoding / NSKeyedArchiver"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/nscoding/">NSCoding / NSKeyed​Archiver</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2013-05-13T00:00:00-07:00" itemprop="datePublished">May 13<sup>th</sup>, 2013</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Among the most important architectural decisions made when building an app is how to persist data between launches. The question of how, exactly, to re-create the state of the app from the time it was last opened; of how to describe the object graph in such a way that it can be flawlessly reconstructed next time.</p>
+
+<p>On iOS and OS X, Apple provides two options: <a href="http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html">Core Data</a> or <a href="http://developer.apple.com/library/ios/#Documentation/Cocoa/Reference/Foundation/Classes/NSKeyedArchiver_Class/Reference/Reference.html"><code>NSKeyedArchiver</code></a> / <a href="http://developer.apple.com/library/ios/#documentation/Cocoa/Reference/Foundation/Classes/NSKeyedUnarchiver_Class/Reference/Reference.html"><code>NSKeyedUnarchiver</code></a> (which serializes <code>&lt;NSCoding&gt;</code>-compliant classes to and from a data representation).</p>
+
+<blockquote>
+<p>Or rather: three, if you include <code>NSURLCache</code>. In the case of a client-server application, having the client load necessary data on each launch is a viable design, especially when combined with a disk-based cache, which allows stored server responses to be returned immediately from matching requests. In practice, some combination of network and object caching is advisable.</p>
+</blockquote>
+
+<p>When it comes to modeling, querying, traversing and persisting complex object graphs, there is no substitute for Core Data. Core Data is a big hammer, but not every problem is a nail—much less a sufficiently large nail.</p>
+
+<p>A fair and common comparison of Core Data to <code>NSKeyedArchiver</code> might go something like this:</p>
+
+<table id="figure-1" class="core-data-versus-nskeyedarchiver">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Core Data</th>
+      <th>NSKeyedArchiver</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Entity Modeling</td>
+      <td>Yes</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Querying</td>
+      <td>Yes</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Speed</td>
+      <td>Fast</td>
+      <td>Slow</td>
+    </tr>
+    <tr>
+      <td>Serialization Format</td>
+      <td>SQLite, XML, or NSData</td>
+      <td>NSData</td>
+    </tr>
+    <tr>
+      <td>Migrations</td>
+      <td>Automatic</td>
+      <td>Manual</td>
+    </tr>
+    <tr>
+      <td>Undo Manager</td>
+      <td>Automatic</td>
+      <td>Manual</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Et cetera. In a heads-up, apples to apples comparison, it looks rather one-sided.</p>
+
+<p>&hellip;that is, until you look at it from a slightly different perspective:</p>
+
+<table id="figure-2" class="core-data-versus-nskeyedarchiver">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Core Data</th>
+      <th>NSKeyedArchiver</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Persists State</td>
+      <td>Yes</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>Pain in the Ass</td>
+      <td>Yes</td>
+      <td>No</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>By these measures, <code>NSKeyedArchiver</code> becomes a perfectly reasonable choice in certain situations. Not all apps need to query data. Not all apps need automatic migrations. Not all apps work with large or complex object graphs. And even apps that do may have certain components better served by a simpler solution.</p>
+
+<p>This article will look at the how&rsquo;s, when&rsquo;s, and why&rsquo;s of <code>NSKeyedArchiver</code> and <code>NSCoding</code>. And with this understanding, hopefully provide you, dear reader, with the wisdom to choose the best tool for the job.</p>
+
+<hr>
+
+<p><code>NSCoding</code> is a simple protocol, with two methods: <code>-initWithCoder:</code> and <code>encodeWithCoder:</code>. Classes that conform to <code>NSCoding</code> can be serialized and deserialized into data that can be either be archived to disk or distributed across a network.</p>
+
+<p>For example:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">class</span> <span class="nl">Book</span><span class="p">:</span> <span class="bp">NSObject</span><span class="p">,</span> <span class="bp">NSCoding</span> <span class="p">{</span>
+    <span class="k">var</span> <span class="nl">title</span><span class="p">:</span> <span class="n">String</span>
+    <span class="k">var</span> <span class="nl">author</span><span class="p">:</span> <span class="n">String</span>
+    <span class="k">var</span> <span class="nl">pageCount</span><span class="p">:</span> <span class="n">Int</span>
+    <span class="k">var</span> <span class="nl">categories</span><span class="p">:</span> <span class="p">[</span><span class="n">String</span><span class="p">]</span>
+    <span class="k">var</span> <span class="nl">available</span><span class="p">:</span> <span class="n">Bool</span>
+
+    <span class="c1">// Memberwise initializer</span>
+    <span class="k">init</span><span class="p">(</span><span class="nl">title</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">author</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span> <span class="nl">pageCount</span><span class="p">:</span> <span class="n">Int</span><span class="p">,</span> <span class="nl">categories</span><span class="p">:</span> <span class="p">[</span><span class="n">String</span><span class="p">],</span> <span class="nl">available</span><span class="p">:</span> <span class="n">Bool</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">title</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">author</span> <span class="o">=</span> <span class="n">author</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">pageCount</span> <span class="o">=</span> <span class="n">pageCount</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">categories</span> <span class="o">=</span> <span class="n">categories</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">available</span> <span class="o">=</span> <span class="n">available</span>
+    <span class="p">}</span>
+
+    <span class="c1">// MARK: NSCoding</span>
+
+    <span class="n">required</span> <span class="n">convenience</span> <span class="k">init</span><span class="o">?</span><span class="p">(</span><span class="n">coder</span> <span class="nl">decoder</span><span class="p">:</span> <span class="bp">NSCoder</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">guard</span> <span class="k">let</span> <span class="n">title</span> <span class="o">=</span> <span class="n">decoder</span><span class="p">.</span><span class="n">decodeObjectForKey</span><span class="p">(</span><span class="s">&quot;title&quot;</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="n">String</span><span class="p">,</span>
+            <span class="k">let</span> <span class="n">author</span> <span class="o">=</span> <span class="n">decoder</span><span class="p">.</span><span class="n">decodeObjectForKey</span><span class="p">(</span><span class="s">&quot;author&quot;</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="n">String</span><span class="p">,</span>
+            <span class="k">let</span> <span class="n">categories</span> <span class="o">=</span> <span class="n">decoder</span><span class="p">.</span><span class="n">decodeObjectForKey</span><span class="p">(</span><span class="s">&quot;categories&quot;</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="p">[</span><span class="n">String</span><span class="p">]</span>
+            <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">nil</span> <span class="p">}</span>
+
+        <span class="nb">self</span><span class="p">.</span><span class="k">init</span><span class="p">(</span>
+            <span class="nl">title</span><span class="p">:</span> <span class="n">title</span><span class="p">,</span>
+            <span class="nl">author</span><span class="p">:</span> <span class="n">author</span><span class="p">,</span>
+            <span class="nl">pageCount</span><span class="p">:</span> <span class="n">decoder</span><span class="p">.</span><span class="n">decodeIntegerForKey</span><span class="p">(</span><span class="s">&quot;pageCount&quot;</span><span class="p">),</span>
+            <span class="nl">categories</span><span class="p">:</span> <span class="n">categories</span><span class="p">,</span>
+            <span class="nl">available</span><span class="p">:</span> <span class="n">decoder</span><span class="p">.</span><span class="n">decodeBoolForKey</span><span class="p">(</span><span class="s">&quot;available&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="k">func</span> <span class="n">encodeWithCoder</span><span class="p">(</span><span class="nl">coder</span><span class="p">:</span> <span class="bp">NSCoder</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">coder</span><span class="p">.</span><span class="n">encodeObject</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">title</span><span class="p">,</span> <span class="nl">forKey</span><span class="p">:</span> <span class="s">&quot;title&quot;</span><span class="p">)</span>
+        <span class="n">coder</span><span class="p">.</span><span class="n">encodeObject</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">author</span><span class="p">,</span> <span class="nl">forKey</span><span class="p">:</span> <span class="s">&quot;author&quot;</span><span class="p">)</span>
+        <span class="n">coder</span><span class="p">.</span><span class="n">encodeInt</span><span class="p">(</span><span class="n">Int32</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">pageCount</span><span class="p">),</span> <span class="nl">forKey</span><span class="p">:</span> <span class="s">&quot;pageCount&quot;</span><span class="p">)</span>
+        <span class="n">coder</span><span class="p">.</span><span class="n">encodeObject</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">categories</span><span class="p">,</span> <span class="nl">forKey</span><span class="p">:</span> <span class="s">&quot;categories&quot;</span><span class="p">)</span>
+        <span class="n">coder</span><span class="p">.</span><span class="n">encodeBool</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">available</span><span class="p">,</span> <span class="nl">forKey</span><span class="p">:</span> <span class="s">&quot;available&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">@interface</span> <span class="nc">Book</span> : <span class="bp">NSObject</span> <span class="o">&lt;</span><span class="bp">NSCoding</span><span class="o">&gt;</span>
+<span class="k">@property</span> <span class="bp">NSString</span> <span class="o">*</span><span class="n">title</span><span class="p">;</span>
+<span class="k">@property</span> <span class="bp">NSString</span> <span class="o">*</span><span class="n">author</span><span class="p">;</span>
+<span class="k">@property</span> <span class="bp">NSUInteger</span> <span class="n">pageCount</span><span class="p">;</span>
+<span class="k">@property</span> <span class="bp">NSSet</span> <span class="o">*</span><span class="n">categories</span><span class="p">;</span>
+<span class="k">@property</span> <span class="p">(</span><span class="k">getter</span> <span class="o">=</span> <span class="n">isAvailable</span><span class="p">)</span> <span class="kt">BOOL</span> <span class="n">available</span><span class="p">;</span>
+<span class="k">@end</span>
+
+<span class="k">@implementation</span> <span class="nc">Book</span>
+
+<span class="cp">#pragma mark - NSCoding</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nf">initWithCoder:</span><span class="p">(</span><span class="bp">NSCoder</span> <span class="o">*</span><span class="p">)</span><span class="nv">decoder</span> <span class="p">{</span>
+    <span class="nb">self</span> <span class="o">=</span> <span class="p">[</span><span class="nb">super</span> <span class="n">init</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">self</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nb">self</span><span class="p">.</span><span class="n">title</span> <span class="o">=</span> <span class="p">[</span><span class="n">decoder</span> <span class="nl">decodeObjectForKey</span><span class="p">:</span><span class="s">@&quot;title&quot;</span><span class="p">];</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">author</span> <span class="o">=</span> <span class="p">[</span><span class="n">decoder</span> <span class="nl">decodeObjectForKey</span><span class="p">:</span><span class="s">@&quot;author&quot;</span><span class="p">];</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">pageCount</span> <span class="o">=</span> <span class="p">[</span><span class="n">decoder</span> <span class="nl">decodeIntegerForKey</span><span class="p">:</span><span class="s">@&quot;pageCount&quot;</span><span class="p">];</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">categories</span> <span class="o">=</span> <span class="p">[</span><span class="n">decoder</span> <span class="nl">decodeObjectForKey</span><span class="p">:</span><span class="s">@&quot;categories&quot;</span><span class="p">];</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">available</span> <span class="o">=</span> <span class="p">[</span><span class="n">decoder</span> <span class="nl">decodeBoolForKey</span><span class="p">:</span><span class="s">@&quot;available&quot;</span><span class="p">];</span>
+
+    <span class="k">return</span> <span class="nb">self</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">encodeWithCoder:</span><span class="p">(</span><span class="bp">NSCoder</span> <span class="o">*</span><span class="p">)</span><span class="nv">encoder</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">encoder</span> <span class="nl">encodeObject</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">title</span> <span class="nl">forKey</span><span class="p">:</span><span class="s">@&quot;title&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">encoder</span> <span class="nl">encodeObject</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">author</span> <span class="nl">forKey</span><span class="p">:</span><span class="s">@&quot;author&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">encoder</span> <span class="nl">encodeInteger</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">pageCount</span> <span class="nl">forKey</span><span class="p">:</span><span class="s">@&quot;pageCount&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">encoder</span> <span class="nl">encodeObject</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">categories</span> <span class="nl">forKey</span><span class="p">:</span><span class="s">@&quot;categories&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">encoder</span> <span class="nl">encodeBool</span><span class="p">:[</span><span class="nb">self</span> <span class="n">isAvailable</span><span class="p">]</span> <span class="nl">forKey</span><span class="p">:</span><span class="s">@&quot;available&quot;</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">@end</span>
+</code></pre></div>
+<p>As you can see, <code>NSCoding</code> is mostly boilerplate. Each property is encoded or decoded as an object or type, using the name of the property of as the key each time. (Some developers prefer to define <code>NSString *</code> constants for each keypath, but this is usually unnecessary).</p>
+
+<p>But boilerplate can be a good thing sometimes—with direct control over the entire serialization process, it remains flexible to account for things like:</p>
+
+<ul>
+<li><strong>Migrations</strong>: If a data model changes—such as adding, renaming, or removing a field—it should maintain compatibility with data serialized in the old format. Apple provides some guidelines on how to go about this in <a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Archiving/Articles/compatibility.html#//apple_ref/doc/uid/20001055-BCICFFGE">&ldquo;Forward and Backward Compatibility for Keyed Archives&rdquo;</a>.</li>
+<li><strong>Archiving non-<code>NSCoding</code>-compatible Classes</strong>: According to object-oriented design, objects should take responsibility for encoding and decoding to and from a serialization format. However, when a class doesn&rsquo;t come with <code>NSCoding</code> support built in, it may be left up to class that uses it to help out.</li>
+</ul>
+
+<blockquote>
+<p>One library that aims to cut down the boilerplate of NSCoding is <a href="https://github.com/github/Mantle">Mantle</a>, from the good folks over at GitHub. If you&rsquo;re looking for more of the conveniences of Core Data modeling with <code>NSCoding</code>, Mantle is definitely worth a look.</p>
+</blockquote>
+
+<hr>
+
+<p>Of course, serialization is only one part of the story. Determining where this data will persist is another question. Again, there are two approaches: writing to the local file system and using <code>NSUserDefaults</code>.</p>
+
+<h2 id="file-system">File System</h2>
+
+<p><code>NSKeyedArchiver</code> and <code>NSKeyedUnarchiver</code> provide a convenient API to read / write objects directly to / from disk.</p>
+
+<p>An <code>NSCoding</code>-backed table view controller might, for instance, set its collection property from the file manager</p>
+
+<h4 id="archiving">Archiving</h4>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="bp">NSKeyedArchiver</span><span class="p">.</span><span class="n">archiveRootObject</span><span class="p">(</span><span class="n">books</span><span class="p">,</span> <span class="nl">toFile</span><span class="p">:</span> <span class="s">&quot;/path/to/archive&quot;</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[</span><span class="bp">NSKeyedArchiver</span> <span class="nl">archiveRootObject</span><span class="p">:</span><span class="n">books</span> <span class="nl">toFile</span><span class="p">:</span><span class="s">@&quot;/path/to/archive&quot;</span><span class="p">];</span>
+</code></pre></div>
+<h4 id="unarchiving">Unarchiving</h4>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="kr">guard</span> <span class="k">let</span> <span class="n">books</span> <span class="o">=</span> <span class="bp">NSKeyedUnarchiver</span><span class="p">.</span><span class="n">unarchiveObjectWithFile</span><span class="p">(</span><span class="s">&quot;/path/to/archive&quot;</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="p">[</span><span class="n">Book</span><span class="p">]</span> <span class="k">else</span> <span class="p">{</span> <span class="k">return</span> <span class="nb">nil</span> <span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[</span><span class="bp">NSKeyedUnarchiver</span> <span class="nl">unarchiveObjectWithFile</span><span class="p">:</span><span class="s">@&quot;/path/to/archive&quot;</span><span class="p">];</span>
+</code></pre></div>
+<h2 id="nsuserdefaults"><code>NSUserDefaults</code></h2>
+
+<p>Each app has its own database of user preferences, which can store and retrieve any <code>NSCoding</code>-compatible object or C value.</p>
+
+<p>While it is not advisable to store an entire object graph into <code>NSUserDefaults</code>, it can be useful to encode compound objects in this way, such as &ldquo;current user&rdquo; objects <del>or API credentials</del> <ins>(use <a href="https://developer.apple.com/library/mac/#documentation/security/Conceptual/keychainServConcepts/iPhoneTasks/iPhoneTasks.html">Keychain</a> instead)</ins>.</p>
+
+<h4 id="archiving">Archiving</h4>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">data</span> <span class="o">=</span> <span class="bp">NSKeyedArchiver</span><span class="p">.</span><span class="n">archivedDataWithRootObject</span><span class="p">(</span><span class="n">books</span><span class="p">)</span>
+<span class="bp">NSUserDefaults</span><span class="p">.</span><span class="n">standardUserDefaults</span><span class="p">().</span><span class="n">setObject</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nl">forKey</span><span class="p">:</span> <span class="s">&quot;books&quot;</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSData</span> <span class="o">*</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSKeyedArchiver</span> <span class="nl">archivedDataWithRootObject</span><span class="p">:</span><span class="n">books</span><span class="p">];</span>
+<span class="p">[[</span><span class="bp">NSUserDefaults</span> <span class="n">standardUserDefaults</span><span class="p">]</span> <span class="nl">setObject</span><span class="p">:</span><span class="n">data</span> <span class="nl">forKey</span><span class="p">:</span><span class="s">@&quot;books&quot;</span><span class="p">];</span>
+</code></pre></div>
+<h4 id="unarchiving">Unarchiving</h4>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">if</span> <span class="k">let</span> <span class="n">data</span> <span class="o">=</span> <span class="bp">NSUserDefaults</span><span class="p">.</span><span class="n">standardUserDefaults</span><span class="p">().</span><span class="n">objectForKey</span><span class="p">(</span><span class="s">&quot;books&quot;</span><span class="p">)</span> <span class="kt">as</span><span class="o">?</span> <span class="bp">NSData</span> <span class="p">{</span>
+    <span class="k">let</span> <span class="n">books</span> <span class="o">=</span> <span class="bp">NSKeyedUnarchiver</span><span class="p">.</span><span class="n">unarchiveObjectWithData</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSData</span> <span class="o">*</span><span class="n">data</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSUserDefaults</span> <span class="n">standardUserDefaults</span><span class="p">]</span> <span class="nl">objectForKey</span><span class="p">:</span><span class="s">@&quot;books&quot;</span><span class="p">];</span>
+<span class="bp">NSArray</span> <span class="o">*</span><span class="n">books</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSKeyedUnarchiver</span> <span class="nl">unarchiveObjectWithData</span><span class="p">:</span><span class="n">data</span><span class="p">];</span>
+</code></pre></div>
+<hr>
+
+<p>As developers, it is our responsibility to understand the goals and needs of our applications, and to resist the urge to over-engineer and prematurely optimize our solutions.</p>
+
+<p>The decision to use Core Data in an application may appear to be a no-brainer, if not harmless. But in many cases, Core Data is discovered to be so unwieldy or unnecessary as to become a real hindrance to making something useful, let alone functional.</p>
+
+<p>And even if most applications <em>would</em> benefit from Core Data at some point, there is wisdom to letting complexity evolve from a simple as necessary. And as far as persistence goes, it doesn&rsquo;t get much simpler than <code>NSCoding</code>.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2013-05-13-nscoding.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on September 15, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/core-data-libraries-and-utilities/" title="Core Data Libraries & Utilities" rel="next">Core Data Libraries & Utilities</a>
+            </h1>
+
+            <p>We were a bit hard on Core Data last week, so for this issue of NSHipster, we bring you a guided tour of the best open source libraries for working with Core Data. Read on to see how you might make the most from your Core Data experience.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/nsorderedset/" title="NSOrderedSet">NSOrderedSet</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nscharacterset/" title="NSCharacterSet">NSCharacterSet</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsurlprotocol/" title="NSURLProtocol">NSURLProtocol</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nshashtable-and-nsmaptable/" title="NSHashTable & NSMapTable">NSHashTable & NSMapTable</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

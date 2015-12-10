@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>UIReferenceLibraryViewController / DCSDictionaryRef/ /usr/share/dict/words - NSHipster</title>
+    <meta name="description" content="Though widely usurped of their 'go-to reference' status by the Internet, dictionaries and word lists serve an important role behind the scenes of functionality ranging from spell check, grammar check, and auto-correct to auto-summarization and semantic analysis."/>
+    <link rel="canonical" href="http://nshipster.com/dictionary-services/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="UIReferenceLibraryViewController /<br/>DCSDictionaryRef/<br/>/usr/share/dict/words"/>
+    <meta name="twitter:description" content="Though widely usurped of their &#39;go-to reference&#39; status by the Internet, dictionaries and word lists serve an important role behind the scenes of functionality ranging from spell check, grammar check, and auto-correct to auto-summarization and semantic analysis."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="UIReferenceLibraryViewController /<br/>DCSDictionaryRef/<br/>/usr/share/dict/words"/>
+    <meta property="og:url" content="http://nshipster.com/dictionary-services/"/>
+    <meta property="og:description" content="Though widely usurped of their &#39;go-to reference&#39; status by the Internet, dictionaries and word lists serve an important role behind the scenes of functionality ranging from spell check, grammar check, and auto-correct to auto-summarization and semantic analysis."/>
+    <meta property="article:published_time" content="2014-03-10T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content="cocoa"/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="UIReferenceLibraryViewController /<br/>DCSDictionaryRef/<br/>/usr/share/dict/words"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/dictionary-services/">UIReference​Library​View​Controller /<br/>DCSDictionary​Ref/<br/>/usr/share/dict/words</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2014-03-10T00:00:00-07:00" itemprop="datePublished">March 10<sup>th</sup>, 2014</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p><img src="http://nshipster.s3.amazonaws.com/cfhipsterref-illustration-librarian.png" width="173" height="300" alt="Librarian, illustrated by Conor Heelan" style="float: right; margin-left: 2em; margin-bottom: 2em"/></p>
+
+<p>This week&rsquo;s article is about dictionaries. Not the <code>NSDictionary</code> / <code>CFDictionaryRef</code> we encounter everyday, but those distant lexicographic vestiges of school days past.</p>
+
+<blockquote>
+<p>But seriously, why are dictionaries called that, anyway? Why can&rsquo;t we just settle on <code>Hash</code>, like those nice Ruby folks? What&rsquo;s that? Semantic overlap with hashing functions and cryptographic digests? Well, dictionary isn&rsquo;t <em>that</em> bad. Anything other than &ldquo;associative arrays&rdquo;, I reckon.</p>
+</blockquote>
+
+<p>Though widely usurped of their &ldquo;go-to reference&rdquo; status by the Internet, dictionaries and word lists serve an important role behind the scenes of functionality ranging from spell check, grammar check, and auto-correct to auto-summarization and semantic analysis. So, for your reference, here&rsquo;s a look at the ways and means by which computers give meaning to the world through words, in Unix, OS X, and iOS.</p>
+
+<hr>
+
+<h2 id="unix">Unix</h2>
+
+<p>Nearly all Unix distributions include a small collection newline-delimited list of words. On OS X, these can be found at <code>/usr/share/dict</code>:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ls /usr/share/dict
+    README
+    connectives
+    propernames
+    web2
+    web2a
+    words@ -&gt; web2
+</code></pre></div>
+<p>Symlinked to <code>words</code> is the <code>web2</code> word list, which, though not exhaustive, is still a sizable corpus:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>wc /usr/share/dict/words
+    <span class="m">235886</span>  <span class="m">235886</span> 2493109
+</code></pre></div>
+<p>Skimming with <code>head</code> shows what fun lies herein. Such excitement is rarely so palpable as it is among words beginning with &ldquo;a&rdquo;:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>head /usr/share/dict/words
+    A
+    a
+    aa
+    aal
+    aalii
+    aam
+    Aani
+    aardvark
+    aardwolf
+    Aaron
+</code></pre></div>
+<p>These giant, system-provided text files make it easy to <code>grep</code> crossword puzzle clues, generate mnemonic pass phrases, and seed databases, but from a user perspective, <code>/usr/share/dict</code>&rsquo;s monolingualism and lack of associated meaning make it less than useful for everyday use.</p>
+
+<p>OS X builds upon this with its own system dictionaries. Never one to disappoint, the operating system&rsquo;s penchant for extending Unix functionality through strategically placed bundles and plist files is in full force with how dictionaries are distributed.</p>
+
+<hr>
+
+<h2 id="os-x">OS X</h2>
+
+<p>The OS X analog to <code>/usr/share/dict</code> can be found in <code>/Library/Dictionaries</code>.
+A quick peek into the shared system dictionaries demonstrates one immediate improvement over Unix, by acknowledging the existence of languages other than English:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ls /Library/Dictionaries/
+
+    Apple Dictionary.dictionary/
+    Diccionario General de la Lengua Española Vox.dictionary/
+    Duden Dictionary Data Set I.dictionary/
+    Dutch.dictionary/
+    Italian.dictionary/
+    Korean - English.dictionary/
+    Korean.dictionary/
+    Multidictionnaire de la langue française.dictionary/
+    New Oxford American Dictionary.dictionary/
+    Oxford American Writer<span class="err">&#39;</span>s Thesaurus.dictionary/
+    Oxford Dictionary of English.dictionary/
+    Oxford Thesaurus of English.dictionary/
+    Sanseido Super Daijirin.dictionary/
+    Sanseido The WISDOM English-Japanese Japanese-English Dictionary.dictionary/
+    Simplified Chinese - English.dictionary/
+    The Standard Dictionary of Contemporary Chinese.dictionary/
+</code></pre></div>
+<p>OS X ships with dictionaries in Chinese, English, French, Dutch, Italian, Japanese, Korean, as well as an English thesaurus and a special dictionary for Apple-specific terminology.</p>
+
+<p>Diving deeper into the rabbit hole, we peruse the <code>.dictionary</code> bundles to see them for what they really are:</p>
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>ls <span class="s2">&quot;/Library/Dictionaries/New Oxford American Dictionary.dictionary/Contents&quot;</span>
+
+    Body.data
+    DefaultStyle.css
+    EntryID.data
+    EntryID.index
+    Images/
+    Info.plist
+    KeyText.data
+    KeyText.index
+    Resources/
+    _CodeSignature/
+    version.plist
+</code></pre></div>
+<p>A filesystem autopsy reveals some interesting implementation details. In the case of the New Oxford American Dictionary in particular, contents include:</p>
+
+<ul>
+<li>Binary-encoded <code>KeyText.data</code>, <code>KeyText.index</code>, &amp; <code>Content.data</code></li>
+<li>CSS for styling entries</li>
+<li>1207 images, from A-Frame to Zither.</li>
+<li>Preference to switch between <a href="http://en.wikipedia.org/wiki/Pronunciation_respelling_for_English">US English Diacritical Pronunciation</a> and <a href="http://en.wikipedia.org/wiki/International_Phonetic_Alphabet">IPA</a> (International Phonetic Alphabet)</li>
+<li>Manifest &amp; signature for dictionary contents</li>
+</ul>
+
+<p>Normally, proprietary binary encoding would be the end of the road in terms of what one could reasonably do with data, but luckily, Core Services provides APIs to read this information.</p>
+
+<h4 id="getting-definition-of-word">Getting Definition of Word</h4>
+
+<p>To get the definition of a word on OS X, one can use the <code>DCSCopyTextDefinition</code> function, found in the Core Services framework:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="cp">#import &lt;CoreServices/CoreServices.h&gt;</span>
+
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">word</span> <span class="o">=</span> <span class="s">@&quot;apple&quot;</span><span class="p">;</span>
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">definition</span> <span class="o">=</span> <span class="p">(</span><span class="k">__bridge_transfer</span> <span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">DCSCopyTextDefinition</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="p">(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">word</span><span class="p">,</span> <span class="n">CFRangeMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">word</span> <span class="n">length</span><span class="p">]));</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">definition</span><span class="p">);</span>
+</code></pre></div>
+<p>Wait, where did all of those great dictionaries go?</p>
+
+<p>Well, they all disappeared into that first <code>NULL</code> argument. One might expect to provide a <code>DCSCopyTextDefinition</code> type here, as prescribed by the function definition. However, there are no public functions to construct or copy such a type, making <code>NULL</code> the only available option. The documentation is as clear as it is stern:</p>
+
+<blockquote>
+<p>This parameter is reserved for future use, so pass <code>NULL</code>. Dictionary Services searches in all active dictionaries.</p>
+</blockquote>
+
+<p>&ldquo;Dictionary Services searches in <strong>all active dictionaries</strong>&rdquo;, you say? Sounds like a loophole!</p>
+
+<h4 id="setting-active-dictionaries">Setting Active Dictionaries</h4>
+
+<p>Now, there&rsquo;s nothing programmers love to hate to love more than the practice of exploiting loopholes to side-step Apple platform restrictions. Behold: an entirely error-prone approach to getting, say, thesaurus results instead of the first definition available in the standard dictionary:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSUserDefaults</span> <span class="o">*</span><span class="n">userDefaults</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSUserDefaults</span> <span class="n">standardUserDefaults</span><span class="p">];</span>
+<span class="bp">NSMutableDictionary</span> <span class="o">*</span><span class="n">dictionaryPreferences</span> <span class="o">=</span> <span class="p">[[</span><span class="n">userDefaults</span> <span class="nl">persistentDomainForName</span><span class="p">:</span><span class="s">@&quot;com.apple.DictionaryServices&quot;</span><span class="p">]</span> <span class="n">mutableCopy</span><span class="p">];</span>
+<span class="bp">NSArray</span> <span class="o">*</span><span class="n">activeDictionaries</span> <span class="o">=</span> <span class="p">[</span><span class="n">dictionaryPreferences</span> <span class="nl">objectForKey</span><span class="p">:</span><span class="s">@&quot;DCSActiveDictionaries&quot;</span><span class="p">];</span>
+<span class="n">dictionaryPreferences</span><span class="p">[</span><span class="s">@&quot;DCSActiveDictionaries&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="l">@[</span><span class="s">@&quot;/Library/Dictionaries/Oxford American Writer&#39;s Thesaurus.dictionary&quot;</span><span class="l">]</span><span class="p">;</span>
+<span class="p">[</span><span class="n">userDefaults</span> <span class="nl">setPersistentDomain</span><span class="p">:</span><span class="n">dictionaryPreferences</span> <span class="nl">forName</span><span class="p">:</span><span class="s">@&quot;com.apple.DictionaryServices&quot;</span><span class="p">];</span>
+<span class="p">{</span>
+    <span class="bp">NSString</span> <span class="o">*</span><span class="n">word</span> <span class="o">=</span> <span class="s">@&quot;apple&quot;</span><span class="p">;</span>
+    <span class="bp">NSString</span> <span class="o">*</span><span class="n">definition</span> <span class="o">=</span> <span class="p">(</span><span class="k">__bridge_transfer</span> <span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">DCSCopyTextDefinition</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="p">(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">word</span><span class="p">,</span> <span class="n">CFRangeMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">word</span> <span class="n">length</span><span class="p">]));</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">definition</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">dictionaryPreferences</span><span class="p">[</span><span class="s">@&quot;DCSActiveDictionaries&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">activeDictionaries</span><span class="p">;</span>
+<span class="p">[</span><span class="n">userDefaults</span> <span class="nl">setPersistentDomain</span><span class="p">:</span><span class="n">dictionaryPreferences</span> <span class="nl">forName</span><span class="p">:</span><span class="s">@&quot;com.apple.DictionaryServices&quot;</span><span class="p">];</span>
+</code></pre></div>
+<p>&ldquo;But this is OS X, a platform whose manifest destiny cannot be contained by meager sandboxing attempts from Cupertino!&rdquo;, you cry. &ldquo;Isn&rsquo;t there a more civilized approach? Like, say, private APIs?&rdquo;</p>
+
+<p>Why yes, yes there are.</p>
+
+<h3 id="private-apis">Private APIs</h3>
+
+<p>Not publicly exposed, but still available through Core Services are a number of functions that cut closer to the dictionary services functionality that we crave:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="k">extern</span> <span class="n">CFArrayRef</span> <span class="nf">DCSCopyAvailableDictionaries</span><span class="p">();</span>
+<span class="k">extern</span> <span class="n">CFStringRef</span> <span class="nf">DCSDictionaryGetName</span><span class="p">(</span><span class="n">DCSDictionaryRef</span> <span class="n">dictionary</span><span class="p">);</span>
+<span class="k">extern</span> <span class="n">CFStringRef</span> <span class="nf">DCSDictionaryGetShortName</span><span class="p">(</span><span class="n">DCSDictionaryRef</span> <span class="n">dictionary</span><span class="p">);</span>
+<span class="k">extern</span> <span class="n">DCSDictionaryRef</span> <span class="nf">DCSDictionaryCreate</span><span class="p">(</span><span class="n">CFURLRef</span> <span class="n">url</span><span class="p">);</span>
+<span class="k">extern</span> <span class="n">CFStringRef</span> <span class="nf">DCSDictionaryGetName</span><span class="p">(</span><span class="n">DCSDictionaryRef</span> <span class="n">dictionary</span><span class="p">);</span>
+<span class="k">extern</span> <span class="n">CFArrayRef</span> <span class="nf">DCSCopyRecordsForSearchString</span><span class="p">(</span><span class="n">DCSDictionaryRef</span> <span class="n">dictionary</span><span class="p">,</span> <span class="n">CFStringRef</span> <span class="n">string</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="p">);</span>
+
+<span class="k">extern</span> <span class="n">CFDictionaryRef</span> <span class="nf">DCSCopyDefinitionMarkup</span><span class="p">(</span><span class="n">DCSDictionaryRef</span> <span class="n">dictionary</span><span class="p">,</span> <span class="n">CFStringRef</span> <span class="n">record</span><span class="p">);</span>
+<span class="k">extern</span> <span class="n">CFStringRef</span> <span class="nf">DCSRecordCopyData</span><span class="p">(</span><span class="n">CFTypeRef</span> <span class="n">record</span><span class="p">);</span>
+<span class="k">extern</span> <span class="n">CFStringRef</span> <span class="nf">DCSRecordCopyDataURL</span><span class="p">(</span><span class="n">CFTypeRef</span> <span class="n">record</span><span class="p">);</span>
+<span class="k">extern</span> <span class="n">CFStringRef</span> <span class="nf">DCSRecordGetAnchor</span><span class="p">(</span><span class="n">CFTypeRef</span> <span class="n">record</span><span class="p">);</span>
+<span class="k">extern</span> <span class="n">CFStringRef</span> <span class="nf">DCSRecordGetAssociatedObj</span><span class="p">(</span><span class="n">CFTypeRef</span> <span class="n">record</span><span class="p">);</span>
+<span class="k">extern</span> <span class="n">CFStringRef</span> <span class="nf">DCSRecordGetHeadword</span><span class="p">(</span><span class="n">CFTypeRef</span> <span class="n">record</span><span class="p">);</span>
+<span class="k">extern</span> <span class="n">CFStringRef</span> <span class="nf">DCSRecordGetRawHeadword</span><span class="p">(</span><span class="n">CFTypeRef</span> <span class="n">record</span><span class="p">);</span>
+<span class="k">extern</span> <span class="n">CFStringRef</span> <span class="nf">DCSRecordGetString</span><span class="p">(</span><span class="n">CFTypeRef</span> <span class="n">record</span><span class="p">);</span>
+<span class="k">extern</span> <span class="n">CFStringRef</span> <span class="nf">DCSRecordGetTitle</span><span class="p">(</span><span class="n">CFTypeRef</span> <span class="n">record</span><span class="p">);</span>
+<span class="k">extern</span> <span class="n">DCSDictionaryRef</span> <span class="nf">DCSRecordGetSubDictionary</span><span class="p">(</span><span class="n">CFTypeRef</span> <span class="n">record</span><span class="p">);</span>
+</code></pre></div>
+<p>Private as they are, these functions aren&rsquo;t about to start documenting themselves, so let&rsquo;s take a look at how they&rsquo;re used:</p>
+
+<h4 id="getting-available-dictionaries">Getting Available Dictionaries</h4>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSMapTable</span> <span class="o">*</span><span class="n">availableDictionariesKeyedByName</span> <span class="o">=</span>
+    <span class="p">[</span><span class="bp">NSMapTable</span> <span class="nl">mapTableWithKeyOptions</span><span class="p">:</span><span class="n">NSPointerFunctionsCopyIn</span>
+                          <span class="nl">valueOptions</span><span class="p">:</span><span class="n">NSPointerFunctionsObjectPointerPersonality</span><span class="p">];</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kt">id</span> <span class="n">dictionary</span> <span class="k">in</span> <span class="p">(</span><span class="k">__bridge_transfer</span> <span class="bp">NSArray</span> <span class="o">*</span><span class="p">)</span><span class="n">DCSCopyAvailableDictionaries</span><span class="p">())</span> <span class="p">{</span>
+    <span class="bp">NSString</span> <span class="o">*</span><span class="n">name</span> <span class="o">=</span> <span class="p">(</span><span class="k">__bridge</span> <span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">DCSDictionaryGetName</span><span class="p">((</span><span class="k">__bridge</span> <span class="n">DCSDictionaryRef</span><span class="p">)</span><span class="n">dictionary</span><span class="p">);</span>
+    <span class="p">[</span><span class="n">availableDictionariesKeyedByName</span> <span class="nl">setObject</span><span class="p">:</span><span class="n">dictionary</span> <span class="nl">forKey</span><span class="p">:</span><span class="n">name</span><span class="p">];</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="getting-definition-for-word">Getting Definition for Word</h4>
+
+<p>With instances of the elusive <code>DCSDictionaryRef</code> type available at our disposal, we can now see what all of the fuss is about with that first argument in <code>DCSCopyTextDefinition</code>:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">NSString</span> <span class="o">*</span><span class="n">word</span> <span class="o">=</span> <span class="s">@&quot;apple&quot;</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="n">name</span> <span class="k">in</span> <span class="n">availableDictionariesKeyedByName</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">id</span> <span class="n">dictionary</span> <span class="o">=</span> <span class="p">[</span><span class="n">availableDictionariesKeyedByName</span> <span class="nl">objectForKey</span><span class="p">:</span><span class="n">name</span><span class="p">];</span>
+
+    <span class="n">CFRange</span> <span class="n">termRange</span> <span class="o">=</span> <span class="n">DCSGetTermRangeInString</span><span class="p">((</span><span class="k">__bridge</span> <span class="n">DCSDictionaryRef</span><span class="p">)</span><span class="n">dictionary</span><span class="p">,</span> <span class="p">(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">word</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">termRange</span><span class="p">.</span><span class="n">location</span> <span class="o">==</span> <span class="n">kCFNotFound</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="bp">NSString</span> <span class="o">*</span><span class="n">term</span> <span class="o">=</span> <span class="p">[</span><span class="n">word</span> <span class="nl">substringWithRange</span><span class="p">:</span><span class="n">NSMakeRange</span><span class="p">(</span><span class="n">termRange</span><span class="p">.</span><span class="n">location</span><span class="p">,</span> <span class="n">termRange</span><span class="p">.</span><span class="n">length</span><span class="p">)];</span>
+
+    <span class="bp">NSArray</span> <span class="o">*</span><span class="n">records</span> <span class="o">=</span> <span class="p">(</span><span class="k">__bridge_transfer</span> <span class="bp">NSArray</span> <span class="o">*</span><span class="p">)</span><span class="n">DCSCopyRecordsForSearchString</span><span class="p">((</span><span class="k">__bridge</span> <span class="n">DCSDictionaryRef</span><span class="p">)</span><span class="n">dictionary</span><span class="p">,</span> <span class="p">(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">term</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">records</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">id</span> <span class="n">record</span> <span class="k">in</span> <span class="n">records</span><span class="p">)</span> <span class="p">{</span>
+            <span class="bp">NSString</span> <span class="o">*</span><span class="n">headword</span> <span class="o">=</span> <span class="p">(</span><span class="k">__bridge</span> <span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">DCSRecordGetHeadword</span><span class="p">((</span><span class="k">__bridge</span> <span class="n">CFTypeRef</span><span class="p">)</span><span class="n">record</span><span class="p">);</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">headword</span><span class="p">)</span> <span class="p">{</span>
+                <span class="bp">NSString</span> <span class="o">*</span><span class="n">definition</span> <span class="o">=</span> <span class="p">(</span><span class="k">__bridge_transfer</span> <span class="bp">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">DCSCopyTextDefinition</span><span class="p">((</span><span class="k">__bridge</span> <span class="n">DCSDictionaryRef</span><span class="p">)</span><span class="n">dictionary</span><span class="p">,</span> <span class="p">(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">headword</span><span class="p">,</span> <span class="n">CFRangeMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">headword</span> <span class="n">length</span><span class="p">]));</span>
+                <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@: %@&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">definition</span><span class="p">);</span>
+
+                <span class="bp">NSString</span> <span class="o">*</span><span class="n">HTML</span> <span class="o">=</span> <span class="p">(</span><span class="k">__bridge_transfer</span> <span class="bp">NSString</span><span class="o">*</span><span class="p">)</span><span class="n">DCSRecordCopyData</span><span class="p">((</span><span class="k">__bridge</span> <span class="n">DCSDictionaryRef</span><span class="p">)</span><span class="n">dictionary</span><span class="p">,</span> <span class="p">(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">headword</span><span class="p">,</span> <span class="n">CFRangeMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="n">headword</span> <span class="n">length</span><span class="p">]));</span>
+                <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@: %@&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">definition</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Most surprising from this experimentation is the ability to access the raw HTML for entries, which  combined with a dictionary&rsquo;s bundled CSS, produces the result seen in Dictionary.app.</p>
+
+<p><img src="http://nshipster.s3.amazonaws.com/dictionary.png" alt="Entry for &quot;apple&quot; in Dictionary.app"></p>
+
+<blockquote>
+<p>For any fellow linguistics nerds or markup curious folks out there, here&rsquo;s <a href="https://gist.github.com/mattt/9453538">the HTML of the entry for the word &ldquo;apple&rdquo;</a>.</p>
+</blockquote>
+
+<p>In the process of writing this article, I <em>accidentally</em> created <a href="https://github.com/mattt/DictionaryKit">an Objective-C wrapper</a> around this forbidden fruit (so forbidden by our favorite fruit company, so don&rsquo;t try submitting this to the App Store).</p>
+
+<hr>
+
+<h2 id="ios">iOS</h2>
+
+<p>iOS development is a decidedly more by-the-books affair, so attempting to reverse-engineer the platform would be little more than an academic exercise. Fortunately, a good chunk of functionality is available (as of iOS 5) through the obscure UIKit class <code>UIReferenceLibraryViewController</code>.</p>
+
+<p><code>UIReferenceLibraryViewController</code> is similar to an <code>MFMessageComposeViewController</code>, in that provides a minimally-configurable view controller around system functionality, intended to be presented modally.</p>
+
+<p>Simply initialize with the desired term:</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="bp">UIReferenceLibraryViewController</span> <span class="o">*</span><span class="n">referenceLibraryViewController</span> <span class="o">=</span>
+    <span class="p">[[</span><span class="bp">UIReferenceLibraryViewController</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithTerm</span><span class="p">:</span><span class="s">@&quot;apple&quot;</span><span class="p">];</span>
+<span class="p">[</span><span class="n">viewController</span> <span class="nl">presentViewController</span><span class="p">:</span><span class="n">referenceLibraryViewController</span>
+                             <span class="nl">animated</span><span class="p">:</span><span class="nb">YES</span>
+                           <span class="nl">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+</code></pre></div>
+<p><img src="http://nshipster.s3.amazonaws.com/uireferencelibraryviewcontroller-1.png" alt="Presenting a UIReferenceLibraryViewController"></p>
+
+<p>This is the same behavior that one might encounter by tapping the &ldquo;Define&rdquo; <code>UIMenuItem</code> on a highlighted word in a <code>UITextView</code>.</p>
+
+<blockquote>
+<p>Tapping on &ldquo;Manage&rdquo; brings up a view to download additional dictionaries.</p>
+</blockquote>
+
+<p><img src="http://nshipster.s3.amazonaws.com/uireferencelibraryviewcontroller-2.png" alt="Presenting a UIReferenceLibraryViewController"></p>
+
+<p><code>UIReferenceLibraryViewController</code> also provides the class method <code>dictionaryHasDefinitionForTerm:</code>. A developer would do well to call this before presenting a dictionary view controller that will inevitably have nothing to display.</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">[</span><span class="bp">UIReferenceLibraryViewController</span> <span class="nl">dictionaryHasDefinitionForTerm</span><span class="p">:</span><span class="s">@&quot;apple&quot;</span><span class="p">];</span>
+</code></pre></div>
+<blockquote>
+<p>In both cases, it appears that <code>UIReferenceLibraryViewController</code> will do its best to normalize the search term, so stripping whitespace or changing to lowercase should not be necessary.</p>
+</blockquote>
+
+<hr>
+
+<p>From Unix word lists to their evolved <code>.dictionary</code> bundles on OS X (and presumably iOS), words are as essential to application programming as mathematical constants and the &ldquo;Sosumi&rdquo; alert noise. Consider how the aforementioned APIs can be integrated into your own app, or used to create a kind of app you hadn&rsquo;t previously considered. There are a <a href="http://nshipster.com/nslocalizedstring/">wealth</a> <a href="http://nshipster.com/nslinguistictagger/">of</a> <a href="http://nshipster.com/search-kit/">linguistic</a> <a href="http://nshipster.com/uilocalizedindexedcollation/">technologies</a> baked into Apple&rsquo;s platforms, so take advantage of them.</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-03-10-dictionary-services.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+            
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+        
+
+  <section id="promotion">
+    
+    <small>Recommended Reading</small>
+    
+    
+    
+
+<div id="" class="book" itemscope itemtype="http://schema.org/Product">
+  <div itemscope itemtype="http://schema.org/Book">
+    <link itemprop="bookFormat" href="http://schema.org/EBook"/>
+    <a href="https://gum.co/cfhipsterref" title="CFHipsterRef: Low-Level Programming on iOS & OS X" target="_blank">
+      <img src="//cdn.nshipster.com/images/cfhipsterref-cover@2x.png" class="cover" alt="CFHipsterRef: Low-Level Programming on iOS & OS X" itemprop="image"/>
+    </a>
+    <span itemprop="name" style="display:none;" hidden>CFHipsterRef: Low-Level Programming on iOS & OS X</span>
+    <span itemprop="author" style="display:none;" hidden>Mattt Thompson</span>
+    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display:none;">
+      <link itemprop="availability" href="http://schema.org/InStock"/>
+      <meta itemprop="priceCurrency" content="USD"/>
+      <span itemprop="price">29.99</span>
+    </div>
+  </div>
+</div>
+
+    <h3>CFHipsterRef</h3>
+    <h4>Low-Level Programming on iOS & OS X</h4>
+    <p>Perfect for intermediate and expert developers wanting to take a deeper dive into advanced topics, <em>CFHipsterRef: Low-Level Programming on iOS &amp; OS X</em> covers the core technologies powering Cocoa, Objective-C, and the operating system itself, including Grand Central Dispatch, Accelerate, and the Objective-C runtime.</p>
+
+    
+    <a class="buy" href="https://gum.co/cfhipsterref" target="_blank">Buy Now on Gumroad</a>
+    
+  </section>
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/empathy/" title="Empathy" rel="next">Empathy</a>
+            </h1>
+
+            <p>We naturally want to help one another, to explain ideas, to be generous and patient. However, on the Internet, human nature seems to drop a few packets.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/uuid-udid-unique-identifier/" title="NSUUID /<br/>CFUUIDRef /<br/>UIDevice -uniqueIdentifier /<br/>-identifierForVendor">NSUUID /<br/>CFUUIDRef /<br/>UIDevice -uniqueIdentifier /<br/>-identifierForVendor</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/uisplitviewcontroller/" title="UISplitViewController">UISplitViewController</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/phimagemanager/" title="PHImageManager">PHImageManager</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/nsrange/" title="NSRange">NSRange</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>

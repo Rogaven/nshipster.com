@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  
+    <title>iOS 8 - NSHipster</title>
+    <meta name="description" content="Ask anyone, and they'll tell you: WWDC 2014 was the one of the most exciting in recent memory. This week, we'll take a look beneath the headline features, and share some of the more obscure APIs that everyone should know about."/>
+    <link rel="canonical" href="http://nshipster.com/ios8/"/>
+  
+  
+  
+  
+  <meta name="author" content="Mattt Thompson"/>
+  
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
+  <link rel="stylesheet" type="text/css" href="http://nshipster.com/css/screen.css"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+  <link rel="mask-icon" sizes="any" href="/website_icon.svg" color="black"/>
+  <link rel="author" type="text/plain" href="http://nshipster.com/humans.txt"/>
+
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:site" content="@NSHipster"/>
+  
+  <meta name="twitter:creator" content="@mattt"/>
+  
+  
+    <meta name="twitter:title" content="iOS 8"/>
+    <meta name="twitter:description" content="Ask anyone, and they&#39;ll tell you: WWDC 2014 was the one of the most exciting in recent memory. This week, we&#39;ll take a look beneath the headline features, and share some of the more obscure APIs that everyone should know about."/>
+  
+  <meta property="twitter:account_id" content="629523445"/>
+
+  <meta property="og:site_name" content="NSHipster"/>
+  <meta property="og:image" content="http://nshipster.com/touch-icon-ipad-retina.png"/>
+  
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="iOS 8"/>
+    <meta property="og:url" content="http://nshipster.com/ios8/"/>
+    <meta property="og:description" content="Ask anyone, and they&#39;ll tell you: WWDC 2014 was the one of the most exciting in recent memory. This week, we&#39;ll take a look beneath the headline features, and share some of the more obscure APIs that everyone should know about."/>
+    <meta property="article:published_time" content="2014-06-09T00:00:00-07:00"/>
+    <meta property="article:modified_time" content="2015-12-09T21:06:40-08:00"/>
+    <meta property="article:tag" content=""/>
+    <meta property="article:publisher" content="https://www.facebook.com/NSHipster">
+  
+
+  
+    <meta property="st:title" content="iOS 8"/>
+    <meta property="st:type" content="article"/>
+  
+  
+  <meta property="nshipster:hide-single-lang" content="swift,objective-c"/>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+
+  <script src="http://nshipster.com/js/zepto.min.js"></script>
+  <script src="http://nshipster.com/js/application.js"></script>
+
+  <div role="container">
+    <header role="banner">
+      <h1 id="logo">
+        <a href="/">
+          <svg id="ns" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+<g>
+  <path fill="#F58020" d="M0.6,1h13.7L27,24.4h0.1V1h12.7v43.6H26.8L13.4,20.8h-0.1v23.8H0.6V1z"/>
+  <path fill="#F58020" d="M51.4,30c0,1.1,0.2,2.1,0.5,2.9c1,2.6,3.9,3.2,6.4,3.2c2.2,0,5.6-0.7,5.6-4c0-2.3-1.9-2.9-9.4-5
+    c-6.9-2-14.8-3.8-14.8-12.6C39.7,4.3,48.3,0,57.3,0c9.5,0,17.8,3.6,18.2,14.2H62.8c0.2-1.6-0.5-2.7-1.6-3.5
+    c-1.1-0.8-2.6-1.1-4-1.1c-1.8,0-4.8,0.5-4.8,2.9c0.2,3.1,6.5,3.8,12.6,5.5c6.2,1.7,12.3,4.6,12.3,12.6c0,11.4-10.4,15-20.1,15
+    c-4.9,0-19-1.8-19.2-15.7H51.4z"/>
+</g>
+</svg>
+
+          <svg id="mustache" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="0 0 79.5 45.7" enable-background="new 0 0 79.5 45.7" xml:space="preserve">
+  <g transform="translate(0,-952.36217)" opacity="0.95">
+    <path id="path2987" fill="#010101" d="M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3
+      c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"/>
+  </g>
+</svg>
+
+        </a>
+
+        <span hidden style="display:none;">NSHipster</span>
+      </h1>
+
+      <form role="search">
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
+      
+    </header>
+
+    <div id="main" role="main" itemprop="mainContentOfPage">
+      
+
+<article role="article" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="/ios8/">i​OS 8</a>
+    </h1>
+
+    <h2>
+    
+      Written by <a class="author" href="/authors/mattt-thompson/">Mattt Thompson</a> —
+    
+    <time datetime="2014-06-09T00:00:00-07:00" itemprop="datePublished">June 9<sup>th</sup>, 2014</time>
+    
+    </h2>
+
+  </header>
+
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    <p>Ask anyone, and they&rsquo;ll tell you: WWDC 2014 was one of the most exciting in recent memory. It was, first and foremost, a developer event, with nary a hardware announcement to upstage the latest software &amp; developer tools.</p>
+
+<p>And boy howdy, was there a lot to be excited about.</p>
+
+<p>The announcements from iOS 8 &amp; OS X Yosemite alone would have made 2014 a bellwether year for the Apple platform, with Extensions, Continuity, SpriteKit enhancements, SceneKit for iOS, Metal, Game HealthKit, HomeKit, Local Authentication, and a brand new Photos framework. Not to mention the dramatic improvements to Xcode &amp; Interface Builder, a revamped iTunes Connect, TestFlight, Crash Reports, and CloudKit. And oh yeah—Swift.</p>
+
+<p>The kicker? Apple has graciously relaxed its NDA for new technologies, meaning that we don&rsquo;t have to wait to talk about all of the shiny new toys we have to play with.</p>
+
+<p>This week, we&rsquo;ll take a look beneath the headline features, and share some of the more obscure APIs that everyone should know about.</p>
+
+<blockquote>
+<p>From here on out, NSHipster will primarily write code samples in Swift, with the occasional Objective-C throwback where appropriate. By the end of the summer, we hope to have all of the existing code samples ported to Swift, with the option to toggle between languages.</p>
+</blockquote>
+
+<hr>
+
+<h2 id="nsprocessinfo--isoperatingsystematleastversion">NSProcessInfo -isOperatingSystemAtLeastVersion</h2>
+
+<p>Forget <code>[[UIDevice currentDevice] systemVersion]</code> and <code>NSFoundationVersionNumber</code>, there&rsquo;s a new way to determine the current operating system in code: <code>NSProcessInfo -isOperatingSystemAtLeastVersion</code></p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">Foundation</span>
+
+<span class="k">let</span> <span class="n">yosemite</span> <span class="o">=</span> <span class="n">NSOperatingSystemVersion</span><span class="p">(</span><span class="nl">majorVersion</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nl">minorVersion</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="nl">patchVersion</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
+<span class="bp">NSProcessInfo</span><span class="p">().</span><span class="n">isOperatingSystemAtLeastVersion</span><span class="p">(</span><span class="n">yosemite</span><span class="p">)</span> <span class="c1">// false</span>
+</code></pre></div>
+<p>Keep in mind, however, that a test for capability, such as with <code>SomeClass.class</code> or <code>respondsToSelector:</code>, is preferable to checking the OS version. Compiler macros in C or Swift can be used to conditionally compile source based on the build configuration of the target.</p>
+
+<h2 id="new-nsformatter-subclasses">New NSFormatter Subclasses</h2>
+
+<p>One of the features most sorely lacking in Foundation was the ability to work with units for quantities like mass or length. In iOS 8 and OS X Yosemite, three new classes were introduced that fills the gap: <code>NSEnergyFormatter</code>, <code>NSMassFormatter</code>, &amp; <code>NSLengthFormatter</code>.</p>
+
+<blockquote>
+<p>This effectively doubles the number of <a href="http://nshipster.com/nsformatter/"><code>NSFormatter</code></a> subclasses in Foundation, which was previously limited to <code>NSNumberFormatter</code>, <code>NSDateFormatter</code>, &amp; <code>NSByteCountFormatter</code>.</p>
+</blockquote>
+
+<p>Although these new formatter classes are part of Foundation, they were added primarily for use in HealthKit.</p>
+
+<h3 id="nsenergyformatter">NSEnergyFormatter</h3>
+
+<p><code>NSEnergyFormatter</code> formats energy in Joules, the raw unit of work for exercises, and Calories, which is used when working with nutrition information.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">energyFormatter</span> <span class="o">=</span> <span class="n">NSEnergyFormatter</span><span class="p">()</span>
+<span class="n">energyFormatter</span><span class="p">.</span><span class="n">forFoodEnergyUse</span> <span class="o">=</span> <span class="nb">true</span>
+
+<span class="k">let</span> <span class="n">joules</span> <span class="o">=</span> <span class="mi">10</span><span class="n">_000</span><span class="mf">.0</span>
+<span class="n">print</span><span class="p">(</span><span class="n">energyFormatter</span><span class="p">.</span><span class="n">stringFromJoules</span><span class="p">(</span><span class="n">joules</span><span class="p">))</span> <span class="c1">// &quot;2.39 Cal&quot;</span>
+</code></pre></div>
+<h3 id="nsmassformatter">NSMassFormatter</h3>
+
+<p>Although the fundamental unit of physical existence, mass is pretty much relegated to tracking the weight of users in HealthKit. Yes, mass and weight are different, but this is programming, not science class, so stop being pedantic.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">massFormatter</span> <span class="o">=</span> <span class="n">NSMassFormatter</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">kilograms</span> <span class="o">=</span> <span class="mf">60.0</span>
+<span class="n">print</span><span class="p">(</span><span class="n">massFormatter</span><span class="p">.</span><span class="n">stringFromKilograms</span><span class="p">(</span><span class="n">kilograms</span><span class="p">))</span> <span class="c1">// &quot;132 lb&quot;</span>
+</code></pre></div>
+<h3 id="nslengthformatter">NSLengthFormatter</h3>
+
+<p>Rounding out the new <code>NSFormatter</code> subclasses is <code>NSLengthFormatter</code>. Think of it as a more useful version of <code>MKDistanceFormatter</code>, with more unit options and formatting options.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">lengthFormatter</span> <span class="o">=</span> <span class="n">NSLengthFormatter</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">meters</span> <span class="o">=</span> <span class="mi">5</span><span class="n">_000</span><span class="mf">.0</span>
+<span class="n">print</span><span class="p">(</span><span class="n">lengthFormatter</span><span class="p">.</span><span class="n">stringFromMeters</span><span class="p">(</span><span class="n">meters</span><span class="p">))</span> <span class="c1">// &quot;3.107 mi&quot;</span>
+</code></pre></div>
+<h2 id="cmpedometer">CMPedometer</h2>
+
+<p>Continuing on iOS 8&rsquo;s health kick, <code>CMStepCounter</code> is revamped in the latest release. <code>CMPedometer</code> is a strict improvement over its predecessor, with the ability to query from discrete points in time, track both steps and distance, and even calculate how many flights of stairs were climbed.</p>
+
+<p>It&rsquo;s amazing what that M7 chip is capable of.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">CoreMotion</span>
+
+<span class="k">let</span> <span class="n">lengthFormatter</span> <span class="o">=</span> <span class="n">NSLengthFormatter</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">pedometer</span> <span class="o">=</span> <span class="n">CMPedometer</span><span class="p">()</span>
+<span class="n">pedometer</span><span class="p">.</span><span class="n">startPedometerUpdatesFromDate</span><span class="p">(</span><span class="bp">NSDate</span><span class="p">())</span> <span class="p">{</span> <span class="n">data</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span> <span class="p">{</span>
+        <span class="n">print</span><span class="p">(</span><span class="s">&quot;Steps Taken: \(data.numberOfSteps)&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="k">let</span> <span class="n">distance</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">distance</span><span class="o">?</span><span class="p">.</span><span class="n">doubleValue</span> <span class="p">{</span>
+            <span class="n">print</span><span class="p">(</span><span class="s">&quot;Distance: \(lengthFormatter.stringFromMeters(distance))&quot;</span><span class="p">)</span>
+
+            <span class="k">let</span> <span class="n">time</span> <span class="o">=</span> <span class="n">data</span><span class="p">.</span><span class="n">endDate</span><span class="p">.</span><span class="n">timeIntervalSinceDate</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">startDate</span><span class="p">)</span>
+            <span class="k">let</span> <span class="n">speed</span> <span class="o">=</span> <span class="n">distance</span> <span class="o">/</span> <span class="n">time</span>
+            <span class="n">print</span><span class="p">(</span><span class="s">&quot;Speed: \(lengthFormatter.stringFromMeters(speed)) / s&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="cmaltimeter">CMAltimeter</h2>
+
+<p>On supported devices, a <code>CMPedometer</code>&rsquo;s stats on <code>floorsAscended</code> / <code>floorsDescended</code> can be augmented with <code>CMAltimeter</code> to get a more granular look at vertical distance traveled:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">CoreMotion</span>
+
+<span class="k">let</span> <span class="n">altimeter</span> <span class="o">=</span> <span class="n">CMAltimeter</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">CMAltimeter</span><span class="p">.</span><span class="n">isRelativeAltitudeAvailable</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">altimeter</span><span class="p">.</span><span class="n">startRelativeAltitudeUpdatesToQueue</span><span class="p">(</span><span class="bp">NSOperationQueue</span><span class="p">.</span><span class="n">mainQueue</span><span class="p">())</span> <span class="p">{</span> <span class="n">data</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="n">data</span> <span class="o">=</span> <span class="n">data</span> <span class="p">{</span>
+            <span class="n">print</span><span class="p">(</span><span class="s">&quot;Relative Altitude: \(data.relativeAltitude)&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="clfloor">CLFloor</h2>
+
+<p><code>CLFloor</code> is a new API in iOS 8 that ties the new features in CoreMotion with Apple&rsquo;s ambitious plan to map the interiors of the largest buildings in the world. Look for this information to play a significant role in future hyperlocal mapping applications.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">CoreLocation</span>
+
+<span class="k">class</span> <span class="nl">LocationManagerDelegate</span><span class="p">:</span> <span class="bp">NSObject</span><span class="p">,</span> <span class="bp">CLLocationManagerDelegate</span> <span class="p">{</span>
+    <span class="k">func</span> <span class="n">locationManager</span><span class="p">(</span><span class="nl">manager</span><span class="p">:</span> <span class="bp">CLLocationManager</span><span class="p">,</span> <span class="n">didUpdateLocations</span> <span class="nl">locations</span><span class="p">:</span> <span class="p">[</span><span class="bp">CLLocation</span><span class="p">])</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="n">floor</span> <span class="o">=</span> <span class="n">locations</span><span class="p">.</span><span class="n">first</span><span class="o">?</span><span class="p">.</span><span class="n">floor</span> <span class="p">{</span>
+            <span class="n">print</span><span class="p">(</span><span class="s">&quot;Current Floor: \(floor.level)&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="n">manager</span> <span class="o">=</span> <span class="bp">CLLocationManager</span><span class="p">()</span>
+<span class="n">manager</span><span class="p">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">LocationManagerDelegate</span><span class="p">()</span>
+<span class="n">manager</span><span class="p">.</span><span class="n">startUpdatingLocation</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="hkstatistics">HKStatistics</h2>
+
+<p>As a framework, HealthKit covers a lot of ground, with dozens of new classes and constants. A good place to start, in terms of understanding what&rsquo;s possible is <code>HKStatistics</code>.</p>
+
+<p>HealthKit manages your biometrics from all of your devices in a single unified API. Statistics on things like heart rate, caloric intake, and aerobic output can be tracked and aggregated in powerful ways.</p>
+
+<p>The following example shows how statistics summed over the duration of the day can be grouped and interpreted individually:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">HealthKit</span>
+
+<span class="k">let</span> <span class="nl">collection</span><span class="p">:</span> <span class="n">HKStatisticsCollection</span><span class="o">?</span> <span class="o">=</span> <span class="p">...</span>
+<span class="k">let</span> <span class="nl">statistics</span><span class="p">:</span> <span class="n">HKStatistics</span><span class="o">?</span> <span class="o">=</span> <span class="n">collection</span><span class="o">?</span><span class="p">.</span><span class="n">statisticsForDate</span><span class="p">(</span><span class="bp">NSDate</span><span class="p">())</span>
+<span class="k">let</span> <span class="nl">sources</span><span class="p">:</span> <span class="p">[</span><span class="n">HKSource</span><span class="p">]</span> <span class="o">=</span> <span class="n">statistics</span><span class="o">?</span><span class="p">.</span><span class="n">sources</span> <span class="o">??</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">source</span> <span class="k">in</span> <span class="n">sources</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="n">quantity</span> <span class="o">=</span> <span class="n">statistics</span><span class="o">?</span><span class="p">.</span><span class="n">sumQuantityForSource</span><span class="p">(</span><span class="n">source</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="n">quantity</span><span class="p">.</span><span class="n">isCompatibleWithUnit</span><span class="p">(</span><span class="n">HKUnit</span><span class="p">.</span><span class="n">gramUnitWithMetricPrefix</span><span class="p">(.</span><span class="n">Kilo</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="n">massFormatter</span> <span class="o">=</span> <span class="n">NSMassFormatter</span><span class="p">()</span>
+            <span class="k">let</span> <span class="n">kilograms</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">.</span><span class="n">doubleValueForUnit</span><span class="p">(</span><span class="n">HKUnit</span><span class="p">.</span><span class="n">gramUnitWithMetricPrefix</span><span class="p">(.</span><span class="n">Kilo</span><span class="p">))</span>
+            <span class="n">print</span><span class="p">(</span><span class="n">massFormatter</span><span class="p">.</span><span class="n">stringFromKilograms</span><span class="p">(</span><span class="n">kilograms</span><span class="p">))</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="n">quantity</span><span class="p">.</span><span class="n">isCompatibleWithUnit</span><span class="p">(</span><span class="n">HKUnit</span><span class="p">.</span><span class="n">meterUnit</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="n">lengthFormatter</span> <span class="o">=</span> <span class="n">NSLengthFormatter</span><span class="p">()</span>
+            <span class="k">let</span> <span class="n">meters</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">.</span><span class="n">doubleValueForUnit</span><span class="p">(</span><span class="n">HKUnit</span><span class="p">.</span><span class="n">meterUnit</span><span class="p">())</span>
+            <span class="n">print</span><span class="p">(</span><span class="n">lengthFormatter</span><span class="p">.</span><span class="n">stringFromMeters</span><span class="p">(</span><span class="n">meters</span><span class="p">))</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="n">quantity</span><span class="p">.</span><span class="n">isCompatibleWithUnit</span><span class="p">(</span><span class="n">HKUnit</span><span class="p">.</span><span class="n">jouleUnit</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">let</span> <span class="n">energyFormatter</span> <span class="o">=</span> <span class="n">NSEnergyFormatter</span><span class="p">()</span>
+            <span class="k">let</span> <span class="n">joules</span> <span class="o">=</span> <span class="n">quantity</span><span class="p">.</span><span class="n">doubleValueForUnit</span><span class="p">(</span><span class="n">HKUnit</span><span class="p">.</span><span class="n">jouleUnit</span><span class="p">())</span>
+            <span class="n">print</span><span class="p">(</span><span class="n">energyFormatter</span><span class="p">.</span><span class="n">stringFromJoules</span><span class="p">(</span><span class="n">joules</span><span class="p">))</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>NSHipster will be covering a lot more about HealthKit in future editions, so stay tuned!</p>
+
+<h2 id="nsstream-+getstreamstohostwithname">NSStream +getStreamsToHostWithName</h2>
+
+<p>In many ways, WWDC 2014 was the year that Apple <em>fixed their shit</em>. Small things, like adding the missing <code>NSStream</code> initializer for creating a bound stream pair (without resorting to awkwardly-bridged <code>CFStreamCreatePairWithSocketToHost</code> call). Behold: <code>+[NSStream getStreamsToHostWithName:port:inputStream:outputStream:]</code></p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">var</span> <span class="nl">inputStream</span><span class="p">:</span> <span class="bp">NSInputStream</span><span class="o">?</span>
+<span class="k">var</span> <span class="nl">outputStream</span><span class="p">:</span> <span class="bp">NSOutputStream</span><span class="o">?</span>
+
+<span class="bp">NSStream</span><span class="p">.</span><span class="n">getStreamsToHostWithName</span><span class="p">(</span><span class="s">&quot;nshipster.com&quot;</span><span class="p">,</span>
+                            <span class="nl">port</span><span class="p">:</span> <span class="mi">5432</span><span class="p">,</span>
+                     <span class="nl">inputStream</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">inputStream</span><span class="p">,</span>
+                    <span class="nl">outputStream</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">outputStream</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="nsstring--localizedcaseinsensitivecontainsstring">NSString -localizedCaseInsensitiveContainsString</h2>
+
+<p>Also filed under: &ldquo;small but solid fixes&rdquo;, is this convenience method for <code>String</code>/<code>NSString</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">string</span> <span class="o">=</span> <span class="s">&quot;Café&quot;</span>
+<span class="k">let</span> <span class="n">substring</span> <span class="o">=</span> <span class="s">&quot;É&quot;</span>
+
+<span class="n">string</span><span class="p">.</span><span class="n">localizedCaseInsensitiveContainsString</span><span class="p">(</span><span class="n">substring</span><span class="p">)</span> <span class="c1">// true</span>
+</code></pre></div>
+<h2 id="ctrubyannotationref">CTRubyAnnotationRef</h2>
+
+<p>If you&rsquo;re a linguistics and typography nerd, this new addition to the CoreText framework may have you standing up on your chair and cheering. &ldquo;What&rsquo;s with Jim? Is it me, or has he been acting kind of weird since his trip to San Francisco?&rdquo;, they&rsquo;ll say, looking at you atop your desk as you tear your clothes off your body in a frenzy of pure ecstasy. &ldquo;Yeah, remind me not to stay in the Tenderloin for next year&rsquo;s conference.&rdquo;</p>
+
+<p>&hellip;oh right. Ruby. No, not <a href="https://www.ruby-lang.org/en/">Ruby</a>. <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby">Ruby</a>. It&rsquo;s used to display the pronunciation of characters in certain Asian scripts.</p>
+<div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">@</span><span class="n">import</span> <span class="n">CoreText</span><span class="p">;</span>
+
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">kanji</span> <span class="o">=</span> <span class="s">@&quot;猫&quot;</span><span class="p">;</span>
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">hiragana</span> <span class="o">=</span> <span class="s">@&quot;ねこ&quot;</span><span class="p">;</span>
+
+<span class="n">CFStringRef</span> <span class="n">furigana</span><span class="p">[</span><span class="n">kCTRubyPositionCount</span><span class="p">]</span> <span class="o">=</span>
+    <span class="p">{(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">hiragana</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">};</span>
+
+<span class="n">CTRubyAnnotationRef</span> <span class="n">ruby</span> <span class="o">=</span>
+    <span class="n">CTRubyAnnotationCreate</span><span class="p">(</span><span class="n">kCTRubyAlignmentAuto</span><span class="p">,</span> <span class="n">kCTRubyOverhangAuto</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">furigana</span><span class="p">);</span>
+</code></pre></div>
+<p>Admittedly, the documentation isn&rsquo;t entirely clear on how exactly to incorporate this into the rest of your <code>CoreText</code> drawing calls, but the result would look something like this:</p>
+
+<figure><ruby style="font-size: 3em;">猫<rt>ねこ</rt></ruby></figure>
+
+<h2 id="new-calendar-identifiers">New Calendar Identifiers</h2>
+
+<p>What&rsquo;s even nerdier than Ruby annotations? The new calendar identifiers added to iOS 8 &amp; OS X Yosemite. This update brings Foundation up to the latest version of the <a href="http://cldr.unicode.org/core-spec">CLDR</a>:</p>
+
+<p>(Sadly, the <a href="https://speakerdeck.com/mattt/software-design-and-eclecticism">French Republican Calendar</a> is still but a twinkle in the eyes of NSHipsters everywhere)</p>
+
+<ul>
+<li><code>NSCalendarIdentifierCoptic</code>: a.k.a Alexandrian calendar, is used by the Coptic Orthodox Church.</li>
+<li><code>NSCalendarIdentifierEthiopicAmeteMihret</code>: Ethiopic calendar, Amete Mihret (epoch approx. 8 C.E.)</li>
+<li><code>NSCalendarIdentifierEthiopicAmeteAlem</code>: Ethiopic calendar, Amete Alem (epoch approx. 5493 B.C.E.)</li>
+<li><code>NSCalendarIdentifierIslamicTabular</code>: A simple tabular Islamic calendar using the astronomical/Thursday epoch of CE 622 July 15.</li>
+<li><code>NSCalendarIdentifierIslamicUmmAlQura</code>: The Islamic Umm al-Qura calendar used in Saudi Arabia. This is based on astronomical calculation, instead of tabular behavior.</li>
+</ul>
+
+<h2 id="nsurlcredentialstorage">NSURLCredentialStorage</h2>
+
+<p>The Foundation URL Loading System has remained relatively unchanged since last year&rsquo;s <code>NSURLSession</code> blowout. However, <code>NSURLCredentialStorage</code> has been given some TLC, with new functions that get and set credentials for tasks in asynchronous, non-blocking fashion.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">Foundation</span>
+
+<span class="k">let</span> <span class="n">session</span> <span class="o">=</span> <span class="bp">NSURLSession</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">task</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">dataTaskWithURL</span><span class="p">(</span><span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;http://nshipster.com&quot;</span><span class="p">)</span><span class="o">!</span><span class="p">)</span> <span class="p">{</span> <span class="n">data</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="n">protectionSpace</span> <span class="o">=</span> <span class="bp">NSURLProtectionSpace</span><span class="p">()</span>
+<span class="k">let</span> <span class="n">credentialStorage</span> <span class="o">=</span> <span class="bp">NSURLCredentialStorage</span><span class="p">()</span>
+<span class="n">credentialStorage</span><span class="p">.</span><span class="n">getCredentialsForProtectionSpace</span><span class="p">(</span><span class="n">protectionSpace</span><span class="p">,</span> <span class="nl">task</span><span class="p">:</span> <span class="n">task</span><span class="p">)</span> <span class="p">{</span> <span class="n">credentials</span> <span class="k">in</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="kuttypetodoitem">kUTTypeToDoItem</h2>
+
+<p>Looking through the latest API diffs, one might notice the large number of new <a href="http://en.wikipedia.org/wiki/Uniform_Type_Identifier">UTIs</a> constants. One that caught my eye was <code>kUTTypeToDoItem</code>:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">MobileCoreServices</span>
+
+<span class="n">kUTTypeToDoItem</span> <span class="c1">// &quot;public.to-do-item&quot;</span>
+</code></pre></div>
+<p>As a public type, iOS &amp; OS X now provide a unified way to share tasks between applications. If you happen to work on a task management tool (and, let&rsquo;s be honest, the chances are extremely good, considering how damn many of them there are in the App Store), proper integration with this system type should be put at the top of your list.</p>
+
+<h2 id="kcgimagemetadatashouldexcludegps">kCGImageMetadataShouldExcludeGPS</h2>
+
+<p>Most users are completely unaware that most pictures taken with phones these days include GPS metadata. Countless individuals have had their privacy breached because of this small detail.</p>
+
+<p>New to the Image I/O framework is a convenient new option for <code>CGImageDestination</code>: <code>kCGImageMetadataShouldExcludeGPS</code>, which does what you&rsquo;d expect.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">UIKit</span>
+<span class="k">import</span> <span class="n">ImageIO</span>
+<span class="k">import</span> <span class="n">MobileCoreServices</span>
+
+<span class="k">let</span> <span class="n">image</span> <span class="o">=</span> <span class="p">...</span>
+<span class="k">let</span> <span class="n">fileURL</span> <span class="o">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">fileURLWithPath</span><span class="p">:</span> <span class="s">&quot;/path/to/output.jpg&quot;</span><span class="p">)</span>
+<span class="k">let</span> <span class="nl">options</span><span class="p">:</span> <span class="bp">NSDictionary</span> <span class="o">=</span> <span class="p">[</span><span class="n">kCGImageDestinationLossyCompressionQuality</span> <span class="kt">as</span> <span class="nl">NSString</span><span class="p">:</span> <span class="mf">0.75</span><span class="p">,</span>
+                            <span class="n">kCGImageMetadataShouldExcludeGPS</span> <span class="kt">as</span> <span class="nl">NSString</span><span class="p">:</span> <span class="nb">true</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="k">let</span> <span class="n">imageDestination</span> <span class="o">=</span> <span class="n">CGImageDestinationCreateWithURL</span><span class="p">(</span><span class="n">fileURL</span><span class="p">,</span> <span class="n">kUTTypeJPEG</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">nil</span><span class="p">),</span>
+    <span class="k">let</span> <span class="n">cgImage</span> <span class="o">=</span> <span class="n">image</span><span class="p">.</span><span class="bp">CGImage</span>
+<span class="p">{</span>
+    <span class="n">CGImageDestinationAddImage</span><span class="p">(</span><span class="n">imageDestination</span><span class="p">,</span> <span class="n">cgImage</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+    <span class="n">CGImageDestinationFinalize</span><span class="p">(</span><span class="n">imageDestination</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="p">@</span><span class="n">import</span> <span class="n">UIKit</span><span class="p">;</span>
+<span class="p">@</span><span class="n">import</span> <span class="n">ImageIO</span><span class="p">;</span>
+<span class="p">@</span><span class="n">import</span> <span class="n">MobileCoreServices</span><span class="p">;</span>
+
+<span class="bp">UIImage</span> <span class="o">*</span><span class="n">image</span> <span class="o">=</span> <span class="p">...;</span>
+<span class="bp">NSURL</span> <span class="o">*</span><span class="n">fileURL</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSURL</span> <span class="nl">fileURLWithPath</span><span class="p">:</span><span class="s">@&quot;/path/to/output.jpg&quot;</span><span class="p">];</span>
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">UTI</span> <span class="o">=</span> <span class="n">kUTTypeJPEG</span><span class="p">;</span>
+<span class="bp">NSDictionary</span> <span class="o">*</span><span class="n">options</span> <span class="o">=</span> <span class="l">@{</span>
+                          <span class="p">(</span><span class="k">__bridge</span> <span class="kt">id</span><span class="p">)</span><span class="nl">kCGImageDestinationLossyCompressionQuality</span><span class="p">:</span> <span class="l">@(</span><span class="mf">0.75</span><span class="l">)</span><span class="p">,</span>
+                          <span class="p">(</span><span class="k">__bridge</span> <span class="kt">id</span><span class="p">)</span><span class="nl">kCGImageMetadataShouldExcludeGPS</span><span class="p">:</span> <span class="l">@(</span><span class="nb">YES</span><span class="l">)</span><span class="p">,</span>
+                          <span class="l">}</span><span class="p">;</span>
+
+<span class="n">CGImageDestinationRef</span> <span class="n">imageDestinationRef</span> <span class="o">=</span>
+<span class="n">CGImageDestinationCreateWithURL</span><span class="p">((</span><span class="k">__bridge</span> <span class="n">CFURLRef</span><span class="p">)</span><span class="n">fileURL</span><span class="p">,</span>
+                                <span class="p">(</span><span class="k">__bridge</span> <span class="n">CFStringRef</span><span class="p">)</span><span class="n">UTI</span><span class="p">,</span>
+                                <span class="mi">1</span><span class="p">,</span>
+                                <span class="nb">NULL</span><span class="p">);</span>
+
+<span class="n">CGImageDestinationAddImage</span><span class="p">(</span><span class="n">imageDestinationRef</span><span class="p">,</span> <span class="p">[</span><span class="n">image</span> <span class="bp">CGImage</span><span class="p">],</span> <span class="p">(</span><span class="k">__bridge</span> <span class="n">CFDictionaryRef</span><span class="p">)</span><span class="n">options</span><span class="p">);</span>
+<span class="n">CGImageDestinationFinalize</span><span class="p">(</span><span class="n">imageDestinationRef</span><span class="p">);</span>
+<span class="n">CFRelease</span><span class="p">(</span><span class="n">imageDestinationRef</span><span class="p">);</span>
+</code></pre></div>
+<h2 id="wtf_platform_ios">WTF_PLATFORM_IOS</h2>
+
+<p><code>#define WTF_PLATFORM_IOS</code> has been removed from JavaScriptCore. It will be missed.</p>
+
+<h2 id="wkwebview">WKWebView</h2>
+
+<p><code>UIWebView</code> is dead. Long live <code>WKWebView</code>.</p>
+
+<p><code>WKWebView</code> offers Safari-level performance to your own app, and further improves on <code>UIWebView</code> with preferences and configurations:</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">import</span> <span class="n">WebKit</span>
+
+<span class="k">let</span> <span class="n">preferences</span> <span class="o">=</span> <span class="n">WKPreferences</span><span class="p">()</span>
+<span class="n">preferences</span><span class="p">.</span><span class="n">javaScriptCanOpenWindowsAutomatically</span> <span class="o">=</span> <span class="nb">false</span>
+
+<span class="k">let</span> <span class="n">configuration</span> <span class="o">=</span> <span class="n">WKWebViewConfiguration</span><span class="p">()</span>
+<span class="n">configuration</span><span class="p">.</span><span class="n">preferences</span> <span class="o">=</span> <span class="n">preferences</span>
+
+<span class="k">let</span> <span class="n">webView</span> <span class="o">=</span> <span class="n">WKWebView</span><span class="p">(</span><span class="nl">frame</span><span class="p">:</span> <span class="nb">self</span><span class="p">.</span><span class="n">view</span><span class="p">.</span><span class="n">bounds</span><span class="p">,</span> <span class="nl">configuration</span><span class="p">:</span> <span class="n">configuration</span><span class="p">)</span>
+<span class="k">let</span> <span class="n">request</span> <span class="o">=</span> <span class="bp">NSURLRequest</span><span class="p">(</span><span class="nl">URL</span><span class="p">:</span> <span class="bp">NSURL</span><span class="p">(</span><span class="nl">string</span><span class="p">:</span> <span class="s">&quot;http://nshipster.com&quot;</span><span class="p">)</span><span class="o">!</span><span class="p">)</span>
+<span class="n">webView</span><span class="p">.</span><span class="n">loadRequest</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="nsqualityofservice">NSQualityOfService</h2>
+
+<p>Threads have been systematically de-emphasized from the conceptual foundation of Apple frameworks. This has been a good thing for developers.</p>
+
+<p>Following this trend is a change to <code>NSOperation</code> in the latest APIs. A new <code>qualityOfService</code> property replaces the <code>threadPriority</code>. These new semantics allow an app to defer non-critical work to ensure a consistently great user experience.</p>
+
+<p>The <code>NSQualityOfService</code> enum defines the following values:</p>
+
+<ul>
+<li><code>UserInteractive</code>: UserInteractive QoS is used when performing work that is related to graphically intensive work such as scrolling or animating.</li>
+<li><code>UserInitiated</code>: UserInitiated QoS is used for performing work that has been explicitly requested by the user, but does not require millisecond accuracy like animations. For example, if a user requests an email app to check for mail right now.</li>
+<li><code>Utility</code>: Utility QoS is used for performing work that has been requested by the user to happen automatically. For example, an email app may be configured to automatically check for mail every 5 minutes. It is not a problem if the email check is deferred by a few minutes if the system is extremely limited in resources.</li>
+<li><code>Background</code>: Background QoS is used for performing work that the user may not even be aware is happening on their behalf. For example, an email app may use this to perform indexing for a search.</li>
+</ul>
+
+<p>Quality of Service is used throughout Foundation in iOS 8 &amp; OS X Yosemite, so be on the lookout for opportunities to capitalize on this new feature.</p>
+
+<h2 id="localauthentication">LocalAuthentication</h2>
+
+<p>Finally, one of the most anticipated features of iOS 8: LocalAuthentication. Ever since TouchID was introduced with the iPhone 5s, developers have been salivating at the prospect of using that in their own app.</p>
+
+<p>Imagine: with CloudKit and LocalAuthentication, nearly all of the friction to creating a user account is gone. Just scan your fingerprint, and you&rsquo;re in.</p>
+
+<p>LocalAuthentication works in terms of an <code>LAContext</code> class, which evaluates a specified policy, and gives a thumbs up or thumbs down on user authentication. At no point is any biometric information made available to the application—everything is kept safe on the hardware itself.</p>
+<div class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="k">let</span> <span class="n">context</span> <span class="o">=</span> <span class="n">LAContext</span><span class="p">()</span>
+<span class="k">var</span> <span class="nl">error</span><span class="p">:</span> <span class="bp">NSError</span><span class="o">?</span>
+
+<span class="k">if</span> <span class="n">context</span><span class="p">.</span><span class="n">canEvaluatePolicy</span><span class="p">(.</span><span class="n">DeviceOwnerAuthenticationWithBiometrics</span><span class="p">,</span> <span class="nl">error</span><span class="p">:</span> <span class="o">&amp;</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">context</span><span class="p">.</span><span class="n">evaluatePolicy</span><span class="p">(.</span><span class="n">DeviceOwnerAuthenticationWithBiometrics</span><span class="p">,</span> <span class="nl">localizedReason</span><span class="p">:</span> <span class="s">&quot;...&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="n">success</span><span class="p">,</span> <span class="n">error</span> <span class="k">in</span>
+        <span class="k">if</span> <span class="n">success</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">print</span><span class="p">(</span><span class="s">&quot;Error: \(error)&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">print</span><span class="p">(</span><span class="s">&quot;Error: \(error)&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div><div class="highlight"><pre><code class="language-objective-c" data-lang="objective-c"><span class="n">LAContext</span> <span class="o">*</span><span class="n">context</span> <span class="o">=</span> <span class="p">[[</span><span class="n">LAContext</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">([</span><span class="n">context</span> <span class="nl">canEvaluatePolicy</span><span class="p">:</span><span class="n">LAPolicyDeviceOwnerAuthenticationWithBiometrics</span>
+                         <span class="nl">error</span><span class="p">:</span><span class="o">&amp;</span><span class="n">error</span><span class="p">])</span>
+<span class="p">{</span>
+    <span class="p">[</span><span class="n">context</span> <span class="nl">evaluatePolicy</span><span class="p">:</span><span class="n">LAPolicyDeviceOwnerAuthenticationWithBiometrics</span>
+            <span class="nl">localizedReason</span><span class="p">:</span><span class="n">NSLocalizedString</span><span class="p">(</span><span class="s">@&quot;...&quot;</span><span class="p">,</span> <span class="nb">nil</span><span class="p">)</span>
+                      <span class="nl">reply</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">BOOL</span> <span class="n">success</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">success</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// ...</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}];</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="n">error</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr>
+
+<p>Although it seems like all that anyone can talk about these days is Swift, it&rsquo;d be a shame if we ignored all of the neat things iOS 8 &amp; OS X Yosemite allow us to actually <em>do</em> with this new language.</p>
+
+<p>If you&rsquo;re feeling adventurous, <a href="https://developer.apple.com/library/prerelease/ios/releasenotes/General/iOS80APIDiffs/index.html#//apple_ref/doc/uid/TP40014455">dive into the iOS 7.1 to 8.0 API diffs</a> to really appreciate the magnitude of new technologies to discover. <em>Granted, of the 4000+ new APIs, at least half of those are slight changes to Accelerate functions, or methods becoming properties, but still&hellip;</em> Have at it!</p>
+
+  </div>
+
+  <footer role="complementary">
+    
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <p>
+      Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/2014-06-09-ios8.md">pull requests</a> are always welcome — NSHipster is made better by readers like you.
+      </p>
+      
+      <p>
+      
+        
+            <em>This article uses Swift version 2.0 and was last reviewed on Sep 12, 2015.</em>
+        
+      
+      Find status information for all articles on the <a href="/status/">status page</a>.
+      </p>
+      
+      <dl>
+      
+      </dl>
+    </section>
+    
+
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+        </li>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
+    </section>
+
+    <section id="attribution">
+      
+  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+    <small>Written by</small>
+
+    <img class="avatar" alt="Mattt Thompson" itemprop="image" src="http://nshipster.s3.amazonaws.com/mattt-thompson.jpg" draggable="false"/>
+    <div class="details">
+      <span itemprop="name"><a href="/authors/mattt-thompson/">Mattt Thompson</a></span>
+
+      <p><a href="https://github.com/mattt">Mattt Thompson</a> (<a href="https://twitter.com/mattt">@mattt</a>) is a writer and developer from the Rustbelt.</p>
+
+
+      
+        <a href="https://plus.google.com/106751358503565042647?rel=author" rel="author"></a>
+      
+    </div>
+  </div>
+
+
+    </section>
+
+    
+
+    
+
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        
+        
+
+          <article>
+            <h1 class="title">
+              <a href="/clang-diagnostics/" title="Clang Diagnostics" rel="next">Clang Diagnostics</a>
+            </h1>
+
+            <p>Diagnostics combine logic with analytics to arrive at a conclusion. It&rsquo;s science and engineering at their purest. It&rsquo;s human reasoning at its most potent. For us developers, our medium of code informs the production of subsequent code, creating a positive feedback loop that has catapulted the development of technology exponentially over the last half century. For us Objective-C developers specifically, the most effective diagnostics come from Clang.</p>
+
+          </article>
+      </div>
+
+      
+      
+        
+        
+      
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          
+          
+          
+            <li>
+              <a href="/changing-of-the-guard/" title="Changing of the Guard">Changing of the Guard</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/stewardship/" title="Stewardship">Stewardship</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/image-resizing/" title="Image Resizing Techniques">Image Resizing Techniques</a>
+            </li>
+            
+          
+          
+            <li>
+              <a href="/icloud/" title="iCloud">iCloud</a>
+            </li>
+            
+          
+        </ul>
+      </div>
+    </section>
+  </footer>
+</article>
+
+    </div>
+
+    <footer role="contentinfo">
+      <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
+        <p>
+          <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+        </p>
+        <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
+        <a href="https://plus.google.com/105091289906267717942" rel="publisher"></a>
+      </section>
+    </footer>
+  </div>
+
+  <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script async>
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-1', 'nshipster.com');
+    ga('send', 'pageview');
+  </script>
+
+</body>
+</html>
